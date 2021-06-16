@@ -28,6 +28,34 @@ Illustrator CS4 or higher
 
 
 
+# relinkFileExtensionExtra.js
+
+### Description
+This script is an enhanced version of relinkFileExtension.js.
+
+![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+2. Open the Ai file.
+3. Run this script from File > Scripts > Other Script...  
+   If you don't select an image, all images in the document will be targeted.
+4. Choose to replace or add the string.  
+   To replace, you can use regular expressions.  
+   To add, specify a string to be added to the beginning or end of the original file name, or both.
+5. Enter the extension.  
+   If you don't enter an extension, the extension of the original file will be used.
+
+### Notes
+Place the relink files in the same place as the original files.  
+Broken link files are not replaced.  
+Embedded files are also not possible.
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
 # removeDeletedGlobalColor.js
 
 ### Description
@@ -35,19 +63,16 @@ Deletes the Deleted Global Colors displayed in the Separations Preview panel.
 
 ![Remove Deleted Global Color](images/removeDeletedGlobalColor.png)
 
-
 ### Usage
 1. Download Zip file and unzip.(You can place it anywhere you like.)
 2. Open the Ai file.
 3. Run this script from File > Scripts > Other Script...
-
 
 ### Notes
 In rare cases, you may not be able to delete it.  
 In that case, restart Illustrator and run this script again.  
 If you save the file and reopen it, it may be restored.  
 In this case, there is no way to delete it.
-
 
 ### Requirements
 Illustrator CS or higher
