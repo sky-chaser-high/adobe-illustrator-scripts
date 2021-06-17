@@ -1,4 +1,4 @@
-/* ===============================================================================================================================================
+﻿/* ===============================================================================================================================================
    relinkFileExtension.js
 
    description
@@ -19,7 +19,7 @@
    Illustrator CS4 or higher
 
    script version
-   1.0.0
+   1.0.1
    =============================================================================================================================================== */
 
 if (app.documents.length > 0) relinkFileExtension();
@@ -29,6 +29,7 @@ function relinkFileExtension() {
     var images = getPlacedItems();
     var extension = enterExtension();
 
+    var failedFiles = [];
     var notfound = 0;
     var unlinked = 0;
 
@@ -36,7 +37,7 @@ function relinkFileExtension() {
         for (var i = 0; i < images.length; i++) {
             try {
                 var path = images[i].file.path;
-                var name = images[i].file.name.split('.').slice(0, -1).join('.');
+                var name = images[i].file.name.split('.').slice(0, -1).join('.') || images[i].file.name;
                 // var ext = images[i].file.name.split('.').slice(-1)[0];
 
                 var imageFile = File(path + '/' + name + extension);
@@ -44,27 +45,27 @@ function relinkFileExtension() {
 
                 if (imageFile.exists) {
                     images[i].file = imageFile;
-                    images[i].selected = false;
                 }
                 // else if (imageFileInLinks.exists) {
                 //     images[i].file = imageFileInLinks;
                 //     images[i].selected = false;
                 // }
                 else {
-                    images[i].selected = true;
+                    failedFiles.push(images[i]);
                     notfound++;
                 }
             }
             catch (e) {
-                images[i].selected = true;
+                failedFiles.push(images[i]);
                 unlinked++;
             }
         }
     }
 
-    if (notfound > 0 || unlinked > 0) {
-        showMessage(notfound + unlinked);
-    }
+    showResult({
+        files: failedFiles,
+        count: notfound + unlinked
+    });
 }
 
 
@@ -76,12 +77,9 @@ function getPlacedItems() {
         var images = [];
         var placedItems = app.activeDocument.placedItems;
         for (var i = 0; i < placedItems.length; i++) {
-            try {
-                if (placedItems[i].selected) {
-                    images.push(placedItems[i]);
-                }
+            if (placedItems[i].selected) {
+                images.push(placedItems[i]);
             }
-            catch (e) {}
         }
         return images;
     }
@@ -90,11 +88,11 @@ function getPlacedItems() {
 
 function enterExtension() {
     var str = {
-        en: 'Relink each selected link to a file that has tha same name as the original, and is stored in the same folder, but uses another filename extension.\rRelink to Filename Extension:',
+        en_US: 'Relink each selected link to a file that has tha same name as the original, and is stored in the same folder, but uses another filename extension.\rRelink to Filename Extension:',
         ja_JP: '選択した各リンクをファイルに再設定します。このファイルは元のファイルと同じ名前で、同じフォルダに保存されていますが、別の拡張子を使用しています。\rファイル名拡張子にリンクを再設定：'
     }
 
-    var extension = prompt(str[app.locale] || str.en, '');
+    var extension = prompt(str[app.locale] || str.en_US, '');
 
     if (extension == null) {
         return extension;
@@ -111,11 +109,17 @@ function enterExtension() {
 }
 
 
-function showMessage(err) {
-    var message = {
-        en: 'Failed to find ' + err + ' links. These links have not been relinked, and will remain selected int the Links panel.',
-        ja_JP: err + ' 個のリンクが見つかりませんでした。これらのリンクは再リンクされず、リンクパネルで選択されたままの状態で残ります。'
+function showResult(obj) {
+    app.activeDocument.selection = null;
+
+    for (var i = 0; i < obj.files.length; i++) {
+        obj.files[i].selected = true;
     }
 
-    alert(message[app.locale] || message.en);
+    var message = {
+        en_US: 'Failed to find ' + obj.count + ' links. These links have not been relinked, and will remain selected int the Links panel.',
+        ja_JP: obj.count + ' 個のリンクが見つかりませんでした。これらのリンクは再リンクされず、リンクパネルで選択されたままの状態で残ります。'
+    }
+
+    if (obj.count > 0) alert(message[app.locale] || message.en_US);
 }
