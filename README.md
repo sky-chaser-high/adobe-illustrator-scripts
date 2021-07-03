@@ -2,6 +2,58 @@
 This is a collection of scripts for Adobe Illustrator.
 
 
+# createColorChart.js
+
+### Description
+This script create a color chart.
+
+![Create Color Chart](images/createColorChart.png)
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+2. Run this script from File > Scripts > Other Script...
+3. Select either CMYK or RGB, enter the color values.
+   If an object is selected, the fill value of the object will be used as the initial value.
+4. Select the color you want to increase or decrease with vertical, or horizontal.
+5. Enter the increase or decrease value.
+   Enter the percentage to be increased or decreased.
+6. Set the artboard size, chip size, and units according to your preference.
+
+### Notes
+For CMYK, K cannot be increased or decreased.  
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
+# measurePathItems.js
+
+### Description
+This script measures the distance of an anchor point between two points of an object.
+
+![Measure PathItems](images/measurePathItems.png)
+
+### Usage
+Select the path object, run this script from File > Scripts > Other Script...
+
+### Feature
+Group and color a measurements by path object.  
+Switch the dimension units according to the ruler units.
+
+### Notes
+In complex shapes, a measurements may be displayed overlapping each other.  
+Curves are not supported.  
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
 # relinkFileExtension.js
 
 ### Description
