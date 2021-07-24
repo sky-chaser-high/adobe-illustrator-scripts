@@ -2,6 +2,26 @@
 This is a collection of scripts for Adobe Illustrator.
 
 
+# closePath.js
+
+### Description
+This script close the path objects.
+
+![Close Path](images/closePath.png)
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+2. Select the path objects, run this script from File > Scripts > Other Script...
+
+### Notes
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS or higher
+
+
+
 # createColorChart.js
 
 ### Description
@@ -26,6 +46,26 @@ In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS4 or higher
+
+
+
+# deleteUnusedLayers.js
+
+### Description
+This script delete unused layers.
+
+![Delete Unused Layers](images/deleteUnusedLayers.png)
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+2. Run this script from File > Scripts > Other Script...
+
+### Notes
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS or higher
 
 
 
@@ -128,6 +168,30 @@ In this case, there is no way to delete it.
 
 ### Requirements
 Illustrator CS or higher
+
+
+
+# stepandRepeat.js
+
+### Description
+This script is equivalent to InDesign's "Step and Repeat".
+
+![Step and Repeat](images/stepandRepeat.png)
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+2. Open the Ai file.
+3. Select the objects, run this script from File > Scripts > Other Script...
+4. Select Repeat or Grid.
+5. Enter the number of copies to be duplicated.
+6. Enter the offset values.
+
+### Notes
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS4 or higher
 
 
 
