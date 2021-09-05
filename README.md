@@ -195,6 +195,25 @@ Illustrator CS4 or higher
 
 
 
+# textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js
+
+### Description
+This script changes the text alignment without moving the text position.  
+Vertical text is also supported.
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+3. Select the text objects, run this script from File > Scripts > Other Script...
+
+### Notes
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS or higher
+
+
+
 # Licence
 All scripts is licensed under the MIT licence.  
 See the included LICENSE file for more details.  
