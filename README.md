@@ -69,6 +69,27 @@ Illustrator CS or higher
 
 
 
+# disjoinPath.js
+
+### Description
+This script breaks apart the path object with anchor points.
+
+![Disjoin Path](images/disjoinPath.png)
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+2. Select the path objects, run this script from File > Scripts > Other Script...
+
+### Notes
+The original path object will be deleted.  
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS or higher
+
+
+
 # measurePathItems.js
 
 ### Description
