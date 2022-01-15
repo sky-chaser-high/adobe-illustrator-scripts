@@ -224,7 +224,102 @@ Vertical text is also supported.
 
 ### Usage
 1. Download Zip file and unzip.(You can place it anywhere you like.)
-3. Select the text objects, run this script from File > Scripts > Other Script...
+2. Select the text objects, run this script from File > Scripts > Other Script...
+
+### Notes
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+# XmpFunctions.js
+
+### Description
+These functions gets the font, color or history properties used in the document from XMP.  
+**See also:** [Adobe XMP Document](https://www.adobe.io/xmp/docs/)
+
+### Usage
+1. Download Zip file and unzip.(You can place it anywhere you like.)
+2. You can include this script or copy the function to use it.
+
+```javascript
+// @include '/Path1/Path2/XmpFunctions.js'
+var fonts = xmpGetFonts(app.activeDocument.fullName);
+```
+
+### Functions
+#### xmpGetFonts(src)
+Get font properties used in the document from XMP.  
+
+**Param**: `src` `<File>`  
+**Returns**: `Array<Object>` - font properties.  
+- `composite` `<String>`
+- `face` `<String>`
+- `family` `<String>`
+- `filename` `<String>`
+- `name` `<String>`
+- `type` `<String>`
+- `version` `<String>`
+
+##### Example
+```javascript
+// @include '/Path1/Path2/XmpFunctions.js'
+var fonts = xmpGetFonts(app.activeDocument.fullName);
+alert(fonts[0].face);
+```
+
+#### xmpGetHistory(src)
+Get history properties from XMP.
+
+**Param**: `src` `<File>`  
+**Returns**: `Array<Object>` - history properties.  
+- `action` `<String>`
+- `parameter` `<String> | null`
+- `software` `<String> | null`
+- `when` `<Date> | null`
+
+##### Example
+```javascript
+// @include '/Path1/Path2/XmpFunctions.js'
+var history = xmpGetHistory(app.activeDocument.fullName);
+var date = history[0].when;
+alert(date.getFullYear());
+```
+
+#### xmpGetPlateNames(src)
+Get plate names used in the document from XMP.
+
+**Param**: `src` `<File>`  
+**Returns**: `Array<String>` - plate names.  
+
+##### Example
+```javascript
+// @include '/Path1/Path2/XmpFunctions.js'
+var platenames = xmpGetPlateNames(app.activeDocument.fullName);
+alert(platenames[0]);
+```
+
+#### xmpGetSwatches(src)
+Get swatch properties used in the document from XMP.
+
+**Param**: `src` `<File>`  
+**Returns**: `Array<Object>` - swatch properties.  
+- `mode` `<String>`
+- `name` `<String>`
+- `swatch` `<Swatch> | null`
+- `type` `<String>`
+
+##### Example
+```javascript
+// @include '/Path1/Path2/XmpFunctions.js'
+var swatch = xmpGetSwatches(app.activeDocument.fullName);
+alert(swatch[0].name);
+```
+
+
 
 ### Notes
 In rare cases, you may not be able to create it.  
