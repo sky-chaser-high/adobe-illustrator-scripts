@@ -238,7 +238,7 @@ Illustrator CS or higher
 # XmpFunctions.js
 
 ### Description
-These functions gets the font, color or history properties used in the document from XMP.  
+These functions gets the font, color or history properties that are used in the document from XMP.  
 **See also:** [Adobe XMP Document](https://www.adobe.io/xmp/docs/)
 
 ### Usage
@@ -252,17 +252,17 @@ var fonts = xmpGetFonts(app.activeDocument.fullName);
 
 ### Functions
 #### xmpGetFonts(src)
-Get font properties used in the document from XMP.  
+Get font properties that are used in the document from XMP.  
 
 **Param**: `src` `<File>`  
-**Returns**: `Array<Object>` - font properties.  
-- `composite` `<String>`
-- `face` `<String>`
-- `family` `<String>`
-- `filename` `<String>`
-- `name` `<String>`
-- `type` `<String>`
-- `version` `<String>`
+**Returns**: `Array<Object>` An unordered array of font properties.  
+- `composite` `<String>` When true, this is a composite font.
+- `face` `<String>` The font face name.
+- `family` `<String>` The font family name.
+- `filename` `<String>` The font file name. (not a complete path)
+- `name` `<String>` PostScript name of the font.
+- `type` `<String>` The font type, such as TrueType, Type 1, Open Type, and so on.
+- `version` `<String>` The version string.
 
 ##### Example
 ```javascript
@@ -275,11 +275,11 @@ alert(fonts[0].face);
 Get history properties from XMP.
 
 **Param**: `src` `<File>`  
-**Returns**: `Array<Object>` - history properties.  
-- `action` `<String>`
-- `parameter` `<String> | null`
-- `software` `<String> | null`
-- `when` `<Date> | null`
+**Returns**: `Array<Object>` An ordered array of user actions that resulted in the document.  
+- `action` `<String>` The action that occurred.
+- `parameter` `<String> | null` Additional description of the action.
+- `software` `<String> | null` The software agent that performed the action.
+- `when` `<Date> | null` Timestamp of when the action occurred.
 
 ##### Example
 ```javascript
@@ -290,10 +290,10 @@ alert(date.getFullYear());
 ```
 
 #### xmpGetPlateNames(src)
-Get plate names used in the document from XMP.
+Get plate names that are used in the document from XMP.
 
 **Param**: `src` `<File>`  
-**Returns**: `Array<String>` - plate names.  
+**Returns**: `Array<String>` An ordered array of plate names that are needed to print the document.  
 
 ##### Example
 ```javascript
@@ -303,20 +303,20 @@ alert(platenames[0]);
 ```
 
 #### xmpGetSwatches(src)
-Get swatch properties used in the document from XMP.
+Get swatch properties that are used in the document from XMP.
 
 **Param**: `src` `<File>`  
-**Returns**: `Array<Object>` - swatch properties.  
-- `mode` `<String>`
-- `name` `<String>`
-- `swatch` `<Swatch> | null`
-- `type` `<String>`
+**Returns**: `Array<Object>` A structure containing the characteristics of a colorant (swatch) used in the document.  
+- `mode` `<String>` The color space in which the color is defined.
+- `name` `<String>` Name of the swatch.
+- `swatch` `<Swatch> | null` Swatch object.
+- `type` `<String>` The type of color, one of PROCESS or SPOT.
 
 ##### Example
 ```javascript
 // @include '/Path1/Path2/XmpFunctions.js'
-var swatch = xmpGetSwatches(app.activeDocument.fullName);
-alert(swatch[0].name);
+var swatches = xmpGetSwatches(app.activeDocument.fullName);
+alert(swatches[0].name);
 ```
 
 
