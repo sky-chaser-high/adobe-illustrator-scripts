@@ -1,5 +1,17 @@
 # Adobe Illustrator Scripts
 This is a collection of scripts for Adobe Illustrator.
+- [closePath.js](#closePath.js)
+- [createColorChart.js](#createColorChart.js)
+- [deleteUnusedLayers.js](#deleteUnusedLayers.js)
+- [disjoinPath.js](#disjoinPath.js)
+- [measurePathItems.js](#measurePathItems.js)
+- [relinkFileExtension.js](#relinkFileExtension.js)
+- [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
+- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
+- [stepandRepeat.js](#stepandRepeat.js)
+- [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js)
+- [XmpFunctions.js](#XmpFunctions.js)
+
 
 
 # closePath.js
@@ -248,6 +260,11 @@ These functions gets the font, color or history properties that are used in the 
 ```javascript
 // @include '/Path1/Path2/XmpFunctions.js'
 var fonts = xmpGetFonts(app.activeDocument.fullName);
+```
+It can also be used for linked files.
+```javascript
+// @include '/Path1/Path2/XmpFunctions.js'
+var history = xmpGetHistory(app.activeDocument.placedItems[0].file);
 ```
 
 ### Functions
