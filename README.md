@@ -9,12 +9,14 @@ This is a collection of scripts for Adobe Illustrator.
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [stepandRepeat.js](#stepandRepeat.js)
-- [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js)
+- [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 - [XmpFunctions.js](#XmpFunctions.js)
 
 
 
-# closePath.js
+
+
+# <a name="closePath.js">closePath.js</a>
 
 ### Description
 This script close the path objects.
@@ -34,7 +36,9 @@ Illustrator CS or higher
 
 
 
-# createColorChart.js
+
+
+# <a name="createColorChart.js">createColorChart.js</a>
 
 ### Description
 This script create a color chart.
@@ -61,7 +65,9 @@ Illustrator CS4 or higher
 
 
 
-# deleteUnusedLayers.js
+
+
+# <a name="deleteUnusedLayers.js">deleteUnusedLayers.js</a>
 
 ### Description
 This script delete unused layers.
@@ -81,7 +87,9 @@ Illustrator CS or higher
 
 
 
-# disjoinPath.js
+
+
+# <a name="disjoinPath.js">disjoinPath.js</a>
 
 ### Description
 This script breaks apart the path object with anchor points.
@@ -102,7 +110,9 @@ Illustrator CS or higher
 
 
 
-# measurePathItems.js
+
+
+# <a name="measurePathItems.js">measurePathItems.js</a>
 
 ### Description
 This script measures the distance of an anchor point between two points of an object.
@@ -127,7 +137,9 @@ Illustrator CS4 or higher
 
 
 
-# relinkFileExtension.js
+
+
+# <a name="relinkFileExtension.js">relinkFileExtension.js</a>
 
 ### Description
 This script is equivalent to InDesign's "Relink File Extension".
@@ -153,7 +165,9 @@ Illustrator CS4 or higher
 
 
 
-# relinkFileExtensionExtra.js
+
+
+# <a name="relinkFileExtensionExtra.js">relinkFileExtensionExtra.js</a>
 
 ### Description
 This script is an enhanced version of relinkFileExtension.js.
@@ -181,7 +195,9 @@ Illustrator CS4 or higher
 
 
 
-# removeDeletedGlobalColor.js
+
+
+# <a name="removeDeletedGlobalColor.js">removeDeletedGlobalColor.js</a>
 
 ### Description
 Deletes the Deleted Global Colors displayed in the Separations Preview panel.  
@@ -204,7 +220,9 @@ Illustrator CS or higher
 
 
 
-# stepandRepeat.js
+
+
+# <a name="stepandRepeat.js">stepandRepeat.js</a>
 
 ### Description
 This script is equivalent to InDesign's "Step and Repeat".
@@ -228,7 +246,9 @@ Illustrator CS4 or higher
 
 
 
-# textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js
+
+
+# <a name="textAlign">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
 
 ### Description
 This script changes the text alignment without moving the text position.  
@@ -247,7 +267,9 @@ Illustrator CS or higher
 
 
 
-# XmpFunctions.js
+
+
+# <a name="XmpFunctions.js">XmpFunctions.js</a>
 
 ### Description
 These functions gets the font, color or history properties that are used in the document from XMP.  
@@ -264,22 +286,28 @@ var fonts = xmpGetFonts(app.activeDocument.fullName);
 It can also be used for linked files.
 ```javascript
 // @include '/Path1/Path2/XmpFunctions.js'
-var history = xmpGetHistory(app.activeDocument.placedItems[0].file);
+var src = app.activeDocument.placedItems[0].file;
+var history = xmpGetHistory(src);
 ```
 
 ### Functions
-#### xmpGetFonts(src)
+- [xmpGetFonts(src)](#xmpGetFonts(src))
+- [xmpGetHistory(src)](#xmpGetHistory(src))
+- [xmpGetPlateNames(src)](#xmpGetPlateNames(src))
+- [xmpGetSwatches(src)](#xmpGetSwatches(src))
+
+#### <a name="xmpGetFonts(src)">xmpGetFonts(src)</a>
 Get font properties that are used in the document from XMP.  
 
 **Param**: `src` `<File>`  
 **Returns**: `Array<Object>` An unordered array of font properties.  
-- `composite` `<String>` When true, this is a composite font.
-- `face` `<String>` The font face name.
-- `family` `<String>` The font family name.
-- `filename` `<String>` The font file name. (not a complete path)
-- `name` `<String>` PostScript name of the font.
-- `type` `<String>` The font type, such as TrueType, Type 1, Open Type, and so on.
-- `version` `<String>` The version string.
+- `composite` `<string>` When true, this is a composite font.
+- `face` `<string>` The font face name.
+- `family` `<string>` The font family name.
+- `filename` `<string>` The font file name. (not a complete path)
+- `name` `<string>` PostScript name of the font.
+- `type` `<string>` The font type, such as TrueType, Type 1, Open Type, and so on.
+- `version` `<string>` The version string.
 
 ##### Example
 ```javascript
@@ -288,14 +316,14 @@ var fonts = xmpGetFonts(app.activeDocument.fullName);
 alert(fonts[0].face);
 ```
 
-#### xmpGetHistory(src)
+#### <a name="xmpGetHistory(src)">xmpGetHistory(src)</a>
 Get history properties from XMP.
 
 **Param**: `src` `<File>`  
 **Returns**: `Array<Object>` An ordered array of user actions that resulted in the document.  
-- `action` `<String>` The action that occurred.
-- `parameter` `<String> | null` Additional description of the action.
-- `software` `<String> | null` The software agent that performed the action.
+- `action` `<string>` The action that occurred.
+- `parameter` `<string> | null` Additional description of the action.
+- `software` `<string> | null` The software agent that performed the action.
 - `when` `<Date> | null` Timestamp of when the action occurred.
 
 ##### Example
@@ -306,11 +334,11 @@ var date = history[0].when;
 alert(date.getFullYear());
 ```
 
-#### xmpGetPlateNames(src)
+#### <a name="xmpGetPlateNames(src)">xmpGetPlateNames(src)</a>
 Get plate names that are used in the document from XMP.
 
 **Param**: `src` `<File>`  
-**Returns**: `Array<String>` An ordered array of plate names that are needed to print the document.  
+**Returns**: `Array<string>` An ordered array of plate names that are needed to print the document.  
 
 ##### Example
 ```javascript
@@ -319,21 +347,34 @@ var platenames = xmpGetPlateNames(app.activeDocument.fullName);
 alert(platenames[0]);
 ```
 
-#### xmpGetSwatches(src)
+#### <a name="xmpGetSwatches(src)">xmpGetSwatches(src)</a>
 Get swatch properties that are used in the document from XMP.
 
 **Param**: `src` `<File>`  
 **Returns**: `Array<Object>` A structure containing the characteristics of a colorant (swatch) used in the document.  
-- `mode` `<String>` The color space in which the color is defined.
-- `name` `<String>` Name of the swatch.
-- `swatch` `<Swatch> | null` Swatch object.
-- `type` `<String>` The type of color, one of PROCESS or SPOT.
+- `colorant` `<Object>` The color values.
+    - `cyan` `<number>` Cyan color value when the mode is CMYK. Range 0-100.
+    - `magenta` `<number>` Magenta color value when the mode is CMYK. Range 0-100.
+    - `yellow` `<number>` Yellow color value when the mode is CMYK. Range 0-100.
+    - `black` `<number>` Black color value when the mode is CMYK. Range 0-100.
+    - `gray` `<number>` Gray color value when the mode is GRAY. Range 0-255.
+    - `l` `<number>` L value when the mode is LAB. Range 0-100.
+    - `a` `<number>` A value when the mode is LAB. Range -128 to 127.
+    - `b` `<number>` B value when the mode is LAB. Range -128 to 127.
+    - `red` `<number>` Red color value when the mode is RGB. Range 0-255.
+    - `green` `<number>` Green color value when the mode is RGB. Range 0-255.
+    - `blue` `<number>` Blue color value when the mode is RGB. Range 0-255.
+- `mode` `<string>` The color space in which the color is defined.
+- `name` `<string>` Name of the swatch.
+- `swatch` `<swatch> | null` Swatch object.
+- `tint` `<number>` The tint of the color.
+- `type` `<string>` The type of color, one of PROCESS or SPOT.
 
 ##### Example
 ```javascript
 // @include '/Path1/Path2/XmpFunctions.js'
 var swatches = xmpGetSwatches(app.activeDocument.fullName);
-alert(swatches[0].name);
+alert(swatches[0].colorant.cyan);
 ```
 
 

@@ -15,7 +15,7 @@
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -160,7 +160,9 @@ function xmpGetPlateNames(src) {
  * https://www.adobe.io/xmp/docs/XMPNamespaces/xmpTPg/
  *
  * @param {File} src File object
- * @returns {{mode: string, name: string, swatch: Swatch | null, type: string}[]} swatch properties
+ * @returns {{colorant:
+ * {cyan: number, magenta: number, yellow: number, black: number, gray: number, l: number, a: number, b: number, red: number, green: number, blue: number},
+ * mode: string, name: string, swatch: Swatch | null, tint: number | null, type: string}[]} swatch properties
  */
 function xmpGetSwatches(src) {
     var colors = [];
@@ -184,14 +186,44 @@ function xmpGetSwatches(src) {
         for (var j = 1; j <= colorants; j++) {
             var structure = xmpTPg + '[' + i + ']/' + xmpG + '[' + j + ']/';
             var color = {
+                'colorant': { },
                 'mode': xmp.getProperty(namespace, structure + 'xmpG:mode').value,
                 'name': xmp.getProperty(namespace, structure + 'xmpG:swatchName').value,
                 'swatch': null,
+                'tint': null,
                 'type': xmp.getProperty(namespace, structure + 'xmpG:type').value
             };
 
+            switch (color.mode) {
+                case 'CMYK':
+                    color.colorant.cyan = Number(xmp.getProperty(namespace, structure + 'xmpG:cyan').value);
+                    color.colorant.magenta = Number(xmp.getProperty(namespace, structure + 'xmpG:magenta').value);
+                    color.colorant.yellow = Number(xmp.getProperty(namespace, structure + 'xmpG:yellow').value);
+                    color.colorant.black = Number(xmp.getProperty(namespace, structure + 'xmpG:black').value);
+                    break;
+                case 'GRAY':
+                    color.colorant.gray = Number(xmp.getProperty(namespace, structure + 'xmpG:gray').value);
+                    break;
+                case 'LAB':
+                    color.colorant.l = Number(xmp.getProperty(namespace, structure + 'xmpG:L').value);
+                    color.colorant.a = Number(xmp.getProperty(namespace, structure + 'xmpG:A').value);
+                    color.colorant.b = Number(xmp.getProperty(namespace, structure + 'xmpG:B').value);
+                    break;
+                case 'RGB':
+                    color.colorant.red = Number(xmp.getProperty(namespace, structure + 'xmpG:red').value);
+                    color.colorant.green = Number(xmp.getProperty(namespace, structure + 'xmpG:green').value);
+                    color.colorant.blue = Number(xmp.getProperty(namespace, structure + 'xmpG:blue').value);
+                    break;
+            }
+
             try {
                 color.swatch = app.activeDocument.swatches[color.name];
+            }
+            catch (e) { }
+
+            try {
+                var tint = xmp.getProperty(namespace, structure + 'xmpG:tint').value;
+                color.tint = Number(tint);
             }
             catch (e) { }
 
