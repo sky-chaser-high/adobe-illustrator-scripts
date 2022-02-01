@@ -10,6 +10,11 @@
 
 
 ## XmpFunctions.js
-### 1.0.1 (2022-01-23)
+### 1.0.2 (2022-02-01)
 ### Features
-- Added tint, colorant to the return value of `xmpGetSwatches(src)`.
+- Added `xmpGetLinkedFiles(src)` function.
+- Changed the return value of `xmpGetFonts(src)`.
+
+### 1.0.1 (2022-01-22)
+### Features
+- Added tint, colorant property to the return value of `xmpGetSwatches(src)`.

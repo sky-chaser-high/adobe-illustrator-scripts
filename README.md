@@ -8,9 +8,16 @@ This is a collection of scripts for Adobe Illustrator.
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
+- [resetToFullScale.js](#resetToFullScale.js)
 - [stepandRepeat.js](#stepandRepeat.js)
+- [syncView.js](#syncView.js)
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 - [XmpFunctions.js](#XmpFunctions.js)
+
+
+## Installation
+Download zip file and unzip. The scripts can be placed anywhere on your computer.  
+To run the scripts, from File > Scripts > Other Script...
 
 
 
@@ -24,8 +31,7 @@ This script close the path objects.
 ![Close Path](images/closePath.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Select the path objects, run this script from File > Scripts > Other Script...
+Select the path objects, run this script.
 
 ### Notes
 In rare cases, you may not be able to create it.  
@@ -46,14 +52,13 @@ This script create a color chart.
 ![Create Color Chart](images/createColorChart.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Run this script from File > Scripts > Other Script...
-3. Select either CMYK or RGB, enter the color values.
+1. Run this script.
+2. Select either CMYK or RGB, enter the color values.
    If an object is selected, the fill value of the object will be used as the initial value.
-4. Select the color you want to increase or decrease with vertical, or horizontal.
-5. Enter the increase or decrease value.
+3. Select the color you want to increase or decrease with vertical, or horizontal.
+4. Enter the increase or decrease value.
    Enter the percentage to be increased or decreased.
-6. Set the artboard size, chip size, and units according to your preference.
+5. Set the artboard size, chip size, and units according to your preference.
 
 ### Notes
 For CMYK, K cannot be increased or decreased.  
@@ -75,8 +80,7 @@ This script delete unused layers.
 ![Delete Unused Layers](images/deleteUnusedLayers.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Run this script from File > Scripts > Other Script...
+Just run this script.
 
 ### Notes
 In rare cases, you may not be able to create it.  
@@ -97,8 +101,7 @@ This script breaks apart the path object with anchor points.
 ![Disjoin Path](images/disjoinPath.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Select the path objects, run this script from File > Scripts > Other Script...
+Select the path objects, run this script.
 
 ### Notes
 The original path object will be deleted.  
@@ -120,7 +123,7 @@ This script measures the distance of an anchor point between two points of an ob
 ![Measure PathItems](images/measurePathItems.png)
 
 ### Usage
-Select the path object, run this script from File > Scripts > Other Script...
+Select the path objects, run this script.
 
 ### Feature
 Group and color a measurements by path object.  
@@ -147,11 +150,9 @@ This script is equivalent to InDesign's "Relink File Extension".
 ![InDesign's Relink File Extension](images/InDesign_Relink_File_Extension.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Open the Ai file.
-3. Run this script from File > Scripts > Other Script...  
-   (If you don't select an image, all images in the document will be targeted.)
-4. Enter the extension at the prompt that appears.
+1. Run this script.  
+   If you don't select an image, all images in the document will be targeted.
+2. Enter the extension at the prompt that appears.
 
 ![Relink File Extension](images/relinkFileExtension.png)
 
@@ -175,14 +176,12 @@ This script is an enhanced version of relinkFileExtension.js.
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Open the Ai file.
-3. Run this script from File > Scripts > Other Script...  
+1. Run this script.  
    If you don't select an image, all images in the document will be targeted.
-4. Choose to replace or add the string.  
+2. Choose to replace or add the string.  
    To replace, you can use regular expressions.  
    To add, specify a string to be added to the beginning or end of the original file name, or both.
-5. Enter the extension.  
+3. Enter the extension.  
    If you don't enter an extension, the extension of the original file will be used.
 
 ### Notes
@@ -205,9 +204,7 @@ Deletes the Deleted Global Colors displayed in the Separations Preview panel.
 ![Remove Deleted Global Color](images/removeDeletedGlobalColor.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Open the Ai file.
-3. Run this script from File > Scripts > Other Script...
+Just run this script.
 
 ### Notes
 In rare cases, you may not be able to delete it.  
@@ -222,20 +219,40 @@ Illustrator CS or higher
 
 
 
+# <a name="resetToFullScale.js">resetToFullScale.js</a>
+
+### Description
+This script resets the scale to 100% and the rotation angle to 0 degrees for the linked files.  
+Embedded images is also supported.
+
+![Reset To Full Scale](images/resetToFullScale.png)
+
+### Usage
+Select the linked files or the embedded images, run this script.
+
+### Notes
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS6 or higher
+
+
+
+
+
 # <a name="stepandRepeat.js">stepandRepeat.js</a>
 
 ### Description
-This script is equivalent to InDesign's "Step and Repeat".
+This script is equivalent to InDesign's "Step and Repeat".  
 
 ![Step and Repeat](images/stepandRepeat.png)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Open the Ai file.
-3. Select the objects, run this script from File > Scripts > Other Script...
-4. Select Repeat or Grid.
-5. Enter the number of copies to be duplicated.
-6. Enter the offset values.
+1. Select the objects, run this script.
+2. Select Repeat or Grid.
+3. Enter the number of copies to be duplicated.
+4. Enter the offset values.
 
 ### Notes
 In rare cases, you may not be able to create it.  
@@ -248,6 +265,28 @@ Illustrator CS4 or higher
 
 
 
+# <a name="syncView.js">syncView.js</a>
+
+### Description
+This script synchronizes the scale ratio and position that current work area for all documents.  
+
+![Sync View](images/syncView.png)
+
+### Usage
+Just run this script.
+
+### Notes
+Open at least two files.  
+In rare cases, you may not be able to create it.  
+In that case, restart Illustrator and run this script again.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
 # <a name="textAlign">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
 
 ### Description
@@ -255,8 +294,7 @@ This script changes the text alignment without moving the text position.
 Vertical text is also supported.
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. Select the text objects, run this script from File > Scripts > Other Script...
+Select the text objects, run this script.
 
 ### Notes
 In rare cases, you may not be able to create it.  
@@ -276,8 +314,7 @@ These functions gets the font, color or history properties that are used in the 
 **See also:** [Adobe XMP Document](https://www.adobe.io/xmp/docs/)
 
 ### Usage
-1. Download Zip file and unzip.(You can place it anywhere you like.)
-2. You can include this script or copy the function to use it.
+You can include this script or copy the function to use it.
 
 ```javascript
 // @include '/Path1/Path2/XmpFunctions.js'
@@ -293,15 +330,16 @@ var history = xmpGetHistory(src);
 ### Functions
 - [xmpGetFonts(src)](#xmpGetFonts(src))
 - [xmpGetHistory(src)](#xmpGetHistory(src))
+- [xmpGetLinkedFiles(src)](#xmpGetLinkedFiles(src))
 - [xmpGetPlateNames(src)](#xmpGetPlateNames(src))
 - [xmpGetSwatches(src)](#xmpGetSwatches(src))
 
-#### <a name="xmpGetFonts(src)">xmpGetFonts(src)</a>
+### <a name="xmpGetFonts(src)">xmpGetFonts(src)</a>
 Get font properties that are used in the document from XMP.  
 
 **Param**: `src` `<File>`  
 **Returns**: `Array<Object>` An unordered array of font properties.  
-- `composite` `<string>` When true, this is a composite font.
+- `composite` `<boolean>` When true, this is a composite font.
 - `face` `<string>` The font face name.
 - `family` `<string>` The font family name.
 - `filename` `<string>` The font file name. (not a complete path)
@@ -316,7 +354,7 @@ var fonts = xmpGetFonts(app.activeDocument.fullName);
 alert(fonts[0].face);
 ```
 
-#### <a name="xmpGetHistory(src)">xmpGetHistory(src)</a>
+### <a name="xmpGetHistory(src)">xmpGetHistory(src)</a>
 Get history properties from XMP.
 
 **Param**: `src` `<File>`  
@@ -334,7 +372,22 @@ var date = history[0].when;
 alert(date.getFullYear());
 ```
 
-#### <a name="xmpGetPlateNames(src)">xmpGetPlateNames(src)</a>
+### <a name="xmpGetLinkedFiles(src)">xmpGetLinkedFiles(src)</a>
+Get linked file properties from XMP.
+
+**Param**: `src` `<File>`  
+**Returns**: `Array<Object>` References to resources that were incorporated, by inclusion or reference, into this resource.  
+- `exists` `<boolean>` When true, the path name of this object refers to an existing file.
+- `filePath` `<string>` The referenced resource's file path or URL.
+
+##### Example
+```javascript
+// @include '/Path1/Path2/XmpFunctions.js'
+var files = xmpGetLinkedFiles(app.activeDocument.fullName);
+alert(files[0].filePath);
+```
+
+### <a name="xmpGetPlateNames(src)">xmpGetPlateNames(src)</a>
 Get plate names that are used in the document from XMP.
 
 **Param**: `src` `<File>`  
@@ -347,7 +400,7 @@ var platenames = xmpGetPlateNames(app.activeDocument.fullName);
 alert(platenames[0]);
 ```
 
-#### <a name="xmpGetSwatches(src)">xmpGetSwatches(src)</a>
+### <a name="xmpGetSwatches(src)">xmpGetSwatches(src)</a>
 Get swatch properties that are used in the document from XMP.
 
 **Param**: `src` `<File>`  

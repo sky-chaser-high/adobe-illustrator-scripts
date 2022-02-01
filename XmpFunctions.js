@@ -2,7 +2,8 @@
    XmpFunctions
 
    Description
-   These functions gets the font or color properties used in the document from XMP.
+   These functions gets the font, color or history properties used in the document from XMP.
+   See also: https://www.adobe.io/xmp/docs/
 
    Usage
    You can include this script or copy the function to use it.
@@ -15,10 +16,14 @@
    Illustrator CS or higher
 
    Version
-   1.0.1
+   1.0.2
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
+
+   License
+   Released under the MIT license.
+   https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
 
@@ -27,7 +32,7 @@
  * https://www.adobe.io/xmp/docs/XMPNamespaces/xmpTPg/
  *
  * @param {File} src File object
- * @returns {{composite: string, face: string, family: string, filename: string, name: string, type: string, version: string}[]} font properties
+ * @returns {{composite: boolean, face: string, family: string, filename: string, name: string, type: string, version: string}[]} font properties
  */
 function xmpGetFonts(src) {
     var fonts = [];
@@ -45,15 +50,15 @@ function xmpGetFonts(src) {
     var count = xmp.countArrayItems(namespace, prop);
 
     for (var i = 1; i <= count; i++) {
-        var structure = prop + '[' + i + ']/';
+        var structure = prop + '[' + i + ']/stFnt:';
         var font = {
-            'composite': xmp.getProperty(namespace, structure + 'stFnt:composite').value,
-            'face': xmp.getProperty(namespace, structure + 'stFnt:fontFace').value,
-            'family': xmp.getProperty(namespace, structure + 'stFnt:fontFamily').value,
-            'filename': xmp.getProperty(namespace, structure + 'stFnt:fontFileName').value,
-            'name': xmp.getProperty(namespace, structure + 'stFnt:fontName').value,
-            'type': xmp.getProperty(namespace, structure + 'stFnt:fontType').value,
-            'version': xmp.getProperty(namespace, structure + 'stFnt:versionString').value
+            'composite': xmp.getProperty(namespace, structure + 'composite', XMPConst.BOOLEAN).value,
+            'face': xmp.getProperty(namespace, structure + 'fontFace').value,
+            'family': xmp.getProperty(namespace, structure + 'fontFamily').value,
+            'filename': xmp.getProperty(namespace, structure + 'fontFileName').value,
+            'name': xmp.getProperty(namespace, structure + 'fontName').value,
+            'type': xmp.getProperty(namespace, structure + 'fontType').value,
+            'version': xmp.getProperty(namespace, structure + 'versionString').value
         };
         fonts.push(font);
     }
@@ -85,32 +90,33 @@ function xmpGetHistory(src) {
     var count = xmp.countArrayItems(namespace, prop);
 
     for (var i = 1; i <= count; i++) {
-        var structure = prop + '[' + i + ']/';
+        var structure = prop + '[' + i + ']/stEvt:';
         var param = {
-            'action': xmp.getProperty(namespace, structure + 'stEvt:action').value,
+            'action': xmp.getProperty(namespace, structure + 'action').value,
             'parameter': null,
             'software': null,
             'when': null
         };
 
         try {
-            param.parameter = xmp.getProperty(namespace, structure + 'stEvt:parameters').value;
+            param.parameter = xmp.getProperty(namespace, structure + 'parameters').value;
         }
         catch (e) { }
 
         try {
-            param.parameter = xmp.getProperty(namespace, structure + 'stEvt:params').value;
+            param.parameter = xmp.getProperty(namespace, structure + 'params').value;
         }
         catch (e) { }
 
         try {
-            param.software = xmp.getProperty(namespace, structure + 'stEvt:softwareAgent').value;
+            param.software = xmp.getProperty(namespace, structure + 'softwareAgent').value;
         }
         catch (e) { }
 
         try {
-            var when = xmp.getProperty(namespace, structure + 'stEvt:when').value;
-            var xmpDateTime = new XMPDateTime(when);
+            // var when = xmp.getProperty(namespace, structure + 'when').value;
+            // var xmpDateTime = new XMPDateTime(when);
+            var xmpDateTime = xmp.getProperty(namespace, structure + 'when', XMPConst.XMPDATE).value;
             param.when = new Date(xmpDateTime.getDate());
         }
         catch (e) { }
@@ -119,6 +125,46 @@ function xmpGetHistory(src) {
     }
 
     return history;
+}
+
+
+/**
+ * Get linked file properties used in the document from XMP.
+ * https://www.adobe.io/xmp/docs/XMPNamespaces/xmpMM/
+ *
+ * @param {File} src File object
+ * @returns {{exists: boolean, filePath: string}[]} linked file properties
+ */
+function xmpGetLinkedFiles(src) {
+    var files = [];
+
+    if (ExternalObject.AdobeXMPScript == undefined) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
+
+    var namespace = 'http://ns.adobe.com/xap/1.0/mm/';
+    var prop = 'xmpMM:Ingredients';
+
+    var count = xmp.countArrayItems(namespace, prop);
+
+    for (var i = 1; i <= count; i++) {
+        var structure = prop + '[' + i + ']/stRef:';
+        var file = {
+            'exists': true,
+            'filePath': xmp.getProperty(namespace, structure + 'filePath').value
+        }
+
+        if (!File(file.filePath).exists) {
+            file.exists = false;
+        }
+
+        files.push(file);
+    }
+
+    return files;
 }
 
 
@@ -177,6 +223,7 @@ function xmpGetSwatches(src) {
     var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
     var xmpTPg = 'xmpTPg:SwatchGroups';
     var xmpG = 'xmpG:Colorants';
+    var type = XMPConst.NUMBER;
 
     var swatches = xmp.countArrayItems(namespace, xmpTPg);
 
@@ -184,35 +231,35 @@ function xmpGetSwatches(src) {
         var colorants = xmp.countArrayItems(namespace, xmpTPg + '[' + i + ']/' + xmpG);
 
         for (var j = 1; j <= colorants; j++) {
-            var structure = xmpTPg + '[' + i + ']/' + xmpG + '[' + j + ']/';
+            var structure = xmpTPg + '[' + i + ']/' + xmpG + '[' + j + ']/xmpG:';
             var color = {
                 'colorant': { },
-                'mode': xmp.getProperty(namespace, structure + 'xmpG:mode').value,
-                'name': xmp.getProperty(namespace, structure + 'xmpG:swatchName').value,
+                'mode': xmp.getProperty(namespace, structure + 'mode').value,
+                'name': xmp.getProperty(namespace, structure + 'swatchName').value,
                 'swatch': null,
                 'tint': null,
-                'type': xmp.getProperty(namespace, structure + 'xmpG:type').value
+                'type': xmp.getProperty(namespace, structure + 'type').value
             };
 
             switch (color.mode) {
                 case 'CMYK':
-                    color.colorant.cyan = Number(xmp.getProperty(namespace, structure + 'xmpG:cyan').value);
-                    color.colorant.magenta = Number(xmp.getProperty(namespace, structure + 'xmpG:magenta').value);
-                    color.colorant.yellow = Number(xmp.getProperty(namespace, structure + 'xmpG:yellow').value);
-                    color.colorant.black = Number(xmp.getProperty(namespace, structure + 'xmpG:black').value);
+                    color.colorant.cyan = xmp.getProperty(namespace, structure + 'cyan', type).value;
+                    color.colorant.magenta = xmp.getProperty(namespace, structure + 'magenta', type).value;
+                    color.colorant.yellow = xmp.getProperty(namespace, structure + 'yellow', type).value;
+                    color.colorant.black = xmp.getProperty(namespace, structure + 'black', type).value;
                     break;
                 case 'GRAY':
-                    color.colorant.gray = Number(xmp.getProperty(namespace, structure + 'xmpG:gray').value);
+                    color.colorant.gray = xmp.getProperty(namespace, structure + 'gray', type).value;
                     break;
                 case 'LAB':
-                    color.colorant.l = Number(xmp.getProperty(namespace, structure + 'xmpG:L').value);
-                    color.colorant.a = Number(xmp.getProperty(namespace, structure + 'xmpG:A').value);
-                    color.colorant.b = Number(xmp.getProperty(namespace, structure + 'xmpG:B').value);
+                    color.colorant.l = xmp.getProperty(namespace, structure + 'L', type).value;
+                    color.colorant.a = xmp.getProperty(namespace, structure + 'A', type).value;
+                    color.colorant.b = xmp.getProperty(namespace, structure + 'B', type).value;
                     break;
                 case 'RGB':
-                    color.colorant.red = Number(xmp.getProperty(namespace, structure + 'xmpG:red').value);
-                    color.colorant.green = Number(xmp.getProperty(namespace, structure + 'xmpG:green').value);
-                    color.colorant.blue = Number(xmp.getProperty(namespace, structure + 'xmpG:blue').value);
+                    color.colorant.red = xmp.getProperty(namespace, structure + 'red', type).value;
+                    color.colorant.green = xmp.getProperty(namespace, structure + 'green', type).value;
+                    color.colorant.blue = xmp.getProperty(namespace, structure + 'blue', type).value;
                     break;
             }
 
@@ -222,8 +269,7 @@ function xmpGetSwatches(src) {
             catch (e) { }
 
             try {
-                var tint = xmp.getProperty(namespace, structure + 'xmpG:tint').value;
-                color.tint = Number(tint);
+                color.tint = xmp.getProperty(namespace, structure + 'tint', type).value;
             }
             catch (e) { }
 
