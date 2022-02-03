@@ -1,5 +1,8 @@
+[日本語の README はこちらです。](README_ja.md)
+
 # Adobe Illustrator Scripts
-This is a collection of scripts for Adobe Illustrator.
+This is a collection of scripts for Adobe Illustrator.  
+
 - [closePath.js](#closePath.js)
 - [createColorChart.js](#createColorChart.js)
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
@@ -20,6 +23,11 @@ Download zip file and unzip. The scripts can be placed anywhere on your computer
 To run the scripts, from File > Scripts > Other Script...
 
 
+## Notes
+In rare cases, you continue to use the script, it may stop working.  
+In that case, restart Illustrator and run this script again.
+
+
 
 
 
@@ -32,10 +40,6 @@ This script close the path objects.
 
 ### Usage
 Select the path objects, run this script.
-
-### Notes
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS or higher
@@ -62,8 +66,6 @@ This script create a color chart.
 
 ### Notes
 For CMYK, K cannot be increased or decreased.  
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -81,10 +83,6 @@ This script delete unused layers.
 
 ### Usage
 Just run this script.
-
-### Notes
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS or higher
@@ -105,8 +103,6 @@ Select the path objects, run this script.
 
 ### Notes
 The original path object will be deleted.  
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS or higher
@@ -132,8 +128,6 @@ Switch the dimension units according to the ruler units.
 ### Notes
 In complex shapes, a measurements may be displayed overlapping each other.  
 Curves are not supported.  
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -199,7 +193,7 @@ Illustrator CS4 or higher
 # <a name="removeDeletedGlobalColor.js">removeDeletedGlobalColor.js</a>
 
 ### Description
-Deletes the Deleted Global Colors displayed in the Separations Preview panel.  
+Deletes the Deleted Global Color displayed in the Separations Preview panel.  
 
 ![Remove Deleted Global Color](images/removeDeletedGlobalColor.png)
 
@@ -208,7 +202,6 @@ Just run this script.
 
 ### Notes
 In rare cases, you may not be able to delete it.  
-In that case, restart Illustrator and run this script again.  
 If you save the file and reopen it, it may be restored.  
 In this case, there is no way to delete it.
 
@@ -230,10 +223,6 @@ Embedded images is also supported.
 ### Usage
 Select the linked files or the embedded images, run this script.
 
-### Notes
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
-
 ### Requirements
 Illustrator CS6 or higher
 
@@ -254,10 +243,6 @@ This script is equivalent to InDesign's "Step and Repeat".
 3. Enter the number of copies to be duplicated.
 4. Enter the offset values.
 
-### Notes
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
-
 ### Requirements
 Illustrator CS4 or higher
 
@@ -277,8 +262,6 @@ Just run this script.
 
 ### Notes
 Open at least two files.  
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS or higher
@@ -295,10 +278,6 @@ Vertical text is also supported.
 
 ### Usage
 Select the text objects, run this script.
-
-### Notes
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS or higher
@@ -431,10 +410,6 @@ alert(swatches[0].colorant.cyan);
 ```
 
 
-
-### Notes
-In rare cases, you may not be able to create it.  
-In that case, restart Illustrator and run this script again.
 
 ### Requirements
 Illustrator CS or higher
