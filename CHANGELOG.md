@@ -1,6 +1,12 @@
 # Change Log
 
 
+## measurePathItems.js
+### 1.0.1 (2022-02-17)
+### Bug Fixes
+- Fixed a bug that caused dimensions to be displayed twice in the case of open paths.
+
+
 ## relinkFileExtension.js
 ### 1.0.1 (2021-06-17)
 ### Bug Fixes
@@ -10,7 +16,7 @@
 
 
 ## XmpFunctions.js
-### 1.0.2 (2022-02-01)
+### 1.0.2 (2022-01-27)
 ### Features
 - Added `xmpGetLinkedFiles(src)` function.
 - Changed the return value of `xmpGetFonts(src)`.

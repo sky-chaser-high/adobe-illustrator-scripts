@@ -21,10 +21,17 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.0.1
+
+   Homepage
+   github.com/sky-chaser-high/adobe-illustrator-scripts
+
+   License
+   Released under the MIT license.
+   https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
-(function () {
+(function() {
     if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
 })();
 
@@ -61,21 +68,24 @@ function measurePathItems(items, layer, scale, count) {
         if (items[i].typename == 'PathItem') {
             var group = layer.groupItems.add();
             var decimal = 1000;
+            var points = items[i].pathPoints;
 
-            var detect = detectAnchorPointsDirection(items[i].pathPoints);
-
-            if (detect < 0) {
+            var direction = detectAnchorPointsDirection(points);
+            if (direction < 0) {
                 counterclockwise(items[i]);
             }
 
-            var polygon = getAllAnchorPoints(items[i].pathPoints);
+            var polygon = getAllAnchorPoints(points);
 
-            for (var j = 0; j < items[i].pathPoints.length; j++) {
+            var len = points.length;
+            if (!items[i].closed) len--;
+
+            for (var j = 0; j < len; j++) {
                 var anchor = {
-                    x1: Math.round(items[i].pathPoints[j].anchor[0] * decimal) / decimal,
-                    y1: Math.round(items[i].pathPoints[j].anchor[1] * decimal) / decimal,
-                    x2: (j < items[i].pathPoints.length - 1) ? Math.round(items[i].pathPoints[j + 1].anchor[0] * decimal) / decimal : Math.round(items[i].pathPoints[0].anchor[0] * decimal) / decimal,
-                    y2: (j < items[i].pathPoints.length - 1) ? Math.round(items[i].pathPoints[j + 1].anchor[1] * decimal) / decimal : Math.round(items[i].pathPoints[0].anchor[1] * decimal) / decimal,
+                    x1: Math.round(points[j].anchor[0] * decimal) / decimal,
+                    y1: Math.round(points[j].anchor[1] * decimal) / decimal,
+                    x2: (j < points.length - 1) ? Math.round(points[j + 1].anchor[0] * decimal) / decimal : Math.round(points[0].anchor[0] * decimal) / decimal,
+                    y2: (j < points.length - 1) ? Math.round(points[j + 1].anchor[1] * decimal) / decimal : Math.round(points[0].anchor[1] * decimal) / decimal,
                     width: 0,
                     height: 0,
                     center: {
@@ -106,7 +116,7 @@ function measurePathItems(items, layer, scale, count) {
 }
 
 
-function showDimension(polygon, anchor, group, color, distance, scale, angle) {
+function showDimension(polygon, position, group, color, distance, scale, angle) {
     var unit = getRulerUnits();
     var pt = getUnit('pt');
     var decimal = 100;
@@ -119,58 +129,59 @@ function showDimension(polygon, anchor, group, color, distance, scale, angle) {
     };
     var offset = 0.5 * getUnit('mm');
 
-    var text = group.textFrames.pointText([anchor.center.x, anchor.center.y]);
-    text.textRange.characterAttributes.textFont = getFont('SourceHanSansJP-Normal');
-    text.textRange.characterAttributes.size = fontsize;
-    text.textRange.characterAttributes.horizontalScale = 100;
-    text.textRange.characterAttributes.verticalScale = 100;
-    text.textRange.characterAttributes.fillColor = color;
-    text.textRange.characterAttributes.strokeColor = new NoColor();
-    text.contents = Math.round(Math.abs(distance * scale) * pt * decimal) / decimal + ' ' + unit;
+    var text = group.textFrames.pointText([position.center.x, position.center.y]);
+    text.contents = Math.round(distance * scale * pt * decimal) / decimal + ' ' + unit;
     text.textRange.paragraphAttributes.justification = Justification.CENTER;
 
+    var attributes = text.textRange.characterAttributes;
+    attributes.textFont = getFont('SourceHanSansJP-Normal');
+    attributes.size = fontsize;
+    attributes.horizontalScale = 100;
+    attributes.verticalScale = 100;
+    attributes.fillColor = color;
+    attributes.strokeColor = new NoColor();
+
+    var rad;
+
     if (angle > 0) {
-        text.top += margin.y * Math.sin((-angle + 90) * Math.PI / 180);
-        text.left += margin.x * Math.cos((-angle + 90) * Math.PI / 180);
+        rad = (-angle + 90) * Math.PI / 180;
+        text.top += margin.y * Math.sin(rad);
+        text.left += margin.x * Math.cos(rad);
     }
     else {
-        text.top += margin.y * Math.sin((angle + 90) * Math.PI / 180);
-        text.left -= margin.x * Math.cos((angle + 90) * Math.PI / 180);
+        rad = (angle + 90) * Math.PI / 180;
+        text.top += margin.y * Math.sin(rad);
+        text.left -= margin.x * Math.cos(rad);
     }
 
     text.rotate(-angle);
 
-    var detect = crossingNumberAlgorithm(polygon, { x: text.anchor[0], y: text.anchor[1] });
-
-    if (detect % 2 == 0) {
+    var inside = crossingNumberAlgorithm(polygon, { x: text.anchor[0], y: text.anchor[1] });
+    if (inside % 2 == 0) {
         if (angle > 0) {
-            text.top -= (fontsize + margin.y + offset) * Math.sin((-angle + 90) * Math.PI / 180);
-            text.left -= (fontsize + margin.x + offset) * Math.cos((-angle + 90) * Math.PI / 180);
+            text.top -= (fontsize + margin.y + offset) * Math.sin(rad);
+            text.left -= (fontsize + margin.x + offset) * Math.cos(rad);
         }
         else {
-            text.top -= (fontsize + margin.y + offset) * Math.sin((angle + 90) * Math.PI / 180);
-            text.left += (fontsize + margin.x + offset) * Math.cos((angle + 90) * Math.PI / 180);
+            text.top -= (fontsize + margin.y + offset) * Math.sin(rad);
+            text.left += (fontsize + margin.x + offset) * Math.cos(rad);
         }
     }
 
-    var textStraightline = Math.sqrt(Math.pow(text.width, 2) + Math.pow(text.height, 2));
-    if (textStraightline > Math.abs(anchor.straightlinedistance)) {
-        var ratio = Math.round((Math.abs(anchor.straightlinedistance) / textStraightline * 100) / 10) * 10;
-        if (ratio < 50) {
-            ratio = 50;
-        }
-        text.textRange.characterAttributes.horizontalScale = ratio;
+    var textLength = Math.sqrt(Math.pow(text.width, 2) + Math.pow(text.height, 2));
+    if (textLength > distance) {
+        var ratio = Math.round((distance / textLength * 100) / 10) * 10;
+        if (ratio < 50) ratio = 50;
+        attributes.horizontalScale = ratio;
     }
 }
 
 
 function getAllAnchorPoints(paths) {
-    var polygon = {
-        v: []
-    };
+    var polygon = [];
 
     for (var i = 0; i < paths.length; i++) {
-        polygon.v.push({
+        polygon.push({
             x: paths[i].anchor[0],
             y: paths[i].anchor[1]
         });
@@ -182,13 +193,13 @@ function getAllAnchorPoints(paths) {
 
 function crossingNumberAlgorithm(polygon, anchor) {
     var count = 0;
-    for (i = 0; i < polygon.v.length; i++) {
-        var x1 = polygon.v[i].x;
-        var y1 = polygon.v[i].y;
-        var x2 = (i < polygon.v.length - 1) ? polygon.v[i + 1].x : polygon.v[0].x;
-        var y2 = (i < polygon.v.length - 1) ? polygon.v[i + 1].y : polygon.v[0].y;
+    for (var i = 0; i < polygon.length; i++) {
+        var x1 = polygon[i].x;
+        var y1 = polygon[i].y;
+        var x2 = (i < polygon.length - 1) ? polygon[i + 1].x : polygon[0].x;
+        var y2 = (i < polygon.length - 1) ? polygon[i + 1].y : polygon[0].y;
 
-        if (((y1 <= anchor.y) && (y2 > anchor.y)) || ((y1 > anchor.y) && (y2 <= anchor.y))) {
+        if ((y1 <= anchor.y && y2 > anchor.y) || (y1 > anchor.y && y2 <= anchor.y)) {
             var vt = (anchor.y - y1) / (y2 - y1);
             if (anchor.x < (x1 + (vt * (x2 - x1)))) {
                 count++;
