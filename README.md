@@ -10,6 +10,7 @@ This is a collection of scripts for Adobe Illustrator.
 - [measurePathItems.js](#measurePathItems.js)
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
+- [relinkToFolder.js](#relinkToFolder.js) `new`
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [resetToFullScale.js](#resetToFullScale.js)
 - [stepandRepeat.js](#stepandRepeat.js)
@@ -139,19 +140,20 @@ Illustrator CS4 or higher
 # <a name="relinkFileExtension.js">relinkFileExtension.js</a>
 
 ### Description
-This script is equivalent to InDesign's "Relink File Extension".
+This script is equivalent to InDesign's Links panel menu "Relink File Extension".
 
 ![InDesign's Relink File Extension](images/InDesign_Relink_File_Extension.png)
 
 ### Usage
 1. Run this script.  
-   If you don't select an image, all images in the document will be targeted.
+   If you don't select an image, all images will be targeted in the document.
 2. Enter the extension at the prompt that appears.
 
 ![Relink File Extension](images/relinkFileExtension.png)
 
 ### Notes
 Place the relink files in the same place as the original files.  
+When selecting an image, select the image on the artboard rather than the image in the links panel.  
 Broken link files are not replaced.  
 Embedded files are also not possible.
 
@@ -171,7 +173,7 @@ This script is an enhanced version of relinkFileExtension.js.
 
 ### Usage
 1. Run this script.  
-   If you don't select an image, all images in the document will be targeted.
+   If you don't select an image, all images will be targeted in the document.
 2. Choose to replace or add the string.  
    To replace, you can use regular expressions.  
    To add, specify a string to be added to the beginning or end of the original file name, or both.
@@ -180,6 +182,32 @@ This script is an enhanced version of relinkFileExtension.js.
 
 ### Notes
 Place the relink files in the same place as the original files.  
+When selecting an image, select the image on the artboard rather than the image in the links panel.  
+Broken link files are not replaced.  
+Embedded files are also not possible.
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
+
+
+# <a name="relinkToFolder.js">relinkToFolder.js</a>
+
+### Description
+This script is equivalent to InDesign's Links panel menu "Relink To Folder".  
+Replaces the image with an image of the same name in the specified folder.
+
+![InDesign's Relink To Folder](images/InDesign_Relink_To_Folder.png)
+
+### Usage
+1. Run this script.  
+   If you don't select an image, all images will be targeted in the document.
+2. Select a folder at the dialog that appears.
+
+### Notes
+When selecting an image, select the image on the artboard rather than the image in the links panel.  
 Broken link files are not replaced.  
 Embedded files are also not possible.
 
@@ -233,7 +261,7 @@ Illustrator CS6 or higher
 # <a name="stepandRepeat.js">stepandRepeat.js</a>
 
 ### Description
-This script is equivalent to InDesign's "Step and Repeat".  
+This script is equivalent to InDesign's Edit menu "Step and Repeat".  
 
 ![Step and Repeat](images/stepandRepeat.png)
 

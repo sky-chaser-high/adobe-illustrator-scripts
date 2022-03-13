@@ -8,6 +8,7 @@ Adobe Illustratorのスクリプト集です。
 - [measurePathItems.js](#measurePathItems.js)
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
+- [relinkToFolder.js](#relinkToFolder.js) `new`
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [resetToFullScale.js](#resetToFullScale.js)
 - [stepandRepeat.js](#stepandRepeat.js)
@@ -152,6 +153,7 @@ InDesignのリンクパネルメニュー > ファイル拡張子にリンクを
 
 ### 注意事項
 再配置するリンク画像は、元のリンク画像と同じフォルダに置いてください。  
+画像を選択する場合は、リンクパネル内の画像ではなく、アートボード上の画像を選択してください。  
 リンク切れ画像は置き換えることはできません。  
 埋め込み画像も対象外です。
 
@@ -180,6 +182,32 @@ Illustrator CS4以降
 
 ### 注意事項
 再配置するリンク画像は、元のリンク画像と同じフォルダに置いてください。  
+画像を選択する場合は、リンクパネル内の画像ではなく、アートボード上の画像を選択してください。  
+リンク切れ画像は置き換えることはできません。  
+埋め込み画像も対象外です。
+
+### 動作条件
+Illustrator CS4以降
+
+
+
+
+
+# <a name="relinkToFolder.js">relinkToFolder.js</a>
+
+### 説明
+指定したフォルダーにある同名の画像と置き換えます。  
+InDesignのリンクパネルメニュー > フォルダに再リンク... に相当します。
+
+![InDesign's Relink To Folder](images/InDesign_Relink_To_Folder.png)
+
+### 使用方法
+1. 置き換えたいリンク画像を選択しスクリプトを実行します。  
+   リンク画像を選択しない場合は、ドキュメント内のすべてのリンク画像が対象となります。
+2. 表示されたダイアログからフォルダを選択します。
+
+### 注意事項
+画像を選択する場合は、リンクパネル内の画像ではなく、アートボード上の画像を選択してください。  
 リンク切れ画像は置き換えることはできません。  
 埋め込み画像も対象外です。
 
