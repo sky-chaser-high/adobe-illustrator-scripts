@@ -3,12 +3,13 @@ Adobe Illustratorのスクリプト集です。
 
 - [closePath.js](#closePath.js)
 - [createColorChart.js](#createColorChart.js)
+- [createPageNumbers.js](#createPageNumbers.js) `new`
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
-- [relinkToFolder.js](#relinkToFolder.js) `new`
+- [relinkToFolder.js](#relinkToFolder.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [resetToFullScale.js](#resetToFullScale.js)
 - [stepandRepeat.js](#stepandRepeat.js)
@@ -66,6 +67,35 @@ Illustrator CS以降
 
 ### 注意事項
 CMYKの場合、K値の増減はできません。
+
+### 動作条件
+Illustrator CS4以降
+
+
+
+
+
+# <a name="createPageNumbers.js">createPageNumbers.js</a>
+
+### 説明
+InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在のページ番号 に相当します。  
+アートボードの指定した位置にノンブルを配置します。
+
+![Create Page Numbers](images/createPageNumbers.png)
+
+### 使用方法
+1. スクリプトを実行します。
+2. 各項目を設定します。
+   - `位置` ノンブルの表示位置。
+   - `見開き` チェックを入れると見開きページに対応します。
+   - `開始ページ番号` 始まりの番号を指定します。
+   - `セクションプレフィックス` ノンブルの前に文字列を追加します。見開きページの場合は、後ろに追加します。
+   - `フォントサイズ` ノンブルのフォントサイズ。
+   - `マージン` アートボードからの距離を指定します。現在のルーラー設定で単位が切り替わります。
+
+### 注意事項
+ノンブルに指定できるスタイルは数字のみです。  
+アートボード順にノンブルを割り当てます。
 
 ### 動作条件
 Illustrator CS4以降

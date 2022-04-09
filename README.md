@@ -5,12 +5,13 @@ This is a collection of scripts for Adobe Illustrator.
 
 - [closePath.js](#closePath.js)
 - [createColorChart.js](#createColorChart.js)
+- [createPageNumbers.js](#createPageNumbers.js) `new`
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
-- [relinkToFolder.js](#relinkToFolder.js) `new`
+- [relinkToFolder.js](#relinkToFolder.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [resetToFullScale.js](#resetToFullScale.js)
 - [stepandRepeat.js](#stepandRepeat.js)
@@ -20,12 +21,12 @@ This is a collection of scripts for Adobe Illustrator.
 
 
 ## Installation
-Download zip file and unzip. The scripts can be placed anywhere on your computer.  
+Download the zip file and unzip it. The scripts can be placed anywhere on your computer.  
 To run the scripts, from File > Scripts > Other Script...
 
 
 ## Notes
-In rare cases, you continue to use the script, it may stop working.  
+In rare cases, if you continue to use the script, it may stop working.  
 In that case, restart Illustrator and run this script again.
 
 
@@ -35,12 +36,12 @@ In that case, restart Illustrator and run this script again.
 # <a name="closePath.js">closePath.js</a>
 
 ### Description
-This script close the path objects.
+This script closes the path objects.
 
 ![Close Path](images/closePath.png)
 
 ### Usage
-Select the path objects, run this script.
+Select the path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
@@ -52,16 +53,16 @@ Illustrator CS or higher
 # <a name="createColorChart.js">createColorChart.js</a>
 
 ### Description
-This script create a color chart.
+This script creates a color chart.
 
 ![Create Color Chart](images/createColorChart.png)
 
 ### Usage
 1. Run this script.
-2. Select either CMYK or RGB, enter the color values.
+2. Select either CMYK or RGB, and enter the color values.  
    If an object is selected, the fill value of the object will be used as the initial value.
 3. Select the color you want to increase or decrease with vertical, or horizontal.
-4. Enter the increase or decrease value.
+4. Enter the increase or decrease value.  
    Enter the percentage to be increased or decreased.
 5. Set the artboard size, chip size, and units according to your preference.
 
@@ -75,10 +76,39 @@ Illustrator CS4 or higher
 
 
 
+# <a name="createPageNumbers.js">createPageNumbers.js</a>
+
+### Description
+This script is equivalent to InDesign's Type menu > Insert Special Character > Markers > Current Page Number.  
+Places a page number at a specified location on the artboards.
+
+![Create Page Numbers](images/createPageNumbers.png)
+
+### Usage
+1. Run this script.
+2. Set up each parameter in the dialog that appears.
+   - `Position` Position of the page number.
+   - `Facing Pages` If true, the facing page.
+   - `Start Page Numbering at` a Start page number.
+   - `Section Prefix` Add a Section Prefix in front of the page number. If facing page, in back of the page number.
+   - `Font Size` Font size of the page number.
+   - `Margin` Distance from the artboard. Switch the units according to the ruler units.
+
+### Notes
+The page numbering style is numeric only.  
+Assign page numbers in artboard order.
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
+
+
 # <a name="deleteUnusedLayers.js">deleteUnusedLayers.js</a>
 
 ### Description
-This script delete unused layers.
+This script deletes unused layers.
 
 ![Delete Unused Layers](images/deleteUnusedLayers.png)
 
@@ -100,7 +130,7 @@ This script breaks apart the path object with anchor points.
 ![Disjoin Path](images/disjoinPath.png)
 
 ### Usage
-Select the path objects, run this script.
+Select the path objects, and run this script.
 
 ### Notes
 The original path object will be deleted.  
@@ -120,14 +150,14 @@ This script measures the distance of an anchor point between two points of an ob
 ![Measure PathItems](images/measurePathItems.png)
 
 ### Usage
-Select the path objects, run this script.
+Select the path objects, and run this script.
 
 ### Feature
-Group and color a measurements by path object.  
+Group and color measurements by path object.  
 Switch the dimension units according to the ruler units.
 
 ### Notes
-In complex shapes, a measurements may be displayed overlapping each other.  
+In complex shapes, measurements may be displayed overlapping each other.  
 Curves are not supported.  
 
 ### Requirements
@@ -204,7 +234,7 @@ Replaces the image with an image of the same name in the specified folder.
 ### Usage
 1. Run this script.  
    If you don't select an image, all images will be targeted in the document.
-2. Select a folder at the dialog that appears.
+2. Select a folder in the dialog that appears.
 
 ### Notes
 When selecting an image, select the image on the artboard rather than the image in the links panel.  
@@ -244,12 +274,12 @@ Illustrator CS or higher
 
 ### Description
 This script resets the scale to 100% and the rotation angle to 0 degrees for the linked files.  
-Embedded images is also supported.
+Embedded images are also supported.
 
 ![Reset To Full Scale](images/resetToFullScale.png)
 
 ### Usage
-Select the linked files or the embedded images, run this script.
+Select the linked files or the embedded images, and run this script.
 
 ### Requirements
 Illustrator CS6 or higher
@@ -266,7 +296,7 @@ This script is equivalent to InDesign's Edit menu "Step and Repeat".
 ![Step and Repeat](images/stepandRepeat.png)
 
 ### Usage
-1. Select the objects, run this script.
+1. Select the objects, and run this script.
 2. Select Repeat or Grid.
 3. Enter the number of copies to be duplicated.
 4. Enter the offset values.
@@ -281,7 +311,7 @@ Illustrator CS4 or higher
 # <a name="syncView.js">syncView.js</a>
 
 ### Description
-This script synchronizes the scale ratio and position that current work area for all documents.  
+This script synchronizes the scale ratio and the position of the current work area for all documents.  
 
 ![Sync View](images/syncView.png)
 
@@ -305,7 +335,7 @@ This script changes the text alignment without moving the text position.
 Vertical text is also supported.
 
 ### Usage
-Select the text objects, run this script.
+Select the text objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
@@ -317,7 +347,7 @@ Illustrator CS or higher
 # <a name="XmpFunctions.js">XmpFunctions.js</a>
 
 ### Description
-These functions gets the font, color or history properties that are used in the document from XMP.  
+These functions get the font, color, or history properties that are used in the document from XMP.  
 **See also:** [Adobe XMP Document](https://www.adobe.io/xmp/docs/)
 
 ### Usage
@@ -445,5 +475,5 @@ Illustrator CS or higher
 
 
 # Licence
-All scripts is licensed under the MIT licence.  
+All scripts are licensed under the MIT license.  
 See the included LICENSE file for more details.  
