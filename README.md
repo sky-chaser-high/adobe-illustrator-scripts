@@ -5,10 +5,11 @@ This is a collection of scripts for Adobe Illustrator.
 
 - [closePath.js](#closePath.js)
 - [createColorChart.js](#createColorChart.js)
-- [createPageNumbers.js](#createPageNumbers.js) `new`
+- [createPageNumbers.js](#createPageNumbers.js)
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
+- [randomTextColor.js](#randomTextColor.js) `new`
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [relinkToFolder.js](#relinkToFolder.js)
@@ -159,6 +160,33 @@ Switch the dimension units according to the ruler units.
 ### Notes
 In complex shapes, measurements may be displayed overlapping each other.  
 Curves are not supported.  
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
+
+
+# <a name="randomTextColor.js">randomTextColor.js</a>
+
+### Description
+This script changes the text color randomly by word.  
+Both CMYK and RGB colors are supported.
+
+![Random Text Color](images/randomTextColor.png)
+
+### Usage
+1. Select the text objects, and run this script.
+2. Assign the threshold value with the slider.
+3. Click the Random button to assign a color according to the threshold value.
+
+### Notes
+Some characters, such as periods and commas, are not applied.
+
+### UI
+[ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) was used for the UI design tool.  
+**See also:** [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas)
 
 ### Requirements
 Illustrator CS4 or higher
