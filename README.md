@@ -9,7 +9,7 @@ This is a collection of scripts for Adobe Illustrator.
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
-- [randomTextColor.js](#randomTextColor.js) `new`
+- [randomTextColor.js](#randomTextColor.js) `update`
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [relinkToFolder.js](#relinkToFolder.js)
@@ -171,7 +171,7 @@ Illustrator CS4 or higher
 # <a name="randomTextColor.js">randomTextColor.js</a>
 
 ### Description
-This script changes the text color randomly by word.  
+This script changes the text color randomly by word, character or sentence.  
 Both CMYK and RGB colors are supported.
 
 ![Random Text Color](images/randomTextColor.png)

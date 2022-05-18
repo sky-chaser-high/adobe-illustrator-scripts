@@ -7,6 +7,12 @@
 - Fixed a bug that caused dimensions to be displayed twice in the case of open paths.
 
 
+## randomTextColor.js
+### 1.1.0 (2022-05-18)
+### Added
+- Added the function to change colors by character or sentences.
+
+
 ## relinkFileExtension.js
 ### 1.0.1 (2021-06-17)
 ### Bug Fixes

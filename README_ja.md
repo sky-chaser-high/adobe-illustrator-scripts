@@ -7,7 +7,7 @@ Adobe Illustratorのスクリプト集です。
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
-- [randomTextColor.js](#randomTextColor.js) `new`
+- [randomTextColor.js](#randomTextColor.js) `update`
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [relinkToFolder.js](#relinkToFolder.js)
@@ -164,7 +164,7 @@ Illustrator CS4以降
 
 # <a name="randomTextColor.js">randomTextColor.js</a>
 
-単語ごとにランダムに色を適用します。CMYK、RGB のどちらにも対応しています。
+単語または、1文字、1文ごとにランダムに色を適用します。CMYK、RGB のどちらにも対応しています。
 
 ![Random Text Color](images/randomTextColor.png)
 

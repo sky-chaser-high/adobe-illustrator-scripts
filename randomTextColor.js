@@ -2,7 +2,7 @@
    randomTextColor
 
    Description
-   This script changes the text color randomly by word.
+   This script changes the text color randomly by word, character or sentence.
    Both CMYK and RGB colors are supported.
 
    Usage
@@ -23,7 +23,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -49,12 +49,24 @@ function main() {
         color3: dialog.threshold3.value,
         color4: dialog.threshold4.value
     };
-    setRandomColor(texts, threshold);
+    setRandomColorWord(texts, threshold);
 
     dialog.random.onClick = function() {
         handleRandomColor(dialog, texts);
         dialog.random.active = true;
         dialog.random.active = false;
+    }
+
+    dialog.word.onClick = function() {
+        handleRandomColor(dialog, texts);
+    }
+
+    dialog.character.onClick = function() {
+        handleRandomColor(dialog, texts);
+    }
+
+    dialog.sentence.onClick = function() {
+        handleRandomColor(dialog, texts);
     }
 
     dialog.cancel.onClick = function() {
@@ -68,7 +80,7 @@ function main() {
 }
 
 
-function setRandomColor(texts, threshold) {
+function setRandomColorWord(texts, threshold) {
     var mode = app.activeDocument.documentColorSpace;
     for (var i = 0; i < texts.length; i++) {
         for (var j = 0; j < texts[i].words.length; j++) {
@@ -94,6 +106,71 @@ function setRandomColor(texts, threshold) {
 }
 
 
+function setRandomColorChar(texts, threshold) {
+    var mode = app.activeDocument.documentColorSpace;
+    for (var i = 0; i < texts.length; i++) {
+        for (var j = 0; j < texts[i].textRanges.length; j++) {
+            var character = texts[i].textRanges[j].characterAttributes;
+            switch (mode) {
+                case DocumentColorSpace.CMYK:
+                    var c = Math.round(Math.random() * threshold.color1);
+                    var m = Math.round(Math.random() * threshold.color2);
+                    var y = Math.round(Math.random() * threshold.color3);
+                    var k = Math.round(Math.random() * threshold.color4);
+                    character.fillColor = setCMYK(c, m, y, k);
+                    break;
+                case DocumentColorSpace.RGB:
+                    var r = Math.round(Math.random() * threshold.color1);
+                    var g = Math.round(Math.random() * threshold.color2);
+                    var b = Math.round(Math.random() * threshold.color3);
+                    character.fillColor = setRGB(r, g, b);
+                    break;
+            }
+        }
+    }
+    app.redraw();
+}
+
+
+function setRandomColorSentence(texts, threshold) {
+    var mode = app.activeDocument.documentColorSpace;
+    for (var i = 0; i < texts.length; i++) {
+        var text = texts[i].contents;
+        var sentences = text.split(/,|\.|:|;|。/g);
+
+        var color, counter = 0, chars = 0;
+        for (var j = 0; j < sentences.length; j++) {
+            switch (mode) {
+                case DocumentColorSpace.CMYK:
+                    var c = Math.round(Math.random() * threshold.color1);
+                    var m = Math.round(Math.random() * threshold.color2);
+                    var y = Math.round(Math.random() * threshold.color3);
+                    var k = Math.round(Math.random() * threshold.color4);
+                    color = setCMYK(c, m, y, k);
+                    break;
+                case DocumentColorSpace.RGB:
+                    var r = Math.round(Math.random() * threshold.color1);
+                    var g = Math.round(Math.random() * threshold.color2);
+                    var b = Math.round(Math.random() * threshold.color3);
+                    color = setRGB(r, g, b);
+                    break;
+            }
+
+            counter = chars;
+
+            chars += sentences[j].length;
+            if (j < sentences.length - 1) chars++;
+
+            for (var k = counter; k < chars; k++) {
+                var character = texts[i].textRanges[k].characterAttributes;
+                character.fillColor = color;
+            }
+        }
+    }
+    app.redraw();
+}
+
+
 function handleRandomColor(dialog, texts) {
     var threshold = {
         color1: Math.round(dialog.threshold1.value),
@@ -101,7 +178,9 @@ function handleRandomColor(dialog, texts) {
         color3: Math.round(dialog.threshold3.value),
         color4: Math.round(dialog.threshold4.value)
     };
-    setRandomColor(texts, threshold);
+    if (dialog.word.value) setRandomColorWord(texts, threshold);
+    if (dialog.character.value) setRandomColorChar(texts, threshold);
+    if (dialog.sentence.value) setRandomColorSentence(texts, threshold);
 }
 
 
@@ -176,7 +255,7 @@ function showDialog() {
     var dialog = new Window('dialog');
     dialog.text = language.title;
     dialog.orientation = 'column';
-    dialog.alignChildren = ['center', 'top'];
+    dialog.alignChildren = ['left', 'top'];
     dialog.spacing = 10;
     dialog.margins = 10;
 
@@ -305,6 +384,33 @@ function showDialog() {
     button3.text = language.cancel;
     button3.preferredSize.width = 80;
 
+    var group7 = dialog.add('group', undefined, { name: 'group7' });
+    group7.orientation = 'column';
+    group7.alignChildren = ['left', 'center'];
+    group7.spacing = 10;
+    group7.margins = 0;
+
+    var panel2 = group7.add('panel', undefined, undefined, { name: 'panel2' });
+    panel2.text = language.option;
+    panel2.preferredSize.width = 231;
+    panel2.orientation = 'column';
+    panel2.alignChildren = ['left', 'top'];
+    panel2.spacing = 5;
+    panel2.margins = [10, 15, 10, 5];
+
+    var radiobutton1 = panel2.add('radiobutton', undefined, undefined, { name: 'word' });
+    radiobutton1.text = language.word;
+    radiobutton1.preferredSize.height = 20;
+    radiobutton1.value = true;
+
+    var radiobutton2 = panel2.add('radiobutton', undefined, undefined, { name: 'character' });
+    radiobutton2.text = language.character;
+    radiobutton2.preferredSize.height = 20;
+
+    var radiobutton3 = panel2.add('radiobutton', undefined, undefined, { name: 'sentence' });
+    radiobutton3.text = language.sentence;
+    radiobutton3.preferredSize.height = 20;
+
 
     slider1.onChanging = function() {
         statictext5.text = Math.round(slider1.value);
@@ -335,6 +441,9 @@ function showDialog() {
     dialog.label2 = statictext6;
     dialog.label3 = statictext7;
     dialog.label4 = statictext8;
+    dialog.word = radiobutton1;
+    dialog.character = radiobutton2;
+    dialog.sentence = radiobutton3;
     dialog.random = button1;
     dialog.ok = button2;
     dialog.cancel = button3;
@@ -348,6 +457,10 @@ function getLanguage() {
         en_US: {
             title: 'Random Text Color',
             panel: 'Threshold',
+            option: 'Option',
+            word: 'Word',
+            character: 'Character',
+            sentence: 'Sentence',
             random: 'Random',
             cancel: 'Cancel',
             ok: 'OK'
@@ -355,6 +468,10 @@ function getLanguage() {
         ja_JP: {
             title: 'Random Text Color',
             panel: 'しきい値',
+            option: 'オプション',
+            word: '単語',
+            character: '文字',
+            sentence: '文',
             random: 'ランダム',
             cancel: 'キャンセル',
             ok: 'OK'
