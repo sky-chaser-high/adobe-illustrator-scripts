@@ -8,6 +8,10 @@
 
 
 ## randomTextColor.js
+### 1.2.0 (2022-05-19)
+### Added
+- Added the progress bar to UI.
+
 ### 1.1.0 (2022-05-18)
 ### Added
 - Added the function to change colors by character or sentences.

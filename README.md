@@ -182,6 +182,7 @@ Both CMYK and RGB colors are supported.
 3. Click the Random button to assign a color according to the threshold value.
 
 ### Notes
+If there are many characters, the conversion will take time.  
 Some characters, such as periods and commas, are not applied.
 
 ### UI

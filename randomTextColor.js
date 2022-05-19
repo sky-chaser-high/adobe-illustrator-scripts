@@ -11,6 +11,7 @@
    3. Click the Random button to assign a color according to the threshold value.
 
    Notes
+   If there are many characters, the conversion will take time.
    Some characters, such as periods and commas, are not applied.
    In rare cases, you may not be able to create it.
    In that case, restart Illustrator and run this script again.
@@ -23,7 +24,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -49,7 +50,7 @@ function main() {
         color3: dialog.threshold3.value,
         color4: dialog.threshold4.value
     };
-    setRandomColorWord(texts, threshold);
+    setRandomColorWord(dialog, texts, threshold);
 
     dialog.random.onClick = function() {
         handleRandomColor(dialog, texts);
@@ -80,9 +81,10 @@ function main() {
 }
 
 
-function setRandomColorWord(texts, threshold) {
+function setRandomColorWord(dialog, texts, threshold) {
     var mode = app.activeDocument.documentColorSpace;
     for (var i = 0; i < texts.length; i++) {
+        dialog.progressbar.value = 0;
         for (var j = 0; j < texts[i].words.length; j++) {
             var word = texts[i].words[j].characterAttributes;
             switch (mode) {
@@ -100,15 +102,18 @@ function setRandomColorWord(texts, threshold) {
                     word.fillColor = setRGB(r, g, b);
                     break;
             }
+            dialog.progressbar.value += dialog.progressbar.maxvalue / texts[i].words.length;
+            dialog.update();
         }
     }
     app.redraw();
 }
 
 
-function setRandomColorChar(texts, threshold) {
+function setRandomColorChar(dialog, texts, threshold) {
     var mode = app.activeDocument.documentColorSpace;
     for (var i = 0; i < texts.length; i++) {
+        dialog.progressbar.value = 0;
         for (var j = 0; j < texts[i].textRanges.length; j++) {
             var character = texts[i].textRanges[j].characterAttributes;
             switch (mode) {
@@ -126,15 +131,19 @@ function setRandomColorChar(texts, threshold) {
                     character.fillColor = setRGB(r, g, b);
                     break;
             }
+            dialog.progressbar.value += dialog.progressbar.maxvalue / texts[i].textRanges.length;
+            dialog.update();
         }
     }
     app.redraw();
 }
 
 
-function setRandomColorSentence(texts, threshold) {
+function setRandomColorSentence(dialog, texts, threshold) {
     var mode = app.activeDocument.documentColorSpace;
     for (var i = 0; i < texts.length; i++) {
+        dialog.progressbar.value = 0;
+
         var text = texts[i].contents;
         var sentences = text.split(/,|\.|:|;|。/g);
 
@@ -164,6 +173,9 @@ function setRandomColorSentence(texts, threshold) {
             for (var k = counter; k < chars; k++) {
                 var character = texts[i].textRanges[k].characterAttributes;
                 character.fillColor = color;
+
+                dialog.progressbar.value += dialog.progressbar.maxvalue / (texts[i].textRanges.length - 1);
+                dialog.update();
             }
         }
     }
@@ -178,9 +190,9 @@ function handleRandomColor(dialog, texts) {
         color3: Math.round(dialog.threshold3.value),
         color4: Math.round(dialog.threshold4.value)
     };
-    if (dialog.word.value) setRandomColorWord(texts, threshold);
-    if (dialog.character.value) setRandomColorChar(texts, threshold);
-    if (dialog.sentence.value) setRandomColorSentence(texts, threshold);
+    if (dialog.word.value) setRandomColorWord(dialog, texts, threshold);
+    if (dialog.character.value) setRandomColorChar(dialog, texts, threshold);
+    if (dialog.sentence.value) setRandomColorSentence(dialog, texts, threshold);
 }
 
 
@@ -257,80 +269,99 @@ function showDialog() {
     dialog.orientation = 'column';
     dialog.alignChildren = ['left', 'top'];
     dialog.spacing = 10;
-    dialog.margins = 10;
+    dialog.margins = [0, 0, 0, 0];
 
     var group1 = dialog.add('group', undefined, { name: 'group1' });
     group1.orientation = 'row';
-    group1.alignChildren = ['left', 'top'];
-    group1.spacing = 10;
-    group1.margins = 0;
+    group1.alignChildren = ['left', 'center'];
+    group1.spacing = 0;
+    group1.margins = [0, 0, 0, 0];
 
-    var group2 = group1.add('group', undefined, { name: 'group2' });
-    group2.orientation = 'row';
+    var progressbar1 = group1.add('progressbar', undefined, undefined, { name: 'progressbar1' });
+    progressbar1.maxvalue = 100;
+    progressbar1.value = 0;
+    progressbar1.preferredSize.width = 343;
+    progressbar1.preferredSize.height = 2;
+    progressbar1.alignment = ['left', 'top'];
+
+    var group2 = dialog.add('group', undefined, { name: 'group2' });
+    group2.orientation = 'column';
     group2.alignChildren = ['left', 'center'];
     group2.spacing = 10;
-    group2.margins = 0;
+    group2.margins = [10, 0, 10, 10];
 
-    var panel1 = group2.add('panel', undefined, undefined, { name: 'panel1' });
+    var group3 = group2.add('group', undefined, { name: 'group3' });
+    group3.orientation = 'row';
+    group3.alignChildren = ['left', 'top'];
+    group3.spacing = 10;
+    group3.margins = 0;
+
+    var group4 = group3.add('group', undefined, { name: 'group4' });
+    group4.orientation = 'row';
+    group4.alignChildren = ['left', 'center'];
+    group4.spacing = 10;
+    group4.margins = 0;
+
+    var panel1 = group4.add('panel', undefined, undefined, { name: 'panel1' });
     panel1.text = language.panel;
     panel1.orientation = 'row';
     panel1.alignChildren = ['left', 'top'];
     panel1.spacing = 10;
     panel1.margins = 10;
 
-    var group3 = panel1.add('group', undefined, { name: 'group3' });
-    group3.orientation = 'column';
-    group3.alignChildren = ['center', 'center'];
-    group3.spacing = 5;
-    group3.margins = 0;
-    group3.alignment = ['left', 'center'];
+    var group5 = panel1.add('group', undefined, { name: 'group5' });
+    group5.orientation = 'column';
+    group5.alignChildren = ['center', 'center'];
+    group5.spacing = 5;
+    group5.margins = 0;
+    group5.alignment = ['left', 'center'];
 
-    var statictext1 = group3.add('statictext', undefined, undefined, { name: 'color1' });
+    var statictext1 = group5.add('statictext', undefined, undefined, { name: 'color1' });
     statictext1.text = label.name1;
     statictext1.preferredSize.height = 20;
 
-    var statictext2 = group3.add('statictext', undefined, undefined, { name: 'color2' });
+    var statictext2 = group5.add('statictext', undefined, undefined, { name: 'color2' });
     statictext2.text = label.name2;
     statictext2.preferredSize.height = 20;
 
-    var statictext3 = group3.add('statictext', undefined, undefined, { name: 'color3' });
+    var statictext3 = group5.add('statictext', undefined, undefined, { name: 'color3' });
     statictext3.text = label.name3;
     statictext3.preferredSize.height = 20;
 
-    var statictext4 = group3.add('statictext', undefined, undefined, { name: 'color4' });
+    var statictext4 = group5.add('statictext', undefined, undefined, { name: 'color4' });
     statictext4.text = label.name4;
     statictext4.preferredSize.height = 20;
     statictext4.visible = (mode == DocumentColorSpace.CMYK) ? true : false;
 
-    var group4 = panel1.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'column';
-    group4.alignChildren = ['left', 'center'];
-    group4.spacing = 4;
-    group4.margins = [0, 2, 0, 0];
-    group4.alignment = ['left', 'center'];
+    var group6 = panel1.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'column';
+    group6.alignChildren = ['left', 'center'];
+    group6.spacing = 4;
+    group6.margins = [0, 2, 0, 0];
+    group6.alignment = ['left', 'center'];
 
-    var slider1 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider1' });
+    var slider1 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider1' });
     slider1.minvalue = 0;
     slider1.maxvalue = threshold;
     slider1.value = threshold;
     slider1.preferredSize.width = 150;
     slider1.preferredSize.height = 20;
 
-    var slider2 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider2' });
+    var slider2 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider2' });
     slider2.minvalue = 0;
     slider2.maxvalue = threshold;
     slider2.value = threshold;
     slider2.preferredSize.width = 150;
     slider2.preferredSize.height = 20;
 
-    var slider3 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider3' });
+    var slider3 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider3' });
     slider3.minvalue = 0;
     slider3.maxvalue = threshold;
     slider3.value = threshold;
     slider3.preferredSize.width = 150;
     slider3.preferredSize.height = 20;
 
-    var slider4 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider4' });
+    var slider4 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider4' });
     slider4.minvalue = 0;
     slider4.maxvalue = threshold;
     slider4.value = 0;
@@ -338,59 +369,59 @@ function showDialog() {
     slider4.preferredSize.height = 20;
     slider4.visible = (mode == DocumentColorSpace.CMYK) ? true : false;
 
-    var group5 = panel1.add('group', undefined, { name: 'group5' });
-    group5.orientation = 'column';
-    group5.alignChildren = ['left', 'center'];
-    group5.spacing = 5;
-    group5.margins = 0;
-    group5.alignment = ['left', 'center'];
+    var group7 = panel1.add('group', undefined, { name: 'group7' });
+    group7.orientation = 'column';
+    group7.alignChildren = ['left', 'center'];
+    group7.spacing = 5;
+    group7.margins = 0;
+    group7.alignment = ['left', 'center'];
 
-    var statictext5 = group5.add('statictext', undefined, undefined, { name: 'value1' });
+    var statictext5 = group7.add('statictext', undefined, undefined, { name: 'value1' });
     statictext5.text = threshold;
     statictext5.preferredSize.width = 26;
     statictext5.preferredSize.height = 20;
 
-    var statictext6 = group5.add('statictext', undefined, undefined, { name: 'value2' });
+    var statictext6 = group7.add('statictext', undefined, undefined, { name: 'value2' });
     statictext6.text = threshold;
     statictext6.preferredSize.width = 26;
     statictext6.preferredSize.height = 20;
 
-    var statictext7 = group5.add('statictext', undefined, undefined, { name: 'value3' });
+    var statictext7 = group7.add('statictext', undefined, undefined, { name: 'value3' });
     statictext7.text = threshold;
     statictext7.preferredSize.width = 26;
     statictext7.preferredSize.height = 20;
 
-    var statictext8 = group5.add('statictext', undefined, undefined, { name: 'value4' });
+    var statictext8 = group7.add('statictext', undefined, undefined, { name: 'value4' });
     statictext8.text = '0';
     statictext8.preferredSize.width = 26;
     statictext8.preferredSize.height = 20;
     statictext8.visible = (mode == DocumentColorSpace.CMYK) ? true : false;
 
-    var group6 = group1.add('group', undefined, { name: 'group6' });
-    group6.orientation = 'column';
-    group6.alignChildren = ['left', 'center'];
-    group6.spacing = 10;
-    group6.margins = [0, 8, 0, 0];
+    var group8 = group3.add('group', undefined, { name: 'group8' });
+    group8.orientation = 'column';
+    group8.alignChildren = ['left', 'center'];
+    group8.spacing = 10;
+    group8.margins = [0, 8, 0, 0];
 
-    var button1 = group6.add('button', undefined, undefined, { name: 'random' });
+    var button1 = group8.add('button', undefined, undefined, { name: 'random' });
     button1.text = language.random;
     button1.preferredSize.width = 80;
 
-    var button2 = group6.add('button', undefined, undefined, { name: 'ok' });
+    var button2 = group8.add('button', undefined, undefined, { name: 'ok' });
     button2.text = language.ok;
     button2.preferredSize.width = 80;
 
-    var button3 = group6.add('button', undefined, undefined, { name: 'cancel' });
+    var button3 = group8.add('button', undefined, undefined, { name: 'cancel' });
     button3.text = language.cancel;
     button3.preferredSize.width = 80;
 
-    var group7 = dialog.add('group', undefined, { name: 'group7' });
-    group7.orientation = 'column';
-    group7.alignChildren = ['left', 'center'];
-    group7.spacing = 10;
-    group7.margins = 0;
+    var group9 = group2.add('group', undefined, { name: 'group9' });
+    group9.orientation = 'column';
+    group9.alignChildren = ['left', 'center'];
+    group9.spacing = 10;
+    group9.margins = 0;
 
-    var panel2 = group7.add('panel', undefined, undefined, { name: 'panel2' });
+    var panel2 = group9.add('panel', undefined, undefined, { name: 'panel2' });
     panel2.text = language.option;
     panel2.preferredSize.width = 231;
     panel2.orientation = 'column';
@@ -444,6 +475,7 @@ function showDialog() {
     dialog.word = radiobutton1;
     dialog.character = radiobutton2;
     dialog.sentence = radiobutton3;
+    dialog.progressbar = progressbar1;
     dialog.random = button1;
     dialog.ok = button2;
     dialog.cancel = button3;
