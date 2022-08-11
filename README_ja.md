@@ -1,21 +1,41 @@
 # Adobe Illustrator Scripts
 Adobe Illustratorのスクリプト集です。
 
-- [closePath.js](#closePath.js)
+### Artboard
+- [sortArtboards.js](#sortArtboards.js) `new`
+
+### Color
 - [createColorChart.js](#createColorChart.js)
-- [createPageNumbers.js](#createPageNumbers.js)
+- [randomTextColor.js](#randomTextColor.js)
+- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
+- [shuffleGradientColor.js](#shuffleGradientColor.js) `new`
+
+### Layer
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
-- [disjoinPath.js](#disjoinPath.js)
-- [measurePathItems.js](#measurePathItems.js)
-- [randomTextColor.js](#randomTextColor.js) `update`
+- [invertLockedLayer.js](#invertLockedLayer.js) `new`
+- [invertVisibleLayer.js](#invertVisibleLayer.js) `new`
+
+### Link
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [relinkToFolder.js](#relinkToFolder.js)
-- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [resetToFullScale.js](#resetToFullScale.js)
+
+### Path
+- [closePath.js](#closePath.js)
+- [disjoinPath.js](#disjoinPath.js)
+- [measurePathItems.js](#measurePathItems.js)
+- [shuffleObjects.js](#shuffleObjects.js) `new`
 - [stepandRepeat.js](#stepandRepeat.js)
-- [syncView.js](#syncView.js)
+
+### Text
+- [createPageNumbers.js](#createPageNumbers.js)
+- [swapTextContents.js](#swapTextContents.js) `new`
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
+
+### Utility
+- [compareScale.js](#compareScale.js) `new`
+- [syncView.js](#syncView.js)
 - [XmpFunctions.js](#XmpFunctions.js)
 
 
@@ -42,6 +62,25 @@ Macを使用している場合は、[SPAi](https://tama-san.com/spai/) がおす
 
 #### 使用方法
 パスオブジェクトを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="compareScale.js">compareScale.js</a>
+
+2つのオブジェクトを比較して拡大・縮小率を表示します。
+
+![Compare Scale](images/compareScale.png)
+
+#### 使用方法
+2つのオブジェクトを選択してスクリプトを実行します。
+
+#### 注意事項
+寸法の単位はルーラー単位により変わります。
 
 #### 動作条件
 Illustrator CS以降
@@ -130,6 +169,38 @@ Illustrator CS以降
 
 #### 注意事項
 元のパスオブジェクトは削除されます。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="invertLockedLayer.js">invertLockedLayer.js</a>
+
+レイヤーの表示／非表示を切り替えます。
+
+![Invert Locked Layer](images/invertLockedLayer.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="invertVisibleLayer.js">invertVisibleLayer.js</a>
+
+レイヤーのロック状態を切り替えます。
+
+![Invert Visible Layer](images/invertVisibleLayer.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
 
 #### 動作条件
 Illustrator CS以降
@@ -304,6 +375,61 @@ Illustrator CS6以降
 
 
 
+# <a name="shuffleGradientColor.js">shuffleGradientColor.js</a>
+
+グラデーションをシャッフルします。
+
+![Shuffle Gradient Color](images/shuffleGradientColor.png)
+
+#### 使用方法
+パスオブジェクトを選択してスクリプトを実行します。
+
+#### 注意事項
+線のカラーには対応していません。  
+複合パスの場合は、ダイレクト選択ツールでパスを選択してください。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="shuffleObjects.js">shuffleObjects.js</a>
+
+選択したオブジェクトをシャッフルします。
+
+![Shuffle Objects](images/shuffleObjects.png)
+
+#### 使用方法
+オブジェクトを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="sortArtboards.js">sortArtboards.js</a>
+
+アートボードパネル内のアートボード名を昇順でソートします。
+
+![Sort Artboards](images/sortArtboards.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 注意事項
+ドキュメント内のアートボードはソートしません。（位置はそのまま）
+
+#### 動作条件
+Illustrator CS5以降
+
+
+
+
+
 # <a name="stepandRepeat.js">stepandRepeat.js</a>
 
 InDesignの編集メニュー > 繰り返し複製... に相当します。
@@ -319,6 +445,22 @@ InDesignの編集メニュー > 繰り返し複製... に相当します。
 
 #### 動作条件
 Illustrator CS4以降
+
+
+
+
+
+# <a name="swapTextContents.js">swapTextContents.js</a>
+
+2つの文字列の内容を交換します。
+
+![Swap Text Contents](images/swapTextContents.png)
+
+#### 使用方法
+2つのテキストオブジェクトを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
 
 
 

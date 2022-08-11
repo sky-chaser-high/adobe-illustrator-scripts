@@ -3,21 +3,41 @@
 # Adobe Illustrator Scripts
 This is a collection of scripts for Adobe Illustrator.  
 
-- [closePath.js](#closePath.js)
+### Artboard
+- [sortArtboards.js](#sortArtboards.js) `new`
+
+### Color
 - [createColorChart.js](#createColorChart.js)
-- [createPageNumbers.js](#createPageNumbers.js)
+- [randomTextColor.js](#randomTextColor.js)
+- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
+- [shuffleGradientColor.js](#shuffleGradientColor.js) `new`
+
+### Layer
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
-- [disjoinPath.js](#disjoinPath.js)
-- [measurePathItems.js](#measurePathItems.js)
-- [randomTextColor.js](#randomTextColor.js) `update`
+- [invertLockedLayer.js](#invertLockedLayer.js) `new`
+- [invertVisibleLayer.js](#invertVisibleLayer.js) `new`
+
+### Link
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [relinkToFolder.js](#relinkToFolder.js)
-- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [resetToFullScale.js](#resetToFullScale.js)
+
+### Path
+- [closePath.js](#closePath.js)
+- [disjoinPath.js](#disjoinPath.js)
+- [measurePathItems.js](#measurePathItems.js)
+- [shuffleObjects.js](#shuffleObjects.js) `new`
 - [stepandRepeat.js](#stepandRepeat.js)
-- [syncView.js](#syncView.js)
+
+### Text
+- [createPageNumbers.js](#createPageNumbers.js)
+- [swapTextContents.js](#swapTextContents.js) `new`
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
+
+### Utility
+- [compareScale.js](#compareScale.js) `new`
+- [syncView.js](#syncView.js)
 - [XmpFunctions.js](#XmpFunctions.js)
 
 
@@ -51,6 +71,26 @@ Illustrator CS or higher
 
 
 
+# <a name="compareScale.js">compareScale.js</a>
+
+### Description
+This script compares two objects' scales.
+
+![Compare Scale](images/compareScale.png)
+
+### Usage
+Select two objects, and run this script.
+
+### Notes
+The dimensional units depend on the ruler units.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
 # <a name="createColorChart.js">createColorChart.js</a>
 
 ### Description
@@ -68,7 +108,7 @@ This script creates a color chart.
 5. Set the artboard size, chip size, and units according to your preference.
 
 ### Notes
-For CMYK, K cannot be increased or decreased.  
+For CMYK, Black cannot be increased or decreased.  
 
 ### Requirements
 Illustrator CS4 or higher
@@ -135,6 +175,40 @@ Select the path objects, and run this script.
 
 ### Notes
 The original path object will be deleted.  
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="invertLockedLayer.js">invertLockedLayer.js</a>
+
+### Description
+This script inverts locked layers.
+
+![Invert Locked Layer](images/invertLockedLayer.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="invertVisibleLayer.js">invertVisibleLayer.js</a>
+
+### Description
+This script inverts visible layers.
+
+![Invert Visible Layer](images/invertVisibleLayer.png)
+
+### Usage
+Just run this script.
 
 ### Requirements
 Illustrator CS or higher
@@ -317,6 +391,64 @@ Illustrator CS6 or higher
 
 
 
+# <a name="shuffleGradientColor.js">shuffleGradientColor.js</a>
+
+### Description
+This script shuffles the gradient color.
+
+![Shuffle Gradient Color](images/shuffleGradientColor.png)
+
+### Usage
+Select the path objects, and run this script.
+
+### Notes
+Only a fill color. A stroke color is not supported.  
+For compound path objects, select them with direct selection tool.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="shuffleObjects.js">shuffleObjects.js</a>
+
+### Description
+This script shuffles the objects.
+
+![Shuffle Objects](images/shuffleObjects.png)
+
+### Usage
+Select the objects, and run this script.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="sortArtboards.js">sortArtboards.js</a>
+
+### Description
+This script sorts the artboards in the Artboard panel.
+
+![Sort Artboards](images/sortArtboards.png)
+
+### Usage
+Just run this script.
+
+### Notes
+Only the Artboard panel. Artboards in the document are not sorted.
+
+### Requirements
+Illustrator CS5 or higher
+
+
+
+
+
 # <a name="stepandRepeat.js">stepandRepeat.js</a>
 
 ### Description
@@ -332,6 +464,23 @@ This script is equivalent to InDesign's Edit menu "Step and Repeat".
 
 ### Requirements
 Illustrator CS4 or higher
+
+
+
+
+
+# <a name="swapTextContents.js">swapTextContents.js</a>
+
+### Description
+This script swap the text contents.
+
+![Swap Text Contents](images/swapTextContents.png)
+
+### Usage
+Select two text objects, and run this script.
+
+### Requirements
+Illustrator CS or higher
 
 
 
