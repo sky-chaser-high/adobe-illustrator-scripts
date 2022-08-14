@@ -31,6 +31,7 @@ This is a collection of scripts for Adobe Illustrator.
 - [stepandRepeat.js](#stepandRepeat.js)
 
 ### Text
+- [addNumericSeparators.js](#addNumericSeparators.js) `new`
 - [createPageNumbers.js](#createPageNumbers.js)
 - [swapTextContents.js](#swapTextContents.js) `new`
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
@@ -49,6 +50,23 @@ To run the scripts, from File > Scripts > Other Script...
 ## Notes
 In rare cases, if you continue to use the script, it may stop working.  
 In that case, restart Illustrator and run this script again.
+
+
+
+
+
+# <a name="addNumericSeparators.js">addNumericSeparators.js</a>
+
+### Description
+This script changes a number to a 3-digit comma delimited string.
+
+![Add Numeric Separators](images/addNumericSeparators.png)
+
+### Usage
+Select the text objects, and run this script.
+
+### Requirements
+Illustrator CS or higher
 
 
 

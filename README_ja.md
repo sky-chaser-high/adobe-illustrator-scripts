@@ -29,6 +29,7 @@ Adobe Illustratorのスクリプト集です。
 - [stepandRepeat.js](#stepandRepeat.js)
 
 ### Text
+- [addNumericSeparators.js](#addNumericSeparators.js) `new`
 - [createPageNumbers.js](#createPageNumbers.js)
 - [swapTextContents.js](#swapTextContents.js) `new`
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
@@ -49,6 +50,22 @@ Macを使用している場合は、[SPAi](https://tama-san.com/spai/) がおす
 ### 注意事項
 スクリプトを使い続けていると、まれに動作しなくなる場合があります。  
 その場合は、Illustratorを再起動してから実行してみてください。
+
+
+
+
+
+# <a name="addNumericSeparators.js">addNumericSeparators.js</a>
+
+数値をカンマで3桁区切りにします。
+
+![Add Numeric Separators](images/addNumericSeparators.png)
+
+#### 使用方法
+テキストオブジェクトを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
 
 
 
