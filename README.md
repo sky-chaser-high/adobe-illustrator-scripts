@@ -37,6 +37,7 @@ This is a collection of scripts for Adobe Illustrator.
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 
 ### Utility
+- [closeAllDocuments.js](#closeAllDocuments.js) `new`
 - [compareScale.js](#compareScale.js) `new`
 - [syncView.js](#syncView.js)
 - [XmpFunctions.js](#XmpFunctions.js)
@@ -67,6 +68,25 @@ Select the text objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
+
+
+
+
+
+# <a name="closeAllDocuments.js">closeAllDocuments.js</a>
+
+### Description
+This script closes all documents.  
+If there are documents not saved, choose to save them.
+
+### Usage
+Just run this script.
+
+### Notes
+It has been implemented in the File menu since version 2021.
+
+### Requirements
+Illustrator CS4 or higher
 
 
 

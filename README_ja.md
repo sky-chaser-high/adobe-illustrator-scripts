@@ -35,6 +35,7 @@ Adobe Illustratorのスクリプト集です。
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 
 ### Utility
+- [closeAllDocuments.js](#closeAllDocuments.js) `new`
 - [compareScale.js](#compareScale.js) `new`
 - [syncView.js](#syncView.js)
 - [XmpFunctions.js](#XmpFunctions.js)
@@ -66,6 +67,24 @@ Macを使用している場合は、[SPAi](https://tama-san.com/spai/) がおす
 
 #### 動作条件
 Illustrator CS以降
+
+
+
+
+
+# <a name="closeAllDocuments.js">closeAllDocuments.js</a>
+
+すべてのファイルを閉じます。  
+編集中のファイルがある場合は、保存してから閉じるかを選択します。
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 注意事項
+バージョン2021からファイルメニューに実装されています。
+
+#### 動作条件
+Illustrator CS4以降
 
 
 
