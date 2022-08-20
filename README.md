@@ -4,18 +4,18 @@
 This is a collection of scripts for Adobe Illustrator.  
 
 ### Artboard
-- [sortArtboards.js](#sortArtboards.js) `new`
+- [sortArtboards.js](#sortArtboards.js)
 
 ### Color
 - [createColorChart.js](#createColorChart.js)
 - [randomTextColor.js](#randomTextColor.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
-- [shuffleGradientColor.js](#shuffleGradientColor.js) `new`
+- [shuffleGradientColor.js](#shuffleGradientColor.js)
 
 ### Layer
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
-- [invertLockedLayer.js](#invertLockedLayer.js) `new`
-- [invertVisibleLayer.js](#invertVisibleLayer.js) `new`
+- [invertLockedLayer.js](#invertLockedLayer.js)
+- [invertVisibleLayer.js](#invertVisibleLayer.js)
 
 ### Link
 - [relinkFileExtension.js](#relinkFileExtension.js)
@@ -25,20 +25,24 @@ This is a collection of scripts for Adobe Illustrator.
 
 ### Path
 - [closePath.js](#closePath.js)
+- [createGridLines.js](#createGridLines.js) `new`
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
-- [shuffleObjects.js](#shuffleObjects.js) `new`
+- [removeColorInGuideObject.js](#removeColorInGuideObject.js) `new`
+- [shuffleObjects.js](#shuffleObjects.js)
 - [stepandRepeat.js](#stepandRepeat.js)
 
 ### Text
-- [addNumericSeparators.js](#addNumericSeparators.js) `new`
+- [addNumericSeparators.js](#addNumericSeparators.js)
 - [createPageNumbers.js](#createPageNumbers.js)
-- [swapTextContents.js](#swapTextContents.js) `new`
+- [highlightWord.js](#highlightWord.js) `new`
+- [swapTextContents.js](#swapTextContents.js)
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 
 ### Utility
-- [closeAllDocuments.js](#closeAllDocuments.js) `new`
-- [compareScale.js](#compareScale.js) `new`
+- [arrangeWindows.js](#arrangeWindows.js) `new`
+- [closeAllDocuments.js](#closeAllDocuments.js)
+- [compareScale.js](#compareScale.js)
 - [syncView.js](#syncView.js)
 - [XmpFunctions.js](#XmpFunctions.js)
 
@@ -68,6 +72,23 @@ Select the text objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
+
+
+
+
+
+# <a name="arrangeWindows.js">arrangeWindows.js</a>
+
+### Description
+This script splits and arranges all open windows.
+
+![Arrange Windows](images/arrangeWindows.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CS6 or higher
 
 
 
@@ -155,6 +176,26 @@ Illustrator CS4 or higher
 
 
 
+# <a name="createGridLines.js">createGridLines.js</a>
+
+### Description
+This script creates grid lines on artboards.
+
+![Create Grid Lines](images/createGridLines.png)
+
+### Usage
+Just run this script.
+
+### Notes
+Grid spacing is determined by the Guides & Grid in Preferences.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
 # <a name="createPageNumbers.js">createPageNumbers.js</a>
 
 ### Description
@@ -216,6 +257,26 @@ The original path object will be deleted.
 
 ### Requirements
 Illustrator CS or higher
+
+
+
+
+
+# <a name="highlightWord.js">highlightWord.js</a>
+
+### Description
+This script highlights the searched words with the fill color.  
+Both CMYK and RGB colors are supported.
+
+![Highlight Word](images/highlightWord.png)
+
+### Usage
+1. Select the text objects, and run this script.
+2. Type the word.
+3. Use the slider to determine the color if necessary.
+
+### Requirements
+Illustrator CS4 or higher
 
 
 
@@ -384,6 +445,29 @@ Embedded files are also not possible.
 
 ### Requirements
 Illustrator CS4 or higher
+
+
+
+
+
+# <a name="removeColorInGuideObject.js">removeColorInGuideObject.js</a>
+
+### Description
+This script removes fill and stroke colors in all guide objects.
+
+![Remove Color In Guide Object](images/removeColorInGuideObject.png)
+
+### Usage
+Just run this script.  
+It is not necessary to select guide objects.
+
+### Notes
+Show and unlock all layers.  
+Guide objects hidden with Cmd or Ctrl + 3 are not supported.  
+If you have added fill or stroke colors in the Appearance panel, they may not work well.
+
+### Requirements
+Illustrator CS6 or higher
 
 
 

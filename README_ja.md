@@ -2,18 +2,18 @@
 Adobe Illustratorのスクリプト集です。
 
 ### Artboard
-- [sortArtboards.js](#sortArtboards.js) `new`
+- [sortArtboards.js](#sortArtboards.js)
 
 ### Color
 - [createColorChart.js](#createColorChart.js)
 - [randomTextColor.js](#randomTextColor.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
-- [shuffleGradientColor.js](#shuffleGradientColor.js) `new`
+- [shuffleGradientColor.js](#shuffleGradientColor.js)
 
 ### Layer
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
-- [invertLockedLayer.js](#invertLockedLayer.js) `new`
-- [invertVisibleLayer.js](#invertVisibleLayer.js) `new`
+- [invertLockedLayer.js](#invertLockedLayer.js)
+- [invertVisibleLayer.js](#invertVisibleLayer.js)
 
 ### Link
 - [relinkFileExtension.js](#relinkFileExtension.js)
@@ -23,20 +23,24 @@ Adobe Illustratorのスクリプト集です。
 
 ### Path
 - [closePath.js](#closePath.js)
+- [createGridLines.js](#createGridLines.js) `new`
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
-- [shuffleObjects.js](#shuffleObjects.js) `new`
+- [removeColorInGuideObject.js](#removeColorInGuideObject.js) `new`
+- [shuffleObjects.js](#shuffleObjects.js)
 - [stepandRepeat.js](#stepandRepeat.js)
 
 ### Text
-- [addNumericSeparators.js](#addNumericSeparators.js) `new`
+- [addNumericSeparators.js](#addNumericSeparators.js)
 - [createPageNumbers.js](#createPageNumbers.js)
-- [swapTextContents.js](#swapTextContents.js) `new`
+- [highlightWord.js](#highlightWord.js) `new`
+- [swapTextContents.js](#swapTextContents.js)
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 
 ### Utility
-- [closeAllDocuments.js](#closeAllDocuments.js) `new`
-- [compareScale.js](#compareScale.js) `new`
+- [arrangeWindows.js](#arrangeWindows.js) `new`
+- [closeAllDocuments.js](#closeAllDocuments.js)
+- [compareScale.js](#compareScale.js)
 - [syncView.js](#syncView.js)
 - [XmpFunctions.js](#XmpFunctions.js)
 
@@ -67,6 +71,22 @@ Macを使用している場合は、[SPAi](https://tama-san.com/spai/) がおす
 
 #### 動作条件
 Illustrator CS以降
+
+
+
+
+
+# <a name="arrangeWindows.js">arrangeWindows.js</a>
+
+開いているすべてのウィンドウを分割して並べて表示します。
+
+![Arrange Windows](images/arrangeWindows.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。
+
+#### 動作条件
+Illustrator CS6以降
 
 
 
@@ -149,6 +169,25 @@ Illustrator CS4以降
 
 
 
+# <a name="createGridLines.js">createGridLines.js</a>
+
+アートボードにグリッドを作成します。
+
+![Create Grid Lines](images/createGridLines.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。
+
+#### 注意事項
+グリッドの間隔は環境設定のガイド・グリッド項目の設定に依存します。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
 # <a name="createPageNumbers.js">createPageNumbers.js</a>
 
 InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在のページ番号 に相当します。  
@@ -208,6 +247,24 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+
+
+
+
+
+# <a name="highlightWord.js">highlightWord.js</a>
+
+入力した単語の塗り色を変更します。CMYK、RGB のどちらにも対応しています。
+
+![Highlight Word](images/highlightWord.png)
+
+#### 使用方法
+1. テキストオブジェクトを選択してスクリプトを実行します。
+2. 単語を入力します。
+3. 必要に応じて色を設定します。
+
+#### 動作条件
+Illustrator CS4以降
 
 
 
@@ -368,6 +425,28 @@ InDesignのリンクパネルメニュー > フォルダに再リンク... に�
 
 #### 動作条件
 Illustrator CS4以降
+
+
+
+
+
+# <a name="removeColorInGuideObject.js">removeColorInGuideObject.js</a>
+
+すべてのガイドオブジェクトの塗りと線の色を削除します。
+
+![Remove Color In Guide Object](images/removeColorInGuideObject.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+ガイドオブジェクトを選択する必要はありません。
+
+#### 注意事項
+すべてのレイヤーを表示してロックを解除します。  
+Cmd または Ctrl + 3 で非表示のガイドオブジェクトは対象になりません。  
+アピアランスで塗りや線の色を追加している場合は、削除できない場合があります。
+
+#### 動作条件
+Illustrator CS6以降
 
 
 
