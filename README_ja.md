@@ -23,22 +23,28 @@ Adobe Illustratorのスクリプト集です。
 
 ### Path
 - [closePath.js](#closePath.js)
-- [createGridLines.js](#createGridLines.js) `new`
+- [createGridLines.js](#createGridLines.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
-- [removeColorInGuideObject.js](#removeColorInGuideObject.js) `new`
+- [removeColorInGuideObject.js](#removeColorInGuideObject.js)
 - [shuffleObjects.js](#shuffleObjects.js)
 - [stepandRepeat.js](#stepandRepeat.js)
 
 ### Text
 - [addNumericSeparators.js](#addNumericSeparators.js)
+- [copyLineDown.js](#copyLine) `new`
+- [copyLineUp.js](#copyLine) `new`
 - [createPageNumbers.js](#createPageNumbers.js)
-- [highlightWord.js](#highlightWord.js) `new`
+- [highlightWord.js](#highlightWord.js)
+- [insertLineAbove.js](#insertLine) `new`
+- [insertLineBelow.js](#insertLine) `new`
+- [moveLineDown.js](#moveLine) `new`
+- [moveLineUp.js](#moveLine) `new`
 - [swapTextContents.js](#swapTextContents.js)
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 
 ### Utility
-- [arrangeWindows.js](#arrangeWindows.js) `new`
+- [arrangeWindows.js](#arrangeWindows.js)
 - [closeAllDocuments.js](#closeAllDocuments.js)
 - [compareScale.js](#compareScale.js)
 - [syncView.js](#syncView.js)
@@ -140,6 +146,32 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+
+
+
+
+
+# <a name="copyLine">copyLineDown.js<br>copyLineUp.js</a>
+
+Visual Studio Code の「行を下へコピー」（Option/Alt + Shift + ↓）、「行を上へコピー」（Option/Alt + Shift + ↑）と同様のことができます。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)や、[SPAi](https://tama-san.com/spai/)などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+![Vscode Copy Line](images/vscode_copyLine.png)
+例 copyLineDown.js:
+![Copy Line](images/copyLine.png)
+
+#### 使用方法
+コピーしたい行にカーソルを合わせてスクリプトを実行します。  
+行を選択する必要はありません。
+
+#### 注意事項
+copyLineDown.js で最終行をコピーする場合は、バグを回避するために空行を追加します。  
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
 
 
 
@@ -270,6 +302,30 @@ Illustrator CS4以降
 
 
 
+# <a name="insertLine">insertLineAbove.js<br>insertLineBelow.js</a>
+
+Visual Studio Code の「上に行を挿入」（Cmd/Ctrl + Shift + Enter）、「下に行を挿入」（Cmd/Ctrl + Enter）と同様のことができます。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)や、[SPAi](https://tama-san.com/spai/)などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+例 insertLineBelow.js:
+![Insert Line](images/insertLine.png)
+
+#### 使用方法
+行を追加したい位置の下または上の行にカーソルを合わせてスクリプトを実行します。  
+行を選択する必要はありません。
+
+#### 注意事項
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
+
+
+
+
+
 # <a name="invertLockedLayer.js">invertLockedLayer.js</a>
 
 レイヤーの表示／非表示を切り替えます。
@@ -321,6 +377,32 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
+
+
+
+
+
+# <a name="moveLine">moveLineDown.js<br>moveLineUp.js</a>
+
+Visual Studio Code の「行を下へ移動」（Option/Alt + ↓）、「行を上へ移動」（Option/Alt + ↑）と同様のことができます。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)や、[SPAi](https://tama-san.com/spai/)などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+![Vscode Move Line](images/vscode_moveLine.png)
+例 moveLineDown.js:
+![Move Line](images/moveLine.png)
+
+#### 使用方法
+移動したい行にカーソルを合わせてスクリプトを実行します。  
+行を選択する必要はありません。
+
+#### 注意事項
+moveLineUp.js で最終行を移動する場合は、バグを回避するために空行を追加します。  
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
 
 
 
@@ -442,7 +524,7 @@ Illustrator CS4以降
 
 #### 注意事項
 すべてのレイヤーを表示してロックを解除します。  
-Cmd または Ctrl + 3 で非表示のガイドオブジェクトは対象になりません。  
+Cmd/Ctrl + 3 で非表示のガイドオブジェクトは対象になりません。  
 アピアランスで塗りや線の色を追加している場合は、削除できない場合があります。
 
 #### 動作条件

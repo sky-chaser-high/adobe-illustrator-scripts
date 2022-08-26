@@ -25,22 +25,28 @@ This is a collection of scripts for Adobe Illustrator.
 
 ### Path
 - [closePath.js](#closePath.js)
-- [createGridLines.js](#createGridLines.js) `new`
+- [createGridLines.js](#createGridLines.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
-- [removeColorInGuideObject.js](#removeColorInGuideObject.js) `new`
+- [removeColorInGuideObject.js](#removeColorInGuideObject.js)
 - [shuffleObjects.js](#shuffleObjects.js)
 - [stepandRepeat.js](#stepandRepeat.js)
 
 ### Text
 - [addNumericSeparators.js](#addNumericSeparators.js)
+- [copyLineDown.js](#copyLine) `new`
+- [copyLineUp.js](#copyLine) `new`
 - [createPageNumbers.js](#createPageNumbers.js)
-- [highlightWord.js](#highlightWord.js) `new`
+- [highlightWord.js](#highlightWord.js)
+- [insertLineAbove.js](#insertLine) `new`
+- [insertLineBelow.js](#insertLine) `new`
+- [moveLineDown.js](#moveLine) `new`
+- [moveLineUp.js](#moveLine) `new`
 - [swapTextContents.js](#swapTextContents.js)
 - [textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js](#textAlign)
 
 ### Utility
-- [arrangeWindows.js](#arrangeWindows.js) `new`
+- [arrangeWindows.js](#arrangeWindows.js)
 - [closeAllDocuments.js](#closeAllDocuments.js)
 - [compareScale.js](#compareScale.js)
 - [syncView.js](#syncView.js)
@@ -145,6 +151,34 @@ The dimensional units depend on the ruler units.
 
 ### Requirements
 Illustrator CS or higher
+
+
+
+
+
+# <a name="copyLine">copyLineDown.js<br>copyLineUp.js</a>
+
+### Description
+This script is equivalent to Visual Studio Code's Selection menu "Copy Line Down"(Option/Alt + Shift + ↓) & "Copy Line Up"(Option/Alt + Shift + ↑).  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+Both point and area types are supported.
+
+![Vscode Copy Line](images/vscode_copyLine.png)
+
+For example, copyLineDown.js:
+![Copy Line](images/copyLine.png)
+
+### Usage
+Move the cursor to the line you want to copy, and run this script.  
+It is not necessary to select a line.
+
+### Notes
+In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.  
+If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+If you want to enter text, you must click with the mouse.
+
+### Requirements
+Illustrator CC 2018 or higher
 
 
 
@@ -282,6 +316,31 @@ Illustrator CS4 or higher
 
 
 
+# <a name="insertLine">insertLineAbove.js<br>insertLineBelow.js</a>
+
+### Description
+This script is equivalent to Visual Studio Code's "Insert Line Above"(Cmd/Ctrl + Shift + Enter) & "Insert Line Below"(Cmd/Ctrl + Enter).  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+Both point and area types are supported.
+
+For example, insertLineBelow.js:
+![Insert Line](images/insertLine.png)
+
+### Usage
+Move the cursor to the line below or above you want to add a line, and run this script.  
+It is not necessary to select a line.
+
+### Notes
+If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+If you want to enter text, you must click with the mouse.
+
+### Requirements
+Illustrator CC 2018 or higher
+
+
+
+
+
 # <a name="invertLockedLayer.js">invertLockedLayer.js</a>
 
 ### Description
@@ -336,6 +395,34 @@ Curves are not supported.
 
 ### Requirements
 Illustrator CS4 or higher
+
+
+
+
+
+# <a name="moveLine">moveLineDown.js<br>moveLineUp.js</a>
+
+### Description
+This script is equivalent to Visual Studio Code's Selection menu "Move Line Down"(Option/Alt + ↓) & "Move Line Up"(Option/Alt + ↑).  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+Both point and area types are supported.
+
+![Vscode Move Line](images/vscode_moveLine.png)
+
+For example, moveLineDown.js:
+![Move Line](images/moveLine.png)
+
+### Usage
+Move the cursor to the line you want to move, and run this script.  
+It is not necessary to select a line.
+
+### Notes
+In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.  
+If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+If you want to enter text, you must click with the mouse.
+
+### Requirements
+Illustrator CC 2018 or higher
 
 
 
@@ -463,7 +550,7 @@ It is not necessary to select guide objects.
 
 ### Notes
 Show and unlock all layers.  
-Guide objects hidden with Cmd or Ctrl + 3 are not supported.  
+Guide objects hidden with Cmd/Ctrl + 3 are not supported.  
 If you have added fill or stroke colors in the Appearance panel, they may not work well.
 
 ### Requirements
