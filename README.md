@@ -12,9 +12,13 @@ This is a collection of scripts for Adobe Illustrator.
 - [createColorChart.js](#createColorChart.js)
 - [randomTextColor.js](#randomTextColor.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
+- [roundColorValue.js](#roundColorValue.js) `new`
+- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js) `new`
 - [shuffleGradientColor.js](#shuffleGradientColor.js)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+- [deleteHiddenLayers.js](#deleteHiddenLayers.js) `new`
+- [deleteLockedLayers.js](#deleteLockedLayers.js) `new`
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [invertLockedLayer.js](#invertLockedLayer.js)
 - [invertVisibleLayer.js](#invertVisibleLayer.js)
@@ -36,14 +40,14 @@ This is a collection of scripts for Adobe Illustrator.
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [addNumericSeparators.js](#addNumericSeparators.js)
-- [copyLineDown.js](#copyLine) `new`
-- [copyLineUp.js](#copyLine) `new`
+- [copyLineDown.js](#copyLine)
+- [copyLineUp.js](#copyLine)
 - [createPageNumbers.js](#createPageNumbers.js)
 - [highlightWord.js](#highlightWord.js)
-- [insertLineAbove.js](#insertLine) `new`
-- [insertLineBelow.js](#insertLine) `new`
-- [moveLineDown.js](#moveLine) `new`
-- [moveLineUp.js](#moveLine) `new`
+- [insertLineAbove.js](#insertLine)
+- [insertLineBelow.js](#insertLine)
+- [moveLineDown.js](#moveLine)
+- [moveLineUp.js](#moveLine)
 - [swapTextContents.js](#swapTextContents.js)
 - [textAlign_Center.js](#textAlign)
 - [textAlign_Left.js](#textAlign)
@@ -269,6 +273,45 @@ Assign page numbers in artboard order.
 
 ### Requirements
 Illustrator CS4 or higher
+
+
+
+
+
+# <a name="deleteHiddenLayers.js">deleteHiddenLayers.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+
+### Description
+This script deletes hidden layers.
+
+![Delete Hidden Layers](images/deleteHiddenLayers.png)
+
+### Usage
+Just run this script.
+
+### Notes
+It has been implemented in the Layers panel menu since version 2021.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="deleteLockedLayers.js">deleteLockedLayers.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+
+### Description
+This script deletes locked layers.
+
+![Delete Locked Layers](images/deleteLockedLayers.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CS or higher
 
 
 
@@ -629,6 +672,44 @@ Select the linked files or the embedded images, and run this script.
 
 ### Requirements
 Illustrator CS6 or higher
+
+
+
+
+
+# <a name="roundColorValue.js">roundColorValue.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+### Description
+This script rounds color values.  
+Both fill and stroke colors are supported.
+
+![Round Color Value](images/roundColorValue.png)
+
+### Usage
+Select the objects, and run this script.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="roundLocationOfGradientStops.js">roundLocationOfGradientStops.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+### Description
+This script rounds the location of the gradient color stops and midpoints.  
+Both fill and stroke colors are supported.
+
+![Round Location Of Gradient Stops](images/roundLocationOfGradientStops.png)
+
+### Usage
+Select the objects, and run this script.
+
+### Requirements
+Illustrator CS or higher
 
 
 

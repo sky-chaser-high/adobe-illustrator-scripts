@@ -10,9 +10,13 @@ Adobe Illustratorのスクリプト集です。
 - [createColorChart.js](#createColorChart.js)
 - [randomTextColor.js](#randomTextColor.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
+- [roundColorValue.js](#roundColorValue.js) `new`
+- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js) `new`
 - [shuffleGradientColor.js](#shuffleGradientColor.js)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+- [deleteHiddenLayers.js](#deleteHiddenLayers.js) `new`
+- [deleteLockedLayers.js](#deleteLockedLayers.js) `new`
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [invertLockedLayer.js](#invertLockedLayer.js)
 - [invertVisibleLayer.js](#invertVisibleLayer.js)
@@ -34,14 +38,14 @@ Adobe Illustratorのスクリプト集です。
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [addNumericSeparators.js](#addNumericSeparators.js)
-- [copyLineDown.js](#copyLine) `new`
-- [copyLineUp.js](#copyLine) `new`
+- [copyLineDown.js](#copyLine)
+- [copyLineUp.js](#copyLine)
 - [createPageNumbers.js](#createPageNumbers.js)
 - [highlightWord.js](#highlightWord.js)
-- [insertLineAbove.js](#insertLine) `new`
-- [insertLineBelow.js](#insertLine) `new`
-- [moveLineDown.js](#moveLine) `new`
-- [moveLineUp.js](#moveLine) `new`
+- [insertLineAbove.js](#insertLine)
+- [insertLineBelow.js](#insertLine)
+- [moveLineDown.js](#moveLine)
+- [moveLineUp.js](#moveLine)
 - [swapTextContents.js](#swapTextContents.js)
 - [textAlign_Center.js](#textAlign)
 - [textAlign_Left.js](#textAlign)
@@ -260,6 +264,45 @@ InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在の
 
 #### 動作条件
 Illustrator CS4以降
+
+
+
+
+
+# <a name="deleteHiddenLayers.js">deleteHiddenLayers.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+
+### Description
+非表示のレイヤーを削除します。
+
+![Delete Hidden Layers](images/deleteHiddenLayers.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+### Notes
+バージョン2021からレイヤーパネルメニューに実装されています。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="deleteLockedLayers.js">deleteLockedLayers.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+
+### Description
+ロックしているレイヤーを削除します。
+
+![Delete Locked Layers](images/deleteLockedLayers.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CS以降
 
 
 
@@ -602,6 +645,42 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS6以降
+
+
+
+
+
+# <a name="roundColorValue.js">roundColorValue.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+カラーの数値を四捨五入します。  
+塗り、線のどちらにも対応しています。
+
+![Round Color Value](images/roundColorValue.png)
+
+#### 使用方法
+オブジェクトを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="roundLocationOfGradientStops.js">roundLocationOfGradientStops.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+グラデーションのカラー分岐点、中間点の数値を四捨五入します。  
+塗り、線のどちらにも対応しています。
+
+![Round Location Of Gradient Stops](images/roundLocationOfGradientStops.png)
+
+#### 使用方法
+オブジェクトを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
 
 
 
