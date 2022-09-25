@@ -4,59 +4,59 @@ Adobe Illustratorのスクリプト集です。
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [sortArtboards.js](#sortArtboards.js)
+- [sortArtboards.js](#sortArtboards.js)：アートボードをソート（アートボードパネル内のみ）
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-- [createColorChart.js](#createColorChart.js)
-- [randomTextColor.js](#randomTextColor.js)
-- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
-- [roundColorValue.js](#roundColorValue.js) `new`
-- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js) `new`
-- [shuffleGradientColor.js](#shuffleGradientColor.js)
+- [createColorChart.js](#createColorChart.js)：カラーチャート作成
+- [randomTextColor.js](#randomTextColor.js)：テキストの塗り色をランダムに変更
+- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)：Deleted Global Color を削除
+- [roundColorValue.js](#roundColorValue.js)：カラー数値を四捨五入 `new`
+- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js)：グラデーションのカラー分岐点、中間点の数値を四捨五入 `new`
+- [shuffleGradientColor.js](#shuffleGradientColor.js)：グラデーションをシャッフル
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-- [deleteHiddenLayers.js](#deleteHiddenLayers.js) `new`
-- [deleteLockedLayers.js](#deleteLockedLayers.js) `new`
-- [deleteUnusedLayers.js](#deleteUnusedLayers.js)
-- [invertLockedLayer.js](#invertLockedLayer.js)
-- [invertVisibleLayer.js](#invertVisibleLayer.js)
+- [deleteHiddenLayers.js](#deleteHiddenLayers.js)：非表示レイヤーを削除 `new`
+- [deleteLockedLayers.js](#deleteLockedLayers.js)：ロック状態のレイヤーを削除 `new`
+- [deleteUnusedLayers.js](#deleteUnusedLayers.js)：未使用（空）のレイヤーを削除
+- [invertLockedLayer.js](#invertLockedLayer.js)：ロック状態を反転
+- [invertVisibleLayer.js](#invertVisibleLayer.js)：表示状態を反転
 
 ### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-- [relinkFileExtension.js](#relinkFileExtension.js)
-- [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
-- [relinkToFolder.js](#relinkToFolder.js)
-- [resetToFullScale.js](#resetToFullScale.js)
+- [relinkFileExtension.js](#relinkFileExtension.js)：ファイル拡張子にリンクを再設定
+- [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)：ファイル拡張子にリンクを再設定（機能拡張版）
+- [relinkToFolder.js](#relinkToFolder.js)：フォルダに再リンク
+- [resetToFullScale.js](#resetToFullScale.js)：画像サイズを100%に戻す
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [closePath.js](#closePath.js)
-- [createGridLines.js](#createGridLines.js)
-- [disjoinPath.js](#disjoinPath.js)
-- [measurePathItems.js](#measurePathItems.js)
-- [removeColorInGuideObject.js](#removeColorInGuideObject.js)
-- [shuffleObjects.js](#shuffleObjects.js)
-- [stepandRepeat.js](#stepandRepeat.js)
+- [closePath.js](#closePath.js)：パスを閉じる
+- [createGridLines.js](#createGridLines.js)：グリッドラインを作成
+- [disjoinPath.js](#disjoinPath.js)：パスを分解
+- [measurePathItems.js](#measurePathItems.js)：パスの寸法を測る
+- [removeColorInGuideObject.js](#removeColorInGuideObject.js)：ガイドオブジェクトの色を削除
+- [shuffleObjects.js](#shuffleObjects.js)：オブジェクトをシャッフル
+- [stepandRepeat.js](#stepandRepeat.js)：繰り返し複製
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [addNumericSeparators.js](#addNumericSeparators.js)
-- [copyLineDown.js](#copyLine)
-- [copyLineUp.js](#copyLine)
-- [createPageNumbers.js](#createPageNumbers.js)
-- [highlightWord.js](#highlightWord.js)
-- [insertLineAbove.js](#insertLine)
-- [insertLineBelow.js](#insertLine)
-- [moveLineDown.js](#moveLine)
-- [moveLineUp.js](#moveLine)
-- [swapTextContents.js](#swapTextContents.js)
-- [textAlign_Center.js](#textAlign)
-- [textAlign_Left.js](#textAlign)
-- [textAlign_Right.js](#textAlign)
+- [addNumericSeparators.js](#addNumericSeparators.js)：数字を3桁で区切る
+- [copyLineDown.js](#copyLine)：行を下へコピー
+- [copyLineUp.js](#copyLine)：行を上へコピー
+- [createPageNumbers.js](#createPageNumbers.js)：ノンブル作成
+- [highlightWord.js](#highlightWord.js)：指定した単語の塗り色を変更
+- [insertLineAbove.js](#insertLine)：上に行を挿入
+- [insertLineBelow.js](#insertLine)：下に行を挿入
+- [moveLineDown.js](#moveLine)：行を下へ移動
+- [moveLineUp.js](#moveLine)：行を上へ移動
+- [swapTextContents.js](#swapTextContents.js)：文字列を交換
+- [textAlign_Center.js](#textAlign)：文字列の位置を動かさずに中央揃え
+- [textAlign_Left.js](#textAlign)：文字列の位置を動かさずに左揃え
+- [textAlign_Right.js](#textAlign)：文字列の位置を動かさずに右揃え
 
 ### Utility [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [arrangeWindows.js](#arrangeWindows.js)
-- [closeAllDocuments.js](#closeAllDocuments.js)
-- [compareScale.js](#compareScale.js)
-- [syncView.js](#syncView.js)
-- [XmpFunctions.js](#XmpFunctions.js)
+- [arrangeWindows.js](#arrangeWindows.js)：ウィンドウを並べて表示
+- [closeAllDocuments.js](#closeAllDocuments.js)：すべてのファイルを閉じる
+- [compareScale.js](#compareScale.js)：拡大・縮小率を表示
+- [syncView.js](#syncView.js)：ウィンドウの表示を同期
+- [XmpFunctions.js](#XmpFunctions.js)：XMP関数
 
 
 ### インストール
@@ -272,7 +272,6 @@ Illustrator CS4以降
 # <a name="deleteHiddenLayers.js">deleteHiddenLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 
-### Description
 非表示のレイヤーを削除します。
 
 ![Delete Hidden Layers](images/deleteHiddenLayers.png)
@@ -293,7 +292,6 @@ Illustrator CS以降
 # <a name="deleteLockedLayers.js">deleteLockedLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 
-### Description
 ロックしているレイヤーを削除します。
 
 ![Delete Locked Layers](images/deleteLockedLayers.png)
