@@ -10,15 +10,17 @@ This is a collection of scripts for Adobe Illustrator.
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [createColorChart.js](#createColorChart.js)
+- [extractColorsFromGradient.js](#extractColorsFromGradient.js) `new`
+- [generateGradientColor.js](#generateGradientColor.js) `new`
 - [randomTextColor.js](#randomTextColor.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
-- [roundColorValue.js](#roundColorValue.js) `new`
-- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js) `new`
+- [roundColorValue.js](#roundColorValue.js)
+- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js)
 - [shuffleGradientColor.js](#shuffleGradientColor.js)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-- [deleteHiddenLayers.js](#deleteHiddenLayers.js) `new`
-- [deleteLockedLayers.js](#deleteLockedLayers.js) `new`
+- [deleteHiddenLayers.js](#deleteHiddenLayers.js)
+- [deleteLockedLayers.js](#deleteLockedLayers.js)
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [invertLockedLayer.js](#invertLockedLayer.js)
 - [invertVisibleLayer.js](#invertVisibleLayer.js)
@@ -189,6 +191,7 @@ Move the cursor to the line you want to copy, and run this script.
 It is not necessary to select a line.
 
 ### Notes
+Only one line can be copied. Multiple lines are not supported.  
 In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 If you want to enter text, you must click with the mouse.
@@ -356,6 +359,52 @@ Illustrator CS or higher
 
 
 
+# <a name="extractColorsFromGradient.js">extractColorsFromGradient.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+### Description
+This script extracts colors as swatches from the gradient stops.
+
+![Extract Colors From Gradient](images/extractColorsFromGradient.png)
+
+### Usage
+Select the path objects or swatches, and run this script.
+
+### Notes
+Prioritize the path object over swatches.  
+To extract color from swatches, deselect the path objects.  
+Text object and stroke color are not supported.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="generateGradientColor.js">generateGradientColor.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+### Description
+This script generates the gradient color from fill colors or swatches.
+
+![Generate Gradient Color](images/generateGradientColor.png)
+
+### Usage
+Select the path objects or swatches, and run this script.
+
+### Notes
+Prioritize the path object over swatches.  
+To generate gradient color from swatches, deselect the path objects.  
+Text object and stroke color are not supported.
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
+
+
 # <a name="highlightWord.js">highlightWord.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
@@ -487,6 +536,7 @@ Move the cursor to the line you want to move, and run this script.
 It is not necessary to select a line.
 
 ### Notes
+Only one line can be moved. Multiple lines are not supported.  
 In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 If you want to enter text, you must click with the mouse.

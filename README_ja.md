@@ -8,15 +8,17 @@ Adobe Illustratorのスクリプト集です。
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [createColorChart.js](#createColorChart.js)：カラーチャート作成
+- `new` [extractColorsFromGradient.js](#extractColorsFromGradient.js)：グラデーションのカラー分岐点から色を取り出す
+- `new` [generateGradientColor.js](#generateGradientColor.js)：グラデーションを生成
 - [randomTextColor.js](#randomTextColor.js)：テキストの塗り色をランダムに変更
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)：Deleted Global Color を削除
-- [roundColorValue.js](#roundColorValue.js)：カラー数値を四捨五入 `new`
-- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js)：グラデーションのカラー分岐点、中間点の数値を四捨五入 `new`
+- [roundColorValue.js](#roundColorValue.js)：カラー数値を四捨五入
+- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js)：グラデーションのカラー分岐点、中間点の数値を四捨五入
 - [shuffleGradientColor.js](#shuffleGradientColor.js)：グラデーションをシャッフル
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-- [deleteHiddenLayers.js](#deleteHiddenLayers.js)：非表示レイヤーを削除 `new`
-- [deleteLockedLayers.js](#deleteLockedLayers.js)：ロック状態のレイヤーを削除 `new`
+- [deleteHiddenLayers.js](#deleteHiddenLayers.js)：非表示レイヤーを削除
+- [deleteLockedLayers.js](#deleteLockedLayers.js)：ロック状態のレイヤーを削除
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)：未使用（空）のレイヤーを削除
 - [invertLockedLayer.js](#invertLockedLayer.js)：ロック状態を反転
 - [invertVisibleLayer.js](#invertVisibleLayer.js)：表示状態を反転
@@ -184,6 +186,7 @@ Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt<
 行を選択する必要はありません。
 
 #### 注意事項
+コピーできるのは 1行のみです。複数行には対応していません。  
 copyLineDown.js で最終行をコピーする場合は、バグを回避するために空行を追加します。  
 バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
 テキストを編集する場合はマウスでテキストをクリックしてください。
@@ -344,6 +347,50 @@ Illustrator CS以降
 
 
 
+# <a name="extractColorsFromGradient.js">extractColorsFromGradient.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+グラデーションのカラー分岐点からそれぞれ色を取り出してスウォッチに追加します。
+
+![Extract Colors From Gradient](images/extractColorsFromGradient.png)
+
+#### 使用方法
+パスオブジェクトまたはスウォッチから色を選択してスクリプトを実行します。
+
+#### 注意事項
+パスオブジェクトを優先します。  
+スウォッチから色を取り出したい場合はパスオブジェクトの選択を解除してください。  
+テキスト、線の色には対応していません。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="generateGradientColor.js">generateGradientColor.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+オブジェクトの塗り色またはスウォッチからグラデーションを生成します。
+
+![Generate Gradient Color](images/generateGradientColor.png)
+
+#### 使用方法
+パスオブジェクトまたはスウォッチからグラデーションを選択してスクリプトを実行します。
+
+#### 注意事項
+パスオブジェクトを優先します。  
+スウォッチからグラデーションを生成したい場合はパスオブジェクトの選択を解除してください。  
+テキスト、線の色には対応していません。
+
+#### 動作条件
+Illustrator CS4以降
+
+
+
+
+
 # <a name="highlightWord.js">highlightWord.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
@@ -466,6 +513,7 @@ Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kb
 行を選択する必要はありません。
 
 #### 注意事項
+移動できるのは 1行のみです。複数行には対応していません。  
 moveLineUp.js で最終行を移動する場合は、バグを回避するために空行を追加します。  
 バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
 テキストを編集する場合はマウスでテキストをクリックしてください。
