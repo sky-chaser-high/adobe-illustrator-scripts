@@ -25,6 +25,13 @@
 - Changed the function to display the results.
 
 
+## stepAndRepeat.js
+### 2.0.0 (2022-10-08)
+### Changes
+- The UI has been brought closer to InDesign specifications.
+- Changed the file name.
+
+
 ## XmpFunctions.js
 ### 1.0.2 (2022-01-27)
 ### Features

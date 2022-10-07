@@ -10,12 +10,12 @@ This is a collection of scripts for Adobe Illustrator.
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [createColorChart.js](#createColorChart.js)
-- [extractColorsFromGradient.js](#extractColorsFromGradient.js) `new`
-- [generateGradientColor.js](#generateGradientColor.js) `new`
+- [extractColorsFromGradient.js](#extractColorsFromGradient.js)
+- [generateGradientColor.js](#generateGradientColor.js)
 - [randomTextColor.js](#randomTextColor.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [roundColorValue.js](#roundColorValue.js)
-- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js)
+- [roundLocationOfGradientStop.js](#roundLocationOfGradientStop.js)
 - [shuffleGradientColor.js](#shuffleGradientColor.js)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -33,12 +33,13 @@ This is a collection of scripts for Adobe Illustrator.
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [closePath.js](#closePath.js)
+- [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCorner.js) `New`
 - [createGridLines.js](#createGridLines.js)
 - [disjoinPath.js](#disjoinPath.js)
 - [measurePathItems.js](#measurePathItems.js)
 - [removeColorInGuideObject.js](#removeColorInGuideObject.js)
 - [shuffleObjects.js](#shuffleObjects.js)
-- [stepandRepeat.js](#stepandRepeat.js)
+- [stepAndRepeat.js](#stepAndRepeat.js) `Update`
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [addNumericSeparators.js](#addNumericSeparators.js)
@@ -61,16 +62,26 @@ This is a collection of scripts for Adobe Illustrator.
 - [compareScale.js](#compareScale.js)
 - [syncView.js](#syncView.js)
 - [XmpFunctions.js](#XmpFunctions.js)
+<br><br><br>
 
 
 ## Installation
-[Download](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) the zip archive and unzip it. The scripts can be placed anywhere on your computer.  
-To run the scripts, from File > Scripts > Other Script...
+[Download](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) the zip archive from 
+[![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) or 
+[Releases](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) and unzip it.  
+The scripts can be placed anywhere on your computer.  
+To run the scripts, from File > Scripts > Other Script... ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> )
+
+
+## UI
+[ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) was used to design the UI.  
+**See also:** [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas).
 
 
 ## Notes
 In rare cases, if you continue to use the script, it may stop working.  
 In that case, restart Illustrator and run this script again.
+<br><br><br>
 
 
 
@@ -163,6 +174,28 @@ Select two objects, and run this script.
 
 ### Notes
 The dimensional units depend on the ruler units.
+
+### Requirements
+Illustrator CS or higher
+
+
+
+
+
+# <a name="convertAllAnchorPointsToCorner.js">convertAllAnchorPointsToCorner.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+
+### Description
+This script converts all anchor points to the corner.  
+The anchor point conversion options in the Control panel require the anchor point to be selected, but this script selects the entire object.
+
+![Convert All Anchor Points To Corner](images/convertAllAnchorPointsToCorner.png)
+
+### Usage
+Select the entire path with selection tool, and run this script.
+
+### Notes
+It is not necessary to select anchor points with direct selection tool.
 
 ### Requirements
 Illustrator CS or higher
@@ -566,10 +599,6 @@ Both CMYK and RGB colors are supported.
 If there are many characters, the conversion will take time.  
 Some characters, such as periods and commas, are not applied.
 
-### UI
-[ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) was used for the UI design tool.  
-**See also:** [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas)
-
 ### Requirements
 Illustrator CS4 or higher
 
@@ -746,7 +775,7 @@ Illustrator CS or higher
 
 
 
-# <a name="roundLocationOfGradientStops.js">roundLocationOfGradientStops.js</a>
+# <a name="roundLocationOfGradientStop.js">roundLocationOfGradientStop.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
 ### Description
@@ -826,19 +855,22 @@ Illustrator CS5 or higher
 
 
 
-# <a name="stepandRepeat.js">stepandRepeat.js</a>
+# <a name="stepAndRepeat.js">stepAndRepeat.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 
 ### Description
 This script is equivalent to InDesign's Edit menu "Step and Repeat".  
 
-![Step and Repeat](images/stepandRepeat.png)
+![Step and Repeat](images/stepAndRepeat.png)
 
 ### Usage
 1. Select the objects, and run this script.
-2. Select Repeat or Grid.
-3. Enter the number of copies to be duplicated.
+2. If you want to create as a grid, check the create as a grid.
+3. Enter the number of times to repeat.
 4. Enter the offset values.
+
+### Notes
+The unit of the offset value switches to match the unit of the ruler.
 
 ### Requirements
 Illustrator CS4 or higher

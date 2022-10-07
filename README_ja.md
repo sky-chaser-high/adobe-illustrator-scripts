@@ -8,12 +8,12 @@ Adobe Illustratorのスクリプト集です。
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [createColorChart.js](#createColorChart.js)：カラーチャート作成
-- `new` [extractColorsFromGradient.js](#extractColorsFromGradient.js)：グラデーションのカラー分岐点から色を取り出す
-- `new` [generateGradientColor.js](#generateGradientColor.js)：グラデーションを生成
+- [extractColorsFromGradient.js](#extractColorsFromGradient.js)：グラデーションのカラー分岐点から色を取り出す
+- [generateGradientColor.js](#generateGradientColor.js)：グラデーションを生成
 - [randomTextColor.js](#randomTextColor.js)：テキストの塗り色をランダムに変更
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)：Deleted Global Color を削除
 - [roundColorValue.js](#roundColorValue.js)：カラー数値を四捨五入
-- [roundLocationOfGradientStops.js](#roundLocationOfGradientStops.js)：グラデーションのカラー分岐点、中間点の数値を四捨五入
+- [roundLocationOfGradientStop.js](#roundLocationOfGradientStop.js)：グラデーションのカラー分岐点、中間点の数値を四捨五入
 - [shuffleGradientColor.js](#shuffleGradientColor.js)：グラデーションをシャッフル
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -31,12 +31,13 @@ Adobe Illustratorのスクリプト集です。
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [closePath.js](#closePath.js)：パスを閉じる
+- `New` [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCorner.js)：すべてのアンカーポイントをコーナーポイントに切り替え
 - [createGridLines.js](#createGridLines.js)：グリッドラインを作成
 - [disjoinPath.js](#disjoinPath.js)：パスを分解
 - [measurePathItems.js](#measurePathItems.js)：パスの寸法を測る
 - [removeColorInGuideObject.js](#removeColorInGuideObject.js)：ガイドオブジェクトの色を削除
 - [shuffleObjects.js](#shuffleObjects.js)：オブジェクトをシャッフル
-- [stepandRepeat.js](#stepandRepeat.js)：繰り返し複製
+- `Update` [stepAndRepeat.js](#stepAndRepeat.js)：繰り返し複製
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [addNumericSeparators.js](#addNumericSeparators.js)：数字を3桁で区切る
@@ -59,20 +60,43 @@ Adobe Illustratorのスクリプト集です。
 - [compareScale.js](#compareScale.js)：拡大・縮小率を表示
 - [syncView.js](#syncView.js)：ウィンドウの表示を同期
 - [XmpFunctions.js](#XmpFunctions.js)：XMP関数
+<br><br><br>
 
 
 ### インストール
 [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) 
 または [Releases](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) から
 ZIPファイルを[ダウンロード](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest)してください。  
-解凍したフォルダは好きな場所に置いてください。  
-ファイル > スクリプト > その他のスクリプト... からスクリプトを選択し実行します。  
-Macを使用している場合は、[SPAi](https://tama-san.com/spai/) がおすすめです。
+解凍したスクリプトは好きな場所に置いて管理してください。  
+ファイル > スクリプト > その他のスクリプト... ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> ) からスクリプトを選択して実行します。  
+
+スクリプトの導入方法は下記のサイトで詳しく解説されています。参考にしてみてください。
+- [Illustratorでスクリプトを使ってみよう［標準機能編］](https://hamfactory.net/illustrator/script-basic/)
+- [Illustratorでスクリプトを使ってみよう［Mac+SPAi編］](https://hamfactory.net/illustrator/script-spai/)
+
+
+### アプリケーション、プラグイン
+下記のアプリケーション、プラグインを使用すると楽にスクリプトを実行できるようになります。
+- [SPAi](https://tama-san.com/spai/)（Mac）
+- [Sppy](https://sppy.stars.ne.jp/sppyai)（Windows）
+- [Scripshon Trees](https://exchange.adobe.com/apps/cc/15873?pluginId=15873&mv=product&mv2=accc)（Mac / Windows 両対応）  
+
+
+### ファイル名
+スクリプトのファイル名は日本語に変更しても問題なく動作します。  
+例えば、textAlign_Center.js を「テキスト中央揃え.js」のように変更しても大丈夫です。
+
+
+### UI デザイン
+UIのあるスクリプトはすべて日本語の表示になります。  
+UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) を使用しました。  
+ツールの詳細は [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas) を参照してください。
 
 
 ### 注意事項
 スクリプトを使い続けていると、まれに動作しなくなる場合があります。  
 その場合は、Illustratorを再起動してから実行してみてください。
+<br><br><br>
 
 
 
@@ -154,12 +178,34 @@ Illustrator CS以降
 2つのオブジェクトを比較して拡大・縮小率を表示します。
 
 ![Compare Scale](images/compareScale.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
 2つのオブジェクトを選択してスクリプトを実行します。
 
 #### 注意事項
 寸法の単位はルーラー単位により変わります。
+
+#### 動作条件
+Illustrator CS以降
+
+
+
+
+
+# <a name="convertAllAnchorPointsToCorner.js">convertAllAnchorPointsToCorner.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+
+すべてのアンカーポイントをコーナーポイントに切り替えます。  
+コントロールパネルの機能ではアンカーポイントを選択しなければなりませんが、このスクリプトではオブジェクト全体を選択します。
+
+![Convert All Anchor Points To Corner](images/convertAllAnchorPointsToCorner.png)
+
+#### 使用方法
+選択ツールでパスオブジェクト全体を選択してスクリプトを実行します。
+
+#### 注意事項
+ダイレクト選択ツールでアンカーポイントを選択する必要はありません。
 
 #### 動作条件
 Illustrator CS以降
@@ -204,6 +250,7 @@ Illustrator CC 2018以降
 カラーチャートを作成します。
 
 ![Create Color Chart](images/createColorChart.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
 1. スクリプトを実行します。
@@ -250,6 +297,7 @@ InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在の
 アートボードの指定した位置にノンブルを配置します。
 
 ![Create Page Numbers](images/createPageNumbers.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
 1. スクリプトを実行します。
@@ -282,7 +330,7 @@ Illustrator CS4以降
 #### 使用方法
 このスクリプトを実行するだけです。  
 
-### Notes
+#### 注意事項
 バージョン2021からレイヤーパネルメニューに実装されています。
 
 #### 動作条件
@@ -397,6 +445,7 @@ Illustrator CS4以降
 入力した単語の塗り色を変更します。CMYK、RGB のどちらにも対応しています。
 
 ![Highlight Word](images/highlightWord.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
 1. テキストオブジェクトを選択してスクリプトを実行します。
@@ -531,6 +580,7 @@ Illustrator CC 2018以降
 単語または、1文字、1文ごとにランダムに色を適用します。CMYK、RGB のどちらにも対応しています。
 
 ![Random Text Color](images/randomTextColor.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
 1. テキストオブジェクトを選択してスクリプトを実行します。
@@ -540,10 +590,6 @@ Illustrator CC 2018以降
 #### 注意事項
 文字数が多いと変換に時間がかかります。  
 英文の場合、ピリオドやカンマなど一部適用されない文字があります。
-
-#### UI デザイン
-UIデザインツールには [ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) を利用しました。  
-ツールの詳細は [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas) を参照してください。
 
 #### 動作条件
 Illustrator CS4以降
@@ -565,6 +611,7 @@ InDesignのリンクパネルメニュー > ファイル拡張子にリンクを
 2. 表示されたプロンプトに置き換えるファイルの拡張子を入力します。
 
 ![Relink File Extension](images/relinkFileExtension.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 注意事項
 再配置するリンク画像は、元のリンク画像と同じフォルダに置いてください。  
@@ -585,6 +632,7 @@ Illustrator CS4以降
 このスクリプトは、relinkFileExtension.js を機能拡張したものです。
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
 1. 置き換えたいリンク画像を選択しスクリプトを実行します。  
@@ -714,7 +762,7 @@ Illustrator CS以降
 
 
 
-# <a name="roundLocationOfGradientStops.js">roundLocationOfGradientStops.js</a>
+# <a name="roundLocationOfGradientStop.js">roundLocationOfGradientStop.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
 グラデーションのカラー分岐点、中間点の数値を四捨五入します。  
@@ -790,19 +838,23 @@ Illustrator CS5以降
 
 
 
-# <a name="stepandRepeat.js">stepandRepeat.js</a>
+# <a name="stepAndRepeat.js">stepAndRepeat.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 
 InDesignの編集メニュー > 繰り返し複製... に相当します。
 
-![Step and Repeat](images/stepandRepeat.png)
+![Step and Repeat](images/stepAndRepeat.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
 1. オブジェクトを選択してスクリプトを実行します。
-2. モードの「繰り返し」または「グリッド」を選択します。
-3. 「繰り返し」の場合は、カウントを入力します。  
-   「グリッド」の場合は、行・段数を入力します。
+2. グリッド状にしたい場合は、「グリッドとして作成」にチェックを入れてください。
+3. 繰り返しの場合はカウントに繰り返す回数を入力します。  
+   グリッドの場合は行・段数にそれぞれ繰り返す回数を入力します。
 4. オフセット値（オブジェクトの間隔）を入力します。
+
+#### 注意事項
+オフセット値の単位は、ルーラー単位により切り替わります。
 
 #### 動作条件
 Illustrator CS4以降

@@ -1,5 +1,5 @@
 ﻿/* ===============================================================================================================================================
-   stepandRepeat
+   stepAndRepeat
 
    Description
    This script is equivalent to InDesign's "Step and Repeat".
@@ -18,7 +18,14 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   2.0.0
+
+   Homepage
+   github.com/sky-chaser-high/adobe-illustrator-scripts
+
+   License
+   Released under the MIT license.
+   https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
 (function() {
@@ -29,24 +36,16 @@
 function main() {
     var dialog = showDialog();
 
-    dialog.buttons.ok.onClick = function() {
+    dialog.ok.onClick = function() {
         if (!dialog.preview.value) {
-            stepandRepeat(dialog);
-        }
-        dialog.close();
-    }
-
-    dialog.buttons.cancel.onClick = function() {
-        if (dialog.preview.value) {
-            app.undo();
-            app.redraw();
+            run(dialog);
         }
         dialog.close();
     }
 
     dialog.preview.onClick = function() {
         if (dialog.preview.value) {
-            stepandRepeat(dialog);
+            run(dialog);
         }
         else {
             app.undo();
@@ -54,54 +53,16 @@ function main() {
         }
     }
 
-    dialog.mode.radios.repeat.onClick = function() {
-        if (dialog.mode.radios.repeat.value) {
-            dialog.repeat.enabled = true;
-            dialog.grid.enabled = false;
-            dialog.repeat.group.count.active = false;
-            dialog.repeat.group.count.active = true;
-        }
-        preview(dialog);
-    }
-
-    dialog.mode.radios.grid.onClick = function() {
-        if (dialog.mode.radios.grid.value) {
-            dialog.repeat.enabled = false;
-            dialog.grid.enabled = true;
-            dialog.grid.group.row.active = false;
-            dialog.grid.group.row.active = true;
-        }
-        preview(dialog);
-    }
-
-    dialog.repeat.group.count.onChanging = function() {
-        preview(dialog);
-    }
-
-    dialog.grid.group.row.onChanging = function() {
-        preview(dialog);
-    }
-
-    dialog.grid.group.column.onChanging = function() {
-        preview(dialog);
-    }
-
-    dialog.offset.group.vertical.onChanging = function() {
-        preview(dialog);
-    }
-
-    dialog.offset.group.horizontal.onChanging = function() {
-        preview(dialog);
-    }
-
-    dialog.offset.group.list.onChange = function() {
-        dialog.offset.group.vertical.active = false;
-        dialog.offset.group.vertical.active = true;
-        preview(dialog);
-    }
-
     dialog.center();
     dialog.show();
+}
+
+
+function run(dialog) {
+    var config = getConfiguration(dialog);
+    var valid = verify(config);
+    if (!valid) return;
+    stepAndRepeat(config);
 }
 
 
@@ -109,14 +70,13 @@ function preview(dialog) {
     if (dialog.preview.value) {
         app.undo();
         app.redraw();
-        stepandRepeat(dialog);
+        run(dialog);
     }
 }
 
 
-function stepandRepeat(dialog) {
+function stepAndRepeat(config) {
     var items = app.activeDocument.selection;
-    var config = getConfiguration(dialog);
 
     if (config.mode == 'repeat') {
         repeat(items, config);
@@ -132,9 +92,12 @@ function stepandRepeat(dialog) {
 
 function repeat(items, config) {
     for (var i = 0, len = items.length; i < len; i++) {
-        for (var j = 0; j < config.count; j++) {
+        for (var j = 0; j < config.rows; j++) {
             items[i].duplicate();
-            items[i].translate(config.horizontal * getUnit(config.unit), -config.vertical * getUnit(config.unit));
+            items[i].translate(
+                getUnit(config.horizontal + config.unit, 'pt'),
+                getUnit(-config.vertical + config.unit, 'pt')
+            );
         }
     }
 }
@@ -142,20 +105,20 @@ function repeat(items, config) {
 
 function grid(items, config) {
     for (var i = 0, len = items.length; i < len; i++) {
-        item = {
+        var item = {
             top: items[i].top,
             left: items[i].left,
         };
 
-        for (var j = 0; j < config.row; j++) {
-            for (var k = 0; k < config.column - 1; k++) {
+        for (var j = 0; j < config.rows; j++) {
+            for (var k = 0; k < config.columns - 1; k++) {
                 items[i].duplicate();
-                items[i].translate(config.horizontal * getUnit(config.unit), 0);
+                items[i].translate(getUnit(config.horizontal + config.unit, 'pt'), 0);
             }
 
-            if (j < config.row - 1) {
+            if (j < config.rows - 1) {
                 items[i].duplicate();
-                items[i].top = item.top - config.vertical * getUnit(config.unit) * (j + 1);
+                items[i].top = item.top - getUnit(config.vertical + config.unit, 'pt') * (j + 1);
                 items[i].left = item.left;
             }
         }
@@ -164,78 +127,55 @@ function grid(items, config) {
 
 
 function getConfiguration(dialog) {
-    var mode;
-    if (dialog.mode.radios.repeat.value) {
-        mode = 'repeat';
-    }
-    else if (dialog.mode.radios.grid.value) {
-        mode = 'grid';
-    }
+    var mode = (dialog.grid.value) ? 'grid' : 'repeat';
 
-    var count = isNaN(Number(dialog.repeat.group.count.text)) ? 0 : Number(dialog.repeat.group.count.text);
-    var row = isNaN(Number(dialog.grid.group.row.text)) ? 1 : Number(dialog.grid.group.row.text);
-    var column = isNaN(Number(dialog.grid.group.column.text)) ? 1 : Number(dialog.grid.group.column.text);
+    var rows = isNaN(Number(dialog.rows.text)) ? 1 : Number(dialog.rows.text);
+    var columns = isNaN(Number(dialog.columns.text)) ? 1 : Number(dialog.columns.text);
 
-    validate(count, row, column);
+    var vertical = isNaN(Number(dialog.vertical.text)) ? 0 : Number(dialog.vertical.text);
+    var horizontal = isNaN(Number(dialog.horizontal.text)) ? 0 : Number(dialog.horizontal.text);
 
     return {
         mode: mode,
-        count: count,
-        row: row,
-        column: column,
-        vertical: isNaN(Number(dialog.offset.group.vertical.text)) ? 0 : Number(dialog.offset.group.vertical.text),
-        horizontal: isNaN(Number(dialog.offset.group.horizontal.text)) ? 0 : Number(dialog.offset.group.horizontal.text),
-        unit: dialog.offset.group.list.selection.toString()
+        rows: rows,
+        columns: columns,
+        vertical: vertical,
+        horizontal: horizontal,
+        unit: getRulerUnits()
     };
 }
 
 
-function getRulerUnits(unit) {
-    switch (unit) {
-        case 'mm':
-            return RulerUnits.Millimeters;
-        case 'inch':
-            return RulerUnits.Inches;
-        case 'pt':
-            return RulerUnits.Points;
-        case 'px':
-            return RulerUnits.Pixels;
-    }
-}
-
-
-function setRulerUnits() {
+function getRulerUnits() {
     switch (app.activeDocument.rulerUnits) {
         case RulerUnits.Millimeters:
-            return 0;
+            return 'mm';
+        case RulerUnits.Centimeters:
+            return 'cm';
         case RulerUnits.Inches:
-            return 1;
+            return 'in';
         case RulerUnits.Points:
-            return 2;
+            return 'pt';
         case RulerUnits.Pixels:
-            return 3;
+            return 'px';
         default:
-            return 0;
+            return 'pt';
     }
 }
 
 
-function getUnit(unit) {
-    if (/pt/i.test(unit)) {
-        return Number(UnitValue(1, unit));
+function getUnit(value, unit) {
+    try {
+        return Number(UnitValue(value).as(unit));
     }
-    else {
-        return UnitValue(1, unit).as('pt');
+    catch (err) {
+        return Number(UnitValue('1pt').as('pt'));
     }
 }
 
 
-function validate(count, row, column) {
-    if (count < 0) {
-        alert(getErrorMessage(0));
-        return false;
-    }
-    if (row < 1 || column < 1) {
+function verify(config) {
+    if (config.rows < 1 || config.columns < 1) {
         alert(getErrorMessage(1));
         return false;
     }
@@ -246,7 +186,7 @@ function validate(count, row, column) {
 function getErrorMessage(value) {
     var error = {
         en_US: {
-            message: 'The value must be greater than ' + value
+            message: 'The value must be greater than ' + value + '.'
         },
         ja_JP: {
             message: '値は ' + value + ' 以上でなければなりません。'
@@ -256,39 +196,37 @@ function getErrorMessage(value) {
 }
 
 
-function getLanguage() {
+function localize() {
     var language = {
         en_US: {
             title: 'Step and Repeat',
-            mode: 'Mode',
             repeat: 'Repeat',
-            count: 'Count',
             grid: 'Grid',
-            row: 'Rows',
-            column: 'Columns',
+            count: 'Count:',
+            rows: 'Rows:',
+            columns: 'Columns:',
+            isGrid: 'Create as a grid',
             offset: 'Offset',
-            vertical: 'Vertical',
-            horizontal: 'Horizontal',
-            unit: 'Unit',
-            preview: 'Preview',
+            vertical: 'Vertical:',
+            horizontal: 'Horizontal:',
+            ok: 'OK',
             cancel: 'Cancel',
-            ok: 'OK'
+            preview: 'Preview'
         },
         ja_JP: {
             title: '繰り返し複製',
-            mode: 'モード',
             repeat: '繰り返し',
-            count: 'カウント',
             grid: 'グリッド',
-            row: '行',
-            column: '段数',
+            count: 'カウント：',
+            rows: '行：',
+            columns: '段数：',
+            isGrid: 'グリッドとして作成',
             offset: 'オフセット',
-            vertical: '垂直方向',
-            horizontal: '水平方向',
-            unit: '単位',
-            preview: 'プレビュー',
+            vertical: '垂直方向：',
+            horizontal: '水平方向：',
+            ok: 'OK',
             cancel: 'キャンセル',
-            ok: 'OK'
+            preview: 'プレビュー'
         }
     };
 
@@ -297,112 +235,207 @@ function getLanguage() {
 
 
 function showDialog() {
-    var language = getLanguage();
+    var local = localize();
 
-    var dialog = new Window('dialog', language.title, undefined);
-    dialog.orientation = 'column';
-    dialog.alignChildren = ['fill', 'fill'];
+    var dialog = new Window('dialog');
+    dialog.text = local.title;
+    dialog.orientation = 'row';
+    dialog.alignChildren = ['center','top'];
+    dialog.spacing = 10;
+    dialog.margins = 16;
 
-    dialog.mode = dialog.add('group', undefined);
-    dialog.mode.title = dialog.mode.add('statictext', undefined, language.mode + ' :');
-    dialog.mode.radios = dialog.mode.add('group', undefined);
-    dialog.mode.radios.margins = [0, 4, 0, 0];
+    var group1 = dialog.add('group', undefined, {name: 'group1'});
+    group1.orientation = 'column';
+    group1.alignChildren = ['left','center'];
+    group1.spacing = 10;
+    group1.margins = 0;
 
-    dialog.mode.radios.repeat = dialog.mode.radios.add('radiobutton', undefined, language.repeat);
-    dialog.mode.radios.repeat.value = true;
-    dialog.mode.radios.grid = dialog.mode.radios.add('radiobutton', undefined, language.grid);
+    var panel1 = group1.add('panel', undefined, undefined, {name: 'panel1'});
+    panel1.text = local.repeat;
+    panel1.orientation = 'column';
+    panel1.alignChildren = ['left','center'];
+    panel1.spacing = 10;
+    panel1.margins = 10;
+
+    var group2 = panel1.add('group', undefined, {name: 'group2'});
+    group2.orientation = 'row';
+    group2.alignChildren = ['left','fill'];
+    group2.spacing = 10;
+    group2.margins = 4;
+
+    var group3 = group2.add('group', undefined, {name: 'group3'});
+    group3.preferredSize.width = 60;
+    group3.orientation = 'row';
+    group3.alignChildren = ['right','center'];
+    group3.spacing = 10;
+    group3.margins = 0;
+
+    var statictext1 = group3.add('statictext', undefined, undefined, {name: 'statictext1'});
+    statictext1.text = local.count;
+    statictext1.justify = 'right';
+
+    var edittext1 = group2.add('edittext', undefined, undefined, {name: 'edittext1'});
+    edittext1.text = '1';
+    edittext1.preferredSize.width = 90;
+    edittext1.preferredSize.height = 20;
+    edittext1.active = true;
+
+    var group4 = group2.add('group', undefined, {name: 'group4'});
+    group4.preferredSize.width = 80;
+    group4.orientation = 'row';
+    group4.alignChildren = ['right','center'];
+    group4.spacing = 10;
+    group4.margins = 0;
+
+    var statictext2 = group4.add('statictext', undefined, undefined, {name: 'statictext2'});
+    statictext2.text = local.columns;
+    statictext2.justify = 'right';
+    statictext2.visible = false;
+
+    var edittext2 = group2.add('edittext', undefined, undefined, {name: 'edittext2'});
+    edittext2.text = '1';
+    edittext2.preferredSize.width = 90;
+    edittext2.preferredSize.height = 20;
+    edittext2.visible = false;
+
+    var group5 = panel1.add('group', undefined, {name: 'group5'});
+    group5.orientation = 'row';
+    group5.alignChildren = ['left','fill'];
+    group5.spacing = 10;
+    group5.margins = 0;
+
+    var checkbox1 = group5.add('checkbox', undefined, undefined, {name: 'checkbox1'});
+    checkbox1.text = local.isGrid;
+
+    var panel2 = group1.add('panel', undefined, undefined, {name: 'panel2'});
+    panel2.text = local.offset;
+    panel2.orientation = 'row';
+    panel2.alignChildren = ['left','center'];
+    panel2.spacing = 10;
+    panel2.margins = 10;
+
+    var group6 = panel2.add('group', undefined, {name: 'group6'});
+    group6.orientation = 'row';
+    group6.alignChildren = ['left','fill'];
+    group6.spacing = 10;
+    group6.margins = 4;
+
+    var group7 = group6.add('group', undefined, {name: 'group7'});
+    group7.preferredSize.width = 60;
+    group7.orientation = 'row';
+    group7.alignChildren = ['right','center'];
+    group7.spacing = 10;
+    group7.margins = 0;
+
+    var statictext3 = group7.add('statictext', undefined, undefined, {name: 'statictext3'});
+    statictext3.text = local.vertical;
+    statictext3.justify = 'right';
+
+    var edittext3 = group6.add('edittext', undefined, undefined, {name: 'edittext3'});
+    edittext3.text = '10';
+    edittext3.preferredSize.width = 90;
+    edittext3.preferredSize.height = 20;
+
+    var group8 = group6.add('group', undefined, {name: 'group8'});
+    group8.preferredSize.width = 80;
+    group8.orientation = 'row';
+    group8.alignChildren = ['right','center'];
+    group8.spacing = 10;
+    group8.margins = 0;
+
+    var statictext4 = group8.add('statictext', undefined, undefined, {name: 'statictext4'});
+    statictext4.text = local.horizontal;
+    statictext4.justify = 'right';
+
+    var edittext4 = group6.add('edittext', undefined, undefined, {name: 'edittext4'});
+    edittext4.text = '10';
+    edittext4.preferredSize.width = 90;
+    edittext4.preferredSize.height = 20;
+
+    var group9 = dialog.add('group', undefined, {name: 'group9'});
+    group9.orientation = 'column';
+    group9.alignChildren = ['center','center'];
+    group9.spacing = 10;
+    group9.margins = 0;
+
+    var button1 = group9.add('button', undefined, undefined, {name: 'button1'});
+    button1.text = local.ok;
+    button1.preferredSize.width = 90;
+    button1.preferredSize.height = 30;
+
+    var button2 = group9.add('button', undefined, undefined, {name: 'button2'});
+    button2.text = local.cancel;
+    button2.preferredSize.width = 90;
+    button2.preferredSize.height = 30;
+
+    var checkbox2 = group9.add('checkbox', undefined, undefined, {name: 'checkbox2'});
+    checkbox2.text = local.preview;
 
 
-    dialog.repeat = dialog.add('panel', undefined, language.repeat);
-    dialog.repeat.orientation = 'row';
-    dialog.repeat.alignChildren = ['left', 'fill'];
-
-    dialog.repeat.group = dialog.repeat.add('group');
-    dialog.repeat.group.orientation = 'row';
-    dialog.repeat.group.alignment = ['left', 'fill'];
-    dialog.repeat.group.margins = [0, 5, 0, 5];
-
-    dialog.repeat.group.titleCount = dialog.repeat.group.add('statictext', undefined, language.count + ' :');
-    dialog.repeat.group.count = dialog.repeat.group.add('edittext', undefined, 1);
-    dialog.repeat.group.count.size = { width: 60, height: 20 };
+    button2.onClick = function() {
+        if (checkbox2.value) {
+            app.undo();
+            app.redraw();
+        }
+        dialog.close();
+    }
 
 
-    dialog.grid = dialog.add('panel', undefined, language.grid);
-    dialog.grid.orientation = 'row';
-    dialog.grid.alignChildren = ['left', 'fill'];
-    dialog.grid.enabled = false;
-
-    dialog.grid.group = dialog.grid.add('group');
-    dialog.grid.group.orientation = 'row';
-    dialog.grid.group.alignment = ['left', 'fill'];
-    dialog.grid.group.margins = [0, 5, 0, 5];
-
-    dialog.grid.group.titleRow = dialog.grid.group.add('statictext', undefined, language.row + ' :');
-    dialog.grid.group.row = dialog.grid.group.add('edittext', undefined, 2);
-    dialog.grid.group.row.size = { width: 60, height: 20 };
-
-    dialog.grid.group.titleColumn = dialog.grid.group.add('statictext', undefined, language.column + ' :');
-    dialog.grid.group.column = dialog.grid.group.add('edittext', undefined, 2);
-    dialog.grid.group.column.size = { width: 60, height: 20 };
+    checkbox1.onClick = function() {
+        statictext2.visible = !statictext2.visible;
+        edittext2.visible = !edittext2.visible;
+        panel1.text = checkbox1.value ? local.grid : local.repeat;
+        statictext1.text = checkbox1.value ? local.rows : local.count;
+        preview(dialog)
+    }
 
 
-    dialog.offset = dialog.add('panel', undefined, language.offset);
-    dialog.offset.orientation = 'row';
-    dialog.offset.alignChildren = ['left', 'fill'];
+    edittext1.onChanging = function() {
+        preview(dialog)
+    }
 
-    dialog.offset.group = dialog.offset.add('group');
-    dialog.offset.group.orientation = 'row';
-    dialog.offset.group.alignment = ['left', 'fill'];
-    dialog.offset.group.margins = [0, 5, 0, 5];
+    edittext2.onChanging = function() {
+        preview(dialog)
+    }
 
-    dialog.offset.group.titleVertical = dialog.offset.group.add('statictext', undefined, language.vertical + ' :');
-    dialog.offset.group.vertical = dialog.offset.group.add('edittext', undefined, 10);
-    dialog.offset.group.vertical.size = { width: 60, height: 20 };
+    edittext3.onChanging = function() {
+        preview(dialog)
+    }
 
-    dialog.offset.group.titleHorizontal = dialog.offset.group.add('statictext', undefined, language.horizontal + ' :');
-    dialog.offset.group.horizontal = dialog.offset.group.add('edittext', undefined, 10);
-    dialog.offset.group.horizontal.size = { width: 60, height: 20 };
-
-    dialog.offset.group.unit = dialog.offset.group.add('statictext', undefined, language.unit + ' :');
-    dialog.offset.group.list = dialog.offset.group.add('dropdownlist', undefined, ['mm', 'inch', 'pt', 'px']);
-    dialog.offset.group.list.size = { width: 60, height: 20 };
-    dialog.offset.group.list.selection = setRulerUnits();
-
-    dialog.preview = dialog.add('checkbox', undefined, language.preview);
+    edittext4.onChanging = function() {
+        preview(dialog)
+    }
 
 
-    dialog.buttons = dialog.add('group');
-    dialog.buttons.alignChildren = ['right', 'fill'];
-    dialog.buttons.margins = [0, 5, 0, 0];
-
-    dialog.buttons.cancel = dialog.buttons.add('button', undefined, language.cancel);
-    dialog.buttons.ok = dialog.buttons.add('button', undefined, language.ok);
-
-
-    dialog.repeat.group.titleCount.addEventListener('click', function() {
-        dialog.repeat.group.count.active = false;
-        dialog.repeat.group.count.active = true;
+    statictext1.addEventListener('click', function() {
+        edittext1.active = false;
+        edittext1.active = true;
     });
 
-    dialog.grid.group.titleRow.addEventListener('click', function() {
-        dialog.grid.group.row.active = false;
-        dialog.grid.group.row.active = true;
+    statictext2.addEventListener('click', function() {
+        edittext2.active = false;
+        edittext2.active = true;
     });
 
-    dialog.grid.group.titleColumn.addEventListener('click', function() {
-        dialog.grid.group.column.active = false;
-        dialog.grid.group.column.active = true;
+    statictext3.addEventListener('click', function() {
+        edittext3.active = false;
+        edittext3.active = true;
     });
 
-    dialog.offset.group.titleVertical.addEventListener('click', function() {
-        dialog.offset.group.vertical.active = false;
-        dialog.offset.group.vertical.active = true;
+    statictext4.addEventListener('click', function() {
+        edittext4.active = false;
+        edittext4.active = true;
     });
 
-    dialog.offset.group.titleHorizontal.addEventListener('click', function() {
-        dialog.offset.group.horizontal.active = false;
-        dialog.offset.group.horizontal.active = true;
-    });
+
+    dialog.rows = edittext1;
+    dialog.columns = edittext2;
+    dialog.vertical = edittext3;
+    dialog.horizontal = edittext4;
+    dialog.grid = checkbox1;
+    dialog.preview = checkbox2;
+    dialog.ok = button1;
+    dialog.cancel = button2;
 
     return dialog;
 }
