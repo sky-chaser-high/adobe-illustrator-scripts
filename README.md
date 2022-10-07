@@ -861,7 +861,7 @@ Illustrator CS5 or higher
 ### Description
 This script is equivalent to InDesign's Edit menu "Step and Repeat".  
 
-![Step and Repeat](images/stepAndRepeat.png)
+![Step and Repeat](images/stepandRepeat.png)
 
 ### Usage
 1. Select the objects, and run this script.

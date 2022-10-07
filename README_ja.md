@@ -843,7 +843,7 @@ Illustrator CS5以降
 
 InDesignの編集メニュー > 繰り返し複製... に相当します。
 
-![Step and Repeat](images/stepAndRepeat.png)
+![Step and Repeat](images/stepandRepeat.png)
 <div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
 
 #### 使用方法
