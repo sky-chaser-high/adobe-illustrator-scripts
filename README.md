@@ -6,12 +6,14 @@ This is a collection of scripts for Adobe Illustrator.
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+- [showArtboardName.js](#showArtboardName.js) `New`
 - [sortArtboards.js](#sortArtboards.js)
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-- [createColorChart.js](#createColorChart.js)
+- [createColorChart.js](#createColorChart.js) `Update`
 - [extractColorsFromGradient.js](#extractColorsFromGradient.js)
 - [generateGradientColor.js](#generateGradientColor.js)
+- [matchLocationOfGradientStop.js](#matchLocationOfGradientStop.js) `New`
 - [randomTextColor.js](#randomTextColor.js)
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
 - [roundColorValue.js](#roundColorValue.js)
@@ -224,6 +226,7 @@ Move the cursor to the line you want to copy, and run this script.
 It is not necessary to select a line.
 
 ### Notes
+Since copy and paste inside the script to move the cursor position, so if you have copied the content in advance, it will be lost.  
 Only one line can be copied. Multiple lines are not supported.  
 In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
@@ -240,7 +243,8 @@ Illustrator CC 2018 or higher
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
 ### Description
-This script creates a color chart.
+This script creates a color chart.  
+Both CMYK and RGB colors are supported.
 
 ![Create Color Chart](images/createColorChart.png)
 
@@ -251,10 +255,10 @@ This script creates a color chart.
 3. Select the color you want to increase or decrease with vertical, or horizontal.
 4. Enter the increase or decrease value.  
    Enter the percentage to be increased or decreased.
-5. Set the artboard size, chip size, and units according to your preference.
+5. Set the artboard size, color chip size, and units according to your preference.
 
 ### Notes
-For CMYK, Black cannot be increased or decreased.  
+Create a color chart in a new document.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -523,6 +527,28 @@ Illustrator CS or higher
 
 
 
+# <a name="matchLocationOfGradientStop.js">matchLocationOfGradientStop.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+### Description
+This script matches the location of the gradient stops and midpoints.
+
+![Match Location Of Gradient Stop](images/matchLocationOfGradientStop.png)
+
+### Usage
+1. Select two or more gradients in the Swatches panel, and run this script.
+2. Select a source gradient.
+
+### Notes
+Only gradients in the Swatches panel are supported.
+
+### Requirements
+Illustrator CS4 or higher
+
+
+
+
+
 # <a name="measurePathItems.js">measurePathItems.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 
@@ -569,6 +595,7 @@ Move the cursor to the line you want to move, and run this script.
 It is not necessary to select a line.
 
 ### Notes
+Since copy and paste inside the script to move the cursor position, so if you have copied the content in advance, it will be lost.  
 Only one line can be moved. Multiple lines are not supported.  
 In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
@@ -789,6 +816,24 @@ Select the objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
+
+
+
+
+
+# <a name="showArtboardName.js">showArtboardName.js</a>
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+
+### Description
+This script shows the artboard name in the document.
+
+![Show Artboard Name](images/showArtboardName.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CS4 or higher
 
 
 

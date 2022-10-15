@@ -1,6 +1,14 @@
 # Change Log
 
 
+## createColorChart.js
+### 2.0.0 (2022-10-15)
+### Changes
+- Updated the UI.
+- Black color can also be increased or decreased.
+- Solid colors are supported.
+
+
 ## measurePathItems.js
 ### 1.0.1 (2022-02-17)
 ### Bug Fixes

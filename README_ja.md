@@ -4,12 +4,14 @@ Adobe Illustratorのスクリプト集です。
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+- `New` [showArtboardName.js](#showArtboardName.js)：アートボード名を表示
 - [sortArtboards.js](#sortArtboards.js)：アートボードをソート（アートボードパネル内のみ）
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-- [createColorChart.js](#createColorChart.js)：カラーチャート作成
+- `Update` [createColorChart.js](#createColorChart.js)：カラーチャート作成
 - [extractColorsFromGradient.js](#extractColorsFromGradient.js)：グラデーションのカラー分岐点から色を取り出す
 - [generateGradientColor.js](#generateGradientColor.js)：グラデーションを生成
+- `New` [matchLocationOfGradientStop.js](#matchLocationOfGradientStop.js)：グラデーションのカラー分岐点、中間点の位置を同期
 - [randomTextColor.js](#randomTextColor.js)：テキストの塗り色をランダムに変更
 - [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)：Deleted Global Color を削除
 - [roundColorValue.js](#roundColorValue.js)：カラー数値を四捨五入
@@ -219,7 +221,10 @@ Illustrator CS以降
 
 Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> )、
 「行を上へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> )と同様のことができます。  
-[Keyboard Maestro](https://www.keyboardmaestro.com/main/)や、[SPAi](https://tama-san.com/spai/)などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
+[SPAi](https://tama-san.com/spai/) や
+[Sppy](https://sppy.stars.ne.jp/sppyai)
+などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
 ![Vscode Copy Line](images/vscode_copyLine.png)
@@ -232,6 +237,7 @@ Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt<
 行を選択する必要はありません。
 
 #### 注意事項
+カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
 コピーできるのは 1行のみです。複数行には対応していません。  
 copyLineDown.js で最終行をコピーする場合は、バグを回避するために空行を追加します。  
 バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
@@ -247,7 +253,7 @@ Illustrator CC 2018以降
 # <a name="createColorChart.js">createColorChart.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
-カラーチャートを作成します。
+カラーチャートを作成します。CMYK、RGB のどちらにも対応しています。
 
 ![Create Color Chart](images/createColorChart.png)
 <div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
@@ -256,12 +262,12 @@ Illustrator CC 2018以降
 1. スクリプトを実行します。
 2. カラーモード「CMYK」または「RGB」を選択します。  
    パスオブジェクトを選択している場合は、塗りの値が初期値として使用されます。
-3. 上下、左右で増減させたい色を選択します。
+3. 垂直方向、水平方向で増減させたい色を選択します。
 4. 増減値を入力します。
 5. アートボードサイズ、カラーチップサイズ、単位を設定します。
 
 #### 注意事項
-CMYKの場合、K値の増減はできません。
+新規ドキュメントにカラーチャートを作成します。
 
 #### 動作条件
 Illustrator CS4以降
@@ -464,7 +470,10 @@ Illustrator CS4以降
 
 Visual Studio Code の「上に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> )、
 「下に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Enter</kbd> )と同様のことができます。  
-[Keyboard Maestro](https://www.keyboardmaestro.com/main/)や、[SPAi](https://tama-san.com/spai/)などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
+[SPAi](https://tama-san.com/spai/) や
+[Sppy](https://sppy.stars.ne.jp/sppyai)
+などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
 例 insertLineBelow.js:
@@ -519,6 +528,28 @@ Illustrator CS以降
 
 
 
+# <a name="matchLocationOfGradientStop.js">matchLocationOfGradientStop.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+
+グラデーションのカラー分岐点、中間点を同期します。
+
+![Match Location Of Gradient Stop](images/matchLocationOfGradientStop.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+
+#### 使用方法
+1. スウォッチからグラデーションを2つ以上選択してスクリプトを実行します。
+2. 元になるグラデーションを選択します。
+
+#### 注意事項
+スウォッチにあるグラデーションが対象となります。
+
+#### 動作条件
+Illustrator CS4以降
+
+
+
+
+
 # <a name="measurePathItems.js">measurePathItems.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 
@@ -549,7 +580,10 @@ Illustrator CS4以降
 
 Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> )、
 「行を上へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> )と同様のことができます。  
-[Keyboard Maestro](https://www.keyboardmaestro.com/main/)や、[SPAi](https://tama-san.com/spai/)などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
+[SPAi](https://tama-san.com/spai/) や
+[Sppy](https://sppy.stars.ne.jp/sppyai)
+などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
 ![Vscode Move Line](images/vscode_moveLine.png)
@@ -562,6 +596,7 @@ Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kb
 行を選択する必要はありません。
 
 #### 注意事項
+カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
 移動できるのは 1行のみです。複数行には対応していません。  
 moveLineUp.js で最終行を移動する場合は、バグを回避するために空行を追加します。  
 バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
@@ -775,6 +810,23 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+
+
+
+
+
+# <a name="showArtboardName.js">showArtboardName.js</a>
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+
+ドキュメント内にアートボード名を表示します。
+
+![Show Artboard Name](images/showArtboardName.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CS4以降
 
 
 
