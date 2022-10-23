@@ -1,68 +1,103 @@
 # Adobe Illustrator Scripts
-Adobe Illustratorのスクリプト集です。
+Adobe Illustratorのスクリプト集です。  
+スクリプト名をクリックすると詳細説明にジャンプします。  
+[![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) からスクリプトをダウンロードしてください。
 
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
+<br><br>
 
-### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- `New` [showArtboardName.js](#showArtboardName.js)：アートボード名を表示
-- [sortArtboards.js](#sortArtboards.js)：アートボードをソート（アートボードパネル内のみ）
+### アートボード [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+| スクリプト | 概要 |
+| --- | --- |
+| [showArtboardName.js](#showArtboardName.js) | アートボード名を表示 |
+| [sortArtboards.js](#sortArtboards.js) | アートボードをソート（アートボードパネル内のみ） |
 
-### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-- `Update` [createColorChart.js](#createColorChart.js)：カラーチャート作成
-- [extractColorsFromGradient.js](#extractColorsFromGradient.js)：グラデーションのカラー分岐点から色を取り出す
-- [generateGradientColor.js](#generateGradientColor.js)：グラデーションを生成
-- `New` [matchLocationOfGradientStop.js](#matchLocationOfGradientStop.js)：グラデーションのカラー分岐点、中間点の位置を同期
-- [randomTextColor.js](#randomTextColor.js)：テキストの塗り色をランダムに変更
-- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)：Deleted Global Color を削除
-- [roundColorValue.js](#roundColorValue.js)：カラー数値を四捨五入
-- [roundLocationOfGradientStop.js](#roundLocationOfGradientStop.js)：グラデーションのカラー分岐点、中間点の数値を四捨五入
-- [shuffleGradientColor.js](#shuffleGradientColor.js)：グラデーションをシャッフル
+<br>
 
-### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-- [deleteHiddenLayers.js](#deleteHiddenLayers.js)：非表示レイヤーを削除
-- [deleteLockedLayers.js](#deleteLockedLayers.js)：ロック状態のレイヤーを削除
-- [deleteUnusedLayers.js](#deleteUnusedLayers.js)：未使用（空）のレイヤーを削除
-- [invertLockedLayer.js](#invertLockedLayer.js)：ロック状態を反転
-- [invertVisibleLayer.js](#invertVisibleLayer.js)：表示状態を反転
+### カラー [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+| スクリプト | 概要 |
+| --- | --- |
+| [createColorChart.js](#createColorChart.js) | カラーチャート作成 |
+| [extractColorsFromGradient.js](#extractColorsFromGradient.js) | グラデーションのカラー分岐点から色を取り出す |
+| [generateGradientColor.js](#generateGradientColor.js) | グラデーションを生成 |
+| [highlightWord.js](#highlightWord.js) | 指定した単語の塗り色を変更 |
+| [matchLocationOfGradientStop.js](#matchLocationOfGradientStop.js) | グラデーションのカラー分岐点、中間点の位置を同期 |
+| [randomTextColor.js](#randomTextColor.js) | テキストの塗り色をランダムに変更 |
+| [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js) | Deleted Global Color を削除 |
+| [roundColorValue.js](#roundColorValue.js) | カラー数値を四捨五入 |
+| [roundLocationOfGradientStop.js](#roundLocationOfGradientStop.js) | グラデーションのカラー分岐点、中間点の数値を四捨五入 |
+| [shuffleGradientColor.js](#shuffleGradientColor.js) | グラデーションをシャッフル |
 
-### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-- [relinkFileExtension.js](#relinkFileExtension.js)：ファイル拡張子にリンクを再設定
-- [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)：ファイル拡張子にリンクを再設定（機能拡張版）
-- [relinkToFolder.js](#relinkToFolder.js)：フォルダに再リンク
-- [resetToFullScale.js](#resetToFullScale.js)：画像サイズを100%に戻す
+<br>
 
-### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [closePath.js](#closePath.js)：パスを閉じる
-- `New` [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCorner.js)：すべてのアンカーポイントをコーナーポイントに切り替え
-- [createGridLines.js](#createGridLines.js)：グリッドラインを作成
-- [disjoinPath.js](#disjoinPath.js)：パスを分解
-- [measurePathItems.js](#measurePathItems.js)：パスの寸法を測る
-- [removeColorInGuideObject.js](#removeColorInGuideObject.js)：ガイドオブジェクトの色を削除
-- [shuffleObjects.js](#shuffleObjects.js)：オブジェクトをシャッフル
-- `Update` [stepAndRepeat.js](#stepAndRepeat.js)：繰り返し複製
+### レイヤー [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+| スクリプト | 概要 |
+| --- | --- |
+| [deleteHiddenLayers.js](#deleteHiddenLayers.js) | 非表示レイヤーを削除 |
+| [deleteLockedLayers.js](#deleteLockedLayers.js) | ロック状態のレイヤーを削除 |
+| [deleteUnusedLayers.js](#deleteUnusedLayers.js) | 未使用（空）のレイヤーを削除 |
+| [invertLockedLayer.js](#invertLockedLayer.js) | ロック状態を反転 |
+| [invertVisibleLayer.js](#invertVisibleLayer.js) | 表示状態を反転 |
 
-### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [addNumericSeparators.js](#addNumericSeparators.js)：数字を3桁で区切る
-- [copyLineDown.js](#copyLine)：行を下へコピー
-- [copyLineUp.js](#copyLine)：行を上へコピー
-- [createPageNumbers.js](#createPageNumbers.js)：ノンブル作成
-- [highlightWord.js](#highlightWord.js)：指定した単語の塗り色を変更
-- [insertLineAbove.js](#insertLine)：上に行を挿入
-- [insertLineBelow.js](#insertLine)：下に行を挿入
-- [moveLineDown.js](#moveLine)：行を下へ移動
-- [moveLineUp.js](#moveLine)：行を上へ移動
-- [swapTextContents.js](#swapTextContents.js)：文字列を交換
-- [textAlign_Center.js](#textAlign)：文字列の位置を動かさずに中央揃え
-- [textAlign_Left.js](#textAlign)：文字列の位置を動かさずに左揃え
-- [textAlign_Right.js](#textAlign)：文字列の位置を動かさずに右揃え
+<br>
 
-### Utility [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [arrangeWindows.js](#arrangeWindows.js)：ウィンドウを並べて表示
-- [closeAllDocuments.js](#closeAllDocuments.js)：すべてのファイルを閉じる
-- [compareScale.js](#compareScale.js)：拡大・縮小率を表示
-- [syncView.js](#syncView.js)：ウィンドウの表示を同期
-- [XmpFunctions.js](#XmpFunctions.js)：XMP関数
-<br><br><br>
+### リンク [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+| スクリプト | 概要 |
+| --- | --- |
+| [relinkFileExtension.js](#relinkFileExtension.js) | ファイル拡張子にリンクを再設定 |
+| [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js) | ファイル拡張子にリンクを再設定（機能拡張版） |
+| [relinkToFolder.js](#relinkToFolder.js) | フォルダに再リンク |
+| [resetToFullScale.js](#resetToFullScale.js) | 画像サイズを100%に戻す |
+
+<br>
+
+### パス [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+| スクリプト | 概要 |
+| --- | --- |
+| [closePath.js](#closePath.js) | パスを閉じる |
+| [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCorner.js) | すべてのアンカーをコーナーポイントに切り替え |
+| [createGridLines.js](#createGridLines.js) | グリッドラインを作成 |
+| [disjoinPath.js](#disjoinPath.js) | パスを分解 |
+| [measurePathItems.js](#measurePathItems.js) | パスの寸法を測る |
+| [removeColorInGuideObject.js](#removeColorInGuideObject.js) | ガイドオブジェクトの色を削除 |
+| [shuffleObjects.js](#shuffleObjects.js) | オブジェクトをシャッフル |
+| [stepAndRepeat.js](#stepAndRepeat.js) | 繰り返し複製 |
+
+<br>
+
+### テキスト [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+| スクリプト | 概要 |
+| --- | --- |
+| [addNumericSeparators.js](#addNumericSeparators.js) | 数字を3桁で区切る |
+| [copyLineDown.js](#copyLine) | 行を下へコピー |
+| [copyLineUp.js](#copyLine) | 行を上へコピー |
+| [copyLine(emptySelection).js](#emptySelection) `New` | 選択なしでコピー |
+| [createPageNumbers.js](#createPageNumbers.js) | ノンブル作成 |
+| [cutLine(emptySelection).js](#emptySelection) `New` | 選択なしでカット |
+| [deleteAllLeft.js](#deleteAll) `New` | カーソルの左側をすべて削除 |
+| [deleteAllRight.js](#deleteAll) `New` | カーソルの右側をすべて削除 |
+| [goToLine.js](#goToLine.js) `New` | 指定の行に移動 |
+| [insertLineAbove.js](#insertLine) | 上に行を挿入 |
+| [insertLineBelow.js](#insertLine) | 下に行を挿入 |
+| [moveLineDown.js](#moveLine) | 行を下へ移動 |
+| [moveLineUp.js](#moveLine) | 行を上へ移動 |
+| [swapTextContents.js](#swapTextContents.js) | 文字列を交換 |
+| [textAlign_Center.js](#textAlign) | 文字列の位置を動かさずに中央揃え |
+| [textAlign_Left.js](#textAlign) | 文字列の位置を動かさずに左揃え |
+| [textAlign_Right.js](#textAlign) | 文字列の位置を動かさずに右揃え |
+
+<br>
+
+### ユーティリティ [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+| スクリプト | 概要 |
+| --- | --- |
+| [arrangeWindows.js](#arrangeWindows.js) | ウィンドウを並べて表示 |
+| [closeAllDocuments.js](#closeAllDocuments.js) | すべてのファイルを閉じる |
+| [compareScale.js](#compareScale.js) | 拡大・縮小率を表示 |
+| [syncView.js](#syncView.js) | ウィンドウの表示を同期 |
+| [XmpFunctions.js](#XmpFunctions.js) | XMP関数 |
+
+<br><br>
 
 
 ### インストール
@@ -116,6 +151,7 @@ UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -133,6 +169,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS6以降
+<br><br>
 
 
 
@@ -152,6 +189,7 @@ Illustrator CS6以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -169,6 +207,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -190,6 +229,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -211,6 +251,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -239,12 +280,46 @@ Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt<
 #### 注意事項
 カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
 コピーできるのは 1行のみです。複数行には対応していません。  
+エリア内文字で文字の折り返しがある行をコピーする場合、うまく動作しないことがあります。  
 copyLineDown.js で最終行をコピーする場合は、バグを回避するために空行を追加します。  
 バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
 テキストを編集する場合はマウスでテキストをクリックしてください。
 
 #### 動作条件
 Illustrator CC 2018以降
+<br><br>
+
+
+
+
+
+# <a name="emptySelection">copyLine(emptySelection).js<br>cutLine(emptySelection).js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+Visual Studio Code の「コピー（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> )、
+「切り取り（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>X</kbd> )と同様のことができます。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
+[SPAi](https://tama-san.com/spai/) や
+[Sppy](https://sppy.stars.ne.jp/sppyai)
+などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+例 cutLine(emptySelection).js:
+![Empty Selection](images/emptySelection.png)
+
+#### 使用方法
+コピーまたは、カットしたい行にカーソルを合わせてスクリプトを実行します。  
+行を選択する必要はありません。
+
+#### 注意事項
+バグを回避するために改行は含みません。  
+エリア内文字で文字の折り返しがある行をコピーまたはカットする場合、うまく動作しないことがあります。  
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
+<br><br>
 
 
 
@@ -271,6 +346,7 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -291,6 +367,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -321,6 +398,39 @@ InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在の
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
+
+
+
+
+
+# <a name="deleteAll">deleteAllLeft.js<br>deleteAllRight.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+Visual Studio Code の「左側をすべて削除」( <kbd>⌘</kbd> + <kbd>Backspace</kbd> )、
+「右側をすべて削除」( <kbd>⌘</kbd> + <kbd>Delete</kbd> )と同様のことができます。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
+[SPAi](https://tama-san.com/spai/) や
+[Sppy](https://sppy.stars.ne.jp/sppyai)
+などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+例 deleteAllRight.js:
+![Delete All Right](images/deleteAllRight.png)
+
+#### 使用方法
+削除したい場所にカーソルを合わせてスクリプトを実行します。  
+削除する文字列を選択する必要はありません。
+
+#### 注意事項
+カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
+削除できるのは 1行のみです。複数行には対応していません。  
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
+<br><br>
 
 
 
@@ -341,6 +451,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -358,6 +469,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -376,6 +488,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -396,6 +509,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -418,6 +532,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -440,13 +555,47 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
+
+
+
+
+
+# <a name="goToLine.js">goToLine.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+Visual Studio Code の「行/列に移動...」( <kbd>Ctrl</kbd> + <kbd>G</kbd> )と同様のことができます。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
+[SPAi](https://tama-san.com/spai/) や
+[Sppy](https://sppy.stars.ne.jp/sppyai)
+などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+![Vscode Go to Line](images/vscode_goToLine.png)
+
+![Go to Line](images/goToLine.png)
+<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+
+#### 使用方法
+1. テキスト編集状態でスクリプトを実行します。
+2. 行番号を入力するか、リストから移動したい行を選択します。
+
+#### 注意事項
+選択した行がウィンドウの中央に来るようにパンします。  
+カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
+<br><br>
 
 
 
 
 
 # <a name="highlightWord.js">highlightWord.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
 入力した単語の塗り色を変更します。CMYK、RGB のどちらにも対応しています。
 
@@ -460,6 +609,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -484,11 +634,13 @@ Visual Studio Code の「上に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd>
 行を選択する必要はありません。
 
 #### 注意事項
+エリア内文字で文字の折り返しがある行に対して挿入する場合、うまく動作しないことがあります。  
 バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
 テキストを編集する場合はマウスでテキストをクリックしてください。
 
 #### 動作条件
 Illustrator CC 2018以降
+<br><br>
 
 
 
@@ -506,6 +658,7 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -523,6 +676,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -545,6 +699,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -570,6 +725,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -598,12 +754,14 @@ Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kb
 #### 注意事項
 カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
 移動できるのは 1行のみです。複数行には対応していません。  
+エリア内文字で文字の折り返しがある行を移動する場合、うまく動作しないことがあります。  
 moveLineUp.js で最終行を移動する場合は、バグを回避するために空行を追加します。  
 バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
 テキストを編集する場合はマウスでテキストをクリックしてください。
 
 #### 動作条件
 Illustrator CC 2018以降
+<br><br>
 
 
 
@@ -628,6 +786,7 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -656,6 +815,7 @@ InDesignのリンクパネルメニュー > ファイル拡張子にリンクを
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -686,6 +846,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -711,6 +872,7 @@ InDesignのリンクパネルメニュー > フォルダに再リンク... に�
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -734,6 +896,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS6以降
+<br><br>
 
 
 
@@ -756,6 +919,7 @@ Illustrator CS6以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -774,6 +938,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS6以降
+<br><br>
 
 
 
@@ -792,6 +957,7 @@ Illustrator CS6以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -810,6 +976,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -827,6 +994,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -848,6 +1016,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -865,6 +1034,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -885,6 +1055,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS5以降
+<br><br>
 
 
 
@@ -910,6 +1081,7 @@ InDesignの編集メニュー > 繰り返し複製... に相当します。
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
 
 
 
@@ -927,6 +1099,7 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -948,6 +1121,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降  
+<br><br>
 
 
 
@@ -967,6 +1141,7 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
@@ -1095,9 +1270,9 @@ var swatches = xmpGetSwatches(app.activeDocument.fullName);
 alert(swatches[0].colorant.cyan);
 ```
 
-
 #### 動作条件
 Illustrator CS以降
+<br><br>
 
 
 
