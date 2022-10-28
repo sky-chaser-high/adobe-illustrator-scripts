@@ -1,8 +1,8 @@
 /* ===============================================================================================================================================
-   copyLine(emptySelection)
+   copyLineUp
 
    Description
-   This script is equivalent to Visual Studio Code's "Copy line (empty selection)". (Cmd/Ctrl + C)
+   This script is equivalent to Visual Studio Code's Selection menu "Copy Line Up".
    Both point and area types are supported.
 
    Usage
@@ -10,8 +10,9 @@
    It is not necessary to select a line.
 
    Notes
-   Linefeed are not included to work around a bug in Illustrator.
-   Copy a line with text wrapping in area type, it may not work well.
+   Since copy and paste inside the script, if you have copied the content in advance, it will be lost.
+   Only one line can be copied. Multiple lines are not supported.
+   Area type with wrapping may not work well.
    If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.
    If you want to enter text, you must click with the mouse.
    In rare cases, you may not be able to create it.
@@ -21,7 +22,7 @@
    Illustrator CC 2018 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -39,27 +40,51 @@
 function main() {
     try {
         var text = app.activeDocument.selection;
+        var ranges = text.story.textRanges;
         var lines = text.story.lines;
         var cursor = text.start;
-
-        var index = getLine(lines, cursor);
-        lines[index].select();
-        app.copy();
-
-        // Restore the cursor position.
-        text.select();
+        copyLineUp(ranges, lines, cursor);
+        if (cursor == 0) {
+            moveToBeginningOf(lines[0], text);
+        }
+        else {
+            restoreCursorPosition(ranges, cursor - 1);
+        }
     }
     catch (err) { }
 }
 
 
+function copyLineUp(ranges, lines, cursor) {
+    var index = getLine(lines, cursor);
+    var start = lines[index].start;
+    var linefeed = '\r\r';
+    lines[index].select();
+    app.copy();
+    ranges[start].insertionPoints[0].characters.add(linefeed);
+    ranges[start].select();
+    app.paste();
+}
+
+
 function getLine(lines, cursor) {
-    for (var i = 0, count = 0; i < lines.length; i++) {
-        var contents = lines[i].contents.length;
-        if (cursor <= contents + count) {
-            return i;
-        }
-        count += contents + 1;
+    for (var i = 0; i < lines.length; i++) {
+        var end = lines[i].end;
+        if (cursor <= end) return i;
     }
-    return 0;
+    return lines.length - 1;
+}
+
+
+function restoreCursorPosition(ranges, cursor) {
+    ranges[cursor].select();
+    app.cut();
+    app.paste();
+}
+
+
+function moveToBeginningOf(line, text) {
+    line.insertionPoints[0].characters.add('\r');
+    text.story.textRanges[0].select();
+    app.cut();
 }

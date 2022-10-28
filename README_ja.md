@@ -1,9 +1,9 @@
 # Adobe Illustrator Scripts
+[![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
+
 Adobe Illustratorのスクリプト集です。  
 スクリプト名をクリックすると詳細説明にジャンプします。  
 [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) からスクリプトをダウンロードしてください。
-
-[![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
 <br><br>
 
 ### アートボード [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
@@ -71,14 +71,18 @@ Adobe Illustratorのスクリプト集です。
 | [addNumericSeparators.js](#addNumericSeparators.js) | 数字を3桁で区切る |
 | [copyLineDown.js](#copyLine) | 行を下へコピー |
 | [copyLineUp.js](#copyLine) | 行を上へコピー |
-| [copyLine(emptySelection).js](#emptySelection) `New` | 選択なしでコピー |
+| [copyLine(emptySelection).js](#emptySelection) | 選択なしでコピー |
 | [createPageNumbers.js](#createPageNumbers.js) | ノンブル作成 |
-| [cutLine(emptySelection).js](#emptySelection) `New` | 選択なしでカット |
-| [deleteAllLeft.js](#deleteAll) `New` | カーソルの左側をすべて削除 |
-| [deleteAllRight.js](#deleteAll) `New` | カーソルの右側をすべて削除 |
-| [goToLine.js](#goToLine.js) `New` | 指定の行に移動 |
+| [cutLine(emptySelection).js](#emptySelection) | 選択なしでカット |
+| [deleteAllLeft.js](#deleteAll) | カーソルの左側をすべて削除 |
+| [deleteAllRight.js](#deleteAll) | カーソルの右側をすべて削除 |
+| [deleteTrailingSpaces.js](#deleteTrailingSpaces.js) `New` | 行末のスペースを削除 |
+| [deleteWord.js](#deleteWord.js) `New` | カーソル位置の単語を削除 |
+| [goToLine.js](#goToLine.js) | 指定の行に移動 |
 | [insertLineAbove.js](#insertLine) | 上に行を挿入 |
 | [insertLineBelow.js](#insertLine) | 下に行を挿入 |
+| [jumpBackward.js](#jumpCursor) `New` | カーソルを前の単語へ移動 |
+| [jumpForward.js](#jumpCursor) `New` | カーソルを次の単語へ移動 |
 | [moveLineDown.js](#moveLine) | 行を下へ移動 |
 | [moveLineUp.js](#moveLine) | 行を上へ移動 |
 | [swapTextContents.js](#swapTextContents.js) | 文字列を交換 |
@@ -112,11 +116,12 @@ ZIPファイルを[ダウンロード](https://github.com/sky-chaser-high/adobe-
 - [Illustratorでスクリプトを使ってみよう［Mac+SPAi編］](https://hamfactory.net/illustrator/script-spai/)
 
 
-### アプリケーション、プラグイン
-下記のアプリケーション、プラグインを使用すると楽にスクリプトを実行できるようになります。
+### ソフトウェア、エクステンション
+下記のソフトウェア、エクステンションを使用すると楽にスクリプトを実行できるようになります。
 - [SPAi](https://tama-san.com/spai/)（Mac）
 - [Sppy](https://sppy.stars.ne.jp/sppyai)（Windows）
-- [Scripshon Trees](https://exchange.adobe.com/apps/cc/15873?pluginId=15873&mv=product&mv2=accc)（Mac / Windows 両対応）  
+- [Scripshon Trees](https://exchange.adobe.com/apps/cc/15873/scripshon-trees)（エクステンション）  
+- [LAScripts](https://exchange.adobe.com/apps/cc/19405/lascripts)（エクステンション）
 
 
 ### ファイル名
@@ -219,7 +224,7 @@ Illustrator CS以降
 2つのオブジェクトを比較して拡大・縮小率を表示します。
 
 ![Compare Scale](images/compareScale.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 2つのオブジェクトを選択してスクリプトを実行します。
@@ -296,7 +301,7 @@ Illustrator CC 2018以降
 # <a name="emptySelection">copyLine(emptySelection).js<br>cutLine(emptySelection).js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
-Visual Studio Code の「コピー（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> )、
+Visual Studio Code のショートカット「コピー（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> )、
 「切り取り（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>X</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
 [SPAi](https://tama-san.com/spai/) や
@@ -331,7 +336,7 @@ Illustrator CC 2018以降
 カラーチャートを作成します。CMYK、RGB のどちらにも対応しています。
 
 ![Create Color Chart](images/createColorChart.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. スクリプトを実行します。
@@ -380,7 +385,7 @@ InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在の
 アートボードの指定した位置にノンブルを配置します。
 
 ![Create Page Numbers](images/createPageNumbers.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. スクリプトを実行します。
@@ -407,7 +412,7 @@ Illustrator CS4以降
 # <a name="deleteAll">deleteAllLeft.js<br>deleteAllRight.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
-Visual Studio Code の「左側をすべて削除」( <kbd>⌘</kbd> + <kbd>Backspace</kbd> )、
+Visual Studio Code のショートカット「左側をすべて削除」( <kbd>⌘</kbd> + <kbd>Backspace</kbd> )、
 「右側をすべて削除」( <kbd>⌘</kbd> + <kbd>Delete</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
 [SPAi](https://tama-san.com/spai/) や
@@ -475,6 +480,30 @@ Illustrator CS以降
 
 
 
+# <a name="deleteTrailingSpaces.js">deleteTrailingSpaces.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+行末のスペースを削除します。
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+![Delete Trailing Spaces](images/deleteTrailingSpaces.png)
+
+#### 使用方法
+テキストオブジェクトを選択してスクリプトを実行します。  
+スペースがある文字列を選択する必要はありません。
+
+#### 注意事項
+タブも削除の対象になります。  
+エリア内文字で文字の折り返しがある場合、うまく動作しないことがあります。  
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
 # <a name="deleteUnusedLayers.js">deleteUnusedLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 
@@ -488,6 +517,32 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="deleteWord.js">deleteWord.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+カーソル位置の単語を削除します。
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+![Delete Word](images/deleteWord.png)
+
+#### 使用方法
+削除したい単語の位置にカーソルを合わせてスクリプトを実行します。  
+削除する単語を選択する必要はありません。
+
+#### 注意事項
+カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
+エリア内文字で文字の折り返しがある場合、うまく動作しないことがあります。  
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
 <br><br>
 
 
@@ -574,7 +629,7 @@ Visual Studio Code の「行/列に移動...」( <kbd>Ctrl</kbd> + <kbd>G</kbd> 
 ![Vscode Go to Line](images/vscode_goToLine.png)
 
 ![Go to Line](images/goToLine.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. テキスト編集状態でスクリプトを実行します。
@@ -600,7 +655,7 @@ Illustrator CC 2018以降
 入力した単語の塗り色を変更します。CMYK、RGB のどちらにも対応しています。
 
 ![Highlight Word](images/highlightWord.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. テキストオブジェクトを選択してスクリプトを実行します。
@@ -618,7 +673,7 @@ Illustrator CS4以降
 # <a name="insertLine">insertLineAbove.js<br>insertLineBelow.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
-Visual Studio Code の「上に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> )、
+Visual Studio Code のショートカット「上に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> )、
 「下に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Enter</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
 [SPAi](https://tama-san.com/spai/) や
@@ -682,13 +737,42 @@ Illustrator CS以降
 
 
 
+# <a name="jumpCursor">jumpBackward.js<br>jumpForward.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+Vim のコマンド <kbd>b</kbd>（前の単語に移動）、<kbd>w</kbd>（次の単語に移動）と同様のことができます。  
+[Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
+[SPAi](https://tama-san.com/spai/) や
+[Sppy](https://sppy.stars.ne.jp/sppyai)
+などでショートカットを割り当てる場合は、Visual Studio Codeのショートカットを割り当てることをおすすめします。( <kbd>Option</kbd> + <kbd>←</kbd> & <kbd>Option</kbd> + <kbd>→</kbd> )  
+ポイント文字、エリア内文字のどちらにも対応しています。
+
+例 jumpForward.js:
+![Jump Cursor](images/jumpForward.png)
+
+#### 使用方法
+テキスト編集状態でスクリプトを実行します。
+
+#### 注意事項
+カーソル位置を移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
+バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+テキストを編集する場合はマウスでテキストをクリックしてください。
+
+#### 動作条件
+Illustrator CC 2018以降
+<br><br>
+
+
+
+
+
 # <a name="matchLocationOfGradientStop.js">matchLocationOfGradientStop.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
 グラデーションのカラー分岐点、中間点を同期します。
 
 ![Match Location Of Gradient Stop](images/matchLocationOfGradientStop.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. スウォッチからグラデーションを2つ以上選択してスクリプトを実行します。
@@ -773,7 +857,7 @@ Illustrator CC 2018以降
 単語または、1文字、1文ごとにランダムに色を適用します。CMYK、RGB のどちらにも対応しています。
 
 ![Random Text Color](images/randomTextColor.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. テキストオブジェクトを選択してスクリプトを実行します。
@@ -805,7 +889,8 @@ InDesignのリンクパネルメニュー > ファイル拡張子にリンクを
 2. 表示されたプロンプトに置き換えるファイルの拡張子を入力します。
 
 ![Relink File Extension](images/relinkFileExtension.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 注意事項
 再配置するリンク画像は、元のリンク画像と同じフォルダに置いてください。  
@@ -827,7 +912,8 @@ Illustrator CS4以降
 このスクリプトは、relinkFileExtension.js を機能拡張したものです。
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. 置き換えたいリンク画像を選択しスクリプトを実行します。  
@@ -1067,7 +1153,7 @@ Illustrator CS5以降
 InDesignの編集メニュー > 繰り返し複製... に相当します。
 
 ![Step and Repeat](images/stepandRepeat.png)
-<div style="text-align: right;">日本語版では、UIは日本語で表示します。</div>
+Illustrator 日本語版では、UIは日本語で表示します。
 
 #### 使用方法
 1. オブジェクトを選択してスクリプトを実行します。

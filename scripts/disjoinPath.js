@@ -8,7 +8,7 @@
    Select the path objects, run this script from File > Scripts > Other Script...
 
    Notes
-   The original path object will be deleted.
+   The original object will be deleted.
    In rare cases, you may not be able to create it.
    In that case, restart Illustrator and run this script again.
 

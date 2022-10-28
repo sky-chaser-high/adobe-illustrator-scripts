@@ -10,6 +10,7 @@
    It is not necessary to select a line.
 
    Notes
+   Area type with wrapping may not work well.
    If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.
    If you want to enter text, you must click with the mouse.
    In rare cases, you may not be able to create it.
@@ -19,7 +20,7 @@
    Illustrator CC 2018 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -39,20 +40,19 @@ function main() {
         var text = app.activeDocument.selection;
         var lines = text.story.lines;
         var cursor = text.start;
-
-        var i = 0, count = 0;
-
-        while (true) {
-            var line = lines[i].contents.length;
-            if (cursor <= line + count) {
-                lines[i].insertionPoints[line].characters.add('\r');
-                i++;
-                lines[i].select();
-                return;
-            }
-            count += line + 1;
-            i++;
-        }
+        var index = getLine(lines, cursor);
+        var contents = lines[index].contents.length;
+        lines[index].insertionPoints[contents].characters.add('\r');
+        lines[index + 1].select();
     }
     catch (err) { }
+}
+
+
+function getLine(lines, cursor) {
+    for (var i = 0; i < lines.length; i++) {
+        var end = lines[i].end;
+        if (cursor <= end) return i;
+    }
+    return lines.length - 1;
 }

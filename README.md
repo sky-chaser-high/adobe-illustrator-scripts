@@ -1,13 +1,12 @@
 [日本語の README はこちらです。](README_ja.md)
 
 # Adobe Illustrator Scripts
+[![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
+
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
 Click the script name to jump to learn more about the script.  
 If you find a script that interests you, please download it from [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest).
-
-[![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-
-<br>
+<br><br>
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 - [showArtboardName.js](#showArtboardName.js)
@@ -52,14 +51,18 @@ If you find a script that interests you, please download it from [![Download](ht
 - [addNumericSeparators.js](#addNumericSeparators.js)
 - [copyLineDown.js](#copyLine)
 - [copyLineUp.js](#copyLine)
-- [copyLine(emptySelection).js](#emptySelection) `New`
+- [copyLine(emptySelection).js](#emptySelection)
 - [createPageNumbers.js](#createPageNumbers.js)
-- [cutLine(emptySelection).js](#emptySelection) `New`
-- [deleteAllLeft.js](#deleteAll) `New`
-- [deleteAllRight.js](#deleteAll) `New`
-- [goToLine.js](#goToLine.js) `New`
+- [cutLine(emptySelection).js](#emptySelection)
+- [deleteAllLeft.js](#deleteAll)
+- [deleteAllRight.js](#deleteAll)
+- [deleteTrailingSpaces.js](#deleteTrailingSpaces.js) `New`
+- [deleteWord.js](#deleteWord.js) `New`
+- [goToLine.js](#goToLine.js)
 - [insertLineAbove.js](#insertLine)
 - [insertLineBelow.js](#insertLine)
+- [jumpBackward.js](#jumpCursor) `New`
+- [jumpForward.js](#jumpCursor) `New`
 - [moveLineDown.js](#moveLine)
 - [moveLineUp.js](#moveLine)
 - [swapTextContents.js](#swapTextContents.js)
@@ -82,6 +85,14 @@ If you find a script that interests you, please download it from [![Download](ht
 [Releases](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) and unzip it.  
 The scripts can be placed anywhere on your computer.  
 To run the scripts, from File > Scripts > Other Script... ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> )
+
+
+## Extensions, software
+The following extensions or software make it easy to run scripts.
+- [Scripshon Trees](https://exchange.adobe.com/apps/cc/15873/scripshon-trees) (free extension)
+- [LAScripts](https://exchange.adobe.com/apps/cc/19405/lascripts) (free extension)
+- [Keyboard Maestro](https://www.keyboardmaestro.com) (Mac / paid software)
+- [AutoHotkey](https://www.autohotkey.com) (Windows / free software)
 
 
 ## UI
@@ -228,7 +239,8 @@ Illustrator CS or higher
 This script is equivalent to Visual Studio Code's Selection menu 
 "Copy Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> ) & 
 "Copy Line Up"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> ).  
-If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
+you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
 ![Vscode Copy Line](images/vscode_copyLine.png)
@@ -243,7 +255,7 @@ It is not necessary to select a line.
 ### Notes
 Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
 Only one line can be copied. Multiple lines are not supported.  
-Copy a line with text wrapping in area type, it may not work well.  
+Area type with wrapping may not work well.  
 In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 If you want to enter text, you must click with the mouse.
@@ -260,10 +272,11 @@ Illustrator CC 2018 or higher
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
 ### Description
-This script is equivalent to Visual Studio Code's 
+This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Copy line (empty selection)"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> ) & 
 "Cut line (empty selection)"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>X</kbd> ).  
-If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
+you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
 For example, cutLine(emptySelection).js:
@@ -275,7 +288,7 @@ It is not necessary to select a line.
 
 ### Notes
 Linefeed are not included to work around a bug in Illustrator.  
-Copy or cut a line with text wrapping in area type, it may not work well.  
+Area type with wrapping may not work well.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 If you want to enter text, you must click with the mouse.
 
@@ -373,10 +386,11 @@ Illustrator CS4 or higher
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
 ### Description
-This script is equivalent to Visual Studio Code's 
+This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Delete All Left"( <kbd>⌘</kbd> + <kbd>Backspace</kbd> ) & 
 "Delete All Right"( <kbd>⌘</kbd> + <kbd>Delete</kbd> ).  
-If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
+you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
 For example, deleteAllRight.js:
@@ -441,6 +455,31 @@ Illustrator CS or higher
 
 
 
+# <a name="deleteTrailingSpaces.js">deleteTrailingSpaces.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+### Description
+This script deletes trailing spaces.
+Both point and area types are supported.
+
+![Delete Trailing Spaces](images/deleteTrailingSpaces.png)
+
+### Usage
+Select the text objects, and run this script.  
+It is not necessary to select a line.
+
+### Notes
+Delete tabs as well.  
+Area type with wrapping may not work well.
+
+### Requirements
+Illustrator CS or higher
+<br><br>
+
+
+
+
+
 # <a name="deleteUnusedLayers.js">deleteUnusedLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 
@@ -454,6 +493,33 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="deleteWord.js">deleteWord.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+### Description
+This script deletes a word under the cursor.
+Both point and area types are supported.
+
+![Delete Word](images/deleteWord.png)
+
+### Usage
+Move the cursor to the position of the word you want to delete and run this script.  
+It is not necessary to select a word.
+
+### Notes
+Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+Area type with wrapping may not work well.  
+If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+If you want to enter text, you must click with the mouse.
+
+### Requirements
+Illustrator CC 2018 or higher
 <br><br>
 
 
@@ -536,7 +602,8 @@ Illustrator CS4 or higher
 ### Description
 This script is equivalent to Visual Studio Code's Go menu 
 "Go to Line/Column..."( <kbd>Ctrl</kbd> + <kbd>G</kbd> ).  
-If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
+you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
 ![Vscode Go to Line](images/vscode_goToLine.png)
@@ -587,10 +654,11 @@ Illustrator CS4 or higher
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 
 ### Description
-This script is equivalent to Visual Studio Code's 
+This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Insert Line Above"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> ) & 
 "Insert Line Below" ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Enter</kbd> ).  
-If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
+you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
 For example, insertLineBelow.js:
@@ -601,7 +669,7 @@ Move the cursor to the line below or above you want to add a line, and run this 
 It is not necessary to select a line.
 
 ### Notes
-Insert a line with text wrapping in area type, it may not work well.  
+Area type with wrapping may not work well.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 If you want to enter text, you must click with the mouse.
 
@@ -645,6 +713,34 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="jumpCursor">jumpBackward.js<br>jumpForward.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+### Description
+This script is equivalent to Vim command <kbd>b</kbd> (jump backwards to the start of a word) & <kbd>w</kbd> (jump forwards to the start of a word).  
+When assigning shortcuts with [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com), or similar, 
+I recommend assigning Visual Studio Code shortcuts. ( <kbd>Option</kbd> + <kbd>←</kbd> & <kbd>Option</kbd> + <kbd>→</kbd> )  
+Both point and area types are supported.
+
+For example, jumpForward.js:
+![Jump Cursor](images/jumpForward.png)
+
+### Usage
+Run this script in the text editing state.
+
+### Notes
+Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+If you want to enter text, you must click with the mouse.
+
+### Requirements
+Illustrator CC 2018 or higher
 <br><br>
 
 
@@ -708,7 +804,8 @@ Illustrator CS4 or higher
 This script is equivalent to Visual Studio Code's Selection menu 
 "Move Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> ) & 
 "Move Line Up"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> ).  
-If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com/main/) or similar, you will be able to achieve more of a Visual Studio Code feel.  
+If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
+you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
 ![Vscode Move Line](images/vscode_moveLine.png)
@@ -723,7 +820,7 @@ It is not necessary to select a line.
 ### Notes
 Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
 Only one line can be moved. Multiple lines are not supported.  
-Move a line with text wrapping in area type, it may not work well.  
+Area type with wrapping may not work well.  
 In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.  
 If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 If you want to enter text, you must click with the mouse.

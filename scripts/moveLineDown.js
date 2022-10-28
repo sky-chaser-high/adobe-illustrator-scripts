@@ -1,17 +1,18 @@
 /* ===============================================================================================================================================
-   cutLine(emptySelection)
+   moveLineDown
 
    Description
-   This script is equivalent to Visual Studio Code's "Cut line (empty selection)". (Cmd/Ctrl + X)
+   This script is equivalent to Visual Studio Code's Selection menu "Move Line Down".
    Both point and area types are supported.
 
    Usage
-   Move the cursor to the line you want to cut, run this script from File > Scripts > Other Script...
+   Move the cursor to the line you want to move, run this script from File > Scripts > Other Script...
    It is not necessary to select a line.
 
    Notes
-   Linefeed are not included to work around a bug in Illustrator.
-   Cut a line with text wrapping in area type, it may not work well.
+   Since copy and paste inside the script, if you have copied the content in advance, it will be lost.
+   Only one line can be moved. Multiple lines are not supported.
+   Area type with wrapping may not work well.
    If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.
    If you want to enter text, you must click with the mouse.
    In rare cases, you may not be able to create it.
@@ -21,7 +22,7 @@
    Illustrator CC 2018 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -39,24 +40,45 @@
 function main() {
     try {
         var text = app.activeDocument.selection;
+        var ranges = text.story.textRanges;
         var lines = text.story.lines;
         var cursor = text.start;
 
         var index = getLine(lines, cursor);
-        lines[index].select();
-        app.cut();
+        if (index == lines.length - 1) return;
+
+        var contents = moveLineDown(lines, index);
+        restoreCursorPosition(ranges, cursor + contents);
     }
     catch (err) { }
 }
 
 
+function moveLineDown(lines, index) {
+    lines[index].select();
+    app.cut();
+    lines[index + 1].duplicate(lines[index]);
+
+    var contents = lines[index].contents.length;
+
+    lines[index + 1].select();
+    app.paste();
+
+    return contents;
+}
+
+
 function getLine(lines, cursor) {
-    for (var i = 0, count = 0; i < lines.length; i++) {
-        var contents = lines[i].contents.length;
-        if (cursor <= contents + count) {
-            return i;
-        }
-        count += contents + 1;
+    for (var i = 0; i < lines.length; i++) {
+        var end = lines[i].end;
+        if (cursor <= end) return i;
     }
-    return 0;
+    return lines.length - 1;
+}
+
+
+function restoreCursorPosition(ranges, cursor) {
+    ranges[cursor].select();
+    app.cut();
+    app.paste();
 }

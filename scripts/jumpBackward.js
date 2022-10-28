@@ -1,17 +1,16 @@
 /* ===============================================================================================================================================
-   deleteAllRight
+   jumpBackward
 
    Description
-   This script is equivalent to Visual Studio Code's "Delete All Right". (macOS: Cmd + Delete)
+   This script is equivalent to Vim command "b". (jump backwards to the start of a word)
+   In Visual Studio Code, it is equivalent to "Option/Ctrl + ←".
    Both point and area types are supported.
 
    Usage
-   Move the cursor to the position of the character you want to delete, run this script from File > Scripts > Other Script...
-   It is not necessary to select a line.
+   Run this script in the text editing state from File > Scripts > Other Script...
 
    Notes
    Since copy and paste inside the script, if you have copied the content in advance, it will be lost.
-   Only one line can be deleted. Multiple lines are not supported.
    If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.
    If you want to enter text, you must click with the mouse.
    In rare cases, you may not be able to create it.
@@ -42,39 +41,62 @@ function main() {
         var ranges = text.story.textRanges;
         var lines = text.story.lines;
         var cursor = text.start;
-        deleteAllRight(ranges, lines, cursor);
-        (cursor > 0) ? restoreCursorPosition(ranges, cursor) : text.select();
+        if (cursor == 0) return;
+        cursor = jumpBackward(lines, cursor);
+        if (cursor == 0) {
+            moveToBeginningOf(lines[0], text);
+        }
+        else {
+            restoreCursorPosition(ranges, cursor - 1);
+        }
     }
     catch (err) { }
 }
 
 
-function deleteAllRight(ranges, lines, cursor) {
+function jumpBackward(lines, cursor) {
     var index = getLine(lines, cursor);
-    var end = lines[index].end - 1;
-    while (true) {
-        if (end < cursor) break;
-        ranges[end].select(true);
-        end--;
+    var words = lines[index].words;
+    var beginning = isBeginningOf(words[0], cursor);
+    if (beginning) {
+        index--;
+        var last = lines[index].words.length - 1;
+        return lines[index].words[last].start;
     }
-    app.cut();
+    else {
+        for (var i = words.length - 1; i >= 0; i--) {
+            var start = words[i].start;
+            if (start < cursor) return start;
+        }
+    }
+}
+
+
+function isBeginningOf(word, cursor) {
+    var start = word.start;
+    if (start == cursor) return true;
+    return false;
 }
 
 
 function getLine(lines, cursor) {
-    for (var i = 0, count = 0; i < lines.length; i++) {
-        var contents = lines[i].contents.length;
-        if (cursor <= contents + count) {
-            return i;
-        }
-        count += contents + 1;
+    for (var i = 0; i < lines.length; i++) {
+        var end = lines[i].end;
+        if (cursor < end) return i;
     }
-    return 0;
+    return lines.length - 1;
 }
 
 
 function restoreCursorPosition(ranges, cursor) {
-    ranges[cursor - 1].select();
+    ranges[cursor].select();
     app.cut();
     app.paste();
+}
+
+
+function moveToBeginningOf(line, text) {
+    line.insertionPoints[0].characters.add('\r');
+    text.story.textRanges[0].select();
+    app.cut();
 }
