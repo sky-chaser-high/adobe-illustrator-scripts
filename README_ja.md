@@ -9,7 +9,7 @@ Adobe Illustratorのスクリプト集です。
 ### アートボード [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [showArtboardName.js](#showArtboardName.js) | アートボード名を表示 |
+| [showArtboardName.js](#showArtboardName.js) `Update` | アートボード名とサイズを表示 |
 | [sortArtboards.js](#sortArtboards.js) | アートボードをソート（アートボードパネル内のみ） |
 
 <br>
@@ -38,6 +38,7 @@ Adobe Illustratorのスクリプト集です。
 | [deleteUnusedLayers.js](#deleteUnusedLayers.js) | 未使用（空）のレイヤーを削除 |
 | [invertLockedLayer.js](#invertLockedLayer.js) | ロック状態を反転 |
 | [invertVisibleLayer.js](#invertVisibleLayer.js) | 表示状態を反転 |
+| [moveSublayerToMainLayer.js](#moveSublayerToMainLayer.js) `New` | サブレイヤーを親レイヤーの外へ移動 |
 
 <br>
 
@@ -48,6 +49,8 @@ Adobe Illustratorのスクリプト集です。
 | [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js) | ファイル拡張子にリンクを再設定（機能拡張版） |
 | [relinkToFolder.js](#relinkToFolder.js) | フォルダに再リンク |
 | [resetToFullScale.js](#resetToFullScale.js) | 画像サイズを100%に戻す |
+| [selectEmbeddedLink.js](#selectEmbeddedLink.js) `New` | 埋め込み画像を選択 |
+| [selectLink.js](#selectLink.js) `New` | リンクを選択 |
 
 <br>
 
@@ -76,13 +79,13 @@ Adobe Illustratorのスクリプト集です。
 | [cutLine(emptySelection).js](#emptySelection) | 選択なしでカット |
 | [deleteAllLeft.js](#deleteAll) | カーソルの左側をすべて削除 |
 | [deleteAllRight.js](#deleteAll) | カーソルの右側をすべて削除 |
-| [deleteTrailingSpaces.js](#deleteTrailingSpaces.js) `New` | 行末のスペースを削除 |
-| [deleteWord.js](#deleteWord.js) `New` | カーソル位置の単語を削除 |
+| [deleteTrailingSpaces.js](#deleteTrailingSpaces.js) | 行末のスペースを削除 |
+| [deleteWord.js](#deleteWord.js) | カーソル位置の単語を削除 |
 | [goToLine.js](#goToLine.js) | 指定の行に移動 |
 | [insertLineAbove.js](#insertLine) | 上に行を挿入 |
 | [insertLineBelow.js](#insertLine) | 下に行を挿入 |
-| [jumpBackward.js](#jumpCursor) `New` | カーソルを前の単語へ移動 |
-| [jumpForward.js](#jumpCursor) `New` | カーソルを次の単語へ移動 |
+| [jumpBackward.js](#jumpCursor) | カーソルを前の単語へ移動 |
+| [jumpForward.js](#jumpCursor) | カーソルを次の単語へ移動 |
 | [moveLineDown.js](#moveLine) | 行を下へ移動 |
 | [moveLineUp.js](#moveLine) | 行を上へ移動 |
 | [swapTextContents.js](#swapTextContents.js) | 文字列を交換 |
@@ -851,6 +854,24 @@ Illustrator CC 2018以降
 
 
 
+# <a name="moveSublayerToMainLayer.js">moveSublayerToMainLayer.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+
+サブレイヤーを親レイヤーの外へ移動します。
+
+![Move Sublayer To Main Layer](images/moveSublayerToMainLayer.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
 # <a name="randomTextColor.js">randomTextColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
@@ -1068,15 +1089,63 @@ Illustrator CS以降
 
 
 
+# <a name="selectEmbeddedLink.js">selectEmbeddedLink.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+
+埋め込み画像を選択します。
+
+#### 使用方法
+このスクリプトを実行するだけです。
+
+#### 注意事項
+ロックまたは非表示状態では選択しません。レイヤーの状態も同様です。
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="selectLink.js">selectLink.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+
+リンクを選択します。
+
+![Select Link](images/selectLink.png)
+Illustrator 日本語版では、UIは日本語で表示します。
+
+#### 使用方法
+1. スクリプトを実行します。
+2. ファイル名を入力します。ファイル名の一部でも可能です。  
+   何も入力しない場合は、すべてのリンクを選択します。
+
+#### 注意事項
+正規表現に対応しています。  
+ロックまたは非表示状態では選択しません。レイヤーの状態も同様です。  
+リンク切れ画像は選択できない場合があります。
+
+#### 動作条件
+Illustrator CS4以降
+<br><br>
+
+
+
+
+
 # <a name="showArtboardName.js">showArtboardName.js</a>
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 
-ドキュメント内にアートボード名を表示します。
+ドキュメント内にアートボード名とサイズを表示します。
 
 ![Show Artboard Name](images/showArtboardName.png)
 
 #### 使用方法
 このスクリプトを実行するだけです。  
+
+#### 注意事項
+サイズの単位はルーラー単位により変わります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1194,7 +1263,7 @@ Illustrator CS以降
 # <a name="syncView.js">syncView.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 
-アクティブなファイルのアートボードの表示スケールと表示位置に開いているすべてのファイルを同期させます。
+アクティブなウィンドウの表示スケールと表示位置に、開いているすべてのウィンドウを同期させます。
 
 ![Sync View](images/syncView.png)
 

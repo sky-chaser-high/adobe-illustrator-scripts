@@ -3,24 +3,28 @@
 
 ## v1.23.0 (2022-10-28)
 - Repository configuration changed.
+<br><br>
 
 
 ## copyLineDown.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## copyLineUp.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## copyLine(emptySelection).js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## createColorChart.js
@@ -29,54 +33,63 @@
 - Updated the UI.
 - Black color can also be increased or decreased.
 - Solid colors are supported.
+<br><br>
 
 
 ## cutLine(emptySelection).js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## deleteAllLeft.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## deleteAllRight.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## insertLineAbove.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## insertLineBelow.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## measurePathItems.js
 ### 1.0.1 (2022-02-17)
 ### Bug Fixes
 - Fixed a bug that caused dimensions to be displayed twice in the case of open paths.
+<br><br>
 
 
 ## moveLineDown.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## moveLineUp.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
 
 
 ## randomTextColor.js
@@ -87,6 +100,7 @@
 ### 1.1.0 (2022-05-18)
 ### Added
 - Added the function to change colors by character or sentences.
+<br><br>
 
 
 ## relinkFileExtension.js
@@ -95,6 +109,14 @@
 - Changed the file encoding due to garbled Japanese characters.
 - Files with no extension are now supported.
 - Changed the function to display the results.
+<br><br>
+
+
+## showArtboardName.js
+### 1.1.0 (2022-11-04)
+### Added
+- Added the artboard size.
+<br><br>
 
 
 ## stepAndRepeat.js
@@ -102,6 +124,7 @@
 ### Changes
 - The UI has been brought closer to InDesign specifications.
 - Changed the file name.
+<br><br>
 
 
 ## XmpFunctions.js

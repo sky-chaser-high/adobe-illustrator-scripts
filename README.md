@@ -9,7 +9,7 @@ If you find a script that interests you, please download it from [![Download](ht
 <br><br>
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [showArtboardName.js](#showArtboardName.js)
+- [showArtboardName.js](#showArtboardName.js) `Update`
 - [sortArtboards.js](#sortArtboards.js)
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -30,12 +30,15 @@ If you find a script that interests you, please download it from [![Download](ht
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [invertLockedLayer.js](#invertLockedLayer.js)
 - [invertVisibleLayer.js](#invertVisibleLayer.js)
+- [moveSublayerToMainLayer.js](#moveSublayerToMainLayer.js) `New`
 
 ### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [relinkToFolder.js](#relinkToFolder.js)
 - [resetToFullScale.js](#resetToFullScale.js)
+- [selectEmbeddedLink.js](#selectEmbeddedLink.js) `New`
+- [selectLink.js](#selectLink.js) `New`
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [closePath.js](#closePath.js)
@@ -56,13 +59,13 @@ If you find a script that interests you, please download it from [![Download](ht
 - [cutLine(emptySelection).js](#emptySelection)
 - [deleteAllLeft.js](#deleteAll)
 - [deleteAllRight.js](#deleteAll)
-- [deleteTrailingSpaces.js](#deleteTrailingSpaces.js) `New`
-- [deleteWord.js](#deleteWord.js) `New`
+- [deleteTrailingSpaces.js](#deleteTrailingSpaces.js)
+- [deleteWord.js](#deleteWord.js)
 - [goToLine.js](#goToLine.js)
 - [insertLineAbove.js](#insertLine)
 - [insertLineBelow.js](#insertLine)
-- [jumpBackward.js](#jumpCursor) `New`
-- [jumpForward.js](#jumpCursor) `New`
+- [jumpBackward.js](#jumpCursor)
+- [jumpForward.js](#jumpCursor)
 - [moveLineDown.js](#moveLine)
 - [moveLineUp.js](#moveLine)
 - [swapTextContents.js](#swapTextContents.js)
@@ -833,6 +836,25 @@ Illustrator CC 2018 or higher
 
 
 
+# <a name="moveSublayerToMainLayer.js">moveSublayerToMainLayer.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+
+### Description
+This script moves sublayers to the main layer above.
+
+![Move Sublayer To Main Layer](images/moveSublayerToMainLayer.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CS or higher
+<br><br>
+
+
+
+
+
 # <a name="randomTextColor.js">randomTextColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
@@ -877,7 +899,7 @@ This script is equivalent to InDesign's Links panel menu "Relink File Extension"
 ### Notes
 Place the relink files in the same place as the original files.  
 When selecting an image, select the image on the artboard rather than the image in the links panel.  
-Broken link files are not replaced.  
+Missing linked files are not replaced.  
 Embedded files are also not possible.
 
 ### Requirements
@@ -908,7 +930,7 @@ This script is an enhanced version of relinkFileExtension.js.
 ### Notes
 Place the relink files in the same place as the original files.  
 When selecting an image, select the image on the artboard rather than the image in the links panel.  
-Broken link files are not replaced.  
+Missing linked files are not replaced.  
 Embedded files are also not possible.
 
 ### Requirements
@@ -935,7 +957,7 @@ Replaces the image with an image of the same name in the specified folder.
 
 ### Notes
 When selecting an image, select the image on the artboard rather than the image in the links panel.  
-Broken link files are not replaced.  
+Missing linked files are not replaced.  
 Embedded files are also not possible.
 
 ### Requirements
@@ -1055,16 +1077,65 @@ Illustrator CS or higher
 
 
 
+# <a name="selectEmbeddedLink.js">selectEmbeddedLink.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+
+### Description
+This script selects embedded link files.
+
+### Usage
+Just run this script.
+
+### Notes
+Locked or hidden embedded link files are not selected. The layer also as well.
+
+### Requirements
+Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="selectLink.js">selectLink.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+
+### Description
+This script selects linked files.
+
+![Select Link](images/selectLink.png)
+
+### Usage
+1. Run this script.
+2. Enter a file name. It can also be part of the file name.  
+   If the text field is empty, all linked files are selected.
+
+### Notes
+Regular expressions are supported.  
+Locked or hidden linked files are not selected. The layer also as well.  
+Missing linked files may not be selected.
+
+### Requirements
+Illustrator CS4 or higher
+<br><br>
+
+
+
+
+
 # <a name="showArtboardName.js">showArtboardName.js</a>
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 
 ### Description
-This script shows the artboard name in the document.
+This script shows the artboard name and size in the document.
 
 ![Show Artboard Name](images/showArtboardName.png)
 
 ### Usage
 Just run this script.
+
+### Notes
+The dimensional units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
