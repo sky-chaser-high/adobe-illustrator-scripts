@@ -6,6 +6,7 @@
 
    Usage
    Select the text objects, run this script from File > Scripts > Other Script...
+   Or, run this script in the text editing state.
 
    Notes
    In rare cases, you may not be able to create it.
@@ -15,7 +16,7 @@
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -25,13 +26,20 @@
    https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
-(function () {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+(function() {
+    if (app.documents.length > 0) main();
 })();
 
 
 function main() {
-    var texts = getTextFrames(app.activeDocument.selection);
+    var texts, item = app.activeDocument.selection;
+    if (item.typename == 'TextRange') {
+        texts = item.story.textFrames;
+    }
+    else {
+        texts = getTextFrames(item);
+    }
+
     for (var i = 0; i < texts.length; i++) {
         var contents = texts[i].contents.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         var indexes = getCommaIndexes(contents);

@@ -21,7 +21,7 @@
    Illustrator CC 2018 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -68,9 +68,12 @@ function deleteWord(ranges, lines, cursor) {
     var end = word.end;
 
     for (var i = end; i >= start; i--) {
-        var str = ranges[i].contents;
-        if ((i == end && !/\s/.test(str)) || /\r/.test(str)) continue;
-        ranges[i].remove();
+        try {
+            var str = ranges[i].contents;
+            if ((i == end && !/\s/.test(str)) || /\r/.test(str)) continue;
+            ranges[i].remove();
+        }
+        catch (err) { }
     }
 
     return start;

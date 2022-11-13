@@ -6,6 +6,13 @@
 <br><br>
 
 
+## addNumericSeparators.js
+### 1.1.0 (2022-11-13)
+### Added
+- Modified to run the script in the text editing state.
+<br><br>
+
+
 ## copyLineDown.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
@@ -57,6 +64,13 @@
 <br><br>
 
 
+## deleteWord.js
+### 1.0.1 (2022-11-13)
+### Bug Fixes
+- Fixed a bug that prevented the deletion of the last word.
+<br><br>
+
+
 ## insertLineAbove.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
@@ -68,6 +82,20 @@
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
 - Fixed a bug in getting the line number.
+<br><br>
+
+
+## jumpBackward.js
+### 1.0.0 (2022-11-13)
+### Removed
+- Removed it because it can be done with the standard function. ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>←</kbd> )
+<br><br>
+
+
+## jumpForward.js
+### 1.0.0 (2022-11-13)
+### Removed
+- Removed it because it can be done with the standard function. ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>→</kbd> )
 <br><br>
 
 

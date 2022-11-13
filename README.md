@@ -9,7 +9,7 @@ If you find a script that interests you, please download it from [![Download](ht
 <br><br>
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [showArtboardName.js](#showArtboardName.js) `Update`
+- [showArtboardName.js](#showArtboardName.js)
 - [sortArtboards.js](#sortArtboards.js)
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -30,15 +30,15 @@ If you find a script that interests you, please download it from [![Download](ht
 - [deleteUnusedLayers.js](#deleteUnusedLayers.js)
 - [invertLockedLayer.js](#invertLockedLayer.js)
 - [invertVisibleLayer.js](#invertVisibleLayer.js)
-- [moveSublayerToMainLayer.js](#moveSublayerToMainLayer.js) `New`
+- [moveSublayerToMainLayer.js](#moveSublayerToMainLayer.js)
 
 ### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [relinkFileExtension.js](#relinkFileExtension.js)
 - [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
 - [relinkToFolder.js](#relinkToFolder.js)
 - [resetToFullScale.js](#resetToFullScale.js)
-- [selectEmbeddedLink.js](#selectEmbeddedLink.js) `New`
-- [selectLink.js](#selectLink.js) `New`
+- [selectEmbeddedLink.js](#selectEmbeddedLink.js)
+- [selectLink.js](#selectLink.js)
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [closePath.js](#closePath.js)
@@ -51,7 +51,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [stepAndRepeat.js](#stepAndRepeat.js)
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [addNumericSeparators.js](#addNumericSeparators.js)
+- [addNumericSeparators.js](#addNumericSeparators.js) `Update`
 - [copyLineDown.js](#copyLine)
 - [copyLineUp.js](#copyLine)
 - [copyLine(emptySelection).js](#emptySelection)
@@ -60,12 +60,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [deleteAllLeft.js](#deleteAll)
 - [deleteAllRight.js](#deleteAll)
 - [deleteTrailingSpaces.js](#deleteTrailingSpaces.js)
-- [deleteWord.js](#deleteWord.js)
+- [deleteWord.js](#deleteWord.js) `Update`
 - [goToLine.js](#goToLine.js)
+- [goToNextText.js](#goToText) `New`
+- [goToPreviousText.js](#goToText) `New`
 - [insertLineAbove.js](#insertLine)
 - [insertLineBelow.js](#insertLine)
-- [jumpBackward.js](#jumpCursor)
-- [jumpForward.js](#jumpCursor)
 - [moveLineDown.js](#moveLine)
 - [moveLineUp.js](#moveLine)
 - [swapTextContents.js](#swapTextContents.js)
@@ -89,6 +89,10 @@ If you find a script that interests you, please download it from [![Download](ht
 The scripts can be placed anywhere on your computer.  
 To run the scripts, from File > Scripts > Other Script... ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> )
 
+> **Note**  
+> In rare cases, if you continue to use the script, it may stop working.  
+> In that case, restart Illustrator and run this script again.
+
 
 ## Extensions, software
 The following extensions or software make it easy to run scripts.
@@ -101,11 +105,6 @@ The following extensions or software make it easy to run scripts.
 ## UI
 [ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) was used to design the UI.  
 **See also:** [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas).
-
-
-## Notes
-In rare cases, if you continue to use the script, it may stop working.  
-In that case, restart Illustrator and run this script again.
 <br><br><br>
 
 
@@ -121,7 +120,8 @@ This script changes a number to a 3-digit comma delimited string.
 ![Add Numeric Separators](images/addNumericSeparators.png)
 
 ### Usage
-Select the text objects, and run this script.
+Select the text objects, and run this script.  
+Or, run this script in the text editing state.
 
 ### Requirements
 Illustrator CS or higher
@@ -157,11 +157,11 @@ Illustrator CS6 or higher
 This script closes all documents.  
 If there are documents not saved, choose to save them.
 
+> **Note**  
+> It has been implemented in the File menu since version 2021.
+
 ### Usage
 Just run this script.
-
-### Notes
-It has been implemented in the File menu since version 2021.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -201,8 +201,8 @@ This script compares two objects' scales.
 ### Usage
 Select two objects, and run this script.
 
-### Notes
-The dimensional units depend on the ruler units.
+> **Note**  
+> The dimensional units depend on the ruler units.
 
 ### Requirements
 Illustrator CS or higher
@@ -224,8 +224,8 @@ The anchor point conversion options in the Control panel require the anchor poin
 ### Usage
 Select the entire path with selection tool, and run this script.
 
-### Notes
-It is not necessary to select anchor points with direct selection tool.
+> **Note**  
+> It is not necessary to select anchor points with direct selection tool.
 
 ### Requirements
 Illustrator CS or higher
@@ -255,13 +255,15 @@ For example, copyLineDown.js:
 Move the cursor to the line you want to copy, and run this script.  
 It is not necessary to select a line.
 
-### Notes
-Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
-Only one line can be copied. Multiple lines are not supported.  
-Area type with wrapping may not work well.  
-In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
+> **Warning**  
+> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> Area type with wrapping may not work well.  
+> In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.
+
+> **Note**  
+> Only one line can be copied. Multiple lines are not supported.  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
 
 ### Requirements
 Illustrator CC 2018 or higher
@@ -289,11 +291,13 @@ For example, cutLine(emptySelection).js:
 Move the cursor to the line you want to copy or cut, and run this script.  
 It is not necessary to select a line.
 
-### Notes
-Linefeed are not included to work around a bug in Illustrator.  
-Area type with wrapping may not work well.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
+> **Warning**  
+> Linefeed are not included to work around a bug in Illustrator.  
+> Area type with wrapping may not work well.
+
+> **Note**  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
 
 ### Requirements
 Illustrator CC 2018 or higher
@@ -321,8 +325,8 @@ Both CMYK and RGB colors are supported.
    Enter the percentage to be increased or decreased.
 5. Set the artboard size, color chip size, and units according to your preference.
 
-### Notes
-Create a color chart in a new document.
+> **Note**  
+> Create a color chart in a new document.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -343,8 +347,8 @@ This script creates grid lines on artboards.
 ### Usage
 Just run this script.
 
-### Notes
-Grid spacing is determined by the Guides & Grid in Preferences.
+> **Note**  
+> Grid spacing is determined by the Guides & Grid in Preferences.
 
 ### Requirements
 Illustrator CS or higher
@@ -373,9 +377,9 @@ Places a page number at a specified location on the artboards.
    - `Font Size` Font size of the page number.
    - `Margin` Distance from the artboard. Switch the units according to the ruler units.
 
-### Notes
-The page numbering style is numeric only.  
-Assign page numbers in artboard order.
+> **Note**  
+> The page numbering style is numeric only.  
+> Assign page numbers in artboard order.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -401,13 +405,15 @@ For example, deleteAllRight.js:
 
 ### Usage
 Move the cursor to the position of the character you want to delete and run this script.  
-It is not necessary to select a line.
+It is not necessary to select a string to be deleted.
 
-### Notes
-Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
-Only one line can be deleted. Multiple lines are not supported.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
+> **Warning**  
+> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.
+
+> **Note**  
+> Only one line can be deleted. Multiple lines are not supported.  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
 
 ### Requirements
 Illustrator CC 2018 or higher
@@ -423,13 +429,13 @@ Illustrator CC 2018 or higher
 ### Description
 This script deletes hidden layers.
 
+> **Note**  
+> It has been implemented in the Layers panel menu since version 2021.
+
 ![Delete Hidden Layers](images/deleteHiddenLayers.png)
 
 ### Usage
 Just run this script.
-
-### Notes
-It has been implemented in the Layers panel menu since version 2021.
 
 ### Requirements
 Illustrator CS or higher
@@ -471,9 +477,11 @@ Both point and area types are supported.
 Select the text objects, and run this script.  
 It is not necessary to select a line.
 
-### Notes
-Delete tabs as well.  
-Area type with wrapping may not work well.
+> **Warning**  
+> Area type with wrapping may not work well.
+
+> **Note**  
+> Delete tabs as well.
 
 ### Requirements
 Illustrator CS or higher
@@ -515,11 +523,13 @@ Both point and area types are supported.
 Move the cursor to the position of the word you want to delete and run this script.  
 It is not necessary to select a word.
 
-### Notes
-Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
-Area type with wrapping may not work well.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
+> **Warning**  
+> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> Area type with wrapping may not work well.
+
+> **Note**  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
 
 ### Requirements
 Illustrator CC 2018 or higher
@@ -540,8 +550,8 @@ This script breaks apart the path object with anchor points.
 ### Usage
 Select the path objects, and run this script.
 
-### Notes
-The original path object will be deleted.  
+> **Warning**  
+> The original path object will be deleted.
 
 ### Requirements
 Illustrator CS or higher
@@ -562,10 +572,10 @@ This script extracts colors as swatches from the gradient stops.
 ### Usage
 Select the path objects or swatches, and run this script.
 
-### Notes
-Prioritize the path object over swatches.  
-To extract color from swatches, deselect the path objects.  
-Text object and stroke color are not supported.
+> **Note**  
+> Prioritize the path object over swatches.  
+> To extract color from swatches, deselect the path objects.  
+> Text object and stroke color are not supported.
 
 ### Requirements
 Illustrator CS or higher
@@ -586,10 +596,10 @@ This script generates the gradient color from fill colors or swatches.
 ### Usage
 Select the path objects or swatches, and run this script.
 
-### Notes
-Prioritize the path object over swatches.  
-To generate gradient color from swatches, deselect the path objects.  
-Text object and stroke color are not supported.
+> **Note**  
+> Prioritize the path object over swatches.  
+> To generate gradient color from swatches, deselect the path objects.  
+> Text object and stroke color are not supported.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -617,11 +627,44 @@ Both point and area types are supported.
 1. Run this script in the text editing state.
 2. Enter a line number or select a line from the list below that you want to move.
 
-### Notes
-Pan that the selected line is centered in the window.  
-Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
+> **Warning**  
+> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.
+
+> **Note**  
+> Pan that the selected line is centered in the window.  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
+
+### Requirements
+Illustrator CC 2018 or higher
+<br><br>
+
+
+
+
+
+# <a name="goToText">goToNextText.js<br>goToPreviousText.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+
+### Description
+This script moves the cursor to the beginning of the next or previous text while in the text editing state.  
+Both point and area types are supported.
+
+For example, goToNextText.js:
+![Go to Text](images/goToText.png)
+
+### Usage
+Run this script in the text editing state.
+
+> **Warning**  
+> Since cut and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> It will not move to locked, hidden, or threaded texts. The layer also as well.
+
+> **Note**  
+> The cursor moving order is text stacking order.  
+> Pan that the next or previous text is centered in the window.  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
 
 ### Requirements
 Illustrator CC 2018 or higher
@@ -669,12 +712,14 @@ For example, insertLineBelow.js:
 
 ### Usage
 Move the cursor to the line below or above you want to add a line, and run this script.  
-It is not necessary to select a line.
+It is not necessary to move the cursor to the end of the line.
 
-### Notes
-Area type with wrapping may not work well.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
+> **Warning**  
+> Area type with wrapping may not work well.
+
+> **Note**  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
 
 ### Requirements
 Illustrator CC 2018 or higher
@@ -722,34 +767,6 @@ Illustrator CS or higher
 
 
 
-# <a name="jumpCursor">jumpBackward.js<br>jumpForward.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
-### Description
-This script is equivalent to Vim command <kbd>b</kbd> (jump backwards to the start of a word) & <kbd>w</kbd> (jump forwards to the start of a word).  
-When assigning shortcuts with [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com), or similar, 
-I recommend assigning Visual Studio Code shortcuts. ( <kbd>Option</kbd> + <kbd>←</kbd> & <kbd>Option</kbd> + <kbd>→</kbd> )  
-Both point and area types are supported.
-
-For example, jumpForward.js:
-![Jump Cursor](images/jumpForward.png)
-
-### Usage
-Run this script in the text editing state.
-
-### Notes
-Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
-
-### Requirements
-Illustrator CC 2018 or higher
-<br><br>
-
-
-
-
-
 # <a name="matchLocationOfGradientStop.js">matchLocationOfGradientStop.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 
@@ -762,8 +779,8 @@ This script matches the location of the gradient stops and midpoints.
 1. Select two or more gradients in the Swatches panel, and run this script.
 2. Select a source gradient.
 
-### Notes
-Only gradients in the Swatches panel are supported.
+> **Note**  
+> Only gradients in the Swatches panel are supported.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -788,9 +805,11 @@ Select the path objects, and run this script.
 Group and color measurements by path object.  
 Switch the dimension units according to the ruler units.
 
-### Notes
-In complex shapes, measurements may be displayed overlapping each other.  
-Curves are not supported.  
+> **Warning**  
+> Curves are not supported.
+
+> **Note**  
+> In complex shapes, measurements may be displayed overlapping each other.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -820,13 +839,15 @@ For example, moveLineDown.js:
 Move the cursor to the line you want to move, and run this script.  
 It is not necessary to select a line.
 
-### Notes
-Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
-Only one line can be moved. Multiple lines are not supported.  
-Area type with wrapping may not work well.  
-In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.  
-If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
-If you want to enter text, you must click with the mouse.
+> **Warning**  
+> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> Area type with wrapping may not work well.  
+> In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.
+
+> **Note**  
+> Only one line can be moved. Multiple lines are not supported.  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
 
 ### Requirements
 Illustrator CC 2018 or higher
@@ -869,9 +890,9 @@ Both CMYK and RGB colors are supported.
 2. Assign the threshold value with the slider.
 3. Click the Random button to assign a color according to the threshold value.
 
-### Notes
-If there are many characters, the conversion will take time.  
-Some characters, such as periods and commas, are not applied.
+> **Note**  
+> If there are many characters, the conversion will take time.  
+> Some characters, such as periods and commas, are not applied.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -896,11 +917,12 @@ This script is equivalent to InDesign's Links panel menu "Relink File Extension"
 
 ![Relink File Extension](images/relinkFileExtension.png)
 
-### Notes
-Place the relink files in the same place as the original files.  
-When selecting an image, select the image on the artboard rather than the image in the links panel.  
-Missing linked files are not replaced.  
-Embedded files are also not possible.
+> **Warning**  
+> Missing linked files are not replaced. Embedded files are also not possible.  
+> Place the relink files in the same place as the original files.
+
+> **Note**  
+> When selecting an image, select the image on the document rather than the image in the links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -927,11 +949,12 @@ This script is an enhanced version of relinkFileExtension.js.
 3. Enter the extension.  
    If you don't enter an extension, the extension of the original file will be used.
 
-### Notes
-Place the relink files in the same place as the original files.  
-When selecting an image, select the image on the artboard rather than the image in the links panel.  
-Missing linked files are not replaced.  
-Embedded files are also not possible.
+> **Warning**  
+> Missing linked files are not replaced. Embedded files are also not possible.  
+> Place the relink files in the same place as the original files.
+
+> **Note**  
+> When selecting an image, select the image on the document rather than the image in the links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -955,10 +978,11 @@ Replaces the image with an image of the same name in the specified folder.
    If you don't select an image, all images will be targeted in the document.
 2. Select a folder in the dialog that appears.
 
-### Notes
-When selecting an image, select the image on the artboard rather than the image in the links panel.  
-Missing linked files are not replaced.  
-Embedded files are also not possible.
+> **Warning**  
+> Missing linked files are not replaced. Embedded files are also not possible.
+
+> **Note**  
+> When selecting an image, select the image on the document rather than the image in the links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -980,10 +1004,10 @@ This script removes fill and stroke colors in all guide objects.
 Just run this script.  
 It is not necessary to select guide objects.
 
-### Notes
-Show and unlock all layers.  
-Guide objects hidden with <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>3</kbd> are not supported.  
-If you have added fill or stroke colors in the Appearance panel, they may not work well.
+> **Note**  
+> Show and unlock all layers.  
+> Guide objects hidden with <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>3</kbd> are not supported.  
+> If you have added fill or stroke colors in the Appearance panel, they may not work well.
 
 ### Requirements
 Illustrator CS6 or higher
@@ -1004,10 +1028,10 @@ Deletes the Deleted Global Color displayed in the Separations Preview panel.
 ### Usage
 Just run this script.
 
-### Notes
-In rare cases, you may not be able to delete it.  
-If you save the file and reopen it, it may be restored.  
-In this case, there is no way to delete it.
+> **Note**  
+> In rare cases, you may not be able to delete it.  
+> If you save the file and reopen it, it may be restored.  
+> In this case, there is no way to delete it.
 
 ### Requirements
 Illustrator CS or higher
@@ -1086,8 +1110,8 @@ This script selects embedded link files.
 ### Usage
 Just run this script.
 
-### Notes
-Locked or hidden embedded link files are not selected. The layer also as well.
+> **Warning**  
+> Locked or hidden embedded link files are not selected. The layer also as well.
 
 ### Requirements
 Illustrator CS or higher
@@ -1110,10 +1134,12 @@ This script selects linked files.
 2. Enter a file name. It can also be part of the file name.  
    If the text field is empty, all linked files are selected.
 
-### Notes
-Regular expressions are supported.  
-Locked or hidden linked files are not selected. The layer also as well.  
-Missing linked files may not be selected.
+> **Warning**  
+> Locked or hidden linked files are not selected. The layer also as well.  
+> Missing linked files may not be selected.
+
+> **Note**  
+> Regular expressions are supported.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1134,8 +1160,8 @@ This script shows the artboard name and size in the document.
 ### Usage
 Just run this script.
 
-### Notes
-The dimensional units depend on the ruler units.
+> **Note**  
+> The dimensional units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1156,9 +1182,9 @@ This script shuffles the gradient color.
 ### Usage
 Select the path objects, and run this script.
 
-### Notes
-Only a fill color. A stroke color is not supported.  
-For compound path objects, select them with direct selection tool.
+> **Note**  
+> Only a fill color. A stroke color is not supported.  
+> For compound path objects, select them with direct selection tool.
 
 ### Requirements
 Illustrator CS or higher
@@ -1198,8 +1224,8 @@ This script sorts the artboards in the Artboard panel.
 ### Usage
 Just run this script.
 
-### Notes
-Only the Artboard panel. Artboards in the document are not sorted.
+> **Note**  
+> Only the Artboard panel. Artboards in the document are not sorted.
 
 ### Requirements
 Illustrator CS5 or higher
@@ -1223,8 +1249,8 @@ This script is equivalent to InDesign's Edit menu "Step and Repeat".
 3. Enter the number of times to repeat.
 4. Enter the offset values.
 
-### Notes
-The unit of the offset value switches to match the unit of the ruler.
+> **Note**  
+> The unit of the offset value switches to match the unit of the ruler.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1264,8 +1290,8 @@ This script synchronizes the scale ratio and the position of the current work ar
 ### Usage
 Just run this script.
 
-### Notes
-Open at least two files.  
+> **Note**  
+> Open at least two files.  
 
 ### Requirements
 Illustrator CS or higher
@@ -1428,6 +1454,6 @@ Illustrator CS or higher
 
 
 
-# Licence
+# License
 All scripts are licensed under the MIT license.  
 See the included LICENSE file for more details.  
