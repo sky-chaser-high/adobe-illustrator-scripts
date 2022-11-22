@@ -51,7 +51,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [stepAndRepeat.js](#stepAndRepeat.js)
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [addNumericSeparators.js](#addNumericSeparators.js) `Update`
+- [addNumericSeparators.js](#addNumericSeparators.js)
 - [copyLineDown.js](#copyLine)
 - [copyLineUp.js](#copyLine)
 - [copyLine(emptySelection).js](#emptySelection)
@@ -60,10 +60,10 @@ If you find a script that interests you, please download it from [![Download](ht
 - [deleteAllLeft.js](#deleteAll)
 - [deleteAllRight.js](#deleteAll)
 - [deleteTrailingSpaces.js](#deleteTrailingSpaces.js)
-- [deleteWord.js](#deleteWord.js) `Update`
+- [deleteWord.js](#deleteWord.js)
 - [goToLine.js](#goToLine.js)
-- [goToNextText.js](#goToText) `New`
-- [goToPreviousText.js](#goToText) `New`
+- [goToNextText.js](#goToText)
+- [goToPreviousText.js](#goToText)
 - [insertLineAbove.js](#insertLine)
 - [insertLineBelow.js](#insertLine)
 - [moveLineDown.js](#moveLine)
@@ -75,6 +75,7 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Utility [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 - [arrangeWindows.js](#arrangeWindows.js)
+- [checkDayOfWeek.js](#checkDayOfWeek.js) `New`
 - [closeAllDocuments.js](#closeAllDocuments.js)
 - [compareScale.js](#compareScale.js)
 - [syncView.js](#syncView.js)
@@ -144,6 +145,39 @@ Just run this script.
 
 ### Requirements
 Illustrator CS6 or higher
+<br><br>
+
+
+
+
+
+# <a name="checkDayOfWeek.js">checkDayOfWeek.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+
+### Description
+This script checks the day of the week.
+
+![Check Day Of Week](images/checkDayOfWeek.png)
+
+### Usage
+Select a date with the cursor, and run this script.
+
+> **Note**  
+> If there is no year, it is considered as this year.  
+> If the date is incorrect, a warning is issued.  
+> The following formats are supported.
+
+> **Format**  
+> `YYYY/MM/DD`, `MM/DD/YYYY`, `DD/MM/YYYY`,   
+> `YYYY-MM-DD`, `MM-DD-YYYY`, `DD-MM-YYYY`,  
+> `YYYY.MM.DD`, `MM.DD.YYYY`, `DD.MM.YYYY`,  
+> `YYYY MM DD`,  
+> `YYYY年MM月DD日`,  
+> `Jan(uary) (the) DD(st|nd|rd|th)(,) YYYY`, `MM DD(st|nd|rd|th)(,) YYYY`,  
+> `DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`
+
+### Requirements
+Illustrator CS or higher
 <br><br>
 
 

@@ -71,7 +71,7 @@ Adobe Illustratorのスクリプト集です。
 ### テキスト [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [addNumericSeparators.js](#addNumericSeparators.js) `Update` | 数字を3桁で区切る |
+| [addNumericSeparators.js](#addNumericSeparators.js) | 数字を3桁で区切る |
 | [copyLineDown.js](#copyLine) | 行を下へコピー |
 | [copyLineUp.js](#copyLine) | 行を上へコピー |
 | [copyLine(emptySelection).js](#emptySelection) | 選択なしでコピー |
@@ -80,10 +80,10 @@ Adobe Illustratorのスクリプト集です。
 | [deleteAllLeft.js](#deleteAll) | カーソルの左側をすべて削除 |
 | [deleteAllRight.js](#deleteAll) | カーソルの右側をすべて削除 |
 | [deleteTrailingSpaces.js](#deleteTrailingSpaces.js) | 行末のスペースを削除 |
-| [deleteWord.js](#deleteWord.js) `Update` | カーソル位置の単語を削除 |
+| [deleteWord.js](#deleteWord.js) | カーソル位置の単語を削除 |
 | [goToLine.js](#goToLine.js) | 指定の行に移動 |
-| [goToNextText.js](#goToText) `New` | カーソルを次のテキストへ移動 |
-| [goToPreviousText.js](#goToText) `New` | カーソルを前のテキストへ移動 |
+| [goToNextText.js](#goToText) | カーソルを次のテキストへ移動 |
+| [goToPreviousText.js](#goToText) | カーソルを前のテキストへ移動 |
 | [insertLineAbove.js](#insertLine) | 上に行を挿入 |
 | [insertLineBelow.js](#insertLine) | 下に行を挿入 |
 | [moveLineDown.js](#moveLine) | 行を下へ移動 |
@@ -99,6 +99,7 @@ Adobe Illustratorのスクリプト集です。
 | スクリプト | 概要 |
 | --- | --- |
 | [arrangeWindows.js](#arrangeWindows.js) | ウィンドウを並べて表示 |
+| [checkDayOfWeek.js](#checkDayOfWeek.js) `New` | 選択した日付の曜日をチェック |
 | [closeAllDocuments.js](#closeAllDocuments.js) | すべてのファイルを閉じる |
 | [compareScale.js](#compareScale.js) | 拡大・縮小率を表示 |
 | [syncView.js](#syncView.js) | ウィンドウの表示を同期 |
@@ -178,6 +179,39 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS6以降
+<br><br>
+
+
+
+
+
+# <a name="checkDayOfWeek.js">checkDayOfWeek.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+
+選択した日付の曜日をチェックします。
+
+![Check Day Of Week](images/checkDayOfWeek.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+カーソルで日付を選択してスクリプトを実行します。
+
+> **Note**  
+> 年がない場合（月日のみ）は、今年とみなします。  
+> 日付が正しくない場合は警告を表示します。  
+> チェック可能な日付の書式は下記になります。
+
+> **書式**  
+> `YYYY/MM/DD`, `MM/DD/YYYY`, `DD/MM/YYYY`,   
+> `YYYY-MM-DD`, `MM-DD-YYYY`, `DD-MM-YYYY`,  
+> `YYYY.MM.DD`, `MM.DD.YYYY`, `DD.MM.YYYY`,  
+> `YYYY MM DD`,  
+> `YYYY年MM月DD日`,  
+> `Jan(uary) (the) DD(st|nd|rd|th)(,) YYYY`, `MM DD(st|nd|rd|th)(,) YYYY`,  
+> `DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`
+
+#### 動作条件
+Illustrator CS以降
 <br><br>
 
 
