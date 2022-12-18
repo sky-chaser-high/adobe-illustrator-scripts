@@ -61,6 +61,8 @@ Adobe Illustratorのスクリプト集です。
 | [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCorner.js) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines.js](#createGridLines.js) | グリッドラインを作成 |
 | [disjoinPath.js](#disjoinPath.js) | パスを分解 |
+| [drawRectangle.js](#drawRectangle.js) `New` | オブジェクトの周囲に長方形を描く |
+| [extendLine.js](#extendLine.js) `New` | パスを伸縮 |
 | [measurePathItems.js](#measurePathItems.js) | パスの寸法を測る |
 | [removeColorInGuideObject.js](#removeColorInGuideObject.js) | ガイドオブジェクトの色を削除 |
 | [shuffleObjects.js](#shuffleObjects.js) | オブジェクトをシャッフル |
@@ -99,7 +101,7 @@ Adobe Illustratorのスクリプト集です。
 | スクリプト | 概要 |
 | --- | --- |
 | [arrangeWindows.js](#arrangeWindows.js) | ウィンドウを並べて表示 |
-| [checkDayOfWeek.js](#checkDayOfWeek.js) `New` | 選択した日付の曜日をチェック |
+| [checkDayOfWeek.js](#checkDayOfWeek.js) | 選択した日付の曜日をチェック |
 | [closeAllDocuments.js](#closeAllDocuments.js) | すべてのファイルを閉じる |
 | [compareScale.js](#compareScale.js) | 拡大・縮小率を表示 |
 | [syncView.js](#syncView.js) | ウィンドウの表示を同期 |
@@ -148,8 +150,7 @@ UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui
 
 
 # <a name="addNumericSeparators.js">addNumericSeparators.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 数値をカンマで3桁区切りにします。
 
 ![Add Numeric Separators](images/addNumericSeparators.png)
@@ -168,8 +169,7 @@ Illustrator CS以降
 
 
 # <a name="arrangeWindows.js">arrangeWindows.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 開いているすべてのウィンドウを分割して並べて表示します。
 
 ![Arrange Windows](images/arrangeWindows.png)
@@ -186,8 +186,7 @@ Illustrator CS6以降
 
 
 # <a name="checkDayOfWeek.js">checkDayOfWeek.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 選択した日付の曜日をチェックします。
 
 ![Check Day Of Week](images/checkDayOfWeek.png)
@@ -219,8 +218,7 @@ Illustrator CS以降
 
 
 # <a name="closeAllDocuments.js">closeAllDocuments.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 すべてのファイルを閉じます。  
 編集中のファイルがある場合は、保存してから閉じるかを選択します。
 
@@ -239,8 +237,7 @@ Illustrator CS4以降
 
 
 # <a name="closePath.js">closePath.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 開いているパスを閉じます。
 
 ![Close Path](images/closePath.png)
@@ -257,8 +254,7 @@ Illustrator CS以降
 
 
 # <a name="compareScale.js">compareScale.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 2つのオブジェクトを比較して拡大・縮小率を表示します。
 
 ![Compare Scale](images/compareScale.png)
@@ -279,8 +275,7 @@ Illustrator CS以降
 
 
 # <a name="convertAllAnchorPointsToCorner.js">convertAllAnchorPointsToCorner.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 すべてのアンカーポイントをコーナーポイントに切り替えます。  
 コントロールパネルの機能ではアンカーポイントを選択しなければなりませんが、このスクリプトではオブジェクト全体を選択します。
 
@@ -301,8 +296,7 @@ Illustrator CS以降
 
 
 # <a name="copyLine">copyLineDown.js<br>copyLineUp.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> )、
 「行を上へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
@@ -339,8 +333,7 @@ Illustrator CC 2018以降
 
 
 # <a name="emptySelection">copyLine(emptySelection).js<br>cutLine(emptySelection).js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「コピー（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> )、
 「切り取り（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>X</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
@@ -373,8 +366,7 @@ Illustrator CC 2018以降
 
 
 # <a name="createColorChart.js">createColorChart.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 カラーチャートを作成します。CMYK、RGB のどちらにも対応しています。
 
 ![Create Color Chart](images/createColorChart.png)
@@ -400,8 +392,7 @@ Illustrator CS4以降
 
 
 # <a name="createGridLines.js">createGridLines.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 アートボードにグリッドを作成します。
 
 ![Create Grid Lines](images/createGridLines.png)
@@ -421,8 +412,7 @@ Illustrator CS以降
 
 
 # <a name="createPageNumbers.js">createPageNumbers.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在のページ番号 に相当します。  
 アートボードの指定した位置にノンブルを配置します。
 
@@ -452,8 +442,7 @@ Illustrator CS4以降
 
 
 # <a name="deleteAll">deleteAllLeft.js<br>deleteAllRight.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「左側をすべて削除」( <kbd>⌘</kbd> + <kbd>Backspace</kbd> )、
 「右側をすべて削除」( <kbd>⌘</kbd> + <kbd>Delete</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
@@ -486,8 +475,7 @@ Illustrator CC 2018以降
 
 
 # <a name="deleteHiddenLayers.js">deleteHiddenLayers.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 非表示のレイヤーを削除します。
 
 > **Note**  
@@ -507,8 +495,7 @@ Illustrator CS以降
 
 
 # <a name="deleteLockedLayers.js">deleteLockedLayers.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 ロックしているレイヤーを削除します。
 
 ![Delete Locked Layers](images/deleteLockedLayers.png)
@@ -525,8 +512,7 @@ Illustrator CS以降
 
 
 # <a name="deleteTrailingSpaces.js">deleteTrailingSpaces.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 行末のスペースを削除します。
 ポイント文字、エリア内文字のどちらにも対応しています。
 
@@ -551,8 +537,7 @@ Illustrator CS以降
 
 
 # <a name="deleteUnusedLayers.js">deleteUnusedLayers.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 未使用（空）のレイヤーを削除します。サブレイヤーも対象です。
 
 ![Delete Unused Layers](images/deleteUnusedLayers.png)
@@ -570,8 +555,7 @@ Illustrator CS以降
 
 
 # <a name="deleteWord.js">deleteWord.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 カーソル位置の単語を削除します。
 ポイント文字、エリア内文字のどちらにも対応しています。
 
@@ -598,8 +582,7 @@ Illustrator CC 2018以降
 
 
 # <a name="disjoinPath.js">disjoinPath.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 アンカーポイントごとにパスオブジェクトを分割します。
 
 ![Disjoin Path](images/disjoinPath.png)
@@ -618,9 +601,57 @@ Illustrator CS以降
 
 
 
-# <a name="extractColorsFromGradient.js">extractColorsFromGradient.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+# <a name="drawRectangle.js">drawRectangle.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+オブジェクトの周囲に長方形を描きます。
 
+![Draw Rectangle](images/drawRectangle.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. パスオブジェクトを選択してスクリプトを実行します。
+2. マージンを入力します。  
+   線幅を含めたい場合は、線幅を含むチェックボックスにチェックを入れます。
+
+> **Note**  
+> 塗りと線幅なしの長方形を描きます。  
+> マージンの単位はルーラー単位により変わります。
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="extendLine.js">extendLine.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+パスオブジェクトを伸縮します。
+
+![Extend Line](images/extendLine.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ダイレクト選択ツールでアンカーポイントを選択してスクリプトを実行します。
+2. 数値を入力します。正の値で伸び、負の値で縮みます。
+
+> **Warning**  
+> 閉じたパスと曲線には対応していません。
+
+> **Note**  
+> 距離の単位はルーラー単位により変わります。
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="extractColorsFromGradient.js">extractColorsFromGradient.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 グラデーションのカラー分岐点からそれぞれ色を取り出してスウォッチに追加します。
 
 ![Extract Colors From Gradient](images/extractColorsFromGradient.png)
@@ -642,8 +673,7 @@ Illustrator CS以降
 
 
 # <a name="generateGradientColor.js">generateGradientColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 オブジェクトの塗り色またはスウォッチからグラデーションを生成します。
 
 ![Generate Gradient Color](images/generateGradientColor.png)
@@ -665,8 +695,7 @@ Illustrator CS4以降
 
 
 # <a name="goToLine.js">goToLine.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行/列に移動...」( <kbd>Ctrl</kbd> + <kbd>G</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
 [SPAi](https://tama-san.com/spai/) や
@@ -700,8 +729,7 @@ Illustrator CC 2018以降
 
 
 # <a name="goToText">goToNextText.js<br>goToPreviousText.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 テキスト編集状態のまま、カーソルを次または前のテキストの先頭に移動します。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
@@ -730,8 +758,7 @@ Illustrator CC 2018以降
 
 
 # <a name="highlightWord.js">highlightWord.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 入力した単語の塗り色を変更します。CMYK、RGB のどちらにも対応しています。
 
 ![Highlight Word](images/highlightWord.png)
@@ -751,8 +778,7 @@ Illustrator CS4以降
 
 
 # <a name="insertLine">insertLineAbove.js<br>insertLineBelow.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「上に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> )、
 「下に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Enter</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
@@ -784,8 +810,7 @@ Illustrator CC 2018以降
 
 
 # <a name="invertLockedLayer.js">invertLockedLayer.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 レイヤーの表示／非表示を切り替えます。
 
 ![Invert Locked Layer](images/invertLockedLayer.png)
@@ -802,8 +827,7 @@ Illustrator CS以降
 
 
 # <a name="invertVisibleLayer.js">invertVisibleLayer.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 レイヤーのロック状態を切り替えます。
 
 ![Invert Visible Layer](images/invertVisibleLayer.png)
@@ -820,8 +844,7 @@ Illustrator CS以降
 
 
 # <a name="matchLocationOfGradientStop.js">matchLocationOfGradientStop.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 グラデーションのカラー分岐点、中間点を同期します。
 
 ![Match Location Of Gradient Stop](images/matchLocationOfGradientStop.png)
@@ -843,8 +866,7 @@ Illustrator CS4以降
 
 
 # <a name="measurePathItems.js">measurePathItems.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 パスオブジェクトの2点間のアンカーポイントの距離を測定します。
 
 ![Measure PathItems](images/measurePathItems.png)
@@ -871,8 +893,7 @@ Illustrator CS4以降
 
 
 # <a name="moveLine">moveLineDown.js<br>moveLineUp.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> )、
 「行を上へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> )と同様のことができます。  
 [Keyboard Maestro](https://www.keyboardmaestro.com/main/)、
@@ -909,8 +930,7 @@ Illustrator CC 2018以降
 
 
 # <a name="moveSublayerToMainLayer.js">moveSublayerToMainLayer.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 サブレイヤーを親レイヤーの外へ移動します。
 
 ![Move Sublayer To Main Layer](images/moveSublayerToMainLayer.png)
@@ -927,8 +947,7 @@ Illustrator CS以降
 
 
 # <a name="randomTextColor.js">randomTextColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 単語または、1文字、1文ごとにランダムに色を適用します。CMYK、RGB のどちらにも対応しています。
 
 ![Random Text Color](images/randomTextColor.png)
@@ -952,8 +971,7 @@ Illustrator CS4以降
 
 
 # <a name="relinkFileExtension.js">relinkFileExtension.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 InDesignのリンクパネルメニュー > ファイル拡張子にリンクを再設定... に相当します。
 
 ![InDesign's Relink File Extension](images/InDesign_Relink_File_Extension.png)
@@ -982,8 +1000,7 @@ Illustrator CS4以降
 
 
 # <a name="relinkFileExtensionExtra.js">relinkFileExtensionExtra.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 このスクリプトは、relinkFileExtension.js を機能拡張したものです。
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
@@ -1014,8 +1031,7 @@ Illustrator CS4以降
 
 
 # <a name="relinkToFolder.js">relinkToFolder.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 指定したフォルダーにある同名の画像と置き換えます。  
 InDesignのリンクパネルメニュー > フォルダに再リンク... に相当します。
 
@@ -1041,8 +1057,7 @@ Illustrator CS4以降
 
 
 # <a name="removeColorInGuideObject.js">removeColorInGuideObject.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 すべてのガイドオブジェクトの塗りと線の色を削除します。
 
 ![Remove Color In Guide Object](images/removeColorInGuideObject.png)
@@ -1065,8 +1080,7 @@ Illustrator CS6以降
 
 
 # <a name="removeDeletedGlobalColor.js">removeDeletedGlobalColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 分版プレビューパネルに表示される Deleted Global Color を削除します。
 
 ![Remove Deleted Global Color](images/removeDeletedGlobalColor.png)
@@ -1088,8 +1102,7 @@ Illustrator CS以降
 
 
 # <a name="resetToFullScale.js">resetToFullScale.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 リンク画像のスケールを100%に、回転角度を0°に戻します。  
 埋め込み画像にも対応しています。
 
@@ -1107,8 +1120,7 @@ Illustrator CS6以降
 
 
 # <a name="roundColorValue.js">roundColorValue.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 カラーの数値を四捨五入します。  
 塗り、線のどちらにも対応しています。
 
@@ -1126,8 +1138,7 @@ Illustrator CS以降
 
 
 # <a name="roundLocationOfGradientStop.js">roundLocationOfGradientStop.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 グラデーションのカラー分岐点、中間点の数値を四捨五入します。  
 塗り、線のどちらにも対応しています。
 
@@ -1145,8 +1156,7 @@ Illustrator CS以降
 
 
 # <a name="selectEmbeddedLink.js">selectEmbeddedLink.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 埋め込み画像を選択します。
 
 #### 使用方法
@@ -1164,8 +1174,7 @@ Illustrator CS以降
 
 
 # <a name="selectLink.js">selectLink.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 リンクを選択します。
 
 ![Select Link](images/selectLink.png)
@@ -1192,8 +1201,7 @@ Illustrator CS4以降
 
 
 # <a name="showArtboardName.js">showArtboardName.js</a>
-[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
 ドキュメント内にアートボード名とサイズを表示します。
 
 ![Show Artboard Name](images/showArtboardName.png)
@@ -1213,8 +1221,7 @@ Illustrator CS4以降
 
 
 # <a name="shuffleGradientColor.js">shuffleGradientColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 グラデーションをシャッフルします。
 
 ![Shuffle Gradient Color](images/shuffleGradientColor.png)
@@ -1235,8 +1242,7 @@ Illustrator CS以降
 
 
 # <a name="shuffleObjects.js">shuffleObjects.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 選択したオブジェクトをシャッフルします。
 
 ![Shuffle Objects](images/shuffleObjects.png)
@@ -1253,8 +1259,7 @@ Illustrator CS以降
 
 
 # <a name="sortArtboards.js">sortArtboards.js</a>
-[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
 アートボードパネル内のアートボード名を昇順でソートします。
 
 ![Sort Artboards](images/sortArtboards.png)
@@ -1274,8 +1279,7 @@ Illustrator CS5以降
 
 
 # <a name="stepAndRepeat.js">stepAndRepeat.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 InDesignの編集メニュー > 繰り返し複製... に相当します。
 
 ![Step and Repeat](images/stepandRepeat.png)
@@ -1300,8 +1304,7 @@ Illustrator CS4以降
 
 
 # <a name="swapTextContents.js">swapTextContents.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 2つの文字列の内容を交換します。
 
 ![Swap Text Contents](images/swapTextContents.png)
@@ -1318,8 +1321,7 @@ Illustrator CS以降
 
 
 # <a name="syncView.js">syncView.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 アクティブなウィンドウの表示スケールと表示位置に、開いているすべてのウィンドウを同期させます。
 
 ![Sync View](images/syncView.png)
@@ -1340,8 +1342,7 @@ Illustrator CS以降
 
 
 # <a name="textAlign">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 テキストの位置を移動させずにテキスト揃えを変更します。  
 縦書きにも対応しています。
 
@@ -1360,8 +1361,7 @@ Illustrator CS以降
 
 
 # <a name="XmpFunctions.js">XmpFunctions.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 XMPから取得できるフォント・カラー・リンク画像・更新履歴の情報を関数としてまとめました。  
 XMPの詳しい内容については、[Adobeのサイト](https://www.adobe.io/xmp/docs/)を参照してください。
 
