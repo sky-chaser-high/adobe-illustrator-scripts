@@ -9,79 +9,79 @@ If you find a script that interests you, please download it from [![Download](ht
 <br><br>
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [showArtboardName.js](#showArtboardName.js)
-- [sortArtboards.js](#sortArtboards.js)
+- [showArtboardName](#showArtboardName)
+- [sortArtboards](#sortArtboards)
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-- [createColorChart.js](#createColorChart.js)
-- [extractColorsFromGradient.js](#extractColorsFromGradient.js)
-- [generateGradientColor.js](#generateGradientColor.js)
-- [highlightWord.js](#highlightWord.js)
-- [matchLocationOfGradientStop.js](#matchLocationOfGradientStop.js)
-- [randomTextColor.js](#randomTextColor.js)
-- [removeDeletedGlobalColor.js](#removeDeletedGlobalColor.js)
-- [roundColorValue.js](#roundColorValue.js)
-- [roundLocationOfGradientStop.js](#roundLocationOfGradientStop.js)
-- [shuffleGradientColor.js](#shuffleGradientColor.js)
+- [createColorChart](#createColorChart)
+- [extractColorsFromGradient](#extractColorsFromGradient)
+- [generateGradientColor](#generateGradientColor)
+- [highlightWord](#highlightWord)
+- [matchLocationOfGradientStop](#matchLocationOfGradientStop)
+- [randomTextColor](#randomTextColor)
+- [removeDeletedGlobalColor](#removeDeletedGlobalColor)
+- [roundColorValue](#roundColorValue)
+- [roundLocationOfGradientStop](#roundLocationOfGradientStop)
+- [shuffleGradientColor](#shuffleGradientColor)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-- [deleteHiddenLayers.js](#deleteHiddenLayers.js)
-- [deleteLockedLayers.js](#deleteLockedLayers.js)
-- [deleteUnusedLayers.js](#deleteUnusedLayers.js)
-- [invertLockedLayer.js](#invertLockedLayer.js)
-- [invertVisibleLayer.js](#invertVisibleLayer.js)
-- [moveSublayerToMainLayer.js](#moveSublayerToMainLayer.js)
+- [deleteHiddenLayers](#deleteHiddenLayers)
+- [deleteLockedLayers](#deleteLockedLayers)
+- [deleteUnusedLayers](#deleteUnusedLayers)
+- [invertLockedLayer](#invertLockedLayer)
+- [invertVisibleLayer](#invertVisibleLayer)
+- [moveSublayerToMainLayer](#moveSublayerToMainLayer)
 
 ### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-- [relinkFileExtension.js](#relinkFileExtension.js)
-- [relinkFileExtensionExtra.js](#relinkFileExtensionExtra.js)
-- [relinkToFolder.js](#relinkToFolder.js)
-- [resetToFullScale.js](#resetToFullScale.js)
-- [selectEmbeddedLink.js](#selectEmbeddedLink.js)
-- [selectLink.js](#selectLink.js)
+- [relinkFileExtension](#relinkFileExtension)
+- [relinkFileExtensionExtra](#relinkFileExtensionExtra)
+- [relinkToFolder](#relinkToFolder)
+- [resetToFullScale](#resetToFullScale)
+- [selectEmbeddedLink](#selectEmbeddedLink)
+- [selectLink](#selectLink)
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [closePath.js](#closePath.js)
-- [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCorner.js)
-- [createGridLines.js](#createGridLines.js)
-- [disjoinPath.js](#disjoinPath.js)
-- [drawRectangle.js](#drawRectangle.js) `New`
-- [extendLine.js](#extendLine.js) `New`
-- [measurePathItems.js](#measurePathItems.js)
-- [removeColorInGuideObject.js](#removeColorInGuideObject.js)
-- [shuffleObjects.js](#shuffleObjects.js)
-- [stepAndRepeat.js](#stepAndRepeat.js)
+- [closePath](#closePath)
+- [convertAllAnchorPointsToCorner](#convertAllAnchorPointsToCorner)
+- [createGridLines](#createGridLines)
+- [disjoinPath](#disjoinPath)
+- [drawRectangle](#drawRectangle) `New`
+- [extendLine](#extendLine) `New`
+- [measurePathItems](#measurePathItems)
+- [removeColorInGuideObject](#removeColorInGuideObject)
+- [shuffleObjects](#shuffleObjects)
+- [stepAndRepeat](#stepAndRepeat)
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [addNumericSeparators.js](#addNumericSeparators.js)
-- [copyLineDown.js](#copyLine)
-- [copyLineUp.js](#copyLine)
-- [copyLine(emptySelection).js](#emptySelection)
-- [createPageNumbers.js](#createPageNumbers.js)
-- [cutLine(emptySelection).js](#emptySelection)
-- [deleteAllLeft.js](#deleteAll)
-- [deleteAllRight.js](#deleteAll)
-- [deleteTrailingSpaces.js](#deleteTrailingSpaces.js)
-- [deleteWord.js](#deleteWord.js)
-- [goToLine.js](#goToLine.js)
-- [goToNextText.js](#goToText)
-- [goToPreviousText.js](#goToText)
-- [insertLineAbove.js](#insertLine)
-- [insertLineBelow.js](#insertLine)
-- [moveLineDown.js](#moveLine)
-- [moveLineUp.js](#moveLine)
-- [swapTextContents.js](#swapTextContents.js)
-- [textAlign_Center.js](#textAlign)
-- [textAlign_Left.js](#textAlign)
-- [textAlign_Right.js](#textAlign)
+- [addNumericSeparators](#addNumericSeparators)
+- [copyLineDown](#copyLine)
+- [copyLineUp](#copyLine)
+- [copyLine(emptySelection)](#emptySelection)
+- [createPageNumbers](#createPageNumbers)
+- [cutLine(emptySelection)](#emptySelection)
+- [deleteAllLeft](#deleteAll)
+- [deleteAllRight](#deleteAll)
+- [deleteTrailingSpaces](#deleteTrailingSpaces)
+- [deleteWord](#deleteWord)
+- [goToLine](#goToLine)
+- [goToNextText](#goToText)
+- [goToPreviousText](#goToText)
+- [insertLineAbove](#insertLine)
+- [insertLineBelow](#insertLine)
+- [moveLineDown](#moveLine)
+- [moveLineUp](#moveLine)
+- [swapTextContents](#swapTextContents)
+- [textAlign_Center](#textAlign)
+- [textAlign_Left](#textAlign)
+- [textAlign_Right](#textAlign)
 
 ### Utility [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [arrangeWindows.js](#arrangeWindows.js)
-- [checkDayOfWeek.js](#checkDayOfWeek.js)
-- [closeAllDocuments.js](#closeAllDocuments.js)
-- [compareScale.js](#compareScale.js)
-- [syncView.js](#syncView.js)
-- [XmpFunctions.js](#XmpFunctions.js)
+- [arrangeWindows](#arrangeWindows)
+- [checkDayOfWeek](#checkDayOfWeek)
+- [closeAllDocuments](#closeAllDocuments)
+- [compareScale](#compareScale)
+- [syncView](#syncView)
+- [XmpFunctions](#XmpFunctions)
 <br><br><br>
 
 
@@ -114,7 +114,7 @@ The following extensions or software make it easy to run scripts.
 
 
 
-# <a name="addNumericSeparators.js">addNumericSeparators.js</a>
+# <a name="addNumericSeparators">addNumericSeparators</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script changes a number to a 3-digit comma delimited string.
 
@@ -132,7 +132,7 @@ Illustrator CS or higher
 
 
 
-# <a name="arrangeWindows.js">arrangeWindows.js</a>
+# <a name="arrangeWindows">arrangeWindows</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 This script splits and arranges all open windows.
 
@@ -149,7 +149,7 @@ Illustrator CS6 or higher
 
 
 
-# <a name="checkDayOfWeek.js">checkDayOfWeek.js</a>
+# <a name="checkDayOfWeek">checkDayOfWeek</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 This script checks the day of the week.
 
@@ -180,7 +180,7 @@ Illustrator CS or higher
 
 
 
-# <a name="closeAllDocuments.js">closeAllDocuments.js</a>
+# <a name="closeAllDocuments">closeAllDocuments</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 This script closes all documents.  
 If there are documents not saved, choose to save them.
@@ -199,7 +199,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="closePath.js">closePath.js</a>
+# <a name="closePath">closePath</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script closes the path objects.
 
@@ -216,7 +216,7 @@ Illustrator CS or higher
 
 
 
-# <a name="compareScale.js">compareScale.js</a>
+# <a name="compareScale">compareScale</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 This script compares two objects' scales.
 
@@ -236,7 +236,7 @@ Illustrator CS or higher
 
 
 
-# <a name="convertAllAnchorPointsToCorner.js">convertAllAnchorPointsToCorner.js</a>
+# <a name="convertAllAnchorPointsToCorner">convertAllAnchorPointsToCorner</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script converts all anchor points to the corner.  
 The anchor point conversion options in the Control panel require the anchor point to be selected, but this script selects the entire object.
@@ -257,7 +257,7 @@ Illustrator CS or higher
 
 
 
-# <a name="copyLine">copyLineDown.js<br>copyLineUp.js</a>
+# <a name="copyLine">copyLineDown<br>copyLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
 "Copy Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> ) & 
@@ -268,7 +268,7 @@ Both point and area types are supported.
 
 ![Vscode Copy Line](images/vscode_copyLine.png)
 
-For example, copyLineDown.js:
+For example, copyLineDown:
 ![Copy Line](images/copyLine.png)
 
 ### Usage
@@ -278,7 +278,7 @@ It is not necessary to select a line.
 > **Warning**  
 > Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
 > Area type with wrapping may not work well.  
-> In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.
+> In the case of copyLineDown, when copying the last line, a new line is added to work around a bug.
 
 > **Note**  
 > Only one line can be copied. Multiple lines are not supported.  
@@ -293,7 +293,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="emptySelection">copyLine(emptySelection).js<br>cutLine(emptySelection).js</a>
+# <a name="emptySelection">copyLine(emptySelection)<br>cutLine(emptySelection)</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Copy line (empty selection)"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> ) & 
@@ -302,7 +302,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-For example, cutLine(emptySelection).js:
+For example, cutLine(emptySelection):
 ![Empty Selection](images/emptySelection.png)
 
 ### Usage
@@ -325,7 +325,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="createColorChart.js">createColorChart.js</a>
+# <a name="createColorChart">createColorChart</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script creates a color chart.  
 Both CMYK and RGB colors are supported.
@@ -352,7 +352,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="createGridLines.js">createGridLines.js</a>
+# <a name="createGridLines">createGridLines</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script creates grid lines on artboards.
 
@@ -372,7 +372,7 @@ Illustrator CS or higher
 
 
 
-# <a name="createPageNumbers.js">createPageNumbers.js</a>
+# <a name="createPageNumbers">createPageNumbers</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to InDesign's Type menu > Insert Special Character > Markers > Current Page Number.  
 Places a page number at a specified location on the artboards.
@@ -401,7 +401,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="deleteAll">deleteAllLeft.js<br>deleteAllRight.js</a>
+# <a name="deleteAll">deleteAllLeft<br>deleteAllRight</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Delete All Left"( <kbd>⌘</kbd> + <kbd>Backspace</kbd> ) & 
@@ -410,7 +410,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-For example, deleteAllRight.js:
+For example, deleteAllRight:
 ![Delete All Right](images/deleteAllRight.png)
 
 ### Usage
@@ -433,7 +433,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="deleteHiddenLayers.js">deleteHiddenLayers.js</a>
+# <a name="deleteHiddenLayers">deleteHiddenLayers</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script deletes hidden layers.
 
@@ -453,7 +453,7 @@ Illustrator CS or higher
 
 
 
-# <a name="deleteLockedLayers.js">deleteLockedLayers.js</a>
+# <a name="deleteLockedLayers">deleteLockedLayers</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script deletes locked layers.
 
@@ -470,7 +470,7 @@ Illustrator CS or higher
 
 
 
-# <a name="deleteTrailingSpaces.js">deleteTrailingSpaces.js</a>
+# <a name="deleteTrailingSpaces">deleteTrailingSpaces</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script deletes trailing spaces.
 Both point and area types are supported.
@@ -495,7 +495,7 @@ Illustrator CS or higher
 
 
 
-# <a name="deleteUnusedLayers.js">deleteUnusedLayers.js</a>
+# <a name="deleteUnusedLayers">deleteUnusedLayers</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script deletes unused layers.
 
@@ -512,7 +512,7 @@ Illustrator CS or higher
 
 
 
-# <a name="deleteWord.js">deleteWord.js</a>
+# <a name="deleteWord">deleteWord</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script deletes a word under the cursor.
 Both point and area types are supported.
@@ -539,7 +539,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="disjoinPath.js">disjoinPath.js</a>
+# <a name="disjoinPath">disjoinPath</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script breaks apart the path object with anchor points.
 
@@ -559,7 +559,7 @@ Illustrator CS or higher
 
 
 
-# <a name="drawRectangle.js">drawRectangle.js</a>
+# <a name="drawRectangle">drawRectangle</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script draws a rectangle on a selected object.
 
@@ -582,7 +582,7 @@ Illustrator CS or higher
 
 
 
-# <a name="extendLine.js">extendLine.js</a>
+# <a name="extendLine">extendLine</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script extends a path object.
 
@@ -606,7 +606,7 @@ Illustrator CS or higher
 
 
 
-# <a name="extractColorsFromGradient.js">extractColorsFromGradient.js</a>
+# <a name="extractColorsFromGradient">extractColorsFromGradient</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script extracts colors as swatches from the gradient stops.
 
@@ -628,7 +628,7 @@ Illustrator CS or higher
 
 
 
-# <a name="generateGradientColor.js">generateGradientColor.js</a>
+# <a name="generateGradientColor">generateGradientColor</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script generates the gradient color from fill colors or swatches.
 
@@ -650,7 +650,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="goToLine.js">goToLine.js</a>
+# <a name="goToLine">goToLine</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Go menu 
 "Go to Line/Column..."( <kbd>Ctrl</kbd> + <kbd>G</kbd> ).  
@@ -682,12 +682,12 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="goToText">goToNextText.js<br>goToPreviousText.js</a>
+# <a name="goToText">goToNextText<br>goToPreviousText</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script moves the cursor to the beginning of the next or previous text while in the text editing state.  
 Both point and area types are supported.
 
-For example, goToNextText.js:
+For example, goToNextText:
 ![Go to Text](images/goToText.png)
 
 ### Usage
@@ -711,7 +711,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="highlightWord.js">highlightWord.js</a>
+# <a name="highlightWord">highlightWord</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script highlights the searched words with the fill color.  
 Both CMYK and RGB colors are supported.
@@ -731,7 +731,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="insertLine">insertLineAbove.js<br>insertLineBelow.js</a>
+# <a name="insertLine">insertLineAbove<br>insertLineBelow</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Insert Line Above"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> ) & 
@@ -740,7 +740,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-For example, insertLineBelow.js:
+For example, insertLineBelow:
 ![Insert Line](images/insertLine.png)
 
 ### Usage
@@ -762,7 +762,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="invertLockedLayer.js">invertLockedLayer.js</a>
+# <a name="invertLockedLayer">invertLockedLayer</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script inverts locked layers.
 
@@ -779,7 +779,7 @@ Illustrator CS or higher
 
 
 
-# <a name="invertVisibleLayer.js">invertVisibleLayer.js</a>
+# <a name="invertVisibleLayer">invertVisibleLayer</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script inverts visible layers.
 
@@ -796,7 +796,7 @@ Illustrator CS or higher
 
 
 
-# <a name="matchLocationOfGradientStop.js">matchLocationOfGradientStop.js</a>
+# <a name="matchLocationOfGradientStop">matchLocationOfGradientStop</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script matches the location of the gradient stops and midpoints.
 
@@ -817,7 +817,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="measurePathItems.js">measurePathItems.js</a>
+# <a name="measurePathItems">measurePathItems</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script measures the distance of an anchor point between two points of an object.
 
@@ -844,7 +844,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="moveLine">moveLineDown.js<br>moveLineUp.js</a>
+# <a name="moveLine">moveLineDown<br>moveLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
 "Move Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> ) & 
@@ -855,7 +855,7 @@ Both point and area types are supported.
 
 ![Vscode Move Line](images/vscode_moveLine.png)
 
-For example, moveLineDown.js:
+For example, moveLineDown:
 ![Move Line](images/moveLine.png)
 
 ### Usage
@@ -865,7 +865,7 @@ It is not necessary to select a line.
 > **Warning**  
 > Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
 > Area type with wrapping may not work well.  
-> In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.
+> In the case of moveLineUp, when moving the last line, a new line is added to work around a bug.
 
 > **Note**  
 > Only one line can be moved. Multiple lines are not supported.  
@@ -880,7 +880,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="moveSublayerToMainLayer.js">moveSublayerToMainLayer.js</a>
+# <a name="moveSublayerToMainLayer">moveSublayerToMainLayer</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script moves sublayers to the main layer above.
 
@@ -897,7 +897,7 @@ Illustrator CS or higher
 
 
 
-# <a name="randomTextColor.js">randomTextColor.js</a>
+# <a name="randomTextColor">randomTextColor</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script changes the text color randomly by word, character or sentence.  
 Both CMYK and RGB colors are supported.
@@ -921,7 +921,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="relinkFileExtension.js">relinkFileExtension.js</a>
+# <a name="relinkFileExtension">relinkFileExtension</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script is equivalent to InDesign's Links panel menu "Relink File Extension".
 
@@ -949,9 +949,9 @@ Illustrator CS4 or higher
 
 
 
-# <a name="relinkFileExtensionExtra.js">relinkFileExtensionExtra.js</a>
+# <a name="relinkFileExtensionExtra">relinkFileExtensionExtra</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script is an enhanced version of relinkFileExtension.js.
+This script is an enhanced version of relinkFileExtension.
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
 
@@ -979,7 +979,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="relinkToFolder.js">relinkToFolder.js</a>
+# <a name="relinkToFolder">relinkToFolder</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script is equivalent to InDesign's Links panel menu "Relink To Folder".  
 Replaces the image with an image of the same name in the specified folder.
@@ -1005,7 +1005,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="removeColorInGuideObject.js">removeColorInGuideObject.js</a>
+# <a name="removeColorInGuideObject">removeColorInGuideObject</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script removes fill and stroke colors in all guide objects.
 
@@ -1028,7 +1028,7 @@ Illustrator CS6 or higher
 
 
 
-# <a name="removeDeletedGlobalColor.js">removeDeletedGlobalColor.js</a>
+# <a name="removeDeletedGlobalColor">removeDeletedGlobalColor</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 Deletes the Deleted Global Color displayed in the Separations Preview panel.  
 
@@ -1050,7 +1050,7 @@ Illustrator CS or higher
 
 
 
-# <a name="resetToFullScale.js">resetToFullScale.js</a>
+# <a name="resetToFullScale">resetToFullScale</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script resets the scale to 100% and the rotation angle to 0 degrees for the linked files.  
 Embedded images are also supported.
@@ -1068,7 +1068,7 @@ Illustrator CS6 or higher
 
 
 
-# <a name="roundColorValue.js">roundColorValue.js</a>
+# <a name="roundColorValue">roundColorValue</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script rounds color values.  
 Both fill and stroke colors are supported.
@@ -1086,7 +1086,7 @@ Illustrator CS or higher
 
 
 
-# <a name="roundLocationOfGradientStop.js">roundLocationOfGradientStop.js</a>
+# <a name="roundLocationOfGradientStop">roundLocationOfGradientStop</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script rounds the location of the gradient color stops and midpoints.  
 Both fill and stroke colors are supported.
@@ -1104,7 +1104,7 @@ Illustrator CS or higher
 
 
 
-# <a name="selectEmbeddedLink.js">selectEmbeddedLink.js</a>
+# <a name="selectEmbeddedLink">selectEmbeddedLink</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script selects embedded link files.
 
@@ -1122,7 +1122,7 @@ Illustrator CS or higher
 
 
 
-# <a name="selectLink.js">selectLink.js</a>
+# <a name="selectLink">selectLink</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script selects linked files.
 
@@ -1148,7 +1148,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="showArtboardName.js">showArtboardName.js</a>
+# <a name="showArtboardName">showArtboardName</a>
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
 This script shows the artboard name and size in the document.
 
@@ -1168,7 +1168,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="shuffleGradientColor.js">shuffleGradientColor.js</a>
+# <a name="shuffleGradientColor">shuffleGradientColor</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script shuffles the gradient color.
 
@@ -1189,7 +1189,7 @@ Illustrator CS or higher
 
 
 
-# <a name="shuffleObjects.js">shuffleObjects.js</a>
+# <a name="shuffleObjects">shuffleObjects</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script shuffles the objects.
 
@@ -1206,7 +1206,7 @@ Illustrator CS or higher
 
 
 
-# <a name="sortArtboards.js">sortArtboards.js</a>
+# <a name="sortArtboards">sortArtboards</a>
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
 This script sorts the artboards in the Artboard panel.
 
@@ -1226,7 +1226,7 @@ Illustrator CS5 or higher
 
 
 
-# <a name="stepAndRepeat.js">stepAndRepeat.js</a>
+# <a name="stepAndRepeat">stepAndRepeat</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script is equivalent to InDesign's Edit menu "Step and Repeat".  
 
@@ -1249,7 +1249,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="swapTextContents.js">swapTextContents.js</a>
+# <a name="swapTextContents">swapTextContents</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script swap the text contents.
 
@@ -1266,7 +1266,7 @@ Illustrator CS or higher
 
 
 
-# <a name="syncView.js">syncView.js</a>
+# <a name="syncView">syncView</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 This script synchronizes the scale ratio and the position of the current work area for all documents.  
 
@@ -1286,12 +1286,12 @@ Illustrator CS or higher
 
 
 
-# <a name="textAlign">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
+# <a name="textAlign">textAlign_Center<br>textAlign_Left<br>textAlign_Right</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script changes the text alignment without moving the text position.  
 Vertical text is also supported.
 
-For example, textAlign_Center.js:
+For example, textAlign_Center:
 ![Text Align](images/textAlign.png)
 
 ### Usage
@@ -1305,7 +1305,7 @@ Illustrator CS or higher
 
 
 
-# <a name="XmpFunctions.js">XmpFunctions.js</a>
+# <a name="XmpFunctions">XmpFunctions</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 These functions get the font, color, or history properties that are used in the document from XMP.  
 **See also:** [Adobe XMP Document](https://www.adobe.io/xmp/docs/)
@@ -1314,12 +1314,12 @@ These functions get the font, color, or history properties that are used in the 
 You can include this script or copy the function to use it.
 
 ```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
+// @include '/Path1/Path2/XmpFunctions'
 var fonts = xmpGetFonts(app.activeDocument.fullName);
 ```
 It can also be used for linked files.
 ```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
+// @include '/Path1/Path2/XmpFunctions'
 var src = app.activeDocument.placedItems[0].file;
 var history = xmpGetHistory(src);
 ```
@@ -1346,7 +1346,7 @@ Get font properties that are used in the document from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
+// @include '/Path1/Path2/XmpFunctions'
 var fonts = xmpGetFonts(app.activeDocument.fullName);
 alert(fonts[0].face);
 ```
@@ -1363,7 +1363,7 @@ Get history properties from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
+// @include '/Path1/Path2/XmpFunctions'
 var history = xmpGetHistory(app.activeDocument.fullName);
 var date = history[0].when;
 alert(date.getFullYear());
@@ -1379,7 +1379,7 @@ Get linked file properties from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
+// @include '/Path1/Path2/XmpFunctions'
 var files = xmpGetLinkedFiles(app.activeDocument.fullName);
 alert(files[0].filePath);
 ```
@@ -1392,7 +1392,7 @@ Get plate names that are used in the document from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
+// @include '/Path1/Path2/XmpFunctions'
 var platenames = xmpGetPlateNames(app.activeDocument.fullName);
 alert(platenames[0]);
 ```
@@ -1422,7 +1422,7 @@ Get swatch properties that are used in the document from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
+// @include '/Path1/Path2/XmpFunctions'
 var swatches = xmpGetSwatches(app.activeDocument.fullName);
 alert(swatches[0].colorant.cyan);
 ```
