@@ -39,6 +39,7 @@ Adobe Illustratorのスクリプト集です。
 | [invertLockedLayer](#invertLockedLayer) | ロック状態を反転 |
 | [invertVisibleLayer](#invertVisibleLayer) | 表示状態を反転 |
 | [moveSublayerToMainLayer](#moveSublayerToMainLayer) | サブレイヤーを親レイヤーの外へ移動 |
+| [unifyLayerColors](#unifyLayerColors) `New` | レイヤーカラーを統一 |
 
 <br>
 
@@ -61,8 +62,10 @@ Adobe Illustratorのスクリプト集です。
 | [convertAllAnchorPointsToCorner](#convertAllAnchorPointsToCorner) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines](#createGridLines) | グリッドラインを作成 |
 | [disjoinPath](#disjoinPath) | パスを分解 |
-| [drawRectangle](#drawRectangle) `New` | オブジェクトの周囲に長方形を描く |
-| [extendLine](#extendLine) `New` | パスを伸縮 |
+| [drawRectangle](#drawRectangle) | オブジェクトの周囲に長方形を描く |
+| [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint) `New` | アンカーポイントに図形を描く |
+| [extendLine](#extendLine) | パスを伸縮 |
+| [fitGuideInArtboard](#fitGuideInArtboard) `New` | ガイドをアートボードにフィット |
 | [measurePathItems](#measurePathItems) | パスの寸法を測る |
 | [removeColorInGuideObject](#removeColorInGuideObject) | ガイドオブジェクトの色を削除 |
 | [shuffleObjects](#shuffleObjects) | オブジェクトをシャッフル |
@@ -136,7 +139,7 @@ ZIPファイルを[ダウンロード](https://github.com/sky-chaser-high/adobe-
 
 ### ファイル名
 スクリプトのファイル名は日本語に変更しても問題なく動作します。  
-例えば、textAlign_Center を「テキスト中央揃え」のように変更しても大丈夫です。
+例えば、textAlign_Center.js を「テキスト中央揃え.js」のように変更しても大丈夫です。
 
 
 ### UI デザイン
@@ -210,7 +213,7 @@ Illustrator CS6以降
 > `DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`
 
 #### 動作条件
-Illustrator CS以降
+Illustrator CS4以降
 <br><br>
 
 
@@ -267,7 +270,7 @@ Illustrator CS以降
 > 寸法の単位はルーラー単位により変わります。
 
 #### 動作条件
-Illustrator CS以降
+Illustrator CS4以降
 <br><br>
 
 
@@ -307,7 +310,7 @@ Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt<
 
 ![Vscode Copy Line](images/vscode_copyLine.png)
 
-例 copyLineDown:
+例 copyLineDown.js:
 ![Copy Line](images/copyLine.png)
 
 #### 使用方法
@@ -317,7 +320,7 @@ Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt<
 > **Warning**  
 > カーソルを移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
 > エリア内文字で文字の折り返しがある行をコピーする場合、うまく動作しないことがあります。  
-> copyLineDownで最終行をコピーする場合は、バグを回避するために空行を追加します。
+> copyLineDown.jsで最終行をコピーする場合は、バグを回避するために空行を追加します。
 
 > **Note**  
 > コピーできるのは1行のみです。複数行には対応していません。  
@@ -342,7 +345,7 @@ Visual Studio Code のショートカット「コピー（選択なし）」( <k
 などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
-例 cutLine(emptySelection):
+例 cutLine(emptySelection).js:
 ![Empty Selection](images/emptySelection.png)
 
 #### 使用方法
@@ -451,7 +454,7 @@ Visual Studio Code のショートカット「左側をすべて削除」( <kbd>
 などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
-例 deleteAllRight:
+例 deleteAllRight.js:
 ![Delete All Right](images/deleteAllRight.png)
 
 #### 使用方法
@@ -618,7 +621,33 @@ Illustrator CS以降
 > マージンの単位はルーラー単位により変わります。
 
 #### 動作条件
-Illustrator CS以降
+Illustrator CS4以降
+<br><br>
+
+
+
+
+
+# <a name="drawShapeOnAnchorPoint">drawShapeOnAnchorPoint.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+アンカーポイントの位置に図形を描きます。
+
+![Draw Shape On Anchor Point](images/drawShapeOnAnchorPoint.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. パスオブジェクトを選択してスクリプトを実行します。
+2. 描く図形を選択します。
+3. 図形のサイズを入力します。
+4. ハンドルの位置を描きたい場合は、「ハンドル位置も描く」にチェックを入れます。
+
+> **Note**  
+> ダイレクト選択ツールでアンカーポイントを選択すると、選択した箇所にだけ図形を描きます。  
+> ハンドル位置は線で描きます。  
+> 図形サイズの単位はルーラー単位により変わります。
+
+#### 動作条件
+Illustrator CS4以降
 <br><br>
 
 
@@ -643,7 +672,7 @@ Illustrator CS以降
 > 距離の単位はルーラー単位により変わります。
 
 #### 動作条件
-Illustrator CS以降
+Illustrator CS4以降
 <br><br>
 
 
@@ -663,6 +692,26 @@ Illustrator CS以降
 > パスオブジェクトを優先します。  
 > スウォッチから色を取り出したい場合はパスオブジェクトの選択を解除してください。  
 > テキスト、線の色には対応していません。
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="fitGuideInArtboard">fitGuideInArtboard.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+ガイドをアートボードにフィットさせます。
+
+![Fit Guide In Artboard](images/fitGuideInArtboard.png)
+
+#### 使用方法
+ガイドオブジェクトを選択してスクリプトを実行します。
+
+> **Note**  
+> 閉じたパスと曲線には対応していません。
 
 #### 動作条件
 Illustrator CS以降
@@ -733,7 +782,7 @@ Illustrator CC 2018以降
 テキスト編集状態のまま、カーソルを次または前のテキストの先頭に移動します。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
-例 goToNextText:
+例 goToNextText.js:
 ![Go to Text](images/goToText.png)
 
 #### 使用方法
@@ -787,7 +836,7 @@ Visual Studio Code のショートカット「上に行を挿入」( <kbd>⌘</k
 などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
-例 insertLineBelow:
+例 insertLineBelow.js:
 ![Insert Line](images/insertLine.png)
 
 #### 使用方法
@@ -904,7 +953,7 @@ Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kb
 
 ![Vscode Move Line](images/vscode_moveLine.png)
 
-例 moveLineDown:
+例 moveLineDown.js:
 ![Move Line](images/moveLine.png)
 
 #### 使用方法
@@ -914,7 +963,7 @@ Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kb
 > **Warning**  
 > カーソルを移動させるためにスクリプト内部でコピー＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
 > エリア内文字で文字の折り返しがある行を移動する場合、うまく動作しないことがあります。  
-> moveLineUpで最終行を移動する場合は、バグを回避するために空行を追加します。
+> moveLineUp.jsで最終行を移動する場合は、バグを回避するために空行を追加します。
 
 > **Note**  
 > 移動できるのは1行のみです。複数行には対応していません。  
@@ -1001,7 +1050,7 @@ Illustrator CS4以降
 
 # <a name="relinkFileExtensionExtra">relinkFileExtensionExtra</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-このスクリプトは、relinkFileExtension を機能拡張したものです。
+このスクリプトは、relinkFileExtension.js を機能拡張したものです。
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
 > **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
@@ -1346,11 +1395,31 @@ Illustrator CS以降
 テキストの位置を移動させずにテキスト揃えを変更します。  
 縦書きにも対応しています。
 
-例 textAlign_Center:
+例 textAlign_Center.js:
 ![Text Align](images/textAlign.png)
 
 #### 使用方法
 テキストオブジェクトを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="unifyLayerColors">unifyLayerColors.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+レイヤーカラーを統一します。
+
+![Unify Layer Colors](images/unifyLayerColors.png)
+
+#### 使用方法
+基準のレイヤーを選択してスクリプトを実行します。
+
+> **Note**  
+> サブレイヤーにも対応します。
 
 #### 動作条件
 Illustrator CS以降
@@ -1369,12 +1438,12 @@ XMPの詳しい内容については、[Adobeのサイト](https://www.adobe.io/
 このスクリプトファイルをインクルードするか、関数をコピー＆ペーストして使用してください。
 
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var fonts = xmpGetFonts(app.activeDocument.fullName);
 ```
 また、リンク画像にも使用できます。
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var src = app.activeDocument.placedItems[0].file;
 var history = xmpGetHistory(src);
 ```
@@ -1401,7 +1470,7 @@ var history = xmpGetHistory(src);
 
 ##### 例
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var fonts = xmpGetFonts(app.activeDocument.fullName);
 alert(fonts[0].face);
 ```
@@ -1418,7 +1487,7 @@ alert(fonts[0].face);
 
 ##### 例
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var history = xmpGetHistory(app.activeDocument.fullName);
 var date = history[0].when;
 alert(date.getFullYear());
@@ -1434,7 +1503,7 @@ alert(date.getFullYear());
 
 ##### 例
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var files = xmpGetLinkedFiles(app.activeDocument.fullName);
 alert(files[0].filePath);
 ```
@@ -1447,7 +1516,7 @@ alert(files[0].filePath);
 
 ##### 例
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var platenames = xmpGetPlateNames(app.activeDocument.fullName);
 alert(platenames[0]);
 ```
@@ -1477,7 +1546,7 @@ alert(platenames[0]);
 
 ##### 例
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var swatches = xmpGetSwatches(app.activeDocument.fullName);
 alert(swatches[0].colorant.cyan);
 ```

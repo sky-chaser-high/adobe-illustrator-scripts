@@ -31,6 +31,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [invertLockedLayer](#invertLockedLayer)
 - [invertVisibleLayer](#invertVisibleLayer)
 - [moveSublayerToMainLayer](#moveSublayerToMainLayer)
+- [unifyLayerColors](#unifyLayerColors) `New`
 
 ### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [relinkFileExtension](#relinkFileExtension)
@@ -45,8 +46,10 @@ If you find a script that interests you, please download it from [![Download](ht
 - [convertAllAnchorPointsToCorner](#convertAllAnchorPointsToCorner)
 - [createGridLines](#createGridLines)
 - [disjoinPath](#disjoinPath)
-- [drawRectangle](#drawRectangle) `New`
-- [extendLine](#extendLine) `New`
+- [drawRectangle](#drawRectangle)
+- [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint) `New`
+- [extendLine](#extendLine)
+- [fitGuideInArtboard](#fitGuideInArtboard) `New`
 - [measurePathItems](#measurePathItems)
 - [removeColorInGuideObject](#removeColorInGuideObject)
 - [shuffleObjects](#shuffleObjects)
@@ -136,6 +139,9 @@ Illustrator CS or higher
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 This script splits and arranges all open windows.
 
+> **Note**  
+> It has been implemented in the Application Bar since version 2022.
+
 ![Arrange Windows](images/arrangeWindows.png)
 
 ### Usage
@@ -173,7 +179,7 @@ Select a date with the cursor, and run this script.
 > `DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`
 
 ### Requirements
-Illustrator CS or higher
+Illustrator CS4 or higher
 <br><br>
 
 
@@ -229,7 +235,7 @@ Select two objects, and run this script.
 > The dimensional units depend on the ruler units.
 
 ### Requirements
-Illustrator CS or higher
+Illustrator CS4 or higher
 <br><br>
 
 
@@ -268,7 +274,7 @@ Both point and area types are supported.
 
 ![Vscode Copy Line](images/vscode_copyLine.png)
 
-For example, copyLineDown:
+For example, copyLineDown.js:
 ![Copy Line](images/copyLine.png)
 
 ### Usage
@@ -278,7 +284,7 @@ It is not necessary to select a line.
 > **Warning**  
 > Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
 > Area type with wrapping may not work well.  
-> In the case of copyLineDown, when copying the last line, a new line is added to work around a bug.
+> In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.
 
 > **Note**  
 > Only one line can be copied. Multiple lines are not supported.  
@@ -302,7 +308,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-For example, cutLine(emptySelection):
+For example, cutLine(emptySelection).js:
 ![Empty Selection](images/emptySelection.png)
 
 ### Usage
@@ -410,7 +416,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-For example, deleteAllRight:
+For example, deleteAllRight.js:
 ![Delete All Right](images/deleteAllRight.png)
 
 ### Usage
@@ -575,7 +581,32 @@ This script draws a rectangle on a selected object.
 > The units of margin value depend on the ruler units.
 
 ### Requirements
-Illustrator CS or higher
+Illustrator CS4 or higher
+<br><br>
+
+
+
+
+
+# <a name="drawShapeOnAnchorPoint">drawShapeOnAnchorPoint.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script draws shapes on anchor points.
+
+![Draw Shape On Anchor Point](images/drawShapeOnAnchorPoint.png)
+
+### Usage
+1. Select the path objects, and run this script.
+2. Select a shape.
+3. Enter a shape size.
+4. Check the Draw Handle Position checkbox if you want to draw the shapes on the handle positions.
+
+> **Note**  
+> If you select anchor points with Direct Selection Tool, the shape is drawn only for the selected anchor points.  
+> The handle position is drawn with a stroke.  
+> The units of shape size depend on the ruler units.
+
+### Requirements
+Illustrator CS4 or higher
 <br><br>
 
 
@@ -599,7 +630,7 @@ This script extends a path object.
 > The units of extension value depend on the ruler units.
 
 ### Requirements
-Illustrator CS or higher
+Illustrator CS4 or higher
 <br><br>
 
 
@@ -619,6 +650,26 @@ Select the path objects or swatches, and run this script.
 > Prioritize the path object over swatches.  
 > To extract color from swatches, deselect the path objects.  
 > Text object and stroke color are not supported.
+
+### Requirements
+Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="fitGuideInArtboard">fitGuideInArtboard.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script fits guide objects in an artboard.
+
+![Fit Guide In Artboard](images/fitGuideInArtboard.png)
+
+### Usage
+Select guide objects, and run this script.
+
+> **Note**  
+> Closed paths and curves are not supported.
 
 ### Requirements
 Illustrator CS or higher
@@ -687,7 +738,7 @@ Illustrator CC 2018 or higher
 This script moves the cursor to the beginning of the next or previous text while in the text editing state.  
 Both point and area types are supported.
 
-For example, goToNextText:
+For example, goToNextText.js:
 ![Go to Text](images/goToText.png)
 
 ### Usage
@@ -740,7 +791,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-For example, insertLineBelow:
+For example, insertLineBelow.js:
 ![Insert Line](images/insertLine.png)
 
 ### Usage
@@ -855,7 +906,7 @@ Both point and area types are supported.
 
 ![Vscode Move Line](images/vscode_moveLine.png)
 
-For example, moveLineDown:
+For example, moveLineDown.js:
 ![Move Line](images/moveLine.png)
 
 ### Usage
@@ -865,7 +916,7 @@ It is not necessary to select a line.
 > **Warning**  
 > Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
 > Area type with wrapping may not work well.  
-> In the case of moveLineUp, when moving the last line, a new line is added to work around a bug.
+> In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.
 
 > **Note**  
 > Only one line can be moved. Multiple lines are not supported.  
@@ -951,7 +1002,7 @@ Illustrator CS4 or higher
 
 # <a name="relinkFileExtensionExtra">relinkFileExtensionExtra</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script is an enhanced version of relinkFileExtension.
+This script is an enhanced version of relinkFileExtension.js.
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
 
@@ -1291,11 +1342,31 @@ Illustrator CS or higher
 This script changes the text alignment without moving the text position.  
 Vertical text is also supported.
 
-For example, textAlign_Center:
+For example, textAlign_Center.js:
 ![Text Align](images/textAlign.png)
 
 ### Usage
 Select the text objects, and run this script.
+
+### Requirements
+Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="unifyLayerColors">unifyLayerColors.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+This script unifies layer colors.
+
+![Unify Layer Colors](images/unifyLayerColors.png)
+
+### Usage
+Select a target layer, and run this script.
+
+> **Note**  
+> Sublayers are also supported.
 
 ### Requirements
 Illustrator CS or higher
@@ -1314,12 +1385,12 @@ These functions get the font, color, or history properties that are used in the 
 You can include this script or copy the function to use it.
 
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var fonts = xmpGetFonts(app.activeDocument.fullName);
 ```
 It can also be used for linked files.
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var src = app.activeDocument.placedItems[0].file;
 var history = xmpGetHistory(src);
 ```
@@ -1346,7 +1417,7 @@ Get font properties that are used in the document from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var fonts = xmpGetFonts(app.activeDocument.fullName);
 alert(fonts[0].face);
 ```
@@ -1363,7 +1434,7 @@ Get history properties from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var history = xmpGetHistory(app.activeDocument.fullName);
 var date = history[0].when;
 alert(date.getFullYear());
@@ -1379,7 +1450,7 @@ Get linked file properties from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var files = xmpGetLinkedFiles(app.activeDocument.fullName);
 alert(files[0].filePath);
 ```
@@ -1392,7 +1463,7 @@ Get plate names that are used in the document from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var platenames = xmpGetPlateNames(app.activeDocument.fullName);
 alert(platenames[0]);
 ```
@@ -1422,7 +1493,7 @@ Get swatch properties that are used in the document from XMP.
 
 ##### Example
 ```javascript
-// @include '/Path1/Path2/XmpFunctions'
+// @include '/Path1/Path2/XmpFunctions.js'
 var swatches = xmpGetSwatches(app.activeDocument.fullName);
 alert(swatches[0].colorant.cyan);
 ```
