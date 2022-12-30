@@ -588,7 +588,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="drawShapeOnAnchorPoint">drawShapeOnAnchorPoint.js</a>
+# <a name="drawShapeOnAnchorPoint">drawShapeOnAnchorPoint</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script draws shapes on anchor points.
 
@@ -659,7 +659,7 @@ Illustrator CS or higher
 
 
 
-# <a name="fitGuideInArtboard">fitGuideInArtboard.js</a>
+# <a name="fitGuideInArtboard">fitGuideInArtboard</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script fits guide objects in an artboard.
 
@@ -1356,7 +1356,7 @@ Illustrator CS or higher
 
 
 
-# <a name="unifyLayerColors">unifyLayerColors.js</a>
+# <a name="unifyLayerColors">unifyLayerColors</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script unifies layer colors.
 

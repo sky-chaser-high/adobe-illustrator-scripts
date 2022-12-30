@@ -628,7 +628,7 @@ Illustrator CS4以降
 
 
 
-# <a name="drawShapeOnAnchorPoint">drawShapeOnAnchorPoint.js</a>
+# <a name="drawShapeOnAnchorPoint">drawShapeOnAnchorPoint</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 アンカーポイントの位置に図形を描きます。
 
@@ -701,7 +701,7 @@ Illustrator CS以降
 
 
 
-# <a name="fitGuideInArtboard">fitGuideInArtboard.js</a>
+# <a name="fitGuideInArtboard">fitGuideInArtboard</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 ガイドをアートボードにフィットさせます。
 
@@ -1409,7 +1409,7 @@ Illustrator CS以降
 
 
 
-# <a name="unifyLayerColors">unifyLayerColors.js</a>
+# <a name="unifyLayerColors">unifyLayerColors</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 レイヤーカラーを統一します。
 
