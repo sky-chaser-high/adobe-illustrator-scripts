@@ -39,16 +39,16 @@ Adobe Illustratorのスクリプト集です。
 | [invertLockedLayer](#invertLockedLayer) | ロック状態を反転 |
 | [invertVisibleLayer](#invertVisibleLayer) | 表示状態を反転 |
 | [moveSublayerToMainLayer](#moveSublayerToMainLayer) | サブレイヤーを親レイヤーの外へ移動 |
-| [unifyLayerColors](#unifyLayerColors) `New` | レイヤーカラーを統一 |
+| [unifyLayerColors](#unifyLayerColors) | レイヤーカラーを統一 |
 
 <br>
 
 ### リンク [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [relinkFileExtension](#relinkFileExtension) | ファイル拡張子にリンクを再設定 |
-| [relinkFileExtensionExtra](#relinkFileExtensionExtra) | ファイル拡張子にリンクを再設定（機能拡張版） |
-| [relinkToFolder](#relinkToFolder) | フォルダに再リンク |
+| [relinkFileExtension](#relinkFileExtension) `Update` | ファイル拡張子にリンクを再設定 |
+| [relinkFileExtensionExtra](#relinkFileExtensionExtra) `Update` | ファイル拡張子にリンクを再設定（機能拡張版） |
+| [relinkToFolder](#relinkToFolder) `Update` | フォルダに再リンク |
 | [resetToFullScale](#resetToFullScale) | 画像サイズを100%に戻す |
 | [selectEmbeddedLink](#selectEmbeddedLink) | 埋め込み画像を選択 |
 | [selectLink](#selectLink) | リンクを選択 |
@@ -63,9 +63,9 @@ Adobe Illustratorのスクリプト集です。
 | [createGridLines](#createGridLines) | グリッドラインを作成 |
 | [disjoinPath](#disjoinPath) | パスを分解 |
 | [drawRectangle](#drawRectangle) | オブジェクトの周囲に長方形を描く |
-| [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint) `New` | アンカーポイントに図形を描く |
+| [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint) | アンカーポイントに図形を描く |
 | [extendLine](#extendLine) | パスを伸縮 |
-| [fitGuideInArtboard](#fitGuideInArtboard) `New` | ガイドをアートボードにフィット |
+| [fitGuideInArtboard](#fitGuideInArtboard) | ガイドをアートボードにフィット |
 | [measurePathItems](#measurePathItems) | パスの寸法を測る |
 | [removeColorInGuideObject](#removeColorInGuideObject) | ガイドオブジェクトの色を削除 |
 | [shuffleObjects](#shuffleObjects) | オブジェクトをシャッフル |
@@ -126,7 +126,7 @@ ZIPファイルを[ダウンロード](https://github.com/sky-chaser-high/adobe-
 
 > **Note**  
 > スクリプトを使い続けていると、まれに動作しなくなる場合があります。  
-> その場合は、Illustratorを再起動してから実行してみてください。
+> その場合は、Illustratorを再起動してから再度実行してみてください。
 
 
 ### ソフトウェア、エクステンション
@@ -174,6 +174,9 @@ Illustrator CS以降
 # <a name="arrangeWindows">arrangeWindows</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 開いているすべてのウィンドウを分割して並べて表示します。
+
+> **Note**  
+> バージョン2022からアプリケーションバーに実装されています。
 
 ![Arrange Windows](images/arrangeWindows.png)
 
@@ -1023,22 +1026,20 @@ Illustrator CS4以降
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 InDesignのリンクパネルメニュー > ファイル拡張子にリンクを再設定... に相当します。
 
-![InDesign's Relink File Extension](images/InDesign_Relink_File_Extension.png)
-
-#### 使用方法
-1. 置き換えたいリンク画像を選択しスクリプトを実行します。  
-   リンク画像を選択しない場合は、ドキュメント内のすべてのリンク画像が対象となります。
-2. 表示されたプロンプトに置き換えるファイルの拡張子を入力します。
-
 ![Relink File Extension](images/relinkFileExtension.png)
 > **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
+#### 使用方法
+1. 再設定したいリンク画像を選択しスクリプトを実行します。  
+   リンク画像を選択しない場合は、ドキュメント内のすべてのリンク画像が対象になります。
+2. ファイルの拡張子を入力します。
+
 > **Warning**  
-> リンク切れ画像は置き換えることはできません。埋め込み画像も対象外です。  
-> 再配置するリンク画像は、元のリンク画像と同じフォルダに置いてください。
+> リンク切れ画像と埋め込み画像は再設定できません。  
+> 再設定するリンク画像は、元のリンク画像と同じフォルダに置いてください。
 
 > **Note**  
-> 画像を選択する場合は、リンクパネル内の画像ではなく、ドキュメント内の画像を選択してください。
+> リンク画像を選択する場合は、リンクパネルではなくドキュメント内のリンク画像を選択してください。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1056,20 +1057,21 @@ Illustrator CS4以降
 > **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法
-1. 置き換えたいリンク画像を選択しスクリプトを実行します。  
-   リンク画像を選択しない場合は、ドキュメント内のすべてのリンク画像が対象となります。
-2. 「文字列を置換する」または「文字列を追加する」を選択します。  
-   「文字列を置換する」の場合は、正規表現が使用できます。  
-   「文字列を追加する」の場合は、元のファイル名の先頭か末尾またはその両方に追加する文字列を入力します。
-3. 置き換えるファイルの拡張子を入力します。  
-   拡張子を入力しない場合は、元のファイルの拡張子が使用されます。
+1. 再設定したいリンク画像を選択しスクリプトを実行します。  
+   リンク画像を選択しない場合は、ドキュメント内のすべてのリンク画像が対象になります。
+2. 置換または追加を選択します。  
+   置換の場合は、検索で正規表現が使用できます。  
+   追加の場合は、元のファイル名の先頭、末尾またはその両方に追加する文字列を入力します。
+3. ファイルの拡張子を入力します。  
+   拡張子を入力しない場合は、元のファイルの拡張子を使用します。
 
 > **Warning**  
-> リンク切れ画像は置き換えることはできません。埋め込み画像も対象外です。  
-> 再配置するリンク画像は、元のリンク画像と同じフォルダに置いてください。
+> 濁点または半濁点を含む文字列を検索の対象にすると置換に失敗します。  
+> リンク切れ画像と埋め込み画像は再設定できません。  
+> 再設定するリンク画像は、元のリンク画像と同じフォルダに置いてください。
 
 > **Note**  
-> 画像を選択する場合は、リンクパネル内の画像ではなく、ドキュメント内の画像を選択してください。
+> リンク画像を選択する場合は、リンクパネルではなくドキュメント内のリンク画像を選択してください。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1081,21 +1083,21 @@ Illustrator CS4以降
 
 # <a name="relinkToFolder">relinkToFolder</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-指定したフォルダーにある同名の画像と置き換えます。  
+選択したフォルダーにある同名の画像と置き換えます。  
 InDesignのリンクパネルメニュー > フォルダに再リンク... に相当します。
 
 ![InDesign's Relink To Folder](images/InDesign_Relink_To_Folder.png)
 
 #### 使用方法
-1. 置き換えたいリンク画像を選択しスクリプトを実行します。  
-   リンク画像を選択しない場合は、ドキュメント内のすべてのリンク画像が対象となります。
-2. 表示されたダイアログからフォルダを選択します。
+1. 再設定したいリンク画像を選択しスクリプトを実行します。  
+   リンク画像を選択しない場合は、ドキュメント内のすべてのリンク画像が対象になります。
+2. 表示したダイアログからフォルダを選択します。
 
 > **Warning**  
-> リンク切れ画像は置き換えることはできません。埋め込み画像も対象外です。
+> リンク切れ画像と埋め込み画像は再設定できません。
 
 > **Note**  
-> 画像を選択する場合は、リンクパネル内の画像ではなく、ドキュメント内の画像を選択してください。
+> リンク画像を選択する場合は、リンクパネルではなくドキュメント内のリンク画像を選択してください。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1224,9 +1226,9 @@ Illustrator CS以降
 
 # <a name="selectLink">selectLink</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-リンクを選択します。
+リンクを選択します。  
+<img src="images/selectLink.png" alt="Select Link" width="70%">
 
-![Select Link](images/selectLink.png)
 > **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法

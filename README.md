@@ -31,12 +31,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [invertLockedLayer](#invertLockedLayer)
 - [invertVisibleLayer](#invertVisibleLayer)
 - [moveSublayerToMainLayer](#moveSublayerToMainLayer)
-- [unifyLayerColors](#unifyLayerColors) `New`
+- [unifyLayerColors](#unifyLayerColors)
 
 ### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-- [relinkFileExtension](#relinkFileExtension)
-- [relinkFileExtensionExtra](#relinkFileExtensionExtra)
-- [relinkToFolder](#relinkToFolder)
+- [relinkFileExtension](#relinkFileExtension) `Update`
+- [relinkFileExtensionExtra](#relinkFileExtensionExtra) `Update`
+- [relinkToFolder](#relinkToFolder) `Update`
 - [resetToFullScale](#resetToFullScale)
 - [selectEmbeddedLink](#selectEmbeddedLink)
 - [selectLink](#selectLink)
@@ -47,9 +47,9 @@ If you find a script that interests you, please download it from [![Download](ht
 - [createGridLines](#createGridLines)
 - [disjoinPath](#disjoinPath)
 - [drawRectangle](#drawRectangle)
-- [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint) `New`
+- [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint)
 - [extendLine](#extendLine)
-- [fitGuideInArtboard](#fitGuideInArtboard) `New`
+- [fitGuideInArtboard](#fitGuideInArtboard)
 - [measurePathItems](#measurePathItems)
 - [removeColorInGuideObject](#removeColorInGuideObject)
 - [shuffleObjects](#shuffleObjects)
@@ -96,8 +96,8 @@ The scripts can be placed anywhere on your computer.
 To run the scripts, from File > Scripts > Other Script... ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> )
 
 > **Note**  
-> In rare cases, if you continue to use the script, it may stop working.  
-> In that case, restart Illustrator and run this script again.
+> In rare cases, if you continue to use the script, it may not work.  
+> In that case, restart Illustrator and try again.
 
 
 ## Extensions, software
@@ -974,23 +974,21 @@ Illustrator CS4 or higher
 
 # <a name="relinkFileExtension">relinkFileExtension</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script is equivalent to InDesign's Links panel menu "Relink File Extension".
-
-![InDesign's Relink File Extension](images/InDesign_Relink_File_Extension.png)
-
-### Usage
-1. Run this script.  
-   If you don't select an image, all images will be targeted in the document.
-2. Enter the extension at the prompt that appears.
+This script is equivalent to InDesign's Links panel menu "Relink File Extension...".
 
 ![Relink File Extension](images/relinkFileExtension.png)
 
+### Usage
+1. Run this script.  
+   If you don't select linked files, all in the document replace.
+2. Enter an extension.
+
 > **Warning**  
-> Missing linked files are not replaced. Embedded files are also not possible.  
+> Missing linked files and embedded link files not replaced.  
 > Place the relink files in the same place as the original files.
 
 > **Note**  
-> When selecting an image, select the image on the document rather than the image in the links panel.
+> When selecting linked files, select them in the document rather than the links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1008,19 +1006,19 @@ This script is an enhanced version of relinkFileExtension.js.
 
 ### Usage
 1. Run this script.  
-   If you don't select an image, all images will be targeted in the document.
-2. Choose to replace or add the string.  
-   To replace, you can use regular expressions.  
-   To add, specify a string to be added to the beginning or end of the original file name, or both.
-3. Enter the extension.  
-   If you don't enter an extension, the extension of the original file will be used.
+   If you don't select linked files, all in the document replace.
+2. Choose to Replace or Add.  
+   To Replace, you can use regular expressions.  
+   To Add, enter a string to be added to the prefix, suffix, or both of the original file names.
+3. Enter an extension.  
+   If you don't enter an extension, it uses the original file extension.
 
 > **Warning**  
-> Missing linked files are not replaced. Embedded files are also not possible.  
+> Missing linked files and embedded link files not replaced.  
 > Place the relink files in the same place as the original files.
 
 > **Note**  
-> When selecting an image, select the image on the document rather than the image in the links panel.
+> When selecting linked files, select them in the document rather than the links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1032,21 +1030,21 @@ Illustrator CS4 or higher
 
 # <a name="relinkToFolder">relinkToFolder</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script is equivalent to InDesign's Links panel menu "Relink To Folder".  
-Replaces the image with an image of the same name in the specified folder.
+This script is equivalent to InDesign's Links panel menu "Relink to Folder...".  
+Replace linked files with a file of the same name in the selected folder.
 
 ![InDesign's Relink To Folder](images/InDesign_Relink_To_Folder.png)
 
 ### Usage
 1. Run this script.  
-   If you don't select an image, all images will be targeted in the document.
+   If you don't select linked files, all in the document replace.
 2. Select a folder in the dialog that appears.
 
 > **Warning**  
-> Missing linked files are not replaced. Embedded files are also not possible.
+> Missing linked files and embedded link files not replaced.
 
 > **Note**  
-> When selecting an image, select the image on the document rather than the image in the links panel.
+> When selecting linked files, select them in the document rather than the links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1104,12 +1102,12 @@ Illustrator CS or higher
 # <a name="resetToFullScale">resetToFullScale</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script resets the scale to 100% and the rotation angle to 0 degrees for the linked files.  
-Embedded images are also supported.
+Embedded link files are also supported.
 
 ![Reset To Full Scale](images/resetToFullScale.png)
 
 ### Usage
-Select the linked files or the embedded images, and run this script.
+Select linked files or embedded link files, and run this script.
 
 ### Requirements
 Illustrator CS6 or higher
@@ -1175,9 +1173,8 @@ Illustrator CS or higher
 
 # <a name="selectLink">selectLink</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script selects linked files.
-
-![Select Link](images/selectLink.png)
+This script selects linked files.  
+<img src="images/selectLink.png" alt="Select Link" width="70%">
 
 ### Usage
 1. Run this script.

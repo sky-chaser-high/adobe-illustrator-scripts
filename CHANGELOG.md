@@ -124,7 +124,6 @@
 ### 1.2.0 (2022-05-19)
 ### Added
 - Added the progress bar to UI.
-
 ### 1.1.0 (2022-05-18)
 ### Added
 - Added the function to change colors by character or sentences.
@@ -132,11 +131,28 @@
 
 
 ## relinkFileExtension.js
+### 1.1.0 (2023-01-15)
+### Changes
+- The UI has been brought closer to InDesign.
 ### 1.0.1 (2021-06-17)
 ### Bug Fixes
 - Changed the file encoding due to garbled Japanese characters.
 - Files with no extension are now supported.
 - Changed the function to display the results.
+<br><br>
+
+
+## relinkFileExtensionExtra.js
+### 1.1.0 (2023-01-15)
+### Changes
+- Updated the UI.
+<br><br>
+
+
+## relinkToFolder.js
+### 1.1.0 (2023-01-15)
+### Changes
+- The UI has been brought closer to InDesign.
 <br><br>
 
 
@@ -150,7 +166,7 @@
 ## stepAndRepeat.js
 ### 2.0.0 (2022-10-08)
 ### Changes
-- The UI has been brought closer to InDesign specifications.
+- The UI has been brought closer to InDesign.
 - Changed the file name.
 <br><br>
 
@@ -160,7 +176,6 @@
 ### Features
 - Added `xmpGetLinkedFiles(src)` function.
 - Changed the return value of `xmpGetFonts(src)`.
-
 ### 1.0.1 (2022-01-22)
 ### Features
 - Added tint, colorant property to the return value of `xmpGetSwatches(src)`.
