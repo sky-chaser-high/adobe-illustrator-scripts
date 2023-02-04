@@ -46,9 +46,9 @@ Adobe Illustratorのスクリプト集です。
 ### リンク [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [relinkFileExtension](#relinkFileExtension) `Update` | ファイル拡張子にリンクを再設定 |
-| [relinkFileExtensionExtra](#relinkFileExtensionExtra) `Update` | ファイル拡張子にリンクを再設定（機能拡張版） |
-| [relinkToFolder](#relinkToFolder) `Update` | フォルダに再リンク |
+| [relinkFileExtension](#relinkFileExtension) | ファイル拡張子にリンクを再設定 |
+| [relinkFileExtensionExtra](#relinkFileExtensionExtra) | ファイル拡張子にリンクを再設定（機能拡張版） |
+| [relinkToFolder](#relinkToFolder) | フォルダに再リンク |
 | [resetToFullScale](#resetToFullScale) | 画像サイズを100%に戻す |
 | [selectEmbeddedLink](#selectEmbeddedLink) | 埋め込み画像を選択 |
 | [selectLink](#selectLink) | リンクを選択 |
@@ -77,6 +77,7 @@ Adobe Illustratorのスクリプト集です。
 | スクリプト | 概要 |
 | --- | --- |
 | [addNumericSeparators](#addNumericSeparators) | 数字を3桁で区切る |
+| [convertTypeOnAPathToPointType](#convertTypeOnAPathToPointType) `New` | パス上文字をポイント文字に切り替え |
 | [copyLineDown](#copyLine) | 行を下へコピー |
 | [copyLineUp](#copyLine) | 行を上へコピー |
 | [copyLine(emptySelection)](#emptySelection) | 選択なしでコピー |
@@ -86,9 +87,10 @@ Adobe Illustratorのスクリプト集です。
 | [deleteAllRight](#deleteAll) | カーソルの右側をすべて削除 |
 | [deleteTrailingSpaces](#deleteTrailingSpaces) | 行末のスペースを削除 |
 | [deleteWord](#deleteWord) | カーソル位置の単語を削除 |
+| [encloseWordInParentheses](#encloseWordInParentheses) `New` | 文字列を括弧で囲む |
 | [goToLine](#goToLine) | 指定の行に移動 |
-| [goToNextText](#goToText) | カーソルを次のテキストへ移動 |
-| [goToPreviousText](#goToText) | カーソルを前のテキストへ移動 |
+| [goToNextText](#goToText) | カーソルを次のテキストオブジェクトへ移動 |
+| [goToPreviousText](#goToText) | カーソルを前のテキストオブジェクトへ移動 |
 | [insertLineAbove](#insertLine) | 上に行を挿入 |
 | [insertLineBelow](#insertLine) | 下に行を挿入 |
 | [moveLineDown](#moveLine) | 行を下へ移動 |
@@ -292,6 +294,27 @@ Illustrator CS4以降
 
 > **Note**  
 > ダイレクト選択ツールでアンカーポイントを選択する必要はありません。
+
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="convertTypeOnAPathToPointType">convertTypeOnAPathToPointType</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+パス上文字をポイント文字に切り替えます。
+
+![Convert Type On A Path To Point Type](images/convertTypeOnAPathToPointType.png)
+
+#### 使用方法
+パス上文字を選択してスクリプトを実行します。
+
+> **Warning**  
+> 元のパス上文字は削除されます。  
+> アピアランスで適用していた効果は失われます。
 
 #### 動作条件
 Illustrator CS以降
@@ -657,6 +680,42 @@ Illustrator CS4以降
 
 
 
+# <a name="encloseWordInParentheses">encloseWordInParentheses</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+文字列を丸括弧（パーレン）で囲みます。
+
+![Enclose Word In Parentheses](images/encloseWordInParentheses.png)
+
+#### 使用方法
+括弧で囲みたい文字にカーソルを合わせてスクリプトを実行します。  
+文字列を範囲指定した場合はその箇所を囲みます。
+
+> **Warning**  
+> 半角パーレンになります。全角パーレンにしたい場合は、下記の方法でスクリプトを書き換えてください。  
+> カーソルを移動させるためにスクリプト内部でカット＆ペーストを行っています。そのため、あらかじめ文字列等をコピーしていた場合はその内容が失われてしまいます。  
+> エリア内文字で文字の折り返しがある場合、うまく動作しないことがあります。
+
+> **Note**  
+> バージョン2020以前の場合は、スクリプトを実行するとキーボードが反応しなくなります。  
+> テキストを編集する場合はマウスでテキストをクリックしてください。
+
+丸括弧以外の文字で囲みたい場合は、スクリプト内の41、42行目を変更してください。  
+例えば、角括弧 `[ ]` で囲みたい場合は以下のようにします。
+```javascript
+var parentheses = {
+    start: '[',
+    end: ']'
+};
+```
+
+#### 動作条件
+Illustrator CC 2018以降
+<br><br>
+
+
+
+
+
 # <a name="extendLine">extendLine</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 パスオブジェクトを伸縮します。
@@ -782,7 +841,7 @@ Illustrator CC 2018以降
 
 # <a name="goToText">goToNextText<br>goToPreviousText</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-テキスト編集状態のまま、カーソルを次または前のテキストの先頭に移動します。  
+テキスト編集状態のまま、カーソルを次または前のテキストオブジェクトの先頭に移動します。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
 例 goToNextText.js:

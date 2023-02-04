@@ -9,82 +9,84 @@ If you find a script that interests you, please download it from [![Download](ht
 <br><br>
 
 ### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [showArtboardName](#showArtboardName)
-- [sortArtboards](#sortArtboards)
+- [Show Artboard Name](#showArtboardName)
+- [Sort Artboards](#sortArtboards)
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-- [createColorChart](#createColorChart)
-- [extractColorsFromGradient](#extractColorsFromGradient)
-- [generateGradientColor](#generateGradientColor)
-- [highlightWord](#highlightWord)
-- [matchLocationOfGradientStop](#matchLocationOfGradientStop)
-- [randomTextColor](#randomTextColor)
-- [removeDeletedGlobalColor](#removeDeletedGlobalColor)
-- [roundColorValue](#roundColorValue)
-- [roundLocationOfGradientStop](#roundLocationOfGradientStop)
-- [shuffleGradientColor](#shuffleGradientColor)
+- [Create Color Chart](#createColorChart)
+- [Extract Colors from Gradient](#extractColorsFromGradient)
+- [Generate Gradient Color](#generateGradientColor)
+- [Highlight Word](#highlightWord)
+- [Match Location of Gradient Stop](#matchLocationOfGradientStop)
+- [Random Text Color](#randomTextColor)
+- [Remove Deleted Global Color](#removeDeletedGlobalColor)
+- [Round Color Value](#roundColorValue)
+- [Round Location of Gradient Stop](#roundLocationOfGradientStop)
+- [Shuffle Gradient Color](#shuffleGradientColor)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
-- [deleteHiddenLayers](#deleteHiddenLayers)
-- [deleteLockedLayers](#deleteLockedLayers)
-- [deleteUnusedLayers](#deleteUnusedLayers)
-- [invertLockedLayer](#invertLockedLayer)
-- [invertVisibleLayer](#invertVisibleLayer)
-- [moveSublayerToMainLayer](#moveSublayerToMainLayer)
-- [unifyLayerColors](#unifyLayerColors)
+- [Delete Hidden Layers](#deleteHiddenLayers)
+- [Delete Locked Layers](#deleteLockedLayers)
+- [Delete Unused Layers](#deleteUnusedLayers)
+- [Invert Locked Layer](#invertLockedLayer)
+- [Invert Visible Layer](#invertVisibleLayer)
+- [Move Sublayer to Main Layer](#moveSublayerToMainLayer)
+- [Unify Layer Colors](#unifyLayerColors)
 
 ### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-- [relinkFileExtension](#relinkFileExtension) `Update`
-- [relinkFileExtensionExtra](#relinkFileExtensionExtra) `Update`
-- [relinkToFolder](#relinkToFolder) `Update`
-- [resetToFullScale](#resetToFullScale)
-- [selectEmbeddedLink](#selectEmbeddedLink)
-- [selectLink](#selectLink)
+- [Relink File Extension](#relinkFileExtension)
+- [Relink File Extension Extra](#relinkFileExtensionExtra)
+- [Relink to Folder](#relinkToFolder)
+- [Reset to Full Scale](#resetToFullScale)
+- [Select Embedded Link](#selectEmbeddedLink)
+- [Select Link](#selectLink)
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [closePath](#closePath)
-- [convertAllAnchorPointsToCorner](#convertAllAnchorPointsToCorner)
-- [createGridLines](#createGridLines)
-- [disjoinPath](#disjoinPath)
-- [drawRectangle](#drawRectangle)
-- [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint)
-- [extendLine](#extendLine)
-- [fitGuideInArtboard](#fitGuideInArtboard)
-- [measurePathItems](#measurePathItems)
-- [removeColorInGuideObject](#removeColorInGuideObject)
-- [shuffleObjects](#shuffleObjects)
-- [stepAndRepeat](#stepAndRepeat)
+- [Close Path](#closePath)
+- [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCorner)
+- [Create Grid Lines](#createGridLines)
+- [Disjoin Path](#disjoinPath)
+- [Draw Rectangle](#drawRectangle)
+- [Draw Shape on Anchor Point](#drawShapeOnAnchorPoint)
+- [Extend Line](#extendLine)
+- [Fit Guide in Artboard](#fitGuideInArtboard)
+- [Measure Path Items](#measurePathItems)
+- [Remove Color in Guide Object](#removeColorInGuideObject)
+- [Shuffle Objects](#shuffleObjects)
+- [Step and Repeat](#stepAndRepeat)
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [addNumericSeparators](#addNumericSeparators)
-- [copyLineDown](#copyLine)
-- [copyLineUp](#copyLine)
-- [copyLine(emptySelection)](#emptySelection)
-- [createPageNumbers](#createPageNumbers)
-- [cutLine(emptySelection)](#emptySelection)
-- [deleteAllLeft](#deleteAll)
-- [deleteAllRight](#deleteAll)
-- [deleteTrailingSpaces](#deleteTrailingSpaces)
-- [deleteWord](#deleteWord)
-- [goToLine](#goToLine)
-- [goToNextText](#goToText)
-- [goToPreviousText](#goToText)
-- [insertLineAbove](#insertLine)
-- [insertLineBelow](#insertLine)
-- [moveLineDown](#moveLine)
-- [moveLineUp](#moveLine)
-- [swapTextContents](#swapTextContents)
-- [textAlign_Center](#textAlign)
-- [textAlign_Left](#textAlign)
-- [textAlign_Right](#textAlign)
+- [Add Numeric Separators](#addNumericSeparators)
+- [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointType) `New`
+- [Copy Line Down](#copyLine)
+- [Copy Line Up](#copyLine)
+- [Copy Line (empty selection)](#emptySelection)
+- [Create Page Numbers](#createPageNumbers)
+- [Cut Line (empty selection)](#emptySelection)
+- [Delete All Left](#deleteAll)
+- [Delete All Right](#deleteAll)
+- [Delete Trailing Spaces](#deleteTrailingSpaces)
+- [Delete Word](#deleteWord)
+- [Enclose Word in Parentheses](#encloseWordInParentheses) `New`
+- [Go to Line](#goToLine)
+- [Go to Next Text](#goToText)
+- [Go to Previous Text](#goToText)
+- [Insert Line Above](#insertLine)
+- [Insert Line Below](#insertLine)
+- [Move Line Down](#moveLine)
+- [Move Line Up](#moveLine)
+- [Swap Text Contents](#swapTextContents)
+- [Text Align Center](#textAlign)
+- [Text Align Left](#textAlign)
+- [Text Align Right](#textAlign)
 
 ### Utility [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [arrangeWindows](#arrangeWindows)
-- [checkDayOfWeek](#checkDayOfWeek)
-- [closeAllDocuments](#closeAllDocuments)
-- [compareScale](#compareScale)
-- [syncView](#syncView)
-- [XmpFunctions](#XmpFunctions)
+- [Arrange Windows](#arrangeWindows)
+- [Check Day of Week](#checkDayOfWeek)
+- [Close All Documents](#closeAllDocuments)
+- [Compare Scale](#compareScale)
+- [Sync View](#syncView)
+- [XMP Functions](#XmpFunctions)
 <br><br><br>
 
 
@@ -263,6 +265,27 @@ Illustrator CS or higher
 
 
 
+# <a name="convertTypeOnAPathToPointType">convertTypeOnAPathToPointType</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script converts types on a path to point types.
+
+![Convert Type On A Path To Point Type](images/convertTypeOnAPathToPointType.png)
+
+### Usage
+Select type on a path object, and run this script.
+
+> **Warning**  
+> The original type objects will delete.  
+> Any effects applied in the appearance will be lost.
+
+### Requirements
+Illustrator CS or higher
+<br><br>
+
+
+
+
+
 # <a name="copyLine">copyLineDown<br>copyLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
@@ -282,7 +305,7 @@ Move the cursor to the line you want to copy, and run this script.
 It is not necessary to select a line.
 
 > **Warning**  
-> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.  
 > Area type with wrapping may not work well.  
 > In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.
 
@@ -424,7 +447,7 @@ Move the cursor to the position of the character you want to delete and run this
 It is not necessary to select a string to be deleted.
 
 > **Warning**  
-> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.
 
 > **Note**  
 > Only one line can be deleted. Multiple lines are not supported.  
@@ -530,7 +553,7 @@ Move the cursor to the position of the word you want to delete and run this scri
 It is not necessary to select a word.
 
 > **Warning**  
-> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.  
 > Area type with wrapping may not work well.
 
 > **Note**  
@@ -607,6 +630,41 @@ This script draws shapes on anchor points.
 
 ### Requirements
 Illustrator CS4 or higher
+<br><br>
+
+
+
+
+
+# <a name="encloseWordInParentheses">encloseWordInParentheses</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script encloses words in parentheses.
+
+![Enclose Word In Parentheses](images/encloseWordInParentheses.png)
+
+### Usage
+Move the cursor to the position of the word you want to enclose and run this script.  
+If you select text ranges, enclose them.
+
+> **Warning**  
+> Since using cut and paste functions inside the script, it will lose if you have copied the content in advance.  
+> Area type with wrapping may not work well.
+
+> **Note**  
+> If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
+> If you want to enter text, you must click with the mouse.
+
+If you want to enclose it with other characters, change lines 41 and 42 inside the script.  
+For example, if you enclose it in brackets:
+```javascript
+var parentheses = {
+    start: '[',
+    end: ']'
+};
+```
+
+### Requirements
+Illustrator CC 2018 or higher
 <br><br>
 
 
@@ -718,7 +776,7 @@ Both point and area types are supported.
 2. Enter a line number or select a line from the list below that you want to move.
 
 > **Warning**  
-> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.
 
 > **Note**  
 > Pan that the selected line is centered in the window.  
@@ -745,7 +803,7 @@ For example, goToNextText.js:
 Run this script in the text editing state.
 
 > **Warning**  
-> Since cut and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> Since using cut and paste functions inside the script, it will lose if you have copied the content in advance.  
 > It will not move to locked, hidden, or threaded texts. The layer also as well.
 
 > **Note**  
@@ -914,7 +972,7 @@ Move the cursor to the line you want to move, and run this script.
 It is not necessary to select a line.
 
 > **Warning**  
-> Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.  
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.  
 > Area type with wrapping may not work well.  
 > In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.
 
@@ -1079,7 +1137,7 @@ Illustrator CS6 or higher
 
 # <a name="removeDeletedGlobalColor">removeDeletedGlobalColor</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-Deletes the Deleted Global Color displayed in the Separations Preview panel.  
+This script deletes the Deleted Global Color displayed in the Separations Preview panel.
 
 ![Remove Deleted Global Color](images/removeDeletedGlobalColor.png)
 
@@ -1256,7 +1314,7 @@ Illustrator CS or higher
 
 # <a name="sortArtboards">sortArtboards</a>
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
-This script sorts the artboards in the Artboard panel.
+This script sorts the artboards in the Artboards panel.
 
 ![Sort Artboards](images/sortArtboards.png)
 
@@ -1264,7 +1322,7 @@ This script sorts the artboards in the Artboard panel.
 Just run this script.
 
 > **Note**  
-> Only the Artboard panel. Artboards in the document are not sorted.
+> Only the Artboards panel. Artboards in the document are not sorted.
 
 ### Requirements
 Illustrator CS5 or higher
@@ -1276,7 +1334,7 @@ Illustrator CS5 or higher
 
 # <a name="stepAndRepeat">stepAndRepeat</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script is equivalent to InDesign's Edit menu "Step and Repeat".  
+This script is equivalent to InDesign's Edit menu "Step and Repeat...".  
 
 ![Step and Repeat](images/stepandRepeat.png)
 
