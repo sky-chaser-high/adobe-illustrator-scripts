@@ -17,6 +17,7 @@ Adobe Illustratorのスクリプト集です。
 ### カラー [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 | スクリプト | 概要 |
 | --- | --- |
+| [addSelectedGradientsToSwatch](#addSelectedGradientsToSwatch) `New` | 選択したグラデーションをスウォッチに追加 |
 | [createColorChart](#createColorChart) | カラーチャート作成 |
 | [extractColorsFromGradient](#extractColorsFromGradient) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor](#generateGradientColor) | グラデーションを生成 |
@@ -26,6 +27,7 @@ Adobe Illustratorのスクリプト集です。
 | [removeDeletedGlobalColor](#removeDeletedGlobalColor) | Deleted Global Color を削除 |
 | [roundColorValue](#roundColorValue) | カラー数値を四捨五入 |
 | [roundLocationOfGradientStop](#roundLocationOfGradientStop) | グラデーションのカラー分岐点、中間点の数値を四捨五入 |
+| [showColorValues](#showColorValues) `New` | カラー数値を表示 |
 | [shuffleGradientColor](#shuffleGradientColor) | グラデーションをシャッフル |
 
 <br>
@@ -68,6 +70,7 @@ Adobe Illustratorのスクリプト集です。
 | [fitGuideInArtboard](#fitGuideInArtboard) | ガイドをアートボードにフィット |
 | [measurePathItems](#measurePathItems) | パスの寸法を測る |
 | [removeColorInGuideObject](#removeColorInGuideObject) | ガイドオブジェクトの色を削除 |
+| [selectGuides](#selectGuides) `New` | ガイドを選択 |
 | [shuffleObjects](#shuffleObjects) | オブジェクトをシャッフル |
 | [stepAndRepeat](#stepAndRepeat) | 繰り返し複製 |
 
@@ -77,7 +80,7 @@ Adobe Illustratorのスクリプト集です。
 | スクリプト | 概要 |
 | --- | --- |
 | [addNumericSeparators](#addNumericSeparators) | 数字を3桁で区切る |
-| [convertTypeOnAPathToPointType](#convertTypeOnAPathToPointType) `New` | パス上文字をポイント文字に切り替え |
+| [convertTypeOnAPathToPointType](#convertTypeOnAPathToPointType) | パス上文字をポイント文字に切り替え |
 | [copyLineDown](#copyLine) | 行を下へコピー |
 | [copyLineUp](#copyLine) | 行を上へコピー |
 | [copyLine(emptySelection)](#emptySelection) | 選択なしでコピー |
@@ -87,7 +90,7 @@ Adobe Illustratorのスクリプト集です。
 | [deleteAllRight](#deleteAll) | カーソルの右側をすべて削除 |
 | [deleteTrailingSpaces](#deleteTrailingSpaces) | 行末のスペースを削除 |
 | [deleteWord](#deleteWord) | カーソル位置の単語を削除 |
-| [encloseWordInParentheses](#encloseWordInParentheses) `New` | 文字列を括弧で囲む |
+| [encloseWordInParentheses](#encloseWordInParentheses) | 文字列を括弧で囲む |
 | [goToLine](#goToLine) | 指定の行に移動 |
 | [goToNextText](#goToText) | カーソルを次のテキストオブジェクトへ移動 |
 | [goToPreviousText](#goToText) | カーソルを前のテキストオブジェクトへ移動 |
@@ -164,6 +167,25 @@ UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui
 テキストオブジェクトを選択してスクリプトを実行します。  
 または、テキスト編集状態でスクリプトを実行します。
 
+#### 動作条件
+Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="addSelectedGradientsToSwatch">addSelectedGradientsToSwatch</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+選択したグラデーションをスウォッチに追加します。
+
+![Add Selected Gradients To Swatch](images/addSelectedGradientsToSwatch.png)
+
+#### 使用方法
+パスオブジェクトを選択してスクリプトを実行します。
+
+> **Note**  
+> テキスト、線の色には対応していません。
 
 #### 動作条件
 Illustrator CS以降
@@ -1231,8 +1253,7 @@ Illustrator CS6以降
 
 # <a name="roundColorValue">roundColorValue</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-カラーの数値を四捨五入します。  
-塗り、線のどちらにも対応しています。
+カラーの数値を四捨五入します。塗り、線のどちらにも対応しています。
 
 ![Round Color Value](images/roundColorValue.png)
 
@@ -1249,8 +1270,7 @@ Illustrator CS以降
 
 # <a name="roundLocationOfGradientStop">roundLocationOfGradientStop</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-グラデーションのカラー分岐点、中間点の数値を四捨五入します。  
-塗り、線のどちらにも対応しています。
+グラデーションのカラー分岐点、中間点の数値を四捨五入します。塗り、線のどちらにも対応しています。
 
 ![Round Location Of Gradient Stops](images/roundLocationOfGradientStops.png)
 
@@ -1277,6 +1297,24 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="selectGuides">selectGuides</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+ガイドオブジェクトを選択します。
+
+#### 使用方法
+このスクリプトを実行するだけです。
+
+> **Warning**  
+> ロックまたは非表示状態では選択しません。レイヤーの状態も同様です。
+
+#### 動作条件
+Illustrator CS6以降
 <br><br>
 
 
@@ -1324,6 +1362,27 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
+<br><br>
+
+
+
+
+
+# <a name="showColorValues">showColorValues</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+カラーの数値を表示します。塗り、線のどちらにも対応しています。
+
+![Show Color Values](images/showColorValues.png)
+
+#### 使用方法
+パスオブジェクトを選択してスクリプトを実行します。
+
+> **Note**  
+> CMYK, RGB, グレースケール, 特色, パターンに対応しています。  
+> テキスト、グラデーションは対応していません。
+
+#### 動作条件
+Illustrator CS以降
 <br><br>
 
 

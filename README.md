@@ -13,6 +13,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Sort Artboards](#sortArtboards)
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+- [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatch) `New`
 - [Create Color Chart](#createColorChart)
 - [Extract Colors from Gradient](#extractColorsFromGradient)
 - [Generate Gradient Color](#generateGradientColor)
@@ -22,6 +23,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Remove Deleted Global Color](#removeDeletedGlobalColor)
 - [Round Color Value](#roundColorValue)
 - [Round Location of Gradient Stop](#roundLocationOfGradientStop)
+- [Show Color Values](#showColorValues) `New`
 - [Shuffle Gradient Color](#shuffleGradientColor)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -52,12 +54,13 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Fit Guide in Artboard](#fitGuideInArtboard)
 - [Measure Path Items](#measurePathItems)
 - [Remove Color in Guide Object](#removeColorInGuideObject)
+- [Select Guides](#selectGuides) `New`
 - [Shuffle Objects](#shuffleObjects)
 - [Step and Repeat](#stepAndRepeat)
 
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [Add Numeric Separators](#addNumericSeparators)
-- [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointType) `New`
+- [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointType)
 - [Copy Line Down](#copyLine)
 - [Copy Line Up](#copyLine)
 - [Copy Line (empty selection)](#emptySelection)
@@ -67,7 +70,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Delete All Right](#deleteAll)
 - [Delete Trailing Spaces](#deleteTrailingSpaces)
 - [Delete Word](#deleteWord)
-- [Enclose Word in Parentheses](#encloseWordInParentheses) `New`
+- [Enclose Word in Parentheses](#encloseWordInParentheses)
 - [Go to Line](#goToLine)
 - [Go to Next Text](#goToText)
 - [Go to Previous Text](#goToText)
@@ -128,6 +131,26 @@ This script changes a number to a 3-digit comma delimited string.
 ### Usage
 Select the text objects, and run this script.  
 Or, run this script in the text editing state.
+
+### Requirements
+Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="addSelectedGradientsToSwatch">addSelectedGradientsToSwatch</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+This script adds selected gradients to Swatches.
+
+![Add Selected Gradients To Swatch](images/addSelectedGradientsToSwatch.png)
+
+### Usage
+Select the path objects, and run this script.
+
+> **Note**  
+> Text object and stroke color are not supported.
 
 ### Requirements
 Illustrator CS or higher
@@ -1177,8 +1200,7 @@ Illustrator CS6 or higher
 
 # <a name="roundColorValue">roundColorValue</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-This script rounds color values.  
-Both fill and stroke colors are supported.
+This script rounds color values. Both fill and stroke colors are supported.
 
 ![Round Color Value](images/roundColorValue.png)
 
@@ -1229,6 +1251,24 @@ Illustrator CS or higher
 
 
 
+# <a name="selectGuides">selectGuides</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script selects guide objects.
+
+### Usage
+Just run this script.
+
+> **Warning**  
+> Locked or hidden guides are not selected. The layer also as well.
+
+### Requirements
+Illustrator CS6 or higher
+<br><br>
+
+
+
+
+
 # <a name="selectLink">selectLink</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script selects linked files.  
@@ -1268,6 +1308,27 @@ Just run this script.
 
 ### Requirements
 Illustrator CS4 or higher
+<br><br>
+
+
+
+
+
+# <a name="showColorValues">showColorValues</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+This script shows color values. Both fill and stroke colors are supported.
+
+![Show Color Values](images/showColorValues.png)
+
+### Usage
+Select path objects, and run this script.
+
+> **Note**  
+> CMYK, RGB, grayscale, spot color, and pattern are supported.  
+> Text object and gradient are not supported.
+
+### Requirements
+Illustrator CS or higher
 <br><br>
 
 
