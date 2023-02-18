@@ -13,7 +13,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Sort Artboards](#sortArtboards)
 
 ### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
-- [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatch) `New`
+- [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatch)
 - [Create Color Chart](#createColorChart)
 - [Extract Colors from Gradient](#extractColorsFromGradient)
 - [Generate Gradient Color](#generateGradientColor)
@@ -23,7 +23,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Remove Deleted Global Color](#removeDeletedGlobalColor)
 - [Round Color Value](#roundColorValue)
 - [Round Location of Gradient Stop](#roundLocationOfGradientStop)
-- [Show Color Values](#showColorValues) `New`
+- [Show Color Values](#showColorValues)
 - [Shuffle Gradient Color](#shuffleGradientColor)
 
 ### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -44,17 +44,21 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Select Link](#selectLink)
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+- [Align in Center of Space (Horizontal)](#alignInCenterOfSpace) `New`
+- [Align in Center of Space (Vertical)](#alignInCenterOfSpace) `New`
 - [Close Path](#closePath)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCorner)
 - [Create Grid Lines](#createGridLines)
 - [Disjoin Path](#disjoinPath)
+- [Distribute in Space (Horizontal)](#distributeInSpace) `New`
+- [Distribute in Space (Vertical)](#distributeInSpace) `New`
 - [Draw Rectangle](#drawRectangle)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPoint)
 - [Extend Line](#extendLine)
 - [Fit Guide in Artboard](#fitGuideInArtboard)
 - [Measure Path Items](#measurePathItems)
 - [Remove Color in Guide Object](#removeColorInGuideObject)
-- [Select Guides](#selectGuides) `New`
+- [Select Guides](#selectGuides)
 - [Shuffle Objects](#shuffleObjects)
 - [Step and Repeat](#stepAndRepeat)
 
@@ -154,6 +158,29 @@ Select the path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal)<br>alignInCenterOfSpace(Vertical)</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script aligns objects in the center of space.
+
+For example, alignInCenterOfSpace(Vertical).js:
+![Align In Center Of Space](images/alignInCenterOfSpace.png)
+
+### Usage
+Select objects, and run this script.  
+The position of alignment depends on the reference point.
+
+> **Note**  
+> The space excludes the stroke width.  
+> Select at least three objects.
+
+### Requirements
+Illustrator CS3 or higher
 <br><br>
 
 
@@ -605,6 +632,29 @@ Select the path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
+<br><br>
+
+
+
+
+
+# <a name="distributeInSpace">distributeInSpace(Horizontal)<br>distributeInSpace(Vertical)</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script distributes objects evenly spaced in space.
+
+For example, distributeInSpace(Vertical).js:
+![Distribute In Space](images/distributeInSpace.png)
+
+### Usage
+Select objects, and run this script.  
+The position of alignment depends on the reference point.
+
+> **Note**  
+> The space excludes the stroke width.  
+> Select at least three objects.
+
+### Requirements
+Illustrator CS3 or higher
 <br><br>
 
 

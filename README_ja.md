@@ -17,7 +17,7 @@ Adobe Illustratorのスクリプト集です。
 ### カラー [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [addSelectedGradientsToSwatch](#addSelectedGradientsToSwatch) `New` | 選択したグラデーションをスウォッチに追加 |
+| [addSelectedGradientsToSwatch](#addSelectedGradientsToSwatch) | 選択したグラデーションをスウォッチに追加 |
 | [createColorChart](#createColorChart) | カラーチャート作成 |
 | [extractColorsFromGradient](#extractColorsFromGradient) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor](#generateGradientColor) | グラデーションを生成 |
@@ -27,7 +27,7 @@ Adobe Illustratorのスクリプト集です。
 | [removeDeletedGlobalColor](#removeDeletedGlobalColor) | Deleted Global Color を削除 |
 | [roundColorValue](#roundColorValue) | カラー数値を四捨五入 |
 | [roundLocationOfGradientStop](#roundLocationOfGradientStop) | グラデーションのカラー分岐点、中間点の数値を四捨五入 |
-| [showColorValues](#showColorValues) `New` | カラー数値を表示 |
+| [showColorValues](#showColorValues) | カラー数値を表示 |
 | [shuffleGradientColor](#shuffleGradientColor) | グラデーションをシャッフル |
 
 <br>
@@ -60,17 +60,21 @@ Adobe Illustratorのスクリプト集です。
 ### パス [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 | スクリプト | 概要 |
 | --- | --- |
+| [alignInCenterOfSpace(Horizontal)](#alignInCenterOfSpace) `New` | 余白の水平方向中央に整列 |
+| [alignInCenterOfSpace(Vertical)](#alignInCenterOfSpace) `New` | 余白の垂直方向中央に整列 |
 | [closePath](#closePath) | パスを閉じる |
 | [convertAllAnchorPointsToCorner](#convertAllAnchorPointsToCorner) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines](#createGridLines) | グリッドラインを作成 |
 | [disjoinPath](#disjoinPath) | パスを分解 |
+| [distributeInSpace(Horizotal)](#distributeInSpace) `New` | 余白の水平方向に分布 |
+| [distributeInSpace(Vertical)](#distributeInSpace) `New` | 余白の垂直方向に分布 |
 | [drawRectangle](#drawRectangle) | オブジェクトの周囲に長方形を描く |
 | [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint) | アンカーポイントに図形を描く |
 | [extendLine](#extendLine) | パスを伸縮 |
 | [fitGuideInArtboard](#fitGuideInArtboard) | ガイドをアートボードにフィット |
 | [measurePathItems](#measurePathItems) | パスの寸法を測る |
 | [removeColorInGuideObject](#removeColorInGuideObject) | ガイドオブジェクトの色を削除 |
-| [selectGuides](#selectGuides) `New` | ガイドを選択 |
+| [selectGuides](#selectGuides) | ガイドを選択 |
 | [shuffleObjects](#shuffleObjects) | オブジェクトをシャッフル |
 | [stepAndRepeat](#stepAndRepeat) | 繰り返し複製 |
 
@@ -189,6 +193,29 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal)<br>alignInCenterOfSpace(Vertical)</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+余白の水平または垂直方向中央にオブジェクトを整列します。
+
+例 alignInCenterOfSpace(Vertical).js:
+![Align In Center Of Space](images/alignInCenterOfSpace.png)
+
+#### 使用方法
+オブジェクトを選択してスクリプトを実行します。  
+整列の位置は、基準点により変わります。
+
+> **Note**  
+> 余白は線幅を含みません。  
+> オブジェクトは3つ以上選択してください。
+
+#### 動作条件
+Illustrator CS3以降
 <br><br>
 
 
@@ -646,6 +673,29 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS以降
+<br><br>
+
+
+
+
+
+# <a name="distributeInSpace">distributeInSpace(Horizontal)<br>distributeInSpace(Vertical)</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+余白の水平または垂直方向にオブジェクトを分布します。
+
+例 distributeInSpace(Vertical).js:
+![Distribute In Space](images/distributeInSpace.png)
+
+#### 使用方法
+オブジェクトを選択してスクリプトを実行します。  
+分布の位置は、基準点により変わります。
+
+> **Note**  
+> 余白は線幅を含みません。  
+> オブジェクトは3つ以上選択してください。
+
+#### 動作条件
+Illustrator CS3以降
 <br><br>
 
 
