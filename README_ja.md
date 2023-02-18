@@ -60,14 +60,14 @@ Adobe Illustratorのスクリプト集です。
 ### パス [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [alignInCenterOfSpace(Horizontal)](#alignInCenterOfSpace) `New` | 余白の水平方向中央に整列 |
-| [alignInCenterOfSpace(Vertical)](#alignInCenterOfSpace) `New` | 余白の垂直方向中央に整列 |
+| [alignInCenterOfSpace(Horizontal)](#alignInCenterOfSpaceHorizontal--Vertical) `New` | 余白の水平方向中央に整列 |
+| [alignInCenterOfSpace(Vertical)](#alignInCenterOfSpaceHorizontal--Vertical) `New` | 余白の垂直方向中央に整列 |
 | [closePath](#closePath) | パスを閉じる |
 | [convertAllAnchorPointsToCorner](#convertAllAnchorPointsToCorner) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines](#createGridLines) | グリッドラインを作成 |
 | [disjoinPath](#disjoinPath) | パスを分解 |
-| [distributeInSpace(Horizotal)](#distributeInSpace) `New` | 余白の水平方向に分布 |
-| [distributeInSpace(Vertical)](#distributeInSpace) `New` | 余白の垂直方向に分布 |
+| [distributeInSpace(Horizotal)](#distributeInSpaceHorizontal--Vertical) `New` | 余白の水平方向に分布 |
+| [distributeInSpace(Vertical)](#distributeInSpaceHorizontal--Vertical) `New` | 余白の垂直方向に分布 |
 | [drawRectangle](#drawRectangle) | オブジェクトの周囲に長方形を描く |
 | [drawShapeOnAnchorPoint](#drawShapeOnAnchorPoint) | アンカーポイントに図形を描く |
 | [extendLine](#extendLine) | パスを伸縮 |
@@ -85,31 +85,25 @@ Adobe Illustratorのスクリプト集です。
 | --- | --- |
 | [addNumericSeparators](#addNumericSeparators) | 数字を3桁で区切る |
 | [convertTypeOnAPathToPointType](#convertTypeOnAPathToPointType) | パス上文字をポイント文字に切り替え |
-| [copyLineDown](#copyLine) | 行を下へコピー |
-| [copyLineUp](#copyLine) | 行を上へコピー |
-| [copyLine(emptySelection)](#emptySelection) | 選択なしでコピー |
+| [copyLineDown](#copyLineDown--copyLineUp) | 行を下へコピー |
+| [copyLineUp](#copyLineDown--copyLineUp) | 行を上へコピー |
+| [copyLine(emptySelection)](#copyLineEmptySelection--cutLineEmptySelection) | 選択なしでコピー |
 | [createPageNumbers](#createPageNumbers) | ノンブル作成 |
-| [cutLine(emptySelection)](#emptySelection) | 選択なしでカット |
-| [deleteAllLeft](#deleteAll) | カーソルの左側をすべて削除 |
-| [deleteAllRight](#deleteAll) | カーソルの右側をすべて削除 |
+| [cutLine(emptySelection)](#copyLineEmptySelection--cutLineEmptySelection) | 選択なしでカット |
+| [deleteAllLeft](#deleteAllLeft--deleteAllRight) | カーソルの左側をすべて削除 |
+| [deleteAllRight](#deleteAllLeft--deleteAllRight) | カーソルの右側をすべて削除 |
 | [deleteTrailingSpaces](#deleteTrailingSpaces) | 行末のスペースを削除 |
 | [deleteWord](#deleteWord) | カーソル位置の単語を削除 |
 | [encloseWordInParentheses](#encloseWordInParentheses) | 文字列を括弧で囲む |
 | [goToLine](#goToLine) | 指定の行に移動 |
-| [goToNextText](#goToText) | カーソルを次のテキストオブジェクトへ移動 |
-| [goToPreviousText](#goToText) | カーソルを前のテキストオブジェクトへ移動 |
-| [insertLineAbove](#insertLine) | 上に行を挿入 |
-| [insertLineBelow](#insertLine) | 下に行を挿入 |
-| [moveLineDown](#moveLine) | 行を下へ移動 |
-| [moveLineUp](#moveLine) | 行を上へ移動 |
+| [goToNextText](#goToNextText--goToPreviousText) | カーソルを次のテキストオブジェクトへ移動 |
+| [goToPreviousText](#goToNextText--goToPreviousText) | カーソルを前のテキストオブジェクトへ移動 |
+| [insertLineAbove](#insertLineAbove--insertLineBelow) | 上に行を挿入 |
+| [insertLineBelow](#insertLineAbove--insertLineBelow) | 下に行を挿入 |
+| [moveLineDown](#moveLineDown--moveLineUp) | 行を下へ移動 |
+| [moveLineUp](#moveLineDown--moveLineUp) | 行を上へ移動 |
 | [swapTextContents](#swapTextContents) | 文字列を交換 |
-| [textAlign_Center](#textAlign) | 文字列の位置を動かさずに中央揃え |
-| [textAlign_Left](#textAlign) | 文字列の位置を動かさずに左揃え |
-| [textAlign_Right](#textAlign) | 文字列の位置を動かさずに右揃え |
-
-<br>
-
-### ユーティリティ [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+| [textAlign_Center](#textAlign_Center--Left--Right) | 文字列の位置を動かさずに中央揃え lign_Lelign_Center--Left--Right) | 文字列の位置を動かさずに左揃え |ign_Riglign_Center--Left--Right) | 文字列の位置を動かさずに右揃え |# ユーティリload Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [arrangeWindows](#arrangeWindows) | ウィンドウを並べて表示 |
@@ -199,7 +193,7 @@ Illustrator CS以降
 
 
 
-# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal | Vertical)</a>
+# <a name="alignInCenterOfSpaceHorizontal--Vertical">alignInCenterOfSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 余白の水平または垂直方向中央にオブジェクトを整列します。
 
@@ -373,7 +367,7 @@ Illustrator CS以降
 
 
 
-# <a name="copyLine">copyLineDown | copyLineUp</a>
+# <a name="copyLineDown--copyLineUp">copyLineDown | copyLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> )、
 「行を上へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> )と同様のことができます。  
@@ -410,7 +404,7 @@ Illustrator CC 2018以降
 
 
 
-# <a name="emptySelection">copyLine(emptySelection) | cutLine(emptySelection)</a>
+# <a name="copyLineEmptySelection--cutLineEmptySelection">copyLine(emptySelection) | cutLine(emptySelection)</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「コピー（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> )、
 「切り取り（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>X</kbd> )と同様のことができます。  
@@ -519,7 +513,7 @@ Illustrator CS4以降
 
 
 
-# <a name="deleteAll">deleteAllLeft | deleteAllRight</a>
+# <a name="deleteAllLeft--deleteAllRight">deleteAllLeft | deleteAllRight</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「左側をすべて削除」( <kbd>⌘</kbd> + <kbd>Backspace</kbd> )、
 「右側をすべて削除」( <kbd>⌘</kbd> + <kbd>Delete</kbd> )と同様のことができます。  
@@ -679,7 +673,7 @@ Illustrator CS以降
 
 
 
-# <a name="distributeInSpace">distributeInSpace(Horizontal | Vertical)</a>
+# <a name="distributeInSpaceHorizontal--Vertical">distributeInSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 余白の水平または垂直方向にオブジェクトを分布します。
 
@@ -911,7 +905,7 @@ Illustrator CC 2018以降
 
 
 
-# <a name="goToText">goToNextText | goToPreviousText</a>
+# <a name="goToNextText--goToPreviousText">goToNextText | goToPreviousText</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 テキスト編集状態のまま、カーソルを次または前のテキストオブジェクトの先頭に移動します。  
 ポイント文字、エリア内文字のどちらにも対応しています。
@@ -960,7 +954,7 @@ Illustrator CS4以降
 
 
 
-# <a name="insertLine">insertLineAbove | insertLineBelow</a>
+# <a name="insertLineAbove--insertLineBelow">insertLineAbove | insertLineBelow</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「上に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> )、
 「下に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Enter</kbd> )と同様のことができます。  
@@ -1075,7 +1069,7 @@ Illustrator CS4以降
 
 
 
-# <a name="moveLine">moveLineDown | moveLineUp</a>
+# <a name="moveLineDown--moveLineUp">moveLineDown | moveLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> )、
 「行を上へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> )と同様のことができます。  
@@ -1560,7 +1554,7 @@ Illustrator CS以降
 
 
 
-# <a name="textAlign">textAlign_Center | textAlign_Left | textAlign_Right</a>
+# <a name="textAlign_Center--Left--Right">textAlign_Center | Left | Right</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 テキストの位置を移動させずにテキスト揃えを変更します。  
 縦書きにも対応しています。

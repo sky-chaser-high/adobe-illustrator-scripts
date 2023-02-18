@@ -44,14 +44,14 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Select Link](#selectLink)
 
 ### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [Align in Center of Space (Horizontal)](#alignInCenterOfSpace) `New`
-- [Align in Center of Space (Vertical)](#alignInCenterOfSpace) `New`
+- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontal--Vertical) `New`
+- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontal--Vertical) `New`
 - [Close Path](#closePath)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCorner)
 - [Create Grid Lines](#createGridLines)
 - [Disjoin Path](#disjoinPath)
-- [Distribute in Space (Horizontal)](#distributeInSpace) `New`
-- [Distribute in Space (Vertical)](#distributeInSpace) `New`
+- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontal--Vertical) `New`
+- [Distribute in Space (Vertical)](#distributeInSpaceHorizontal--Vertical) `New`
 - [Draw Rectangle](#drawRectangle)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPoint)
 - [Extend Line](#extendLine)
@@ -65,27 +65,27 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [Add Numeric Separators](#addNumericSeparators)
 - [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointType)
-- [Copy Line Down](#copyLine)
-- [Copy Line Up](#copyLine)
-- [Copy Line (empty selection)](#emptySelection)
+- [Copy Line Down](#copyLineDown--copyLineUp)
+- [Copy Line Up](#copyLineDown--copyLineUp)
+- [Copy Line (empty selection)](#copyLineEmptySelection--cutLineEmptySelection)
 - [Create Page Numbers](#createPageNumbers)
-- [Cut Line (empty selection)](#emptySelection)
-- [Delete All Left](#deleteAll)
-- [Delete All Right](#deleteAll)
+- [Cut Line (empty selection)](#copyLineEmptySelection--cutLineEmptySelection)
+- [Delete All Left](#deleteAllLeft--deleteAllRight)
+- [Delete All Right](#deleteAllLeft--deleteAllRight)
 - [Delete Trailing Spaces](#deleteTrailingSpaces)
 - [Delete Word](#deleteWord)
 - [Enclose Word in Parentheses](#encloseWordInParentheses)
 - [Go to Line](#goToLine)
-- [Go to Next Text](#goToText)
-- [Go to Previous Text](#goToText)
-- [Insert Line Above](#insertLine)
-- [Insert Line Below](#insertLine)
-- [Move Line Down](#moveLine)
-- [Move Line Up](#moveLine)
+- [Go to Next Text](#goToNextText--goToPreviousText)
+- [Go to Previous Text](#goToNextText--goToPreviousText)
+- [Insert Line Above](#insertLineAbove--insertLineBelow)
+- [Insert Line Below](#insertLineAbove--insertLineBelow)
+- [Move Line Down](#moveLineDown--moveLineUp)
+- [Move Line Up](#moveLineDown--moveLineUp)
 - [Swap Text Contents](#swapTextContents)
-- [Text Align Center](#textAlign)
-- [Text Align Left](#textAlign)
-- [Text Align Right](#textAlign)
+- [Text Align Center](#textAlign_Center--Left--Right)
+- [Text Align Left](#textAlign_Center--Left--Right)
+- [Text Align Right](#textAlign_Center--Left--Right)
 
 ### Utility [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 - [Arrange Windows](#arrangeWindows)
@@ -164,7 +164,7 @@ Illustrator CS or higher
 
 
 
-# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal | Vertical)</a>
+# <a name="alignInCenterOfSpaceHorizontal--Vertical">alignInCenterOfSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script aligns objects in the center of space.
 
@@ -336,7 +336,7 @@ Illustrator CS or higher
 
 
 
-# <a name="copyLine">copyLineDown | copyLineUp</a>
+# <a name="copyLineDown--copyLineUp">copyLineDown | copyLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
 "Copy Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> ) & 
@@ -372,7 +372,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="emptySelection">copyLine(emptySelection) | cutLine(emptySelection)</a>
+# <a name="copyLineEmptySelection--cutLineEmptySelection">copyLine(emptySelection) | cutLine(emptySelection)</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Copy line (empty selection)"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> ) & 
@@ -480,7 +480,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="deleteAll">deleteAllLeft | deleteAllRight</a>
+# <a name="deleteAllLeft--deleteAllRight">deleteAllLeft | deleteAllRight</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Delete All Left"( <kbd>⌘</kbd> + <kbd>Backspace</kbd> ) & 
@@ -638,7 +638,7 @@ Illustrator CS or higher
 
 
 
-# <a name="distributeInSpace">distributeInSpace(Horizontal | Vertical)</a>
+# <a name="distributeInSpaceHorizontal--Vertical">distributeInSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script distributes objects evenly spaced in space.
 
@@ -864,7 +864,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="goToText">goToNextText | goToPreviousText</a>
+# <a name="goToNextText--goToPreviousText">goToNextText | goToPreviousText</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script moves the cursor to the beginning of the next or previous text while in the text editing state.  
 Both point and area types are supported.
@@ -913,7 +913,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="insertLine">insertLineAbove | insertLineBelow</a>
+# <a name="insertLineAbove--insertLineBelow">insertLineAbove | insertLineBelow</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Insert Line Above"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> ) & 
@@ -1026,7 +1026,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="moveLine">moveLineDown | moveLineUp</a>
+# <a name="moveLineDown--moveLineUp">moveLineDown | moveLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
 "Move Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> ) & 
@@ -1503,7 +1503,7 @@ Illustrator CS or higher
 
 
 
-# <a name="textAlign">textAlign_Center | textAlign_Left | textAlign_Right</a>
+# <a name="textAlign_Center--Left--Right">textAlign_Center | Left | Right</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script changes the text alignment without moving the text position.  
 Vertical text is also supported.
