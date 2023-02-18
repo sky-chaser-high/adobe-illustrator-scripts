@@ -199,7 +199,7 @@ Illustrator CS以降
 
 
 
-# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal)<br>alignInCenterOfSpace(Vertical)</a>
+# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 余白の水平または垂直方向中央にオブジェクトを整列します。
 
@@ -373,7 +373,7 @@ Illustrator CS以降
 
 
 
-# <a name="copyLine">copyLineDown<br>copyLineUp</a>
+# <a name="copyLine">copyLineDown | copyLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> )、
 「行を上へコピー」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> )と同様のことができます。  
@@ -410,7 +410,7 @@ Illustrator CC 2018以降
 
 
 
-# <a name="emptySelection">copyLine(emptySelection)<br>cutLine(emptySelection)</a>
+# <a name="emptySelection">copyLine(emptySelection) | cutLine(emptySelection)</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「コピー（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> )、
 「切り取り（選択なし）」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>X</kbd> )と同様のことができます。  
@@ -519,7 +519,7 @@ Illustrator CS4以降
 
 
 
-# <a name="deleteAll">deleteAllLeft<br>deleteAllRight</a>
+# <a name="deleteAll">deleteAllLeft | deleteAllRight</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「左側をすべて削除」( <kbd>⌘</kbd> + <kbd>Backspace</kbd> )、
 「右側をすべて削除」( <kbd>⌘</kbd> + <kbd>Delete</kbd> )と同様のことができます。  
@@ -679,7 +679,7 @@ Illustrator CS以降
 
 
 
-# <a name="distributeInSpace">distributeInSpace(Horizontal)<br>distributeInSpace(Vertical)</a>
+# <a name="distributeInSpace">distributeInSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 余白の水平または垂直方向にオブジェクトを分布します。
 
@@ -911,7 +911,7 @@ Illustrator CC 2018以降
 
 
 
-# <a name="goToText">goToNextText<br>goToPreviousText</a>
+# <a name="goToText">goToNextText | goToPreviousText</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 テキスト編集状態のまま、カーソルを次または前のテキストオブジェクトの先頭に移動します。  
 ポイント文字、エリア内文字のどちらにも対応しています。
@@ -960,7 +960,7 @@ Illustrator CS4以降
 
 
 
-# <a name="insertLine">insertLineAbove<br>insertLineBelow</a>
+# <a name="insertLine">insertLineAbove | insertLineBelow</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「上に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> )、
 「下に行を挿入」( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Enter</kbd> )と同様のことができます。  
@@ -1075,7 +1075,7 @@ Illustrator CS4以降
 
 
 
-# <a name="moveLine">moveLineDown<br>moveLineUp</a>
+# <a name="moveLine">moveLineDown | moveLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> )、
 「行を上へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> )と同様のことができます。  
@@ -1560,7 +1560,7 @@ Illustrator CS以降
 
 
 
-# <a name="textAlign">textAlign_Center<br>textAlign_Left<br>textAlign_Right</a>
+# <a name="textAlign">textAlign_Center | textAlign_Left | textAlign_Right</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 テキストの位置を移動させずにテキスト揃えを変更します。  
 縦書きにも対応しています。

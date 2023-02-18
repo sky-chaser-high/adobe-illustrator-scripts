@@ -164,7 +164,7 @@ Illustrator CS or higher
 
 
 
-# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal)<br>alignInCenterOfSpace(Vertical)</a>
+# <a name="alignInCenterOfSpace">alignInCenterOfSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script aligns objects in the center of space.
 
@@ -336,7 +336,7 @@ Illustrator CS or higher
 
 
 
-# <a name="copyLine">copyLineDown<br>copyLineUp</a>
+# <a name="copyLine">copyLineDown | copyLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
 "Copy Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> ) & 
@@ -372,7 +372,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="emptySelection">copyLine(emptySelection)<br>cutLine(emptySelection)</a>
+# <a name="emptySelection">copyLine(emptySelection) | cutLine(emptySelection)</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Copy line (empty selection)"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> ) & 
@@ -480,7 +480,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="deleteAll">deleteAllLeft<br>deleteAllRight</a>
+# <a name="deleteAll">deleteAllLeft | deleteAllRight</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Delete All Left"( <kbd>⌘</kbd> + <kbd>Backspace</kbd> ) & 
@@ -638,7 +638,7 @@ Illustrator CS or higher
 
 
 
-# <a name="distributeInSpace">distributeInSpace(Horizontal)<br>distributeInSpace(Vertical)</a>
+# <a name="distributeInSpace">distributeInSpace(Horizontal | Vertical)</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script distributes objects evenly spaced in space.
 
@@ -864,7 +864,7 @@ Illustrator CC 2018 or higher
 
 
 
-# <a name="goToText">goToNextText<br>goToPreviousText</a>
+# <a name="goToText">goToNextText | goToPreviousText</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script moves the cursor to the beginning of the next or previous text while in the text editing state.  
 Both point and area types are supported.
@@ -913,7 +913,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="insertLine">insertLineAbove<br>insertLineBelow</a>
+# <a name="insertLine">insertLineAbove | insertLineBelow</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Insert Line Above"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> ) & 
@@ -1026,7 +1026,7 @@ Illustrator CS4 or higher
 
 
 
-# <a name="moveLine">moveLineDown<br>moveLineUp</a>
+# <a name="moveLine">moveLineDown | moveLineUp</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
 "Move Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> ) & 
@@ -1503,7 +1503,7 @@ Illustrator CS or higher
 
 
 
-# <a name="textAlign">textAlign_Center<br>textAlign_Left<br>textAlign_Right</a>
+# <a name="textAlign">textAlign_Center | textAlign_Left | textAlign_Right</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script changes the text alignment without moving the text position.  
 Vertical text is also supported.
