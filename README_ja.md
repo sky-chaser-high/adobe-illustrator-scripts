@@ -6,7 +6,8 @@ Adobe Illustratorのスクリプト集です。
 [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) からスクリプトをダウンロードしてください。
 <br><br>
 
-### アートボード [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+### アートボード
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [showArtboardName.js](#showArtboardNamejs) | アートボード名とサイズを表示 |
@@ -14,12 +15,13 @@ Adobe Illustratorのスクリプト集です。
 
 <br>
 
-### カラー [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+### カラー
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [addSelectedGradientsToSwatch.js](#addSelectedGradientsToSwatchjs) | 選択したグラデーションをスウォッチに追加 |
-| [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) `New` | グローバルカラーに変換 |
-| [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) `New` | 特色に変換 |
+| [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | グローバルカラーに変換 |
+| [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | 特色に変換 |
 | [createColorChart.js](#createColorChartjs) | カラーチャート作成 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor.js](#generateGradientColorjs) | グラデーションを生成 |
@@ -34,7 +36,8 @@ Adobe Illustratorのスクリプト集です。
 
 <br>
 
-### レイヤー [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+### レイヤー
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [deleteHiddenLayers.js](#deleteHiddenLayersjs) | 非表示レイヤーを削除 |
@@ -47,7 +50,8 @@ Adobe Illustratorのスクリプト集です。
 
 <br>
 
-### リンク [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+### リンク
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [relinkFileExtension.js](#relinkFileExtensionjs) | ファイル拡張子にリンクを再設定 |
@@ -59,7 +63,8 @@ Adobe Illustratorのスクリプト集です。
 
 <br>
 
-### パス [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+### パス
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [alignInCenterOfSpace(Horizontal).js](#alignInCenterOfSpaceHorizontal--Verticaljs) | 余白の水平方向中央に整列 |
@@ -82,7 +87,8 @@ Adobe Illustratorのスクリプト集です。
 
 <br>
 
-### テキスト [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+### テキスト
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [addNumericSeparators.js](#addNumericSeparatorsjs) | 数字を3桁で区切る |
@@ -111,13 +117,15 @@ Adobe Illustratorのスクリプト集です。
 
 <br>
 
-### ユーティリ [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### ユーティリティ
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 | スクリプト | 概要 |
 | --- | --- |
 | [arrangeWindows.js](#arrangeWindowsjs) | ウィンドウを並べて表示 |
 | [checkDayOfWeek.js](#checkDayOfWeekjs) | 選択した日付の曜日をチェック |
 | [closeAllDocuments.js](#closeAllDocumentsjs) | すべてのファイルを閉じる |
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
+| [sumNumbers.js](#sumNumbersjs) `New` | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
 | [XmpFunctions.js](#XmpFunctionsjs) | XMP関数 |
 
@@ -175,7 +183,9 @@ UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -195,7 +205,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -218,7 +230,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS3以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -238,7 +252,9 @@ Illustrator CS3以降
 
 #### 動作条件
 Illustrator CS6以降
-<br><br>
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -270,7 +286,9 @@ Illustrator CS6以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -289,7 +307,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -306,7 +326,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -327,7 +349,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -348,7 +372,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -374,7 +400,9 @@ convertToSpotColor.js:
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -395,7 +423,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -432,7 +462,9 @@ Visual Studio Code の「行を下へコピー」( <kbd>Option</kbd> / <kbd>Alt<
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -465,7 +497,9 @@ Visual Studio Code のショートカット「コピー（選択なし）」( <k
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -491,7 +525,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -511,7 +547,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -541,7 +579,9 @@ InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在の
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -574,7 +614,9 @@ Visual Studio Code のショートカット「左側をすべて削除」( <kbd>
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -594,7 +636,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -611,7 +655,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -636,7 +682,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -654,7 +702,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -681,7 +731,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -701,7 +753,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -724,7 +778,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS3以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -748,7 +804,9 @@ Illustrator CS3以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -774,7 +832,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -810,7 +870,9 @@ var parentheses = {
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -835,7 +897,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -857,7 +921,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -877,7 +943,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -899,7 +967,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -933,7 +1003,9 @@ Visual Studio Code の「行/列に移動...」( <kbd>Ctrl</kbd> + <kbd>G</kbd> 
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -962,7 +1034,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -982,7 +1056,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1014,7 +1090,9 @@ Visual Studio Code のショートカット「上に行を挿入」( <kbd>⌘</k
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1031,7 +1109,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1048,7 +1128,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1070,7 +1152,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1097,7 +1181,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1134,7 +1220,9 @@ Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kb
 
 #### 動作条件
 Illustrator CC 2018以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1151,7 +1239,9 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1175,7 +1265,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1202,7 +1294,9 @@ InDesignのリンクパネルメニュー > ファイル拡張子にリンクを
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1234,7 +1328,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1260,7 +1356,9 @@ InDesignのリンクパネルメニュー > フォルダに再リンク... に�
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1283,7 +1381,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS6以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1305,7 +1405,9 @@ Illustrator CS6以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1323,7 +1425,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS6以降
-<br><br>
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1340,7 +1444,9 @@ Illustrator CS6以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1357,7 +1463,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1375,7 +1483,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1393,7 +1503,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS6以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1420,7 +1532,9 @@ Illustrator CS6以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1440,7 +1554,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#アートボード">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1461,7 +1577,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1482,7 +1600,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1499,7 +1619,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1519,7 +1641,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS5以降
-<br><br>
+
+<div align="right">[ <a href="#アートボード">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1544,7 +1668,34 @@ InDesignの編集メニュー > 繰り返し複製... に相当します。
 
 #### 動作条件
 Illustrator CS4以降
-<br><br>
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="sumNumbersjs">sumNumbers.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+文字列内の数字で足し算します。
+
+![Sum Numbers](images/sumNumbers.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+テキストオブジェクトを選択してスクリプトを実行します。  
+また、リストから選択した項目のみを使用して再計算することも可能です。
+
+> **Note**  
+> 数値の単位は無視して計算します。  
+> 全角数字には対応していません。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1561,7 +1712,9 @@ Illustrator CS4以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1582,7 +1735,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降  
-<br><br>
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1601,7 +1756,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1621,7 +1778,9 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 
@@ -1751,7 +1910,9 @@ alert(swatches[0].colorant.cyan);
 
 #### 動作条件
 Illustrator CS以降
-<br><br>
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 

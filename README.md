@@ -8,14 +8,16 @@ Click the script name to jump to learn more about the script.
 If you find a script that interests you, please download it from [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest).
 <br><br>
 
-### Artboard [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+### Artboard
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 - [Show Artboard Name](#showArtboardNamejs)
 - [Sort Artboards](#sortArtboardsjs)
 
-### Color [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+### Color
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
-- [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs) `New`
-- [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs) `New`
+- [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
+- [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Create Color Chart](#createColorChartjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
@@ -28,7 +30,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Show Color Values](#showColorValuesjs)
 - [Shuffle Gradient Color](#shuffleGradientColorjs)
 
-### Layer [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+### Layer
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 - [Delete Hidden Layers](#deleteHiddenLayersjs)
 - [Delete Locked Layers](#deleteLockedLayersjs)
 - [Delete Unused Layers](#deleteUnusedLayersjs)
@@ -37,7 +40,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Move Sublayer to Main Layer](#moveSublayerToMainLayerjs)
 - [Unify Layer Colors](#unifyLayerColorsjs)
 
-### Link [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+### Link
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [Relink File Extension](#relinkFileExtensionjs)
 - [Relink File Extension Extra](#relinkFileExtensionExtrajs)
 - [Relink to Folder](#relinkToFolderjs)
@@ -45,7 +49,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Select Embedded Link](#selectEmbeddedLinkjs)
 - [Select Link](#selectLinkjs)
 
-### Path [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+### Path
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontal--Verticaljs)
 - [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontal--Verticaljs)
 - [Close Path](#closePathjs)
@@ -64,7 +69,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Shuffle Objects](#shuffleObjectsjs)
 - [Step and Repeat](#stepAndRepeatjs)
 
-### Text [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+### Text
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [Add Numeric Separators](#addNumericSeparatorsjs)
 - [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointTypejs)
 - [Copy Line Down](#copyLineDownjscopyLineUpjs)
@@ -89,11 +95,13 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 - [Text Align Right](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 
-### Utility [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### Utility
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 - [Arrange Windows](#arrangeWindowsjs)
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
+- [Sum Numbers](#sumNumbersjs) `New`
 - [Sync View](#syncViewjs)
 - [XMP Functions](#XmpFunctionsjs)
 <br><br><br>
@@ -140,7 +148,9 @@ Or, run this script in the text editing state.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -160,7 +170,9 @@ Select the path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -183,7 +195,9 @@ The position of alignment depends on the reference point.
 
 ### Requirements
 Illustrator CS3 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -203,7 +217,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS6 or higher
-<br><br>
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -234,7 +250,9 @@ Select a date with the cursor, and run this script.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -253,7 +271,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -270,7 +290,9 @@ Select the path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -290,7 +312,9 @@ Select two objects, and run this script.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -311,7 +335,9 @@ Select the entire path with selection tool, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -337,7 +363,9 @@ If you don't select them, all colors will target.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -358,7 +386,9 @@ Select type on a path object, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -394,7 +424,9 @@ It is not necessary to select a line.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -426,7 +458,9 @@ It is not necessary to select a line.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -453,7 +487,9 @@ Both CMYK and RGB colors are supported.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -473,7 +509,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -502,7 +540,9 @@ Places a page number at a specified location on the artboards.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -534,7 +574,9 @@ It is not necessary to select a string to be deleted.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -554,7 +596,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -571,7 +615,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -596,7 +642,9 @@ It is not necessary to select a line.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -613,7 +661,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -640,7 +690,9 @@ It is not necessary to select a word.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -660,7 +712,9 @@ Select the path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -683,7 +737,9 @@ The position of alignment depends on the reference point.
 
 ### Requirements
 Illustrator CS3 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -706,7 +762,9 @@ This script draws a rectangle on a selected object.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -731,7 +789,9 @@ This script draws shapes on anchor points.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -766,7 +826,9 @@ var parentheses = {
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -790,7 +852,9 @@ This script extends a path object.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -812,7 +876,9 @@ Select the path objects or swatches, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -832,7 +898,9 @@ Select guide objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -854,7 +922,9 @@ Select the path objects or swatches, and run this script.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -886,7 +956,9 @@ Both point and area types are supported.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -915,7 +987,9 @@ Run this script in the text editing state.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -935,7 +1009,9 @@ Both CMYK and RGB colors are supported.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -966,7 +1042,9 @@ It is not necessary to move the cursor to the end of the line.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -983,7 +1061,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1000,7 +1080,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1021,7 +1103,9 @@ This script matches the location of the gradient stops and midpoints.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1048,7 +1132,9 @@ Switch the dimension units according to the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1084,7 +1170,9 @@ It is not necessary to select a line.
 
 ### Requirements
 Illustrator CC 2018 or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1101,7 +1189,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1125,7 +1215,9 @@ Both CMYK and RGB colors are supported.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1151,7 +1243,9 @@ This script is equivalent to InDesign's Links panel menu "Relink File Extension.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1181,7 +1275,9 @@ This script is an enhanced version of relinkFileExtension.js.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1207,7 +1303,9 @@ Replace linked files with a file of the same name in the selected folder.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1230,7 +1328,9 @@ It is not necessary to select guide objects.
 
 ### Requirements
 Illustrator CS6 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1252,7 +1352,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1270,7 +1372,9 @@ Select linked files or embedded link files, and run this script.
 
 ### Requirements
 Illustrator CS6 or higher
-<br><br>
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1287,7 +1391,9 @@ Select the objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1305,7 +1411,9 @@ Select the objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1323,7 +1431,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1341,7 +1451,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS6 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1366,7 +1478,9 @@ This script selects linked files.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1386,7 +1500,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#artboard">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1407,7 +1523,9 @@ Select path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1428,7 +1546,9 @@ Select the path objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1445,7 +1565,9 @@ Select the objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1465,7 +1587,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS5 or higher
-<br><br>
+
+<div align="right">[ <a href="#artboard">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1488,7 +1612,33 @@ This script is equivalent to InDesign's Edit menu "Step and Repeat...".
 
 ### Requirements
 Illustrator CS4 or higher
-<br><br>
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="sumNumbersjs">sumNumbers.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+This script sums the numbers in text contents.
+
+![Sum Numbers](images/sumNumbers.png)
+
+### Usage
+Select text objects, and run this script.  
+You can also recalculate using only selected items from the list.
+
+> **Note**  
+> Ignore the units of value.  
+> Only one-byte numbers are supported.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1505,7 +1655,9 @@ Select two text objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1525,7 +1677,9 @@ Just run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1544,7 +1698,9 @@ Select the text objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1564,7 +1720,9 @@ Select a target layer, and run this script.
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
@@ -1694,7 +1852,9 @@ alert(swatches[0].colorant.cyan);
 
 ### Requirements
 Illustrator CS or higher
-<br><br>
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
