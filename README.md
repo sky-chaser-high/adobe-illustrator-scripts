@@ -19,9 +19,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Create Color Chart](#createColorChartjs)
+- [Delete All Swatches](#deleteAllSwatchesjs) `New`
+- [Export Color Values to CSV](#exportColorValuesToCSVjs) `New`
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
 - [Highlight Word](#highlightWordjs)
+- [Import CSV to Swatch](#importCSVtoSwatchjs) `New`
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
 - [Random Text Color](#randomTextColorjs)
 - [Remove Deleted Global Color](#removeDeletedGlobalColorjs)
@@ -101,7 +104,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
-- [Sum Numbers](#sumNumbersjs) `New`
+- [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 - [XMP Functions](#XmpFunctionsjs)
 <br><br><br>
@@ -582,6 +585,28 @@ Illustrator CC 2018 or higher
 
 
 
+# <a name="deleteAllSwatchesjs">deleteAllSwatches.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+This script deletes all swatches except None and Registration.
+
+![Delete All Swatches](images/deleteAllSwatches.png)
+
+### Usage
+Just run this script.
+
+> **Note**  
+> Delete any swatches in use for the objects as well.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="deleteHiddenLayersjs">deleteHiddenLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script deletes hidden layers.
@@ -834,6 +859,32 @@ Illustrator CC 2018 or higher
 
 
 
+# <a name="exportColorValuesToCSVjs">exportColorValuesToCSV.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+This script exports color values of a path object or swatches to a CSV file.
+
+![Export Color Values To CSV](images/exportColorValuesToCSV.png)
+
+### Usage
+Select path objects or swatches, and run this script.  
+If you want to export all swatches, deselect path objects and swatches.
+
+> **Note**  
+> If you want to get the swatch name, use a global color.  
+> Export to the desktop.  
+> Prioritize the path object over swatches.  
+> Text object and gradient are not supported.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="extendLinejs">extendLine.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script extends a path object.
@@ -1009,6 +1060,47 @@ Both CMYK and RGB colors are supported.
 
 ### Requirements
 Illustrator CS4 or higher
+
+<div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="importCSVtoSwatchjs">importCSVtoSwatch.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+This script imports a CSV file to the Swatches panel.
+
+![Import CSV To Swatch](images/importCSVtoSwatch.png)
+
+### Usage
+1. Run this script.
+2. Select a CSV file.
+
+> **Note**  
+> Make sure the document color mode and CSV file format are the same.
+
+### Format
+CSV files are available in the following two formats.  
+
+##### For CMYK:  
+| Cyan | Magenta | Yellow | Black | Swatch name |
+| --- | --- | --- | --- | --- |
+| 100  | 0 | 0 | 0 | Cyan |
+
+##### For RGB:  
+| Red | Green | Blue | Swatch name |
+| --- | --- | --- | --- |
+| 255 | 0 | 0 | Red |
+
+> **Note**  
+> Commas or tabs separate columns.  
+> Line 1 is used as the title.  
+> The swatch name is not required.
+
+### Requirements
+Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>

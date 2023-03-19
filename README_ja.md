@@ -23,9 +23,12 @@ Adobe Illustratorのスクリプト集です。
 | [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | グローバルカラーに変換 |
 | [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | 特色に変換 |
 | [createColorChart.js](#createColorChartjs) | カラーチャート作成 |
+| [deleteAllSwatches.js](#deleteAllSwatchesjs) `New` | すべてのスウォッチを削除 |
+| [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) `New` | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor.js](#generateGradientColorjs) | グラデーションを生成 |
 | [highlightWord.js](#highlightWordjs) | 指定した単語の塗り色を変更 |
+| [importCSVtoSwatch.js](#importCSVtoSwatchjs) `New` | CSVファイルを読み込む |
 | [matchLocationOfGradientStop.js](#matchLocationOfGradientStopjs) | グラデーションのカラー分岐点、中間点の位置を同期 |
 | [randomTextColor.js](#randomTextColorjs) | テキストの塗り色をランダムに変更 |
 | [removeDeletedGlobalColor.js](#removeDeletedGlobalColorjs) | Deleted Global Color を削除 |
@@ -125,7 +128,7 @@ Adobe Illustratorのスクリプト集です。
 | [checkDayOfWeek.js](#checkDayOfWeekjs) | 選択した日付の曜日をチェック |
 | [closeAllDocuments.js](#closeAllDocumentsjs) | すべてのファイルを閉じる |
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
-| [sumNumbers.js](#sumNumbersjs) `New` | 文字列内の数字を足す |
+| [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
 | [XmpFunctions.js](#XmpFunctionsjs) | XMP関数 |
 
@@ -622,6 +625,28 @@ Illustrator CC 2018以降
 
 
 
+# <a name="deleteAllSwatchesjs">deleteAllSwatches.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+［なし］と［レジストレーション］以外のすべてのスウォッチを削除します。
+
+![Delete All Swatches](images/deleteAllSwatches.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。
+
+> **Note**  
+> オブジェクトに使用中のスウォッチも削除します。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="deleteHiddenLayersjs">deleteHiddenLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 非表示のレイヤーを削除します。
@@ -878,6 +903,32 @@ Illustrator CC 2018以降
 
 
 
+# <a name="exportColorValuesToCSVjs">exportColorValuesToCSV.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+パスオブジェクトまたはスウォッチのカラー数値をCSVファイルに書き出します。
+
+![Export Color Values To CSV](images/exportColorValuesToCSV.png)
+
+#### 使用方法
+パスオブジェクトまたはスウォッチを選択してスクリプトを実行します。  
+すべてのスウォッチを書き出したい場合は、パスオブジェクトとスウォッチの選択を解除してください。  
+
+> **Note**  
+> スウォッチ名を書き出したい場合は、グローバルカラーを使用してください。  
+> デスクトップに書き出します。  
+> パスオブジェクトを優先します。  
+> テキスト、グラデーションは対応していません。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="extendLinejs">extendLine.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 パスオブジェクトを伸縮します。
@@ -1056,6 +1107,47 @@ Illustrator CC 2018以降
 
 #### 動作条件
 Illustrator CS4以降
+
+<div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="importCSVtoSwatchjs">importCSVtoSwatch.js</a>
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+CSVファイルからカラー数値を読み込んでスウォッチに追加します。
+
+![Import CSV To Swatch](images/importCSVtoSwatch.png)
+
+#### 使用方法
+1. スクリプトを実行します。
+2. CSVファイルを選択します。
+
+> **Note**  
+> ドキュメントのカラーモードとCSVファイルの形式をそろえてください。
+
+#### ファイル形式
+CSVファイルの形式は以下の2種類になります。
+
+##### CMYK  
+| Cyan | Magenta | Yellow | Black | Swatch name |
+| --- | --- | --- | --- | --- |
+| 100  | 0 | 0 | 0 | Cyan |
+
+##### RGB  
+| Red | Green | Blue | Swatch name |
+| --- | --- | --- | --- |
+| 255 | 0 | 0 | Red |
+
+> **Note**  
+> 各列はカンマまたはタブで区切ってください。  
+> 1行目は項目名を入力してください。  
+> スウォッチ名は必須ではありません。
+
+#### 動作条件
+Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
