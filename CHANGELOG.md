@@ -43,6 +43,13 @@
 <br><br>
 
 
+## createPageNumbers.js
+### 2.0.0 (2023-03-26)
+### Changes
+- Updated the UI.
+<br><br>
+
+
 ## cutLine(emptySelection).js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
@@ -68,6 +75,13 @@
 ### 1.0.1 (2022-11-13)
 ### Bug Fixes
 - Fixed a bug that prevented the deletion of the last word.
+<br><br>
+
+
+## importCSVtoSwatch.js
+### 1.1.0 (2023-03-26)
+### Added
+- Added Hex color.
 <br><br>
 
 
@@ -153,6 +167,13 @@
 ### 1.1.0 (2023-01-15)
 ### Changes
 - The UI has been brought closer to InDesign.
+<br><br>
+
+
+## resetToFullScale.js
+### 1.0.1 (2023-03-26)
+### Bug Fixes
+- Fixed a bug in the images to shift position.
 <br><br>
 
 

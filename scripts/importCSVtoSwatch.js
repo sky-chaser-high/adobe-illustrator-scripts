@@ -9,7 +9,7 @@
    2. Select a CSV file.
 
    Format
-   CSV files are available in the following two formats.
+   CSV files are available in the following 3 formats.
    For CMYK:
    | Cyan | Magenta | Yellow | Black | Swatch name |
    | 100  | 0       | 0      | 0     | Cyan        |
@@ -18,11 +18,16 @@
    | Red | Green | Blue | Swatch name |
    | 255 | 0     | 0    | Red         |
 
+   For HEX:
+   | Hex    | Swatch name |
+   | FF0000 | Red         |
+
    Notes
    Make sure the document color mode and CSV file format are the same.
    Commas or tabs separate columns.
    Line 1 is used as the title.
    The Swatch name is not required.
+   The leading "#" may be omitted in the case of Hex color.
    In rare cases, if you continue to use the script, it may not work.
    In that case, restart Illustrator and try again.
 
@@ -30,7 +35,7 @@
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -69,7 +74,7 @@ function addSwatch(color) {
     var swatch = app.activeDocument.swatches.add();
     try {
         swatch.color = setColor(color);
-        swatch.name = setName(color);
+        swatch.name = color.name;
     }
     catch (err) {
         swatch.remove();
@@ -84,14 +89,8 @@ function getColorsFromCSV(file) {
     file.readln();
 
     while (!file.eof) {
-        var values = [];
         var row = file.readln();
-        var columns = row.split(/,|\t/);
-
-        for (var i = 0; i < columns.length; i++) {
-            var value = (columns[i]) ? columns[i].replace(/"|'/g, '') : 0;
-            values.push(value);
-        }
+        var values = row.replace(/"|'/g, '').split(/,|\t/);
         colors.push(format(values));
     }
 
@@ -99,48 +98,35 @@ function getColorsFromCSV(file) {
 }
 
 
-function format(color) {
-    var item = {
-        mode: app.activeDocument.documentColorSpace,
-        name: ''
-    };
-
-    if (item.mode == DocumentColorSpace.CMYK) {
-        item.cyan = color[0];
-        item.magenta = color[1];
-        item.yellow = color[2];
-        item.black = color[3];
-        if (color[4]) item.name = color[4];
+function format(values) {
+    var mode = app.activeDocument.documentColorSpace;
+    if (mode == DocumentColorSpace.CMYK) {
+        return getCMYKColor(values);
     }
-    if (item.mode == DocumentColorSpace.RGB) {
-        item.red = color[0];
-        item.green = color[1];
-        item.blue = color[2];
-        if (color[3]) item.name = color[3];
-    }
-
-    return item;
+    if (values.length <= 2) return getHexColor(values);
+    if (values.length >= 3) return getRGBColor(values);
 }
 
 
 function setName(color) {
+    var mode = app.activeDocument.documentColorSpace;
     if (color.name) return color.name;
-    if (color.mode == DocumentColorSpace.CMYK) {
+    if (mode == DocumentColorSpace.CMYK) {
         return 'C=' + color.cyan + ' M=' + color.magenta + ' Y=' + color.yellow + ' K=' + color.black;
     }
-    if (color.mode == DocumentColorSpace.RGB) {
+    if (mode == DocumentColorSpace.RGB) {
         return 'R=' + color.red + ' G=' + color.green + ' B=' + color.blue;
     }
+    return '';
 }
 
 
 function setColor(color) {
-    if (color.mode == DocumentColorSpace.CMYK) {
+    var mode = app.activeDocument.documentColorSpace;
+    if (mode == DocumentColorSpace.CMYK) {
         return setCMYKColor(color.cyan, color.magenta, color.yellow, color.black);
     }
-    if (color.mode == DocumentColorSpace.RGB) {
-        return setRGBColor(color.red, color.green, color.blue);
-    }
+    return setRGBColor(color.red, color.green, color.blue);
 }
 
 
@@ -160,6 +146,49 @@ function setRGBColor(r, g, b) {
     color.green = g;
     color.blue = b;
     return color;
+}
+
+
+function getCMYKColor(values) {
+    var min = 0;
+    var max = 100;
+    return {
+        name: (values[4]) ? values[4] : '',
+        cyan: getValidValue(values[0], min, max),
+        magenta: getValidValue(values[1], min, max),
+        yellow: getValidValue(values[2], min, max),
+        black: getValidValue(values[3], min, max)
+    };
+}
+
+
+function getRGBColor(values) {
+    var min = 0;
+    var max = 255;
+    return {
+        name: (values[3]) ? values[3] : '',
+        red: getValidValue(values[0], min, max),
+        green: getValidValue(values[1], min, max),
+        blue: getValidValue(values[2], min, max)
+    };
+}
+
+
+function getValidValue(value, min, max) {
+    if (value > max) return max;
+    if (isNaN(value) || value == '' || value < min) return min;
+    return value;
+}
+
+
+function getHexColor(values) {
+    var colors = values[0].replace(/^#/, '').match(/../g);
+    return {
+        name: (values[1]) ? values[1] : values[0].toUpperCase(),
+        red: parseInt(colors[0], 16),
+        green: parseInt(colors[1], 16),
+        blue: parseInt(colors[2], 16)
+    };
 }
 
 

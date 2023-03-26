@@ -24,7 +24,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
 - [Highlight Word](#highlightWordjs)
-- [Import CSV to Swatch](#importCSVtoSwatchjs) `New`
+- [Import CSV to Swatch](#importCSVtoSwatchjs) `Update`
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
 - [Random Text Color](#randomTextColorjs)
 - [Remove Deleted Global Color](#removeDeletedGlobalColorjs)
@@ -48,7 +48,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Relink File Extension](#relinkFileExtensionjs)
 - [Relink File Extension Extra](#relinkFileExtensionExtrajs)
 - [Relink to Folder](#relinkToFolderjs)
-- [Reset to Full Scale](#resetToFullScalejs)
+- [Reset to Full Scale](#resetToFullScalejs) `Update`
 - [Select Embedded Link](#selectEmbeddedLinkjs)
 - [Select Link](#selectLinkjs)
 
@@ -79,7 +79,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Copy Line Down](#copyLineDownjscopyLineUpjs)
 - [Copy Line Up](#copyLineDownjscopyLineUpjs)
 - [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
-- [Create Page Numbers](#createPageNumbersjs)
+- [Create Page Numbers](#createPageNumbersjs) `Update`
 - [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
 - [Delete All Right](#deleteAllLeftjsdeleteAllRightjs)
@@ -530,9 +530,9 @@ Places a page number at a specified location on the artboards.
 ### Usage
 1. Run this script.
 2. Set up each parameter in the dialog that appears.
-   - `Position` Position of the page number.
+   - `Position` Position of the page number relative to the artboard.
    - `Facing Pages` If true, the facing page.
-   - `Start Page Numbering at` a Start page number.
+   - `Start Page Number` A start page number.
    - `Section Prefix` Add a Section Prefix in front of the page number. If facing page, in back of the page number.
    - `Font Size` Font size of the page number.
    - `Margin` Distance from the artboard. Switch the units according to the ruler units.
@@ -1082,7 +1082,7 @@ This script imports a CSV file to the Swatches panel.
 > Make sure the document color mode and CSV file format are the same.
 
 ### Format
-CSV files are available in the following two formats.  
+CSV files are available in the following 3 formats.  
 
 ##### For CMYK:  
 | Cyan | Magenta | Yellow | Black | Swatch name |
@@ -1094,10 +1094,16 @@ CSV files are available in the following two formats.
 | --- | --- | --- | --- |
 | 255 | 0 | 0 | Red |
 
+##### For HEX:  
+| Hex | Swatch name |
+| --- | --- |
+| FF0000 | Red |
+
 > **Note**  
 > Commas or tabs separate columns.  
 > Line 1 is used as the title.  
-> The swatch name is not required.
+> The swatch name is not required.  
+> The leading "#" may be omitted in the case of Hex color.
 
 ### Requirements
 Illustrator CS or higher

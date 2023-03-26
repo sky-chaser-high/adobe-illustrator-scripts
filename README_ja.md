@@ -28,7 +28,7 @@ Adobe Illustratorのスクリプト集です。
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor.js](#generateGradientColorjs) | グラデーションを生成 |
 | [highlightWord.js](#highlightWordjs) | 指定した単語の塗り色を変更 |
-| [importCSVtoSwatch.js](#importCSVtoSwatchjs) `New` | CSVファイルを読み込む |
+| [importCSVtoSwatch.js](#importCSVtoSwatchjs) `Update` | CSVファイルを読み込む |
 | [matchLocationOfGradientStop.js](#matchLocationOfGradientStopjs) | グラデーションのカラー分岐点、中間点の位置を同期 |
 | [randomTextColor.js](#randomTextColorjs) | テキストの塗り色をランダムに変更 |
 | [removeDeletedGlobalColor.js](#removeDeletedGlobalColorjs) | Deleted Global Color を削除 |
@@ -60,7 +60,7 @@ Adobe Illustratorのスクリプト集です。
 | [relinkFileExtension.js](#relinkFileExtensionjs) | ファイル拡張子にリンクを再設定 |
 | [relinkFileExtensionExtra.js](#relinkFileExtensionExtrajs) | ファイル拡張子にリンクを再設定（機能拡張版） |
 | [relinkToFolder.js](#relinkToFolderjs) | フォルダに再リンク |
-| [resetToFullScale.js](#resetToFullScalejs) | 画像サイズを100%に戻す |
+| [resetToFullScale.js](#resetToFullScalejs) `Update` | 画像サイズを100%に戻す |
 | [selectEmbeddedLink.js](#selectEmbeddedLinkjs) | 埋め込み画像を選択 |
 | [selectLink.js](#selectLinkjs) | リンクを選択 |
 
@@ -99,7 +99,7 @@ Adobe Illustratorのスクリプト集です。
 | [copyLineDown.js](#copyLineDownjscopyLineUpjs) | 行を下へコピー |
 | [copyLineUp.js](#copyLineDownjscopyLineUpjs) | 行を上へコピー |
 | [copyLine(emptySelection).js](#copyLineEmptySelectionjscutLineEmptySelectionjs) | 選択なしでコピー |
-| [createPageNumbers.ja](#createPageNumbersjs) | ノンブル作成 |
+| [createPageNumbers.ja](#createPageNumbersjs) `Update` | ノンブル作成 |
 | [cutLine(emptySelection).js](#copyLineEmptySelectionjscutLineEmptySelectionjs) | 選択なしでカット |
 | [deleteAllLeft.js](#deleteAllLeftjsdeleteAllRightjs) | カーソルの左側をすべて削除 |
 | [deleteAllRight.js](#deleteAllLeftjsdeleteAllRightjs) | カーソルの右側をすべて削除 |
@@ -1129,7 +1129,7 @@ CSVファイルからカラー数値を読み込んでスウォッチに追加�
 > ドキュメントのカラーモードとCSVファイルの形式をそろえてください。
 
 #### ファイル形式
-CSVファイルの形式は以下の2種類になります。
+CSVファイルの形式は以下の3種類になります。
 
 ##### CMYK  
 | Cyan | Magenta | Yellow | Black | Swatch name |
@@ -1141,10 +1141,16 @@ CSVファイルの形式は以下の2種類になります。
 | --- | --- | --- | --- |
 | 255 | 0 | 0 | Red |
 
+##### HEX  
+| Hex | Swatch name |
+| --- | --- |
+| FF0000 | Red |
+
 > **Note**  
 > 各列はカンマまたはタブで区切ってください。  
 > 1行目は項目名を入力してください。  
-> スウォッチ名は必須ではありません。
+> スウォッチ名は必須ではありません。  
+> HEXカラーを使用する場合は、先頭の"#"を省略できます。
 
 #### 動作条件
 Illustrator CS以降
