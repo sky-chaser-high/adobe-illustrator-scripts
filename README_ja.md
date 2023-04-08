@@ -23,8 +23,8 @@ Adobe Illustratorのスクリプト集です。
 | [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | グローバルカラーに変換 |
 | [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | 特色に変換 |
 | [createColorChart.js](#createColorChartjs) | カラーチャート作成 |
-| [deleteAllSwatches.js](#deleteAllSwatchesjs) `New` | すべてのスウォッチを削除 |
-| [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) `New` | カラー数値をCSVファイルに保存 |
+| [deleteAllSwatches.js](#deleteAllSwatchesjs) | すべてのスウォッチを削除 |
+| [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor.js](#generateGradientColorjs) | グラデーションを生成 |
 | [highlightWord.js](#highlightWordjs) | 指定した単語の塗り色を変更 |
@@ -34,7 +34,7 @@ Adobe Illustratorのスクリプト集です。
 | [removeDeletedGlobalColor.js](#removeDeletedGlobalColorjs) | Deleted Global Color を削除 |
 | [roundColorValue.js](#roundColorValuejs) | カラー数値を四捨五入 |
 | [roundLocationOfGradientStop.js](#roundLocationOfGradientStopjs) | グラデーションのカラー分岐点、中間点の数値を四捨五入 |
-| [showColorValues.js](#showColorValuesjs) | カラー数値を表示 |
+| [showColorValues.js](#showColorValuesjs) `Update` | カラー数値を表示 |
 | [shuffleGradientColor.js](#shuffleGradientColorjs) | グラデーションをシャッフル |
 
 <br>
@@ -60,7 +60,7 @@ Adobe Illustratorのスクリプト集です。
 | [relinkFileExtension.js](#relinkFileExtensionjs) | ファイル拡張子にリンクを再設定 |
 | [relinkFileExtensionExtra.js](#relinkFileExtensionExtrajs) | ファイル拡張子にリンクを再設定（機能拡張版） |
 | [relinkToFolder.js](#relinkToFolderjs) | フォルダに再リンク |
-| [resetToFullScale.js](#resetToFullScalejs) `Update` | 画像サイズを100%に戻す |
+| [resetToFullScale.js](#resetToFullScalejs) | 画像サイズを100%に戻す |
 | [selectEmbeddedLink.js](#selectEmbeddedLinkjs) | 埋め込み画像を選択 |
 | [selectLink.js](#selectLinkjs) | リンクを選択 |
 
@@ -99,7 +99,7 @@ Adobe Illustratorのスクリプト集です。
 | [copyLineDown.js](#copyLineDownjscopyLineUpjs) | 行を下へコピー |
 | [copyLineUp.js](#copyLineDownjscopyLineUpjs) | 行を上へコピー |
 | [copyLine(emptySelection).js](#copyLineEmptySelectionjscutLineEmptySelectionjs) | 選択なしでコピー |
-| [createPageNumbers.ja](#createPageNumbersjs) `Update` | ノンブル作成 |
+| [createPageNumbers.ja](#createPageNumbersjs) | ノンブル作成 |
 | [cutLine(emptySelection).js](#copyLineEmptySelectionjscutLineEmptySelectionjs) | 選択なしでカット |
 | [deleteAllLeft.js](#deleteAllLeftjsdeleteAllRightjs) | カーソルの左側をすべて削除 |
 | [deleteAllRight.js](#deleteAllLeftjsdeleteAllRightjs) | カーソルの右側をすべて削除 |
@@ -111,11 +111,12 @@ Adobe Illustratorのスクリプト集です。
 | [goToPreviousText.js](#goToNextTextjsgoToPreviousTextjs) | カーソルを前のテキストオブジェクトへ移動 |
 | [insertLineAbove.js](#insertLineAbovejsinsertLineBelowjs) | 上に行を挿入 |
 | [insertLineBelow.js](#insertLineAbovejsinsertLineBelowjs) | 下に行を挿入 |
+| [justifyContentSpaceBetween.js](#justifyContentSpaceBetweenjs) `New` | テキスト両端揃え |
 | [moveLineDown.js](#moveLineDownjsmoveLineUpjs) | 行を下へ移動 |
 | [moveLineUp.js](#moveLineDownjsmoveLineUpjs) | 行を上へ移動 |
 | [swapTextContents.js](#swapTextContentsjs) | 文字列を交換 |
 | [textAlign_Center.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに中央揃え |
-| [textAlign_Left.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに左揃え |
+| [textAlign_Left.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) `Update` | 文字列の位置を動かさずに左揃え |
 | [textAlign_Right.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに右揃え |
 
 <br>
@@ -1131,6 +1132,11 @@ CSVファイルからカラー数値を読み込んでスウォッチに追加�
 #### ファイル形式
 CSVファイルの形式は以下の3種類になります。
 
+> **Note**  
+> 各列はカンマまたはタブで区切ってください。  
+> 1行目は項目名を入力してください。  
+> スウォッチ名は必須ではありません。
+
 ##### CMYK  
 | Cyan | Magenta | Yellow | Black | Swatch name |
 | --- | --- | --- | --- | --- |
@@ -1147,10 +1153,8 @@ CSVファイルの形式は以下の3種類になります。
 | FF0000 | Red |
 
 > **Note**  
-> 各列はカンマまたはタブで区切ってください。  
-> 1行目は項目名を入力してください。  
-> スウォッチ名は必須ではありません。  
-> HEXカラーを使用する場合は、先頭の"#"を省略できます。
+> Hexカラーを使用する場合は、先頭の"#"を省略できます。  
+> Hexカラーが3桁の場合は、CSSと同様のふるまいをします。（例：#F0F → #FF00FF）
 
 #### 動作条件
 Illustrator CS以降
@@ -1228,6 +1232,32 @@ Illustrator CS以降
 Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="justifyContentSpaceBetweenjs">justifyContentSpaceBetween.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+トラッキングを調整してポイント文字の両端を揃えます。  
+縦書きにも対応しています。
+
+![Justify Content Space Between](images/justifyContentSpaceBetween.png)
+
+#### 使用方法
+ポイント文字と揃える基準のパスオブジェクトを選択してスクリプトを実行します。  
+ポイント文字同士で揃えたい場合は、ポイント文字のみ選択します。
+
+> **Note**  
+> 1行の文字列中に異なるフォントサイズの文字が混在していると両端揃いになりません。  
+> 文字の位置は移動しません。  
+> 最も長いオブジェクトを基準にします。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
@@ -1670,7 +1700,7 @@ Illustrator CS4以降
 パスオブジェクトを選択してスクリプトを実行します。
 
 > **Note**  
-> CMYK, RGB, グレースケール, 特色, パターンに対応しています。  
+> CMYK、RGB、HEX、グレースケール、特色、パターンに対応しています。  
 > テキスト、グラデーションは対応していません。
 
 #### 動作条件
@@ -1843,14 +1873,14 @@ Illustrator CS以降
 
 # <a name="textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-テキストの位置を移動させずにテキスト揃えを変更します。  
+ポイント文字の位置を動かさずに行揃えを変更します。  
 縦書きにも対応しています。
 
 例 textAlign_Center.js:
 ![Text Align](images/textAlign.png)
 
 #### 使用方法
-テキストオブジェクトを選択してスクリプトを実行します。
+ポイント文字を選択してスクリプトを実行します。
 
 #### 動作条件
 Illustrator CS以降

@@ -28,6 +28,7 @@
    Line 1 is used as the title.
    The Swatch name is not required.
    The leading "#" may be omitted in the case of Hex color.
+   If the Hex color is 3-digit, it behaves like CSS. (e.g. #F0F becomes #FF00FF.)
    In rare cases, if you continue to use the script, it may not work.
    In that case, restart Illustrator and try again.
 
@@ -35,7 +36,7 @@
    Illustrator CS or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -182,12 +183,31 @@ function getValidValue(value, min, max) {
 
 
 function getHexColor(values) {
-    var colors = values[0].replace(/^#/, '').match(/../g);
+    var color = splitHexColorCode(values[0]);
     return {
         name: (values[1]) ? values[1] : values[0].toUpperCase(),
-        red: parseInt(colors[0], 16),
-        green: parseInt(colors[1], 16),
-        blue: parseInt(colors[2], 16)
+        red: parseInt(color.red, 16),
+        green: parseInt(color.green, 16),
+        blue: parseInt(color.blue, 16)
+    };
+}
+
+
+function splitHexColorCode(value) {
+    var hex = value.replace(/^#/, '').replace(/[^a-f0-9]/ig, '0');
+    var colors = ('000000' + hex).slice(-6).match(/../g);
+    if (hex.length == 3) {
+        colors = hex.match(/./g);
+        return {
+            red: colors[0] + colors[0],
+            green: colors[1] + colors[1],
+            blue: colors[2] + colors[2]
+        };
+    }
+    return {
+        red: colors[0],
+        green: colors[1],
+        blue: colors[2]
     };
 }
 

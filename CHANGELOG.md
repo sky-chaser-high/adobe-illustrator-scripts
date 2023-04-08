@@ -79,9 +79,12 @@
 
 
 ## importCSVtoSwatch.js
+### 1.2.0 (2023-04-08)
+### Features
+- Added support for 3-digit Hex color.
 ### 1.1.0 (2023-03-26)
-### Added
-- Added Hex color.
+### Features
+- Added support for Hex color.
 <br><br>
 
 
@@ -184,11 +187,40 @@
 <br><br>
 
 
+## showColorValues.js
+### 1.1.0 (2023-04-08)
+### Features
+- Added support for Hex color.
+<br><br>
+
+
 ## stepAndRepeat.js
 ### 2.0.0 (2022-10-08)
 ### Changes
 - The UI has been brought closer to InDesign.
 - Changed the file name.
+<br><br>
+
+
+## textAlign_Center.js
+### 1.0.1 (2023-04-08)
+### Changes
+- Refactoring.
+<br><br>
+
+
+## textAlign_Left.js
+### 1.0.1 (2023-04-08)
+### Changes
+- Changed bug workaround.  
+**See also:** Adobe Support Community [Trouble assigning TextFrame to Justification.Left](https://community.adobe.com/t5/illustrator-discussions/trouble-assigning-textframe-to-justification-left/m-p/4211277)
+<br><br>
+
+
+## textAlign_Right.js
+### 1.0.1 (2023-04-08)
+### Changes
+- Refactoring.
 <br><br>
 
 

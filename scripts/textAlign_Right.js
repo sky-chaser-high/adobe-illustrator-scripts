@@ -2,41 +2,61 @@
    textAlign_Right
 
    Description
-   This script changes the text alignment without moving the text position.
+   This script changes the text alignment without moving the position.
    Vertical text is also supported.
 
    Usage
-   Select the text objects, run this script from File > Scripts > Other Script...
+   Select point text objects, run this script from File > Scripts > Other Script...
 
    Notes
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, if you continue to use the script, it may not work.
+   In that case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
+
+   License
+   Released under the MIT license.
+   https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length) align(app.activeDocument.selection);
+    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
 })();
 
-function align(texts) {
+
+function main() {
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
     for (var i = 0; i < texts.length; i++) {
-        if (texts[i].typename == 'TextFrame' && texts[i].kind == TextType.POINTTEXT) {
-            var left = texts[i].left;
-            var top = texts[i].top;
-            texts[i].textRange.paragraphAttributes.justification = Justification.RIGHT;
-            texts[i].left = left;
-            texts[i].top = top;
+        align(texts[i]);
+    }
+}
+
+
+function align(text) {
+    var position = text.position;
+    text.textRange.paragraphAttributes.justification = Justification.RIGHT;
+    text.position = position;
+}
+
+
+function getTextFrames(items) {
+    var texts = [];
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item.typename == 'TextFrame' && item.kind == TextType.POINTTEXT) {
+            texts.push(item);
         }
-        else if (texts[i].typename == 'GroupItem') {
-            align(texts[i].pageItems);
+        if (item.typename == 'GroupItem') {
+            texts = texts.concat(getTextFrames(item.pageItems));
         }
     }
+    return texts;
 }

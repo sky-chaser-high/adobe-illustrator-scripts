@@ -8,7 +8,7 @@
    Select path objects, run this script from File > Scripts > Other Script...
 
    Notes
-   CMYK, RGB, grayscale, spot color, and pattern are supported.
+   CMYK, RGB, HEX, grayscale, spot color, and pattern are supported.
    Text object and gradient are not supported.
    In rare cases, if you continue to use the script, it may not work.
    In that case, restart Illustrator and try again.
@@ -17,7 +17,7 @@
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -75,12 +75,13 @@ function getColorValue(color) {
             var m = Math.round(color.magenta * digit) / digit;
             var y = Math.round(color.yellow * digit) / digit;
             var k = Math.round(color.black * digit) / digit;
-            return 'C: ' + c + ' M: ' + m + ' Y: ' + y + ' K: ' + k;
+            return 'C' + c + ' M' + m + ' Y' + y + ' K' + k;
         case 'RGBColor':
             var r = Math.round(color.red * digit) / digit;
             var g = Math.round(color.green * digit) / digit;
             var b = Math.round(color.blue * digit) / digit;
-            return 'R: ' + r + ' G: ' + g + ' B: ' + b;
+            var hex = getHexValue(r, g, b);
+            return 'R' + r + ' G' + g + ' B' + b + ' (' + hex + ')';
         case 'GrayColor':
             var k = Math.round(color.gray * digit) / digit;
             return 'K: ' + k;
@@ -92,6 +93,14 @@ function getColorValue(color) {
         case 'GradientColor':
             return '';
     }
+}
+
+
+function getHexValue(r, g, b) {
+    var red = ('0' + r.toString(16).toUpperCase()).slice(-2);
+    var green = ('0' + g.toString(16).toUpperCase()).slice(-2);
+    var blue = ('0' + b.toString(16).toUpperCase()).slice(-2);
+    return '#' + red + green + blue;
 }
 
 

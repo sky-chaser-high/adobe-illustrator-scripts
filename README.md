@@ -19,8 +19,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Create Color Chart](#createColorChartjs)
-- [Delete All Swatches](#deleteAllSwatchesjs) `New`
-- [Export Color Values to CSV](#exportColorValuesToCSVjs) `New`
+- [Delete All Swatches](#deleteAllSwatchesjs)
+- [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
 - [Highlight Word](#highlightWordjs)
@@ -30,7 +30,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Remove Deleted Global Color](#removeDeletedGlobalColorjs)
 - [Round Color Value](#roundColorValuejs)
 - [Round Location of Gradient Stop](#roundLocationOfGradientStopjs)
-- [Show Color Values](#showColorValuesjs)
+- [Show Color Values](#showColorValuesjs) `Update`
 - [Shuffle Gradient Color](#shuffleGradientColorjs)
 
 ### Layer
@@ -48,7 +48,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Relink File Extension](#relinkFileExtensionjs)
 - [Relink File Extension Extra](#relinkFileExtensionExtrajs)
 - [Relink to Folder](#relinkToFolderjs)
-- [Reset to Full Scale](#resetToFullScalejs) `Update`
+- [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
 - [Select Link](#selectLinkjs)
 
@@ -79,7 +79,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Copy Line Down](#copyLineDownjscopyLineUpjs)
 - [Copy Line Up](#copyLineDownjscopyLineUpjs)
 - [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
-- [Create Page Numbers](#createPageNumbersjs) `Update`
+- [Create Page Numbers](#createPageNumbersjs)
 - [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
 - [Delete All Right](#deleteAllLeftjsdeleteAllRightjs)
@@ -91,11 +91,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Go to Previous Text](#goToNextTextjsgoToPreviousTextjs)
 - [Insert Line Above](#insertLineAbovejsinsertLineBelowjs)
 - [Insert Line Below](#insertLineAbovejsinsertLineBelowjs)
+- [Justify Content Space Between](#justifyContentSpaceBetweenjs) `New`
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
 - [Swap Text Contents](#swapTextContentsjs)
 - [Text Align Center](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
-- [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
+- [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) `Update`
 - [Text Align Right](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 
 ### Utility
@@ -1084,6 +1085,11 @@ This script imports a CSV file to the Swatches panel.
 ### Format
 CSV files are available in the following 3 formats.  
 
+> **Note**  
+> Commas or tabs separate columns.  
+> Line 1 is used as the title.  
+> The swatch name is not required.
+
 ##### For CMYK:  
 | Cyan | Magenta | Yellow | Black | Swatch name |
 | --- | --- | --- | --- | --- |
@@ -1100,10 +1106,8 @@ CSV files are available in the following 3 formats.
 | FF0000 | Red |
 
 > **Note**  
-> Commas or tabs separate columns.  
-> Line 1 is used as the title.  
-> The swatch name is not required.  
-> The leading "#" may be omitted in the case of Hex color.
+> The leading "#" may be omitted in the case of Hex color.  
+> If the Hex color is 3-digit, it behaves like CSS. (e.g. #F0F becomes #FF00FF.)
 
 ### Requirements
 Illustrator CS or higher
@@ -1180,6 +1184,32 @@ Just run this script.
 Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="justifyContentSpaceBetweenjs">justifyContentSpaceBetween.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script adjusts tracking to align point texts at both ends.  
+Vertical text is also supported.
+
+![Justify Content Space Between](images/justifyContentSpaceBetween.png)
+
+### Usage
+Select point text objects and a reference path object, and run this script.  
+Text objects can also align with each other. In this case, select only the text objects.
+
+> **Note**  
+> Different font sizes mixed within a single-line point text will not work well.  
+> The text position does not change.  
+> The object to use as a reference will be the longest one.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -1616,7 +1646,7 @@ This script shows color values. Both fill and stroke colors are supported.
 Select path objects, and run this script.
 
 > **Note**  
-> CMYK, RGB, grayscale, spot color, and pattern are supported.  
+> CMYK, RGB, HEX, grayscale, spot color, and pattern are supported.  
 > Text object and gradient are not supported.
 
 ### Requirements
@@ -1785,14 +1815,14 @@ Illustrator CS or higher
 
 # <a name="textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script changes the text alignment without moving the text position.  
+This script changes the text alignment without moving the position.  
 Vertical text is also supported.
 
 For example, textAlign_Center.js:
 ![Text Align](images/textAlign.png)
 
 ### Usage
-Select the text objects, and run this script.
+Select point text objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
