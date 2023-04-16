@@ -24,13 +24,13 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
 - [Highlight Word](#highlightWordjs)
-- [Import CSV to Swatch](#importCSVtoSwatchjs) `Update`
+- [Import CSV to Swatch](#importCSVtoSwatchjs)
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
 - [Random Text Color](#randomTextColorjs)
 - [Remove Deleted Global Color](#removeDeletedGlobalColorjs)
 - [Round Color Value](#roundColorValuejs)
 - [Round Location of Gradient Stop](#roundLocationOfGradientStopjs)
-- [Show Color Values](#showColorValuesjs) `Update`
+- [Show Color Values](#showColorValuesjs)
 - [Shuffle Gradient Color](#shuffleGradientColorjs)
 
 ### Layer
@@ -62,6 +62,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Disjoin Path](#disjoinPathjs)
 - [Distribute in Space (Horizontal)](#distributeInSpaceHorizontal--Verticaljs)
 - [Distribute in Space (Vertical)](#distributeInSpaceHorizontal--Verticaljs)
+- [Draw Circumscribed Circle](#drawCircumscribedCirclejs) `New`
 - [Draw Rectangle](#drawRectanglejs)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
 - [Extend Line](#extendLinejs)
@@ -91,12 +92,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Go to Previous Text](#goToNextTextjsgoToPreviousTextjs)
 - [Insert Line Above](#insertLineAbovejsinsertLineBelowjs)
 - [Insert Line Below](#insertLineAbovejsinsertLineBelowjs)
-- [Justify Content Space Between](#justifyContentSpaceBetweenjs) `New`
+- [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
 - [Swap Text Contents](#swapTextContentsjs)
 - [Text Align Center](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
-- [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) `Update`
+- [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 - [Text Align Right](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 
 ### Utility
@@ -763,6 +764,28 @@ The position of alignment depends on the reference point.
 
 ### Requirements
 Illustrator CS3 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="drawCircumscribedCirclejs">drawCircumscribedCircle.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script draws a circumscribed circle through 3 or 2 anchor points.
+
+![Draw Circumscribed Circle](images/drawCircumscribedCircle.png)
+
+### Usage
+Select 3 or 2 anchor points with Direct Selection Tool, and run this script.
+
+> **Note**  
+> For two anchor points, it is the diameter.
+
+### Requirements
+Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>

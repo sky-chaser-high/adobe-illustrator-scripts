@@ -28,13 +28,13 @@ Adobe Illustratorのスクリプト集です。
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor.js](#generateGradientColorjs) | グラデーションを生成 |
 | [highlightWord.js](#highlightWordjs) | 指定した単語の塗り色を変更 |
-| [importCSVtoSwatch.js](#importCSVtoSwatchjs) `Update` | CSVファイルを読み込む |
+| [importCSVtoSwatch.js](#importCSVtoSwatchjs) | CSVファイルを読み込む |
 | [matchLocationOfGradientStop.js](#matchLocationOfGradientStopjs) | グラデーションのカラー分岐点、中間点の位置を同期 |
 | [randomTextColor.js](#randomTextColorjs) | テキストの塗り色をランダムに変更 |
 | [removeDeletedGlobalColor.js](#removeDeletedGlobalColorjs) | Deleted Global Color を削除 |
 | [roundColorValue.js](#roundColorValuejs) | カラー数値を四捨五入 |
 | [roundLocationOfGradientStop.js](#roundLocationOfGradientStopjs) | グラデーションのカラー分岐点、中間点の数値を四捨五入 |
-| [showColorValues.js](#showColorValuesjs) `Update` | カラー数値を表示 |
+| [showColorValues.js](#showColorValuesjs) | カラー数値を表示 |
 | [shuffleGradientColor.js](#shuffleGradientColorjs) | グラデーションをシャッフル |
 
 <br>
@@ -78,6 +78,7 @@ Adobe Illustratorのスクリプト集です。
 | [disjoinPath.js](#disjoinPathjs) | パスを分解 |
 | [distributeInSpace(Horizotal).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の水平方向に分布 |
 | [distributeInSpace(Vertical).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の垂直方向に分布 |
+| [drawCircumscribedCircle.js](#drawCircumscribedCirclejs) `New` | 外接円を描く |
 | [drawRectangle.js](#drawRectanglejs) | オブジェクトの周囲に長方形を描く |
 | [drawShapeOnAnchorPoint.js](#drawShapeOnAnchorPointjs) | アンカーポイントに図形を描く |
 | [extendLine.js](#extendLinejs) | パスを伸縮 |
@@ -111,12 +112,12 @@ Adobe Illustratorのスクリプト集です。
 | [goToPreviousText.js](#goToNextTextjsgoToPreviousTextjs) | カーソルを前のテキストオブジェクトへ移動 |
 | [insertLineAbove.js](#insertLineAbovejsinsertLineBelowjs) | 上に行を挿入 |
 | [insertLineBelow.js](#insertLineAbovejsinsertLineBelowjs) | 下に行を挿入 |
-| [justifyContentSpaceBetween.js](#justifyContentSpaceBetweenjs) `New` | テキスト両端揃え |
+| [justifyContentSpaceBetween.js](#justifyContentSpaceBetweenjs) | テキスト両端揃え |
 | [moveLineDown.js](#moveLineDownjsmoveLineUpjs) | 行を下へ移動 |
 | [moveLineUp.js](#moveLineDownjsmoveLineUpjs) | 行を上へ移動 |
 | [swapTextContents.js](#swapTextContentsjs) | 文字列を交換 |
 | [textAlign_Center.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに中央揃え |
-| [textAlign_Left.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) `Update` | 文字列の位置を動かさずに左揃え |
+| [textAlign_Left.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに左揃え |
 | [textAlign_Right.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに右揃え |
 
 <br>
@@ -804,6 +805,28 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS3以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="drawCircumscribedCirclejs">drawCircumscribedCircle.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+アンカーポイント3点、または2点を通る外接円を描きます。
+
+![Draw Circumscribed Circle](images/drawCircumscribedCircle.png)
+
+#### 使用方法
+ダイレクト選択ツールで3点、または2点のアンカーポイントを選択してスクリプトを実行します。
+
+> **Note**  
+> アンカーポイント2点の場合は、直径になります。
+
+#### 動作条件
+Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
