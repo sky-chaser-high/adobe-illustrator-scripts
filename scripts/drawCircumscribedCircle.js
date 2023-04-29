@@ -9,6 +9,7 @@
 
    Notes
    For two anchor points, it is the diameter.
+   Anchor points for type on a path and area types are also supported.
    In rare cases, if you continue to use the script, it may not work.
    In that case, restart Illustrator and try again.
 
@@ -16,7 +17,7 @@
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -27,14 +28,15 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length > 0) main();
 })();
 
 
 function main() {
     var items = app.activeDocument.selection;
     var shapes = getPathItems(items);
-    var points = getAnchorPoints(shapes);
+    var texts = getTextPathItems();
+    var points = getAnchorPoints(shapes.concat(texts));
     if (points.length < 2) return;
     drawCircle(points);
 }
@@ -143,4 +145,19 @@ function getPathItems(items) {
         }
     }
     return shapes;
+}
+
+
+function getTextPathItems() {
+    var AREA = TextType.AREATEXT;
+    var PATH = TextType.PATHTEXT;
+    var items = [];
+    var texts = app.activeDocument.textFrames;
+    for (var i = 0; i < texts.length; i++) {
+        var text = texts[i];
+        if (text.selected && (text.kind == AREA || text.kind == PATH)) {
+            items.push(text.textPath);
+        }
+    }
+    return items;
 }

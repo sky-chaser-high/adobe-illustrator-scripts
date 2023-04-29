@@ -78,7 +78,7 @@ Adobe Illustratorのスクリプト集です。
 | [disjoinPath.js](#disjoinPathjs) | パスを分解 |
 | [distributeInSpace(Horizotal).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の水平方向に分布 |
 | [distributeInSpace(Vertical).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の垂直方向に分布 |
-| [drawCircumscribedCircle.js](#drawCircumscribedCirclejs) `New` | 外接円を描く |
+| [drawCircumscribedCircle.js](#drawCircumscribedCirclejs) `Update` | 外接円を描く |
 | [drawRectangle.js](#drawRectanglejs) | オブジェクトの周囲に長方形を描く |
 | [drawShapeOnAnchorPoint.js](#drawShapeOnAnchorPointjs) | アンカーポイントに図形を描く |
 | [extendLine.js](#extendLinejs) | パスを伸縮 |
@@ -132,7 +132,6 @@ Adobe Illustratorのスクリプト集です。
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
-| [XmpFunctions.js](#XmpFunctionsjs) | XMP関数 |
 
 <br><br>
 
@@ -823,7 +822,8 @@ Illustrator CS3以降
 ダイレクト選択ツールで3点、または2点のアンカーポイントを選択してスクリプトを実行します。
 
 > **Note**  
-> アンカーポイント2点の場合は、直径になります。
+> アンカーポイント2点の場合は、直径になります。  
+> パス上文字、エリア内文字のアンカーポイントにも対応しています。
 
 #### 動作条件
 Illustrator CS以降
@@ -1931,138 +1931,6 @@ Illustrator CS以降
 Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
-<br>
-
-
-
-
-
-# <a name="XmpFunctionsjs">XmpFunctions.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-XMPから取得できるフォント・カラー・リンク画像・更新履歴の情報を関数としてまとめました。  
-XMPの詳しい内容については、[Adobeのサイト](https://www.adobe.io/xmp/docs/)を参照してください。
-
-#### 使用方法
-このスクリプトファイルをインクルードするか、関数をコピー＆ペーストして使用してください。
-
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var fonts = xmpGetFonts(app.activeDocument.fullName);
-```
-また、リンク画像にも使用できます。
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var src = app.activeDocument.placedItems[0].file;
-var history = xmpGetHistory(src);
-```
-
-#### 関数
-- [xmpGetFonts(src)](#xmpGetFonts(src))
-- [xmpGetHistory(src)](#xmpGetHistory(src))
-- [xmpGetLinkedFiles(src)](#xmpGetLinkedFiles(src))
-- [xmpGetPlateNames(src)](#xmpGetPlateNames(src))
-- [xmpGetSwatches(src)](#xmpGetSwatches(src))
-
-### <a name="xmpGetFonts(src)">xmpGetFonts(src)</a>
-ドキュメント内で使用しているフォント情報を取得します。
-
-**引数**: `src` `<File>`  
-**返り値**: `Array<Object>`  
-- `composite` `<boolean>` 合成フォントの場合、true。
-- `face` `<string>` フォントフェイス。
-- `family` `<string>` フォントファミリー。
-- `filename` `<string>` フォントファイル名。
-- `name` `<string>` フォントのポストスクリプト名。
-- `type` `<string>` TrueType、Type1、OpenTypeなどのフォントタイプ。
-- `version` `<string>` バージョン。
-
-##### 例
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var fonts = xmpGetFonts(app.activeDocument.fullName);
-alert(fonts[0].face);
-```
-
-### <a name="xmpGetHistory(src)">xmpGetHistory(src)</a>
-更新履歴を取得します。
-
-**引数**: `src` `<File>`  
-**返り値**: `Array<Object>`  
-- `action` `<string>` 発生したアクション。
-- `parameter` `<string> | null` アクションの追加説明。
-- `software` `<string> | null` アクションを実行したアプリケーション。
-- `when` `<Date> | null` アクションが発生したときの時刻。
-
-##### 例
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var history = xmpGetHistory(app.activeDocument.fullName);
-var date = history[0].when;
-alert(date.getFullYear());
-```
-
-### <a name="xmpGetLinkedFiles(src)">xmpGetLinkedFiles(src)</a>
-ドキュメント内で使用しているリンク画像を取得します。
-
-**引数**: `src` `<File>`  
-**返り値**: `Array<Object>`  
-- `exists` `<boolean>` ファイルの有無。
-- `filePath` `<string>` リソースのファイルパスまたはURL。
-
-##### 例
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var files = xmpGetLinkedFiles(app.activeDocument.fullName);
-alert(files[0].filePath);
-```
-
-### <a name="xmpGetPlateNames(src)">xmpGetPlateNames(src)</a>
-ドキュメント内で使用している色名を取得します。
-
-**引数**: `src` `<File>`  
-**返り値**: `Array<string>` 印刷に必要な色名。  
-
-##### 例
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var platenames = xmpGetPlateNames(app.activeDocument.fullName);
-alert(platenames[0]);
-```
-
-### <a name="xmpGetSwatches(src)">xmpGetSwatches(src)</a>
-ドキュメント内で使用しているスウォッチを取得します。
-
-**引数**: `src` `<File>`  
-**返り値**: `Array<Object>`  
-- `colorant` `<Object>` 色の値。
-    - `cyan` `<number>` カラーモードがCMYKのときのシアンの値。範囲: 0〜100。
-    - `magenta` `<number>` カラーモードがCMYKのときのマゼンタの値。範囲: 0〜100。
-    - `yellow` `<number>` カラーモードがCMYKのときのイエローの値。範囲: 0〜100。
-    - `black` `<number>` カラーモードがCMYKのときのブラックの値。範囲: 0〜100。
-    - `gray` `<number>` カラーモードがグレースケールのときの値。範囲: 0〜255。
-    - `l` `<number>` カラーモードがLABのときのLの値。範囲: 0〜100。
-    - `a` `<number>` カラーモードがLABのときのAの値。範囲: -128〜127。
-    - `b` `<number>` カラーモードがLABのときのBの値。範囲: -128〜127。
-    - `red` `<number>` カラーモードがRGBのときのレッドの値。範囲: 0〜255。
-    - `green` `<number>` カラーモードがRGBのときのグリーンの値。範囲: 0〜255。
-    - `blue` `<number>` カラーモードがRGBのときのブルーの値。範囲: 0〜255。
-- `mode` `<string>` カラーモード。
-- `name` `<string>` スウォッチ名。
-- `swatch` `<swatch> | null` スウォッチオブジェクト。
-- `tint` `<number>` 色合い。範囲: 0〜100。
-- `type` `<string>` スウォッチのカラータイプ。 `PROCESS` または `SPOT`。
-
-##### 例
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var swatches = xmpGetSwatches(app.activeDocument.fullName);
-alert(swatches[0].colorant.cyan);
-```
-
-#### 動作条件
-Illustrator CS以降
-
-<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

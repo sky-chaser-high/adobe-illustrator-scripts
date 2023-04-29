@@ -62,7 +62,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Disjoin Path](#disjoinPathjs)
 - [Distribute in Space (Horizontal)](#distributeInSpaceHorizontal--Verticaljs)
 - [Distribute in Space (Vertical)](#distributeInSpaceHorizontal--Verticaljs)
-- [Draw Circumscribed Circle](#drawCircumscribedCirclejs) `New`
+- [Draw Circumscribed Circle](#drawCircumscribedCirclejs) `Update`
 - [Draw Rectangle](#drawRectanglejs)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
 - [Extend Line](#extendLinejs)
@@ -108,7 +108,6 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Compare Scale](#compareScalejs)
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
-- [XMP Functions](#XmpFunctionsjs)
 <br><br><br>
 
 
@@ -782,7 +781,8 @@ This script draws a circumscribed circle through 3 or 2 anchor points.
 Select 3 or 2 anchor points with Direct Selection Tool, and run this script.
 
 > **Note**  
-> For two anchor points, it is the diameter.
+> For two anchor points, it is the diameter.  
+> Anchor points for type on a path and area types are also supported.
 
 ### Requirements
 Illustrator CS or higher
@@ -1873,138 +1873,6 @@ Select a target layer, and run this script.
 Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
-<br>
-
-
-
-
-
-# <a name="XmpFunctionsjs">XmpFunctions.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-These functions get the font, color, or history properties that are used in the document from XMP.  
-**See also:** [Adobe XMP Document](https://www.adobe.io/xmp/docs/)
-
-### Usage
-You can include this script or copy the function to use it.
-
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var fonts = xmpGetFonts(app.activeDocument.fullName);
-```
-It can also be used for linked files.
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var src = app.activeDocument.placedItems[0].file;
-var history = xmpGetHistory(src);
-```
-
-### Functions
-- [xmpGetFonts(src)](#xmpGetFonts(src))
-- [xmpGetHistory(src)](#xmpGetHistory(src))
-- [xmpGetLinkedFiles(src)](#xmpGetLinkedFiles(src))
-- [xmpGetPlateNames(src)](#xmpGetPlateNames(src))
-- [xmpGetSwatches(src)](#xmpGetSwatches(src))
-
-### <a name="xmpGetFonts(src)">xmpGetFonts(src)</a>
-Get font properties that are used in the document from XMP.  
-
-**Param**: `src` `<File>`  
-**Returns**: `Array<Object>` An unordered array of font properties.  
-- `composite` `<boolean>` When true, this is a composite font.
-- `face` `<string>` The font face name.
-- `family` `<string>` The font family name.
-- `filename` `<string>` The font file name. (not a complete path)
-- `name` `<string>` PostScript name of the font.
-- `type` `<string>` The font type, such as TrueType, Type 1, Open Type, and so on.
-- `version` `<string>` The version string.
-
-##### Example
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var fonts = xmpGetFonts(app.activeDocument.fullName);
-alert(fonts[0].face);
-```
-
-### <a name="xmpGetHistory(src)">xmpGetHistory(src)</a>
-Get history properties from XMP.
-
-**Param**: `src` `<File>`  
-**Returns**: `Array<Object>` An ordered array of user actions that resulted in the document.  
-- `action` `<string>` The action that occurred.
-- `parameter` `<string> | null` Additional description of the action.
-- `software` `<string> | null` The software agent that performed the action.
-- `when` `<Date> | null` Timestamp of when the action occurred.
-
-##### Example
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var history = xmpGetHistory(app.activeDocument.fullName);
-var date = history[0].when;
-alert(date.getFullYear());
-```
-
-### <a name="xmpGetLinkedFiles(src)">xmpGetLinkedFiles(src)</a>
-Get linked file properties from XMP.
-
-**Param**: `src` `<File>`  
-**Returns**: `Array<Object>` References to resources that were incorporated, by inclusion or reference, into this resource.  
-- `exists` `<boolean>` When true, the path name of this object refers to an existing file.
-- `filePath` `<string>` The referenced resource's file path or URL.
-
-##### Example
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var files = xmpGetLinkedFiles(app.activeDocument.fullName);
-alert(files[0].filePath);
-```
-
-### <a name="xmpGetPlateNames(src)">xmpGetPlateNames(src)</a>
-Get plate names that are used in the document from XMP.
-
-**Param**: `src` `<File>`  
-**Returns**: `Array<string>` An ordered array of plate names that are needed to print the document.  
-
-##### Example
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var platenames = xmpGetPlateNames(app.activeDocument.fullName);
-alert(platenames[0]);
-```
-
-### <a name="xmpGetSwatches(src)">xmpGetSwatches(src)</a>
-Get swatch properties that are used in the document from XMP.
-
-**Param**: `src` `<File>`  
-**Returns**: `Array<Object>` A structure containing the characteristics of a colorant (swatch) used in the document.  
-- `colorant` `<Object>` The color values.
-    - `cyan` `<number>` Cyan color value when the mode is CMYK. Range 0-100.
-    - `magenta` `<number>` Magenta color value when the mode is CMYK. Range 0-100.
-    - `yellow` `<number>` Yellow color value when the mode is CMYK. Range 0-100.
-    - `black` `<number>` Black color value when the mode is CMYK. Range 0-100.
-    - `gray` `<number>` Gray color value when the mode is GRAY. Range 0-255.
-    - `l` `<number>` L value when the mode is LAB. Range 0-100.
-    - `a` `<number>` A value when the mode is LAB. Range -128 to 127.
-    - `b` `<number>` B value when the mode is LAB. Range -128 to 127.
-    - `red` `<number>` Red color value when the mode is RGB. Range 0-255.
-    - `green` `<number>` Green color value when the mode is RGB. Range 0-255.
-    - `blue` `<number>` Blue color value when the mode is RGB. Range 0-255.
-- `mode` `<string>` The color space in which the color is defined.
-- `name` `<string>` Name of the swatch.
-- `swatch` `<swatch> | null` Swatch object.
-- `tint` `<number>` The tint of the color.
-- `type` `<string>` The type of color, one of PROCESS or SPOT.
-
-##### Example
-```javascript
-// @include '/Path1/Path2/XmpFunctions.js'
-var swatches = xmpGetSwatches(app.activeDocument.fullName);
-alert(swatches[0].colorant.cyan);
-```
-
-### Requirements
-Illustrator CS or higher
-
-<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
 <br>
 
 

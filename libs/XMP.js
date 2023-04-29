@@ -1,22 +1,22 @@
 /* ===============================================================================================================================================
-   XmpFunctions
+   XMP
 
    Description
-   These functions gets the font, color or history properties used in the document from XMP.
+   These functions get the font, color, or history properties used in the document from XMP.
    See also: https://www.adobe.io/xmp/docs/
 
    Usage
    You can include this script or copy the function to use it.
 
    Notes
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, if you continue to use the script, it may not work.
+   In that case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.2
+   2.0.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -34,7 +34,7 @@
  * @param {File} src File object
  * @returns {{composite: boolean, face: string, family: string, filename: string, name: string, type: string, version: string}[]} font properties
  */
-function xmpGetFonts(src) {
+function getFonts(src) {
     var fonts = [];
 
     if (ExternalObject.AdobeXMPScript == undefined) {
@@ -72,9 +72,9 @@ function xmpGetFonts(src) {
  * https://www.adobe.io/xmp/docs/XMPNamespaces/xmpMM/
  *
  * @param {File} src File object
- * @returns {{action: string, parameter: string | null, software: string | null, when: Date | null}[]} history properties
+ * @returns {{action: string, parameter: string | undefined, software: string | undefined, when: Date | undefined}[]} history properties
  */
-function xmpGetHistory(src) {
+function getHistory(src) {
     var history = [];
 
     if (ExternalObject.AdobeXMPScript == undefined) {
@@ -93,25 +93,25 @@ function xmpGetHistory(src) {
         var structure = prop + '[' + i + ']/stEvt:';
         var param = {
             'action': xmp.getProperty(namespace, structure + 'action').value,
-            'parameter': null,
-            'software': null,
-            'when': null
+            'parameter': undefined,
+            'software': undefined,
+            'when': undefined
         };
 
         try {
             param.parameter = xmp.getProperty(namespace, structure + 'parameters').value;
         }
-        catch (e) { }
+        catch (err) { }
 
         try {
             param.parameter = xmp.getProperty(namespace, structure + 'params').value;
         }
-        catch (e) { }
+        catch (err) { }
 
         try {
             param.software = xmp.getProperty(namespace, structure + 'softwareAgent').value;
         }
-        catch (e) { }
+        catch (err) { }
 
         try {
             // var when = xmp.getProperty(namespace, structure + 'when').value;
@@ -119,7 +119,7 @@ function xmpGetHistory(src) {
             var xmpDateTime = xmp.getProperty(namespace, structure + 'when', XMPConst.XMPDATE).value;
             param.when = new Date(xmpDateTime.getDate());
         }
-        catch (e) { }
+        catch (err) { }
 
         history.push(param);
     }
@@ -135,7 +135,7 @@ function xmpGetHistory(src) {
  * @param {File} src File object
  * @returns {{exists: boolean, filePath: string}[]} linked file properties
  */
-function xmpGetLinkedFiles(src) {
+function getLinkedFiles(src) {
     var files = [];
 
     if (ExternalObject.AdobeXMPScript == undefined) {
@@ -175,7 +175,7 @@ function xmpGetLinkedFiles(src) {
  * @param {File} src File object
  * @returns {string[]} plate names
  */
-function xmpGetPlateNames(src) {
+function getPlateNames(src) {
     var plates = [];
 
     if (ExternalObject.AdobeXMPScript == undefined) {
@@ -208,9 +208,9 @@ function xmpGetPlateNames(src) {
  * @param {File} src File object
  * @returns {{colorant:
  * {cyan: number, magenta: number, yellow: number, black: number, gray: number, l: number, a: number, b: number, red: number, green: number, blue: number},
- * mode: string, name: string, swatch: Swatch | null, tint: number | null, type: string}[]} swatch properties
+ * mode: string, name: string, swatch: Swatch | undefined, tint: number | undefined, type: string}[]} swatch properties
  */
-function xmpGetSwatches(src) {
+function getSwatches(src) {
     var colors = [];
 
     if (ExternalObject.AdobeXMPScript == undefined) {
@@ -236,8 +236,8 @@ function xmpGetSwatches(src) {
                 'colorant': { },
                 'mode': xmp.getProperty(namespace, structure + 'mode').value,
                 'name': xmp.getProperty(namespace, structure + 'swatchName').value,
-                'swatch': null,
-                'tint': null,
+                'swatch': undefined,
+                'tint': undefined,
                 'type': xmp.getProperty(namespace, structure + 'type').value
             };
 
@@ -266,12 +266,12 @@ function xmpGetSwatches(src) {
             try {
                 color.swatch = app.activeDocument.swatches[color.name];
             }
-            catch (e) { }
+            catch (err) { }
 
             try {
                 color.tint = xmp.getProperty(namespace, structure + 'tint', type).value;
             }
-            catch (e) { }
+            catch (err) { }
 
             colors.push(color);
         }

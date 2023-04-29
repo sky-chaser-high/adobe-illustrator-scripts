@@ -78,6 +78,13 @@
 <br><br>
 
 
+## drawCircumscribedCircle.js
+### 1.1.0 (2023-04-29)
+### Features
+- Type on a path and area type is now supported.
+<br><br>
+
+
 ## importCSVtoSwatch.js
 ### 1.2.0 (2023-04-08)
 ### Features
