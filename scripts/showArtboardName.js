@@ -8,15 +8,15 @@
    Just run this script from File > Scripts > Other Script...
 
    Notes
-   The dimensional units depend on the ruler units.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   The dimension units depend on the ruler units.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS4 or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -32,17 +32,11 @@
 
 
 function main() {
-    var layer, name = 'Artboard Name';
-    if (layerExists(name)) {
-        layer = app.activeDocument.layers[name];
-    }
-    else {
-        layer = createLayer(name);
-    }
+    var layer = getLayer('Artboard Name');
 
     var artboards = app.activeDocument.artboards;
     for (var i = 0; i < artboards.length; i++) {
-        showArtboardName(artboards[i], layer);
+        showArtboardInfo(i + 1, artboards[i], layer);
     }
 
     layer.locked = true;
@@ -50,23 +44,29 @@ function main() {
 }
 
 
-function showArtboardName(artboard, layer) {
-    var dim = getArtboardSize(artboard);
+function showArtboardInfo(num, artboard, layer) {
+    var doc = getArtboardSize(artboard);
     var units = getUnits(app.activeDocument.rulerUnits);
 
-    var width = convertUnits(dim.width + 'pt', units);
-    var height = convertUnits(dim.height + 'pt', units);
+    var width = convertUnits(doc.width + 'pt', units);
+    var height = convertUnits(doc.height + 'pt', units);
 
+    var contents = '#' + num + ' ' + artboard.name + '  ' + round(width) + units + ' x ' + round(height) + units;
     var margin = 3;
-    var text = layer.textFrames.pointText([dim.x, dim.y + margin]);
-    text.contents = artboard.name + '   ' + round(width) + units + ' x ' + round(height) + units;
-    text.textRange.characterAttributes.size = 10;
+
+    var text = layer.textFrames.pointText([doc.x, doc.y + margin]);
+    text.contents = contents;
+
+    var attributes = text.textRange.characterAttributes;
+    attributes.size = 10;
+    attributes.horizontalScale = 100;
+    attributes.verticalScale = 100;
 }
 
 
 function round(value) {
-    var digit = 100;
-    return Math.round(value * digit) / digit;
+    var digits = 100;
+    return Math.round(value * digits) / digits;
 }
 
 
@@ -96,21 +96,26 @@ function convertUnits(value, unit) {
 }
 
 
-function getUnits(unit) {
-    switch (unit) {
-        case RulerUnits.Millimeters:
-            return 'mm';
-        case RulerUnits.Centimeters:
-            return 'cm';
-        case RulerUnits.Inches:
-            return 'in';
-        case RulerUnits.Points:
-            return 'pt';
-        case RulerUnits.Pixels:
-            return 'px';
-        default:
-            return 'mm';
+function getUnits(ruler) {
+    switch (ruler) {
+        case RulerUnits.Millimeters: return 'mm';
+        case RulerUnits.Centimeters: return 'cm';
+        case RulerUnits.Inches: return 'in';
+        case RulerUnits.Points: return 'pt';
+        case RulerUnits.Pixels: return 'px';
+        default: return 'pt';
     }
+}
+
+
+function getLayer(name) {
+    if (layerExists(name)) {
+        var layer = app.activeDocument.layers[name];
+        layer.locked = false;
+        layer.visible = true;
+        return layer;
+    }
+    return createLayer(name);
 }
 
 

@@ -13,6 +13,13 @@
 <br><br>
 
 
+## clothPath.js
+### 1.1.0 (2023-05-04)
+### Changes
+- Improved curve processing.
+<br><br>
+
+
 ## copyLineDown.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
@@ -188,6 +195,9 @@
 
 
 ## showArtboardName.js
+### 1.2.0 (2023-05-04)
+### Added
+- Added the serial number.
 ### 1.1.0 (2022-11-04)
 ### Added
 - Added the artboard size.

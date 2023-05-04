@@ -10,7 +10,7 @@ Adobe Illustratorのスクリプト集です。
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [showArtboardName.js](#showArtboardNamejs) | アートボード名とサイズを表示 |
+| [showArtboardName.js](#showArtboardNamejs) `Update` | アートボード名とサイズを表示 |
 | [sortArtboards.js](#sortArtboardsjs) | アートボードをソート（アートボードパネル内のみ） |
 
 <br>
@@ -72,7 +72,7 @@ Adobe Illustratorのスクリプト集です。
 | --- | --- |
 | [alignInCenterOfSpace(Horizontal).js](#alignInCenterOfSpaceHorizontal--Verticaljs) | 余白の水平方向中央に整列 |
 | [alignInCenterOfSpace(Vertical).js](#alignInCenterOfSpaceHorizontal--Verticaljs) | 余白の垂直方向中央に整列 |
-| [closePath.js](#closePathjs) | パスを閉じる |
+| [closePath.js](#closePathjs) `Update` | パスを閉じる |
 | [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCornerjs) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines.js](#createGridLinesjs) | グリッドラインを作成 |
 | [disjoinPath.js](#disjoinPathjs) | パスを分解 |
@@ -130,6 +130,7 @@ Adobe Illustratorのスクリプト集です。
 | [checkDayOfWeek.js](#checkDayOfWeekjs) | 選択した日付の曜日をチェック |
 | [closeAllDocuments.js](#closeAllDocumentsjs) | すべてのファイルを閉じる |
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
+| [measureDistance.js](#measureDistancejs) `New` | 距離を測る |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
 
@@ -1305,6 +1306,32 @@ Illustrator CS以降
 Illustrator CS4以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="measureDistancejs">measureDistance.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+2点間のアンカーポイントの距離を正確に測ります。
+
+![Measure the Distance](images/measureDistance.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+ダイレクト選択ツールで2点のアンカーポイントを選択してスクリプトを実行します。
+
+> **Note**  
+> 測定箇所をハイライトします。  
+> 角度はポイント#1を基準にします。  
+> 寸法の単位はルーラー単位により変わります。  
+> パス上文字、エリア内文字のアンカーポイントにも対応しています。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

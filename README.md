@@ -10,7 +10,7 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Artboard
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [Show Artboard Name](#showArtboardNamejs)
+- [Show Artboard Name](#showArtboardNamejs) `Update`
 - [Sort Artboards](#sortArtboardsjs)
 
 ### Color
@@ -56,7 +56,7 @@ If you find a script that interests you, please download it from [![Download](ht
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontal--Verticaljs)
 - [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontal--Verticaljs)
-- [Close Path](#closePathjs)
+- [Close Path](#closePathjs) `Update`
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
 - [Disjoin Path](#disjoinPathjs)
@@ -106,6 +106,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
+- [Measure the Distance](#measureDistancejs) `New`
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 <br><br><br>
@@ -119,8 +120,8 @@ The scripts can be placed anywhere on your computer.
 To run the scripts, from File > Scripts > Other Script... ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> )
 
 > **Note**  
-> In rare cases, if you continue to use the script, it may not work.  
-> In that case, restart Illustrator and try again.
+> In rare cases, the script may not work if you continue to use it.  
+> In this case, restart Illustrator and try again.
 
 
 ## Extensions, software
@@ -312,7 +313,7 @@ This script compares two objects' scales.
 Select two objects, and run this script.
 
 > **Note**  
-> The dimensional units depend on the ruler units.
+> The dimension units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -335,7 +336,7 @@ The anchor point conversion options in the Control panel require the anchor poin
 Select the entire path with selection tool, and run this script.
 
 > **Note**  
-> It is not necessary to select anchor points with direct selection tool.
+> It is not necessary to select anchor points with Direct Selection Tool.
 
 ### Requirements
 Illustrator CS or higher
@@ -1262,6 +1263,31 @@ Illustrator CS4 or higher
 
 
 
+# <a name="measureDistancejs">measureDistance.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+This script is an alternative to the Measure Tool and accurately measures the distance between two anchor points.
+
+![Measure the Distance](images/measureDistance.png)
+
+### Usage
+Select two anchor points with Direct Selection Tool, and run this script.
+
+> **Note**  
+> Highlight the measurement points.  
+> The angle is based on point #1. Range: -180.0 to 180.0  
+> The dimension units depend on the ruler units.  
+> Anchor points for type on a path and area types are also supported.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="measurePathItemsjs">measurePathItems.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script measures the distance of an anchor point between two points of an object.
@@ -1647,7 +1673,7 @@ This script shows the artboard name and size in the document.
 Just run this script.
 
 > **Note**  
-> The dimensional units depend on the ruler units.
+> The dimension units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1693,7 +1719,7 @@ Select the path objects, and run this script.
 
 > **Note**  
 > Only a fill color. A stroke color is not supported.  
-> For compound path objects, select them with direct selection tool.
+> For compound path objects, select them with Direct Selection Tool.
 
 ### Requirements
 Illustrator CS or higher
