@@ -10,7 +10,7 @@ Adobe Illustratorのスクリプト集です。
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [showArtboardName.js](#showArtboardNamejs) `Update` | アートボード名とサイズを表示 |
+| [showArtboardName.js](#showArtboardNamejs) | アートボード名とサイズを表示 |
 | [sortArtboards.js](#sortArtboardsjs) | アートボードをソート（アートボードパネル内のみ） |
 
 <br>
@@ -72,22 +72,23 @@ Adobe Illustratorのスクリプト集です。
 | --- | --- |
 | [alignInCenterOfSpace(Horizontal).js](#alignInCenterOfSpaceHorizontal--Verticaljs) | 余白の水平方向中央に整列 |
 | [alignInCenterOfSpace(Vertical).js](#alignInCenterOfSpaceHorizontal--Verticaljs) | 余白の垂直方向中央に整列 |
-| [closePath.js](#closePathjs) `Update` | パスを閉じる |
+| [closePath.js](#closePathjs) | パスを閉じる |
 | [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCornerjs) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines.js](#createGridLinesjs) | グリッドラインを作成 |
 | [disjoinPath.js](#disjoinPathjs) | パスを分解 |
 | [distributeInSpace(Horizotal).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の水平方向に分布 |
 | [distributeInSpace(Vertical).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の垂直方向に分布 |
-| [drawCircumscribedCircle.js](#drawCircumscribedCirclejs) `Update` | 外接円を描く |
+| [drawCircumscribedCircle.js](#drawCircumscribedCirclejs) | 外接円を描く |
 | [drawRectangle.js](#drawRectanglejs) | オブジェクトの周囲に長方形を描く |
 | [drawShapeOnAnchorPoint.js](#drawShapeOnAnchorPointjs) | アンカーポイントに図形を描く |
-| [extendLine.js](#extendLinejs) | パスを伸縮 |
+| [extendHandle.js](#extendHandlejs) `New` | ハンドルを伸縮 |
+| [extendLine.js](#extendLinejs) `Update` | パスを伸縮 |
 | [fitGuideInArtboard.js](#fitGuideInArtboardjs) | ガイドをアートボードにフィット |
-| [measurePathItems.js](#measurePathItemsjs) | パスの寸法を測る |
 | [removeColorInGuideObject.js](#removeColorInGuideObjectjs) | ガイドオブジェクトの色を削除 |
 | [selectGuides.js](#selectGuidesjs) | ガイドを選択 |
+| [showDimensions.js](#showDimensionsjs) `Update` | パスの寸法を表示 |
 | [shuffleObjects.js](#shuffleObjectsjs) | オブジェクトをシャッフル |
-| [stepAndRepeat.js](#stepAndRepeatjs) | 繰り返し複製 |
+| [stepAndRepeat.js](#stepAndRepeatjs) `Update` | 繰り返し複製 |
 
 <br>
 
@@ -130,7 +131,7 @@ Adobe Illustratorのスクリプト集です。
 | [checkDayOfWeek.js](#checkDayOfWeekjs) | 選択した日付の曜日をチェック |
 | [closeAllDocuments.js](#closeAllDocumentsjs) | すべてのファイルを閉じる |
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
-| [measureDistance.js](#measureDistancejs) `New` | 距離を測る |
+| [measureDistance.js](#measureDistancejs) `Update` | 距離を測る |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
 
@@ -954,6 +955,31 @@ Illustrator CS以降
 
 
 
+# <a name="extendHandlejs">extendHandle.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+ハンドルを伸縮します。
+
+![Extend Handle](images/extendHandle.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ダイレクト選択ツールで1点、または2点のアンカーポイントを選択してスクリプトを実行します。
+2. 数値を入力します。正の値で伸び、負の値で縮みます。
+
+> **Note**  
+> ハンドルは削除できません。  
+> 距離の単位はルーラー単位により変わります。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="extendLinejs">extendLine.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 パスオブジェクトを伸縮します。
@@ -1332,35 +1358,6 @@ Illustrator CS4以降
 Illustrator CS4以降
 
 <div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
-<br>
-
-
-
-
-
-# <a name="measurePathItemsjs">measurePathItems.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-パスオブジェクトの2点間のアンカーポイントの距離を測定します。
-
-![Measure PathItems](images/measurePathItems.png)
-
-#### 使用方法
-パスオブジェクトを選択してスクリプトを実行します。
-
-#### 特徴
-パスオブジェクトごとに測定値をグループ化し色を付けます。  
-測定値の単位は、ドキュメントのルーラ設定により切り替わります。
-
-> **Warning**  
-> 曲線には対応していません。
-
-> **Note**  
-> オブジェクトが複雑な形状や小さい場合、測定値が重なって表示されることがあります。  
-
-#### 動作条件
-Illustrator CS4以降
-
-<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
@@ -1757,6 +1754,31 @@ Illustrator CS4以降
 Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="showDimensionsjs">showDimensions.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+パスオブジェクトの2点間のアンカーポイントの寸法を表示します。
+
+![Show Dimensions](images/showDimensions.png)
+
+#### 使用方法
+パスオブジェクトを選択してスクリプトを実行します。
+
+> **Note**  
+> 曲線に対応しています。  
+> パスオブジェクトごとに寸法をグループ化し色を付けます。  
+> 寸法の単位はルーラー単位により変わります。  
+> オブジェクトが複雑な形状や小さい場合、寸法が重なって表示されることがあります。
+
+#### 動作条件
+Illustrator CS6以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

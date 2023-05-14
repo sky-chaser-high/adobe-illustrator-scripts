@@ -19,7 +19,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -39,19 +39,14 @@ function main() {
     var shapes = getPathItems(items);
     var texts = getTextPathItems();
 
-    var points = getAnchorPoints(shapes.concat(texts));
+    var points = getSelectedPoints(shapes.concat(texts));
     if (points.length < 2) return;
 
     var curve = hasCurve(points);
     var result = measure(points, curve);
-    showDimensionLine(points, curve);
 
-    var dialog = showDialog(result);
-    dialog.ok.onClick = function() {
-        app.undo();
-        dialog.close();
-    }
-    dialog.show();
+    showDimensionLine(points, curve);
+    showDialog(result);
 }
 
 
@@ -77,11 +72,8 @@ function measure(points, curve) {
     var rad = getAngle(p1.anchor, p2.anchor);
     var deg = rad * 180 / Math.PI;
 
-    var length = 0;
-    if (curve) {
-        length = getCurveLength(setBezier(points));
-        length = round(convertUnits(length + 'pt', units));
-    }
+    var bezier = { length: undefined, handle: undefined };
+    if (curve) bezier = getCurve(points);
 
     return {
         x1: round(x1),
@@ -91,11 +83,33 @@ function measure(points, curve) {
         width: width,
         height: height,
         distance: distance,
-        curve: length,
+        curve: bezier.length,
+        handle: bezier.handle,
         angle: {
             rad: round(rad),
             deg: round(deg)
         }
+    };
+}
+
+
+function getCurve(points) {
+    var units = getUnits(app.activeDocument.rulerUnits);
+    var bezier = setBezier(points);
+    var length = getCurveLength(bezier);
+    var handle = {
+        left: {
+            x: round(convertUnits(bezier[2].x + 'pt', units)),
+            y: round(convertUnits(bezier[2].y * -1 + 'pt', units))
+        },
+        right: {
+            x: round(convertUnits(bezier[1].x + 'pt', units)),
+            y: round(convertUnits(bezier[1].y * -1 + 'pt', units))
+        }
+    };
+    return {
+        length: round(convertUnits(length + 'pt', units)),
+        handle: handle
     };
 }
 
@@ -145,7 +159,7 @@ function setBezier(points) {
 
 function getCurveLength(bezier) {
     var points = [];
-    var len = 0;
+    var length = 0;
 
     for (var t = 0.0; t <= 1.0; t += 0.0005) {
         var point = completion(t, bezier);
@@ -153,10 +167,10 @@ function getCurveLength(bezier) {
     }
 
     for (var i = 0; i < points.length - 1; i++) {
-        len += getDistance(points[i], points[i + 1]);
+        length += getDistance(points[i], points[i + 1]);
     }
 
-    return len;
+    return length;
 }
 
 
@@ -307,7 +321,7 @@ function hasCurve(points) {
         handle.right = hasHandle(p2.anchor, p2.handle.right);
     }
 
-    if (handle.left && handle.right) return true;
+    if (handle.left || handle.right) return true;
     return false;
 }
 
@@ -348,21 +362,6 @@ function layerExists(name) {
 }
 
 
-function getAnchorPoints(shapes) {
-    var ANCHOR = PathPointSelection.ANCHORPOINT;
-    var anchors = [];
-    for (var i = 0; i < shapes.length; i++) {
-        var points = shapes[i].pathPoints;
-        for (var j = 0; j < points.length; j++) {
-            var point = points[j];
-            if (point.selected != ANCHOR) continue;
-            anchors.push(setPoint(i, j, points.length, point));
-        }
-    }
-    return anchors;
-}
-
-
 function setPoint(i, p, count, item) {
     var anchor = item.anchor;
     var left = item.leftDirection;
@@ -379,6 +378,21 @@ function setPoint(i, p, count, item) {
             right: { x: right[0], y: right[1] }
         }
     };
+}
+
+
+function getSelectedPoints(shapes) {
+    var ANCHOR = PathPointSelection.ANCHORPOINT;
+    var selection = [];
+    for (var i = 0; i < shapes.length; i++) {
+        var points = shapes[i].pathPoints;
+        for (var j = 0; j < points.length; j++) {
+            var point = points[j];
+            if (point.selected != ANCHOR) continue;
+            selection.push(setPoint(i, j, points.length, point));
+        }
+    }
+    return selection;
 }
 
 
@@ -520,34 +534,19 @@ function showDialog(result) {
     var statictext8 = group5.add('statictext', undefined, undefined, { name: 'statictext8' });
     statictext8.text = result.y2 + ' ' + units;
 
-    var panel3 = dialog.add('panel', undefined, undefined, { name: 'panel3' });
-    panel3.text = ui.result;
+    var group6 = dialog.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'row';
+    group6.alignChildren = ['left', 'center'];
+    group6.spacing = 10;
+    group6.margins = 0;
+
+    var panel3 = group6.add('panel', undefined, undefined, { name: 'panel3' });
+    panel3.text = ui.handle + ' #1';
+    panel3.preferredSize.width = 160;
     panel3.orientation = 'row';
     panel3.alignChildren = ['left', 'top'];
     panel3.spacing = 10;
     panel3.margins = 10;
-
-    var group6 = panel3.add('group', undefined, { name: 'group6' });
-    group6.orientation = 'column';
-    group6.alignChildren = ['right', 'center'];
-    group6.spacing = 10;
-    group6.margins = [0, 8, 0, 0];
-
-    var statictext9 = group6.add('statictext', undefined, undefined, { name: 'statictext9' });
-    statictext9.text = ui.width;
-    statictext9.preferredSize.height = 18;
-
-    var statictext10 = group6.add('statictext', undefined, undefined, { name: 'statictext10' });
-    statictext10.text = ui.height;
-    statictext10.preferredSize.height = 18;
-
-    var statictext11 = group6.add('statictext', undefined, undefined, { name: 'statictext11' });
-    statictext11.text = ui.distance;
-    statictext11.preferredSize.height = 18;
-
-    var statictext12 = group6.add('statictext', undefined, undefined, { name: 'statictext12' });
-    statictext12.text = ui.angle;
-    statictext12.preferredSize.height = 18;
 
     var group7 = panel3.add('group', undefined, { name: 'group7' });
     group7.orientation = 'column';
@@ -555,34 +554,133 @@ function showDialog(result) {
     group7.spacing = 10;
     group7.margins = [0, 8, 0, 0];
 
-    var statictext13 = group7.add('statictext', undefined, undefined, { name: 'statictext13' });
-    statictext13.text = result.width + ' ' + units;
-    statictext13.preferredSize.height = 18;
+    var statictext9 = group7.add('statictext', undefined, undefined, { name: 'statictext9' });
+    statictext9.text = 'X:';
 
-    var statictext14 = group7.add('statictext', undefined, undefined, { name: 'statictext14' });
-    statictext14.text = result.height + ' ' + units;
-    statictext14.preferredSize.height = 18;
+    var statictext10 = group7.add('statictext', undefined, undefined, { name: 'statictext10' });
+    statictext10.text = 'Y:';
 
-    var statictext15 = group7.add('statictext', undefined, undefined, { name: 'statictext15' });
-    statictext15.text = result.distance + ' ' + units + curve;
-    statictext15.preferredSize.height = 18;
-
-    var statictext16 = group7.add('statictext', undefined, undefined, { name: 'statictext16' });
-    statictext16.text = result.angle.deg + ' ' + ui.deg + '  [' + result.angle.rad + ' ' + ui.rad + ']';
-    statictext16.preferredSize.height = 18;
-
-    var group8 = dialog.add('group', undefined, { name: 'group8' });
-    group8.orientation = 'row';
-    group8.alignChildren = ['right', 'center'];
+    var group8 = panel3.add('group', undefined, { name: 'group8' });
+    group8.orientation = 'column';
+    group8.alignChildren = ['left', 'center'];
     group8.spacing = 10;
-    group8.margins = 0;
+    group8.margins = [0, 8, 0, 0];
 
-    var button1 = group8.add('button', undefined, undefined, { name: 'button1' });
-    button1.text = 'OK';
+    var statictext11 = group8.add('statictext', undefined, undefined, { name: 'statictext11' });
+    statictext11.text = (result.curve) ? (result.handle.right.x + ' ' + units) : '-';
+
+    var statictext12 = group8.add('statictext', undefined, undefined, { name: 'statictext12' });
+    statictext12.text = (result.curve) ? (result.handle.right.y + ' ' + units) : '-';
+
+    var panel4 = group6.add('panel', undefined, undefined, { name: 'panel4' });
+    panel4.text = ui.handle + ' #2';
+    panel4.preferredSize.width = 160;
+    panel4.orientation = 'row';
+    panel4.alignChildren = ['left', 'top'];
+    panel4.spacing = 10;
+    panel4.margins = 10;
+
+    var group9 = panel4.add('group', undefined, { name: 'group9' });
+    group9.orientation = 'column';
+    group9.alignChildren = ['left', 'center'];
+    group9.spacing = 10;
+    group9.margins = [0, 8, 0, 0];
+
+    var statictext13 = group9.add('statictext', undefined, undefined, { name: 'statictext13' });
+    statictext13.text = 'X:';
+
+    var statictext14 = group9.add('statictext', undefined, undefined, { name: 'statictext14' });
+    statictext14.text = 'Y:';
+
+    var group10 = panel4.add('group', undefined, { name: 'group10' });
+    group10.orientation = 'column';
+    group10.alignChildren = ['left', 'center'];
+    group10.spacing = 10;
+    group10.margins = [0, 8, 0, 0];
+
+    var statictext15 = group10.add('statictext', undefined, undefined, { name: 'statictext15' });
+    statictext15.text = (result.curve) ? (result.handle.left.x + ' ' + units) : '-';
+
+    var statictext16 = group10.add('statictext', undefined, undefined, { name: 'statictext16' });
+    statictext16.text = (result.curve) ? (result.handle.left.y + ' ' + units) : '-';
+
+    var panel5 = dialog.add('panel', undefined, undefined, { name: 'panel5' });
+    panel5.text = ui.result;
+    panel5.orientation = 'row';
+    panel5.alignChildren = ['left', 'top'];
+    panel5.spacing = 10;
+    panel5.margins = 10;
+
+    var group11 = panel5.add('group', undefined, { name: 'group11' });
+    group11.orientation = 'column';
+    group11.alignChildren = ['right', 'center'];
+    group11.spacing = 10;
+    group11.margins = [0, 8, 0, 0];
+
+    var statictext17 = group11.add('statictext', undefined, undefined, { name: 'statictext17' });
+    statictext17.text = ui.width;
+    statictext17.preferredSize.height = 18;
+
+    var statictext18 = group11.add('statictext', undefined, undefined, { name: 'statictext18' });
+    statictext18.text = ui.height;
+    statictext18.preferredSize.height = 18;
+
+    var statictext19 = group11.add('statictext', undefined, undefined, { name: 'statictext19' });
+    statictext19.text = ui.distance;
+    statictext19.preferredSize.height = 18;
+
+    var statictext20 = group11.add('statictext', undefined, undefined, { name: 'statictext20' });
+    statictext20.text = ui.angle;
+    statictext20.preferredSize.height = 18;
+
+    var group12 = panel5.add('group', undefined, { name: 'group12' });
+    group12.orientation = 'column';
+    group12.alignChildren = ['left', 'center'];
+    group12.spacing = 10;
+    group12.margins = [0, 8, 0, 0];
+
+    var statictext21 = group12.add('statictext', undefined, undefined, { name: 'statictext21' });
+    statictext21.text = result.width + ' ' + units;
+    statictext21.preferredSize.height = 18;
+
+    var statictext22 = group12.add('statictext', undefined, undefined, { name: 'statictext22' });
+    statictext22.text = result.height + ' ' + units;
+    statictext22.preferredSize.height = 18;
+
+    var statictext23 = group12.add('statictext', undefined, undefined, { name: 'statictext23' });
+    statictext23.text = result.distance + ' ' + units + curve;
+    statictext23.preferredSize.height = 18;
+
+    var statictext24 = group12.add('statictext', undefined, undefined, { name: 'statictext24' });
+    statictext24.text = result.angle.deg + ' ' + ui.deg + '  [' + result.angle.rad + ' ' + ui.rad + ']';
+    statictext24.preferredSize.height = 18;
+
+    var group13 = dialog.add('group', undefined, { name: 'group13' });
+    group13.orientation = 'row';
+    group13.alignChildren = ['right', 'center'];
+    group13.spacing = 10;
+    group13.margins = 0;
+
+    var button1 = group13.add('button', undefined, undefined, { name: 'button1' });
+    button1.text = 'Cancel';
     button1.preferredSize.width = 85;
+    button1.hide();
 
-    dialog.ok = button1;
-    return dialog;
+    var button2 = group13.add('button', undefined, undefined, { name: 'button2' });
+    button2.text = 'OK';
+    button2.preferredSize.width = 85;
+
+    button1.onClick = function() {
+        app.undo();
+        dialog.close();
+    }
+
+    button2.onClick = function() {
+        app.undo();
+        dialog.close();
+    }
+
+    dialog.show();
 }
 
 
@@ -595,6 +693,10 @@ function localizeUI() {
         point: {
             en: 'Point',
             ja: 'ポイント'
+        },
+        handle: {
+            en: 'Handle',
+            ja: 'ハンドル'
         },
         result: {
             en: 'Result',

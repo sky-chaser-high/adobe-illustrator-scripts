@@ -2,7 +2,7 @@
    extendLine
 
    Description
-   This script extends a path object.
+   This script extends and shrinks a path object.
 
    Usage
    1. Select an anchor point with Direct Selection Tool, run this script from File > Scripts > Other Script...
@@ -10,15 +10,15 @@
 
    Notes
    Closed paths and curves are not supported.
-   The units of extension value depend on the ruler units.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   The units of distance depend on the ruler units.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
-   Illustrator CS or higher
+   Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -29,92 +29,136 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length > 0) main();
 })();
 
 
 function main() {
-    var dialog = showDialog();
+    var items = app.activeDocument.selection;
+    var shapes = getPathItems(items);
+    var points = getSelectedPoints(shapes);
+    if (!points.length) return;
+
+    var dialog = showDialog(points);
 
     dialog.ok.onClick = function() {
-        extendLine(Number(dialog.distance.text));
+        if (dialog.preview.value) reset(points);
+        var distance = Number(dialog.distance.text);
+        extendLine(distance, points);
         dialog.close();
+    }
+
+    dialog.preview.onClick = function() {
+        if (dialog.preview.value) {
+            var distance = Number(dialog.distance.text);
+            extendLine(distance, points);
+        }
+        else {
+            reset(points);
+        }
+        app.redraw();
     }
 
     dialog.show();
 }
 
 
-function extendLine(value) {
-    if (!value) return;
-
+function extendLine(value, points) {
     var units = getUnits(app.activeDocument.rulerUnits);
-    var len = convertUnits(value + units, 'pt');
+    var distance = convertUnits(value + units, 'pt');
 
-    var items = getPathItems(app.activeDocument.selection);
-    for (var i = 0; i < items.length; i++) {
-        var points = getAnchorPoints(items[i]);
-        if (!points) continue;
+    for (var i = 0; i < points.length; i++) {
+        var point = setPoints(points[i]);
+        if (!point) continue;
+        var position = getPosition(distance, point);
 
-        var distance = getDistance(len, points);
-        var px = points.x1 + distance.x;
-        var py = points.y1 + distance.y;
-
-        var target = items[i].selectedPathPoints[points.id];
-        target.anchor = [px, py];
-        target.leftDirection = [px, py];
-        target.rightDirection = [px, py];
+        points[i].anchor = [position.x, position.y];
+        points[i].leftDirection = [position.x, position.y];
+        points[i].rightDirection = [position.x, position.y];
     }
 }
 
 
-function getAnchorPoints(item) {
-    var points = item.selectedPathPoints;
+function getPosition(distance, point) {
+    var rad = getAngle(point);
+    var x = distance * Math.cos(rad);
+    var y = distance * Math.sin(rad);
+    return {
+        x: point.x1 + x,
+        y: point.y1 + y
+    };
+}
+
+
+function getAngle(point) {
+    var adjacent = point.x1 - point.x2;
+    var opposite = point.y1 - point.y2;
+    return Math.atan2(opposite, adjacent);
+}
+
+
+function setPoints(item) {
+    var ANCHOR = PathPointSelection.ANCHORPOINT;
+    var points = item.parent.pathPoints;
     for (var i = 0; i < points.length; i++) {
         var target = points[i];
-        if (target.selected == PathPointSelection.ANCHORPOINT) {
-            var x1 = target.anchor[0];
-            var y1 = target.anchor[1];
+        if (target.selected != ANCHOR) continue;
 
-            var p = (i == 0) ? i + 1 : points.length - 2;
-            if (p == i) return undefined;
+        var x1 = target.anchor[0];
+        var y1 = target.anchor[1];
 
-            var point = points[p];
-            var x2 = point.anchor[0];
-            var y2 = point.anchor[1];
+        var p = (i == 0) ? i + 1 : points.length - 2;
+        if (p == i) return undefined;
 
-            return { id: i, x1: x1, y1: y1, x2: x2, y2: y2 };
-        }
+        var point = points[p];
+        var x2 = point.anchor[0];
+        var y2 = point.anchor[1];
+
+        return { x1: x1, y1: y1, x2: x2, y2: y2 };
     }
 }
 
 
-function getDistance(len, point) {
-    var width = point.x1 - point.x2;
-    var height = point.y1 - point.y2;
-    var hypotenuse = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
-
-    var sin = height / hypotenuse;
-    var cos = width / hypotenuse;
-
-    var x = len * cos;
-    var y = len * sin;
-
-    return { x: x, y: y };
+function getSelectedPoints(shapes) {
+    var ANCHOR = PathPointSelection.ANCHORPOINT;
+    var selection = [];
+    for (var i = 0; i < shapes.length; i++) {
+        var points = shapes[i].pathPoints;
+        for (var j = 0; j < points.length; j++) {
+            var point = points[j];
+            if (point.selected == ANCHOR) selection.push(point);
+        }
+    }
+    return selection;
 }
 
 
 function getPathItems(items) {
-    var paths = [];
+    var shapes = [];
     for (var i = 0; i < items.length; i++) {
-        if (items[i].typename == 'PathItem' && !items[i].closed) {
-            paths.push(items[i]);
+        var item = items[i];
+        if (item.typename == 'PathItem' && !item.closed) {
+            shapes.push(item);
         }
-        else if (items[i].typename == 'GroupItem') {
-            paths = paths.concat(getPathItems(items[i].pageItems));
+        if (item.typename == 'GroupItem') {
+            shapes = shapes.concat(getPathItems(item.pageItems));
         }
     }
-    return paths;
+    return shapes;
+}
+
+
+function reset(items) {
+    app.undo();
+    var ANCHOR = PathPointSelection.ANCHORPOINT;
+    var NOSELECTION = PathPointSelection.NOSELECTION;
+    for (var i = 0; i < items.length; i++) {
+        var points = items[i].parent.pathPoints;
+        for (var j = 0; j < points.length; j++) {
+            points[j].selected = NOSELECTION;
+        }
+        items[i].selected = ANCHOR;
+    }
 }
 
 
@@ -128,37 +172,31 @@ function convertUnits(value, unit) {
 }
 
 
-function getUnits(unit) {
-    switch (unit) {
-        case RulerUnits.Millimeters:
-            return 'mm';
-        case RulerUnits.Centimeters:
-            return 'cm';
-        case RulerUnits.Inches:
-            return 'in';
-        case RulerUnits.Points:
-            return 'pt';
-        case RulerUnits.Pixels:
-            return 'px';
-        default:
-            return 'pt';
+function getUnits(ruler) {
+    switch (ruler) {
+        case RulerUnits.Millimeters: return 'mm';
+        case RulerUnits.Centimeters: return 'cm';
+        case RulerUnits.Inches: return 'in';
+        case RulerUnits.Points: return 'pt';
+        case RulerUnits.Pixels: return 'px';
+        default: return 'pt';
     }
 }
 
 
-function showDialog() {
+function showDialog(points) {
     $.localize = true;
     var ui = localizeUI();
     var dialog = new Window('dialog');
     dialog.text = ui.title;
     dialog.orientation = 'column';
-    dialog.alignChildren = ['fill','top'];
+    dialog.alignChildren = ['fill', 'top'];
     dialog.spacing = 10;
     dialog.margins = 16;
 
     var group1 = dialog.add('group', undefined, { name: 'group1' });
     group1.orientation = 'row';
-    group1.alignChildren = ['left','center'];
+    group1.alignChildren = ['left', 'center'];
     group1.spacing = 10;
     group1.margins = 0;
 
@@ -172,32 +210,49 @@ function showDialog() {
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
-    group2.alignChildren = ['right','center'];
+    group2.alignChildren = ['left', 'center'];
     group2.spacing = 10;
     group2.margins = 0;
 
-    var button1 = group2.add('button', undefined, undefined, { name: 'button1' });
+    var checkbox1 = group2.add('checkbox', undefined, undefined, { name: 'checkbox1' });
+    checkbox1.text = ui.preview;
+
+    // Work around the problem of being unable to undo the ESC key during localization.
+    var button0 = group2.add('button', undefined, undefined, { name: 'button0' });
+    button0.text = 'Cancel';
+    button0.hide();
+
+    var group3 = dialog.add('group', undefined, { name: 'group3' });
+    group3.orientation = 'row';
+    group3.alignChildren = ['right', 'center'];
+    group3.spacing = 10;
+    group3.margins = 0;
+
+    var button1 = group3.add('button', undefined, undefined, { name: 'button1' });
     button1.text = ui.cancel;
     button1.preferredSize.width = 90;
-    button1.preferredSize.height = 26;
 
-    var button2 = group2.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group3.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
-    button2.preferredSize.height = 26;
 
     statictext1.addEventListener('click', function() {
         edittext1.active = false;
         edittext1.active = true;
     });
 
-    button1.onClick = function() {
+    button0.onClick = function() {
+        if (checkbox1.value) reset(points);
         dialog.close();
     }
 
-    dialog.distance = edittext1;
-    dialog.ok = button2;
+    button1.onClick = function() {
+        button0.notify('onClick');
+    }
 
+    dialog.distance = edittext1;
+    dialog.preview = checkbox1;
+    dialog.ok = button2;
     return dialog;
 }
 
@@ -211,6 +266,10 @@ function localizeUI() {
         distance: {
             en: 'Distance:',
             ja: '距離:'
+        },
+        preview: {
+            en: 'Preview',
+            ja: 'プレビュー'
         },
         cancel: {
             en: 'Cancel',

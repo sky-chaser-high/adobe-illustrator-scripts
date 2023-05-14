@@ -10,7 +10,7 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Artboard
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [Show Artboard Name](#showArtboardNamejs) `Update`
+- [Show Artboard Name](#showArtboardNamejs)
 - [Sort Artboards](#sortArtboardsjs)
 
 ### Color
@@ -56,22 +56,23 @@ If you find a script that interests you, please download it from [![Download](ht
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontal--Verticaljs)
 - [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontal--Verticaljs)
-- [Close Path](#closePathjs) `Update`
+- [Close Path](#closePathjs)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
 - [Disjoin Path](#disjoinPathjs)
 - [Distribute in Space (Horizontal)](#distributeInSpaceHorizontal--Verticaljs)
 - [Distribute in Space (Vertical)](#distributeInSpaceHorizontal--Verticaljs)
-- [Draw Circumscribed Circle](#drawCircumscribedCirclejs) `Update`
+- [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
 - [Draw Rectangle](#drawRectanglejs)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
-- [Extend Line](#extendLinejs)
+- [Extend Handle](#extendHandlejs) `New`
+- [Extend Line](#extendLinejs) `Update`
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
-- [Measure Path Items](#measurePathItemsjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
+- [Show Dimensions](#showDimensionsjs) `Update`
 - [Shuffle Objects](#shuffleObjectsjs)
-- [Step and Repeat](#stepAndRepeatjs)
+- [Step and Repeat](#stepAndRepeatjs) `Update`
 
 ### Text
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -106,7 +107,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
-- [Measure the Distance](#measureDistancejs) `New`
+- [Measure the Distance](#measureDistancejs) `Update`
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 <br><br><br>
@@ -910,9 +911,33 @@ Illustrator CS or higher
 
 
 
+# <a name="extendHandlejs">extendHandle.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script extends and shrinks handles.
+
+![Extend Handle](images/extendHandle.png)
+
+### Usage
+1. Select one or two anchor points with Direct Selection Tool, and run this script.
+2. Enter a positive value to extend or a negative value to shrink.
+
+> **Note**  
+> Handles cannot delete.  
+> The units of distance depend on the ruler units.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="extendLinejs">extendLine.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script extends a path object.
+This script extends and shrinks a path object.
 
 ![Extend Line](images/extendLine.png)
 
@@ -924,7 +949,7 @@ This script extends a path object.
 > Closed paths and curves are not supported.
 
 > **Note**  
-> The units of extension value depend on the ruler units.
+> The units of distance depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1282,35 +1307,6 @@ Select two anchor points with Direct Selection Tool, and run this script.
 Illustrator CS4 or higher
 
 <div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
-<br>
-
-
-
-
-
-# <a name="measurePathItemsjs">measurePathItems.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script measures the distance of an anchor point between two points of an object.
-
-![Measure PathItems](images/measurePathItems.png)
-
-### Usage
-Select the path objects, and run this script.
-
-### Feature
-Group and color measurements by path object.  
-Switch the dimension units according to the ruler units.
-
-> **Warning**  
-> Curves are not supported.
-
-> **Note**  
-> In complex shapes, measurements may be displayed overlapping each other.
-
-### Requirements
-Illustrator CS4 or higher
-
-<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -1708,6 +1704,31 @@ Illustrator CS or higher
 
 
 
+# <a name="showDimensionsjs">showDimensions.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script shows the dimension of the anchor point between two points of the path objects.
+
+![Show Dimensions](images/showDimensions.png)
+
+### Usage
+Select the path objects, and run this script.
+
+> **Note**  
+> Supports curves.  
+> Group and color dimensions by path object.  
+> The dimension units depend on the ruler units.  
+> In complex shapes, dimensions may be displayed overlapping each other.
+
+### Requirements
+Illustrator CS6 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="shuffleGradientColorjs">shuffleGradientColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script shuffles the gradient color.
@@ -1779,13 +1800,13 @@ This script is equivalent to InDesign's Edit menu "Step and Repeat...".
 ![Step and Repeat](images/stepandRepeat.png)
 
 ### Usage
-1. Select the objects, and run this script.
+1. Select any objects, and run this script.
 2. If you want to create as a grid, check the create as a grid.
 3. Enter the number of times to repeat.
 4. Enter the offset values.
 
 > **Note**  
-> The unit of the offset value switches to match the unit of the ruler.
+> The units of the offset value depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher

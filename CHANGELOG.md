@@ -92,6 +92,13 @@
 <br><br>
 
 
+## extendLine.js
+### 1.1.0 (2023-05-14)
+### Features
+- Added preview function.
+<br><br>
+
+
 ## importCSVtoSwatch.js
 ### 1.2.0 (2023-04-08)
 ### Features
@@ -130,10 +137,12 @@
 <br><br>
 
 
-## measurePathItems.js
-### 1.0.1 (2022-02-17)
+## measureDistance.js
+### 1.1.0 (2023-05-14)
+### Added
+- Handle positions are now displayed for curves.
 ### Bug Fixes
-- Fixed a bug that caused dimensions to be displayed twice in the case of open paths.
+- Fixed a bug that caused the wrong determination of curves.
 <br><br>
 
 
@@ -211,7 +220,23 @@
 <br><br>
 
 
+## showDimensions.js
+### 2.0.0 (2023-05-14)
+### Added
+- Curves are now supported.
+### Changes
+- Changed the file name from measurePathItems.js to showDimensions.js.
+- Changed requirements to CS6 or higher.
+### 1.0.1 (2022-02-17)
+### Bug Fixes
+- Fixed a bug that caused dimensions to be displayed twice in the case of open paths.
+<br><br>
+
+
 ## stepAndRepeat.js
+### 2.0.1 (2023-05-14)
+### Bug Fixes
+- Work around the problem of being unable to undo the ESC key during localization.
 ### 2.0.0 (2022-10-08)
 ### Changes
 - The UI has been brought closer to InDesign.
