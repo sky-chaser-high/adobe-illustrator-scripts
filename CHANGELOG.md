@@ -92,6 +92,13 @@
 <br><br>
 
 
+## extendHandle.js
+### 1.1.0 (2023-05-28)
+### Features
+- Added the function to change the angle.
+<br><br>
+
+
 ## extendLine.js
 ### 1.1.0 (2023-05-14)
 ### Features

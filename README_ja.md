@@ -81,14 +81,14 @@ Adobe Illustratorのスクリプト集です。
 | [drawCircumscribedCircle.js](#drawCircumscribedCirclejs) | 外接円を描く |
 | [drawRectangle.js](#drawRectanglejs) | オブジェクトの周囲に長方形を描く |
 | [drawShapeOnAnchorPoint.js](#drawShapeOnAnchorPointjs) | アンカーポイントに図形を描く |
-| [extendHandle.js](#extendHandlejs) `New` | ハンドルを伸縮 |
-| [extendLine.js](#extendLinejs) `Update` | パスを伸縮 |
+| [extendHandle.js](#extendHandlejs) `Update` | ハンドルを伸縮 |
+| [extendLine.js](#extendLinejs) | パスを伸縮 |
 | [fitGuideInArtboard.js](#fitGuideInArtboardjs) | ガイドをアートボードにフィット |
 | [removeColorInGuideObject.js](#removeColorInGuideObjectjs) | ガイドオブジェクトの色を削除 |
 | [selectGuides.js](#selectGuidesjs) | ガイドを選択 |
-| [showDimensions.js](#showDimensionsjs) `Update` | パスの寸法を表示 |
+| [showDimensions.js](#showDimensionsjs) | パスの寸法を表示 |
 | [shuffleObjects.js](#shuffleObjectsjs) | オブジェクトをシャッフル |
-| [stepAndRepeat.js](#stepAndRepeatjs) `Update` | 繰り返し複製 |
+| [stepAndRepeat.js](#stepAndRepeatjs) | 繰り返し複製 |
 
 <br>
 
@@ -131,7 +131,7 @@ Adobe Illustratorのスクリプト集です。
 | [checkDayOfWeek.js](#checkDayOfWeekjs) | 選択した日付の曜日をチェック |
 | [closeAllDocuments.js](#closeAllDocumentsjs) | すべてのファイルを閉じる |
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
-| [measureDistance.js](#measureDistancejs) `Update` | 距離を測る |
+| [measureDistance.js](#measureDistancejs) | 距離を測る |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
 
@@ -957,17 +957,19 @@ Illustrator CS以降
 
 # <a name="extendHandlejs">extendHandle.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-ハンドルを伸縮します。
+ハンドルを伸縮します。角度も変更できます。
 
 ![Extend Handle](images/extendHandle.png)
 > **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法
 1. ダイレクト選択ツールで1点、または2点のアンカーポイントを選択してスクリプトを実行します。
-2. 数値を入力します。正の値で伸び、負の値で縮みます。
+2. 距離の項目に数値を入力します。正の値で伸び、負の値で縮みます。
+3. 角度の項目に数値を入力します。正の値で反時計回りに回転し、負の値で時計回りに回転します。
 
 > **Note**  
 > ハンドルは削除できません。  
+> 角度は現在の値を基準にして増減します。  
 > 距離の単位はルーラー単位により変わります。
 
 #### 動作条件

@@ -65,14 +65,14 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
 - [Draw Rectangle](#drawRectanglejs)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
-- [Extend Handle](#extendHandlejs) `New`
-- [Extend Line](#extendLinejs) `Update`
+- [Extend Handle](#extendHandlejs) `Update`
+- [Extend Line](#extendLinejs)
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
-- [Show Dimensions](#showDimensionsjs) `Update`
+- [Show Dimensions](#showDimensionsjs)
 - [Shuffle Objects](#shuffleObjectsjs)
-- [Step and Repeat](#stepAndRepeatjs) `Update`
+- [Step and Repeat](#stepAndRepeatjs)
 
 ### Text
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -107,7 +107,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
-- [Measure the Distance](#measureDistancejs) `Update`
+- [Measure the Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 <br><br><br>
@@ -913,16 +913,18 @@ Illustrator CS or higher
 
 # <a name="extendHandlejs">extendHandle.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script extends and shrinks handles.
+This script extends and shrinks handles. It also changes the angle.
 
 ![Extend Handle](images/extendHandle.png)
 
 ### Usage
 1. Select one or two anchor points with Direct Selection Tool, and run this script.
-2. Enter a positive value to extend or a negative value to shrink.
+2. Enter a positive value in the Distance fields to extend or a negative value to shrink.
+3. Enter a positive value in the Angle fields will rotate counterclockwise. Enter a negative value clockwise.
 
 > **Note**  
 > Handles cannot delete.  
+> The angle increases or decreases based on the current value.  
 > The units of distance depend on the ruler units.
 
 ### Requirements

@@ -2,14 +2,16 @@
    extendHandle
 
    Description
-   This script extends and shrinks handles.
+   This script extends and shrinks handles. It also changes the angle.
 
    Usage
    1. Select one or two anchor points with Direct Selection Tool, run this script from File > Scripts > Other Script...
-   2. Enter a positive value to extend or a negative value to shrink.
+   2. Enter a positive value in the Distance fields to extend or a negative value to shrink.
+   3. Enter a positive value in the Angle fields will rotate counterclockwise. Enter a negative value clockwise.
 
    Notes
    Handles cannot delete.
+   The angle increases or decreases based on the current value.
    The units of distance depend on the ruler units.
    In rare cases, the script may not work if you continue to use it.
    In this case, restart Illustrator and try again.
@@ -18,7 +20,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -49,7 +51,7 @@ function main() {
     dialog.ok.onClick = function() {
         if (dialog.preview.value) reset(points);
         var config = getConfig(dialog);
-        extendHandle(points[0], points[1], config);
+        extendHandle(points[0], points[1], config.distance, config.angle);
         if (!showHandles) app.preferences.setBooleanPreference('showDirectionHandles', false);
         dialog.close();
     }
@@ -57,7 +59,7 @@ function main() {
     dialog.preview.onClick = function() {
         if (dialog.preview.value) {
             var config = getConfig(dialog);
-            extendHandle(points[0], points[1], config);
+            extendHandle(points[0], points[1], config.distance, config.angle);
         }
         else {
             reset(points);
@@ -69,34 +71,38 @@ function main() {
 }
 
 
-function extendHandle(p1, p2, config) {
+function extendHandle(p1, p2, distance, rotation) {
     var point1 = setPosition(p1);
     var point2 = setPosition(p2);
+    var length = {
+        left: getDistance(point2.anchor, point2.handle.left),
+        right: getDistance(point1.anchor, point1.handle.right)
+    };
     var angle = {
         left: getAngle(point2.anchor, point2.handle.left),
         right: getAngle(point1.anchor, point1.handle.right)
     };
-    var distance = {
-        left: config.left,
-        right: config.right
-    };
     var handle = {
         left: {
-            x: distance.left * Math.cos(angle.left),
-            y: distance.left * Math.sin(angle.left)
+            x: (length.left + distance.left) * Math.cos(angle.left + rotation.left),
+            y: (length.left + distance.left) * Math.sin(angle.left + rotation.left)
         },
         right: {
-            x: distance.right * Math.cos(angle.right),
-            y: distance.right * Math.sin(angle.right)
+            x: (length.right + distance.right) * Math.cos(angle.right + rotation.right),
+            y: (length.right + distance.right) * Math.sin(angle.right + rotation.right)
         }
     };
-    var lx = point2.handle.left.x;
-    var ly = point2.handle.left.y;
-    var rx = point1.handle.right.x;
-    var ry = point1.handle.right.y;
 
-    if (config.left) p2.leftDirection = [lx + handle.left.x, ly + handle.left.y];
-    if (config.right) p1.rightDirection = [rx + handle.right.x, ry + handle.right.y];
+    if (distance.left || rotation.left) {
+        var lx = point2.anchor.x + handle.left.x;
+        var ly = point2.anchor.y + handle.left.y;
+        p2.leftDirection = [lx, ly];
+    }
+    if (distance.right || rotation.right) {
+        var rx = point1.anchor.x + handle.right.x;
+        var ry = point1.anchor.y + handle.right.y;
+        p1.rightDirection = [rx, ry];
+    }
 }
 
 
@@ -104,6 +110,14 @@ function getAngle(p1, p2) {
     var adjacent = p2.x - p1.x;
     var opposite = p2.y - p1.y;
     return Math.atan2(opposite, adjacent);
+}
+
+
+function getDistance(p1, p2) {
+    var adjacent = p2.x - p1.x;
+    var opposite = p2.y - p1.y;
+    var hypotenuse = Math.sqrt(Math.pow(adjacent, 2) + Math.pow(opposite, 2));
+    return hypotenuse;
 }
 
 
@@ -196,7 +210,7 @@ function reset(items) {
 
 
 function round(value) {
-    var digits = 100;
+    var digits = 10000;
     return Math.round(value * digits) / digits;
 }
 
@@ -223,13 +237,55 @@ function getUnits(ruler) {
 }
 
 
+function getDimension(points) {
+    var units = getUnits(app.activeDocument.rulerUnits);
+    var deg = 180 / Math.PI;
+    var p1 = setPosition(points[0]);
+    var p2 = setPosition(points[1]);
+    var length = {
+        left: convertUnits(getDistance(p2.anchor, p2.handle.left) + 'pt', units),
+        right: convertUnits(getDistance(p1.anchor, p1.handle.right) + 'pt', units)
+    };
+    var angle = {
+        left: getAngle(p2.anchor, p2.handle.left) * deg,
+        right: getAngle(p1.anchor, p1.handle.right) * deg
+    };
+    var left = {
+        x: convertUnits(p2.handle.left.x + 'pt', units),
+        y: convertUnits(p2.handle.left.y * -1 + 'pt', units)
+    };
+    var right = {
+        x: convertUnits(p1.handle.right.x + 'pt', units),
+        y: convertUnits(p1.handle.right.y * -1 + 'pt', units)
+    };
+    return {
+        length: length,
+        angle: angle,
+        left: left,
+        right: right
+    };
+}
+
+
 function getConfig(dialog) {
     var units = getUnits(app.activeDocument.rulerUnits);
-    var left = Number(dialog.left.text);
-    var right = Number(dialog.right.text);
+    var distance = {
+        left: Number(dialog.distance.left.text),
+        right: Number(dialog.distance.right.text)
+    };
+    var angle = {
+        left: Number(dialog.angle.left.text),
+        right: Number(dialog.angle.right.text)
+    };
     return {
-        left: convertUnits(left + units, 'pt'),
-        right: convertUnits(right + units, 'pt')
+        distance: {
+            left: convertUnits(distance.left + units, 'pt'),
+            right: convertUnits(distance.right + units, 'pt')
+        },
+        angle: {
+            left: angle.left / 180 * Math.PI,
+            right: angle.right / 180 * Math.PI
+        }
     };
 }
 
@@ -237,15 +293,8 @@ function getConfig(dialog) {
 function showDialog(points, showHandles) {
     $.localize = true;
     var ui = localizeUI();
+    var dimension = getDimension(points);
     var units = getUnits(app.activeDocument.rulerUnits);
-    var left = {
-        x: convertUnits(points[1].leftDirection[0] + 'pt', units),
-        y: convertUnits(points[1].leftDirection[1] * -1 + 'pt', units)
-    };
-    var right = {
-        x: convertUnits(points[0].rightDirection[0] + 'pt', units),
-        y: convertUnits(points[0].rightDirection[1] * -1 + 'pt', units)
-    };
 
     var dialog = new Window('dialog');
     dialog.text = ui.title;
@@ -255,140 +304,231 @@ function showDialog(points, showHandles) {
     dialog.margins = 16;
 
     var group1 = dialog.add('group', undefined, { name: 'group1' });
-    group1.orientation = 'column';
-    group1.alignChildren = ['fill', 'center'];
+    group1.orientation = 'row';
+    group1.alignChildren = ['left', 'center'];
     group1.spacing = 10;
     group1.margins = 0;
 
     var panel1 = group1.add('panel', undefined, undefined, { name: 'panel1' });
-    panel1.text = ui.distance;
-    panel1.orientation = 'column';
+    panel1.text = ui.handle + ' #1';
+    panel1.orientation = 'row';
     panel1.alignChildren = ['left', 'top'];
     panel1.spacing = 10;
     panel1.margins = 10;
 
     var group2 = panel1.add('group', undefined, { name: 'group2' });
-    group2.orientation = 'row';
-    group2.alignChildren = ['left', 'center'];
-    group2.spacing = 10;
-    group2.margins = [0, 6, 0, 0];;
+    if (!/^ja/i.test($.locale)) group2.preferredSize.width = 55;
+    group2.orientation = 'column';
+    group2.alignChildren = ['right', 'center'];
+    group2.spacing = 12;
+    group2.margins = [0, 6, 0, 0];
 
     var statictext1 = group2.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = ui.handle + ' #1:';
+    statictext1.text = ui.distance;
+    statictext1.preferredSize.height = 20;
 
-    var edittext1 = group2.add('edittext', undefined, undefined, { name: 'edittext1' });
-    edittext1.text = '';
-    edittext1.preferredSize.width = 175;
-    edittext1.active = true;
+    var statictext2 = group2.add('statictext', undefined, undefined, { name: 'statictext2' });
+    statictext2.text = ui.angle;
+    statictext2.preferredSize.height = 20;
 
     var group3 = panel1.add('group', undefined, { name: 'group3' });
-    group3.orientation = 'row';
+    group3.preferredSize.width = 100;
+    group3.orientation = 'column';
     group3.alignChildren = ['left', 'center'];
     group3.spacing = 10;
-    group3.margins = 0;
+    group3.margins = [0, 6, 0, 0];
 
-    var statictext2 = group3.add('statictext', undefined, undefined, { name: 'statictext2' });
-    statictext2.text = ui.handle + ' #2:';
+    var edittext1 = group3.add('edittext', undefined, undefined, { name: 'edittext1' });
+    edittext1.text = '';
+    edittext1.alignment = ['fill', 'center'];
+    edittext1.active = true;
 
     var edittext2 = group3.add('edittext', undefined, undefined, { name: 'edittext2' });
     edittext2.text = '';
-    edittext2.preferredSize.width = 175;
+    edittext2.alignment = ['fill', 'center'];
 
-    var group4 = dialog.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'row';
-    group4.alignChildren = ['left', 'center'];
-    group4.spacing = 10;
-    group4.margins = [0, 6, 0, 0];
-
-    var panel2 = group4.add('panel', undefined, undefined, { name: 'panel2' });
-    panel2.text = ui.handle + ' #1';
-    panel2.preferredSize.width = 140;
+    var panel2 = group1.add('panel', undefined, undefined, { name: 'panel2' });
+    panel2.text = ui.handle + ' #2';
     panel2.orientation = 'row';
     panel2.alignChildren = ['left', 'top'];
     panel2.spacing = 10;
     panel2.margins = 10;
 
+    var group4 = panel2.add('group', undefined, { name: 'group4' });
+    if (!/^ja/i.test($.locale)) group4.preferredSize.width = 55;
+    group4.orientation = 'column';
+    group4.alignChildren = ['right', 'center'];
+    group4.spacing = 12;
+    group4.margins = [0, 6, 0, 0];
+
+    var statictext3 = group4.add('statictext', undefined, undefined, { name: 'statictext3' });
+    statictext3.text = ui.distance;
+    statictext3.preferredSize.height = 20;
+
+    var statictext4 = group4.add('statictext', undefined, undefined, { name: 'statictext4' });
+    statictext4.text = ui.angle;
+    statictext4.preferredSize.height = 20;
+
     var group5 = panel2.add('group', undefined, { name: 'group5' });
+    group5.preferredSize.width = 100;
     group5.orientation = 'column';
     group5.alignChildren = ['left', 'center'];
     group5.spacing = 10;
     group5.margins = [0, 6, 0, 0];
 
-    var statictext3 = group5.add('statictext', undefined, undefined, { name: 'statictext3' });
-    statictext3.text = 'X:';
+    var edittext3 = group5.add('edittext', undefined, undefined, { name: 'edittext3' });
+    edittext3.text = '';
+    edittext3.alignment = ['fill', 'center'];
 
-    var statictext4 = group5.add('statictext', undefined, undefined, { name: 'statictext4' });
-    statictext4.text = 'Y:';
+    var edittext4 = group5.add('edittext', undefined, undefined, { name: 'edittext4' });
+    edittext4.text = '';
+    edittext4.alignment = ['fill', 'center'];
 
-    var group6 = panel2.add('group', undefined, { name: 'group6' });
-    group6.orientation = 'column';
+    var group6 = dialog.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'row';
     group6.alignChildren = ['left', 'center'];
     group6.spacing = 10;
     group6.margins = [0, 6, 0, 0];
 
-    var statictext5 = group6.add('statictext', undefined, undefined, { name: 'statictext5' });
-    statictext5.text = round(right.x) + ' ' + units;
-
-    var statictext6 = group6.add('statictext', undefined, undefined, { name: 'statictext6' });
-    statictext6.text = round(right.y) + ' ' + units;
-
-    var panel3 = group4.add('panel', undefined, undefined, { name: 'panel3' });
-    panel3.text = ui.handle + ' #2';
-    panel3.preferredSize.width = 140;
+    var panel3 = group6.add('panel', undefined, undefined, { name: 'panel3' });
+    panel3.text = ui.handle + ' #1';
     panel3.orientation = 'row';
     panel3.alignChildren = ['left', 'top'];
     panel3.spacing = 10;
     panel3.margins = 10;
 
     var group7 = panel3.add('group', undefined, { name: 'group7' });
+    if (!/^ja/i.test($.locale)) group7.preferredSize.width = 55;
     group7.orientation = 'column';
-    group7.alignChildren = ['left', 'center'];
-    group7.spacing = 10;
+    group7.alignChildren = ['right', 'center'];
+    group7.spacing = 4;
     group7.margins = [0, 6, 0, 0];
+
+    var statictext5 = group7.add('statictext', undefined, undefined, { name: 'statictext5' });
+    statictext5.text = ui.length;
+    statictext5.preferredSize.height = 20;
+
+    var statictext6 = group7.add('statictext', undefined, undefined, { name: 'statictext6' });
+    statictext6.text = ui.angle;
+    statictext6.preferredSize.height = 20;
 
     var statictext7 = group7.add('statictext', undefined, undefined, { name: 'statictext7' });
     statictext7.text = 'X:';
+    statictext7.preferredSize.height = 20;
 
     var statictext8 = group7.add('statictext', undefined, undefined, { name: 'statictext8' });
     statictext8.text = 'Y:';
+    statictext8.preferredSize.height = 20;
 
     var group8 = panel3.add('group', undefined, { name: 'group8' });
+    group8.preferredSize.width = 100;
     group8.orientation = 'column';
     group8.alignChildren = ['left', 'center'];
-    group8.spacing = 10;
+    group8.spacing = 4;
     group8.margins = [0, 6, 0, 0];
 
     var statictext9 = group8.add('statictext', undefined, undefined, { name: 'statictext9' });
-    statictext9.text = round(left.x) + ' ' + units;
+    statictext9.text = round(dimension.length.right) + ' ' + units;
+    statictext9.alignment = ['fill', 'center'];
+    statictext9.preferredSize.height = 20;
 
     var statictext10 = group8.add('statictext', undefined, undefined, { name: 'statictext10' });
-    statictext10.text = round(left.y) + ' ' + units;
+    statictext10.text = round(dimension.angle.right) + ' ' + ui.deg;
+    statictext10.alignment = ['fill', 'center'];
+    statictext10.preferredSize.height = 20;
 
-    var group9 = dialog.add('group', undefined, { name: 'group9' });
-    group9.orientation = 'row';
-    group9.alignChildren = ['left', 'center'];
-    group9.spacing = 10;
-    group9.margins = 0;
+    var statictext11 = group8.add('statictext', undefined, undefined, { name: 'statictext11' });
+    statictext11.text = round(dimension.right.x) + ' ' + units;
+    statictext11.alignment = ['fill', 'center'];
+    statictext11.preferredSize.height = 20;
 
-    var checkbox1 = group9.add('checkbox', undefined, undefined, { name: 'checkbox1' });
+    var statictext12 = group8.add('statictext', undefined, undefined, { name: 'statictext12' });
+    statictext12.text = round(dimension.right.y) + ' ' + units;
+    statictext12.alignment = ['fill', 'center'];
+    statictext12.preferredSize.height = 20;
+
+    var panel4 = group6.add('panel', undefined, undefined, { name: 'panel4' });
+    panel4.text = ui.handle + ' #2';
+    panel4.orientation = 'row';
+    panel4.alignChildren = ['left', 'top'];
+    panel4.spacing = 10;
+    panel4.margins = 10;
+
+    var group9 = panel4.add('group', undefined, { name: 'group9' });
+    if (!/^ja/i.test($.locale)) group9.preferredSize.width = 55;
+    group9.orientation = 'column';
+    group9.alignChildren = ['right', 'center'];
+    group9.spacing = 4;
+    group9.margins = [0, 6, 0, 0];
+
+    var statictext13 = group9.add('statictext', undefined, undefined, { name: 'statictext13' });
+    statictext13.text = ui.length;
+    statictext13.preferredSize.height = 20;
+
+    var statictext14 = group9.add('statictext', undefined, undefined, { name: 'statictext14' });
+    statictext14.text = ui.angle;
+    statictext14.preferredSize.height = 20;
+
+    var statictext15 = group9.add('statictext', undefined, undefined, { name: 'statictext15' });
+    statictext15.text = 'X:';
+    statictext15.preferredSize.height = 20;
+
+    var statictext16 = group9.add('statictext', undefined, undefined, { name: 'statictext16' });
+    statictext16.text = 'Y:';
+    statictext16.preferredSize.height = 20;
+
+    var group10 = panel4.add('group', undefined, { name: 'group10' });
+    group10.preferredSize.width = 100;
+    group10.orientation = 'column';
+    group10.alignChildren = ['left', 'center'];
+    group10.spacing = 4;
+    group10.margins = [0, 6, 0, 0];
+
+    var statictext17 = group10.add('statictext', undefined, undefined, { name: 'statictext17' });
+    statictext17.text = round(dimension.length.left) + ' ' + units;
+    statictext17.alignment = ['fill', 'center'];
+    statictext17.preferredSize.height = 20;
+
+    var statictext18 = group10.add('statictext', undefined, undefined, { name: 'statictext18' });
+    statictext18.text = round(dimension.angle.left) + ' ' + ui.deg;
+    statictext18.alignment = ['fill', 'center'];
+    statictext18.preferredSize.height = 20;
+
+    var statictext19 = group10.add('statictext', undefined, undefined, { name: 'statictext19' });
+    statictext19.text = round(dimension.left.x) + ' ' + units;
+    statictext19.alignment = ['fill', 'center'];
+    statictext19.preferredSize.height = 20;
+
+    var statictext20 = group10.add('statictext', undefined, undefined, { name: 'statictext20' });
+    statictext20.text = round(dimension.left.y) + ' ' + units;
+    statictext20.alignment = ['fill', 'center'];
+    statictext20.preferredSize.height = 20;
+
+    var group11 = dialog.add('group', undefined, { name: 'group11' });
+    group11.orientation = 'row';
+    group11.alignChildren = ['left', 'center'];
+    group11.spacing = 10;
+    group11.margins = 0;
+
+    var checkbox1 = group11.add('checkbox', undefined, undefined, { name: 'checkbox1' });
     checkbox1.text = ui.preview;
 
-    var group10 = dialog.add('group', undefined, { name: 'group10' });
-    group10.orientation = 'row';
-    group10.alignChildren = ['right', 'center'];
-    group10.spacing = 10;
-    group10.margins = 0;
+    var group12 = dialog.add('group', undefined, { name: 'group12' });
+    group12.orientation = 'row';
+    group12.alignChildren = ['right', 'center'];
+    group12.spacing = 10;
+    group12.margins = 0;
 
     // Work around the problem of being unable to undo the ESC key during localization.
-    var button0 = group10.add('button', undefined, undefined, { name: 'button0' });
+    var button0 = group12.add('button', undefined, undefined, { name: 'button0' });
     button0.text = 'Cancel';
     button0.hide();
 
-    var button1 = group10.add('button', undefined, undefined, { name: 'button1' });
+    var button1 = group12.add('button', undefined, undefined, { name: 'button1' });
     button1.text = ui.cancel;
     button1.preferredSize.width = 90;
 
-    var button2 = group10.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group12.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
 
@@ -402,6 +542,16 @@ function showDialog(points, showHandles) {
         edittext2.active = true;
     });
 
+    statictext3.addEventListener('click', function() {
+        edittext3.active = false;
+        edittext3.active = true;
+    });
+
+    statictext4.addEventListener('click', function() {
+        edittext4.active = false;
+        edittext4.active = true;
+    });
+
     button0.onClick = function() {
         if (checkbox1.value) reset(points);
         if (!showHandles) app.preferences.setBooleanPreference('showDirectionHandles', false);
@@ -412,8 +562,14 @@ function showDialog(points, showHandles) {
         button0.notify('onClick');
     }
 
-    dialog.right = edittext1;
-    dialog.left = edittext2;
+    dialog.distance = {
+        right: edittext1,
+        left: edittext3
+    };
+    dialog.angle = {
+        right: edittext2,
+        left: edittext4
+    };
     dialog.preview = checkbox1;
     dialog.ok = button2;
     return dialog;
@@ -426,13 +582,25 @@ function localizeUI() {
             en: 'Extend Handle',
             ja: 'ハンドルを伸縮'
         },
-        distance: {
-            en: 'Distance',
-            ja: '距離'
-        },
         handle: {
             en: 'Handle',
             ja: 'ハンドル'
+        },
+        distance: {
+            en: 'Distance:',
+            ja: '距離:'
+        },
+        length: {
+            en: 'Length:',
+            ja: '長さ:'
+        },
+        angle: {
+            en: 'Angle:',
+            ja: '角度:'
+        },
+        deg: {
+            en: 'deg',
+            ja: '度'
         },
         preview: {
             en: 'preview',
