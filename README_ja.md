@@ -70,22 +70,28 @@ Adobe Illustratorのスクリプト集です。
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [alignInCenterOfSpace(Horizontal).js](#alignInCenterOfSpaceHorizontal--Verticaljs) | 余白の水平方向中央に整列 |
-| [alignInCenterOfSpace(Vertical).js](#alignInCenterOfSpaceHorizontal--Verticaljs) | 余白の垂直方向中央に整列 |
+| [alignInCenterOfSpace(Horizontal).js](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) | 余白の水平方向中央に整列 |
+| [alignInCenterOfSpace(Vertical).js](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) | 余白の垂直方向中央に整列 |
 | [closePath.js](#closePathjs) | パスを閉じる |
 | [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCornerjs) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines.js](#createGridLinesjs) | グリッドラインを作成 |
+| [decreaseSelectedAnchorPointsCW.js](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を時計回りに減らす |
+| [decreaseSelectedAnchorPointsCCW.js](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を反時計回りに減らす |
 | [disjoinPath.js](#disjoinPathjs) | パスを分解 |
-| [distributeInSpace(Horizotal).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の水平方向に分布 |
-| [distributeInSpace(Vertical).js](#distributeInSpaceHorizontal--Verticaljs) | 余白の垂直方向に分布 |
+| [distributeInSpace(Horizotal).js](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) | 余白の水平方向に分布 |
+| [distributeInSpace(Vertical).js](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) | 余白の垂直方向に分布 |
 | [drawCircumscribedCircle.js](#drawCircumscribedCirclejs) | 外接円を描く |
 | [drawRectangle.js](#drawRectanglejs) | オブジェクトの周囲に長方形を描く |
 | [drawShapeOnAnchorPoint.js](#drawShapeOnAnchorPointjs) | アンカーポイントに図形を描く |
-| [extendHandle.js](#extendHandlejs) `Update` | ハンドルを伸縮 |
+| [extendHandle.js](#extendHandlejs) | ハンドルを伸縮 |
 | [extendLine.js](#extendLinejs) | パスを伸縮 |
 | [fitGuideInArtboard.js](#fitGuideInArtboardjs) | ガイドをアートボードにフィット |
+| [increaseSelectedAnchorPointsCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を時計回りに増やす |
+| [increaseSelectedAnchorPointsCCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を反時計回りに増やす |
 | [removeColorInGuideObject.js](#removeColorInGuideObjectjs) | ガイドオブジェクトの色を削除 |
 | [selectGuides.js](#selectGuidesjs) | ガイドを選択 |
+| [shiftSelectedAnchorPointsCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイントを時計回りに移動 |
+| [shiftSelectedAnchorPointsCCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイントを反時計回りに移動 |
 | [showDimensions.js](#showDimensionsjs) | パスの寸法を表示 |
 | [shuffleObjects.js](#shuffleObjectsjs) | オブジェクトをシャッフル |
 | [stepAndRepeat.js](#stepAndRepeatjs) | 繰り返し複製 |
@@ -219,7 +225,7 @@ Illustrator CS以降
 
 
 
-# <a name="alignInCenterOfSpaceHorizontal--Verticaljs">alignInCenterOfSpace(Horizontal | Vertical).js</a>
+# <a name="alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs">alignInCenterOfSpace(Horizontal).js<br>alignInCenterOfSpace(Vertical).js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 余白の水平または垂直方向中央にオブジェクトを整列します。
 
@@ -593,6 +599,26 @@ Illustrator CS4以降
 
 
 
+# <a name="decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs">decreaseSelectedAnchorPointsCW.js<br>decreaseSelectedAnchorPointsCCW.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+選択しているアンカーポイントの個数を時計回り、または反時計回りに減らします。
+
+例 decreaseSelectedAnchorPointsCW.js:
+![Decrease Selected Anchor Points](images/decreaseSelectedAnchorPoints.png)
+
+#### 使用方法
+ダイレクト選択ツールでアンカーポイントを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="deleteAllLeftjsdeleteAllRightjs">deleteAllLeft.js<br>deleteAllRight.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code のショートカット「左側をすべて削除」( <kbd>⌘</kbd> + <kbd>Backspace</kbd> )、
@@ -789,7 +815,7 @@ Illustrator CS以降
 
 
 
-# <a name="distributeInSpaceHorizontal--Verticaljs">distributeInSpace(Horizontal | Vertical).js</a>
+# <a name="distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs">distributeInSpace(Horizontal).js<br>distributeInSpace(Vertical).js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 余白の水平または垂直方向にオブジェクトを分布します。
 
@@ -1212,6 +1238,26 @@ CSVファイルの形式は以下の3種類になります。
 Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs">increaseSelectedAnchorPointsCW.js<br>increaseSelectedAnchorPointsCCW.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+選択しているアンカーポイントの個数を時計回り、または反時計回りに増やします。
+
+例 increaseSelectedAnchorPointsCW.js:
+![Increase Selected Anchor Points](images/increaseSelectedAnchorPoints.png)
+
+#### 使用方法
+ダイレクト選択ツールでアンカーポイントを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
@@ -1711,6 +1757,26 @@ Illustrator CS6以降
 Illustrator CS4以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs">shiftSelectedAnchorPointsCW.js<br>shiftSelectedAnchorPointsCCW.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+選択しているアンカーポイントを時計回り、または反時計回りに移動します。
+
+例 shiftSelectedAnchorPointsCW.js:
+![Shift Selected Anchor Points](images/shiftSelectedAnchorPoints.png)
+
+#### 使用方法
+ダイレクト選択ツールでアンカーポイントを選択してスクリプトを実行します。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

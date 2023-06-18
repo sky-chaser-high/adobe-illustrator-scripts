@@ -54,22 +54,28 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontal--Verticaljs)
-- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontal--Verticaljs)
+- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
+- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Close Path](#closePathjs)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
+- [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New`
+- [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New`
 - [Disjoin Path](#disjoinPathjs)
-- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontal--Verticaljs)
-- [Distribute in Space (Vertical)](#distributeInSpaceHorizontal--Verticaljs)
+- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
+- [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
 - [Draw Rectangle](#drawRectanglejs)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
-- [Extend Handle](#extendHandlejs) `Update`
+- [Extend Handle](#extendHandlejs)
 - [Extend Line](#extendLinejs)
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
+- [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New`
+- [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New`
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
+- [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New`
+- [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New`
 - [Show Dimensions](#showDimensionsjs)
 - [Shuffle Objects](#shuffleObjectsjs)
 - [Step and Repeat](#stepAndRepeatjs)
@@ -184,7 +190,7 @@ Illustrator CS or higher
 
 
 
-# <a name="alignInCenterOfSpaceHorizontal--Verticaljs">alignInCenterOfSpace(Horizontal | Vertical).js</a>
+# <a name="alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs">alignInCenterOfSpace(Horizontal).js<br>alignInCenterOfSpace(Vertical).js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script aligns objects in the center of space.
 
@@ -554,6 +560,26 @@ Illustrator CS4 or higher
 
 
 
+# <a name="decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs">decreaseSelectedAnchorPointsCW.js<br>decreaseSelectedAnchorPointsCCW.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script decreases selected anchor points clockwise or counterclockwise.
+
+For example, decreaseSelectedAnchorPointsCW.js:
+![Decrease Selected Anchor Points](images/decreaseSelectedAnchorPoints.png)
+
+### Usage
+Select any anchor points with Direct Selection Tool, and run this script.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="deleteAllLeftjsdeleteAllRightjs">deleteAllLeft.js<br>deleteAllRight.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
@@ -748,7 +774,7 @@ Illustrator CS or higher
 
 
 
-# <a name="distributeInSpaceHorizontal--Verticaljs">distributeInSpace(Horizontal | Vertical).js</a>
+# <a name="distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs">distributeInSpace(Horizontal).js<br>distributeInSpace(Vertical).js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script distributes objects evenly spaced in space.
 
@@ -1164,6 +1190,26 @@ CSV files are available in the following 3 formats.
 Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs">increaseSelectedAnchorPointsCW.js<br>increaseSelectedAnchorPointsCCW.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script increases selected anchor points clockwise or counterclockwise.
+
+For example, increaseSelectedAnchorPointsCW.js:
+![Increase Selected Anchor Points](images/increaseSelectedAnchorPoints.png)
+
+### Usage
+Select any anchor points with Direct Selection Tool, and run this script.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -1655,6 +1701,26 @@ This script selects linked files.
 Illustrator CS4 or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs">shiftSelectedAnchorPointsCW.js<br>shiftSelectedAnchorPointsCCW.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script shifts selected anchor points clockwise or counterclockwise.
+
+For example, shiftSelectedAnchorPointsCW.js:
+![Shift Selected Anchor Points](images/shiftSelectedAnchorPoints.png)
+
+### Usage
+Select any anchor points with Direct Selection Tool, and run this script.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
