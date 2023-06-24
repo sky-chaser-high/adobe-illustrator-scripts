@@ -42,6 +42,9 @@
 
 
 ## createColorChart.js
+### 2.0.1 (2023-06-25)
+### Bug Fixes
+- Fixed a bug in the color mode.
 ### 2.0.0 (2022-10-15)
 ### Changes
 - Updated the UI.

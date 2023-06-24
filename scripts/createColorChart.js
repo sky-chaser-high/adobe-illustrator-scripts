@@ -23,7 +23,7 @@
    Illustrator CS4 or higher
 
    Version
-   2.0.0
+   2.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -112,7 +112,7 @@ function getConfiguration(dialog) {
     var unit = dialog.unit.selection.toString();
 
     return {
-        mode: dialog.mode,
+        mode: (dialog.cmyk.value) ? 'CMYK' : 'RGB',
         color: {
             color1: color1,
             color2: color2,
@@ -1262,7 +1262,8 @@ function showDialog(item) {
     }
 
 
-    dialog.mode = (radiobutton1.value) ? 'CMYK' : 'RGB';
+    dialog.cmyk = radiobutton1;
+    dialog.rgb = radiobutton2;
     dialog.color1 = edittext1;
     dialog.color2 = edittext2;
     dialog.color3 = edittext3;
