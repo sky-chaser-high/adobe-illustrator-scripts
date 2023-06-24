@@ -18,7 +18,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
 - [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
-- [Create Color Chart](#createColorChartjs)
+- [Create Color Chart](#createColorChartjs) `Update`
 - [Delete All Swatches](#deleteAllSwatchesjs)
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)

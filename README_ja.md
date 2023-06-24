@@ -22,7 +22,7 @@ Adobe Illustratorのスクリプト集です。
 | [addSelectedGradientsToSwatch.js](#addSelectedGradientsToSwatchjs) | 選択したグラデーションをスウォッチに追加 |
 | [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | グローバルカラーに変換 |
 | [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | 特色に変換 |
-| [createColorChart.js](#createColorChartjs) | カラーチャート作成 |
+| [createColorChart.js](#createColorChartjs) `Update` | カラーチャート作成 |
 | [deleteAllSwatches.js](#deleteAllSwatchesjs) | すべてのスウォッチを削除 |
 | [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
