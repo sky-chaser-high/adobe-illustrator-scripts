@@ -22,7 +22,7 @@ Adobe Illustratorのスクリプト集です。
 | [addSelectedGradientsToSwatch.js](#addSelectedGradientsToSwatchjs) | 選択したグラデーションをスウォッチに追加 |
 | [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | グローバルカラーに変換 |
 | [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | 特色に変換 |
-| [createColorChart.js](#createColorChartjs) `Update` | カラーチャート作成 |
+| [createColorChart.js](#createColorChartjs) | カラーチャート作成 |
 | [deleteAllSwatches.js](#deleteAllSwatchesjs) | すべてのスウォッチを削除 |
 | [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
@@ -70,13 +70,14 @@ Adobe Illustratorのスクリプト集です。
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 | スクリプト | 概要 |
 | --- | --- |
+| [addAnchorPoints.js](#addAnchorPointsjs) `New` | アンカーポイントを等間隔に追加 |
 | [alignInCenterOfSpace(Horizontal).js](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) | 余白の水平方向中央に整列 |
 | [alignInCenterOfSpace(Vertical).js](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) | 余白の垂直方向中央に整列 |
 | [closePath.js](#closePathjs) | パスを閉じる |
 | [convertAllAnchorPointsToCorner.js](#convertAllAnchorPointsToCornerjs) | すべてのアンカーをコーナーポイントに切り替え |
 | [createGridLines.js](#createGridLinesjs) | グリッドラインを作成 |
-| [decreaseSelectedAnchorPointsCW.js](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を時計回りに減らす |
-| [decreaseSelectedAnchorPointsCCW.js](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を反時計回りに減らす |
+| [decreaseSelectedAnchorPointsCW.js](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を時計回りに減らす |
+| [decreaseSelectedAnchorPointsCCW.js](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を反時計回りに減らす |
 | [disjoinPath.js](#disjoinPathjs) | パスを分解 |
 | [distributeInSpace(Horizotal).js](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) | 余白の水平方向に分布 |
 | [distributeInSpace(Vertical).js](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) | 余白の垂直方向に分布 |
@@ -86,12 +87,12 @@ Adobe Illustratorのスクリプト集です。
 | [extendHandle.js](#extendHandlejs) | ハンドルを伸縮 |
 | [extendLine.js](#extendLinejs) | パスを伸縮 |
 | [fitGuideInArtboard.js](#fitGuideInArtboardjs) | ガイドをアートボードにフィット |
-| [increaseSelectedAnchorPointsCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を時計回りに増やす |
-| [increaseSelectedAnchorPointsCCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイント数を反時計回りに増やす |
+| [increaseSelectedAnchorPointsCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を時計回りに増やす |
+| [increaseSelectedAnchorPointsCCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を反時計回りに増やす |
 | [removeColorInGuideObject.js](#removeColorInGuideObjectjs) | ガイドオブジェクトの色を削除 |
 | [selectGuides.js](#selectGuidesjs) | ガイドを選択 |
-| [shiftSelectedAnchorPointsCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイントを時計回りに移動 |
-| [shiftSelectedAnchorPointsCCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New` | 選択中のアンカーポイントを反時計回りに移動 |
+| [shiftSelectedAnchorPointsCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) | 選択中のアンカーポイントを時計回りに移動 |
+| [shiftSelectedAnchorPointsCCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) | 選択中のアンカーポイントを反時計回りに移動 |
 | [showDimensions.js](#showDimensionsjs) | パスの寸法を表示 |
 | [shuffleObjects.js](#shuffleObjectsjs) | オブジェクトをシャッフル |
 | [stepAndRepeat.js](#stepAndRepeatjs) | 繰り返し複製 |
@@ -178,6 +179,28 @@ UIのあるスクリプトはすべて日本語の表示になります。
 UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) を使用しました。  
 ツールの詳細は [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas) を参照してください。
 <br><br><br>
+
+
+
+
+
+# <a name="addAnchorPointsjs">addAnchorPoints.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+指定した個数のアンカーポイントを等間隔に追加します。  
+オブジェクト > パス > アンカーポイントの追加 を少し使いやすく改良したものです。
+
+![Add Anchor Points](images/addAnchorPoints.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ダイレクト選択ツールで2点以上のアンカーポイントを選択してスクリプトを実行します。
+2. 追加したい個数を入力します。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
 
 
 

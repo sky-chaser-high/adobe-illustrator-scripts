@@ -18,7 +18,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
 - [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
-- [Create Color Chart](#createColorChartjs) `Update`
+- [Create Color Chart](#createColorChartjs)
 - [Delete All Swatches](#deleteAllSwatchesjs)
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
@@ -54,13 +54,14 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+- [Add Anchor Points](#addAnchorPointsjs) `New`
 - [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Close Path](#closePathjs)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
-- [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New`
-- [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs) `New`
+- [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
+- [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Disjoin Path](#disjoinPathjs)
 - [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
@@ -70,12 +71,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Extend Handle](#extendHandlejs)
 - [Extend Line](#extendLinejs)
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
-- [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New`
-- [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) `New`
+- [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
+- [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
-- [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New`
-- [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) `New`
+- [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
+- [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Show Dimensions](#showDimensionsjs)
 - [Shuffle Objects](#shuffleObjectsjs)
 - [Step and Repeat](#stepAndRepeatjs)
@@ -143,6 +144,27 @@ The following extensions or software make it easy to run scripts.
 [ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) was used to design the UI.  
 **See also:** [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas).
 <br><br><br>
+
+
+
+
+
+# <a name="addAnchorPointsjs">addAnchorPoints.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script adds any number of anchor points evenly spaced.  
+It is a slightly more user-friendly improvement to Object > Path > Add Anchor Points.
+
+![Add Anchor Points](images/addAnchorPoints.png)
+
+### Usage
+1. Select two or more anchor points with Direct Selection Tool, and run this script.
+2. Enter the number of anchor points to add.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
 
 
 
