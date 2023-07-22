@@ -18,7 +18,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
 - [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
-- [Create Color Chart](#createColorChartjs)
+- [Create Color Chart](#createColorChartjs) `Update`
 - [Delete All Swatches](#deleteAllSwatchesjs)
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
@@ -502,25 +502,29 @@ Illustrator CC 2018 or higher
 
 # <a name="createColorChartjs">createColorChart.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-This script creates a color chart.  
-Both CMYK and RGB colors are supported.
+This script creates a color chart. Both CMYK and RGB colors are supported.
 
 ![Create Color Chart](images/createColorChart.png)
 
 ### Usage
 1. Run this script.
-2. Select either CMYK or RGB, and enter the color values.  
-   If an object is selected, the fill value of the object will be used as the initial value.
-3. Select the color you want to increase or decrease with vertical, or horizontal.
-4. Enter the increase or decrease value.  
-   Enter the percentage to be increased or decreased.
-5. Set the artboard size, color chip size, and units according to your preference.
+2. Select CMYK or RGB mode.
+3. Enter the target color values.  
+   If select a path or text object, its fill color value is used as the initial value.
+4. Select colors for the vertical and horizontal axis.
+5. Enter the increase or decrease value as a percentage.
+6. Select Addition or Intensity.
+   - `Addition` the value of the steps is added as is.
+   - `Intensity` the percentage of the target color is added. It is equivalent to Edit > Edit Colors > Saturate.  
+   <img src="images/ColorChartSettings.png" alt="Color Chart Settings" width="65%">
+7. Set the artboard size, color chip size, and units according to your preference.
 
 > **Note**  
+> Spot color, gradient, and pattern are not supported.  
 > Create a color chart in a new document.
 
 ### Requirements
-Illustrator CS4 or higher
+Illustrator CS6 or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>

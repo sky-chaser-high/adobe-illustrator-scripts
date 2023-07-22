@@ -42,6 +42,13 @@
 
 
 ## createColorChart.js
+### 2.1.0 (2023-07-23)
+### Added
+- Added the function to select how to increase or decrease color values. (Addition or Intensity)
+### Changes
+- Changed requirements to CS6 or higher.
+### Bug Fixes
+- Fixed a bug in the target color.
 ### 2.0.1 (2023-06-25)
 ### Bug Fixes
 - Fixed a bug in the color mode.

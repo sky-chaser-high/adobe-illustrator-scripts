@@ -2,28 +2,31 @@
    createColorChart
 
    Description
-   This script creates a color chart.
-   Both CMYK and RGB colors are supported.
+   This script creates a color chart. Both CMYK and RGB colors are supported.
 
    Usage
    1. Run this script from File > Scripts > Other Script...
-   2. Select either CMYK or RGB, enter the color values.
-      If an object is selected, the fill value of the object will be used as the initial value.
-   3. Select the color you want to increase or decrease with vertical, or horizontal.
-   4. Enter the increase or decrease value.
-      Enter the percentage to be increased or decreased.
-   5. Set the artboard size, color chip size, and units according to your preference.
+   2. Select CMYK or RGB mode.
+   3. Enter the target color values.
+      If select a path or text object, its fill color value is used as the initial value.
+   4. Select colors for the vertical and horizontal axis.
+   5. Enter the increase or decrease value as a percentage.
+   6. Select Addition or Intensity.
+      Addition: the value of the steps is added as is.
+      Intensity: the percentage of the target color is added. It is equivalent to Edit > Edit Colors > Saturate.
+   7. Set the artboard size, color chip size, and units according to your preference.
 
    Notes
+   Spot color, gradient, and pattern are not supported.
    Create a color chart in a new document.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
-   Illustrator CS4 or higher
+   Illustrator CS6 or higher
 
    Version
-   2.0.1
+   2.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -39,27 +42,389 @@
 
 
 function main() {
-    var items = app.activeDocument.selection;
-    var item = getTargetItemColor(items);
-    var dialog = showDialog(item);
+    var items = (app.documents.length > 0) ? app.activeDocument.selection : [];
+    var color = getTargetColor(items);
+    var dialog = showDialog(color);
 
     dialog.ok.onClick = function() {
         var config = getConfiguration(dialog);
-        if (validTest(config)) {
-            createNewDocument(config.mode, config.unit, config.artboard.width, config.artboard.height);
+        if (!verify(config)) return;
 
-            // target color
-            var points = getCenterPosition(config.chip.width, config.chip.height);
-            var chip = createColorChip(config.mode, config.color, points);
-            showColorName(config.mode, chip, config.chip.width);
+        createNewDocument(config.mode, config.unit, config.artboard.width, config.artboard.height);
+        app.executeMenuCommand('fitin');
 
-            createColorChart(config, chip);
-            dialog.close();
+        // target color
+        var points = getCenterPosition(config.chip.width, config.chip.height);
+        var chip = createColorChip(config.mode, config.color, points);
+        showColorValue(config.mode, chip, config.chip.width);
+
+        createColorChart(config, chip);
+        dialog.close();
+    }
+    dialog.show();
+}
+
+
+function createColorChart(config, item) {
+    var margin = {
+        x: getUnit('2mm', 'pt'),
+        y: getUnit('4mm', 'pt')
+    };
+
+    // Number of chips to create
+    var count = {
+        x: Math.floor((config.artboard.width / 2 - config.chip.width / 2) / (config.chip.width + margin.x)),
+        y: Math.floor((config.artboard.height / 2 - config.chip.height / 2) / (config.chip.height + margin.y))
+    };
+
+    var baseItem = getColorItem(item);
+    var colorItem, start;
+
+    // 1st quadrant
+    colorItem = getColorItem(item);
+    start = 0;
+    createQuadrant(config, colorItem, baseItem, start, count, margin);
+
+    // 3rd quadrant
+    colorItem = getColorItem(item);
+    colorItem.width *= -1;
+    colorItem.height *= -1;
+    config.step.x *= -1;
+    config.step.y *= -1;
+    margin.x *= -1;
+    margin.y *= -1;
+    createQuadrant(config, colorItem, baseItem, start, count, margin);
+
+    // 2nd quadrant
+    colorItem = getColorItem(item);
+    colorItem.width *= -1;
+    config.step.y *= -1;
+    margin.y *= -1;
+    start = 1;
+    createQuadrant(config, colorItem, baseItem, start, count, margin);
+
+    // 4th quadrant
+    colorItem = getColorItem(item);
+    colorItem.height *= -1;
+    config.step.x *= -1;
+    config.step.y *= -1;
+    margin.x *= -1;
+    margin.y *= -1;
+    createQuadrant(config, colorItem, baseItem, start, count, margin);
+}
+
+
+function getColorItem(item) {
+    var CMYK = DocumentColorSpace.CMYK;
+    var mode = app.activeDocument.documentColorSpace;
+    var color = item.fillColor;
+    return {
+        color: {
+            color1: (mode == CMYK) ? Math.round(color.cyan) : Math.round(color.red),
+            color2: (mode == CMYK) ? Math.round(color.magenta) : Math.round(color.green),
+            color3: (mode == CMYK) ? Math.round(color.yellow) : Math.round(color.blue),
+            color4: (mode == CMYK) ? Math.round(color.black) : 0
+        },
+        top: item.top,
+        left: item.left,
+        width: item.width,
+        height: item.height
+    };
+}
+
+
+function createQuadrant(config, item, base, start, count, margin) {
+    for (var i = start; i <= count.y; i++) {
+        if (i > 0) {
+            var times = (config.vertical == config.horizontal) ? i : 1;
+            item = setColor(item, config.vertical, config.kind, config.step.y, times);
+            item.top = base.top + (item.height + margin.y) * i;
         }
+
+        for (var j = start; j <= count.x; j++) {
+            if (i == 0 && j == 0) continue;
+            if (j > 0) {
+                item = setColor(item, config.horizontal, config.kind, config.step.x, 1);
+            }
+            item.left = base.left + (item.width + margin.x) * j;
+            var chip = createColorChip(config.mode, item.color, item);
+            showColorValue(config.mode, chip, config.chip.width);
+        }
+
+        item = resetColor(item, base.color, config.horizontal);
+    }
+}
+
+
+function setColor(item, orientation, kind, step, times) {
+    var color = item.color;
+    var rate = step / 100;
+    switch (orientation) {
+        case 'C':
+        case 'R':
+            var color1 = (kind == 'ADD') ? step * times : color.color1 * rate * times;
+            item.color.color1 += color1;
+            break;
+        case 'M':
+        case 'G':
+            var color2 = (kind == 'ADD') ? step * times : color.color2 * rate * times;
+            item.color.color2 += color2;
+            break;
+        case 'Y':
+        case 'B':
+            var color3 = (kind == 'ADD') ? step * times : color.color3 * rate * times;
+            item.color.color3 += color3;
+            break;
+        case 'K':
+            var color4 = (kind == 'ADD') ? step * times : color.color4 * rate * times;
+            item.color.color4 += color4;
+            break;
+    }
+    return item;
+}
+
+
+function resetColor(item, base, orientation) {
+    switch (orientation) {
+        case 'C':
+        case 'R':
+            item.color.color1 = base.color1;
+            break;
+        case 'M':
+        case 'G':
+            item.color.color2 = base.color2;
+            break;
+        case 'Y':
+        case 'B':
+            item.color.color3 = base.color3;
+            break;
+        case 'K':
+            item.color.color4 = base.color4;
+            break;
+    }
+    return item;
+}
+
+
+function createColorChip(mode, color, item) {
+    var layer = app.activeDocument.activeLayer;
+    var chip = layer.pathItems.rectangle(0, 0, item.width, item.height);
+    chip.top = item.top;
+    chip.left = item.left;
+    chip.filled = true;
+    chip.stroked = false;
+
+    if (mode == 'CMYK') {
+        chip.fillColor = setCMYKColor(color.color1, color.color2, color.color3, color.color4);
+    }
+    else {
+        chip.fillColor = setRGBColor(color.color1, color.color2, color.color3);
+    }
+    return chip;
+}
+
+
+function showColorValue(mode, item, width) {
+    var color = item.fillColor;
+    var color1 = (mode == 'CMYK') ? Math.round(color.cyan) : Math.round(color.red);
+    var color2 = (mode == 'CMYK') ? Math.round(color.magenta) : Math.round(color.green);
+    var color3 = (mode == 'CMYK') ? Math.round(color.yellow) : Math.round(color.blue);
+    var color4 = (mode == 'CMYK') ? Math.round(color.black) : 0;
+
+    var margin = 2;
+    var layer = app.activeDocument.activeLayer;
+    var text = layer.textFrames.pointText([item.left, item.top + margin]);
+
+    if (mode == 'CMYK') {
+        if (color1 > 0) text.contents += 'C' + color1 + ' ';
+        if (color2 > 0) text.contents += 'M' + color2 + ' ';
+        if (color3 > 0) text.contents += 'Y' + color3 + ' ';
+        if (color4 > 0) text.contents += 'K' + color4 + ' ';
+    }
+    else {
+        if (color1 > 0) text.contents += 'R' + color1 + ' ';
+        if (color2 > 0) text.contents += 'G' + color2 + ' ';
+        if (color3 > 0) text.contents += 'B' + color3 + ' ';
     }
 
-    dialog.center();
-    dialog.show();
+    var attributes = text.textRange.characterAttributes;
+    attributes.size = 8;
+    if (text.width > width) {
+        var scale = width / text.width * 100;
+        if (scale < 50) scale = 50;
+        attributes.horizontalScale = Math.round(scale);
+    }
+}
+
+
+function getCenterPosition(width, height) {
+    var document = app.activeDocument;
+    var rect = document.artboards[0].artboardRect;
+    var x1 = rect[0];
+    var y1 = rect[1];
+    var center = {
+        x: x1 + document.width / 2,
+        y: y1 - document.height / 2
+    };
+    return {
+        top: center.y + height / 2,
+        left: center.x - width / 2,
+        width: width,
+        height: height
+    };
+}
+
+
+function getTargetColor(items) {
+    var colors = extractColors(items);
+    if (!colors.length) return { color1: 0, color2: 0, color3: 0, color4: 0 };
+
+    var color = colors[0];
+    var mode = app.activeDocument.documentColorSpace;
+    switch (mode) {
+        case DocumentColorSpace.CMYK:
+            return {
+                color1: Math.round(color.cyan),
+                color2: Math.round(color.magenta),
+                color3: Math.round(color.yellow),
+                color4: Math.round(color.black)
+            };
+        case DocumentColorSpace.RGB:
+            return {
+                color1: Math.round(color.red),
+                color2: Math.round(color.green),
+                color3: Math.round(color.blue),
+                color4: 0
+            };
+    }
+}
+
+
+function extractColors(items) {
+    var colors = [];
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        switch (item.typename) {
+            case 'PathItem':
+                if (isValidColor(item.fillColor.typename)) {
+                    colors.push(item.fillColor);
+                }
+                else if (isValidColor(item.strokeColor.typename)) {
+                    colors.push(item.strokeColor);
+                }
+                break;
+            case 'TextFrame':
+                var attributes = item.textRange.characterAttributes;
+                if (isValidColor(attributes.fillColor.typename)) {
+                    colors.push(attributes.fillColor);
+                }
+                else if (isValidColor(attributes.strokeColor.typename)) {
+                    colors.push(attributes.strokeColor);
+                }
+                break;
+            case 'GroupItem':
+                colors = colors.concat(extractColors(item.pageItems));
+                break;
+            case 'CompoundPathItem':
+                colors = colors.concat(extractColors(item.pathItems));
+                break;
+        }
+    }
+    return colors;
+}
+
+
+function isValidColor(kind) {
+    switch (kind) {
+        case 'CMYKColor': return true;
+        case 'RGBColor': return true;
+        default: return false;
+    }
+}
+
+
+function setCMYKColor(c, m, y, k) {
+    var cyan = c;
+    var magenta = m;
+    var yellow = y;
+    var black = k;
+
+    if (cyan > 100) cyan = 100;
+    else if (cyan < 0) cyan = 0;
+
+    if (magenta > 100) magenta = 100;
+    else if (magenta < 0) magenta = 0;
+
+    if (yellow > 100) yellow = 100;
+    else if (yellow < 0) yellow = 0;
+
+    if (black > 100) black = 100;
+    else if (black < 0) black = 0;
+
+    var color = new CMYKColor();
+    color.cyan = cyan;
+    color.magenta = magenta;
+    color.yellow = yellow;
+    color.black = black;
+    return color;
+}
+
+
+function setRGBColor(r, g, b) {
+    var red = r;
+    var green = g;
+    var blue = b;
+
+    if (red > 255) red = 255;
+    else if (red < 0) red = 0;
+
+    if (green > 255) green = 255;
+    else if (green < 0) green = 0;
+
+    if (blue > 255) blue = 255;
+    else if (blue < 0) blue = 0;
+
+    var color = new RGBColor();
+    color.red = red;
+    color.green = green;
+    color.blue = blue;
+    return color;
+}
+
+
+function createNewDocument(mode, unit, width, height) {
+    var preset = new DocumentPreset();
+    preset.title = 'Color Chart';
+    preset.width = width;
+    preset.height = height;
+    preset.units = getRulerUnits(unit);
+    preset.colorMode = (mode == 'CMYK') ? DocumentColorSpace.CMYK : DocumentColorSpace.RGB;
+
+    var document = app.documents.addDocument('Color Chart', preset);
+    var artboard = document.artboards[0];
+    artboard.artboardRect = [0, 0, width, height * -1];
+}
+
+
+function getRulerUnits(unit) {
+    switch (unit) {
+        case 'mm': return RulerUnits.Millimeters;
+        case 'cm': return RulerUnits.Centimeters;
+        case 'inch': return RulerUnits.Inches;
+        case 'pt': return RulerUnits.Points;
+        case 'px': return RulerUnits.Pixels;
+        default: return RulerUnits.Millimeters;
+    }
+}
+
+
+function getUnit(value, unit) {
+    try {
+        return Number(UnitValue(value).as(unit));
+    }
+    catch (err) {
+        return Number(UnitValue('1pt').as('pt'));
+    }
 }
 
 
@@ -123,8 +488,9 @@ function getConfiguration(dialog) {
         horizontal: horizontal,
         step: {
             x: step,
-            y: step,
+            y: step
         },
+        kind: (dialog.addition.value) ? 'ADD' : 'INTENSITY',
         artboard: {
             width: getUnit(artboard.width + unit, 'pt'),
             height: getUnit(artboard.height + unit, 'pt')
@@ -135,379 +501,6 @@ function getConfiguration(dialog) {
         },
         unit: unit
     };
-}
-
-
-function getColorItem(item) {
-    var mode = app.activeDocument.documentColorSpace;
-    return {
-        color: {
-            color1: (mode == DocumentColorSpace.CMYK) ? Math.round(item.fillColor.cyan) : Math.round(item.fillColor.red),
-            color2: (mode == DocumentColorSpace.CMYK) ? Math.round(item.fillColor.magenta) : Math.round(item.fillColor.green),
-            color3: (mode == DocumentColorSpace.CMYK) ? Math.round(item.fillColor.yellow) : Math.round(item.fillColor.blue),
-            color4: (mode == DocumentColorSpace.CMYK) ? Math.round(item.fillColor.black) : 0
-        },
-        top: item.top,
-        left: item.left,
-        width: item.width,
-        height: item.height
-    };
-}
-
-
-function createColorChart(config, item) {
-    var margin = {
-        x: getUnit('2mm', 'pt'),
-        y: getUnit('4mm', 'pt')
-    };
-
-    // Number of chips to create
-    var count = {
-        x: Math.floor((config.artboard.width / 2 - config.chip.width / 2) / (config.chip.width + margin.x)),
-        y: Math.floor((config.artboard.height / 2 - config.chip.height / 2) / (config.chip.height + margin.y))
-    };
-
-    var baseItem = getColorItem(item);
-    var colorItem, start;
-
-    // 1st quadrant
-    colorItem = getColorItem(item);
-    start = 0;
-    createQuadrant(config, colorItem, baseItem, start, count, margin);
-
-    // 3rd quadrant
-    colorItem = getColorItem(item);
-    colorItem.width *= -1;
-    colorItem.height *= -1;
-    config.step.x *= -1;
-    config.step.y *= -1;
-    margin.x *= -1;
-    margin.y *= -1;
-    createQuadrant(config, colorItem, baseItem, start, count, margin);
-
-    // 2nd quadrant
-    colorItem = getColorItem(item);
-    colorItem.width *= -1;
-    config.step.y *= -1;
-    margin.y *= -1;
-    start = 1;
-    createQuadrant(config, colorItem, baseItem, start, count, margin);
-
-    // 4th quadrant
-    colorItem = getColorItem(item);
-    colorItem.height *= -1;
-    config.step.x *= -1;
-    config.step.y *= -1;
-    margin.x *= -1;
-    margin.y *= -1;
-    createQuadrant(config, colorItem, baseItem, start, count, margin);
-}
-
-
-function createQuadrant(config, item, base, start, count, margin) {
-    for (var i = start; i <= count.y; i++) {
-        if (i > 0) {
-            switch (config.vertical) {
-                case 'C':
-                    item.color.color1 += config.step.y * ((config.vertical == config.horizontal) ? i : 1);
-                    break;
-                case 'M':
-                    item.color.color2 += config.step.y * ((config.vertical == config.horizontal) ? i : 1);
-                    break;
-                case 'Y':
-                    item.color.color3 += config.step.y * ((config.vertical == config.horizontal) ? i : 1);
-                    break;
-                case 'K':
-                    item.color.color4 += config.step.y * ((config.vertical == config.horizontal) ? i : 1);
-                    break;
-                case 'R':
-                    item.color.color1 += config.step.y * ((config.vertical == config.horizontal) ? i : 1);
-                    break;
-                case 'G':
-                    item.color.color2 += config.step.y * ((config.vertical == config.horizontal) ? i : 1);
-                    break;
-                case 'B':
-                    item.color.color3 += config.step.y * ((config.vertical == config.horizontal) ? i : 1);
-                    break;
-            }
-            item.top = base.top + ((item.height + margin.y) * i);
-        }
-
-        for (var j = start; j <= count.x; j++) {
-            if (j > 0) {
-                switch (config.horizontal) {
-                    case 'C':
-                        item.color.color1 += config.step.x;
-                        break;
-                    case 'M':
-                        item.color.color2 += config.step.x;
-                        break;
-                    case 'Y':
-                        item.color.color3 += config.step.x;
-                        break;
-                    case 'K':
-                        item.color.color4 += config.step.x;
-                        break;
-                    case 'R':
-                        item.color.color1 += config.step.x;
-                        break;
-                    case 'G':
-                        item.color.color2 += config.step.x;
-                        break;
-                    case 'B':
-                        item.color.color3 += config.step.x;
-                        break;
-                }
-            }
-
-            if (i == 0 && j == 0) {
-                // Do not create the same color as the reference color object.
-            }
-            else {
-                item.left = base.left + ((item.width + margin.x) * j);
-                var chip = createColorChip(config.mode, item.color, item);
-                showColorName(config.mode, chip, config.chip.width);
-            }
-        }
-
-        switch (config.horizontal) {
-            case 'C':
-                item.color.color1 = base.color.color1;
-                break;
-            case 'M':
-                item.color.color2 = base.color.color2;
-                break;
-            case 'Y':
-                item.color.color3 = base.color.color3;
-                break;
-            case 'K':
-                item.color.color4 = base.color.color4;
-                break;
-            case 'R':
-                item.color.color1 = base.color.color1;
-                break;
-            case 'G':
-                item.color.color2 = base.color.color2;
-                break;
-            case 'B':
-                item.color.color3 = base.color.color3;
-                break;
-        }
-    }
-}
-
-
-function createColorChip(mode, color, item) {
-    var chip = app.activeDocument.activeLayer.pathItems.rectangle(0, 0, item.width, item.height);
-    chip.top = item.top;
-    chip.left = item.left;
-    chip.filled = true;
-    chip.stroked = false;
-
-    if (mode == 'CMYK') {
-        chip.fillColor = setCMYK(color.color1, color.color2, color.color3, color.color4);
-    }
-    else {
-        chip.fillColor = setRGB(color.color1, color.color2, color.color3);
-    }
-
-    return chip;
-}
-
-
-function showColorName(mode, item, size) {
-    var color1 = (mode == 'CMYK') ? Math.round(item.fillColor.cyan) : Math.round(item.fillColor.red);
-    var color2 = (mode == 'CMYK') ? Math.round(item.fillColor.magenta) : Math.round(item.fillColor.green);
-    var color3 = (mode == 'CMYK') ? Math.round(item.fillColor.yellow) : Math.round(item.fillColor.blue);
-    var color4 = (mode == 'CMYK') ? Math.round(item.fillColor.black) : 0;
-
-    var margin = 2;
-    var text = app.activeDocument.activeLayer.textFrames.pointText([item.left, item.top + margin]);
-    var attributes = text.textRange.characterAttributes;
-    attributes.size = 8;
-    if (text.width > size) attributes.horizontalScale = 70;
-
-    if (mode == 'CMYK') {
-        if (color1 > 0) text.contents += 'C' + color1 + ' ';
-        if (color2 > 0) text.contents += 'M' + color2 + ' ';
-        if (color3 > 0) text.contents += 'Y' + color3 + ' ';
-        if (color4 > 0) text.contents += 'K' + color4 + ' ';
-    }
-    else {
-        if (color1 > 0) text.contents += 'R' + color1 + ' ';
-        if (color2 > 0) text.contents += 'G' + color2 + ' ';
-        if (color3 > 0) text.contents += 'B' + color3 + ' ';
-    }
-}
-
-
-function getCenterPosition(width, height) {
-    var rect = app.activeDocument.artboards[0].artboardRect;
-    var artboard = { x1: 0, y1: 0, x2: 0, y2: 0, width: 0, height: 0, center: { x: 0, y: 0 } };
-    artboard.x1 = rect[0];
-    artboard.y1 = rect[1];
-    artboard.x2 = rect[2];
-    artboard.y2 = rect[3];
-    artboard.width = artboard.x2 - artboard.x1;
-    artboard.height = artboard.y1 - artboard.y2;
-    artboard.center.x = artboard.x1 + artboard.width / 2;
-    artboard.center.y = artboard.y1 - artboard.height / 2;
-
-    return {
-        top: artboard.center.y + Math.abs(height / 2),
-        left: artboard.center.x - Math.abs(width / 2),
-        width: width,
-        height: height
-    };
-}
-
-
-function getTargetItemColor(items) {
-    var value1 = 0, value2 = 0, value3 = 0, value4 = 0;
-    if (items.length > 0) {
-        try {
-            var color;
-            if (items[0].typename == 'PathItem') {
-                if (items[0].filled) {
-                    color = items[0].fillColor;
-                }
-                else if (items[0].stroked) {
-                    color = items[0].strokeColor;
-                }
-            }
-            else if (items[0].typename == 'TextFrame') {
-                var attributes = items[0].textRange.characterAttributes;
-                if (attributes.fillColor.typename != 'NoColor') {
-                    color = attributes.fillColor;
-                }
-                else if (attributes.strokeColor.typename != 'NoColor') {
-                    color = attributes.strokeColor;
-                }
-            }
-
-            switch (app.activeDocument.documentColorSpace) {
-                case DocumentColorSpace.CMYK:
-                    value1 = Math.round(color.cyan);
-                    value2 = Math.round(color.magenta);
-                    value3 = Math.round(color.yellow);
-                    value4 = Math.round(color.black);
-                    break;
-                case DocumentColorSpace.RGB:
-                    value1 = Math.round(color.red);
-                    value2 = Math.round(color.green);
-                    value3 = Math.round(color.blue);
-                    break;
-            }
-        }
-        catch (err) { }
-    }
-    return { color1: value1, color2: value2, color3: value3, color4: value4 };
-}
-
-
-function setCMYK(c, m, y, k) {
-    var cyan = c;
-    var magenta = m;
-    var yellow = y;
-    var black = k;
-
-    if (cyan > 100) {
-        cyan = 100;
-    }
-    else if (cyan < 0) {
-        cyan = 0;
-    }
-
-    if (magenta > 100) {
-        magenta = 100;
-    }
-    else if (magenta < 0) {
-        magenta = 0;
-    }
-
-    if (yellow > 100) {
-        yellow = 100;
-    }
-    else if (yellow < 0) {
-        yellow = 0;
-    }
-
-    if (black > 100) {
-        black = 100;
-    }
-    else if (black < 0) {
-        black = 0;
-    }
-
-    var color = new CMYKColor();
-    color.cyan = cyan;
-    color.magenta = magenta;
-    color.yellow = yellow;
-    color.black = black;
-    return color;
-}
-
-
-function setRGB(r, g, b) {
-    var red = r;
-    var green = g;
-    var blue = b;
-
-    if (red > 255) {
-        red = 255;
-    }
-    else if (red < 0) {
-        red = 0;
-    }
-
-    if (green > 255) {
-        green = 255;
-    }
-    else if (green < 0) {
-        green = 0;
-    }
-
-    if (blue > 255) {
-        blue = 255;
-    }
-    else if (blue < 0) {
-        blue = 0;
-    }
-
-    var color = new RGBColor();
-    color.red = red;
-    color.green = green;
-    color.blue = blue;
-    return color;
-}
-
-
-function createNewDocument(mode, unit, width, height) {
-    var preset = new DocumentPreset();
-    preset.title = 'Color Chart';
-    preset.width = width;
-    preset.height = height;
-    preset.units = getRulerUnits(unit);
-    preset.colorMode = (mode == 'CMYK') ? DocumentColorSpace.CMYK : DocumentColorSpace.RGB;
-    return app.documents.addDocument('Color Chart', preset);
-}
-
-
-function getRulerUnits(unit) {
-    switch (unit) {
-        case 'mm':
-            return RulerUnits.Millimeters;
-        case 'cm':
-            return RulerUnits.Centimeters;
-        case 'inch':
-            return RulerUnits.Inches;
-        case 'pt':
-            return RulerUnits.Points;
-        case 'px':
-            return RulerUnits.Pixels;
-        default:
-            return RulerUnits.Millimeters;
-    }
 }
 
 
@@ -553,127 +546,72 @@ function getInitialValues(unit) {
 }
 
 
-function getUnit(value, unit) {
-    try {
-        return Number(UnitValue(value).as(unit));
-    }
-    catch (err) {
-        return Number(UnitValue('1pt').as('pt'));
-    }
-}
-
-
-function validTest(config) {
+function verify(config) {
     var message;
-    var color = config.color.color1 + config.color.color2 + config.color.color3 + config.color.color4;
-
-    if (color < 1) {
+    var color = config.color;
+    var sum = color.color1 + color.color2 + color.color3 + color.color4;
+    if (sum < 1) {
         message = {
-            en_US: 'Enter a color value.',
-            ja_JP: 'カラー数値を入力してください。'
+            en: 'Enter a color value.',
+            ja: 'カラー数値を入力してください。'
         };
     }
 
     if (config.vertical == '') {
         message = {
-            en_US: 'Select a vertical direction.',
-            ja_JP: '上下方向を選択してください。'
+            en: 'Select a vertical direction.',
+            ja: '上下方向を選択してください。'
         };
     }
 
     if (config.horizontal == '') {
         message = {
-            en_US: 'Select a horizontal direction.',
-            ja_JP: '左右方向を選択してください。'
+            en: 'Select a horizontal direction.',
+            ja: '左右方向を選択してください。'
         };
     }
 
     if (config.step.x < 1 && config.step.y < 1) {
         message = {
-            en_US: 'Enter a step value.',
-            ja_JP: '階調を入力してください。'
+            en: 'Enter a step value.',
+            ja: '階調を入力してください。'
         };
     }
 
     if (config.artboard.width < 1 && config.artboard.height < 1) {
         message = {
-            en_US: 'Enter a artboard size.',
-            ja_JP: 'アートボードサイズを入力してください。'
+            en: 'Enter a artboard size.',
+            ja: 'アートボードサイズを入力してください。'
         };
     }
 
     if (config.chip.width < 1 && config.chip.height < 1) {
         message = {
-            en_US: 'Enter a chip size.',
-            ja_JP: 'チップサイズを入力してください。'
+            en: 'Enter a color chip size.',
+            ja: 'カラーチップサイズを入力してください。'
         };
     }
 
-    if (message) {
-        alert(message[app.locale] || message.en_US);
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-
-function localize() {
-    var language = {
-        en_US: {
-            title: 'Color Chart',
-            mode: 'Mode',
-            color: 'Target Color',
-            orientation: 'Orientation',
-            vertical: 'Vertical :',
-            horizontal: 'Horizontal :',
-            tip: {
-                vertical: 'Select a color to increase or decrease \rin the vertical direction.',
-                horizontal: 'Select a color to increase or decrease \rin the horizontal direction.'
-            },
-            step: 'Steps :',
-            option: 'Options',
-            artboard: 'Artboard :',
-            chip: 'Chip :',
-            unit: 'Unit :',
-            cancel: 'Cancel',
-            ok: 'OK'
-        },
-        ja_JP: {
-            title: 'カラーチャート',
-            mode: 'カラーモード',
-            color: '基準カラー',
-            orientation: '方向',
-            vertical: '垂直方向 :',
-            horizontal: '水平方向 :',
-            tip: {
-                vertical: '垂直方向に増減させる色を\r選択してください。',
-                horizontal: '水平方向に増減させる色を\r選択してください。'
-            },
-            step: '増減 :',
-            option: 'オプション',
-            artboard: 'アートボード :',
-            chip: 'チップ :',
-            unit: '単位 :',
-            cancel: 'キャンセル',
-            ok: 'OK'
-        }
-    };
-
-    return language[app.locale] || language.en_US;
+    $.localize = true;
+    if (!message) return true;
+    alert(message);
+    return false;
 }
 
 
 function showDialog(item) {
-    var local = localize();
-    var initial = getInitialValues(app.activeDocument.rulerUnits);
+    $.localize = true;
+    var ui = localizeUI();
 
-    var mode = app.activeDocument.documentColorSpace;
+    var docs = app.documents;
+    var ruler = (docs.length > 0) ? app.activeDocument.rulerUnits : RulerUnits.Millimeters;
+    var initial = getInitialValues(ruler);
+
+    var mode = (docs.length > 0) ? app.activeDocument.documentColorSpace : DocumentColorSpace.CMYK;
     var maxvalue = (mode == DocumentColorSpace.CMYK) ? 100 : 255;
 
     var dialog = new Window('dialog');
-    dialog.text = local.title;
+    dialog.text = ui.title;
     dialog.orientation = 'column';
     dialog.alignChildren = ['left', 'top'];
     dialog.spacing = 10;
@@ -686,7 +624,7 @@ function showDialog(item) {
     group1.margins = 0;
 
     var panel1 = group1.add('panel', undefined, undefined, { name: 'panel1' });
-    panel1.text = local.mode;
+    panel1.text = ui.mode;
     panel1.preferredSize.width = 340;
     panel1.orientation = 'column';
     panel1.alignChildren = ['left', 'top'];
@@ -714,7 +652,7 @@ function showDialog(item) {
     group3.margins = 0;
 
     var panel2 = group3.add('panel', undefined, undefined, { name: 'panel2' });
-    panel2.text = local.color;
+    panel2.text = ui.color;
     panel2.preferredSize.width = 340;
     panel2.orientation = 'column';
     panel2.alignChildren = ['right', 'top'];
@@ -856,7 +794,7 @@ function showDialog(item) {
     group12.margins = 0;
 
     var panel3 = group12.add('panel', undefined, undefined, { name: 'panel3' });
-    panel3.text = local.orientation;
+    panel3.text = ui.orientation;
     panel3.preferredSize.width = 340;
     panel3.orientation = 'row';
     panel3.alignChildren = ['left', 'fill'];
@@ -873,11 +811,11 @@ function showDialog(item) {
     group14.orientation = 'row';
     group14.alignChildren = ['left', 'center'];
     group14.spacing = 10;
-    group14.margins = [0, 8, 0, 0];
+    group14.margins = [0, 3, 0, 0];
 
     var statictext9 = group14.add('statictext', undefined, undefined, { name: 'statictext9' });
-    statictext9.text = local.vertical;
-    statictext9.helpTip = local.tip.vertical;
+    statictext9.text = ui.vertical;
+    statictext9.helpTip = ui.tip.vertical;
 
     var group15 = group13.add('group', undefined, { name: 'group15' });
     group15.orientation = 'row';
@@ -886,17 +824,17 @@ function showDialog(item) {
     group15.margins = [0, 7, 0, 0];
 
     var statictext10 = group15.add('statictext', undefined, undefined, { name: 'statictext10' });
-    statictext10.text = local.horizontal;
-    statictext10.helpTip = local.tip.horizontal;
+    statictext10.text = ui.horizontal;
+    statictext10.helpTip = ui.tip.horizontal;
 
     var group16 = group13.add('group', undefined, { name: 'group16' });
     group16.orientation = 'row';
     group16.alignChildren = ['left', 'center'];
     group16.spacing = 10;
-    group16.margins = [0, 7, 0, 0];
+    group16.margins = [0, 6, 0, 0];
 
     var statictext11 = group16.add('statictext', undefined, undefined, { name: 'statictext11' });
-    statictext11.text = local.step;
+    statictext11.text = ui.step;
 
     var group17 = panel3.add('group', undefined, { name: 'group17' });
     group17.orientation = 'column';
@@ -962,133 +900,142 @@ function showDialog(item) {
     var statictext12 = group20.add('statictext', undefined, undefined, { name: 'statictext12' });
     statictext12.text = '%';
 
-    var group21 = dialog.add('group', undefined, { name: 'group21' });
+    var group21 = group20.add('group', undefined, { name: 'group21' });
     group21.orientation = 'row';
     group21.alignChildren = ['left', 'center'];
     group21.spacing = 10;
-    group21.margins = 0;
+    group21.margins = [0, 3, 0, 0];
 
-    var panel4 = group21.add('panel', undefined, undefined, { name: 'panel4' });
-    panel4.text = local.option;
+    var radiobutton11 = group21.add('radiobutton', undefined, undefined, { name: 'radiobutton11' });
+    radiobutton11.text = ui.addition;
+    radiobutton11.value = true;
+
+    var radiobutton12 = group21.add('radiobutton', undefined, undefined, { name: 'radiobutton12' });
+    radiobutton12.text = ui.intensity;
+
+    var group22 = dialog.add('group', undefined, { name: 'group22' });
+    group22.orientation = 'row';
+    group22.alignChildren = ['left', 'center'];
+    group22.spacing = 10;
+    group22.margins = 0;
+
+    var panel4 = group22.add('panel', undefined, undefined, { name: 'panel4' });
+    panel4.text = ui.option;
     panel4.preferredSize.width = 340;
     panel4.orientation = 'row';
     panel4.alignChildren = ['left', 'fill'];
     panel4.spacing = 10;
     panel4.margins = 10;
 
-    var group22 = panel4.add('group', undefined, { name: 'group22' });
-    group22.orientation = 'column';
-    group22.alignChildren = ['right', 'center'];
-    group22.spacing = 10;
-    group22.margins = 0;
-
-    var group23 = group22.add('group', undefined, { name: 'group23' });
-    group23.orientation = 'row';
-    group23.alignChildren = ['left', 'center'];
+    var group23 = panel4.add('group', undefined, { name: 'group23' });
+    group23.orientation = 'column';
+    group23.alignChildren = ['right', 'center'];
     group23.spacing = 10;
-    group23.margins = [0, 9, 0, 0];
+    group23.margins = 0;
 
-    var statictext13 = group23.add('statictext', undefined, undefined, { name: 'statictext13' });
-    statictext13.text = local.artboard;
-
-    var group24 = group22.add('group', undefined, { name: 'group24' });
+    var group24 = group23.add('group', undefined, { name: 'group24' });
     group24.orientation = 'row';
     group24.alignChildren = ['left', 'center'];
     group24.spacing = 10;
     group24.margins = [0, 6, 0, 0];
 
-    var statictext14 = group24.add('statictext', undefined, undefined, { name: 'statictext14' });
-    statictext14.text = local.chip;
+    var statictext13 = group24.add('statictext', undefined, undefined, { name: 'statictext13' });
+    statictext13.text = ui.artboard;
 
-    var group25 = group22.add('group', undefined, { name: 'group25' });
+    var group25 = group23.add('group', undefined, { name: 'group25' });
     group25.orientation = 'row';
     group25.alignChildren = ['left', 'center'];
     group25.spacing = 10;
-    group25.margins = [0, 10, 0, 0];
+    group25.margins = [0, 5, 0, 0];
 
-    var statictext15 = group25.add('statictext', undefined, undefined, { name: 'statictext15' });
-    statictext15.text = local.unit;
+    var statictext14 = group25.add('statictext', undefined, undefined, { name: 'statictext14' });
+    statictext14.text = ui.chip;
 
-    var group26 = panel4.add('group', undefined, { name: 'group26' });
-    group26.orientation = 'column';
+    var group26 = group23.add('group', undefined, { name: 'group26' });
+    group26.orientation = 'row';
     group26.alignChildren = ['left', 'center'];
     group26.spacing = 10;
-    group26.margins = [0, 10, 0, 0];
+    group26.margins = [0, 5, 0, 0];
 
-    var group27 = group26.add('group', undefined, { name: 'group27' });
-    group27.orientation = 'row';
+    var statictext15 = group26.add('statictext', undefined, undefined, { name: 'statictext15' });
+    statictext15.text = ui.unit;
+
+    var group27 = panel4.add('group', undefined, { name: 'group27' });
+    group27.orientation = 'column';
     group27.alignChildren = ['left', 'center'];
     group27.spacing = 10;
-    group27.margins = 0;
+    group27.margins = [0, 10, 0, 0];
 
-    var statictext16 = group27.add('statictext', undefined, undefined, { name: 'statictext16' });
-    statictext16.text = 'W :';
-
-    var edittext6 = group27.add('edittext', undefined, undefined, { name: 'edittext6' });
-    edittext6.text = initial.artboard.width;
-    edittext6.preferredSize.width = 60;
-    edittext6.preferredSize.height = 20;
-
-    var statictext17 = group27.add('statictext', undefined, undefined, { name: 'statictext17' });
-    statictext17.text = 'H :';
-
-    var edittext7 = group27.add('edittext', undefined, undefined, { name: 'edittext7' });
-    edittext7.text = initial.artboard.height;
-    edittext7.preferredSize.width = 60;
-    edittext7.preferredSize.height = 20;
-
-    var group28 = group26.add('group', undefined, { name: 'group28' });
+    var group28 = group27.add('group', undefined, { name: 'group28' });
     group28.orientation = 'row';
     group28.alignChildren = ['left', 'center'];
     group28.spacing = 10;
     group28.margins = 0;
 
-    var statictext18 = group28.add('statictext', undefined, undefined, { name: 'statictext18' });
-    statictext18.text = 'W :';
+    var statictext16 = group28.add('statictext', undefined, undefined, { name: 'statictext16' });
+    statictext16.text = 'W :';
 
-    var edittext8 = group28.add('edittext', undefined, undefined, { name: 'edittext8' });
-    edittext8.text = initial.chip.width;
-    edittext8.preferredSize.width = 60;
-    edittext8.preferredSize.height = 20;
+    var edittext6 = group28.add('edittext', undefined, undefined, { name: 'edittext6' });
+    edittext6.text = initial.artboard.width;
+    edittext6.preferredSize.width = 60;
+    edittext6.preferredSize.height = 20;
 
-    var statictext19 = group28.add('statictext', undefined, undefined, { name: 'statictext19' });
-    statictext19.text = 'H :';
+    var statictext17 = group28.add('statictext', undefined, undefined, { name: 'statictext17' });
+    statictext17.text = 'H :';
 
-    var edittext9 = group28.add('edittext', undefined, undefined, { name: 'edittext9' });
-    edittext9.text = initial.chip.height;
-    edittext9.preferredSize.width = 60;
-    edittext9.preferredSize.height = 20;
+    var edittext7 = group28.add('edittext', undefined, undefined, { name: 'edittext7' });
+    edittext7.text = initial.artboard.height;
+    edittext7.preferredSize.width = 60;
+    edittext7.preferredSize.height = 20;
 
-    var group29 = group26.add('group', undefined, { name: 'group29' });
+    var group29 = group27.add('group', undefined, { name: 'group29' });
     group29.orientation = 'row';
     group29.alignChildren = ['left', 'center'];
     group29.spacing = 10;
     group29.margins = 0;
 
+    var statictext18 = group29.add('statictext', undefined, undefined, { name: 'statictext18' });
+    statictext18.text = 'W :';
+
+    var edittext8 = group29.add('edittext', undefined, undefined, { name: 'edittext8' });
+    edittext8.text = initial.chip.width;
+    edittext8.preferredSize.width = 60;
+    edittext8.preferredSize.height = 20;
+
+    var statictext19 = group29.add('statictext', undefined, undefined, { name: 'statictext19' });
+    statictext19.text = 'H :';
+
+    var edittext9 = group29.add('edittext', undefined, undefined, { name: 'edittext9' });
+    edittext9.text = initial.chip.height;
+    edittext9.preferredSize.width = 60;
+    edittext9.preferredSize.height = 20;
+
+    var group30 = group27.add('group', undefined, { name: 'group30' });
+    group30.orientation = 'row';
+    group30.alignChildren = ['left', 'center'];
+    group30.spacing = 10;
+    group30.margins = 0;
+
     var units = ['mm', 'cm', 'inch', 'pt', 'px'];
-    var dropdown1 = group29.add('dropdownlist', undefined, undefined, { name: 'dropdown1', items: units });
+    var dropdown1 = group30.add('dropdownlist', undefined, undefined, { name: 'dropdown1', items: units });
     dropdown1.selection = initial.unit;
     dropdown1.preferredSize.width = 60;
     dropdown1.preferredSize.height = 20;
 
-    var group30 = dialog.add('group', undefined, { name: 'group30' });
-    group30.preferredSize.width = 340;
-    group30.orientation = 'row';
-    group30.alignChildren = ['right', 'center'];
-    group30.spacing = 10;
-    group30.margins = 0;
+    var group31 = dialog.add('group', undefined, { name: 'group31' });
+    group31.preferredSize.width = 340;
+    group31.orientation = 'row';
+    group31.alignChildren = ['right', 'center'];
+    group31.spacing = 10;
+    group31.margins = 0;
 
-    var button1 = group30.add('button', undefined, undefined, { name: 'button1' });
-    button1.text = local.cancel;
+    var button1 = group31.add('button', undefined, undefined, { name: 'button1' });
+    button1.text = ui.cancel;
     button1.preferredSize.width = 90;
-    button1.preferredSize.height = 30;
 
-    var button2 = group30.add('button', undefined, undefined, { name: 'button2' });
-    button2.text = local.ok;
+    var button2 = group31.add('button', undefined, undefined, { name: 'button2' });
+    button2.text = ui.ok;
     button2.preferredSize.width = 90;
-    button2.preferredSize.height = 30;
-
-
 
     switch (mode) {
         case DocumentColorSpace.CMYK:
@@ -1121,8 +1068,6 @@ function showDialog(item) {
             radiobutton10.visible = false;
             break;
     }
-
-
 
     radiobutton1.onClick = function() {
         statictext1.text = 'C';
@@ -1176,7 +1121,6 @@ function showDialog(item) {
         dropdown1.selection = initial.unit;
     }
 
-
     statictext1.addEventListener('click', function() {
         edittext1.active = false;
         edittext1.active = true;
@@ -1222,7 +1166,6 @@ function showDialog(item) {
         edittext9.active = true;
     });
 
-
     edittext1.onChange = function() {
         slider1.value = Number(edittext1.text);
     }
@@ -1238,7 +1181,6 @@ function showDialog(item) {
     edittext4.onChange = function() {
         slider4.value = Number(edittext4.text);
     }
-
 
     slider1.onChanging = function() {
         edittext1.text = Math.round(slider1.value);
@@ -1256,11 +1198,9 @@ function showDialog(item) {
         edittext4.text = Math.round(slider4.value);
     }
 
-
     button1.onClick = function() {
         dialog.close();
     }
-
 
     dialog.cmyk = radiobutton1;
     dialog.rgb = radiobutton2;
@@ -1283,6 +1223,8 @@ function showDialog(item) {
     };
 
     dialog.step = edittext5;
+    dialog.addition = radiobutton11;
+    dialog.intensity = radiobutton12;
 
     dialog.artboard = {
         width: edittext6,
@@ -1296,4 +1238,80 @@ function showDialog(item) {
     dialog.ok = button2;
 
     return dialog;
+}
+
+
+function localizeUI() {
+    return {
+        title: {
+            en: 'Color Chart',
+            ja: 'カラーチャート'
+        },
+        mode: {
+            en: 'Mode',
+            ja: 'カラーモード'
+        },
+        color: {
+            en: 'Target Color',
+            ja: '基準カラー'
+        },
+        orientation: {
+            en: 'Orientation',
+            ja: '方向'
+        },
+        vertical: {
+            en: 'Vertical :',
+            ja: '垂直方向 :'
+        },
+        horizontal: {
+            en: 'Horizontal :',
+            ja: '水平方向 :'
+        },
+        tip: {
+            vertical: {
+                en: 'Select a color to increase or decrease \rin the vertical direction.',
+                ja: '垂直方向に増減させる色を\r選択してください。'
+            },
+            horizontal: {
+                en: 'Select a color to increase or decrease \rin the horizontal direction.',
+                ja: '水平方向に増減させる色を\r選択してください。'
+            }
+        },
+        step: {
+            en: 'Steps :',
+            ja: '増減 :'
+        },
+        addition: {
+            en: 'Addition',
+            ja: '加算'
+        },
+        intensity: {
+            en: 'Intensity',
+            ja: '濃度'
+        },
+        option: {
+            en: 'Options',
+            ja: 'オプション'
+        },
+        artboard: {
+            en: 'Artboard :',
+            ja: 'アートボード :'
+        },
+        chip: {
+            en: 'Color Chip :',
+            ja: 'カラーチップ :'
+        },
+        unit: {
+            en: 'Units :',
+            ja: '単位 :'
+        },
+        cancel: {
+            en: 'Cancel',
+            ja: 'キャンセル'
+        },
+        ok: {
+            en: 'OK',
+            ja: 'OK'
+        }
+    };
 }

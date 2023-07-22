@@ -22,7 +22,7 @@ Adobe Illustratorのスクリプト集です。
 | [addSelectedGradientsToSwatch.js](#addSelectedGradientsToSwatchjs) | 選択したグラデーションをスウォッチに追加 |
 | [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | グローバルカラーに変換 |
 | [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | 特色に変換 |
-| [createColorChart.js](#createColorChartjs) | カラーチャート作成 |
+| [createColorChart.js](#createColorChartjs) `Update` | カラーチャート作成 |
 | [deleteAllSwatches.js](#deleteAllSwatchesjs) | すべてのスウォッチを削除 |
 | [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
@@ -549,17 +549,23 @@ Illustrator CC 2018以降
 
 #### 使用方法
 1. スクリプトを実行します。
-2. カラーモード「CMYK」または「RGB」を選択します。  
-   パスオブジェクトを選択している場合は、塗りの値が初期値として使用されます。
-3. 垂直方向、水平方向で増減させたい色を選択します。
-4. 増減値を入力します。
-5. アートボードサイズ、カラーチップサイズ、単位を設定します。
+2. CMYKまたはRGBを選択します。
+3. 基準とするカラー数値を入力します。  
+   パスまたはテキストオブジェクトを選択している場合は、塗りの値を初期値として使用します。
+4. 垂直方向と水平方向で増減させたい色を選択します。
+5. 増減値を入力します。
+6. 加算または濃度を選択します。
+   - `加算` 増減値をそのまま加算します。
+   - `濃度` 対象の色に対する割合を加算します。編集 > カラーを編集 > 彩度調整 に相当します。  
+   <img src="images/ColorChartSettings.png" alt="Color Chart Settings" width="65%">
+7. アートボードサイズ、カラーチップサイズ、単位を設定します。
 
 > **Note**  
+> 特色、グラデーション、パターンには対応していません。  
 > 新規ドキュメントにカラーチャートを作成します。
 
 #### 動作条件
-Illustrator CS4以降
+Illustrator CS6以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
