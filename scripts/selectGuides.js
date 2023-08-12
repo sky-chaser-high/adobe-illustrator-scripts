@@ -2,21 +2,21 @@
    selectGuides
 
    Description
-   This script selects guide objects.
+   This script selects all guide objects.
 
    Usage
    Just run this script from File > Scripts > Other Script...
 
    Notes
-   Locked or hidden guides are not selected. The layer also as well.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   Guides in locked or hidden layers are not supported.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS6 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -27,14 +27,30 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    try {
-        app.executeMenuCommand('clearguide');
-        app.executeMenuCommand('undo');
-    }
-    catch (err) { }
+    var shapes = app.activeDocument.pathItems;
+    var count = {
+        before: shapes.length,
+        after: 0
+    };
+
+    app.executeMenuCommand('deselectall');
+    app.executeMenuCommand('clearguide');
+
+    count.after = shapes.length;
+    if (count.before == count.after) return;
+
+    app.executeMenuCommand('undo');
+}
+
+
+function isValidVersion() {
+    var cs6 = 16;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs6) return false;
+    return true;
 }

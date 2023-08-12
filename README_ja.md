@@ -22,7 +22,7 @@ Adobe Illustratorのスクリプト集です。
 | [addSelectedGradientsToSwatch.js](#addSelectedGradientsToSwatchjs) | 選択したグラデーションをスウォッチに追加 |
 | [convertToGlobalColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | グローバルカラーに変換 |
 | [convertToSpotColor.js](#convertToGlobalColorjsconvertToSpotColorjs) | 特色に変換 |
-| [createColorChart.js](#createColorChartjs) `Update` | カラーチャート作成 |
+| [createColorChart.js](#createColorChartjs) | カラーチャート作成 |
 | [deleteAllSwatches.js](#deleteAllSwatchesjs) | すべてのスウォッチを削除 |
 | [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
@@ -70,7 +70,7 @@ Adobe Illustratorのスクリプト集です。
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [addAnchorPoints.js](#addAnchorPointsjs) `New` | アンカーポイントを等間隔に追加 |
+| [addAnchorPoints.js](#addAnchorPointsjs) | アンカーポイントを等間隔に追加 |
 | [alignInCenterOfSpace(Horizontal).js](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) | 余白の水平方向中央に整列 |
 | [alignInCenterOfSpace(Vertical).js](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) | 余白の垂直方向中央に整列 |
 | [closePath.js](#closePathjs) | パスを閉じる |
@@ -89,8 +89,9 @@ Adobe Illustratorのスクリプト集です。
 | [fitGuideInArtboard.js](#fitGuideInArtboardjs) | ガイドをアートボードにフィット |
 | [increaseSelectedAnchorPointsCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を時計回りに増やす |
 | [increaseSelectedAnchorPointsCCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を反時計回りに増やす |
-| [removeColorInGuideObject.js](#removeColorInGuideObjectjs) | ガイドオブジェクトの色を削除 |
-| [selectGuides.js](#selectGuidesjs) | ガイドを選択 |
+| [moveGuides.js](#moveGuidesjs) `New` | ガイドを移動 |
+| [removeColorInGuideObject.js](#removeColorInGuideObjectjs) `Update` | ガイドオブジェクトの色を削除 |
+| [selectGuides.js](#selectGuidesjs) `Update` | ガイドを選択 |
 | [shiftSelectedAnchorPointsCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) | 選択中のアンカーポイントを時計回りに移動 |
 | [shiftSelectedAnchorPointsCCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) | 選択中のアンカーポイントを反時計回りに移動 |
 | [showDimensions.js](#showDimensionsjs) | パスの寸法を表示 |
@@ -178,6 +179,11 @@ ZIPファイルを[ダウンロード](https://github.com/sky-chaser-high/adobe-
 UIのあるスクリプトはすべて日本語の表示になります。  
 UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) を使用しました。  
 ツールの詳細は [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas) を参照してください。
+
+
+### 開発環境
+OS: macOS Ventura 13.4  
+テスト: Adobe Illustrator 2020-2023
 <br><br><br>
 
 
@@ -1441,6 +1447,34 @@ Illustrator CS4以降
 
 
 
+# <a name="moveGuidesjs">moveGuides.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+すべてのガイドオブジェクトを指定したレイヤー、最前面、または最背面へ移動します。
+
+![Move Guides](images/moveGuides.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. スクリプトを実行します。  
+   ガイドオブジェクトを選択する必要はありません。
+2. 移動先を選択します。  
+   `レイヤー` 指定したレイヤーへ移動します。存在しない場合は、新規レイヤーを作成します。  
+   `最前面へ` 各レイヤーの最前面へ移動します。  
+   `最背面へ` 各レイヤーの最背面へ移動します。
+
+> **Note**  
+> 非表示やロックされているレイヤー内のガイドは移動しません。
+
+#### 動作条件
+Illustrator CS6以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="moveLineDownjsmoveLineUpjs">moveLineDown.js<br>moveLineUp.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 Visual Studio Code の「行を下へ移動」( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> )、
@@ -1627,8 +1661,6 @@ Illustrator CS4以降
 ガイドオブジェクトを選択する必要はありません。
 
 > **Note**  
-> すべてのレイヤーを表示してロックを解除します。  
-> <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>3</kbd> で非表示のガイドオブジェクトは対象になりません。  
 > アピアランスで塗りや線の色を追加している場合は、削除できない場合があります。
 
 #### 動作条件
@@ -1745,13 +1777,13 @@ Illustrator CS以降
 
 # <a name="selectGuidesjs">selectGuides.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-ガイドオブジェクトを選択します。
+すべてのガイドオブジェクトを選択します。
 
 #### 使用方法
 このスクリプトを実行するだけです。
 
 > **Warning**  
-> ロックまたは非表示状態では選択しません。レイヤーの状態も同様です。
+> 非表示やロックされているレイヤー内のガイドは移動しません。
 
 #### 動作条件
 Illustrator CS6以降

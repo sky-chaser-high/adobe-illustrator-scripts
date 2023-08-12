@@ -6,19 +6,18 @@
 
    Usage
    Just run this script from File > Scripts > Other Script...
+   There is no need to select any guide objects.
 
    Notes
-   Show and unlock all layers.
-   Guide objects hidden with Cmd or Ctrl + 3 are not supported.
-   If you have added fill or stroke colors in the Appearance panel, they may not work well.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   If you have added fill or stroke colors in the Appearance panel, they may not work properly.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS6 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -29,56 +28,105 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
+    var states = getLayerStates();
     showAllLayers();
 
-    // Select > Deselect
+    var shapes = app.activeDocument.pathItems;
+    var count = {
+        before: shapes.length,
+        after: 0
+    };
+
     app.executeMenuCommand('deselectall');
-    // View > Guides > Clear Guides
     app.executeMenuCommand('clearguide');
-    // Edit > Undo
+
+    count.after = shapes.length;
+    if (count.before == count.after) return;
+
     app.executeMenuCommand('undo');
+
     // Object > Expand Appearance
     app.executeMenuCommand('expandStyle');
 
-    var items = getPathItems(app.activeDocument.selection);
-    for (var i = 0; i < items.length; i++) {
-        if (items[i].guides) {
-            items[i].fillColor = new NoColor();
-            items[i].strokeColor = new NoColor();
-        }
-    }
-
-    // Select > Deselect
+    removeColor();
     app.executeMenuCommand('deselectall');
+
+    restoreLayer(states);
 }
 
 
-function getPathItems(selections) {
-    var items = [];
-    for (var i = 0; i < selections.length; i++) {
-        if (selections[i].typename == 'PathItem') {
-            items.push(selections[i]);
+function removeColor() {
+    var items = app.activeDocument.selection;
+    var guides = getPathItems(items);
+    for (var i = 0; i < guides.length; i++) {
+        var guide = guides[i];
+        guide.fillColor = new NoColor();
+        guide.strokeColor = new NoColor();
+    }
+}
+
+
+function getPathItems(items) {
+    var shapes = [];
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item.typename == 'PathItem' && item.guides) {
+            shapes.push(item);
         }
-        else if (selections[i].typename == 'GroupItem') {
-            items = items.concat(getPathItems(selections[i].pageItems));
+        if (item.typename == 'GroupItem') {
+            shapes = shapes.concat(getPathItems(item.pageItems));
         }
-        else if (selections[i].typename == 'CompoundPathItem') {
-            items = items.concat(getPathItems(selections[i].pathItems));
+        if (item.typename == 'CompoundPathItem') {
+            shapes = shapes.concat(getPathItems(item.pathItems));
         }
     }
-    return items;
+    return shapes;
 }
 
 
 function showAllLayers() {
     var layers = app.activeDocument.layers;
     for (var i = 0; i < layers.length; i++) {
-        layers[i].locked = false;
-        layers[i].visible = true;
+        var layer = layers[i];
+        layer.locked = false;
+        layer.visible = true;
     }
+}
+
+
+function getLayerStates() {
+    var states = [];
+    var layers = app.activeDocument.layers;
+    for (var i = 0; i < layers.length; i++) {
+        var layer = layers[i];
+        states.push({
+            locked: layer.locked,
+            visible: layer.visible
+        });
+    }
+    return states;
+}
+
+
+function restoreLayer(states) {
+    var layers = app.activeDocument.layers;
+    for (var i = 0; i < layers.length; i++) {
+        var state = states[i];
+        var layer = layers[i];
+        layer.locked = state.locked;
+        layer.visible = state.visible;
+    }
+}
+
+
+function isValidVersion() {
+    var cs6 = 16;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs6) return false;
+    return true;
 }

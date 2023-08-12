@@ -18,7 +18,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
 - [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
-- [Create Color Chart](#createColorChartjs) `Update`
+- [Create Color Chart](#createColorChartjs)
 - [Delete All Swatches](#deleteAllSwatchesjs)
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
@@ -54,7 +54,7 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [Add Anchor Points](#addAnchorPointsjs) `New`
+- [Add Anchor Points](#addAnchorPointsjs)
 - [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Close Path](#closePathjs)
@@ -73,8 +73,9 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
-- [Remove Color in Guide Object](#removeColorInGuideObjectjs)
-- [Select Guides](#selectGuidesjs)
+- [Move Guides](#moveGuidesjs) `New`
+- [Remove Color in Guide Object](#removeColorInGuideObjectjs) `Update`
+- [Select Guides](#selectGuidesjs) `Update`
 - [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Show Dimensions](#showDimensionsjs)
@@ -143,6 +144,11 @@ The following extensions or software make it easy to run scripts.
 ## UI
 [ScriptUI Dialog Builder (SDB)](https://scriptui.joonas.me/) was used to design the UI.  
 **See also:** [ScriptUI-Dialog-Builder-Joonas](https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas).
+
+
+## Development Environment
+OS: macOS Ventura 13.4  
+Test: Adobe Illustrator 2020-2023
 <br><br><br>
 
 
@@ -1387,6 +1393,32 @@ Illustrator CS4 or higher
 
 
 
+# <a name="moveGuidesjs">moveGuides.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script moves all guide objects to a specified layer, frontmost, and backmost.
+
+![Move Guides](images/moveGuides.png)
+
+### Usage
+1. Run this script. There is no need to select any guide objects.
+2. Select a destination.  
+   `Layer` Move to the specified layer. If it does not exist, create a new layer.  
+   `Bring to Front` Move to the frontmost of each layer.  
+   `Send to Back` Move to the backmost of each layer.
+
+> **Note**  
+> Guides in locked or hidden layers are not supported.
+
+### Requirements
+Illustrator CS6 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="moveLineDownjsmoveLineUpjs">moveLineDown.js<br>moveLineUp.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script is equivalent to Visual Studio Code's Selection menu 
@@ -1565,13 +1597,10 @@ This script removes fill and stroke colors in all guide objects.
 ![Remove Color In Guide Object](images/removeColorInGuideObject.png)
 
 ### Usage
-Just run this script.  
-It is not necessary to select guide objects.
+Just run this script. There is no need to select any guide objects.
 
 > **Note**  
-> Show and unlock all layers.  
-> Guide objects hidden with <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>3</kbd> are not supported.  
-> If you have added fill or stroke colors in the Appearance panel, they may not work well.
+> If you have added fill or stroke colors in the Appearance panel, they may not work properly.
 
 ### Requirements
 Illustrator CS6 or higher
@@ -1688,13 +1717,13 @@ Illustrator CS or higher
 
 # <a name="selectGuidesjs">selectGuides.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script selects guide objects.
+This script selects all guide objects.
 
 ### Usage
 Just run this script.
 
 > **Warning**  
-> Locked or hidden guides are not selected. The layer also as well.
+> Guides in locked or hidden layers are not supported.
 
 ### Requirements
 Illustrator CS6 or higher

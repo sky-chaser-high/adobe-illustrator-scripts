@@ -213,10 +213,26 @@
 <br><br>
 
 
+## removeColorInGuideObject.js
+### 1.0.1 (2023-08-12)
+### Changes
+- Changed to restore the layer state.
+### Bug Fixes
+- Fixed a bug that caused incorrect behavior when no guide objects were in the document.
+<br><br>
+
+
 ## resetToFullScale.js
 ### 1.0.1 (2023-03-26)
 ### Bug Fixes
 - Fixed a bug in the images to shift position.
+<br><br>
+
+
+## selectGuides.js
+### 1.0.1 (2023-08-12)
+### Bug Fixes
+- Fixed a bug that caused incorrect behavior when no guide objects were in the document.
 <br><br>
 
 
