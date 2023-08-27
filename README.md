@@ -50,7 +50,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Relink to Folder](#relinkToFolderjs)
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
-- [Select Link](#selectLinkjs)
+- [Select Link](#selectLinkjs) `Update`
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -73,9 +73,9 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
-- [Move Guides](#moveGuidesjs) `New`
-- [Remove Color in Guide Object](#removeColorInGuideObjectjs) `Update`
-- [Select Guides](#selectGuidesjs) `Update`
+- [Move Guides](#moveGuidesjs)
+- [Remove Color in Guide Object](#removeColorInGuideObjectjs)
+- [Select Guides](#selectGuidesjs)
 - [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Show Dimensions](#showDimensionsjs)
@@ -96,7 +96,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Delete Trailing Spaces](#deleteTrailingSpacesjs)
 - [Delete Word](#deleteWordjs)
 - [Enclose Word in Parentheses](#encloseWordInParenthesesjs)
-- [Go to Line](#goToLinejs)
+- [Go to Line](#goToLinejs) `Update`
 - [Go to Next Text](#goToNextTextjsgoToPreviousTextjs)
 - [Go to Previous Text](#goToNextTextjsgoToPreviousTextjs)
 - [Insert Line Above](#insertLineAbovejsinsertLineBelowjs)
@@ -113,9 +113,9 @@ If you find a script that interests you, please download it from [![Download](ht
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 - [Arrange Windows](#arrangeWindowsjs)
 - [Check Day of Week](#checkDayOfWeekjs)
-- [Close All Documents](#closeAllDocumentsjs)
+- [Close All Documents](#closeAllDocumentsjs) `Update`
 - [Compare Scale](#compareScalejs)
-- [Measure the Distance](#measureDistancejs)
+- [Measure Distance](#measureDistancejs) `Update`
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 <br><br><br>
@@ -149,6 +149,11 @@ The following extensions or software make it easy to run scripts.
 ## Development Environment
 OS: macOS Ventura 13.4  
 Test: Adobe Illustrator 2020-2023
+
+
+## License
+All scripts are licensed under the MIT license.  
+See the included LICENSE file for more details.
 <br><br><br>
 
 
@@ -300,14 +305,13 @@ Illustrator CS4 or higher
 
 # <a name="closeAllDocumentsjs">closeAllDocuments.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-This script closes all documents.  
-If there are documents not saved, choose to save them.
+This script closes all documents.
 
 > **Note**  
 > It has been implemented in the File menu since version 2021.
 
 ### Usage
-Just run this script.
+Just run this script. If there are unsaved documents, choose to save them or not.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -340,7 +344,7 @@ Illustrator CS or higher
 
 # <a name="compareScalejs">compareScale.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-This script compares two objects' scales.
+This script compares the scales of two objects.
 
 ![Compare Scale](images/compareScale.png)
 
@@ -1093,8 +1097,7 @@ Illustrator CS4 or higher
 
 # <a name="goToLinejs">goToLine.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script is equivalent to Visual Studio Code's Go menu 
-"Go to Line/Column..."( <kbd>Ctrl</kbd> + <kbd>G</kbd> ).  
+This script is equivalent to Visual Studio Code's Go menu > "Go to Line/Column..."( <kbd>Ctrl</kbd> + <kbd>G</kbd> ).  
 If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
@@ -1108,7 +1111,7 @@ Both point and area types are supported.
 2. Enter a line number or select a line from the list below that you want to move.
 
 > **Warning**  
-> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.
+> Since using copy and paste functions inside the script, it will be lost if you have copied the content in advance.
 
 > **Note**  
 > Pan that the selected line is centered in the window.  
@@ -1381,7 +1384,8 @@ Select two anchor points with Direct Selection Tool, and run this script.
 > Highlight the measurement points.  
 > The angle is based on point #1. Range: -180.0 to 180.0  
 > The dimension units depend on the ruler units.  
-> Anchor points for type on a path and area types are also supported.
+> Anchor points for type on a path and area types are also supported.  
+> Due to the small font size, labels will not appear when enlarged above 15500%.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1737,20 +1741,19 @@ Illustrator CS6 or higher
 
 # <a name="selectLinkjs">selectLink.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script selects linked files.  
-<img src="images/selectLink.png" alt="Select Link" width="70%">
+This script selects the specified link files.
+
+<img src="images/selectLink.png" alt="Select Link" width="50%">
 
 ### Usage
 1. Run this script.
-2. Enter a file name. It can also be part of the file name.  
+2. Enter a file name. It can also be part of the file name. Or select it from the list below.  
    If the text field is empty, all linked files are selected.
-
-> **Warning**  
-> Locked or hidden linked files are not selected. The layer also as well.  
-> Missing linked files may not be selected.
+   Regular expressions are supported.
 
 > **Note**  
-> Regular expressions are supported.
+> Locked or hidden linked files are not selected. The layer also as well.  
+> Missing linked files may not be selected.
 
 ### Requirements
 Illustrator CS4 or higher

@@ -2,7 +2,7 @@
    goToLine
 
    Description
-   This script is equivalent to Visual Studio Code's Go menu 'Go to Line'. (macOS: Ctrl + G)
+   This script is equivalent to Visual Studio Code's Go menu > 'Go to Line/Column...'. (macOS: Ctrl + G)
    Both point and area types are supported.
 
    Usage
@@ -10,18 +10,18 @@
    2. Enter a line number or select a line from the list below that you want to move.
 
    Notes
-   Pan that the selected line is centered in the window.
    Since copy and paste inside the script to move the cursor position, if you have copied the content in advance, it will be lost.
+   Pan that the selected line is centered in the window.
    If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.
    If you want to enter text, you must click with the mouse.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CC 2018 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -32,43 +32,41 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    try {
-        var text = app.activeDocument.selection;
-        var ranges = text.story.textRanges;
-        var lines = text.story.lines;
+    var text = app.activeDocument.selection;
+    if (!text.typename) return;
 
-        var contents = getContents(lines);
-        var dialog = showDialog(contents);
+    var ranges = text.story.textRanges;
+    var lines = text.story.lines;
 
-        dialog.ok.onClick = function() {
-            var number = getLine(dialog.line.text, lines);
-            if (number) {
-                goToLine(number, lines, ranges);
-                // if (dialog.select.value) selectLine(number, lines, ranges);
-                pan(number, lines);
-            }
-            dialog.close();
+    var contents = getContents(lines);
+    var dialog = showDialog(contents);
+
+    dialog.ok.onClick = function() {
+        var number = getLine(dialog.line.text, lines);
+        if (number) {
+            goToLine(number, lines, ranges);
+            pan(number, lines);
         }
-
-        dialog.center();
-        dialog.show();
+        dialog.close();
     }
-    catch (err) { }
+
+    dialog.show();
 }
 
 
 function goToLine(number, lines, ranges) {
     var row = number - 1;
-    var start = lines[row].start;
+    var line = lines[row];
+    var start = line.start;
 
     // Move the cursor position.
     if (number == 1) {
-        lines[row].insertionPoints[0].characters.add(' ');
+        line.insertionPoints[0].characters.add(' ');
         start = 1;
     }
     ranges[start - 1].select();
@@ -79,8 +77,9 @@ function goToLine(number, lines, ranges) {
 
 function selectLine(number, lines, ranges) {
     var row = number - 1;
-    var start = lines[row].start;
-    var end = lines[row].end;
+    var line = lines[row];
+    var start = line.start;
+    var end = line.end;
     for (var i = start; i < end; i++) {
         ranges[i].select(true);
     }
@@ -89,11 +88,11 @@ function selectLine(number, lines, ranges) {
 
 function getLine(number, lines) {
     var max = lines.length;
-    if (/^[0-9]*$/.test(number)) {
-        return Number(number);
-    }
-    else if (Number(number) > max) {
+    if (max < Number(number)) {
         return max;
+    }
+    else if (/^[0-9]*$/.test(number)) {
+        return Number(number);
     }
     else {
         return 0;
@@ -112,16 +111,17 @@ function getContents(lines) {
 
 function pan(number, lines) {
     var frames = lines.parent.textFrames;
-
     var index = getTextFrameIndex(number, frames);
     var leading = getLeading(number, frames, index);
+    var frame = frames[index];
 
-    var top = frames[index].top;
-    var left = frames[index].left;
-    var width = frames[index].width;
+    var top = frame.top;
+    var left = frame.left;
+    var width = frame.width;
 
-    var orientation = frames[index].orientation;
-    var center = (orientation == TextOrientation.HORIZONTAL) ? [left, top - leading] : [left + (width - leading), top];
+    var HORIZONTAL = TextOrientation.HORIZONTAL;
+    var orientation = frame.orientation;
+    var center = (orientation == HORIZONTAL) ? [left, top - leading] : [left + (width - leading), top];
 
     var view = app.activeDocument.views[0];
     view.centerPoint = center;
@@ -152,11 +152,20 @@ function getTextFrameIndex(number, frames) {
 }
 
 
+function isValidVersion() {
+    var cc2018 = 22;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cc2018) return false;
+    return true;
+}
+
+
 function showDialog(lines) {
-    var local = localize();
+    $.localize = true;
+    var ui = localizeUI();
 
     var dialog = new Window('dialog');
-    dialog.text = local.title;
+    dialog.text = ui.title;
     dialog.orientation = 'column';
     dialog.alignChildren = ['left', 'top'];
     dialog.spacing = 10;
@@ -169,7 +178,7 @@ function showDialog(lines) {
     group1.margins = 0;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = local.description;
+    statictext1.text = ui.description;
 
     var edittext1 = group1.add('edittext', undefined, undefined, { name: 'edittext1' });
     edittext1.text = '';
@@ -180,7 +189,7 @@ function showDialog(lines) {
         name: 'listbox1',
         numberOfColumns: 2,
         showHeaders: false,
-        columnTitles: ['#', local.contents]
+        columnTitles: ['#', ui.contents]
     });
     listbox1.preferredSize.width = 500;
     listbox1.preferredSize.height = 220;
@@ -190,10 +199,6 @@ function showDialog(lines) {
         row.subItems[0].text = lines[i];
     }
 
-    // var checkbox1 = group1.add('checkbox', undefined, undefined, { name: 'checkbox1' });
-    // checkbox1.text = local.select;
-    // checkbox1.value = false;
-
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
     group2.alignChildren = ['right', 'center'];
@@ -202,15 +207,32 @@ function showDialog(lines) {
     group2.alignment = ['fill', 'top'];
 
     var button1 = group2.add('button', undefined, undefined, { name: 'button1' });
-    button1.text = local.cancel;
+    button1.text = ui.cancel;
     button1.preferredSize.width = 90;
-    button1.preferredSize.height = 30;
 
     var button2 = group2.add('button', undefined, undefined, { name: 'button2' });
-    button2.text = local.ok;
+    button2.text = ui.ok;
     button2.preferredSize.width = 90;
-    button2.preferredSize.height = 30;
 
+    edittext1.addEventListener('keydown', function(event) {
+        var value = Number(edittext1.text);
+        if (isNaN(value)) value = 0;
+        var keyboard = ScriptUI.environment.keyboardState;
+        var step = keyboard.shiftKey ? 10 : 1;
+        var line;
+        if (event.keyName == 'Up') {
+            line = value + step;
+            if (line > lines.length) line = lines.length;
+            edittext1.text = line;
+            event.preventDefault();
+        }
+        if (event.keyName == 'Down') {
+            line = value - step;
+            if (line < 1) line = 1;
+            edittext1.text = line;
+            event.preventDefault();
+        }
+    });
 
     listbox1.onChange = function() {
         var line = listbox1.selection.index + 1;
@@ -221,33 +243,37 @@ function showDialog(lines) {
         dialog.close();
     }
 
-
     dialog.line = edittext1;
-    // dialog.select = checkbox1;
     dialog.ok = button2;
-
     return dialog;
 }
 
 
-function localize() {
-    var language = {
-        en_US: {
-            title: 'Go to Line...',
-            description: 'Enter a line number or select a line from the list below.',
-            contents: 'Contents',
-            select: 'Select a line.',
-            cancel: 'Cancel',
-            ok: 'OK'
+function localizeUI() {
+    return {
+        title: {
+            en: 'Go to Line',
+            ja: '行に移動'
         },
-        ja_JP: {
-            title: '行に移動...',
-            description: '行番号を入力するか、リストから選択してください。',
-            contents: 'コンテンツ',
-            select: '行を選択',
-            cancel: 'キャンセル',
-            ok: 'OK'
+        description: {
+            en: 'Enter a line number or select a line from the list below.',
+            ja: '行番号を入力するか、リストから選択してください。'
+        },
+        contents: {
+            en: 'Contents',
+            ja: 'コンテンツ'
+        },
+        select: {
+            en: 'Select a line.',
+            ja: '行を選択'
+        },
+        cancel: {
+            en: 'Cancel',
+            ja: 'キャンセル'
+        },
+        ok: {
+            en: 'OK',
+            ja: 'OK'
         }
     };
-    return language[app.locale] || language.en_US;
 }

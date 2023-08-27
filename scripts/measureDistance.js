@@ -12,6 +12,7 @@
    The angle is based on point #1. Range: -180.0 to 180.0
    The dimension units depend on the ruler units.
    Anchor points for type on a path and area types are also supported.
+   Due to the small font size, labels will not appear when enlarged above 15500%.
    In rare cases, the script may not work if you continue to use it.
    In this case, restart Illustrator and try again.
 
@@ -19,7 +20,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -30,7 +31,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -45,8 +46,9 @@ function main() {
     var curve = hasCurve(points);
     var result = measure(points, curve);
 
-    showDimensionLine(points, curve);
-    showDialog(result);
+    var layer = getLayer('__Distance__');
+    showDimensionLine(points, curve, layer);
+    showDialog(result, layer);
 }
 
 
@@ -214,16 +216,30 @@ function mult(a, t) {
 }
 
 
-function showDimensionLine(points, curve) {
+function showDimensionLine(points, curve, layer) {
     var mode = app.activeDocument.documentColorSpace;
     var CMYK = DocumentColorSpace.CMYK;
-    var color = (mode == CMYK) ? setCMYKColor(0, 100, 100, 0) : setRGBColor(230, 0, 18);
-    var layer = getLayer('__Distance__');
+    var color = {
+        curve: (mode == CMYK) ? setCMYKColor(0, 100, 100, 0) : setRGBColor(230, 0, 18),
+        line: (mode == CMYK) ? setCMYKColor(0, 100, 100, 0) : setRGBColor(230, 0, 18),
+        circle: (mode == CMYK) ? setCMYKColor(0, 100, 100, 0) : setRGBColor(230, 0, 18),
+        label: {
+            fill: (mode == CMYK) ? setCMYKColor(0, 0, 0, 60) : setRGBColor(127, 127, 127),
+            stroke: (mode == CMYK) ? setCMYKColor(0, 0, 0, 0) : setRGBColor(255, 255, 255),
+            content: (mode == CMYK) ? setCMYKColor(0, 0, 0, 0) : setRGBColor(255, 255, 255)
+        }
+    };
 
-    if (curve) drawCurve(points, layer, color);
-    drawLine(points, layer, color, curve);
-    drawCircle(points[0].anchor, layer, color);
-    drawCircle(points[1].anchor, layer, color);
+    var p1 = points[0].anchor;
+    var p2 = points[1].anchor;
+
+    if (curve) drawCurve(points, layer, color.curve);
+    drawLine(points, layer, color.line, curve);
+    drawCircle(p1, layer, color.circle);
+    drawCircle(p2, layer, color.circle);
+
+    drawLabel('#1', p1, p2, layer, color.label);
+    drawLabel('#2', p2, p1, layer, color.label);
     app.redraw();
 }
 
@@ -283,6 +299,49 @@ function drawCircle(point, layer, color) {
     circle.stroked = false;
     circle.filled = true;
     circle.fillColor = color;
+}
+
+
+function drawLabel(contents, p1, p2, layer, color) {
+    var view = app.activeDocument.views[0];
+    var fontsize = 20 / view.zoom;
+    if (fontsize < 0.1) return;
+
+    var margin = 10 / view.zoom;
+    var padding = 5 / view.zoom;
+
+    var width = 32 / view.zoom;
+    var height = 24 / view.zoom;
+    var radius = 4 / view.zoom;
+    var stroke = 1 / view.zoom;
+
+    var rad = getAngle(p1, p2);
+    var top = (rad >= 0) ? p1.y - margin : p1.y + margin + height;
+    var left = p1.x - (width / 2);
+
+    var rect = layer.pathItems.roundedRectangle(top, left, width, height, radius, radius);
+    rect.fillColor = color.fill;
+    rect.strokeColor = color.stroke;
+    rect.strokeWidth = stroke;
+
+    // work around a bug
+    rect.selected = true;
+    rect.selected = false;
+
+    var position = [p1.x, top - height + padding];
+    var text = layer.textFrames.pointText(position);
+    text.contents = contents;
+
+    var attributes = text.textRange.characterAttributes;
+    attributes.size = fontsize;
+    attributes.fillColor = color.content;
+    try {
+        attributes.textFont = app.textFonts['HelveticaNeue'];
+    }
+    catch (err) { }
+
+    var paragraph = text.textRange.paragraphAttributes;
+    paragraph.justification = Justification.CENTER;
 }
 
 
@@ -451,7 +510,15 @@ function getUnits(ruler) {
 }
 
 
-function showDialog(result) {
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
+}
+
+
+function showDialog(result, layer) {
     $.localize = true;
     var ui = localizeUI();
     var units = getUnits(app.activeDocument.rulerUnits);
@@ -663,20 +730,20 @@ function showDialog(result) {
 
     var button1 = group13.add('button', undefined, undefined, { name: 'button1' });
     button1.text = 'Cancel';
-    button1.preferredSize.width = 85;
+    button1.preferredSize.width = 90;
     button1.hide();
 
     var button2 = group13.add('button', undefined, undefined, { name: 'button2' });
     button2.text = 'OK';
-    button2.preferredSize.width = 85;
+    button2.preferredSize.width = 90;
 
     button1.onClick = function() {
-        app.undo();
+        layer.remove();
         dialog.close();
     }
 
     button2.onClick = function() {
-        app.undo();
+        layer.remove();
         dialog.close();
     }
 
@@ -687,7 +754,7 @@ function showDialog(result) {
 function localizeUI() {
     return {
         title: {
-            en: 'Measure the Distance',
+            en: 'Measure Distance',
             ja: '距離を測る'
         },
         point: {

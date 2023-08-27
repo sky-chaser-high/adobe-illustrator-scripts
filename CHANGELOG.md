@@ -13,10 +13,24 @@
 <br><br>
 
 
-## clothPath.js
+## closeAllDocuments.js
+### 1.1.0 (2023-08-27)
+### Changes
+- Changed the UI to look more like Illustrator.
+<br><br>
+
+
+## closePath.js
 ### 1.1.0 (2023-05-04)
 ### Changes
 - Improved curve processing.
+<br><br>
+
+
+## compareScale.js
+### 1.0.1 (2023-08-27)
+### Changes
+- Changed localization method.
 <br><br>
 
 
@@ -116,6 +130,15 @@
 <br><br>
 
 
+## goToLine.js
+### 1.0.1 (2023-08-27)
+### Features
+- A line number can now be increased or decreased by pressing the up or down cursor keys.
+### Changes
+- Changed localization method.
+<br><br>
+
+
 ## importCSVtoSwatch.js
 ### 1.2.0 (2023-04-08)
 ### Features
@@ -155,6 +178,9 @@
 
 
 ## measureDistance.js
+### 1.2.0 (2023-08-27)
+### Added
+- Labels are now displayed at anchor points.
 ### 1.1.0 (2023-05-14)
 ### Added
 - Handle positions are now displayed for curves.
@@ -233,6 +259,15 @@
 ### 1.0.1 (2023-08-12)
 ### Bug Fixes
 - Fixed a bug that caused incorrect behavior when no guide objects were in the document.
+<br><br>
+
+
+## selectLink.js
+### 1.1.0 (2023-08-27)
+### Added
+- Added a list box to display linked file names.
+### Changes
+- Changed localization method.
 <br><br>
 
 

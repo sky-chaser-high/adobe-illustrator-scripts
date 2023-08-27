@@ -62,7 +62,7 @@ Adobe Illustratorのスクリプト集です。
 | [relinkToFolder.js](#relinkToFolderjs) | フォルダに再リンク |
 | [resetToFullScale.js](#resetToFullScalejs) | 画像サイズを100%に戻す |
 | [selectEmbeddedLink.js](#selectEmbeddedLinkjs) | 埋め込み画像を選択 |
-| [selectLink.js](#selectLinkjs) | リンクを選択 |
+| [selectLink.js](#selectLinkjs) `Update` | リンクを選択 |
 
 <br>
 
@@ -89,9 +89,9 @@ Adobe Illustratorのスクリプト集です。
 | [fitGuideInArtboard.js](#fitGuideInArtboardjs) | ガイドをアートボードにフィット |
 | [increaseSelectedAnchorPointsCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を時計回りに増やす |
 | [increaseSelectedAnchorPointsCCW.js](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs) | 選択中のアンカーポイント数を反時計回りに増やす |
-| [moveGuides.js](#moveGuidesjs) `New` | ガイドを移動 |
-| [removeColorInGuideObject.js](#removeColorInGuideObjectjs) `Update` | ガイドオブジェクトの色を削除 |
-| [selectGuides.js](#selectGuidesjs) `Update` | ガイドを選択 |
+| [moveGuides.js](#moveGuidesjs) | ガイドを移動 |
+| [removeColorInGuideObject.js](#removeColorInGuideObjectjs) | ガイドオブジェクトの色を削除 |
+| [selectGuides.js](#selectGuidesjs) | ガイドを選択 |
 | [shiftSelectedAnchorPointsCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) | 選択中のアンカーポイントを時計回りに移動 |
 | [shiftSelectedAnchorPointsCCW.js](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs) | 選択中のアンカーポイントを反時計回りに移動 |
 | [showDimensions.js](#showDimensionsjs) | パスの寸法を表示 |
@@ -116,7 +116,7 @@ Adobe Illustratorのスクリプト集です。
 | [deleteTrailingSpaces.js](#deleteTrailingSpacesjs) | 行末のスペースを削除 |
 | [deleteWord.js](#deleteWordjs) | カーソル位置の単語を削除 |
 | [encloseWordInParentheses.js](#encloseWordInParenthesesjs) | 文字列を括弧で囲む |
-| [goToLine.js](#goToLinejs) | 指定の行に移動 |
+| [goToLine.js](#goToLinejs) `Update` | 指定の行に移動 |
 | [goToNextText.js](#goToNextTextjsgoToPreviousTextjs) | カーソルを次のテキストオブジェクトへ移動 |
 | [goToPreviousText.js](#goToNextTextjsgoToPreviousTextjs) | カーソルを前のテキストオブジェクトへ移動 |
 | [insertLineAbove.js](#insertLineAbovejsinsertLineBelowjs) | 上に行を挿入 |
@@ -137,9 +137,9 @@ Adobe Illustratorのスクリプト集です。
 | --- | --- |
 | [arrangeWindows.js](#arrangeWindowsjs) | ウィンドウを並べて表示 |
 | [checkDayOfWeek.js](#checkDayOfWeekjs) | 選択した日付の曜日をチェック |
-| [closeAllDocuments.js](#closeAllDocumentsjs) | すべてのファイルを閉じる |
+| [closeAllDocuments.js](#closeAllDocumentsjs) `Update` | すべてのドキュメントを閉じる |
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
-| [measureDistance.js](#measureDistancejs) | 距離を測る |
+| [measureDistance.js](#measureDistancejs) `Update` | 距離を測る |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
 
@@ -184,6 +184,11 @@ UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui
 ### 開発環境
 OS: macOS Ventura 13.4  
 テスト: Adobe Illustrator 2020-2023
+
+
+### ライセンス
+MITライセンスのもとで公開しています。  
+詳しくはLICENSEファイルをご覧ください。
 <br><br><br>
 
 
@@ -337,14 +342,14 @@ Illustrator CS4以降
 
 # <a name="closeAllDocumentsjs">closeAllDocuments.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-すべてのファイルを閉じます。  
-編集中のファイルがある場合は、保存してから閉じるかを選択します。
+すべてのドキュメントを閉じます。
 
 > **Note**  
 > バージョン2021からファイルメニューに実装されています。
 
 #### 使用方法
 このスクリプトを実行するだけです。  
+編集中のドキュメントがある場合は、保存するかしないかを選択します。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1435,7 +1440,8 @@ Illustrator CS4以降
 > 測定箇所をハイライトします。  
 > 角度はポイント#1を基準にします。  
 > 寸法の単位はルーラー単位により変わります。  
-> パス上文字、エリア内文字のアンカーポイントにも対応しています。
+> パス上文字、エリア内文字のアンカーポイントにも対応しています。  
+> フォントサイズが小さくなりすぎるため、15500％以上に拡大表示するとラベルが表示されません。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1797,8 +1803,9 @@ Illustrator CS6以降
 
 # <a name="selectLinkjs">selectLink.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-リンクを選択します。  
-<img src="images/selectLink.png" alt="Select Link" width="70%">
+リンクを選択します。
+
+<img src="images/selectLink.png" alt="Select Link" width="50%">
 
 > **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
@@ -1806,13 +1813,11 @@ Illustrator CS6以降
 1. スクリプトを実行します。
 2. ファイル名を入力します。ファイル名の一部でも可能です。  
    何も入力しない場合は、すべてのリンクを選択します。
-
-> **Warning**  
-> ロックまたは非表示状態では選択しません。レイヤーの状態も同様です。  
-> リンク切れ画像は選択できない場合があります。
+   正規表現に対応しています。
 
 > **Note**  
-> 正規表現に対応しています。
+> ロックまたは非表示状態では選択しません。レイヤーの状態も同様です。  
+> リンク切れ画像は選択できない場合があります。
 
 #### 動作条件
 Illustrator CS4以降
