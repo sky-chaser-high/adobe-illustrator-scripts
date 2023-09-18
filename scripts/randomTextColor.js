@@ -13,18 +13,14 @@
    Notes
    If there are many characters, the conversion will take time.
    Some characters, such as periods and commas, are not applied.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
-
-   UI
-   ScriptUI Dialog Builder (SDB) was used for the UI design tool.
-   https://scriptui.joonas.me/
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS4 or higher
 
    Version
-   1.2.0
+   1.2.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -35,21 +31,18 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    var texts = getTextFrames(app.activeDocument.selection);
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
+    if (!texts.length) return;
     var colors = getOriginalColor(texts);
 
     var dialog = showDialog();
-    var threshold = {
-        color1: dialog.threshold1.value,
-        color2: dialog.threshold2.value,
-        color3: dialog.threshold3.value,
-        color4: dialog.threshold4.value
-    };
+    var threshold = getThreshold(dialog);
     setRandomColorWord(dialog, texts, threshold);
 
     dialog.random.onClick = function() {
@@ -76,33 +69,38 @@ function main() {
         dialog.close();
     }
 
-    dialog.center();
     dialog.show();
 }
 
 
+function handleRandomColor(dialog, texts) {
+    var threshold = getThreshold(dialog);
+    if (dialog.word.value) setRandomColorWord(dialog, texts, threshold);
+    if (dialog.character.value) setRandomColorChar(dialog, texts, threshold);
+    if (dialog.sentence.value) setRandomColorSentence(dialog, texts, threshold);
+}
+
+
+function getThreshold(dialog) {
+    return {
+        color1: Math.round(dialog.threshold1.value),
+        color2: Math.round(dialog.threshold2.value),
+        color3: Math.round(dialog.threshold3.value),
+        color4: Math.round(dialog.threshold4.value)
+    };
+}
+
+
 function setRandomColorWord(dialog, texts, threshold) {
-    var mode = app.activeDocument.documentColorSpace;
     for (var i = 0; i < texts.length; i++) {
         dialog.progressbar.value = 0;
-        for (var j = 0; j < texts[i].words.length; j++) {
-            var word = texts[i].words[j].characterAttributes;
-            switch (mode) {
-                case DocumentColorSpace.CMYK:
-                    var c = Math.round(Math.random() * threshold.color1);
-                    var m = Math.round(Math.random() * threshold.color2);
-                    var y = Math.round(Math.random() * threshold.color3);
-                    var k = Math.round(Math.random() * threshold.color4);
-                    word.fillColor = setCMYK(c, m, y, k);
-                    break;
-                case DocumentColorSpace.RGB:
-                    var r = Math.round(Math.random() * threshold.color1);
-                    var g = Math.round(Math.random() * threshold.color2);
-                    var b = Math.round(Math.random() * threshold.color3);
-                    word.fillColor = setRGB(r, g, b);
-                    break;
-            }
-            dialog.progressbar.value += dialog.progressbar.maxvalue / texts[i].words.length;
+        var text = texts[i];
+        for (var j = 0; j < text.words.length; j++) {
+            var word = text.words[j];
+            var attributes = word.characterAttributes;
+            attributes.fillColor = setColor(threshold);
+
+            dialog.progressbar.value += dialog.progressbar.maxvalue / text.words.length;
             dialog.update();
         }
     }
@@ -111,27 +109,15 @@ function setRandomColorWord(dialog, texts, threshold) {
 
 
 function setRandomColorChar(dialog, texts, threshold) {
-    var mode = app.activeDocument.documentColorSpace;
     for (var i = 0; i < texts.length; i++) {
         dialog.progressbar.value = 0;
-        for (var j = 0; j < texts[i].textRanges.length; j++) {
-            var character = texts[i].textRanges[j].characterAttributes;
-            switch (mode) {
-                case DocumentColorSpace.CMYK:
-                    var c = Math.round(Math.random() * threshold.color1);
-                    var m = Math.round(Math.random() * threshold.color2);
-                    var y = Math.round(Math.random() * threshold.color3);
-                    var k = Math.round(Math.random() * threshold.color4);
-                    character.fillColor = setCMYK(c, m, y, k);
-                    break;
-                case DocumentColorSpace.RGB:
-                    var r = Math.round(Math.random() * threshold.color1);
-                    var g = Math.round(Math.random() * threshold.color2);
-                    var b = Math.round(Math.random() * threshold.color3);
-                    character.fillColor = setRGB(r, g, b);
-                    break;
-            }
-            dialog.progressbar.value += dialog.progressbar.maxvalue / texts[i].textRanges.length;
+        var text = texts[i];
+        for (var j = 0; j < text.textRanges.length; j++) {
+            var range = text.textRanges[j];
+            var attributes = range.characterAttributes;
+            attributes.fillColor = setColor(threshold);
+
+            dialog.progressbar.value += dialog.progressbar.maxvalue / text.textRanges.length;
             dialog.update();
         }
     }
@@ -140,41 +126,27 @@ function setRandomColorChar(dialog, texts, threshold) {
 
 
 function setRandomColorSentence(dialog, texts, threshold) {
-    var mode = app.activeDocument.documentColorSpace;
     for (var i = 0; i < texts.length; i++) {
         dialog.progressbar.value = 0;
 
-        var text = texts[i].contents;
-        var sentences = text.split(/,|\.|:|;|。/g);
+        var text = texts[i];
+        var contents = text.contents;
+        var sentences = contents.split(/,|\.|:|;|。/g);
 
-        var color, counter = 0, chars = 0;
+        var counter = 0, chars = 0;
         for (var j = 0; j < sentences.length; j++) {
-            switch (mode) {
-                case DocumentColorSpace.CMYK:
-                    var c = Math.round(Math.random() * threshold.color1);
-                    var m = Math.round(Math.random() * threshold.color2);
-                    var y = Math.round(Math.random() * threshold.color3);
-                    var k = Math.round(Math.random() * threshold.color4);
-                    color = setCMYK(c, m, y, k);
-                    break;
-                case DocumentColorSpace.RGB:
-                    var r = Math.round(Math.random() * threshold.color1);
-                    var g = Math.round(Math.random() * threshold.color2);
-                    var b = Math.round(Math.random() * threshold.color3);
-                    color = setRGB(r, g, b);
-                    break;
-            }
+            var color = setColor(threshold);
 
             counter = chars;
-
             chars += sentences[j].length;
             if (j < sentences.length - 1) chars++;
 
             for (var k = counter; k < chars; k++) {
-                var character = texts[i].textRanges[k].characterAttributes;
-                character.fillColor = color;
+                var range = text.textRanges[k];
+                var attributes = range.characterAttributes;
+                attributes.fillColor = color;
 
-                dialog.progressbar.value += dialog.progressbar.maxvalue / (texts[i].textRanges.length - 1);
+                dialog.progressbar.value += dialog.progressbar.maxvalue / (text.textRanges.length - 1);
                 dialog.update();
             }
         }
@@ -183,38 +155,31 @@ function setRandomColorSentence(dialog, texts, threshold) {
 }
 
 
-function handleRandomColor(dialog, texts) {
-    var threshold = {
-        color1: Math.round(dialog.threshold1.value),
-        color2: Math.round(dialog.threshold2.value),
-        color3: Math.round(dialog.threshold3.value),
-        color4: Math.round(dialog.threshold4.value)
-    };
-    if (dialog.word.value) setRandomColorWord(dialog, texts, threshold);
-    if (dialog.character.value) setRandomColorChar(dialog, texts, threshold);
-    if (dialog.sentence.value) setRandomColorSentence(dialog, texts, threshold);
-}
-
-
-function getTextFrames(items) {
-    var texts = [];
-    for (var i = 0; i < items.length; i++) {
-        if (items[i].typename == 'TextFrame') {
-            texts.push(items[i]);
-        }
-        else if (items[i].typename == 'GroupItem') {
-            texts = texts.concat(getTextFrames(items[i].pageItems));
-        }
+function setColor(threshold) {
+    var mode = app.activeDocument.documentColorSpace;
+    switch (mode) {
+        case DocumentColorSpace.CMYK:
+            var c = Math.round(Math.random() * threshold.color1);
+            var m = Math.round(Math.random() * threshold.color2);
+            var y = Math.round(Math.random() * threshold.color3);
+            var k = Math.round(Math.random() * threshold.color4);
+            return setCMYK(c, m, y, k);
+        case DocumentColorSpace.RGB:
+            var r = Math.round(Math.random() * threshold.color1);
+            var g = Math.round(Math.random() * threshold.color2);
+            var b = Math.round(Math.random() * threshold.color3);
+            return setRGB(r, g, b);
     }
-    return texts;
 }
 
 
 function revertTextColors(texts, colors) {
     for (var i = 0; i < texts.length; i++) {
-        for (var j = 0; j < texts[i].words.length; j++) {
-            var word = texts[i].words[j].characterAttributes;
-            word.fillColor = colors[i][j];
+        var text = texts[i];
+        for (var j = 0; j < text.words.length; j++) {
+            var word = text.words[j];
+            var attributes = word.characterAttributes;
+            attributes.fillColor = colors[i][j];
         }
     }
 }
@@ -223,10 +188,12 @@ function revertTextColors(texts, colors) {
 function getOriginalColor(texts) {
     var colors = [];
     for (var i = 0; i < texts.length; i++) {
+        var text = texts[i];
         colors[i] = [];
-        for (var j = 0; j < texts[i].words.length; j++) {
-            var word = texts[i].words[j].characterAttributes;
-            colors[i].push(word.fillColor);
+        for (var j = 0; j < text.words.length; j++) {
+            var word = text.words[j];
+            var attributes = word.characterAttributes;
+            colors[i].push(attributes.fillColor);
         }
     }
     return colors;
@@ -252,20 +219,45 @@ function setRGB(r, g, b) {
 }
 
 
+function getTextFrames(items) {
+    var texts = [];
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item.typename == 'TextFrame') {
+            texts.push(item);
+        }
+        if (item.typename == 'GroupItem') {
+            texts = texts.concat(getTextFrames(item.pageItems));
+        }
+    }
+    return texts;
+}
+
+
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
+}
+
+
 function showDialog() {
-    var language = getLanguage();
+    $.localize = true;
+    var ui = localizeUI();
 
     var mode = app.activeDocument.documentColorSpace;
+    var CMYK = DocumentColorSpace.CMYK;
     var label = {
-        name1: (mode == DocumentColorSpace.CMYK) ? 'C' : 'R',
-        name2: (mode == DocumentColorSpace.CMYK) ? 'M' : 'G',
-        name3: (mode == DocumentColorSpace.CMYK) ? 'Y' : 'B',
-        name4: (mode == DocumentColorSpace.CMYK) ? 'K' : ''
+        name1: (mode == CMYK) ? 'C' : 'R',
+        name2: (mode == CMYK) ? 'M' : 'G',
+        name3: (mode == CMYK) ? 'Y' : 'B',
+        name4: (mode == CMYK) ? 'K' : ''
     };
-    var threshold = (mode == DocumentColorSpace.CMYK) ? 100 : 255;
+    var threshold = (mode == CMYK) ? 100 : 255;
 
     var dialog = new Window('dialog');
-    dialog.text = language.title;
+    dialog.text = ui.title;
     dialog.orientation = 'column';
     dialog.alignChildren = ['left', 'top'];
     dialog.spacing = 10;
@@ -303,7 +295,7 @@ function showDialog() {
     group4.margins = 0;
 
     var panel1 = group4.add('panel', undefined, undefined, { name: 'panel1' });
-    panel1.text = language.panel;
+    panel1.text = ui.panel;
     panel1.orientation = 'row';
     panel1.alignChildren = ['left', 'top'];
     panel1.spacing = 10;
@@ -331,7 +323,7 @@ function showDialog() {
     var statictext4 = group5.add('statictext', undefined, undefined, { name: 'color4' });
     statictext4.text = label.name4;
     statictext4.preferredSize.height = 20;
-    statictext4.visible = (mode == DocumentColorSpace.CMYK) ? true : false;
+    statictext4.visible = (mode == CMYK) ? true : false;
 
     var group6 = panel1.add('group', undefined, { name: 'group6' });
     group6.orientation = 'column';
@@ -367,7 +359,7 @@ function showDialog() {
     slider4.value = 0;
     slider4.preferredSize.width = 150;
     slider4.preferredSize.height = 20;
-    slider4.visible = (mode == DocumentColorSpace.CMYK) ? true : false;
+    slider4.visible = (mode == CMYK) ? true : false;
 
     var group7 = panel1.add('group', undefined, { name: 'group7' });
     group7.orientation = 'column';
@@ -395,7 +387,7 @@ function showDialog() {
     statictext8.text = '0';
     statictext8.preferredSize.width = 26;
     statictext8.preferredSize.height = 20;
-    statictext8.visible = (mode == DocumentColorSpace.CMYK) ? true : false;
+    statictext8.visible = (mode == CMYK) ? true : false;
 
     var group8 = group3.add('group', undefined, { name: 'group8' });
     group8.orientation = 'column';
@@ -404,15 +396,15 @@ function showDialog() {
     group8.margins = [0, 8, 0, 0];
 
     var button1 = group8.add('button', undefined, undefined, { name: 'random' });
-    button1.text = language.random;
+    button1.text = ui.random;
     button1.preferredSize.width = 80;
 
     var button2 = group8.add('button', undefined, undefined, { name: 'ok' });
-    button2.text = language.ok;
+    button2.text = ui.ok;
     button2.preferredSize.width = 80;
 
     var button3 = group8.add('button', undefined, undefined, { name: 'cancel' });
-    button3.text = language.cancel;
+    button3.text = ui.cancel;
     button3.preferredSize.width = 80;
 
     var group9 = group2.add('group', undefined, { name: 'group9' });
@@ -422,7 +414,7 @@ function showDialog() {
     group9.margins = 0;
 
     var panel2 = group9.add('panel', undefined, undefined, { name: 'panel2' });
-    panel2.text = language.option;
+    panel2.text = ui.option;
     panel2.preferredSize.width = 231;
     panel2.orientation = 'column';
     panel2.alignChildren = ['left', 'top'];
@@ -430,18 +422,17 @@ function showDialog() {
     panel2.margins = [10, 15, 10, 5];
 
     var radiobutton1 = panel2.add('radiobutton', undefined, undefined, { name: 'word' });
-    radiobutton1.text = language.word;
+    radiobutton1.text = ui.word;
     radiobutton1.preferredSize.height = 20;
     radiobutton1.value = true;
 
     var radiobutton2 = panel2.add('radiobutton', undefined, undefined, { name: 'character' });
-    radiobutton2.text = language.character;
+    radiobutton2.text = ui.character;
     radiobutton2.preferredSize.height = 20;
 
     var radiobutton3 = panel2.add('radiobutton', undefined, undefined, { name: 'sentence' });
-    radiobutton3.text = language.sentence;
+    radiobutton3.text = ui.sentence;
     radiobutton3.preferredSize.height = 20;
-
 
     slider1.onChanging = function() {
         statictext5.text = Math.round(slider1.value);
@@ -463,7 +454,6 @@ function showDialog() {
         dialog.close();
     }
 
-
     dialog.threshold1 = slider1;
     dialog.threshold2 = slider2;
     dialog.threshold3 = slider3;
@@ -479,35 +469,47 @@ function showDialog() {
     dialog.random = button1;
     dialog.ok = button2;
     dialog.cancel = button3;
-
     return dialog;
 }
 
 
-function getLanguage() {
-    var language = {
-        en_US: {
-            title: 'Random Text Color',
-            panel: 'Threshold',
-            option: 'Option',
-            word: 'Word',
-            character: 'Character',
-            sentence: 'Sentence',
-            random: 'Random',
-            cancel: 'Cancel',
-            ok: 'OK'
+function localizeUI() {
+    return {
+        title: {
+            en: 'Random Text Color',
+            ja: 'Random Text Color'
         },
-        ja_JP: {
-            title: 'Random Text Color',
-            panel: 'しきい値',
-            option: 'オプション',
-            word: '単語',
-            character: '文字',
-            sentence: '文',
-            random: 'ランダム',
-            cancel: 'キャンセル',
-            ok: 'OK'
+        panel: {
+            en: 'Threshold',
+            ja: 'しきい値'
+        },
+        option: {
+            en: 'Option',
+            ja: 'オプション'
+        },
+        word: {
+            en: 'Word',
+            ja: '単語'
+        },
+        character: {
+            en: 'Character',
+            ja: '文字'
+        },
+        sentence: {
+            en: 'Sentence',
+            ja: '文'
+        },
+        random: {
+            en: 'Random',
+            ja: 'ランダム'
+        },
+        cancel: {
+            en: 'Cancel',
+            ja: 'キャンセル'
+        },
+        ok: {
+            en: 'OK',
+            ja: 'OK'
         }
     };
-    return language[app.locale] || language.en_US;
 }

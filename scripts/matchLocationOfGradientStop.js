@@ -10,14 +10,14 @@
 
    Notes
    Only gradients in the Swatches panel are supported.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -28,7 +28,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -41,21 +41,23 @@ function main() {
 
     dialog.ok.onClick = function() {
         var source = getSource(swatches, dialog.list);
-        if (source) {
-            var location = getGradientStops(source.color);
-            for (var i = 0; i < swatches.length; i++) {
-                if (swatches[i].name == source.name) continue;
-                setGradientStops(swatches[i].color, location);
-            }
-            dialog.close();
-        }
-        else {
-            showMessage();
-        }
+        if (!source) return showMessage();
+
+        matchLocation(source, swatches);
+        dialog.close();
     }
 
-    dialog.center();
     dialog.show();
+}
+
+
+function matchLocation(src, swatches) {
+    var location = getGradientStops(src.color);
+    for (var i = 0; i < swatches.length; i++) {
+        var swatch = swatches[i];
+        if (swatch.name == src.name) continue;
+        setGradientStops(swatch.color, location);
+    }
 }
 
 
@@ -74,14 +76,12 @@ function getGradientStops(color) {
         midPoints: [],
         rampPoints: []
     };
-
     var gradients = color.gradient.gradientStops;
     for (var i = 0; i < gradients.length; i++) {
         var gradient = gradients[i];
         location.midPoints.push(gradient.midPoint);
         location.rampPoints.push(gradient.rampPoint);
     }
-
     return location;
 }
 
@@ -109,8 +109,8 @@ function getSwatchNames(colors) {
 
 
 function getSource(swatches, list) {
-    var index = list.selection.index;
     try {
+        var index = list.selection.index;
         return swatches[index];
     }
     catch (err) {
@@ -120,24 +120,26 @@ function getSource(swatches, list) {
 
 
 function showMessage() {
-    var error = {
-        en_US: {
-            message: 'Select a source gradient.'
-        },
-        ja_JP: {
-            message: '元となるグラデーションを選択してください。'
-        }
-    };
-    var message = error[app.locale].message || error.en_US.message;
-    alert(message);
+    $.localize = true;
+    var ui = localizeUI();
+    alert(ui.message);
+}
+
+
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
 }
 
 
 function showDialog(swatches) {
-    var local = localize();
+    $.localize = true;
+    var ui = localizeUI();
 
     var dialog = new Window('dialog');
-    dialog.text = local.title;
+    dialog.text = ui.title;
     dialog.orientation = 'column';
     dialog.alignChildren = ['right', 'top'];
     dialog.spacing = 10;
@@ -150,7 +152,7 @@ function showDialog(swatches) {
     group1.margins = 0;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = local.source;
+    statictext1.text = ui.message;
 
     var listbox1 = group1.add('listbox', undefined, undefined, { name: 'listbox1', items: swatches });
     listbox1.preferredSize.width = 380;
@@ -163,14 +165,12 @@ function showDialog(swatches) {
     group2.margins = 0;
 
     var button1 = group2.add('button', undefined, undefined, { name: 'button1' });
-    button1.text = local.cancel;
+    button1.text = ui.cancel;
     button1.preferredSize.width = 90;
-    button1.preferredSize.height = 30;
 
     var button2 = group2.add('button', undefined, undefined, { name: 'button2' });
-    button2.text = local.ok;
+    button2.text = ui.ok;
     button2.preferredSize.width = 90;
-    button2.preferredSize.height = 30;
 
     button1.onClick = function() {
         dialog.close();
@@ -178,25 +178,27 @@ function showDialog(swatches) {
 
     dialog.list = listbox1;
     dialog.ok = button2;
-
     return dialog;
 }
 
 
-function localize() {
-    var language = {
-        en_US: {
-            title: 'matchLocationOfGradientStop',
-            source: 'Select a source gradient.',
-            cancel: 'Cancel',
-            ok: 'OK'
+function localizeUI() {
+    return {
+        title: {
+            en: 'Match Location of Gradient Stop',
+            ja: 'Match Location of Gradient Stop'
         },
-        ja_JP: {
-            title: 'matchLocationOfGradientStop',
-            source: '元となるグラデーションを選択してください。',
-            cancel: 'キャンセル',
-            ok: 'OK'
+        message: {
+            en: 'Select a source gradient.',
+            ja: '元となるグラデーションを選択してください。'
+        },
+        cancel: {
+            en: 'Cancel',
+            ja: 'キャンセル'
+        },
+        ok: {
+            en: 'OK',
+            ja: 'OK'
         }
     };
-    return language[app.locale] || language.en_US;
 }

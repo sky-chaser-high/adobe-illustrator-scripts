@@ -130,10 +130,26 @@
 <br><br>
 
 
+## generateGradientColor.js
+### 1.0.1 (2023-09-18)
+### Changes
+- Changed localization method.
+<br><br>
+
+
 ## goToLine.js
 ### 1.0.1 (2023-08-27)
 ### Features
 - A line number can now be increased or decreased by pressing the up or down cursor keys.
+### Changes
+- Changed localization method.
+<br><br>
+
+
+## highlightWord.js
+### 1.1.0 (2023-09-18)
+### Features
+- Regular expressions are now supported.
 ### Changes
 - Changed localization method.
 <br><br>
@@ -177,6 +193,13 @@
 <br><br>
 
 
+## matchLocationOfGradientStop.js
+### 1.0.1 (2023-09-18)
+### Changes
+- Changed localization method.
+<br><br>
+
+
 ## measureDistance.js
 ### 1.2.0 (2023-08-27)
 ### Added
@@ -204,6 +227,9 @@
 
 
 ## randomTextColor.js
+### 1.2.1 (2023-09-18)
+### Changes
+- Changed localization method.
 ### 1.2.0 (2022-05-19)
 ### Added
 - Added the progress bar to UI.

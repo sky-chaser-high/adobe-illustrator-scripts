@@ -23,7 +23,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
-- [Highlight Word](#highlightWordjs)
+- [Highlight Word](#highlightWordjs) `Update`
 - [Import CSV to Swatch](#importCSVtoSwatchjs)
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
 - [Random Text Color](#randomTextColorjs)
@@ -50,7 +50,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Relink to Folder](#relinkToFolderjs)
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
-- [Select Link](#selectLinkjs) `Update`
+- [Select Link](#selectLinkjs)
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -96,7 +96,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Delete Trailing Spaces](#deleteTrailingSpacesjs)
 - [Delete Word](#deleteWordjs)
 - [Enclose Word in Parentheses](#encloseWordInParenthesesjs)
-- [Go to Line](#goToLinejs) `Update`
+- [Go to Line](#goToLinejs)
 - [Go to Next Text](#goToNextTextjsgoToPreviousTextjs)
 - [Go to Previous Text](#goToNextTextjsgoToPreviousTextjs)
 - [Insert Line Above](#insertLineAbovejsinsertLineBelowjs)
@@ -104,6 +104,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
+- [Split Text](#splitTextjs) `New`
+- [Split Text at Cursor Position](#splitTextAtCursorPositionjs) `New`
 - [Swap Text Contents](#swapTextContentsjs)
 - [Text Align Center](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 - [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
@@ -113,9 +115,9 @@ If you find a script that interests you, please download it from [![Download](ht
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 - [Arrange Windows](#arrangeWindowsjs)
 - [Check Day of Week](#checkDayOfWeekjs)
-- [Close All Documents](#closeAllDocumentsjs) `Update`
+- [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
-- [Measure Distance](#measureDistancejs) `Update`
+- [Measure Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 <br><br><br>
@@ -1167,9 +1169,9 @@ Both CMYK and RGB colors are supported.
 ![Highlight Word](images/highlightWord.png)
 
 ### Usage
-1. Select the text objects, and run this script.
-2. Type the word.
-3. Use the slider to determine the color if necessary.
+1. Select any text objects, and run this script.
+2. Enter a word. Regular expressions are supported.
+3. Use the slider to specify the color if necessary.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1913,6 +1915,55 @@ Just run this script.
 Illustrator CS5 or higher
 
 <div align="right">[ <a href="#artboard">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="splitTextjs">splitText.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script splits a point text by lines, words, or characters.
+
+![Split Text](images/splitText.png)
+
+### Usage
+1. Select any point text objects, and run this script.
+2. Select lines, words, or characters.
+
+> **Note**  
+> Area types are not supported.  
+> If there are many characters, it will take time to split them.  
+> After splitting, the text position may move slightly.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="splitTextAtCursorPositionjs">splitTextAtCursorPosition.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script splits a point text at the cursor position.
+
+![Split Text at Cursor Position](images/splitTextAtCursorPosition.png)
+
+### Usage
+Move the cursor to the position you want to split, and run this script.
+
+> **Note**  
+> Area types are not supported.  
+> In the case of multi-lines, the layout will break.  
+> After splitting, the text position may move slightly.
+
+### Requirements
+Illustrator CS6 or higher
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
 
 

@@ -27,7 +27,7 @@ Adobe Illustratorのスクリプト集です。
 | [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor.js](#generateGradientColorjs) | グラデーションを生成 |
-| [highlightWord.js](#highlightWordjs) | 指定した単語の塗り色を変更 |
+| [highlightWord.js](#highlightWordjs) `Update` | 指定した単語の塗り色を変更 |
 | [importCSVtoSwatch.js](#importCSVtoSwatchjs) | CSVファイルを読み込む |
 | [matchLocationOfGradientStop.js](#matchLocationOfGradientStopjs) | グラデーションのカラー分岐点、中間点の位置を同期 |
 | [randomTextColor.js](#randomTextColorjs) | テキストの塗り色をランダムに変更 |
@@ -62,7 +62,7 @@ Adobe Illustratorのスクリプト集です。
 | [relinkToFolder.js](#relinkToFolderjs) | フォルダに再リンク |
 | [resetToFullScale.js](#resetToFullScalejs) | 画像サイズを100%に戻す |
 | [selectEmbeddedLink.js](#selectEmbeddedLinkjs) | 埋め込み画像を選択 |
-| [selectLink.js](#selectLinkjs) `Update` | リンクを選択 |
+| [selectLink.js](#selectLinkjs) | リンクを選択 |
 
 <br>
 
@@ -116,7 +116,7 @@ Adobe Illustratorのスクリプト集です。
 | [deleteTrailingSpaces.js](#deleteTrailingSpacesjs) | 行末のスペースを削除 |
 | [deleteWord.js](#deleteWordjs) | カーソル位置の単語を削除 |
 | [encloseWordInParentheses.js](#encloseWordInParenthesesjs) | 文字列を括弧で囲む |
-| [goToLine.js](#goToLinejs) `Update` | 指定の行に移動 |
+| [goToLine.js](#goToLinejs) | 指定の行に移動 |
 | [goToNextText.js](#goToNextTextjsgoToPreviousTextjs) | カーソルを次のテキストオブジェクトへ移動 |
 | [goToPreviousText.js](#goToNextTextjsgoToPreviousTextjs) | カーソルを前のテキストオブジェクトへ移動 |
 | [insertLineAbove.js](#insertLineAbovejsinsertLineBelowjs) | 上に行を挿入 |
@@ -124,6 +124,8 @@ Adobe Illustratorのスクリプト集です。
 | [justifyContentSpaceBetween.js](#justifyContentSpaceBetweenjs) | テキスト両端揃え |
 | [moveLineDown.js](#moveLineDownjsmoveLineUpjs) | 行を下へ移動 |
 | [moveLineUp.js](#moveLineDownjsmoveLineUpjs) | 行を上へ移動 |
+| [splitText.js](#splitTextjs) `New` | 文字列を分割 |
+| [splitTextAtCursorPosition.js](#splitTextAtCursorPositionjs) `New` | 文字列をカーソルの位置で分割 |
 | [swapTextContents.js](#swapTextContentsjs) | 文字列を交換 |
 | [textAlign_Center.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに中央揃え |
 | [textAlign_Left.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに左揃え |
@@ -137,9 +139,9 @@ Adobe Illustratorのスクリプト集です。
 | --- | --- |
 | [arrangeWindows.js](#arrangeWindowsjs) | ウィンドウを並べて表示 |
 | [checkDayOfWeek.js](#checkDayOfWeekjs) | 選択した日付の曜日をチェック |
-| [closeAllDocuments.js](#closeAllDocumentsjs) `Update` | すべてのドキュメントを閉じる |
+| [closeAllDocuments.js](#closeAllDocumentsjs) | すべてのドキュメントを閉じる |
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
-| [measureDistance.js](#measureDistancejs) `Update` | 距離を測る |
+| [measureDistance.js](#measureDistancejs) | 距離を測る |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
 
@@ -1221,7 +1223,7 @@ Illustrator CC 2018以降
 
 #### 使用方法
 1. テキストオブジェクトを選択してスクリプトを実行します。
-2. 単語を入力します。
+2. 単語を入力します。正規表現に対応しています。
 3. 必要に応じて色を設定します。
 
 #### 動作条件
@@ -1977,6 +1979,56 @@ Illustrator CS以降
 Illustrator CS5以降
 
 <div align="right">[ <a href="#アートボード">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="splitTextjs">splitText.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+ポイント文字を行、単語、または文字ごとに分割します。
+
+![Split Text](images/splitText.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ポイント文字を選択してスクリプトを実行します。
+2. 行、単語、文字のいずれかを選択します。
+
+> **Note**  
+> エリア内文字には対応していません。  
+> 文字数が多いと分割に時間がかかります。  
+> 分割後、テキストの位置がわずかに移動することがあります。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="splitTextAtCursorPositionjs">splitTextAtCursorPosition.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+ポイント文字をカーソルの位置で分割します。
+
+![Split Text at Cursor Position](images/splitTextAtCursorPosition.png)
+
+#### 使用方法
+分割したい位置にカーソルを合わせてスクリプトを実行します。
+
+> **Note**  
+> エリア内文字には対応していません。  
+> 文字列が複数行の場合はレイアウトが崩れます。  
+> 分割後、テキストの位置がわずかに移動することがあります。
+
+#### 動作条件
+Illustrator CS6以降
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

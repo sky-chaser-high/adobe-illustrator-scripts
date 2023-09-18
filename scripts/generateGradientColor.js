@@ -2,23 +2,23 @@
    generateGradientColor
 
    Description
-   This script generates the gradient color from fill colors or swatches.
+   This script generates a gradient color from fill colors or swatches.
 
    Usage
-   Select the path objects or swatches, run this script from File > Scripts > Other Script...
+   Select two or more path objects or swatches, run this script from File > Scripts > Other Script...
 
    Notes
    Prioritize the path object over swatches.
    To generate gradient color from swatches, deselect the path objects.
    Text object and stroke color are not supported.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -29,7 +29,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -59,7 +59,8 @@ function createGradient(colors) {
     color.type = GradientType.LINEAR;
 
     var mimColorStops = 2;
-    for (var i = 0; i < colors.length - mimColorStops; i++) {
+    var count = colors.length - mimColorStops;
+    for (var i = 0; i < count; i++) {
         color.gradientStops.add();
     }
 
@@ -68,9 +69,10 @@ function createGradient(colors) {
     var location = maxRange / steps;
 
     for (var i = 0; i < colors.length; i++) {
-        color.gradientStops[i].color = colors[i];
+        var gradient = color.gradientStops[i];
+        gradient.color = colors[i];
         if (0 < i && i < steps) {
-            color.gradientStops[i].rampPoint = location * i;
+            gradient.rampPoint = location * i;
         }
     }
 }
@@ -81,9 +83,8 @@ function getColors(items) {
     for (var i = 0; i < items.length; i++) {
         switch (items[i].typename) {
             case 'PathItem':
-                if (items[i].filled) {
-                    colors = colors.concat(getColorObject(items[i].fillColor));
-                }
+                if (!items[i].filled) continue;
+                colors = colors.concat(getColorObject(items[i].fillColor));
                 break;
             case 'CompoundPathItem':
                 colors = colors.concat(getColors([items[i].pathItems[0]]));
@@ -110,11 +111,8 @@ function getSwatches() {
 function getColorObject(item) {
     switch (item.typename) {
         case 'CMYKColor':
-            return [item];
         case 'RGBColor':
-            return [item];
         case 'GrayColor':
-            return [item];
         case 'SpotColor':
             return [item];
         case 'GradientColor':
@@ -129,8 +127,10 @@ function getColorObject(item) {
 
 
 function getColorName() {
+    $.localize = true;
+    var ui = localizeUI();
     var name = 'Gradient';
-    name = prompt(localize().title, name);
+    name = prompt(ui.title, name);
     try {
         app.activeDocument.swatches[name];
         name = getColorName();
@@ -140,14 +140,19 @@ function getColorName() {
 }
 
 
-function localize() {
-    var language = {
-        en_US: {
-            title: 'Enter a gradient color name.'
-        },
-        ja_JP: {
-            title: 'グラデーション名を入力してください。'
+function localizeUI() {
+    return {
+        title: {
+            en: 'Enter a gradient name.',
+            ja: 'グラデーション名を入力してください。'
         }
     };
-    return language[app.locale] || language.en_US;
+}
+
+
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
 }
