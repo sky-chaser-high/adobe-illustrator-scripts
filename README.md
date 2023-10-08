@@ -23,7 +23,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
-- [Highlight Word](#highlightWordjs) `Update`
+- [Highlight Word](#highlightWordjs)
 - [Import CSV to Swatch](#importCSVtoSwatchjs)
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
 - [Random Text Color](#randomTextColorjs)
@@ -104,8 +104,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
-- [Split Text](#splitTextjs) `New`
-- [Split Text at Cursor Position](#splitTextAtCursorPositionjs) `New`
+- [Split Text](#splitTextjs)
+- [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
 - [Swap Text Contents](#swapTextContentsjs)
 - [Text Align Center](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 - [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
@@ -120,6 +120,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Measure Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
+- [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs) `New`
+- [Toggle Show Handles](#toggleShowHandlesjs) `New`
 <br><br><br>
 
 
@@ -2075,6 +2077,44 @@ Select point text objects, and run this script.
 Illustrator CS or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleAlignToGlyphBoundsjs">toggleAlignToGlyphBounds.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+This script toggles the Align panel menu > Align to Glyph Bounds > Point Text and Area Text.
+
+![Toggle Align To Glyph Bounds](images/toggleAlignToGlyphBounds.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator 2020 or higher
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleShowHandlesjs">toggleShowHandles.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+This script toggles the Preferences > Selection & Anchor Display > Anchor Points, Handle, and Bounding Box Display > Show handles when multiple anchors are selected.
+
+![Toggle Show Handles](images/toggleShowHandles.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CC or higher
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
 <br>
 
 

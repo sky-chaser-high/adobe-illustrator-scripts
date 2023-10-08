@@ -27,7 +27,7 @@ Adobe Illustratorのスクリプト集です。
 | [exportColorValuesToCSV.js](#exportColorValuesToCSVjs) | カラー数値をCSVファイルに保存 |
 | [extractColorsFromGradient.js](#extractColorsFromGradientjs) | グラデーションのカラー分岐点から色を取り出す |
 | [generateGradientColor.js](#generateGradientColorjs) | グラデーションを生成 |
-| [highlightWord.js](#highlightWordjs) `Update` | 指定した単語の塗り色を変更 |
+| [highlightWord.js](#highlightWordjs) | 指定した単語の塗り色を変更 |
 | [importCSVtoSwatch.js](#importCSVtoSwatchjs) | CSVファイルを読み込む |
 | [matchLocationOfGradientStop.js](#matchLocationOfGradientStopjs) | グラデーションのカラー分岐点、中間点の位置を同期 |
 | [randomTextColor.js](#randomTextColorjs) | テキストの塗り色をランダムに変更 |
@@ -124,8 +124,8 @@ Adobe Illustratorのスクリプト集です。
 | [justifyContentSpaceBetween.js](#justifyContentSpaceBetweenjs) | テキスト両端揃え |
 | [moveLineDown.js](#moveLineDownjsmoveLineUpjs) | 行を下へ移動 |
 | [moveLineUp.js](#moveLineDownjsmoveLineUpjs) | 行を上へ移動 |
-| [splitText.js](#splitTextjs) `New` | 文字列を分割 |
-| [splitTextAtCursorPosition.js](#splitTextAtCursorPositionjs) `New` | 文字列をカーソルの位置で分割 |
+| [splitText.js](#splitTextjs) | 文字列を分割 |
+| [splitTextAtCursorPosition.js](#splitTextAtCursorPositionjs) | 文字列をカーソルの位置で分割 |
 | [swapTextContents.js](#swapTextContentsjs) | 文字列を交換 |
 | [textAlign_Center.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに中央揃え |
 | [textAlign_Left.js](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs) | 文字列の位置を動かさずに左揃え |
@@ -144,6 +144,8 @@ Adobe Illustratorのスクリプト集です。
 | [measureDistance.js](#measureDistancejs) | 距離を測る |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
 | [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
+| [toggleAlignToGlyphBounds.js](#toggleAlignToGlyphBoundsjs) `New` | 字形の境界に整列を切り替える |
+| [toggleShowHandles.js](#toggleShowHandlesjs) `New` | 選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える |
 
 <br><br>
 
@@ -2144,6 +2146,44 @@ Illustrator CS以降
 Illustrator CS以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleAlignToGlyphBoundsjs">toggleAlignToGlyphBounds.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+整列パネル > 字形の境界に整列 > ポイント文字、エリア内文字の両方を同時にオンオフ切り替えます。
+
+![Toggle Align To Glyph Bounds](images/toggleAlignToGlyphBounds.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator 2020以降
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleShowHandlesjs">toggleShowHandles.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+環境設定 > 選択範囲・アンカー表示 > アンカーポイント、ハンドル、およびバウンディングボックスの表示 > 複数アンカーポイントを選択時にハンドルを表示をオンオフ切り替えます。
+
+![Toggle Show Handles](images/toggleShowHandles.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CC以降
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
