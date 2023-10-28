@@ -20,7 +20,7 @@
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -31,7 +31,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -47,17 +47,22 @@ function main() {
     var ref = getTargetLength(target, orientation);
 
     for (var i = 0; i < texts.length; i++) {
-        var lines = texts[i].lines;
+        var text = texts[i];
+        var lines = text.lines;
         if (lines.length > 1) {
             justifyMultiLine(lines, ref);
             continue;
         }
-        justifySingleLine(texts[i], ref);
+        if (text === target) continue;
+        justifySingleLine(text, ref, target);
     }
 }
 
 
 function justifySingleLine(text, target) {
+    text.textRange.characterAttributes.kerningMethod = AutoKernType.NOAUTOKERN;
+    text.textRange.kerning = 0;
+
     var em = getTrackingValue(text, target);
     text.textRange.characterAttributes.tracking = em;
 
@@ -72,13 +77,24 @@ function justifyMultiLine(texts, target) {
     for (var i = 0; i < texts.length; i++) {
         var text = texts[i];
         var temp = app.activeDocument.activeLayer.textFrames.add();
-        text.duplicate(temp.textRange);
+        var range = temp.textRange;
+        text.duplicate(range);
 
-        var em = getTrackingValue(temp, target);
-        text.characterAttributes.tracking = em;
+        var orientation = temp.orientation;
+        var length = getTargetLength(temp, orientation);
+
+        if (length != target) {
+            range.characterAttributes.kerningMethod = AutoKernType.NOAUTOKERN;
+            range.kerning = 0;
+            var em = getTrackingValue(temp, target);
+            text.characterAttributes.kerningMethod = AutoKernType.NOAUTOKERN;
+            text.kerning = 0;
+            text.characterAttributes.tracking = em;
+        }
 
         var ranges = text.textRanges;
         var end = start + ranges.length - 1;
+        ranges[end].characterAttributes.kerningMethod = AutoKernType.NOAUTOKERN;
         ranges[end].characterAttributes.tracking = 0;
 
         start += ranges.length + 1;
@@ -226,4 +242,12 @@ function getPathItems(items) {
         }
     }
     return shapes;
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

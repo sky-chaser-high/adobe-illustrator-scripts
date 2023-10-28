@@ -90,6 +90,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Copy Line Up](#copyLineDownjscopyLineUpjs)
 - [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Create Page Numbers](#createPageNumbersjs)
+- [Create Threaded Text](#createThreadedTextjs) `New`
 - [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
 - [Delete All Right](#deleteAllLeftjsdeleteAllRightjs)
@@ -101,7 +102,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Go to Previous Text](#goToNextTextjsgoToPreviousTextjs)
 - [Insert Line Above](#insertLineAbovejsinsertLineBelowjs)
 - [Insert Line Below](#insertLineAbovejsinsertLineBelowjs)
-- [Justify Content Space Between](#justifyContentSpaceBetweenjs)
+- [Justify Content Space Between](#justifyContentSpaceBetweenjs) `Update`
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
 - [Split Text](#splitTextjs)
@@ -120,8 +121,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Measure Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
-- [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs) `New`
-- [Toggle Show Handles](#toggleShowHandlesjs) `New`
+- [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
+- [Toggle Show Handles](#toggleShowHandlesjs)
 <br><br><br>
 
 
@@ -592,6 +593,35 @@ Places a page number at a specified location on the artboards.
 
 ### Requirements
 Illustrator CS4 or higher
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="createThreadedTextjs">createThreadedText.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script creates a threaded text. It can also be made from a mixture of point types and path objects.  
+Vertical text is also supported.
+
+![Create Threaded Text](images/createThreadedText.png)
+
+### Usage
+1. Select two or more text and/or path objects, and run this script. There is no need to convert to the area types in advance.
+2. Select an order of concatenation.
+3. Enter a value of the alignment position tolerance. (0 or higher number)
+   <img src="images/ThreadedTextSettings.png" alt="Threaded Text Settings" width="70%">
+4. To convert the paths to the texts, check the Convert Path to Type checkbox and select either the Area Type or Type on a Path.
+
+> **Note**  
+> The stacking order of objects and layers has no bearing on the order of concatenation.  
+> When converting the path to the area type, ignore anchor points with fewer than two anchor points.  
+> The units of the alignment position tolerance depend on the ruler units.
+
+### Requirements
+Illustrator CC or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
@@ -1575,7 +1605,7 @@ Illustrator CS4 or higher
 This script is equivalent to InDesign's Links panel menu "Relink to Folder...".  
 Replace linked files with a file of the same name in the selected folder.
 
-![InDesign's Relink To Folder](images/InDesign_Relink_To_Folder.png)
+<img src="images/InDesign_Relink_To_Folder.png" alt="InDesign's Relink To Folder" width="45%">
 
 ### Usage
 1. Run this script.  
@@ -1925,7 +1955,8 @@ Illustrator CS5 or higher
 
 # <a name="splitTextjs">splitText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script splits a point text by lines, words, or characters.
+This script splits a point text by lines, words, or characters.  
+Vertical text is also supported.
 
 ![Split Text](images/splitText.png)
 
@@ -1950,7 +1981,8 @@ Illustrator CS4 or higher
 
 # <a name="splitTextAtCursorPositionjs">splitTextAtCursorPosition.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script splits a point text at the cursor position.
+This script splits a point text at the cursor position.  
+Vertical text is also supported.
 
 ![Split Text at Cursor Position](images/splitTextAtCursorPosition.png)
 

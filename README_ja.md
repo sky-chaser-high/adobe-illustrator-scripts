@@ -104,12 +104,13 @@ Adobe Illustratorのスクリプト集です。
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 | スクリプト | 概要 |
 | --- | --- |
-| [addNumericSeparators.js](#addNumericSeparatorsjs) | 数字を3桁で区切る |
+| [addNumericSeparators.js](#addNumericSeparatorsjs) | 数字をカンマで区切る |
 | [convertTypeOnAPathToPointType.js](#convertTypeOnAPathToPointTypejs) | パス上文字をポイント文字に切り替え |
 | [copyLineDown.js](#copyLineDownjscopyLineUpjs) | 行を下へコピー |
 | [copyLineUp.js](#copyLineDownjscopyLineUpjs) | 行を上へコピー |
 | [copyLine(emptySelection).js](#copyLineEmptySelectionjscutLineEmptySelectionjs) | 選択なしでコピー |
 | [createPageNumbers.ja](#createPageNumbersjs) | ノンブル作成 |
+| [createThreadedText.js](#createThreadedTextjs) `New` | スレッドテキストを作成 |
 | [cutLine(emptySelection).js](#copyLineEmptySelectionjscutLineEmptySelectionjs) | 選択なしでカット |
 | [deleteAllLeft.js](#deleteAllLeftjsdeleteAllRightjs) | カーソルの左側をすべて削除 |
 | [deleteAllRight.js](#deleteAllLeftjsdeleteAllRightjs) | カーソルの右側をすべて削除 |
@@ -121,7 +122,7 @@ Adobe Illustratorのスクリプト集です。
 | [goToPreviousText.js](#goToNextTextjsgoToPreviousTextjs) | カーソルを前のテキストオブジェクトへ移動 |
 | [insertLineAbove.js](#insertLineAbovejsinsertLineBelowjs) | 上に行を挿入 |
 | [insertLineBelow.js](#insertLineAbovejsinsertLineBelowjs) | 下に行を挿入 |
-| [justifyContentSpaceBetween.js](#justifyContentSpaceBetweenjs) | テキスト両端揃え |
+| [justifyContentSpaceBetween.js](#justifyContentSpaceBetweenjs) `Update` | テキスト両端揃え |
 | [moveLineDown.js](#moveLineDownjsmoveLineUpjs) | 行を下へ移動 |
 | [moveLineUp.js](#moveLineDownjsmoveLineUpjs) | 行を上へ移動 |
 | [splitText.js](#splitTextjs) | 文字列を分割 |
@@ -143,9 +144,9 @@ Adobe Illustratorのスクリプト集です。
 | [compareScale.js](#compareScalejs) | 拡大・縮小率を表示 |
 | [measureDistance.js](#measureDistancejs) | 距離を測る |
 | [sumNumbers.js](#sumNumbersjs) | 文字列内の数字を足す |
-| [syncView.js](#syncViewjs) | ウィンドウの表示を同期 |
-| [toggleAlignToGlyphBounds.js](#toggleAlignToGlyphBoundsjs) `New` | 字形の境界に整列を切り替える |
-| [toggleShowHandles.js](#toggleShowHandlesjs) `New` | 選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える |
+| [syncView.js](#syncViewjs) | 複数のウィンドウの表示位置を同期 |
+| [toggleAlignToGlyphBounds.js](#toggleAlignToGlyphBoundsjs) | 字形の境界に整列を切り替える |
+| [toggleShowHandles.js](#toggleShowHandlesjs) | 選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える |
 
 <br><br>
 
@@ -623,7 +624,7 @@ InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在の
 1. スクリプトを実行します。
 2. 各項目を設定します。
    - `位置` ノンブルの表示位置。
-   - `見開き` チェックを入れると見開きページに対応します。
+   - `見開き` チェックを付けると見開きページに対応します。
    - `開始ページ番号` 始まりの番号を指定します。
    - `セクションプレフィックス` ノンブルの前に文字列を追加します。見開きページの場合は、後ろに追加します。
    - `フォントサイズ` ノンブルのフォントサイズ。
@@ -635,6 +636,36 @@ InDesignの書式メニュー > 特殊文字を挿入 > マーカー > 現在の
 
 #### 動作条件
 Illustrator CS4以降
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="createThreadedTextjs">createThreadedText.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+スレッドテキストを作成します。ポイント文字やパスが混在していても作成できます。  
+縦組みのテキストにも対応しています。
+
+![Create Threaded Text](images/createThreadedText.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. 2つ以上のテキストやパスオブジェクトを選択してスクリプトを実行します。あらかじめエリア内文字に変換しておく必要はありません。
+2. オブジェクトを連結する順番を選択します。
+3. 整列位置の許容誤差の値を入力します。（0以上の数値）
+   <img src="images/ThreadedTextSettings.png" alt="Threaded Text Settings" width="70%">
+4. パスをテキストに変換するには、［パスをテキストに変換］にチェックを付けて、エリア内文字またはパス上文字のどちらかを選択します。
+
+> **Note**  
+> オブジェクトやレイヤーの重ね順は、連結する順番には関係ありません。  
+> パスをエリア内文字に変換する場合、アンカーポイントの数が2点以下のパスは変換しません。  
+> 整列位置の許容誤差の単位はルーラー単位により変わります。
+
+#### 動作条件
+Illustrator CC以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
@@ -917,7 +948,7 @@ Illustrator CS以降
 #### 使用方法
 1. パスオブジェクトを選択してスクリプトを実行します。
 2. マージンを入力します。  
-   線幅を含めたい場合は、線幅を含むチェックボックスにチェックを入れます。
+   線幅を含めたい場合は、［線幅を含む］にチェックを付けます。
 
 > **Note**  
 > 塗りと線幅なしの長方形を描きます。  
@@ -944,7 +975,7 @@ Illustrator CS4以降
 1. パスオブジェクトを選択してスクリプトを実行します。
 2. 描く図形を選択します。
 3. 図形のサイズを入力します。
-4. ハンドルの位置を描きたい場合は、「ハンドル位置も描く」にチェックを入れます。
+4. ハンドルの位置を描きたい場合は、［ハンドル位置も描く］にチェックを付けます。
 
 > **Note**  
 > ダイレクト選択ツールでアンカーポイントを選択すると、選択した箇所にだけ図形を描きます。  
@@ -1132,11 +1163,10 @@ Illustrator CS以降
 ![Generate Gradient Color](images/generateGradientColor.png)
 
 #### 使用方法
-パスオブジェクトまたはスウォッチからグラデーションを選択してスクリプトを実行します。
+パスオブジェクトまたはスウォッチを選択してスクリプトを実行します。
 
 > **Note**  
-> パスオブジェクトを優先します。  
-> スウォッチからグラデーションを生成したい場合はパスオブジェクトの選択を解除してください。  
+> パスオブジェクトを優先します。スウォッチからグラデーションを生成したい場合はパスオブジェクトの選択を解除してください。  
 > テキスト、線の色には対応していません。
 
 #### 動作条件
@@ -1383,7 +1413,7 @@ Illustrator CS以降
 # <a name="justifyContentSpaceBetweenjs">justifyContentSpaceBetween.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 トラッキングを調整してポイント文字の両端を揃えます。  
-縦書きにも対応しています。
+縦組みのテキストにも対応しています。
 
 ![Justify Content Space Between](images/justifyContentSpaceBetween.png)
 
@@ -1634,10 +1664,10 @@ Illustrator CS4以降
 
 # <a name="relinkToFolderjs">relinkToFolder.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-選択したフォルダーにある同名の画像と置き換えます。  
+選択したフォルダにある同名の画像と置き換えます。  
 InDesignのリンクパネルメニュー > フォルダに再リンク... に相当します。
 
-![InDesign's Relink To Folder](images/InDesign_Relink_To_Folder.png)
+<img src="images/InDesign_Relink_To_Folder.png" alt="InDesign's Relink To Folder" width="45%">
 
 #### 使用方法
 1. 再設定したいリンク画像を選択しスクリプトを実行します。  
@@ -1793,7 +1823,7 @@ Illustrator CS以降
 このスクリプトを実行するだけです。
 
 > **Warning**  
-> 非表示やロックされているレイヤー内のガイドは移動しません。
+> 非表示やロックされているレイヤー内のガイドは選択できません。
 
 #### 動作条件
 Illustrator CS6以降
@@ -1989,7 +2019,8 @@ Illustrator CS5以降
 
 # <a name="splitTextjs">splitText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-ポイント文字を行、単語、または文字ごとに分割します。
+ポイント文字を行、単語、または文字ごとに分割します。  
+縦組みのテキストにも対応しています。
 
 ![Split Text](images/splitText.png)
 > **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
@@ -2015,7 +2046,8 @@ Illustrator CS4以降
 
 # <a name="splitTextAtCursorPositionjs">splitTextAtCursorPosition.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-ポイント文字をカーソルの位置で分割します。
+ポイント文字をカーソルの位置で分割します。  
+縦組みのテキストにも対応しています。
 
 ![Split Text at Cursor Position](images/splitTextAtCursorPosition.png)
 
@@ -2046,7 +2078,7 @@ InDesignの編集メニュー > 繰り返し複製... に相当します。
 
 #### 使用方法
 1. オブジェクトを選択してスクリプトを実行します。
-2. グリッド状にしたい場合は、「グリッドとして作成」にチェックを入れてください。
+2. グリッド状にしたい場合は、［グリッドとして作成］にチェックを付けてください。
 3. 繰り返しの場合はカウントに繰り返す回数を入力します。  
    グリッドの場合は行・段数にそれぞれ繰り返す回数を入力します。
 4. オフセット値（オブジェクトの間隔）を入力します。
@@ -2134,7 +2166,7 @@ Illustrator CS以降
 # <a name="textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 ポイント文字の位置を動かさずに行揃えを変更します。  
-縦書きにも対応しています。
+縦組みのテキストにも対応しています。
 
 例 textAlign_Center.js:
 ![Text Align](images/textAlign.png)
@@ -2154,7 +2186,7 @@ Illustrator CS以降
 
 # <a name="toggleAlignToGlyphBoundsjs">toggleAlignToGlyphBounds.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-整列パネル > 字形の境界に整列 > ポイント文字、エリア内文字の両方を同時にオンオフ切り替えます。
+整列パネル > 字形の境界に整列 > ポイント文字、エリア内文字の両方を同時にオン/オフ切り替えます。
 
 ![Toggle Align To Glyph Bounds](images/toggleAlignToGlyphBounds.png)
 
@@ -2173,7 +2205,7 @@ Illustrator 2020以降
 
 # <a name="toggleShowHandlesjs">toggleShowHandles.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-環境設定 > 選択範囲・アンカー表示 > アンカーポイント、ハンドル、およびバウンディングボックスの表示 > 複数アンカーポイントを選択時にハンドルを表示をオンオフ切り替えます。
+環境設定 > 選択範囲・アンカー表示 > アンカーポイント、ハンドル、およびバウンディングボックスの表示 > 複数アンカーポイントを選択時にハンドルを表示をオン/オフ切り替えます。
 
 ![Toggle Show Handles](images/toggleShowHandles.png)
 

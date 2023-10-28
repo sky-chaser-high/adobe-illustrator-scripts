@@ -193,6 +193,14 @@
 <br><br>
 
 
+## justifyContentSpaceBetween.js
+### 1.0.1 (2023-10-28)
+### Bug Fixes
+- Fixed a bug where texts were not aligned to the target object.  
+  Set CharacterAttributes.kerningMethod to  AutoKernType.NOAUTOKERN and kerning to 0.
+<br><br>
+
+
 ## matchLocationOfGradientStop.js
 ### 1.0.1 (2023-09-18)
 ### Changes
