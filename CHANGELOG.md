@@ -260,6 +260,9 @@
 
 
 ## relinkFileExtensionExtra.js
+### 1.2.0 (2023-11-23)
+### Added
+- Added linked file folder field. The links folder can now be selected.
 ### 1.1.0 (2023-01-15)
 ### Changes
 - Updated the UI.

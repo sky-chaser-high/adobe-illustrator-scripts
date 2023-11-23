@@ -4,7 +4,7 @@
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
 
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
-Click the script name to jump to learn more about the script.  
+Click the titles to jump to learn more about the script.  
 If you find a script that interests you, please download it from [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest).
 <br><br>
 
@@ -46,8 +46,9 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Link
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [Relink File Extension](#relinkFileExtensionjs)
-- [Relink File Extension Extra](#relinkFileExtensionExtrajs)
+- [Relink File Extension Extra](#relinkFileExtensionExtrajs) `Update`
 - [Relink to Folder](#relinkToFolderjs)
+- [Rename Linked File](#renameLinkedFilejs) `New`
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
 - [Select Link](#selectLinkjs)
@@ -131,7 +132,7 @@ If you find a script that interests you, please download it from [![Download](ht
 [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) or 
 [Releases](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) and unzip it.  
 The scripts can be placed anywhere on your computer.  
-To run the scripts, from File > Scripts > Other Script... ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> )
+To run the scripts, from File > Scripts > Other Script( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> ).
 
 > **Note**  
 > In rare cases, the script may not work if you continue to use it.  
@@ -445,9 +446,9 @@ Illustrator CS or higher
 
 # <a name="copyLineDownjscopyLineUpjs">copyLineDown.js<br>copyLineUp.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script is equivalent to Visual Studio Code's Selection menu 
-"Copy Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> ) & 
-"Copy Line Up"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> ).  
+This script is equivalent to Visual Studio Code's Selection > 
+Copy Line Down( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> ) & 
+Copy Line Up( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> ).  
 If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
@@ -529,8 +530,8 @@ This script creates a color chart. Both CMYK and RGB colors are supported.
 4. Select colors for the vertical and horizontal axis.
 5. Enter the increase or decrease value as a percentage.
 6. Select Addition or Intensity.
-   - `Addition` the value of the steps is added as is.
-   - `Intensity` the percentage of the target color is added. It is equivalent to Edit > Edit Colors > Saturate.  
+   - `Addition` The value of the steps is added as is.
+   - `Intensity` The percentage of the target color is added. It is equivalent to Edit > Edit Colors > Saturate.  
    <img src="images/ColorChartSettings.png" alt="Color Chart Settings" width="65%">
 7. Set the artboard size, color chip size, and units according to your preference.
 
@@ -572,7 +573,7 @@ Illustrator CS or higher
 
 # <a name="createPageNumbersjs">createPageNumbers.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script is equivalent to InDesign's Type menu > Insert Special Character > Markers > Current Page Number.  
+This script is equivalent to InDesign's Type > Insert Special Character > Markers > Current Page Number.  
 Places a page number at a specified location on the artboards.
 
 ![Create Page Numbers](images/createPageNumbers.png)
@@ -1043,10 +1044,8 @@ This script extends and shrinks a path object.
 1. Select an anchor point with Direct Selection Tool, and run this script.
 2. Enter a positive value to extend or a negative value to shrink.
 
-> **Warning**  
-> Closed paths and curves are not supported.
-
 > **Note**  
+> Closed paths and curves are not supported.  
 > The units of distance depend on the ruler units.
 
 ### Requirements
@@ -1131,7 +1130,7 @@ Illustrator CS4 or higher
 
 # <a name="goToLinejs">goToLine.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script is equivalent to Visual Studio Code's Go menu > "Go to Line/Column..."( <kbd>Ctrl</kbd> + <kbd>G</kbd> ).  
+This script is equivalent to Visual Studio Code's Go > Go to Line/Column( <kbd>Ctrl</kbd> + <kbd>G</kbd> ).  
 If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
@@ -1174,10 +1173,10 @@ For example, goToNextText.js:
 Run this script in the text editing state.
 
 > **Warning**  
-> Since using cut and paste functions inside the script, it will lose if you have copied the content in advance.  
-> It will not move to locked, hidden, or threaded texts. The layer also as well.
+> Since using cut and paste functions inside the script, it will lose if you have copied the content in advance.
 
 > **Note**  
+> It will not move to locked, hidden, or threaded texts. The layer also as well.  
 > The cursor moving order is text stacking order.  
 > Pan that the next or previous text is centered in the window.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
@@ -1440,9 +1439,9 @@ This script moves all guide objects to a specified layer, frontmost, and backmos
 ### Usage
 1. Run this script. There is no need to select any guide objects.
 2. Select a destination.  
-   `Layer` Move to the specified layer. If it does not exist, create a new layer.  
-   `Bring to Front` Move to the frontmost of each layer.  
-   `Send to Back` Move to the backmost of each layer.
+   - `Layer` Move to the specified layer. If it does not exist, create a new layer.  
+   - `Bring to Front` Move to the frontmost of each layer.  
+   - `Send to Back` Move to the backmost of each layer.
 
 > **Note**  
 > Guides in locked or hidden layers are not supported.
@@ -1459,9 +1458,9 @@ Illustrator CS6 or higher
 
 # <a name="moveLineDownjsmoveLineUpjs">moveLineDown.js<br>moveLineUp.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script is equivalent to Visual Studio Code's Selection menu 
-"Move Line Down"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> ) & 
-"Move Line Up"( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> ).  
+This script is equivalent to Visual Studio Code's Selection > 
+Move Line Down( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> ) & 
+Move Line Up( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> ).  
 If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
@@ -1542,21 +1541,22 @@ Illustrator CS4 or higher
 
 # <a name="relinkFileExtensionjs">relinkFileExtension.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script is equivalent to InDesign's Links panel menu "Relink File Extension...".
+This script replaces linked files with the specified file extension, equivalent to InDesign's Links panel menu > Relink File Extension.
+For more advanced settings, use [relinkFileExtensionExtra.js](#relinkFileExtensionExtrajs).
 
 ![Relink File Extension](images/relinkFileExtension.png)
 
 ### Usage
-1. Run this script.  
-   If you don't select linked files, all in the document replace.
+1. Select any linked files, and run this script.  
+   If not selected, all files in the document are replaced.
 2. Enter an extension.
 
 > **Warning**  
-> Missing linked files and embedded link files not replaced.  
-> Place the relink files in the same place as the original files.
+> Missing linked files and embedded link files not replaced.
 
 > **Note**  
-> When selecting linked files, select them in the document rather than the links panel.
+> Place the relink files in the same place as the original files.  
+> When selecting linked files, select them in the document rather than the Links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1570,25 +1570,29 @@ Illustrator CS4 or higher
 
 # <a name="relinkFileExtensionExtrajs">relinkFileExtensionExtra.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script is an enhanced version of relinkFileExtension.js.
+This script is an enhanced version of [relinkFileExtension.js](#relinkFileExtensionjs) with more advanced settings for relinking linked files.
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
 
 ### Usage
-1. Run this script.  
-   If you don't select linked files, all in the document replace.
-2. Choose to Replace or Add.  
-   To Replace, you can use regular expressions.  
-   To Add, enter a string to be added to the prefix, suffix, or both of the original file names.
+1. Select any linked files, and run this script.  
+   If not selected, all files in the document are replaced.
+2. Select either file renaming method.
+   - `Replace` Enter the current file name in the Find field and a new file name in the Replace field.  
+   It can also be part of the file name. Regular expressions are supported in the Find field.
+   - `Add` Enter a string to be added to the prefix, suffix, or both of the original file names.
 3. Enter an extension.  
-   If you don't enter an extension, it uses the original file extension.
+   If the extension is the same as the original file, do not enter anything.
+4. To change the folder for the linked file, select a new folder.  
+   If the folder is the same as the original file, do not make any selection.  
+   To clear the new folder path, hold down the <kbd>Option</kbd> / <kbd>Alt</kbd> key and click the Clear button.
 
 > **Warning**  
 > Missing linked files and embedded link files not replaced.  
-> Place the relink files in the same place as the original files.
+> If the find targets a string that contains combining characters, the replacement will fail.
 
 > **Note**  
-> When selecting linked files, select them in the document rather than the links panel.
+> When selecting linked files, select them in the document rather than the Links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1602,21 +1606,20 @@ Illustrator CS4 or higher
 
 # <a name="relinkToFolderjs">relinkToFolder.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script is equivalent to InDesign's Links panel menu "Relink to Folder...".  
-Replace linked files with a file of the same name in the selected folder.
+This script replaces linked files with a file of the same name in the selected folder, equivalent to InDesign's Links panel menu > Relink to Folder.
 
 <img src="images/InDesign_Relink_To_Folder.png" alt="InDesign's Relink To Folder" width="45%">
 
 ### Usage
-1. Run this script.  
-   If you don't select linked files, all in the document replace.
+1. Select any linked files, and run this script.  
+   If not selected, all files in the document are replaced.
 2. Select a folder in the dialog that appears.
 
 > **Warning**  
 > Missing linked files and embedded link files not replaced.
 
 > **Note**  
-> When selecting linked files, select them in the document rather than the links panel.
+> When selecting linked files, select them in the document rather than the Links panel.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1668,6 +1671,41 @@ Just run this script.
 Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="renameLinkedFilejs">renameLinkedFile.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+This script renames the name of the linked files and relink.
+
+> **Warning**  
+> **It is not possible to undo file names with Edit > Undo.( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Z</kbd> )**  
+> **File manipulation is dangerous, so we recommend backing up your data before running the script.**
+
+![Rename Linked File](images/renameLinkedFile.png)
+
+### Usage
+1. Select any linked files, and run this script.  
+   If not selected, all files in the document are renamed.
+2. Enter the current file name in the Find field and a new file name in the Replace field.  
+   It can also be part of the file name. Regular expressions are supported in the Find field.
+3. Clicking the Preview button shows the renamed file names in the list.  
+   A check in the Already Exists column indicates that a file with the same name already exists.
+
+> **Warning**  
+> Missing linked files and embedded link files not replaced.  
+> If you are using linked files for other documents, the link will be missing.
+
+> **Note**  
+> When selecting linked files, select them in the document rather than the Links panel.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -1740,7 +1778,7 @@ This script selects embedded link files.
 ### Usage
 Just run this script.
 
-> **Warning**  
+> **Note**  
 > Locked or hidden embedded link files are not selected. The layer also as well.
 
 ### Requirements
@@ -1760,7 +1798,7 @@ This script selects all guide objects.
 ### Usage
 Just run this script.
 
-> **Warning**  
+> **Note**  
 > Guides in locked or hidden layers are not supported.
 
 ### Requirements
@@ -1782,8 +1820,7 @@ This script selects the specified link files.
 ### Usage
 1. Run this script.
 2. Enter a file name. It can also be part of the file name. Or select it from the list below.  
-   If the text field is empty, all linked files are selected.
-   Regular expressions are supported.
+   If the text field is empty, all linked files are selected. Regular expressions are supported.
 
 > **Note**  
 > Locked or hidden linked files are not selected. The layer also as well.  
@@ -2006,7 +2043,7 @@ Illustrator CS6 or higher
 
 # <a name="stepAndRepeatjs">stepAndRepeat.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script is equivalent to InDesign's Edit menu "Step and Repeat...".  
+This script is equivalent to InDesign's Edit > Step and Repeat.
 
 ![Step and Repeat](images/stepandRepeat.png)
 
