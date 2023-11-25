@@ -14,7 +14,7 @@ Adobe Illustratorのスクリプト集です。
 ### カラー
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [**CSVファイルを読み込む**](#CSVファイルを読み込む) importCSVtoSwatch.js
-- [**Deleted Global Color を削除**](#DeletedGlobalColorを削除) removeDeletedGlobalColor.js
+- [**Deleted Global Color を削除**](#Deleted-Global-Color-を削除) removeDeletedGlobalColor.js
 - [**カラー数値をCSVファイルに保存**](#カラー数値をCSVファイルに保存) exportColorValuesToCSV.js
 - [**カラー数値を四捨五入**](#カラー数値を四捨五入) roundColorValue.js
 - [**カラー数値を表示**](#カラー数値を表示) showColorValues.js
@@ -1747,7 +1747,7 @@ Illustrator CS6以降
 
 
 
-## <a name="DeletedGlobalColorを削除">Deleted Global Color を削除</a>
+## <a name="Deleted-Global-Color-を削除">Deleted Global Color を削除</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 ### removeDeletedGlobalColor.js
 分版プレビューパネルに表示される Deleted Global Color を削除します。
