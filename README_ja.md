@@ -117,6 +117,7 @@ Adobe Illustratorのスクリプト集です。
 - [**ウィンドウを並べて表示**](#ウィンドウを並べて表示) arrangeWindows.js
 - [**拡大・縮小率を表示**](#拡大縮小率を表示) compareScale.js
 - [**距離を測る**](#距離を測る) measureDistance.js
+- [**コピー元のレイヤーにペーストを切り替える**](#コピー元のレイヤーにペーストを切り替える) togglePasteRemembersLayers.js `New`
 - [**字形の境界に整列を切り替える**](#字形の境界に整列を切り替える) toggleAlignToGlyphBounds.js
 - [**すべてのドキュメントを閉じる**](#すべてのドキュメントを閉じる) closeAllDocuments.js
 - [**選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える**](#選択した複数のアンカーポイントのハンドルを表示隠すを切り替える) toggleShowHandles.js
@@ -2289,6 +2290,26 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator 2020以降
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="コピー元のレイヤーにペーストを切り替える">コピー元のレイヤーにペーストを切り替える</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### togglePasteRemembersLayers.js
+「レイヤーパネル > コピー元のレイヤーにペースト」のオン/オフを切り替えます。
+
+![Toggle Paste Remembers Layers](images/togglePasteRemembersLayers.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CC以降
 
 <div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
 <br>

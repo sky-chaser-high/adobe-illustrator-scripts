@@ -123,6 +123,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 - [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
+- [Toggle Paste Remembers Layers](#togglePasteRemembersLayersjs) `New`
 - [Toggle Show Handles](#toggleShowHandlesjs)
 <br><br><br>
 
@@ -2163,6 +2164,25 @@ Just run this script.
 
 ### Requirements
 Illustrator 2020 or higher
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="togglePasteRemembersLayersjs">togglePasteRemembersLayers.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+This script toggles the Layers panel menu > Paste Remembers Layers.
+
+![Toggle Paste Remembers Layers](images/togglePasteRemembersLayers.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CC or higher
 
 <div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
 <br>
