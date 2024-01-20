@@ -46,9 +46,9 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Link
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [Relink File Extension](#relinkFileExtensionjs)
-- [Relink File Extension Extra](#relinkFileExtensionExtrajs) `Update`
+- [Relink File Extension Extra](#relinkFileExtensionExtrajs)
 - [Relink to Folder](#relinkToFolderjs)
-- [Rename Linked File](#renameLinkedFilejs) `New`
+- [Rename Linked File](#renameLinkedFilejs)
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
 - [Select Link](#selectLinkjs)
@@ -58,6 +58,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Add Anchor Points](#addAnchorPointsjs)
 - [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
+- [Align Objects](#alignObjectsjs) `New`
 - [Close Path](#closePathjs)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
@@ -91,7 +92,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Copy Line Up](#copyLineDownjscopyLineUpjs)
 - [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Create Page Numbers](#createPageNumbersjs)
-- [Create Threaded Text](#createThreadedTextjs) `New`
+- [Create Threaded Text](#createThreadedTextjs)
 - [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
 - [Delete All Right](#deleteAllLeftjsdeleteAllRightjs)
@@ -103,7 +104,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Go to Previous Text](#goToNextTextjsgoToPreviousTextjs)
 - [Insert Line Above](#insertLineAbovejsinsertLineBelowjs)
 - [Insert Line Below](#insertLineAbovejsinsertLineBelowjs)
-- [Justify Content Space Between](#justifyContentSpaceBetweenjs) `Update`
+- [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
 - [Split Text](#splitTextjs)
@@ -123,7 +124,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Sum Numbers](#sumNumbersjs)
 - [Sync View](#syncViewjs)
 - [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
-- [Toggle Paste Remembers Layers](#togglePasteRemembersLayersjs) `New`
+- [Toggle Paste Remembers Layers](#togglePasteRemembersLayersjs)
 - [Toggle Show Handles](#toggleShowHandlesjs)
 <br><br><br>
 
@@ -247,6 +248,36 @@ The position of alignment depends on the reference point.
 
 ### Requirements
 Illustrator CS3 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="alignObjectsjs">alignObjects.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script aligns objects horizontally and vertically at the same time.
+
+![Align Objects](images/alignObjects.png)
+
+### Usage
+1. Select any objects, and run this script.
+2. Select the Distribute Objects or the Distribute Spacing.  
+   If you don't want evenly spaced distribution, uncheck both checkboxes.
+3. To include stroke width, check the Use Preview Bounds checkbox.
+4. Enter a value of the Alignment Position Tolerance. (0 or higher number)
+   <img src="images/AlignObjectsSettings.png" alt="Align Objects Settings" width="50%">
+5. Click the Align icon button.
+
+> **Note**  
+> The top row and the left-most column are the basis for alignment.  
+> The units of the Distribute Spacing and the Alignment Position Tolerance depend on the ruler units.  
+> Compound paths, texts, linked files, and embedded link files are also supported.
+
+### Requirements
+Illustrator 2021 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>

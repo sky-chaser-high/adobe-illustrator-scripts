@@ -45,9 +45,9 @@ Adobe Illustratorのスクリプト集です。
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [**埋め込み画像を選択**](#埋め込み画像を選択) selectEmbeddedLink.js
 - [**ファイル拡張子にリンクを再設定**](#ファイル拡張子にリンクを再設定) relinkFileExtension.js
-- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js `Update`
+- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js
 - [**フォルダに再リンク**](#フォルダに再リンク) relinkToFolder.js
-- [**リンク画像の名前を変更**](#リンク画像の名前を変更) renameLinkedFile.js `New`
+- [**リンク画像の名前を変更**](#リンク画像の名前を変更) renameLinkedFile.js
 - [**リンク画像を原寸サイズに戻す**](#リンク画像を原寸サイズに戻す) resetToFullScale.js
 - [**リンク画像を選択**](#リンク画像を選択) selectLink.js
 
@@ -57,6 +57,7 @@ Adobe Illustratorのスクリプト集です。
 - [**アンカーポイントの追加**](#アンカーポイントの追加) addAnchorPoints.js
 - [**オブジェクトの周囲に長方形を描く**](#オブジェクトの周囲に長方形を描く) drawRectangle.js
 - [**オブジェクトをシャッフル**](#オブジェクトをシャッフル) shuffleObjects.js
+- [**オブジェクトを整列**](#オブジェクトを整列) alignObjects.js `New`
 - [**外接円を描く**](#外接円を描く) drawCircumscribedCircle.js
 - [**ガイドオブジェクトの色を削除**](#ガイドオブジェクトの色を削除) removeColorInGuideObject.js
 - [**ガイドをアートボードにフィット**](#ガイドをアートボードにフィット) fitGuideInArtboard.js
@@ -97,13 +98,13 @@ Adobe Illustratorのスクリプト集です。
 - [**行を上に挿入**](#行を上に挿入行を下に挿入) insertLineAbove.js
 - [**行を下に挿入**](#行を上に挿入行を下に挿入) insertLineBelow.js
 - [**数字をカンマで区切る**](#数字をカンマで区切る) addNumericSeparators.js
-- [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js `New`
+- [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js
 - [**選択なしでカット**](#選択なしでカット選択なしでコピー) cutLine(emptySelection).js
 - [**選択なしでコピー**](#選択なしでカット選択なしでコピー) copyLine(emptySelection).js
 - [**テキスト中央揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Center.js
 - [**テキスト左揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Left.js
 - [**テキスト右揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Right.js
-- [**テキスト両端揃え**](#テキスト両端揃え) justifyContentSpaceBetween.js `Update`
+- [**テキスト両端揃え**](#テキスト両端揃え) justifyContentSpaceBetween.js
 - [**ノンブルを作成**](#ノンブルを作成) createPageNumbers.ja
 - [**パス上文字をポイント文字に切り替え**](#パス上文字をポイント文字に切り替え) convertTypeOnAPathToPointType.js
 - [**文字列を括弧で囲む**](#文字列を括弧で囲む) encloseWordInParentheses.js
@@ -117,7 +118,7 @@ Adobe Illustratorのスクリプト集です。
 - [**ウィンドウを並べて表示**](#ウィンドウを並べて表示) arrangeWindows.js
 - [**拡大・縮小率を表示**](#拡大縮小率を表示) compareScale.js
 - [**距離を測る**](#距離を測る) measureDistance.js
-- [**コピー元のレイヤーにペーストを切り替える**](#コピー元のレイヤーにペーストを切り替える) togglePasteRemembersLayers.js `New`
+- [**コピー元のレイヤーにペーストを切り替える**](#コピー元のレイヤーにペーストを切り替える) togglePasteRemembersLayers.js
 - [**字形の境界に整列を切り替える**](#字形の境界に整列を切り替える) toggleAlignToGlyphBounds.js
 - [**すべてのドキュメントを閉じる**](#すべてのドキュメントを閉じる) closeAllDocuments.js
 - [**選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える**](#選択した複数のアンカーポイントのハンドルを表示隠すを切り替える) toggleShowHandles.js
@@ -263,6 +264,38 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator CS3以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="オブジェクトを整列">オブジェクトを整列</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+### alignObjects.js
+オブジェクトの水平方向と垂直方向を同時に整列します。
+
+![Align Objects](images/alignObjects.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. オブジェクトを選択してスクリプトを実行します。
+2. ［オブジェクトの分布］または［等間隔に分布］を選択します。  
+   等間隔に整列したくない場合は、両方のチェックを外してください。
+3. 線幅を含める場合は、［プレビュー境界を使用］にチェックを付けます。
+4. ［整列位置の許容誤差］の値を入力します。（0以上の数値）
+   <img src="images/AlignObjectsSettings.png" alt="Align Objects Settings" width="50%">
+5. 整列アイコンボタンをクリックします。
+
+> **Note**  
+> 最上段の行と左端の列が整列の基準になります。  
+> ［等間隔に分布］と［整列位置の許容誤差］の単位は、ルーラー単位により変わります。  
+> 複合パス、テキスト、リンク画像、埋め込み画像にも対応しています。
+
+#### 動作条件
+Illustrator 2021以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
@@ -956,7 +989,7 @@ Illustrator CS以降
 #### 使用方法
 1. パスオブジェクトを選択してスクリプトを実行します。
 2. マージンを入力します。  
-   線幅を含めたい場合は、［線幅を含む］にチェックを付けます。
+   線幅を含める場合は、［線幅を含む］にチェックを付けます。
 
 > **Note**  
 > 塗りと線幅なしの長方形を描きます。  

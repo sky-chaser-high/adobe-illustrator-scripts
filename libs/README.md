@@ -4,6 +4,7 @@ Frequently used features were grouped into functions.
 [![Download Libs.zip](https://img.shields.io/badge/Download-Libs.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Libs.zip)
 - [Map.js](#Mapjs)
 - [Matrix.js](#Matrixjs)
+- [UI_Image_Encoder.js](#UI_Image_Encoderjs)
 - [Vector.js](#Vectorjs)
 - [XMP.js](#XMPjs)
 
@@ -261,6 +262,34 @@ var isReflected = isReflectedY(matrix);
 ```
 
 <div align="right">[ <a href="#Matrixjs">↑ Back to Top ↑</a> ]</div>
+
+
+
+# <a name="UI_Image_Encoderjs">UI_Image_Encoder.js</a>
+This script converts a image file to binary for use within the ScriptUI.
+
+<img src="../images/UI_Image_Encoder.png" alt="UI Image Encoder" width="50%">
+
+### Usage
+1. Run this script.
+2. Select an image file. Only JPEG and PNG format image files are supported.
+3. Select the encoding method, either the Unicode or the Percent-encoding.
+4. Click the Convert button.
+5. Copy the string converted to binary and paste it into the code you are creating.  
+   Escape quotation marks if necessary.
+
+```javascript
+var binary = '\u0089PNG\r\n\x1A\n\x00...';
+var image = dialog.add('image', undefined, File.decode(binary));
+```
+
+> **Note**  
+> Unicode has a smaller binary size than percent-encoding.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#libs--adobe-illustrator-scripts">↑ Back to Top ↑</a> ]</div>
 
 
 
