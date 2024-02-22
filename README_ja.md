@@ -56,8 +56,9 @@ Adobe Illustratorのスクリプト集です。
 - [**アンカーポイントに図形を描く**](#アンカーポイントに図形を描く) drawShapeOnAnchorPoint.js
 - [**アンカーポイントの追加**](#アンカーポイントの追加) addAnchorPoints.js
 - [**オブジェクトの周囲に長方形を描く**](#オブジェクトの周囲に長方形を描く) drawRectangle.js
+- [**オブジェクトの整列**](#オブジェクトの整列) alignObjects.js `New`
+- [**オブジェクトの並べ替え**](#オブジェクトの並べ替え) rearrangeObjects.js `New`
 - [**オブジェクトをシャッフル**](#オブジェクトをシャッフル) shuffleObjects.js
-- [**オブジェクトを整列**](#オブジェクトを整列) alignObjects.js `New`
 - [**外接円を描く**](#外接円を描く) drawCircumscribedCircle.js
 - [**ガイドオブジェクトの色を削除**](#ガイドオブジェクトの色を削除) removeColorInGuideObject.js
 - [**ガイドをアートボードにフィット**](#ガイドをアートボードにフィット) fitGuideInArtboard.js
@@ -272,7 +273,7 @@ Illustrator CS3以降
 
 
 
-## <a name="オブジェクトを整列">オブジェクトを整列</a>
+## <a name="オブジェクトの整列">オブジェクトの整列</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 ### alignObjects.js
 オブジェクトの水平方向と垂直方向を同時に整列します。
@@ -285,7 +286,7 @@ Illustrator CS3以降
 2. ［オブジェクトの分布］または［等間隔に分布］を選択します。  
    等間隔に整列したくない場合は、両方のチェックを外してください。
 3. 線幅を含める場合は、［プレビュー境界を使用］にチェックを付けます。
-4. ［整列位置の許容誤差］の値を入力します。（0以上の数値）
+4. ［整列位置の許容誤差］の値を入力します。（0以上の数値）  
    <img src="images/AlignObjectsSettings.png" alt="Align Objects Settings" width="50%">
 5. 整列アイコンボタンをクリックします。
 
@@ -1655,6 +1656,40 @@ Illustrator CS以降
 Illustrator CS4以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="オブジェクトの並べ替え">オブジェクトの並べ替え</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+### rearrangeObjects.js
+選択しているオブジェクトを並べ替えます。
+
+![Rearrange Objects](images/rearrangeObjects.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. オブジェクトを選択してスクリプトを実行します。
+2. レイアウトを選択します。
+3. 1列に並べるオブジェクトの個数を［横列数］または［縦列数］に入力します。
+4. 並べるオブジェクトの間隔を［間隔］に入力します。
+5. オブジェクトの現在の並び順を選択します。並び順を逆にするには、［逆順］にチェックを付けます。
+6. 線幅を含める場合は、［プレビュー境界を使用］にチェックを付けます。
+7. ［整列位置の許容誤差］の値を入力します。（0以上の数値）  
+   <img src="images/AlignObjectsSettings.png" alt="Rearrange Objects Settings" width="50%">
+8. レイアウトを確認するには、［プレビュー］にチェックを付けます。
+
+> **Note**  
+> 左上のオブジェクトが並べ替えの基準になります。  
+> ［間隔］と［整列位置の許容誤差］の単位は、ルーラー単位により変わります。  
+> 複合パス、テキスト、リンク画像、埋め込み画像にも対応しています。
+
+#### 動作条件
+Illustrator 2021以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

@@ -76,6 +76,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Move Guides](#moveGuidesjs)
+- [Rearrange Objects](#rearrangeObjectsjs) `New`
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
 - [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
@@ -267,7 +268,7 @@ This script aligns objects horizontally and vertically at the same time.
 2. Select the Distribute Objects or the Distribute Spacing.  
    If you don't want evenly spaced distribution, uncheck both checkboxes.
 3. To include stroke width, check the Use Preview Bounds checkbox.
-4. Enter a value of the Alignment Position Tolerance. (0 or higher number)
+4. Enter a value of the Alignment Position Tolerance. (0 or higher number)  
    <img src="images/AlignObjectsSettings.png" alt="Align Objects Settings" width="50%">
 5. Click the Align icon button.
 
@@ -644,7 +645,7 @@ Vertical text is also supported.
 ### Usage
 1. Select two or more text and/or path objects, and run this script. There is no need to convert to the area types in advance.
 2. Select an order of concatenation.
-3. Enter a value of the alignment position tolerance. (0 or higher number)
+3. Enter a value of the alignment position tolerance. (0 or higher number)  
    <img src="images/ThreadedTextSettings.png" alt="Threaded Text Settings" width="70%">
 4. To convert the paths to the texts, check the Convert Path to Type checkbox and select either the Area Type or Type on a Path.
 
@@ -1565,6 +1566,38 @@ Both CMYK and RGB colors are supported.
 Illustrator CS4 or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="rearrangeObjectsjs">rearrangeObjects.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script rearranges selected objects.
+
+![Rearrange Objects](images/rearrangeObjects.png)
+
+### Usage
+1. Select any objects, and run this script.
+2. Select a new layout.
+3. Enter the number of objects to place in a line.
+4. Enter a value of the spacing between the objects.
+5. Select a current order of the objects. Check the Reverse checkbox to reverse the order.
+6. To include stroke width, check the Use Preview Bounds checkbox.
+7. Enter a value of the Alignment Position Tolerance. (0 or higher number)  
+   <img src="images/AlignObjectsSettings.png" alt="Rearrange Objects Settings" width="50%">
+8. Check the Preview checkbox to confirm the rearranging.
+
+> **Note**  
+> The object in the top-left is the basis for rearranging.  
+> The units of the Spacing and the Alignment Position Tolerance depend on the ruler units.  
+> Compound paths, texts, linked files, and embedded link files are also supported.
+
+### Requirements
+Illustrator 2021 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
