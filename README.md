@@ -108,6 +108,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
+- [Sort Lines](#sortLinesjs) `New`
 - [Split Text](#splitTextjs)
 - [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
 - [Swap Text Contents](#swapTextContentsjs)
@@ -638,7 +639,7 @@ Illustrator CS4 or higher
 # <a name="createThreadedTextjs">createThreadedText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
 This script creates a threaded text. It can also be made from a mixture of point types and path objects.  
-Vertical text is also supported.
+The vertical text is also supported.
 
 ![Create Threaded Text](images/createThreadedText.png)
 
@@ -1390,8 +1391,7 @@ Illustrator CS or higher
 
 # <a name="justifyContentSpaceBetweenjs">justifyContentSpaceBetween.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script adjusts tracking to align point texts at both ends.  
-Vertical text is also supported.
+This script adjusts tracking to align point texts at both ends. The vertical text is also supported.
 
 ![Justify Content Space Between](images/justifyContentSpaceBetween.png)
 
@@ -2055,10 +2055,39 @@ Illustrator CS5 or higher
 
 
 
+# <a name="sortLinesjs">sortLines.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script sorts lines of the text. The vertical text is also supported.
+
+![Sort Lines](images/sortLines.png)
+
+### Usage
+1. Select either the text objects or the lines to be sorted, and run this script.
+2. Check the Match Case checkbox to make the text case-sensitive.
+3. Check the Entire Threaded Text checkbox to sort the entire threaded text.
+4. Click one of the sort buttons below.  
+   `A → Z` Sort in A to Z order.  
+   `Z → A` Sort in Z to A order.  
+   `Reverse` Sort in reverse order.
+
+> **Note**  
+> Wrapped lines in the area type split on each line.  
+> If the selection spans next threads, it cannot be sorted.  
+> Type on a paths are not supported.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="splitTextjs">splitText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script splits a point text by lines, words, or characters.  
-Vertical text is also supported.
+This script splits a point text by lines, words, or characters. The vertical text is also supported.
 
 ![Split Text](images/splitText.png)
 
@@ -2083,8 +2112,7 @@ Illustrator CS4 or higher
 
 # <a name="splitTextAtCursorPositionjs">splitTextAtCursorPosition.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script splits a point text at the cursor position.  
-Vertical text is also supported.
+This script splits a point text at the cursor position. The vertical text is also supported.
 
 ![Split Text at Cursor Position](images/splitTextAtCursorPosition.png)
 
@@ -2198,8 +2226,7 @@ Illustrator CS or higher
 
 # <a name="textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script changes the text alignment without moving the position.  
-Vertical text is also supported.
+This script changes the text alignment without moving the position. The vertical text is also supported.
 
 For example, textAlign_Center.js:
 ![Text Align](images/textAlign.png)

@@ -102,6 +102,7 @@ Adobe Illustratorのスクリプト集です。
 - [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js
 - [**選択なしでカット**](#選択なしでカット選択なしでコピー) cutLine(emptySelection).js
 - [**選択なしでコピー**](#選択なしでカット選択なしでコピー) copyLine(emptySelection).js
+- [**テキストの並べ替え**](#テキストの並べ替え) sortLines.js `New`
 - [**テキスト中央揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Center.js
 - [**テキスト左揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Left.js
 - [**テキスト右揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Right.js
@@ -2166,6 +2167,38 @@ Illustrator CS以降
 Illustrator CS5以降
 
 <div align="right">[ <a href="#アートボード">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="テキストの並べ替え">テキストの並べ替え</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+### sortLines.js
+テキストの行を並べ替えます。縦組みのテキストにも対応しています。
+
+![Sort Lines](images/sortLines.png)
+> **Note** Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. 並べ替えるテキストまたは行を選択してスクリプトを実行します。
+2. アルファベットの大文字と小文字を区別する場合は、［大文字と小文字を区別］にチェックを付けます。
+3. スレッドテキスト全体を並べ替えるには、［スレッド全体を並べ替え］にチェックを付けます。
+4. 以下の並べ替えボタンのいずれかをクリックします。  
+   `A → Z` 昇順に並べ替えます。  
+   `Z → A` 降順に並べ替えます。  
+   `逆順` 逆順に並べ替えます。
+
+> **Note**  
+> エリア内文字で折り返された行は各行で分割します。  
+> テキストの選択範囲が次のスレッドにまたがる場合は、並べ替えできません。  
+> パス上文字には対応していません。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
