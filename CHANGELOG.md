@@ -13,6 +13,13 @@
 <br><br>
 
 
+## arrangeWindows.js
+### 1.0.1 (2024-04-06)
+### Added
+- Version check added.
+<br><br>
+
+
 ## closeAllDocuments.js
 ### 1.1.0 (2023-08-27)
 ### Changes
@@ -346,6 +353,15 @@
 ### Changes
 - The UI has been brought closer to InDesign.
 - Changed the file name.
+<br><br>
+
+
+## syncView.js
+### 1.0.1 (2024-04-06)
+### Added
+- Version check added.
+### Bug Fixes
+- Fixed an issue where multiple openings of the same file would not synchronize.
 <br><br>
 
 

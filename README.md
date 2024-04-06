@@ -118,16 +118,23 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Utility
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [Arrange Windows](#arrangeWindowsjs)
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
 - [Measure Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
-- [Sync View](#syncViewjs)
 - [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
 - [Toggle Paste Remembers Layers](#togglePasteRemembersLayersjs)
 - [Toggle Show Handles](#toggleShowHandlesjs)
+
+### View
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
+- [Arrange Windows](#arrangeWindowsjs)
+- [Navigate to First Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
+- [Navigate to Last Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
+- [Navigate to Next Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
+- [Navigate to Previous Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
+- [Sync View](#syncViewjs)
 <br><br><br>
 
 
@@ -138,7 +145,7 @@ If you find a script that interests you, please download it from [![Download](ht
 The scripts can be placed anywhere on your computer.  
 To run the scripts, from File > Scripts > Other Script( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> ).
 
-> **Note**  
+> [!NOTE]
 > In rare cases, the script may not work if you continue to use it.  
 > In this case, restart Illustrator and try again.
 
@@ -158,7 +165,7 @@ The following extensions or software make it easy to run scripts.
 
 ## Development Environment
 OS: macOS Ventura 13.4  
-Test: Adobe Illustrator 2020-2023
+Test: Adobe Illustrator 2020-2024
 
 
 ## License
@@ -220,7 +227,7 @@ This script adds selected gradients to Swatches.
 ### Usage
 Select the path objects, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Text object and stroke color are not supported.
 
 ### Requirements
@@ -244,7 +251,7 @@ For example, alignInCenterOfSpace(Vertical).js:
 Select objects, and run this script.  
 The position of alignment depends on the reference point.
 
-> **Note**  
+> [!NOTE]
 > The space excludes the stroke width.  
 > Select at least three objects.
 
@@ -273,7 +280,7 @@ This script aligns objects horizontally and vertically at the same time.
    <img src="images/AlignObjectsSettings.png" alt="Align Objects Settings" width="50%">
 5. Click the Align icon button.
 
-> **Note**  
+> [!NOTE]
 > The top row and the left-most column are the basis for alignment.  
 > The units of the Distribute Spacing and the Alignment Position Tolerance depend on the ruler units.  
 > Compound paths, texts, linked files, and embedded link files are also supported.
@@ -289,10 +296,10 @@ Illustrator 2021 or higher
 
 
 # <a name="arrangeWindowsjs">arrangeWindows.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
 This script splits and arranges all open windows.
 
-> **Note**  
+> [!TIP]
 > It has been implemented in the Application Bar since version 2022.
 
 ![Arrange Windows](images/arrangeWindows.png)
@@ -300,10 +307,13 @@ This script splits and arranges all open windows.
 ### Usage
 Just run this script.
 
+> [!NOTE]
+> Open at least two files.  
+
 ### Requirements
 Illustrator CS6 or higher
 
-<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<div align="right">[ <a href="#view">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -319,7 +329,7 @@ This script checks the day of the week.
 ### Usage
 Select a date with the cursor, and run this script.
 
-> **Note**  
+> [!NOTE]
 > If there is no year, it is considered as this year.  
 > If the date is incorrect, a warning is issued.  
 > The following formats are supported.
@@ -347,7 +357,7 @@ Illustrator CS4 or higher
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
 This script closes all documents.
 
-> **Note**  
+> [!TIP]
 > It has been implemented in the File menu since version 2021.
 
 ### Usage
@@ -391,7 +401,7 @@ This script compares the scales of two objects.
 ### Usage
 Select two objects, and run this script.
 
-> **Note**  
+> [!NOTE]
 > The dimension units depend on the ruler units.
 
 ### Requirements
@@ -414,7 +424,7 @@ The anchor point conversion options in the Control panel require the anchor poin
 ### Usage
 Select the entire path with selection tool, and run this script.
 
-> **Note**  
+> [!NOTE]
 > It is not necessary to select anchor points with Direct Selection Tool.
 
 ### Requirements
@@ -441,7 +451,7 @@ convertToSpotColor.js:
 Select colors in the Swatches panel, and run this script.  
 If you don't select them, all colors will target.
 
-> **Note**  
+> [!NOTE]
 > If there is a swatch with the same name, it will not convert.  
 > When converting a process color to a global or spot color, the order in which the colors display changes because they reregister in the swatch.
 
@@ -464,7 +474,7 @@ This script converts types on a path to point types.
 ### Usage
 Select type on a path object, and run this script.
 
-> **Warning**  
+> [!NOTE]
 > The original type objects will delete.  
 > Any effects applied in the appearance will be lost.
 
@@ -496,12 +506,12 @@ For example, copyLineDown.js:
 Move the cursor to the line you want to copy, and run this script.  
 It is not necessary to select a line.
 
-> **Warning**  
-> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.  
-> Area type with wrapping may not work well.  
-> In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.
+> [!WARNING]
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.
 
-> **Note**  
+> [!NOTE]
+> Area type with wrapping may not work well.  
+> In the case of copyLineDown.js, when copying the last line, a new line is added to work around a bug.  
 > Only one line can be copied. Multiple lines are not supported.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
@@ -532,11 +542,11 @@ For example, cutLine(emptySelection).js:
 Move the cursor to the line you want to copy or cut, and run this script.  
 It is not necessary to select a line.
 
-> **Warning**  
-> Linefeed are not included to work around a bug in Illustrator.  
-> Area type with wrapping may not work well.
+> [!IMPORTANT]
+> Linefeed are not included to work around a bug in Illustrator.
 
-> **Note**  
+> [!NOTE]
+> Area type with wrapping may not work well.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
 
@@ -569,7 +579,7 @@ This script creates a color chart. Both CMYK and RGB colors are supported.
    <img src="images/ColorChartSettings.png" alt="Color Chart Settings" width="65%">
 7. Set the artboard size, color chip size, and units according to your preference.
 
-> **Note**  
+> [!NOTE]
 > Spot color, gradient, and pattern are not supported.  
 > Create a color chart in a new document.
 
@@ -592,7 +602,7 @@ This script creates grid lines on artboards.
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > Grid spacing is determined by the Guides & Grid in Preferences.
 
 ### Requirements
@@ -622,7 +632,7 @@ Places a page number at a specified location on the artboards.
    - `Font Size` Font size of the page number.
    - `Margin` Distance from the artboard. Switch the units according to the ruler units.
 
-> **Note**  
+> [!NOTE]
 > The page numbering style is numeric only.  
 > Assign page numbers in artboard order.
 
@@ -650,7 +660,7 @@ The vertical text is also supported.
    <img src="images/ThreadedTextSettings.png" alt="Threaded Text Settings" width="70%">
 4. To convert the paths to the texts, check the Convert Path to Type checkbox and select either the Area Type or Type on a Path.
 
-> **Note**  
+> [!NOTE]
 > The stacking order of objects and layers has no bearing on the order of concatenation.  
 > When converting the path to the area type, ignore anchor points with fewer than two anchor points.  
 > The units of the alignment position tolerance depend on the ruler units.
@@ -701,10 +711,10 @@ For example, deleteAllRight.js:
 Move the cursor to the position of the character you want to delete and run this script.  
 It is not necessary to select a string to be deleted.
 
-> **Warning**  
+> [!WARNING]
 > Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.
 
-> **Note**  
+> [!NOTE]
 > Only one line can be deleted. Multiple lines are not supported.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
@@ -728,7 +738,7 @@ This script deletes all swatches except None and Registration.
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > Delete any swatches in use for the objects as well.
 
 ### Requirements
@@ -745,7 +755,7 @@ Illustrator CS or higher
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
 This script deletes hidden layers.
 
-> **Note**  
+> [!TIP]
 > It has been implemented in the Layers panel menu since version 2021.
 
 ![Delete Hidden Layers](images/deleteHiddenLayers.png)
@@ -784,7 +794,7 @@ Illustrator CS or higher
 
 # <a name="deleteTrailingSpacesjs">deleteTrailingSpaces.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script deletes trailing spaces.
+This script deletes trailing spaces and tabs.
 Both point and area types are supported.
 
 ![Delete Trailing Spaces](images/deleteTrailingSpaces.png)
@@ -793,11 +803,8 @@ Both point and area types are supported.
 Select the text objects, and run this script.  
 It is not necessary to select a line.
 
-> **Warning**  
+> [!NOTE]
 > Area type with wrapping may not work well.
-
-> **Note**  
-> Delete tabs as well.
 
 ### Requirements
 Illustrator CS or higher
@@ -839,11 +846,11 @@ Both point and area types are supported.
 Move the cursor to the position of the word you want to delete and run this script.  
 It is not necessary to select a word.
 
-> **Warning**  
-> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.  
-> Area type with wrapping may not work well.
+> [!WARNING]
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.
 
-> **Note**  
+> [!NOTE]
+> Area type with wrapping may not work well.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
 
@@ -866,7 +873,7 @@ This script breaks apart the path object with anchor points.
 ### Usage
 Select the path objects, and run this script.
 
-> **Warning**  
+> [!NOTE]
 > The original path object will be deleted.
 
 ### Requirements
@@ -890,7 +897,7 @@ For example, distributeInSpace(Vertical).js:
 Select objects, and run this script.  
 The position of alignment depends on the reference point.
 
-> **Note**  
+> [!NOTE]
 > The space excludes the stroke width.  
 > Select at least three objects.
 
@@ -913,7 +920,7 @@ This script draws a circumscribed circle through 3 or 2 anchor points.
 ### Usage
 Select 3 or 2 anchor points with Direct Selection Tool, and run this script.
 
-> **Note**  
+> [!NOTE]
 > For two anchor points, it is the diameter.  
 > Anchor points for type on a path and area types are also supported.
 
@@ -938,7 +945,7 @@ This script draws a rectangle on a selected object.
 2. Enter a margin value.  
    To include stroke width, check the Include stroke width checkbox.
 
-> **Note**  
+> [!NOTE]
 > The rectangle is drawn with no fill and stroke width.  
 > The units of margin value depend on the ruler units.
 
@@ -964,7 +971,7 @@ This script draws shapes on anchor points.
 3. Enter a shape size.
 4. Check the Draw Handle Position checkbox if you want to draw the shapes on the handle positions.
 
-> **Note**  
+> [!NOTE]
 > If you select anchor points with Direct Selection Tool, the shape is drawn only for the selected anchor points.  
 > The handle position is drawn with a stroke.  
 > The units of shape size depend on the ruler units.
@@ -989,11 +996,11 @@ This script encloses words in parentheses.
 Move the cursor to the position of the word you want to enclose and run this script.  
 If you select text ranges, enclose them.
 
-> **Warning**  
-> Since using cut and paste functions inside the script, it will lose if you have copied the content in advance.  
-> Area type with wrapping may not work well.
+> [!WARNING]
+> Since using cut and paste functions inside the script, it will lose if you have copied the content in advance.
 
-> **Note**  
+> [!NOTE]
+> Area type with wrapping may not work well.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
 
@@ -1026,7 +1033,7 @@ This script exports color values of a path object or swatches to a CSV file.
 Select path objects or swatches, and run this script.  
 If you want to export all swatches, deselect path objects and swatches.
 
-> **Note**  
+> [!NOTE]
 > If you want to get the swatch name, use a global color.  
 > Export to the desktop.  
 > Prioritize the path object over swatches.  
@@ -1053,7 +1060,7 @@ This script extends and shrinks handles. It also changes the angle.
 2. Enter a positive value in the Distance fields to extend or a negative value to shrink.
 3. Enter a positive value in the Angle fields will rotate counterclockwise. Enter a negative value clockwise.
 
-> **Note**  
+> [!NOTE]
 > Handles cannot delete.  
 > The angle increases or decreases based on the current value.  
 > The units of distance depend on the ruler units.
@@ -1078,7 +1085,7 @@ This script extends and shrinks a path object.
 1. Select an anchor point with Direct Selection Tool, and run this script.
 2. Enter a positive value to extend or a negative value to shrink.
 
-> **Note**  
+> [!NOTE]
 > Closed paths and curves are not supported.  
 > The units of distance depend on the ruler units.
 
@@ -1101,7 +1108,7 @@ This script extracts colors as swatches from the gradient stops.
 ### Usage
 Select the path objects or swatches, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Prioritize the path object over swatches.  
 > To extract color from swatches, deselect the path objects.  
 > Text object and stroke color are not supported.
@@ -1125,7 +1132,7 @@ This script fits guide objects in an artboard.
 ### Usage
 Select guide objects, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Closed paths and curves are not supported.
 
 ### Requirements
@@ -1147,7 +1154,7 @@ This script generates the gradient color from fill colors or swatches.
 ### Usage
 Select the path objects or swatches, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Prioritize the path object over swatches.  
 > To generate gradient color from swatches, deselect the path objects.  
 > Text object and stroke color are not supported.
@@ -1177,10 +1184,10 @@ Both point and area types are supported.
 1. Run this script in the text editing state.
 2. Enter a line number or select a line from the list below that you want to move.
 
-> **Warning**  
+> [!WARNING]
 > Since using copy and paste functions inside the script, it will be lost if you have copied the content in advance.
 
-> **Note**  
+> [!NOTE]
 > Pan that the selected line is centered in the window.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
@@ -1206,10 +1213,10 @@ For example, goToNextText.js:
 ### Usage
 Run this script in the text editing state.
 
-> **Warning**  
+> [!WARNING]
 > Since using cut and paste functions inside the script, it will lose if you have copied the content in advance.
 
-> **Note**  
+> [!NOTE]
 > It will not move to locked, hidden, or threaded texts. The layer also as well.  
 > The cursor moving order is text stacking order.  
 > Pan that the next or previous text is centered in the window.  
@@ -1258,13 +1265,13 @@ This script imports a CSV file to the Swatches panel.
 1. Run this script.
 2. Select a CSV file.
 
-> **Note**  
+> [!IMPORTANT]
 > Make sure the document color mode and CSV file format are the same.
 
 ### Format
 CSV files are available in the following 3 formats.  
 
-> **Note**  
+> [!NOTE]
 > Commas or tabs separate columns.  
 > Line 1 is used as the title.  
 > The swatch name is not required.
@@ -1284,7 +1291,7 @@ CSV files are available in the following 3 formats.
 | --- | --- |
 | FF0000 | Red |
 
-> **Note**  
+> [!NOTE]
 > The leading "#" may be omitted in the case of Hex color.  
 > If the Hex color is 3-digit, it behaves like CSS. (e.g. #F0F becomes #FF00FF.)
 
@@ -1334,10 +1341,8 @@ For example, insertLineBelow.js:
 Move the cursor to the line below or above you want to add a line, and run this script.  
 It is not necessary to move the cursor to the end of the line.
 
-> **Warning**  
-> Area type with wrapping may not work well.
-
-> **Note**  
+> [!NOTE]
+> Area type with wrapping may not work well.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
 
@@ -1399,7 +1404,7 @@ This script adjusts tracking to align point texts at both ends. The vertical tex
 Select point text objects and a reference path object, and run this script.  
 Text objects can also align with each other. In this case, select only the text objects.
 
-> **Note**  
+> [!NOTE]
 > Different font sizes mixed within a single-line point text will not work well.  
 > The text position does not change.  
 > The object to use as a reference will be the longest one.
@@ -1424,7 +1429,7 @@ This script matches the location of the gradient stops and midpoints.
 1. Select two or more gradients in the Swatches panel, and run this script.
 2. Select a source gradient.
 
-> **Note**  
+> [!NOTE]
 > Only gradients in the Swatches panel are supported.
 
 ### Requirements
@@ -1446,7 +1451,7 @@ This script is an alternative to the Measure Tool and accurately measures the di
 ### Usage
 Select two anchor points with Direct Selection Tool, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Highlight the measurement points.  
 > The angle is based on point #1. Range: -180.0 to 180.0  
 > The dimension units depend on the ruler units.  
@@ -1476,7 +1481,7 @@ This script moves all guide objects to a specified layer, frontmost, and backmos
    - `Bring to Front` Move to the frontmost of each layer.  
    - `Send to Back` Move to the backmost of each layer.
 
-> **Note**  
+> [!NOTE]
 > Guides in locked or hidden layers are not supported.
 
 ### Requirements
@@ -1507,12 +1512,12 @@ For example, moveLineDown.js:
 Move the cursor to the line you want to move, and run this script.  
 It is not necessary to select a line.
 
-> **Warning**  
-> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.  
-> Area type with wrapping may not work well.  
-> In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.
+> [!WARNING]
+> Since using copy and paste functions inside the script, it will lose if you have copied the content in advance.
 
-> **Note**  
+> [!NOTE]
+> Area type with wrapping may not work well.  
+> In the case of moveLineUp.js, when moving the last line, a new line is added to work around a bug.  
 > Only one line can be moved. Multiple lines are not supported.  
 > If you are using version 2020 or earlier, you will not be able to enter keyboard input after running the script.  
 > If you want to enter text, you must click with the mouse.
@@ -1546,6 +1551,34 @@ Illustrator CS or higher
 
 
 
+# <a name="navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs">navigateToFirstArtboard.js<br>navigateToLastArtboard.js<br>navigateToNextArtboard.js<br>navigateToPreviousArtboard.js</a>
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
+This script navigates to the first, last, next, or previous artboard while maintaining the view position and zoom factor of the artboard.
+
+> [!IMPORTANT]
+> It can be done with the standard functions( <kbd>shift</kbd> + <kbd>pagedown</kbd> / <kbd>pageup</kbd> ), but it displays the entire artboard.
+
+### Usage
+Just run this script.
+
+> [!NOTE]
+> At least two artboards are required.
+
+> [!TIP]
+> `navigateToNextArtboard.js` will navigate to the first artboard if it is the last artboard.  
+> `navigateToPreviousArtboard.js` will navigate to the last artboard if it is the first artboard.  
+> It is more effective if the artboards are the same size.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#view">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="randomTextColorjs">randomTextColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script changes the text color randomly by word, character or sentence.  
@@ -1558,7 +1591,7 @@ Both CMYK and RGB colors are supported.
 2. Assign the threshold value with the slider.
 3. Click the Random button to assign a color according to the threshold value.
 
-> **Note**  
+> [!NOTE]
 > If there are many characters, the conversion will take time.  
 > Some characters, such as periods and commas, are not applied.
 
@@ -1589,7 +1622,7 @@ This script rearranges selected objects.
    <img src="images/AlignObjectsSettings.png" alt="Rearrange Objects Settings" width="50%">
 8. Check the Preview checkbox to confirm the rearranging.
 
-> **Note**  
+> [!NOTE]
 > The object in the top-left is the basis for rearranging.  
 > The units of the Spacing and the Alignment Position Tolerance depend on the ruler units.  
 > Compound paths, texts, linked files, and embedded link files are also supported.
@@ -1616,10 +1649,10 @@ For more advanced settings, use [relinkFileExtensionExtra.js](#relinkFileExtensi
    If not selected, all files in the document are replaced.
 2. Enter an extension.
 
-> **Warning**  
+> [!WARNING]
 > Missing linked files and embedded link files not replaced.
 
-> **Note**  
+> [!NOTE]
 > Place the relink files in the same place as the original files.  
 > When selecting linked files, select them in the document rather than the Links panel.
 
@@ -1652,11 +1685,11 @@ This script is an enhanced version of [relinkFileExtension.js](#relinkFileExtens
    If the folder is the same as the original file, do not make any selection.  
    To clear the new folder path, hold down the <kbd>Option</kbd> / <kbd>Alt</kbd> key and click the Clear button.
 
-> **Warning**  
+> [!WARNING]
 > Missing linked files and embedded link files not replaced.  
 > If the find targets a string that contains combining characters, the replacement will fail.
 
-> **Note**  
+> [!NOTE]
 > When selecting linked files, select them in the document rather than the Links panel.
 
 ### Requirements
@@ -1680,10 +1713,10 @@ This script replaces linked files with a file of the same name in the selected f
    If not selected, all files in the document are replaced.
 2. Select a folder in the dialog that appears.
 
-> **Warning**  
+> [!WARNING]
 > Missing linked files and embedded link files not replaced.
 
-> **Note**  
+> [!NOTE]
 > When selecting linked files, select them in the document rather than the Links panel.
 
 ### Requirements
@@ -1705,7 +1738,7 @@ This script removes fill and stroke colors in all guide objects.
 ### Usage
 Just run this script. There is no need to select any guide objects.
 
-> **Note**  
+> [!NOTE]
 > If you have added fill or stroke colors in the Appearance panel, they may not work properly.
 
 ### Requirements
@@ -1727,7 +1760,7 @@ This script deletes the Deleted Global Color displayed in the Separations Previe
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > In rare cases, you may not be able to delete it.  
 > If you save the file and reopen it, it may be restored.  
 > In this case, there is no way to delete it.
@@ -1746,7 +1779,7 @@ Illustrator CS or higher
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script renames the name of the linked files and relink.
 
-> **Warning**  
+> [!CAUTION]
 > **It is not possible to undo file names with Edit > Undo.( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Z</kbd> )**  
 > **File manipulation is dangerous, so we recommend backing up your data before running the script.**
 
@@ -1760,12 +1793,13 @@ This script renames the name of the linked files and relink.
 3. Clicking the Preview button shows the renamed file names in the list.  
    A check in the Already Exists column indicates that a file with the same name already exists.
 
-> **Warning**  
+> [!WARNING]
 > Missing linked files and embedded link files not replaced.  
 > If you are using linked files for other documents, the link will be missing.
 
-> **Note**  
-> When selecting linked files, select them in the document rather than the Links panel.
+> [!NOTE]
+> When selecting linked files, select them in the document rather than the Links panel.  
+> If you wish to hide the alert that appears when the script is executed, delete or comment out line 50.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1843,7 +1877,7 @@ This script selects embedded link files.
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > Locked or hidden embedded link files are not selected. The layer also as well.
 
 ### Requirements
@@ -1863,7 +1897,7 @@ This script selects all guide objects.
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > Guides in locked or hidden layers are not supported.
 
 ### Requirements
@@ -1887,7 +1921,7 @@ This script selects the specified link files.
 2. Enter a file name. It can also be part of the file name. Or select it from the list below.  
    If the text field is empty, all linked files are selected. Regular expressions are supported.
 
-> **Note**  
+> [!NOTE]
 > Locked or hidden linked files are not selected. The layer also as well.  
 > Missing linked files may not be selected.
 
@@ -1930,7 +1964,7 @@ This script shows the artboard name and size in the document.
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > The dimension units depend on the ruler units.
 
 ### Requirements
@@ -1952,7 +1986,7 @@ This script shows color values. Both fill and stroke colors are supported.
 ### Usage
 Select path objects, and run this script.
 
-> **Note**  
+> [!NOTE]
 > CMYK, RGB, HEX, grayscale, spot color, and pattern are supported.  
 > Text object and gradient are not supported.
 
@@ -1975,7 +2009,7 @@ This script shows the dimension of the anchor point between two points of the pa
 ### Usage
 Select the path objects, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Supports curves.  
 > Group and color dimensions by path object.  
 > The dimension units depend on the ruler units.  
@@ -2000,7 +2034,7 @@ This script shuffles the gradient color.
 ### Usage
 Select the path objects, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Only a fill color. A stroke color is not supported.  
 > For compound path objects, select them with Direct Selection Tool.
 
@@ -2042,7 +2076,7 @@ This script sorts the artboards in the Artboards panel.
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > Only the Artboards panel. Artboards in the document are not sorted.
 
 ### Requirements
@@ -2070,7 +2104,7 @@ This script sorts lines of the text. The vertical text is also supported.
    `Z → A` Sort in Z to A order.  
    `Reverse` Sort in reverse order.
 
-> **Note**  
+> [!NOTE]
 > Wrapped lines in the area type split on each line.  
 > If the selection spans next threads, it cannot be sorted.  
 > Type on a paths are not supported.
@@ -2095,7 +2129,7 @@ This script splits a point text by lines, words, or characters. The vertical tex
 1. Select any point text objects, and run this script.
 2. Select lines, words, or characters.
 
-> **Note**  
+> [!NOTE]
 > Area types are not supported.  
 > If there are many characters, it will take time to split them.  
 > After splitting, the text position may move slightly.
@@ -2119,7 +2153,7 @@ This script splits a point text at the cursor position. The vertical text is als
 ### Usage
 Move the cursor to the position you want to split, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Area types are not supported.  
 > In the case of multi-lines, the layout will break.  
 > After splitting, the text position may move slightly.
@@ -2146,7 +2180,7 @@ This script is equivalent to InDesign's Edit > Step and Repeat.
 3. Enter the number of times to repeat.
 4. Enter the offset values.
 
-> **Note**  
+> [!NOTE]
 > The units of the offset value depend on the ruler units.
 
 ### Requirements
@@ -2169,7 +2203,7 @@ This script sums the numbers in text contents.
 Select text objects, and run this script.  
 You can also recalculate using only selected items from the list.
 
-> **Note**  
+> [!NOTE]
 > Ignore the units of value.  
 > Only one-byte numbers are supported.
 
@@ -2203,21 +2237,21 @@ Illustrator CS or higher
 
 
 # <a name="syncViewjs">syncView.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-This script synchronizes the scale ratio and the position of the current work area for all documents.  
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
+This script synchronizes all open windows with the zoom factor and the view position of the active window.
 
 ![Sync View](images/syncView.png)
 
 ### Usage
 Just run this script.
 
-> **Note**  
+> [!NOTE]
 > Open at least two files.  
 
 ### Requirements
 Illustrator CS or higher
 
-<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<div align="right">[ <a href="#view">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -2310,7 +2344,7 @@ This script unifies layer colors.
 ### Usage
 Select a target layer, and run this script.
 
-> **Note**  
+> [!NOTE]
 > Sublayers are also supported.
 
 ### Requirements

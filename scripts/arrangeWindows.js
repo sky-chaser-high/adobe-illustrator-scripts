@@ -8,14 +8,16 @@
    Just run this script from File > Scripts > Other Script...
 
    Notes
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   It has been implemented in the Application Bar since version 2022.
+   Open at least two files.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS6 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -26,7 +28,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 1) main();
+    if (app.documents.length > 1 && isValidVersion()) main();
 })();
 
 
@@ -36,17 +38,23 @@ function main() {
     // Window > Arrange > Tile
     app.executeMenuCommand('tile');
 
-    var docs = app.documents;
+    var documents = app.documents;
+    for (var i = 0; i < documents.length; i++) {
+        var document = documents[i];
+        document.activate();
 
-    for (var i = 0; i < docs.length; i++) {
-        docs[i].activate();
-        if (docs[i].artboards.length > 1) {
-            // View > Fit All in Window
-            app.executeMenuCommand('fitall');
-        }
-        else {
-            // View > Fit Artboard in Window
-            app.executeMenuCommand('fitin');
-        }
+        var artboards = document.artboards;
+        // View > Fit All in Window
+        if (artboards.length > 1) app.executeMenuCommand('fitall');
+        // View > Fit Artboard in Window
+        else app.executeMenuCommand('fitin');
     }
+}
+
+
+function isValidVersion() {
+    var cs6 = 16;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs6) return false;
+    return true;
 }
