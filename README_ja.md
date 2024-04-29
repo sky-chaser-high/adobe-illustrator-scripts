@@ -56,8 +56,8 @@ Adobe Illustratorのスクリプト集です。
 - [**アンカーポイントに図形を描く**](#アンカーポイントに図形を描く) drawShapeOnAnchorPoint.js
 - [**アンカーポイントの追加**](#アンカーポイントの追加) addAnchorPoints.js
 - [**オブジェクトの周囲に長方形を描く**](#オブジェクトの周囲に長方形を描く) drawRectangle.js
-- [**オブジェクトの整列**](#オブジェクトの整列) alignObjects.js `New`
-- [**オブジェクトの並べ替え**](#オブジェクトの並べ替え) rearrangeObjects.js `New`
+- [**オブジェクトの整列**](#オブジェクトの整列) alignObjects.js
+- [**オブジェクトの並べ替え**](#オブジェクトの並べ替え) rearrangeObjects.js
 - [**オブジェクトをシャッフル**](#オブジェクトをシャッフル) shuffleObjects.js
 - [**外接円を描く**](#外接円を描く) drawCircumscribedCircle.js
 - [**ガイドオブジェクトの色を削除**](#ガイドオブジェクトの色を削除) removeColorInGuideObject.js
@@ -99,10 +99,11 @@ Adobe Illustratorのスクリプト集です。
 - [**行を下へコピー**](#行を上へコピー行を下へコピー) copyLineDown.js
 - [**行を上に挿入**](#行を上に挿入行を下に挿入) insertLineAbove.js
 - [**行を下に挿入**](#行を上に挿入行を下に挿入) insertLineBelow.js
-- [**数字をカンマで区切る**](#数字をカンマで区切る) addNumericSeparators.js
-- [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js
+- [**数字をカンマで区切る**](#数字をカンマで区切る) addNumericSeparators.js `Update`
+- [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js `Update`
 - [**選択なしでカット**](#選択なしでカット選択なしでコピー) cutLine(emptySelection).js
 - [**選択なしでコピー**](#選択なしでカット選択なしでコピー) copyLine(emptySelection).js
+- [**直線に平行なテキストを作成**](#直線に平行なテキストを作成) createTextParallelToPathSegment.js `New`
 - [**テキスト中央揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Center.js
 - [**テキスト左揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Left.js
 - [**テキスト右揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Right.js
@@ -112,7 +113,7 @@ Adobe Illustratorのスクリプト集です。
 - [**文字列を括弧で囲む**](#文字列を括弧で囲む) encloseWordInParentheses.js
 - [**文字列をカーソルの位置で分割**](#文字列をカーソルの位置で分割) splitTextAtCursorPosition.js
 - [**文字列を交換**](#文字列を交換) swapTextContents.js
-- [**文字列を分割**](#文字列を分割) splitText.js
+- [**文字列を分割**](#文字列を分割) splitText.js `Update`
 
 ### ユーティリティ
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -129,10 +130,10 @@ Adobe Illustratorのスクリプト集です。
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [**ウィンドウの表示位置を同期**](#ウィンドウの表示位置を同期) syncView.js
 - [**ウィンドウを並べて表示**](#ウィンドウを並べて表示) arrangeWindows.js
-- [**最後のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToLastArtboard.js `New`
-- [**先頭のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToFirstArtboard.js `New`
-- [**次のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToNextArtboard.js `New`
-- [**前のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToPreviousArtboard.js `New`
+- [**最後のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToLastArtboard.js
+- [**先頭のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToFirstArtboard.js
+- [**次のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToNextArtboard.js
+- [**前のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToPreviousArtboard.js
 <br><br><br>
 
 
@@ -221,8 +222,7 @@ Illustrator CS4以降
 ![Add Numeric Separators](images/addNumericSeparators.png)
 
 #### 使用方法
-テキストオブジェクトを選択してスクリプトを実行します。  
-または、テキスト編集状態でスクリプトを実行します。
+テキストオブジェクトを選択、または編集状態で範囲を指定してスクリプトを実行します。
 
 #### 動作条件
 Illustrator CS以降
@@ -691,6 +691,40 @@ Illustrator CS4以降
 
 
 
+## <a name="直線に平行なテキストを作成">直線に平行なテキストを作成</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+### createTextParallelToPathSegment.js
+直線セグメント、または2点のアンカーポイントを結ぶ直線に平行なテキストを作成します。
+
+![Create Text Parallel to Path Segment](images/createTextParallelToPathSegment.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ダイレクト選択ツールで2点のアンカーポイントを選択してスクリプトを実行します。
+2. テキストを入力します。デフォルト値は、2点間の距離と角度です。
+3. ポイント文字、またはエリア内文字のいずれかを選択します。  
+   `ポイント文字` 左揃え、中央揃え、右揃えを選択します。  
+   `エリア内文字` テキストエリアの幅と高さを入力します。
+4. ［反転］にチェックを付けるとテキストの表示位置が反転します。
+5. ［中間］にチェックを付けると直線の中央に表示します。
+6. 間隔の値を入力すると直線から間隔をあけます。
+
+> [!NOTE]
+> パス上文字とエリア内文字のアンカーポイントに対応しています。  
+> 曲線には対応していません。  
+> エリア内文字の幅と高さ、間隔の値の単位はルーラー単位により変わります。
+
+#### 動作条件
+Illustrator 2021以降
+
+<div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 ## <a name="スレッドテキストを作成">スレッドテキストを作成</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 ### createThreadedText.js
@@ -704,7 +738,7 @@ Illustrator CS4以降
 #### 使用方法
 1. 2つ以上のテキストやパスオブジェクトを選択してスクリプトを実行します。あらかじめエリア内文字に変換しておく必要はありません。
 2. オブジェクトを連結する順番を選択します。
-3. 整列位置の許容誤差の値を入力します。（0以上の数値）
+3. 整列位置の許容誤差の値を入力します。（0以上の数値）  
    <img src="images/ThreadedTextSettings.png" alt="Threaded Text Settings" width="70%">
 4. パスをテキストに変換するには、［パスをテキストに変換］にチェックを付けて、エリア内文字またはパス上文字のどちらかを選択します。
 
@@ -2268,7 +2302,7 @@ Illustrator CS4以降
 ## <a name="文字列を分割">文字列を分割</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 ### splitText.js
-ポイント文字を行、単語、または文字ごとに分割します。  
+ポイント文字またはエリア内文字を行、単語、または1文字ごとに分割します。  
 縦組みのテキストにも対応しています。
 
 ![Split Text](images/splitText.png)
@@ -2276,11 +2310,11 @@ Illustrator CS4以降
 > Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法
-1. ポイント文字を選択してスクリプトを実行します。
-2. 行、単語、文字のいずれかを選択します。
+1. ポイント文字、またはエリア内文字を選択してスクリプトを実行します。
+2. 行、単語、1文字のいずれかを選択します。
 
 > [!NOTE]
-> エリア内文字には対応していません。  
+> エリア内文字はポイント文字に変換します。  
 > 文字数が多いと分割に時間がかかります。  
 > 分割後、テキストの位置がわずかに移動することがあります。
 

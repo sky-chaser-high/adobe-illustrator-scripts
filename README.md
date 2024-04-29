@@ -58,7 +58,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Add Anchor Points](#addAnchorPointsjs)
 - [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
-- [Align Objects](#alignObjectsjs) `New`
+- [Align Objects](#alignObjectsjs)
 - [Close Path](#closePathjs)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
@@ -76,7 +76,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Move Guides](#moveGuidesjs)
-- [Rearrange Objects](#rearrangeObjectsjs) `New`
+- [Rearrange Objects](#rearrangeObjectsjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
 - [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
@@ -87,13 +87,14 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Text
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [Add Numeric Separators](#addNumericSeparatorsjs)
+- [Add Numeric Separators](#addNumericSeparatorsjs) `Update`
 - [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointTypejs)
 - [Copy Line Down](#copyLineDownjscopyLineUpjs)
 - [Copy Line Up](#copyLineDownjscopyLineUpjs)
 - [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Create Page Numbers](#createPageNumbersjs)
-- [Create Threaded Text](#createThreadedTextjs)
+- [Create Text Parallel to Path Segment](#createTextParallelToPathSegmentjs) `New`
+- [Create Threaded Text](#createThreadedTextjs) `Update`
 - [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
 - [Delete All Right](#deleteAllLeftjsdeleteAllRightjs)
@@ -109,7 +110,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
 - [Sort Lines](#sortLinesjs) `New`
-- [Split Text](#splitTextjs)
+- [Split Text](#splitTextjs) `Update`
 - [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
 - [Swap Text Contents](#swapTextContentsjs)
 - [Text Align Center](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
@@ -130,10 +131,10 @@ If you find a script that interests you, please download it from [![Download](ht
 ### View
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [Arrange Windows](#arrangeWindowsjs)
-- [Navigate to First Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
-- [Navigate to Last Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
-- [Navigate to Next Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
-- [Navigate to Previous Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs) `New`
+- [Navigate to First Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
+- [Navigate to Last Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
+- [Navigate to Next Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
+- [Navigate to Previous Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
 - [Sync View](#syncViewjs)
 <br><br><br>
 
@@ -205,8 +206,7 @@ This script changes a number to a 3-digit comma delimited string.
 ![Add Numeric Separators](images/addNumericSeparators.png)
 
 ### Usage
-Select the text objects, and run this script.  
-Or, run this script in the text editing state.
+Select text objects or specify a text range in an editing state, and run this script.
 
 ### Requirements
 Illustrator CS or higher
@@ -638,6 +638,37 @@ Places a page number at a specified location on the artboards.
 
 ### Requirements
 Illustrator CS4 or higher
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="createTextParallelToPathSegmentjs">createTextParallelToPathSegment.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+This script creates a text parallel to a straight segment or a line connecting two anchor points.
+
+![Create Text Parallel to Path Segment](images/createTextParallelToPathSegment.png)
+
+### Usage
+1. Select two anchor points with the Direct Selection Tool, and run this script.
+2. Enter any text. The default values are the distance and angle between two points.
+3. Select either Point Type or Area Type.  
+   `Point Type` Select left, center, or right align.  
+   `Area Type` Enter area width and height values.
+4. Check the Flip checkbox reverses the drawing position.
+5. Check the Middle checkbox to draw in the middle of the line.
+6. Enter a value of the margin will space them from the line.
+
+> [!NOTE]
+> Anchor points for type on a path and area type are supported.  
+> Curves are not supported.  
+> The units of the width, height and margin value depend on the ruler units.
+
+### Requirements
+Illustrator 2021 or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
@@ -2121,16 +2152,16 @@ Illustrator CS4 or higher
 
 # <a name="splitTextjs">splitText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
-This script splits a point text by lines, words, or characters. The vertical text is also supported.
+This script splits a text by lines, words, or characters. The vertical text is also supported.
 
 ![Split Text](images/splitText.png)
 
 ### Usage
-1. Select any point text objects, and run this script.
+1. Select any text objects, and run this script.
 2. Select lines, words, or characters.
 
 > [!NOTE]
-> Area types are not supported.  
+> Area types converts to point types.  
 > If there are many characters, it will take time to split them.  
 > After splitting, the text position may move slightly.
 

@@ -2,24 +2,24 @@
    splitText
 
    Description
-   This script splits a point text by lines, words, or characters.
+   This script splits a text by lines, words, or characters.
 
    Usage
-   1. Select any point text objects, run this script from File > Scripts > Other Script...
+   1. Select any text objects, run this script from File > Scripts > Other Script...
    2. Select lines, words, or characters.
 
    Notes
-   Area types are not supported.
+   Area types converts to point types.
    If there are many characters, it will take time to split them.
    After splitting, the text position may move slightly.
    In rare cases, the script may not work if you continue to use it.
    In this case, restart Illustrator and try again.
 
    Requirements
-   Illustrator CS4 or higher
+   Illustrator CC or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -35,25 +35,21 @@
 
 
 function main() {
-    var texts = getTextFrames(app.activeDocument.selection);
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
     if (!texts.length) return;
 
     var dialog = showDialog();
 
     dialog.ok.onClick = function() {
-        var flag = {
-            line: dialog.line.value,
-            word: dialog.word.value,
-            character: dialog.character.value
-        };
-
-        for (var i = 0; i < texts.length; i++) {
-            splitText(texts[i], flag);
+        try {
+            convertToPointType();
+            splitLines();
+            if (dialog.word.value) splitWords();
+            if (dialog.character.value) splitCharacters();
         }
-
-        texts = getTextFrames(app.activeDocument.selection);
-        for (var i = 0; i < texts.length; i++) {
-            removeSpace(texts[i]);
+        catch (err) {
+            alert(dialog.error);
         }
         dialog.close();
     }
@@ -62,45 +58,160 @@ function main() {
 }
 
 
-function splitText(item, flag) {
-    var contents, length;
-    var position = {
-        x: item.position[0],
-        y: item.position[1]
-    };
-
-    if (flag.line) length = item.lines.length;
-    if (flag.word) length = item.words.length;
-    if (flag.character) length = item.textRanges.length;
-
-    for (var i = 0; i < length - 1; i++) {
-        if (flag.line) contents = item.lines[0];
-        if (flag.word) contents = item.words[0];
-        if (flag.character) contents = item.textRanges[0];
-        item = split(item, contents, position, flag);
+function convertToPointType() {
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
+    for (var i = 0; i < texts.length; i++) {
+        var text = texts[i];
+        if (text.kind == TextType.POINTTEXT) continue;
+        convertJustification(text);
+        text.convertAreaObjectToPointObject();
+        // work around a bug
+        text.selected = false;
+        text.selected = true;
     }
 }
 
 
-function split(text, word, position, flag) {
-    var x = text.position[0];
-    var y = text.position[1];
+function convertJustification(text) {
+    var justification = getJustification(text);
+    if (!/JUSTIFY/.test(justification.toString())) return;
+
+    // work around a bug
+    // community.adobe.com/t5/illustrator-discussions/trouble-assigning-textframe-to-justification-left/m-p/4211277
+    var shrink = 80;
+    var expand = (1 / shrink) * 10000;
+    text.resize(shrink, shrink);
+
+    switch (justification) {
+        case Justification.FULLJUSTIFY:
+        case Justification.FULLJUSTIFYLASTLINELEFT:
+            setJustification(text, Justification.LEFT);
+            break;
+        case Justification.FULLJUSTIFYLASTLINECENTER:
+            setJustification(text, Justification.CENTER);
+            break;
+        case Justification.FULLJUSTIFYLASTLINERIGHT:
+            setJustification(text, Justification.RIGHT);
+            break;
+    }
+    text.resize(expand, expand);
+}
+
+
+// Error countermeasure.
+// an Illustrator error occurred: 1346458189 ('PARM')
+function getJustification(text) {
+    var ranges = text.textRanges;
+    for (var i = 0; i < ranges.length; i++) {
+        var range = ranges[i];
+        var paragraph = range.paragraphAttributes;
+        try {
+            return paragraph.justification;
+        }
+        catch (err) { }
+    }
+}
+
+
+// Error countermeasure.
+// an Illustrator error occurred: 1346458189 ('PARM')
+function setJustification(text, align) {
+    var ranges = text.textRanges;
+    for (var i = 0; i < ranges.length; i++) {
+        var range = ranges[i];
+        var paragraph = range.paragraphAttributes;
+        try {
+            paragraph.justification = align;
+        }
+        catch (err) { }
+    }
+}
+
+
+function splitLines() {
+    var flag = { line: true, word: false, character: false };
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
+    for (var i = 0; i < texts.length; i++) {
+        splitText(texts[i], flag);
+    }
+}
+
+
+function splitWords() {
+    var flag = { line: false, word: true, character: false };
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
+    for (var i = 0; i < texts.length; i++) {
+        splitText(texts[i], flag);
+    }
+    items = app.activeDocument.selection;
+    texts = getTextFrames(items);
+    for (var j = 0; j < texts.length; j++) {
+        removeLineHeadSpace(texts[j]);
+    }
+}
+
+
+function splitCharacters() {
+    var flag = { line: false, word: false, character: true };
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
+    for (var i = 0; i < texts.length; i++) {
+        splitText(texts[i], flag);
+    }
+    items = app.activeDocument.selection;
+    texts = getTextFrames(items);
+    for (var j = texts.length - 1; j >= 0; j--) {
+        removeNullCharacter(texts[j]);
+    }
+}
+
+
+function splitText(item, flag) {
+    var contents, count;
+
+    if (flag.line) count = item.lines.length;
+    if (flag.word) count = item.words.length;
+    if (flag.character) count = item.textRanges.length;
+
+    for (var i = 0; i < count - 1; i++) {
+        if (flag.line) contents = item.lines[0];
+        if (flag.word) contents = item.words[0];
+        if (flag.character) contents = item.textRanges[0];
+        item = split(item, contents, flag);
+    }
+}
+
+
+function split(text, contents, flag) {
+    var base = {
+        x: flag.line ? text.anchor[0] : text.position[0],
+        y: flag.line ? text.anchor[1] : text.position[1]
+    };
     var item = text.duplicate();
 
-    var end = (flag.word && hasPeriod(text, word)) ? getPeriodPosition(text) : word.end;
+    var end = (flag.word && hasPeriod(text, contents)) ? getPeriodPosition(text) : contents.end;
     var last = text.textRanges.length;
 
     text = removeContents(text, end, last);
-    text = move(text, x, y);
+    text = move(text, base, flag.line);
 
     item = removeContents(item, 0, end);
     if (hasLinefeed(item.contents)) {
-        item = moveNextLine(item, position);
+        item = moveNextLine(item);
     }
     else {
-        item = move(item, x + text.width, y - text.height);
+        var position = {
+            x: base.x + text.width,
+            y: base.y - text.height
+        };
+        item = move(item, position, flag.line);
     }
+    if (!item.contents) item.remove();
 
+    removeTrailingSpaces(text.textRange);
     return item;
 }
 
@@ -114,47 +225,77 @@ function removeContents(text, start, end) {
 }
 
 
-function move(text, x, y) {
-    var left = text.position[0];
-    var top = text.position[1];
-    if (text.orientation == TextOrientation.HORIZONTAL) {
-        text.translate(x - left, 0);
+function move(text, base, isLine) {
+    var left = isLine ? text.anchor[0] : text.position[0];
+    var top = isLine ? text.anchor[1] : text.position[1];
+    var x = base.x - left;
+    var y = 0;
+    if (text.orientation == TextOrientation.VERTICAL) {
+        x = 0;
+        y = base.y - top;
     }
-    else {
-        text.translate(0, y - top);
-    }
+    text.translate(x, y);
     return text;
 }
 
 
-function moveNextLine(text, position) {
+function moveNextLine(text) {
+    var leading = getLeading(text);
+    var x = 0;
+    var y = leading * -1;
+    if (text.orientation == TextOrientation.VERTICAL) {
+        x = leading * -1;
+        y = 0;
+    }
     text.textRanges[0].remove();
-    var left = text.position[0];
-    var top = text.position[1];
-    var range = text.textRange;
-    var attributes = range.characterAttributes;
-    if (text.orientation == TextOrientation.HORIZONTAL) {
-        text.translate(position.x - left, attributes.leading * -1);
-    }
-    else {
-        text.translate(attributes.leading * -1, position.y - top);
-    }
+    text.translate(x, y);
     return text;
+}
+
+
+// Error countermeasure.
+// an Illustrator error occurred: 1346458189 ('PARM')
+function getLeading(text) {
+    var language = getLanguage(text);
+    var index = 1;
+    if (language == LanguageType.JAPANESE) index = 0;
+    var ranges = text.textRanges;
+    for (var i = index; i < ranges.length; i++) {
+        var range = ranges[i];
+        var attributes = range.characterAttributes;
+        try {
+            return attributes.leading;
+        }
+        catch (err) { }
+    }
+}
+
+
+// Error countermeasure.
+// an Illustrator error occurred: 1346458189 ('PARM')
+function getLanguage(text) {
+    var ranges = text.textRanges;
+    for (var i = 0; i < ranges.length; i++) {
+        var range = ranges[i];
+        var attributes = range.characterAttributes;
+        try {
+            return attributes.language;
+        }
+        catch (err) { }
+    }
 }
 
 
 function hasLinefeed(text) {
     var linefeed = /^\r|^\u0003/;
-    if (linefeed.test(text)) return true;
-    return false;
+    return linefeed.test(text);
 }
 
 
 function hasPeriod(text, word) {
     var contents = text.textRanges[word.end].contents;
     var regex = /,|\.|:|;/;
-    if (regex.test(contents)) return true;
-    return false;
+    return regex.test(contents);
 }
 
 
@@ -166,22 +307,37 @@ function getPeriodPosition(text) {
 }
 
 
-function removeSpace(text) {
-    var w1 = text.width;
-    var h1 = text.height;
+function removeTrailingSpaces(text) {
+    var end = text.end - 1;
+    var regex = /\s+$/;
+    if (regex.test(text.contents)) text.textRanges[end].remove();
+}
 
-    var word = text.textRanges[0];
+
+function removeNullCharacter(text) {
+    if (!text.contents) text.remove();
+}
+
+
+function removeLineHeadSpace(text) {
+    var CENTER = Justification.CENTER;
+    var RIGHT = Justification.RIGHT;
+    var justification = getJustification(text);
+
+    var w1 = (justification == RIGHT) ? text.anchor[0] : text.width;
+    var h1 = (justification == RIGHT) ? text.anchor[1] : text.height;
+
+    var str = text.textRanges[0];
     var regex = /^\s/;
-    if (regex.test(word.contents)) word.remove();
+    if (regex.test(str.contents)) str.remove();
 
-    var w2 = text.width;
-    var h2 = text.height;
+    var w2 = (justification == RIGHT) ? text.anchor[0] : text.width;
+    var h2 = (justification == RIGHT) ? text.anchor[1] : text.height;
 
-    var attributes = text.textRange.paragraphAttributes;
-    if (attributes.justification == Justification.CENTER) return;
-    if (attributes.justification == Justification.RIGHT) return;
-
-    text.translate(w1 - w2, h2 - h1);
+    var half = (justification == CENTER) ? 2 : 1;
+    var x = (w1 - w2) / half;
+    var y = (h2 - h1) / half;
+    text.translate(x, y);
 }
 
 
@@ -189,7 +345,7 @@ function getTextFrames(items) {
     var texts = [];
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
-        if (item.typename == 'TextFrame' && item.kind == TextType.POINTTEXT) {
+        if (item.typename == 'TextFrame' && item.kind != TextType.PATHTEXT) {
             texts.push(item);
         }
         if (item.typename == 'GroupItem') {
@@ -201,9 +357,9 @@ function getTextFrames(items) {
 
 
 function isValidVersion() {
-    var cs4 = 14;
+    var cc = 17;
     var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    if (aiVersion < cc) return false;
     return true;
 }
 
@@ -264,6 +420,7 @@ function showDialog() {
     dialog.word = radiobutton2;
     dialog.character = radiobutton3;
     dialog.ok = button2;
+    dialog.error = ui.message;
     return dialog;
 }
 
@@ -288,7 +445,7 @@ function localizeUI() {
         },
         character: {
             en: 'Characters',
-            ja: '文字'
+            ja: '1文字'
         },
         cancel: {
             en: 'Cancel',
@@ -297,6 +454,10 @@ function localizeUI() {
         ok: {
             en: 'OK',
             ja: 'OK'
+        },
+        message: {
+            en: 'An error occurred. \nRestart Illustrator and try again.',
+            ja: 'エラーが発生しました。\nイラストレーターを再起動してやり直してください。'
         }
     };
 }

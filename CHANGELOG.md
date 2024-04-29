@@ -7,6 +7,9 @@
 
 
 ## addNumericSeparators.js
+### 1.2.0 (2024-04-29)
+### Added
+- Added the ability to add commas only to text within a selection.
 ### 1.1.0 (2022-11-13)
 ### Added
 - Modified to run the script in the text editing state.
@@ -83,6 +86,15 @@
 
 ## createPageNumbers.js
 ### 2.0.0 (2023-03-26)
+### Changes
+- Updated the UI.
+<br><br>
+
+
+## createThreadedText.js
+### 1.1.0 (2024-04-29)
+### Added
+- Added corresponding ruler units.
 ### Changes
 - Updated the UI.
 <br><br>
@@ -342,6 +354,17 @@
 ### 1.0.1 (2022-02-17)
 ### Bug Fixes
 - Fixed a bug that caused dimensions to be displayed twice in the case of open paths.
+<br><br>
+
+
+## splitText.js
+### 1.1.0 (2024-04-29)
+### Added
+- Area types are now supported. After splitting, convert to point types.
+### Changes
+- Changed algorithm for splitting text.
+### Bug Fixes
+- Fixed a bug that prevented whitespace characters from being removed.
 <br><br>
 
 
