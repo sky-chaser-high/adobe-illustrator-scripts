@@ -2,23 +2,23 @@
    alignInCenterOfSpace(Vertical)
 
    Description
-   This script aligns objects in the center of space.
+   This script aligns objects vertically in the center of space.
 
    Usage
-   Select objects, run this script from File > Scripts > Other Script...
+   Select three or more objects, run this script from File > Scripts > Other Script...
    The position of alignment depends on the reference point.
 
    Notes
-   The space excludes the stroke width.
+   Include or exclude the stroke width depends on the Align panel menu > Use Preview Bounds.
    Select at least three objects.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS3 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -29,50 +29,63 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 2) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
     var items = app.activeDocument.selection;
+    if (items.length < 3) return;
+
     var baseItems = getBaseItems(items);
-    var targetItems = getTargetItems(items, baseItems.top, baseItems.bottom);
+    var targetItems = getTargetItems(items, baseItems);
 
-    var space = getSpace(baseItems.top, baseItems.bottom);
-    var center = baseItems.top.visibleBounds[3] - space / 2;
-
-    align(targetItems, center);
+    align(targetItems, baseItems);
 }
 
 
-function align(items, center) {
-    for (var i = 0; i < items.length; i++) {
-        var distance = getMovingDistance(items[i], center);
-        items[i].translate(0, distance);
+function align(targetItems, baseItems) {
+    var space = getSpace(baseItems);
+    var center = getCenter(baseItems.top, space);
+    for (var i = 0; i < targetItems.length; i++) {
+        var item = targetItems[i];
+        var distance = getDistance(item, center);
+        item.translate(0, distance);
     }
 }
 
 
-function getMovingDistance(item, center) {
-    var referencePoint = getReferencePoint(item);
-    var position = item.visibleBounds[1] - referencePoint;
+function getDistance(item, center) {
+    var height = getHeight(item);
+    var bounds = getBounds(item);
+    var position = bounds.top - height;
     return center - position;
 }
 
 
-function getReferencePoint(item) {
-    var ref = app.preferences.getIntegerPreference("plugin/Transform/AnchorPoint");
-    var height = item.visibleBounds[1] - item.visibleBounds[3];
-    if (/[012]/.test(ref)) return 0;
-    if (/[345]/.test(ref)) return height / 2;
-    if (/[678]/.test(ref)) return height;
+function getHeight(item) {
+    var pref = app.preferences;
+    var point = pref.getIntegerPreference('plugin/Transform/AnchorPoint');
+    var bounds = getBounds(item);
+    var height = bounds.top - bounds.bottom;
+    if (/[012]/.test(point)) return 0;
+    if (/[345]/.test(point)) return height / 2;
+    if (/[678]/.test(point)) return height;
 }
 
 
-function getSpace(topItem, bottomItem) {
-    var top = topItem.visibleBounds[3];
-    var bottom = bottomItem.visibleBounds[1];
+function getSpace(baseItems) {
+    var bounds = getBounds(baseItems.top);
+    var top = bounds.bottom;
+    bounds = getBounds(baseItems.bottom);
+    var bottom = bounds.top;
     return Math.abs(top - bottom);
+}
+
+
+function getCenter(item, space) {
+    var bounds = getBounds(item);
+    return bounds.bottom - space / 2;
 }
 
 
@@ -81,12 +94,18 @@ function getBaseItems(selection) {
     var bottomItem = selection[0];
 
     for (var i = 1; i < selection.length; i++) {
-        var top = topItem.geometricBounds[1];
-        var bottom = bottomItem.geometricBounds[1];
-        var target = selection[i].geometricBounds[1];
+        var item = selection[i];
+        var bounds = getBounds(item);
+        var target = bounds.top;
 
-        if (target > top) topItem = selection[i];
-        if (target < bottom) bottomItem = selection[i];
+        bounds = getBounds(topItem);
+        var top = bounds.top;
+
+        bounds = getBounds(bottomItem);
+        var bottom = bounds.top;
+
+        if (target > top) topItem = item;
+        if (target < bottom) bottomItem = item;
     }
 
     return {
@@ -96,13 +115,41 @@ function getBaseItems(selection) {
 }
 
 
-function getTargetItems(selection, topItem, bottomItem) {
+function getTargetItems(selection, baseItem) {
     var items = [];
     for (var i = 0; i < selection.length; i++) {
-        var top = topItem.geometricBounds[1];
-        var bottom = bottomItem.geometricBounds[1];
-        var target = selection[i].geometricBounds[1];
-        if (top > target && target > bottom) items.push(selection[i]);
+        var item = selection[i];
+        var bounds = getBounds(item);
+        var target = bounds.top;
+
+        bounds = getBounds(baseItem.top);
+        var top = bounds.top;
+
+        bounds = getBounds(baseItem.bottom);
+        var bottom = bounds.top;
+
+        if (bottom < target && target < top) items.push(item);
     }
     return items;
+}
+
+
+function getBounds(item) {
+    var pref = app.preferences;
+    var usePreviewBounds = pref.getBooleanPreference('includeStrokeInBounds');
+    var bounds = usePreviewBounds ? item.visibleBounds : item.geometricBounds;
+    return {
+        top: bounds[1],
+        left: bounds[0],
+        bottom: bounds[3],
+        right: bounds[2]
+    };
+}
+
+
+function isValidVersion() {
+    var cs3 = 13;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs3) return false;
+    return true;
 }

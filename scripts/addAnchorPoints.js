@@ -6,10 +6,11 @@
    It is a slightly more user-friendly improvement to Object > Path > Add Anchor Points.
 
    Usage
-   1. Select two or more anchor points with Direct Selection Tool, run this script from File > Scripts > Other Script...
+   1. Select two or more anchor points with the Direct Selection Tool, run this script from File > Scripts > Other Script...
    2. Enter the number of anchor points to add.
 
    Notes
+   Anchor points for type on a path and area type are also supported.
    In rare cases, the script may not work if you continue to use it.
    In this case, restart Illustrator and try again.
 
@@ -17,7 +18,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -28,24 +29,25 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
     var items = app.activeDocument.selection;
     var shapes = getPathItems(items);
+    var texts = getTextPathItems();
+    shapes = shapes.concat(texts);
     if (!shapes.length) return;
 
     var dialog = showDialog();
 
     dialog.ok.onClick = function() {
-        var count = parseInt(dialog.count.text);
-        if (count < 1 || isNaN(count)) return dialog.close();
+        var count = parseInt(getValue(dialog.count.text));
+        if (!count) return dialog.close();
 
         for (var i = 0; i < shapes.length; i++) {
             var shape = shapes[i];
-            if (!hasSelectedAnchorPoints(shape)) continue;
             addAnchorPoints(shape, count);
         }
         dialog.close();
@@ -56,74 +58,50 @@ function main() {
 
 
 function addAnchorPoints(shape, count) {
-    var points = getAllAnchorPoints(shape);
-    var entirePoints = getEntirePoints(shape, points, count);
-
-    shape.setEntirePath(entirePoints.anchor);
-    for (var i = 0; i < entirePoints.anchor.length; i++) {
+    var points = getEntirePoints(shape, count);
+    shape.setEntirePath(points.anchor);
+    for (var i = 0; i < points.anchor.length; i++) {
         var handle = shape.pathPoints[i];
-        handle.leftDirection = entirePoints.left[i];
-        handle.rightDirection = entirePoints.right[i];
+        handle.leftDirection = points.left[i];
+        handle.rightDirection = points.right[i];
     }
     shape.selected = true;
 }
 
 
-function getAllAnchorPoints(item) {
-    var points = {
-        anchor: [],
-        left: [],
-        right: []
-    };
-    for (var i = 0; i < item.pathPoints.length; i++) {
-        var point = item.pathPoints[i];
-        points.anchor.push([
-            point.anchor[0],
-            point.anchor[1]
-        ]);
-        points.left.push([
-            point.leftDirection[0],
-            point.leftDirection[1]
-        ]);
-        points.right.push([
-            point.rightDirection[0],
-            point.rightDirection[1]
-        ]);
-    }
-    return points;
-}
-
-
-function getEntirePoints(item, points, count) {
-    for (var i = 0, index = 0; i < item.pathPoints.length; i++) {
+function getEntirePoints(item, count) {
+    var points = getCurrentPoints(item);
+    var start = 0;
+    var last = item.pathPoints.length - 1;
+    for (var i = start, index = start; i < item.pathPoints.length; i++) {
         if (!isSelected(item, i)) continue;
 
         var p1 = item.pathPoints[i];
-        var last = item.pathPoints.length - 1;
-        var next = (i < last) ? i + 1 : 0;
+        var next = (i < last) ? i + 1 : start;
         var p2 = item.pathPoints[next];
 
-        var position, insertPoint;
-        var times = count * index;
+        var additionalPoints, insertPoint;
+        var steps = index * count;
 
-        if (hasCurve(p1, p2)) {
-            position = getCurvedPositions(p1, p2, count);
-            var start = 0;
-            var end = position.anchor.length - 1;
-            position.left[start] = points.left[i + times];
-            position.right[end] = points.right[next + times];
+        if (isCurve(p1, p2)) {
+            additionalPoints = getCurvedPositions(p1, p2, count);
+            var end = additionalPoints.anchor.length - 1;
+            additionalPoints.left[start] = points.left[i + steps];
+            additionalPoints.right[end] = points.right[next + steps];
             if (i == last) {
-                points.left[start] = position.left[end];
-                position.anchor.pop();
+                points.left[start] = additionalPoints.left[end];
+                additionalPoints.anchor.pop();
             }
-            insertPoint = [i + times, 2];
+            insertPoint = [i + steps, 2];
         }
         else {
-            position = getLinearPositions(p1, p2, count);
-            insertPoint = [i + 1 + times, 0];
+            additionalPoints = getLinearPositions(p1, p2, count);
+            insertPoint = [i + steps + 1, 0];
         }
 
-        points = concatenate(points, position, insertPoint);
+        points.anchor = concatenate(points.anchor, additionalPoints.anchor, insertPoint);
+        points.left = concatenate(points.left, additionalPoints.left, insertPoint);
+        points.right = concatenate(points.right, additionalPoints.right, insertPoint);
         index++;
     }
     return points;
@@ -133,49 +111,42 @@ function getEntirePoints(item, points, count) {
 // Insert an array into an array to make a single array.
 // https://stackoverflow.com/questions/1348178/a-better-way-to-splice-an-array-into-an-array-in-javascript
 // Array.prototype.splice.apply(array1, [start, deleteCount].concat(array2));
-function concatenate(points, position, insertPoint) {
-    Array.prototype.splice.apply(points.anchor, insertPoint.concat(position.anchor));
-    Array.prototype.splice.apply(points.left, insertPoint.concat(position.left));
-    Array.prototype.splice.apply(points.right, insertPoint.concat(position.right));
+function concatenate(array1, array2, insertPoint) {
+    Array.prototype.splice.apply(array1, insertPoint.concat(array2));
+    return array1;
+}
+
+
+function getCurrentPoints(item) {
+    var points = {
+        anchor: [], left: [], right: []
+    };
+    for (var i = 0; i < item.pathPoints.length; i++) {
+        var point = item.pathPoints[i];
+        points.anchor.push(point.anchor);
+        points.left.push(point.leftDirection);
+        points.right.push(point.rightDirection);
+    }
     return points;
 }
 
 
-function isSelected(item, index) {
-    var ANCHOR = PathPointSelection.ANCHORPOINT;
-
-    var p1 = item.pathPoints[index];
-    if (p1.selected != ANCHOR) return false;
-
-    var last = item.pathPoints.length - 1;
-    if (index == last && !item.closed) return false;
-
-    var next = (index < last) ? index + 1 : 0;
-    var p2 = item.pathPoints[next];
-    if (p2.selected != ANCHOR) return false;
-    return true;
-}
-
-
 function getLinearPositions(p1, p2, count) {
-    var position = {
-        anchor: [],
-        left: [],
-        right: []
-    };
+    var points = count + 1;
     var x1 = p1.anchor[0];
     var y1 = p1.anchor[1];
     var x2 = p2.anchor[0];
     var y2 = p2.anchor[1];
-    var width = x2 - x1;
-    var height = y2 - y1;
-    var points = count + 1;
-    var x = width / points;
-    var y = height / points;
+    var dx = (x2 - x1) / points;
+    var dy = (y2 - y1) / points;
+
+    var position = {
+        anchor: [], left: [], right: []
+    };
     for (var i = 1; i < points; i++) {
         position.anchor.push([
-            x1 + (x * i),
-            y1 + (y * i)
+            x1 + (dx * i),
+            y1 + (dy * i)
         ]);
     }
     position.left = position.anchor;
@@ -319,44 +290,43 @@ function mult(a, t) {
 }
 
 
-function hasCurve(p1, p2) {
-    var right = hasHandle(p1.anchor, p1.rightDirection);
-    var left = hasHandle(p2.anchor, p2.leftDirection);
-    if (left || right) return true;
-    return false;
+function hasHandle(anchor, handle) {
+    var x = 0;
+    var y = 1;
+    return anchor[x] != handle[x] || anchor[y] != handle[y];
 }
 
 
-function hasHandle(anchor, handle) {
-    var a = {
-        x: anchor[0],
-        y: anchor[1]
-    };
-    var h = {
-        x: handle[0],
-        y: handle[1]
-    };
-    if (a.x == h.x && a.y == h.y) return false;
-    return true;
+function isCurve(p1, p2) {
+    var right = hasHandle(p1.anchor, p1.rightDirection);
+    var left = hasHandle(p2.anchor, p2.leftDirection);
+    return left || right;
 }
 
 
 function hasSelectedAnchorPoints(item) {
-    var ANCHOR = PathPointSelection.ANCHORPOINT;
-    for (var i = 0; i < item.pathPoints.length; i++) {
-        var p1 = item.pathPoints[i];
-        if (p1.selected != ANCHOR) continue;
-
-        var last = item.pathPoints.length - 1;
-        if (i == last && !item.closed) continue;
-
-        var index = (i < last) ? i + 1 : 0;
-        var p2 = item.pathPoints[index];
-        if (p2.selected != ANCHOR) continue;
-
-        return true;
+    var points = item.pathPoints;
+    for (var i = 0; i < points.length; i++) {
+        if (isSelected(item, i)) return true;
     }
     return false;
+}
+
+
+function isSelected(item, index) {
+    var ANCHOR = PathPointSelection.ANCHORPOINT;
+    var points = item.pathPoints;
+
+    var p1 = points[index];
+    if (p1.selected != ANCHOR) return false;
+
+    var last = points.length - 1;
+    if (index == last && !item.closed) return false;
+
+    var next = (index < last) ? index + 1 : 0;
+    var p2 = points[next];
+    if (p2.selected != ANCHOR) return false;
+    return true;
 }
 
 
@@ -364,7 +334,7 @@ function getPathItems(items) {
     var shapes = [];
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
-        if (item.typename == 'PathItem') {
+        if (item.typename == 'PathItem' && hasSelectedAnchorPoints(item)) {
             shapes.push(item);
         }
         if (item.typename == 'GroupItem') {
@@ -378,13 +348,46 @@ function getPathItems(items) {
 }
 
 
+function getTextPathItems() {
+    var items = [];
+    var texts = app.activeDocument.textFrames;
+    for (var i = 0; i < texts.length; i++) {
+        var text = texts[i];
+        if (text.selected && text.kind != TextType.POINTTEXT) {
+            var shape = text.textPath;
+            if (!hasSelectedAnchorPoints(shape)) continue;
+            items.push(shape);
+        }
+    }
+    return items;
+}
+
+
+function getValue(text) {
+    var twoByteChar = /[！-～]/g;
+    var value = text.replace(twoByteChar, function(str) {
+        return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
+    });
+    if (isNaN(value) || !value) return 0;
+    return Number(value);
+}
+
+
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
+}
+
+
 function showDialog() {
     $.localize = true;
     var ui = localizeUI();
     var dialog = new Window('dialog');
     dialog.text = ui.title;
     dialog.orientation = 'column';
-    dialog.alignChildren = ['right', 'top'];
+    dialog.alignChildren = ['fill', 'top'];
     dialog.spacing = 10;
     dialog.margins = 16;
 
@@ -399,12 +402,12 @@ function showDialog() {
 
     var edittext1 = group1.add('edittext', undefined, undefined, { name: 'edittext1' });
     edittext1.text = '1';
-    edittext1.preferredSize.width = 200;
+    edittext1.preferredSize.width = 180;
     edittext1.active = true;
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
-    group2.alignChildren = ['left', 'center'];
+    group2.alignChildren = ['right', 'center'];
     group2.spacing = 10;
     group2.margins = 0;
 
@@ -415,6 +418,24 @@ function showDialog() {
     var button2 = group2.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
+
+    edittext1.addEventListener('keydown', function(event) {
+        var value = getValue(this.text);
+        var keyboard = ScriptUI.environment.keyboardState;
+        var step = keyboard.shiftKey ? 5 : 1;
+        var points;
+        if (event.keyName == 'Up') {
+            points = value + step;
+            this.text = points;
+            event.preventDefault();
+        }
+        if (event.keyName == 'Down') {
+            points = value - step;
+            if (points < 1) points = 1;
+            this.text = points;
+            event.preventDefault();
+        }
+    });
 
     statictext1.addEventListener('click', function() {
         edittext1.active = false;

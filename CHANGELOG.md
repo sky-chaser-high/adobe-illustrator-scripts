@@ -6,20 +6,52 @@
 <br><br>
 
 
+## addAnchorPoints.js
+### 1.1.0 (2024-06-01)
+### Added
+- Anchor points for type on a path and area type are now supported.
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## addNumericSeparators.js
 ### 1.2.0 (2024-04-29)
 ### Added
-- Added the ability to add commas only to text within a selection.
+- Added the function to add commas only to text within a selection.
 ### 1.1.0 (2022-11-13)
 ### Added
 - Modified to run the script in the text editing state.
 <br><br>
 
 
+## alignInCenterOfSpace(Horizontal).js
+### 1.1.0 (2024-06-01)
+### Added
+- The Align panel menu > Use Preview Bounds is now supported.
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## alignInCenterOfSpace(Vertical).js
+### 1.1.0 (2024-06-01)
+### Added
+- The Align panel menu > Use Preview Bounds is now supported.
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## alignObjects.js
+### 1.1.0 (2024-06-01)
+### Added
+- Added supported units.
+- The up and down arrow keys can now be used to increase or decrease the value.
+<br><br>
+
+
 ## arrangeWindows.js
 ### 1.0.1 (2024-04-06)
 ### Added
-- Version check added.
+- Added the function to check the illustrator version.
 <br><br>
 
 
@@ -41,6 +73,15 @@
 ### 1.0.1 (2023-08-27)
 ### Changes
 - Changed localization method.
+<br><br>
+
+
+## convertAllAnchorPointsToCorner.js
+### 1.1.0 (2024-06-01)
+### Added
+- Anchor points for type on a path and area type are now supported.
+- Added the function to convert all anchor points or only selected anchor points when anchor points are selected with the Direct Selection Tool.
+- Added the function to check the illustrator version.
 <br><br>
 
 
@@ -91,6 +132,15 @@
 <br><br>
 
 
+## createTextParallelToPathSegment.js
+### 1.0.1 (2024-06-01)
+### Added
+- The up and down arrow keys can now be used to increase or decrease the value.
+### Bug Fixes
+- Fixed the problem of not being able to undo with the esc key due to localization.
+<br><br>
+
+
 ## createThreadedText.js
 ### 1.1.0 (2024-04-29)
 ### Added
@@ -128,6 +178,22 @@
 <br><br>
 
 
+## distributeInSpace(Horizontal).js
+### 1.1.0 (2024-06-01)
+### Added
+- The Align panel menu > Use Preview Bounds is now supported.
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## distributeInSpace(Vertical).js
+### 1.1.0 (2024-06-01)
+### Added
+- The Align panel menu > Use Preview Bounds is now supported.
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## drawCircumscribedCircle.js
 ### 1.1.0 (2023-04-29)
 ### Features
@@ -135,7 +201,33 @@
 <br><br>
 
 
+## drawRectangle.js
+### 1.1.0 (2024-06-01)
+### Added
+- Added the function to ignore grouped objects.
+- Added preview function.
+- Added supported units.
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## drawShapeOnAnchorPoint.js
+### 1.1.0 (2024-06-01)
+### Added
+- Added the function to draw a shape on all anchor points or only selected anchor points when anchor points are selected with the Direct Selection Tool.
+- Added supported units.
+- Added the function to check the illustrator version.
+### Bug Fixes
+- Fixed the problem of not being able to undo with the esc key due to localization.
+<br><br>
+
+
 ## extendHandle.js
+### 1.2.0 (2024-06-01)
+### Added
+- Added supported units.
+- Added the function to check the illustrator version.
+- The up and down arrow keys can now be used to increase or decrease the value.
 ### 1.1.0 (2023-05-28)
 ### Features
 - Added the function to change the angle.
@@ -143,6 +235,11 @@
 
 
 ## extendLine.js
+### 1.2.0 (2024-06-01)
+### Added
+- Added supported units.
+- Added the function to check the illustrator version.
+- The up and down arrow keys can now be used to increase or decrease the value.
 ### 1.1.0 (2023-05-14)
 ### Features
 - Added preview function.
@@ -266,6 +363,16 @@
 <br><br>
 
 
+## rearrangeObjects.js
+### 1.1.0 (2024-06-01)
+### Added
+- Added supported units.
+- The up and down arrow keys can now be used to increase or decrease the value.
+### Bug Fixes
+- Fixed the problem of not being able to undo with the esc key due to localization.
+<br><br>
+
+
 ## relinkFileExtension.js
 ### 1.1.0 (2023-01-15)
 ### Changes
@@ -345,6 +452,11 @@
 
 
 ## showDimensions.js
+### 2.1.0 (2024-06-01)
+### Added
+- Added the function to show dimensions only selected anchor points when anchor points are selected with the Direct Selection Tool.
+- Added supported units.
+- Added the function to check the illustrator version.
 ### 2.0.0 (2023-05-14)
 ### Added
 - Curves are now supported.
@@ -369,9 +481,16 @@
 
 
 ## stepAndRepeat.js
+### 2.1.0 (2024-06-01)
+### Added
+- Added supported units.
+- Added the function to check the illustrator version.
+- The up and down arrow keys can now be used to increase or decrease the value.
+### Bug Fixes
+- Fixed preview behavior.
 ### 2.0.1 (2023-05-14)
 ### Bug Fixes
-- Work around the problem of being unable to undo the ESC key during localization.
+- Fixed the problem of not being able to undo with the esc key due to localization.
 ### 2.0.0 (2022-10-08)
 ### Changes
 - The UI has been brought closer to InDesign.
@@ -382,7 +501,7 @@
 ## syncView.js
 ### 1.0.1 (2024-04-06)
 ### Added
-- Version check added.
+- Added the function to check the illustrator version.
 ### Bug Fixes
 - Fixed an issue where multiple openings of the same file would not synchronize.
 <br><br>

@@ -14,8 +14,8 @@
 
    Notes
    The top row and the left-most column are the basis for alignment.
-   The units of the Distribute Spacing and the Alignment Position Tolerance depend on the ruler units.
    Compound paths, texts, linked files, and embedded link files are also supported.
+   The units of the Distribute Spacing and the Alignment Position Tolerance depend on the ruler units.
    In rare cases, the script may not work if you continue to use it.
    In this case, restart Illustrator and try again.
 
@@ -23,7 +23,7 @@
    Illustrator 2021 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -45,9 +45,7 @@ function main() {
 
     var undoCount = 0;
 
-    var ruler = app.activeDocument.rulerUnits;
-    var units = getUnits(ruler);
-    var dialog = showDialog(units);
+    var dialog = showDialog();
 
     dialog.align.topLeft.addEventListener('click', function() {
         var align = {
@@ -343,12 +341,6 @@ function getConfiguration(dialog, items) {
         tolerance: tolerance,
         stroke: stroke
     };
-}
-
-
-function getValue(item) {
-    if (isNaN(item)) return 0;
-    return Number(item);
 }
 
 
@@ -725,6 +717,16 @@ function getPageItems(items) {
 }
 
 
+function getValue(text) {
+    var twoByteChar = /[！-～]/g;
+    var value = text.replace(twoByteChar, function(str) {
+        return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
+    });
+    if (isNaN(value) || !value) return 0;
+    return Number(value);
+}
+
+
 function convertUnits(value, unit) {
     try {
         return Number(UnitValue(value).as(unit));
@@ -735,25 +737,81 @@ function convertUnits(value, unit) {
 }
 
 
-function getUnits(unit) {
-    switch (unit) {
-        case RulerUnits.Millimeters: return 'mm';
-        case RulerUnits.Centimeters: return 'cm';
-        case RulerUnits.Inches: return 'inch';
-        case RulerUnits.Points: return 'pt';
-        case RulerUnits.Pixels: return 'px';
-        default: return 'pt';
+function getRulerUnits() {
+    var unit = getUnitSymbol();
+    if (!app.documents.length) return unit.pt;
+
+    var document = app.activeDocument;
+    var src = document.fullName;
+    var ruler = document.rulerUnits;
+    try {
+        switch (ruler) {
+            case RulerUnits.Pixels: return unit.px;
+            case RulerUnits.Points: return unit.pt;
+            case RulerUnits.Picas: return unit.pc;
+            case RulerUnits.Inches: return unit.inch;
+            case RulerUnits.Millimeters: return unit.mm;
+            case RulerUnits.Centimeters: return unit.cm;
+
+            case RulerUnits.Feet: return unit.ft;
+            case RulerUnits.Yards: return unit.yd;
+            case RulerUnits.Meters: return unit.meter;
+        }
     }
+    catch (err) {
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return unit.ft;
+            case 'Yards': return unit.yd;
+            case 'Meters': return unit.meter;
+        }
+    }
+    return unit.pt;
+}
+
+
+function xmpRulerUnits(src) {
+    if (!ExternalObject.AdobeXMPScript) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
+
+    var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
+    var prop = 'xmpTPg:MaxPageSize';
+    var unit = prop + '/stDim:unit';
+
+    var ruler = xmp.getProperty(namespace, unit).value;
+    return ruler;
+}
+
+
+function getUnitSymbol() {
+    return {
+        px: 'px',
+        pt: 'pt',
+        pc: 'pc',
+        inch: 'in',
+        ft: 'ft',
+        yd: 'yd',
+        mm: 'mm',
+        cm: 'cm',
+        meter: 'm'
+    };
 }
 
 
 function getTolerance(unit) {
     switch (unit) {
+        case 'px': return 30;
+        case 'pt': return 30;
+        case 'pc': return 1;
+        case 'in': return 0.5;
+        case 'ft': return 0.03;
+        case 'yd': return 0.01;
         case 'mm': return 10;
         case 'cm': return 1;
-        case 'inch': return 0.5;
-        case 'pt': return 30;
-        case 'px': return 30;
+        case 'm': return 0.01;
     }
 }
 
@@ -766,10 +824,12 @@ function isValidVersion() {
 }
 
 
-function showDialog(units) {
+function showDialog() {
     $.localize = true;
     var ui = localizeUI();
     var icon = getUIIcon();
+
+    var units = getRulerUnits();
     var tolerance = getTolerance(units);
 
     var dialog = new Window('dialog');
@@ -1207,43 +1267,8 @@ function showDialog(units) {
         this.image = ScriptUI.newImage(File.decode(icon.normal.bottom));
     });
 
-    edittext1.addEventListener('keydown', function(event) {
-        var value = Number(edittext1.text);
-        if (isNaN(value)) value = 0;
-        var keyboard = ScriptUI.environment.keyboardState;
-        var step = keyboard.shiftKey ? 5 : 1;
-        var margin;
-        if (event.keyName == 'Up') {
-            margin = value + step;
-            edittext1.text = margin;
-            event.preventDefault();
-        }
-        if (event.keyName == 'Down') {
-            margin = value - step;
-            if (margin < 0) margin = 0;
-            edittext1.text = margin;
-            event.preventDefault();
-        }
-    });
-
-    edittext2.addEventListener('keydown', function(event) {
-        var value = Number(edittext2.text);
-        if (isNaN(value)) value = 0;
-        var keyboard = ScriptUI.environment.keyboardState;
-        var step = keyboard.shiftKey ? 5 : 1;
-        var tolerance;
-        if (event.keyName == 'Up') {
-            tolerance = value + step;
-            edittext2.text = tolerance;
-            event.preventDefault();
-        }
-        if (event.keyName == 'Down') {
-            tolerance = value - step;
-            if (tolerance < 0) tolerance = 0;
-            edittext2.text = tolerance;
-            event.preventDefault();
-        }
-    });
+    edittext1.addEventListener('keydown', setIncreaseDecrease);
+    edittext2.addEventListener('keydown', setIncreaseDecrease);
 
     statictext2.addEventListener('click', function() {
         edittext2.active = false;
@@ -1298,6 +1323,24 @@ function showDialog(units) {
     dialog.units = units;
     dialog.undo = button1;
     return dialog;
+}
+
+
+function setIncreaseDecrease(event) {
+    var value = getValue(event.target.text);
+    var keyboard = ScriptUI.environment.keyboardState;
+    var step = keyboard.shiftKey ? 5 : 1;
+    if (event.keyName == 'Up') {
+        value += step;
+        event.target.text = value;
+        event.preventDefault();
+    }
+    if (event.keyName == 'Down') {
+        value -= step;
+        if (value < 0) value = 0;
+        event.target.text = value;
+        event.preventDefault();
+    }
 }
 
 

@@ -53,35 +53,37 @@ Adobe Illustratorのスクリプト集です。
 
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [**アンカーポイントに図形を描く**](#アンカーポイントに図形を描く) drawShapeOnAnchorPoint.js
-- [**アンカーポイントの追加**](#アンカーポイントの追加) addAnchorPoints.js
-- [**オブジェクトの周囲に長方形を描く**](#オブジェクトの周囲に長方形を描く) drawRectangle.js
-- [**オブジェクトの整列**](#オブジェクトの整列) alignObjects.js
-- [**オブジェクトの並べ替え**](#オブジェクトの並べ替え) rearrangeObjects.js
+- [**アンカーポイントに図形を描く**](#アンカーポイントに図形を描く) drawShapeOnAnchorPoint.js `Update`
+- [**アンカーポイントの追加**](#アンカーポイントの追加) addAnchorPoints.js `Update`
+- [**オブジェクトの周囲に長方形を描く**](#オブジェクトの周囲に長方形を描く) drawRectangle.js `Update`
+- [**オブジェクトの整列**](#オブジェクトの整列) alignObjects.js `Update`
+- [**オブジェクトの並べ替え**](#オブジェクトの並べ替え) rearrangeObjects.js `Update`
 - [**オブジェクトをシャッフル**](#オブジェクトをシャッフル) shuffleObjects.js
 - [**外接円を描く**](#外接円を描く) drawCircumscribedCircle.js
 - [**ガイドオブジェクトの色を削除**](#ガイドオブジェクトの色を削除) removeColorInGuideObject.js
 - [**ガイドをアートボードにフィット**](#ガイドをアートボードにフィット) fitGuideInArtboard.js
 - [**ガイドを移動**](#ガイドを移動) moveGuides.js
 - [**ガイドを選択**](#ガイドを選択) selectGuides.js
-- [**繰り返し複製**](#繰り返し複製) stepAndRepeat.js
+- [**繰り返し複製**](#繰り返し複製) stepAndRepeat.js `Update`
 - [**グリッドラインを作成**](#グリッドラインを作成) createGridLines.js
-- [**すべてのアンカーをコーナーポイントに切り替え**](#すべてのアンカーをコーナーポイントに切り替え) convertAllAnchorPointsToCorner.js
+- [**すべてのアンカーをコーナーポイントに切り替え**](#すべてのアンカーをコーナーポイントに切り替え) convertAllAnchorPointsToCorner.js `Update`
 - [**選択したアンカーポイントを時計回りに移動**](#選択したアンカーポイントを時計回りに移動選択したアンカーポイントを反時計回りに移動) shiftSelectedAnchorPointsCW.js
 - [**選択したアンカーポイントを反時計回りに移動**](#選択したアンカーポイントを時計回りに移動選択したアンカーポイントを反時計回りに移動) shiftSelectedAnchorPointsCCW.js
 - [**選択したアンカーポイントを時計回りに増やす**](#選択したアンカーポイントを時計回りに増やす選択したアンカーポイントを反時計回りに増やす) increaseSelectedAnchorPointsCW.js
 - [**選択したアンカーポイントを反時計回りに増やす**](#選択したアンカーポイントを時計回りに増やす選択したアンカーポイントを反時計回りに増やす) increaseSelectedAnchorPointsCCW.js
 - [**選択したアンカーポイントを時計回りに減らす**](#選択したアンカーポイントを時計回りに減らす選択したアンカーポイントを反時計回りに減らす) decreaseSelectedAnchorPointsCW.js
 - [**選択したアンカーポイントを反時計回りに減らす**](#選択したアンカーポイントを時計回りに減らす選択したアンカーポイントを反時計回りに減らす) decreaseSelectedAnchorPointsCCW.js
-- [**ハンドルを伸縮**](#ハンドルを伸縮) extendHandle.js
-- [**パスの寸法を表示**](#パスの寸法を表示) showDimensions.js
-- [**パスを伸縮**](#パスを伸縮) extendLine.js
+- [**直線に平行な図形を描く**](#直線に平行な図形を描く) drawShapeParallelToPathSegment.js `New`
+- [**ハンドルを伸縮**](#ハンドルを伸縮) extendHandle.js `Update`
+- [**パスの寸法を表示**](#パスの寸法を表示) showDimensions.js `Update`
+- [**パスを伸縮**](#パスを伸縮) extendLine.js `Update`
 - [**パスを閉じる**](#パスを閉じる) closePath.js
 - [**パスを分解**](#パスを分解) disjoinPath.js
-- [**余白の垂直方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Vertical).js
-- [**余白の水平方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Horizontal).js
-- [**余白の垂直方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Vertical).js
-- [**余白の水平方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Horizotal).js
+- [**法線を描く**](#法線を描く) drawNormalLine.js `New`
+- [**余白の垂直方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Vertical).js `Update`
+- [**余白の水平方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Horizontal).js `Update`
+- [**余白の垂直方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Vertical).js `Update`
+- [**余白の水平方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Horizotal).js `Update`
 
 ### テキスト
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -91,7 +93,7 @@ Adobe Illustratorのスクリプト集です。
 - [**カーソルを次のテキストへ移動**](#カーソルを次のテキストへ移動カーソルを前のテキストへ移動) goToNextText.js
 - [**カーソルを前のテキストへ移動**](#カーソルを次のテキストへ移動カーソルを前のテキストへ移動) goToPreviousText.js
 - [**行に移動**](#行に移動) goToLine.js
-- [**行の並べ替え**](#行の並べ替え) sortLines.js `New`
+- [**行の並べ替え**](#行の並べ替え) sortLines.js
 - [**行末のスペースを削除**](#行末のスペースを削除) deleteTrailingSpaces.js
 - [**行を上へ移動**](#行を上へ移動行を下へ移動) moveLineUp.js
 - [**行を下へ移動**](#行を上へ移動行を下へ移動) moveLineDown.js
@@ -99,11 +101,11 @@ Adobe Illustratorのスクリプト集です。
 - [**行を下へコピー**](#行を上へコピー行を下へコピー) copyLineDown.js
 - [**行を上に挿入**](#行を上に挿入行を下に挿入) insertLineAbove.js
 - [**行を下に挿入**](#行を上に挿入行を下に挿入) insertLineBelow.js
-- [**数字をカンマで区切る**](#数字をカンマで区切る) addNumericSeparators.js `Update`
-- [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js `Update`
+- [**数字をカンマで区切る**](#数字をカンマで区切る) addNumericSeparators.js
+- [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js
 - [**選択なしでカット**](#選択なしでカット選択なしでコピー) cutLine(emptySelection).js
 - [**選択なしでコピー**](#選択なしでカット選択なしでコピー) copyLine(emptySelection).js
-- [**直線に平行なテキストを作成**](#直線に平行なテキストを作成) createTextParallelToPathSegment.js `New`
+- [**直線に平行なテキストを作成**](#直線に平行なテキストを作成) createTextParallelToPathSegment.js `Update`
 - [**テキスト中央揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Center.js
 - [**テキスト左揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Left.js
 - [**テキスト右揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Right.js
@@ -113,7 +115,7 @@ Adobe Illustratorのスクリプト集です。
 - [**文字列を括弧で囲む**](#文字列を括弧で囲む) encloseWordInParentheses.js
 - [**文字列をカーソルの位置で分割**](#文字列をカーソルの位置で分割) splitTextAtCursorPosition.js
 - [**文字列を交換**](#文字列を交換) swapTextContents.js
-- [**文字列を分割**](#文字列を分割) splitText.js `Update`
+- [**文字列を分割**](#文字列を分割) splitText.js
 
 ### ユーティリティ
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -204,6 +206,9 @@ MITライセンスのもとで公開しています。
 1. ダイレクト選択ツールで2点以上のアンカーポイントを選択してスクリプトを実行します。
 2. 追加したい個数を入力します。
 
+> [!NOTE]
+> パス上文字とエリア内文字のアンカーポイントにも対応しています。
+
 #### 動作条件
 Illustrator CS4以降
 
@@ -266,11 +271,11 @@ Illustrator CS以降
 ![Align In Center Of Space](images/alignInCenterOfSpace.png)
 
 #### 使用方法
-オブジェクトを選択してスクリプトを実行します。  
-整列の位置は、基準点により変わります。
+3つ以上のオブジェクトを選択してスクリプトを実行します。  
+整列の位置は、基準点により変化します。
 
 > [!NOTE]
-> 余白は線幅を含みません。  
+> 線幅を含めるか含めないかは、「整列パネルメニュー > プレビュー境界を使用」によります。  
 > オブジェクトは3つ以上選択してください。
 
 #### 動作条件
@@ -303,8 +308,11 @@ Illustrator CS3以降
 
 > [!NOTE]
 > 最上段の行と左端の列が整列の基準になります。  
-> ［等間隔に分布］と［整列位置の許容誤差］の単位は、ルーラー単位により変わります。  
 > 複合パス、テキスト、リンク画像、埋め込み画像にも対応しています。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator 2021以降
@@ -454,13 +462,16 @@ Illustrator CS4以降
 ![Convert All Anchor Points To Corner](images/convertAllAnchorPointsToCorner.png)
 
 #### 使用方法
-選択ツールでパスオブジェクト全体を選択してスクリプトを実行します。
+選択ツールでパスオブジェクト全体を選択してスクリプトを実行します。  
+ダイレクト選択ツールでアンカーポイントを選択した場合は、すべてまたは選択したアンカーポイントのみをコーナーポイントに切り替えるダイアログを表示します。  
+<img src="images/ConvertToCornerDialog.png" alt="Convert To Corner Dialog" width="40%">
 
 > [!NOTE]
-> ダイレクト選択ツールでアンカーポイントを選択する必要はありません。
+> パス上文字とエリア内文字のアンカーポイントにも対応しています。  
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 動作条件
-Illustrator CS以降
+Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
@@ -707,13 +718,16 @@ Illustrator CS4以降
    `ポイント文字` 左揃え、中央揃え、右揃えを選択します。  
    `エリア内文字` テキストエリアの幅と高さを入力します。
 4. ［反転］にチェックを付けるとテキストの表示位置が反転します。
-5. ［中間］にチェックを付けると直線の中央に表示します。
-6. 間隔の値を入力すると直線から間隔をあけます。
+5. ［中間］にチェックを付けるとパスセグメントの中央に描きます。
+6. 間隔の値を入力するとパスセグメントから間隔をあけます。
 
 > [!NOTE]
-> パス上文字とエリア内文字のアンカーポイントに対応しています。  
 > 曲線には対応していません。  
-> エリア内文字の幅と高さ、間隔の値の単位はルーラー単位により変わります。
+> パス上文字とエリア内文字のアンカーポイントにも対応しています。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator 2021以降
@@ -744,8 +758,11 @@ Illustrator 2021以降
 
 > [!NOTE]
 > オブジェクトやレイヤーの重ね順は、連結する順番には関係ありません。  
-> パスをエリア内文字に変換する場合、アンカーポイントの数が2点以下のパスは変換しません。  
-> 整列位置の許容誤差の単位はルーラー単位により変わります。
+> パスをエリア内文字に変換する場合、アンカーポイントの数が2点以下のパスは変換しません。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CC以降
@@ -988,11 +1005,11 @@ Illustrator CS以降
 ![Distribute In Space](images/distributeInSpace.png)
 
 #### 使用方法
-オブジェクトを選択してスクリプトを実行します。  
-分布の位置は、基準点により変わります。
+3つ以上のオブジェクトを選択してスクリプトを実行します。  
+分布の位置は、基準点により変化します。
 
 > [!NOTE]
-> 余白は線幅を含みません。  
+> 線幅を含めるか含めないかは、「整列パネルメニュー > プレビュー境界を使用」によります。  
 > オブジェクトは3つ以上選択してください。
 
 #### 動作条件
@@ -1017,10 +1034,45 @@ Illustrator CS3以降
 
 > [!NOTE]
 > アンカーポイント2点の場合は、直径になります。  
-> パス上文字、エリア内文字のアンカーポイントにも対応しています。
+> パス上文字とエリア内文字のアンカーポイントにも対応しています。
 
 #### 動作条件
 Illustrator CS以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="法線を描く">法線を描く</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+### drawNormalLine.js
+2点のアンカーポイント間の曲線または直線に対して法線（接線に垂直な線）を描きます。
+
+![Draw Normal Line](images/drawNormalLine.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ダイレクト選択ツールで2点以上のアンカーポイントを選択してスクリプトを実行します。
+2. 法線の数を入力します。
+3. 法線の長さを入力します。
+4. 選択したアンカーポイントにも描く場合は、［選択アンカーポイントにも描く］にチェックを付けます。
+5. ［反転］にチェックを付けると法線の表示位置が反転します。
+6. ［中間］にチェックを付けるとパスセグメントの中央に描きます。
+7. 距離の値を入力するとパスセグメントから間隔をあけます。
+
+> [!NOTE]
+> パス上文字とエリア内文字のアンカーポイントには対応していません。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
+
+#### 動作条件
+Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
@@ -1040,12 +1092,16 @@ Illustrator CS以降
 
 #### 使用方法
 1. パスオブジェクトを選択してスクリプトを実行します。
-2. マージンを入力します。  
-   線幅を含める場合は、［線幅を含む］にチェックを付けます。
+2. マージンの値を入力します。
+3. グループ内のそれぞれのオブジェクトに長方形を描く場合は、［グループを無視］にチェックを付けます。
+4. 線幅を含める場合は、［プレビュー境界を使用］にチェックを付けます。
 
 > [!NOTE]
-> 塗りと線幅なしの長方形を描きます。  
-> マージンの単位はルーラー単位により変わります。
+> 塗りと線幅なしの長方形を描きます。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1060,7 +1116,7 @@ Illustrator CS4以降
 ## <a name="アンカーポイントに図形を描く">アンカーポイントに図形を描く</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 ### drawShapeOnAnchorPoint.js
-アンカーポイントの位置に図形を描きます。
+アンカーポイントとハンドルの位置に図形を描きます。
 
 ![Draw Shape On Anchor Point](images/drawShapeOnAnchorPoint.png)
 > [!NOTE]
@@ -1070,12 +1126,47 @@ Illustrator CS4以降
 1. パスオブジェクトを選択してスクリプトを実行します。
 2. 描く図形を選択します。
 3. 図形のサイズを入力します。
-4. ハンドルの位置を描きたい場合は、［ハンドル位置も描く］にチェックを付けます。
+4. ダイレクト選択ツールでアンカーポイントを選択した場合は、すべてのアンカーポイントに図形を描くか選択したアンカーポイントのみに描くかを選択します。
+5. ハンドルの位置を描きたい場合は、［ハンドル位置も描く］にチェックを付けます。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="直線に平行な図形を描く">直線に平行な図形を描く</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+### drawShapeParallelToPathSegment.js
+直線セグメント、または2点のアンカーポイントを結ぶ直線に平行な図形を描きます。
+
+![Draw Shape Parallel to Path Segment](images/drawShapeParallelToPathSegment.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ダイレクト選択ツールで2点のアンカーポイントを選択してスクリプトを実行します。
+2. 正方形、長方形、または楕円を選択します。
+3. 長方形または楕円を選択した場合は、幅と高さの値を入力します。
+4. ［反転］にチェックを付けると図形の表示位置が反転します。
+5. ［中間］にチェックを付けるとパスセグメントの中央に描きます。
+6. 間隔の値を入力するとパスセグメントから間隔をあけます。
 
 > [!NOTE]
-> ダイレクト選択ツールでアンカーポイントを選択すると、選択した箇所にだけ図形を描きます。  
-> ハンドル位置は線で描きます。  
-> 図形サイズの単位はルーラー単位により変わります。
+> 曲線には対応していません。  
+> パス上文字とエリア内文字のアンカーポイントにも対応しています。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1171,8 +1262,11 @@ Illustrator CS以降
 
 > [!NOTE]
 > ハンドルは削除できません。  
-> 角度は現在の値を基準にして増減します。  
-> 距離の単位はルーラー単位により変わります。
+> 角度は現在の値を基準にして増減します。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1187,7 +1281,7 @@ Illustrator CS4以降
 ## <a name="パスを伸縮">パスを伸縮</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 ### extendLine.js
-パスオブジェクトを伸縮します。
+選択しているパスセグメントを伸縮します。
 
 ![Extend Line](images/extendLine.png)
 > [!NOTE]
@@ -1199,7 +1293,11 @@ Illustrator CS4以降
 
 > [!NOTE]
 > 閉じたパスと曲線には対応していません。  
-> 距離の単位はルーラー単位により変わります。
+> パス上文字のアンカーポイントにも対応しています。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1591,7 +1689,7 @@ Illustrator CS4以降
 > 測定箇所をハイライトします。  
 > 角度はポイント#1を基準にします。  
 > 寸法の単位はルーラー単位により変わります。  
-> パス上文字、エリア内文字のアンカーポイントにも対応しています。  
+> パス上文字とエリア内文字のアンカーポイントにも対応しています。  
 > フォントサイズが小さくなりすぎるため、15500％以上に拡大表示するとラベルが表示されません。
 
 #### 動作条件
@@ -1773,8 +1871,11 @@ Illustrator CS4以降
 
 > [!NOTE]
 > 左上のオブジェクトが並べ替えの基準になります。  
-> ［間隔］と［整列位置の許容誤差］の単位は、ルーラー単位により変わります。  
 > 複合パス、テキスト、リンク画像、埋め込み画像にも対応しています。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator 2021以降
@@ -2178,16 +2279,23 @@ Illustrator CS以降
 ### showDimensions.js
 パスオブジェクトの2点間のアンカーポイントの寸法を表示します。
 
+> [!TIP]
+> バージョン2024から寸法ツールがツールバーに実装されています。
+
 ![Show Dimensions](images/showDimensions.png)
 
 #### 使用方法
-パスオブジェクトを選択してスクリプトを実行します。
+パスオブジェクトを選択してスクリプトを実行します。  
+ダイレクト選択ツールでアンカーポイントを選択した場合は、選択した箇所のみに表示します。この場合は、2点以上のアンカーポイントを選択してください。
 
 > [!NOTE]
 > 曲線に対応しています。  
 > パスオブジェクトごとに寸法をグループ化し色を付けます。  
-> 寸法の単位はルーラー単位により変わります。  
 > オブジェクトが複雑な形状や小さい場合、寸法が重なって表示されることがあります。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS6以降
@@ -2357,7 +2465,7 @@ Illustrator CS6以降
 ## <a name="繰り返し複製">繰り返し複製</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 ### stepAndRepeat.js
-InDesignの「編集 > 繰り返し複製」に相当します。
+選択したオブジェクトを繰り返し複製します。InDesignの「編集 > 繰り返し複製」に相当します。
 
 ![Step and Repeat](images/stepandRepeat.png)
 > [!NOTE]
@@ -2365,13 +2473,14 @@ InDesignの「編集 > 繰り返し複製」に相当します。
 
 #### 使用方法
 1. オブジェクトを選択してスクリプトを実行します。
-2. グリッド状にしたい場合は、［グリッドとして作成］にチェックを付けてください。
+2. グリッド状にしたい場合は、［グリッドとして作成］にチェックを付けます。
 3. 繰り返しの場合はカウントに繰り返す回数を入力します。  
    グリッドの場合は行・段数にそれぞれ繰り返す回数を入力します。
 4. オフセット値（オブジェクトの間隔）を入力します。
 
-> [!NOTE]
-> オフセット値の単位は、ルーラー単位により切り替わります。
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降

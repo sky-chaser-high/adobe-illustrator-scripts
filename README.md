@@ -55,46 +55,48 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [Add Anchor Points](#addAnchorPointsjs)
-- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
-- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
-- [Align Objects](#alignObjectsjs)
+- [Add Anchor Points](#addAnchorPointsjs) `Update`
+- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) `Update`
+- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) `Update`
+- [Align Objects](#alignObjectsjs) `Update`
 - [Close Path](#closePathjs)
-- [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
+- [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs) `Update`
 - [Create Grid Lines](#createGridLinesjs)
 - [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Disjoin Path](#disjoinPathjs)
-- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
-- [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
+- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) `Update`
+- [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) `Update`
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
-- [Draw Rectangle](#drawRectanglejs)
-- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
-- [Extend Handle](#extendHandlejs)
-- [Extend Line](#extendLinejs)
+- [Draw Normal Line](#drawNormalLinejs) `New`
+- [Draw Rectangle](#drawRectanglejs) `Update`
+- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs) `Update`
+- [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs) `New`
+- [Extend Handle](#extendHandlejs) `Update`
+- [Extend Line](#extendLinejs) `Update`
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Move Guides](#moveGuidesjs)
-- [Rearrange Objects](#rearrangeObjectsjs)
+- [Rearrange Objects](#rearrangeObjectsjs) `Update`
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
 - [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
-- [Show Dimensions](#showDimensionsjs)
+- [Show Dimensions](#showDimensionsjs) `Update`
 - [Shuffle Objects](#shuffleObjectsjs)
-- [Step and Repeat](#stepAndRepeatjs)
+- [Step and Repeat](#stepAndRepeatjs) `Update`
 
 ### Text
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-- [Add Numeric Separators](#addNumericSeparatorsjs) `Update`
+- [Add Numeric Separators](#addNumericSeparatorsjs)
 - [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointTypejs)
 - [Copy Line Down](#copyLineDownjscopyLineUpjs)
 - [Copy Line Up](#copyLineDownjscopyLineUpjs)
 - [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Create Page Numbers](#createPageNumbersjs)
-- [Create Text Parallel to Path Segment](#createTextParallelToPathSegmentjs) `New`
-- [Create Threaded Text](#createThreadedTextjs) `Update`
+- [Create Text Parallel to Path Segment](#createTextParallelToPathSegmentjs) `Update`
+- [Create Threaded Text](#createThreadedTextjs)
 - [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
 - [Delete All Right](#deleteAllLeftjsdeleteAllRightjs)
@@ -109,8 +111,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Down](#moveLineDownjsmoveLineUpjs)
 - [Move Line Up](#moveLineDownjsmoveLineUpjs)
-- [Sort Lines](#sortLinesjs) `New`
-- [Split Text](#splitTextjs) `Update`
+- [Sort Lines](#sortLinesjs)
+- [Split Text](#splitTextjs)
 - [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
 - [Swap Text Contents](#swapTextContentsjs)
 - [Text Align Center](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
@@ -186,8 +188,11 @@ It is a slightly more user-friendly improvement to Object > Path > Add Anchor Po
 ![Add Anchor Points](images/addAnchorPoints.png)
 
 ### Usage
-1. Select two or more anchor points with Direct Selection Tool, and run this script.
+1. Select two or more anchor points with the Direct Selection Tool, and run this script.
 2. Enter the number of anchor points to add.
+
+> [!NOTE]
+> Anchor points for type on a path and area type are also supported.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -248,11 +253,11 @@ For example, alignInCenterOfSpace(Vertical).js:
 ![Align In Center Of Space](images/alignInCenterOfSpace.png)
 
 ### Usage
-Select objects, and run this script.  
+Select three or more objects, and run this script.  
 The position of alignment depends on the reference point.
 
 > [!NOTE]
-> The space excludes the stroke width.  
+> Include or exclude the stroke width depends on the Align panel menu > Use Preview Bounds.  
 > Select at least three objects.
 
 ### Requirements
@@ -282,8 +287,11 @@ This script aligns objects horizontally and vertically at the same time.
 
 > [!NOTE]
 > The top row and the left-most column are the basis for alignment.  
-> The units of the Distribute Spacing and the Alignment Position Tolerance depend on the ruler units.  
 > Compound paths, texts, linked files, and embedded link files are also supported.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator 2021 or higher
@@ -300,7 +308,7 @@ Illustrator 2021 or higher
 This script splits and arranges all open windows.
 
 > [!TIP]
-> It has been implemented in the Application Bar since version 2022.
+> The Arrange document icon has been implemented in the Application Bar since version 2022.
 
 ![Arrange Windows](images/arrangeWindows.png)
 
@@ -422,13 +430,15 @@ The anchor point conversion options in the Control panel require the anchor poin
 ![Convert All Anchor Points To Corner](images/convertAllAnchorPointsToCorner.png)
 
 ### Usage
-Select the entire path with selection tool, and run this script.
+Select the entire path with the Selection Tool, and run this script.  
+If you select anchor points with the Direct Selection Tool, a dialog will show to convert all or only selected anchor points to corner points.  
+<img src="images/ConvertToCornerDialog.png" alt="Convert To Corner Dialog" width="40%">
 
 > [!NOTE]
-> It is not necessary to select anchor points with Direct Selection Tool.
+> Anchor points for type on a path and area type are also supported.
 
 ### Requirements
-Illustrator CS or higher
+Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
@@ -659,13 +669,16 @@ This script creates a text parallel to a straight segment or a line connecting t
    `Point Type` Select left, center, or right align.  
    `Area Type` Enter area width and height values.
 4. Check the Flip checkbox reverses the drawing position.
-5. Check the Middle checkbox to draw in the middle of the line.
-6. Enter a value of the margin will space them from the line.
+5. Check the Middle checkbox to draw in the middle of the path segment.
+6. Enter a value of the margin will space them from the path segment.
 
 > [!NOTE]
-> Anchor points for type on a path and area type are supported.  
 > Curves are not supported.  
-> The units of the width, height and margin value depend on the ruler units.
+> Anchor points for type on a path and area type are also supported.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator 2021 or higher
@@ -693,8 +706,11 @@ The vertical text is also supported.
 
 > [!NOTE]
 > The stacking order of objects and layers has no bearing on the order of concatenation.  
-> When converting the path to the area type, ignore anchor points with fewer than two anchor points.  
-> The units of the alignment position tolerance depend on the ruler units.
+> When converting the path to the area type, ignore anchor points with fewer than two anchor points.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CC or higher
@@ -925,11 +941,11 @@ For example, distributeInSpace(Vertical).js:
 ![Distribute In Space](images/distributeInSpace.png)
 
 ### Usage
-Select objects, and run this script.  
+Select three or more objects, and run this script.  
 The position of alignment depends on the reference point.
 
 > [!NOTE]
-> The space excludes the stroke width.  
+> Include or exclude the stroke width depends on the Align panel menu > Use Preview Bounds.  
 > Select at least three objects.
 
 ### Requirements
@@ -953,7 +969,7 @@ Select 3 or 2 anchor points with Direct Selection Tool, and run this script.
 
 > [!NOTE]
 > For two anchor points, it is the diameter.  
-> Anchor points for type on a path and area types are also supported.
+> Anchor points for type on a path and area type are also supported.
 
 ### Requirements
 Illustrator CS or higher
@@ -965,20 +981,56 @@ Illustrator CS or higher
 
 
 
+# <a name="drawNormalLinejs">drawNormalLine.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script draws normal lines (line perpendicular to a tangent) to a curve or line between two anchor points.
+
+![Draw Normal Line](images/drawNormalLine.png)
+
+### Usage
+1. Select two or more anchor points with the Direct Selection Tool, and run this script.
+2. Enter the number of normal lines to draw.
+3. Enter the length of normal line to draw.
+4. Check the Draw on Selected Anchor Points checkbox if you want to draw on the selected anchor points.
+5. Check the Flip checkbox reverses the drawing position.
+6. Check the Middle checkbox to draw in the middle of the path segment.
+7. Enter a value of the margin will space them from the path segment.
+
+> [!NOTE]
+> Anchor points for type on a path and area type are not supported.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="drawRectanglejs">drawRectangle.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script draws a rectangle on a selected object.
+This script draws rectangles around selected objects.
 
 ![Draw Rectangle](images/drawRectangle.png)
 
 ### Usage
-1. Select the path objects, and run this script.
-2. Enter a margin value.  
-   To include stroke width, check the Include stroke width checkbox.
+1. Select any objects, and run this script.
+2. Enter a margin value.
+3. To draw a rectangle on each object in the group, check the Ignore Groups checkbox.
+4. To include stroke width, check the Use Preview Bounds checkbox.
 
 > [!NOTE]
-> The rectangle is drawn with no fill and stroke width.  
-> The units of margin value depend on the ruler units.
+> The rectangle is drawn with no fill and stroke width.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -997,15 +1049,47 @@ This script draws shapes on anchor points.
 ![Draw Shape On Anchor Point](images/drawShapeOnAnchorPoint.png)
 
 ### Usage
-1. Select the path objects, and run this script.
+1. Select any path objects, and run this script.
 2. Select a shape.
 3. Enter a shape size.
-4. Check the Draw Handle Position checkbox if you want to draw the shapes on the handle positions.
+4. If you select anchor points with the Direct Selection Tool, choose whether to draw the shape on all anchor points or only on the selected anchor points.
+5. Check the Draw Handle Position checkbox if you want to draw the shapes on the handle positions.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="drawShapeParallelToPathSegmentjs">drawShapeParallelToPathSegment.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+This script draws a shape parallel to a straight segment or a line connecting two anchor points.
+
+![Draw Shape Parallel to Path Segment](images/drawShapeParallelToPathSegment.png)
+
+### Usage
+1. Select two anchor points with the Direct Selection Tool, and run this script.
+2. Select a Square, Rectangle or Ellipse.
+3. If you select the Rectangle or Ellipse, enter width and height values.
+4. Check the Flip checkbox reverses the drawing position.
+5. Check the Middle checkbox to draw in the middle of the path segment.
+6. Enter a value of the margin will space them from the path segment.
 
 > [!NOTE]
-> If you select anchor points with Direct Selection Tool, the shape is drawn only for the selected anchor points.  
-> The handle position is drawn with a stroke.  
-> The units of shape size depend on the ruler units.
+> Curves are not supported.  
+> Anchor points for type on a path and area type are also supported.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1087,14 +1171,17 @@ This script extends and shrinks handles. It also changes the angle.
 ![Extend Handle](images/extendHandle.png)
 
 ### Usage
-1. Select one or two anchor points with Direct Selection Tool, and run this script.
+1. Select one or two anchor points with the Direct Selection Tool, and run this script.
 2. Enter a positive value in the Distance fields to extend or a negative value to shrink.
 3. Enter a positive value in the Angle fields will rotate counterclockwise. Enter a negative value clockwise.
 
 > [!NOTE]
 > Handles cannot delete.  
-> The angle increases or decreases based on the current value.  
-> The units of distance depend on the ruler units.
+> The angle increases or decreases based on the current value.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1108,17 +1195,21 @@ Illustrator CS4 or higher
 
 # <a name="extendLinejs">extendLine.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script extends and shrinks a path object.
+This script extends and shrinks path segments.
 
 ![Extend Line](images/extendLine.png)
 
 ### Usage
-1. Select an anchor point with Direct Selection Tool, and run this script.
+1. Select any anchor points with the Direct Selection Tool, and run this script.
 2. Enter a positive value to extend or a negative value to shrink.
 
 > [!NOTE]
 > Closed paths and curves are not supported.  
-> The units of distance depend on the ruler units.
+> Anchor points for type on a path are also supported.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1486,7 +1577,7 @@ Select two anchor points with Direct Selection Tool, and run this script.
 > Highlight the measurement points.  
 > The angle is based on point #1. Range: -180.0 to 180.0  
 > The dimension units depend on the ruler units.  
-> Anchor points for type on a path and area types are also supported.  
+> Anchor points for type on a path and area type are also supported.  
 > Due to the small font size, labels will not appear when enlarged above 15500%.
 
 ### Requirements
@@ -1655,8 +1746,11 @@ This script rearranges selected objects.
 
 > [!NOTE]
 > The object in the top-left is the basis for rearranging.  
-> The units of the Spacing and the Alignment Position Tolerance depend on the ruler units.  
 > Compound paths, texts, linked files, and embedded link files are also supported.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator 2021 or higher
@@ -2035,16 +2129,23 @@ Illustrator CS or higher
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
 This script shows the dimension of the anchor point between two points of the path objects.
 
+> [!TIP]
+> The Dimension Tool has been implemented in the Toolbar since version 2024.
+
 ![Show Dimensions](images/showDimensions.png)
 
 ### Usage
-Select the path objects, and run this script.
+Select any path objects, and run this script.  
+If you select anchor points with the Direct Selection Tool, dimensions are displayed only at the selected. In this case, select at least two anchor points.
 
 > [!NOTE]
 > Supports curves.  
 > Group and color dimensions by path object.  
-> The dimension units depend on the ruler units.  
 > In complex shapes, dimensions may be displayed overlapping each other.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS6 or higher
@@ -2201,7 +2302,7 @@ Illustrator CS6 or higher
 
 # <a name="stepAndRepeatjs">stepAndRepeat.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
-This script is equivalent to InDesign's Edit > Step and Repeat.
+This script repeatedly duplicates selected objects. It is equivalent to InDesign's Edit > Step and Repeat.
 
 ![Step and Repeat](images/stepandRepeat.png)
 
@@ -2211,8 +2312,9 @@ This script is equivalent to InDesign's Edit > Step and Repeat.
 3. Enter the number of times to repeat.
 4. Enter the offset values.
 
-> [!NOTE]
-> The units of the offset value depend on the ruler units.
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher

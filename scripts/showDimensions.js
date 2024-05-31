@@ -5,21 +5,24 @@
    This script shows the dimension of the anchor point between two points of the path objects.
 
    Usage
-   Select the path object, run this script from File > Scripts > Other Script...
+   Select any path objects, run this script from File > Scripts > Other Script...
+   If you select anchor points with the Direct Selection Tool,
+   dimensions are displayed only at the selected. In this case, select at least two anchor points.
 
    Notes
+   The Dimension Tool has been implemented in the Toolbar since version 2024.
    Supports curves.
    Group and color dimensions by path object.
-   The dimension units depend on the ruler units.
    In complex shapes, dimensions may be displayed overlapping each other.
+   The dimension units depend on the ruler units.
    In rare cases, the script may not work if you continue to use it.
    In this case, restart Illustrator and try again.
 
    Requirements
-   Illustrator CS6 or higher
+   Illustrator CS4 or higher
 
    Version
-   2.0.0
+   2.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -30,7 +33,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -39,34 +42,41 @@ function main() {
     var shapes = getPathItems(items);
     if (!shapes.length) return;
 
-    var layer = getLayer('Dimensions');
     var colors = setColors();
 
     for (var i = 0; i < shapes.length; i++) {
-        measure(shapes[i], layer, colors[i % colors.length]);
+        var shape = shapes[i];
+        if (!hasSelectedAnchorPoints(shape)) continue;
+        var color = colors[i % colors.length];
+        measure(shape, color);
     }
 }
 
 
-function measure(item, layer, color) {
+function measure(item, color) {
     if (item.polarity == PolarityValues.POSITIVE) {
-        app.executeMenuCommand('Reverse Path Direction');
+        item.polarity = PolarityValues.NEGATIVE;
     }
-
+    var layer = getLayer('Dimensions');
     var group = layer.groupItems.add();
+
     var points = item.pathPoints;
     var count = points.length;
     if (!item.closed) count--;
 
-    for (var i = 0; i < count; i++) {
-        var last = (i == points.length - 1) ? true : false;
+    var start = 0;
+    var end = points.length - 1;
+
+    for (var i = start; i < count; i++) {
+        if (!isSelected(item, i)) continue;
+
         var p1 = setPoint(points[i]);
-        var p2 = (last) ? setPoint(points[0]) : setPoint(points[i + 1]);
+        var p2 = (i < end) ? setPoint(points[i + 1]) : setPoint(points[start]);
 
         var position = getPosition(p1.anchor, p2.anchor);
         var distance = getDistance(p1.anchor, p2.anchor);
 
-        if (hasCurve(p1, p2)) {
+        if (isCurve(p1, p2)) {
             var bezier = setBezier(p1, p2);
             distance = getCurveLength(bezier);
             var t = completion(0.5, bezier);
@@ -76,6 +86,56 @@ function measure(item, layer, color) {
 
         showDimension(distance, group, position, color);
     }
+}
+
+
+function showDimension(distance, group, position, color) {
+    var units = getRulerUnits();
+    var value = convertUnits(distance + 'pt', units);
+    var contents = round(value) + ' ' + units;
+
+    var text = group.textFrames.pointText([position.x, position.y]);
+    text.contents = contents;
+
+    var paragraph = text.textRange.paragraphAttributes;
+    paragraph.justification = Justification.CENTER;
+
+    var font = getFont('SourceHanSansJP-Normal');
+    var fontsize = 7;
+    var scale = 100;
+
+    var attributes = text.textRange.characterAttributes;
+    if (font) attributes.textFont = font;
+    attributes.size = fontsize;
+    attributes.horizontalScale = scale;
+    attributes.verticalScale = scale;
+    attributes.fillColor = color;
+    attributes.strokeColor = new NoColor();
+
+    movePosition(text, distance, position.angle);
+}
+
+
+function movePosition(text, distance, angle) {
+    if (text.width > distance) {
+        var ratio = distance / text.width * 100;
+        var attributes = text.textRange.characterAttributes;
+        attributes.horizontalScale = (ratio > 50) ? ratio : 50;
+    }
+
+    var deg = angle * 180 / Math.PI;
+    text.rotate(deg);
+
+    var margin = convertUnits(1 + 'mm', 'pt');
+    var rad = angle + Math.PI / 2;
+    text.top += margin * Math.sin(rad);
+    text.left += margin * Math.cos(rad);
+}
+
+
+function round(value) {
+    var digits = 1000;
+    return Math.round(value * digits) / digits;
 }
 
 
@@ -107,17 +167,17 @@ function getPosition(p1, p2) {
 
 
 function getAngle(p1, p2) {
-    var adjacent = p2.x - p1.x;
-    var opposite = p2.y - p1.y;
-    return Math.atan2(opposite, adjacent);
+    var width = p2.x - p1.x;
+    var height = p2.y - p1.y;
+    return Math.atan2(height, width);
 }
 
 
 function getDistance(p1, p2) {
-    var adjacent = p2.x - p1.x;
-    var opposite = p2.y - p1.y;
-    var hypotenuse = Math.sqrt(Math.pow(adjacent, 2) + Math.pow(opposite, 2));
-    return hypotenuse;
+    var width = p2.x - p1.x;
+    var height = p2.y - p1.y;
+    var sq = 2;
+    return Math.sqrt(Math.pow(width, sq) + Math.pow(height, sq));
 }
 
 
@@ -136,9 +196,10 @@ function getCurveLength(bezier) {
     }
 
     for (var i = 0; i < points.length - 1; i++) {
-        length += getDistance(points[i], points[i + 1]);
+        var p1 = points[i];
+        var p2 = points[i + 1];
+        length += getDistance(p1, p2);
     }
-
     return length;
 }
 
@@ -204,46 +265,42 @@ function mult(a, t) {
 }
 
 
-function showDimension(distance, group, position, color) {
-    var units = getUnits(app.activeDocument.rulerUnits);
-    var contents = round(convertUnits(distance + 'pt', units)) + ' ' + units;
-
-    var text = group.textFrames.pointText([position.x, position.y]);
-    text.contents = contents;
-    text.textRange.paragraphAttributes.justification = Justification.CENTER;
-
-    var fontsize = 7;
-    var attributes = text.textRange.characterAttributes;
-    attributes.textFont = getFont('SourceHanSansJP-Normal');
-    attributes.size = fontsize;
-    attributes.horizontalScale = 100;
-    attributes.verticalScale = 100;
-    attributes.fillColor = color;
-    attributes.strokeColor = new NoColor();
-
-    movePosition(text, distance, position.angle);
+function hasHandle(anchor, handle) {
+    return anchor.x != handle.x || anchor.y != handle.y;
 }
 
 
-function movePosition(text, distance, angle) {
-    if (text.width > distance) {
-        var ratio = distance / text.width * 100;
-        text.textRange.characterAttributes.horizontalScale = (ratio > 50) ? ratio :50;
+function isCurve(p1, p2) {
+    var left = hasHandle(p2.anchor, p2.handle.left);
+    var right = hasHandle(p1.anchor, p1.handle.right);
+    return left || right;
+}
+
+
+function hasSelectedAnchorPoints(item) {
+    var count = 0;
+    var points = item.pathPoints;
+    for (var i = 0; i < points.length; i++) {
+        if (isSelected(item, i)) count++;
     }
-
-    var deg = angle * 180 / Math.PI;
-    text.rotate(deg);
-
-    var margin = convertUnits(1 + 'mm', 'pt');
-    var rad = angle + Math.PI / 2;
-    text.top += margin * Math.sin(rad);
-    text.left += margin * Math.cos(rad);
+    return count > 0;
 }
 
 
-function round(value) {
-    var digits = 1000;
-    return Math.round(value * digits) / digits;
+function isSelected(item, index) {
+    var ANCHOR = PathPointSelection.ANCHORPOINT;
+    var points = item.pathPoints;
+
+    var p1 = points[index];
+    if (p1.selected != ANCHOR) return false;
+
+    var last = points.length - 1;
+    if (index == last && !item.closed) return false;
+
+    var next = (index < last) ? index + 1 : 0;
+    var p2 = points[next];
+    if (p2.selected != ANCHOR) return false;
+    return true;
 }
 
 
@@ -321,14 +378,12 @@ function setRGBColor(r, g, b) {
 }
 
 
-function getUnits(ruler) {
-    switch (ruler) {
-        case RulerUnits.Millimeters: return 'mm';
-        case RulerUnits.Centimeters: return 'cm';
-        case RulerUnits.Inches: return 'in';
-        case RulerUnits.Points: return 'pt';
-        case RulerUnits.Pixels: return 'px';
-        default: return 'pt';
+function getFont(name) {
+    try {
+        return app.textFonts[name];
+    }
+    catch (err) {
+        return;
     }
 }
 
@@ -343,29 +398,67 @@ function convertUnits(value, unit) {
 }
 
 
-function getFont(name) {
+function getRulerUnits() {
+    var unit = getUnitSymbol();
+    if (!app.documents.length) return unit.pt;
+
+    var document = app.activeDocument;
+    var src = document.fullName;
+    var ruler = document.rulerUnits;
     try {
-        return app.textFonts[name];
+        switch (ruler) {
+            case RulerUnits.Pixels: return unit.px;
+            case RulerUnits.Points: return unit.pt;
+            case RulerUnits.Picas: return unit.pc;
+            case RulerUnits.Inches: return unit.inch;
+            case RulerUnits.Millimeters: return unit.mm;
+            case RulerUnits.Centimeters: return unit.cm;
+
+            case RulerUnits.Feet: return unit.ft;
+            case RulerUnits.Yards: return unit.yd;
+            case RulerUnits.Meters: return unit.meter;
+        }
     }
     catch (err) {
-        return app.textFonts[0];
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return unit.ft;
+            case 'Yards': return unit.yd;
+            case 'Meters': return unit.meter;
+        }
     }
+    return unit.pt;
 }
 
 
-function hasCurve(p1, p2) {
-    var handle = { left: false, right: false };
-    handle.left = hasHandle(p2.anchor, p2.handle.left);
-    handle.right = hasHandle(p1.anchor, p1.handle.right);
+function xmpRulerUnits(src) {
+    if (!ExternalObject.AdobeXMPScript) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
 
-    if (handle.left || handle.right) return true;
-    return false;
+    var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
+    var prop = 'xmpTPg:MaxPageSize';
+    var unit = prop + '/stDim:unit';
+
+    var ruler = xmp.getProperty(namespace, unit).value;
+    return ruler;
 }
 
 
-function hasHandle(anchor, handle) {
-    if (anchor.x == handle.x && anchor.y == handle.y) return false;
-    return true;
+function getUnitSymbol() {
+    return {
+        px: 'px',
+        pt: 'pt',
+        pc: 'pc',
+        inch: 'in',
+        ft: 'ft',
+        yd: 'yd',
+        mm: 'mm',
+        cm: 'cm',
+        meter: 'm'
+    };
 }
 
 
@@ -384,4 +477,12 @@ function getPathItems(items) {
         }
     }
     return shapes;
+}
+
+
+function isValidVersion() {
+    var cs6 = 16;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs6) return false;
+    return true;
 }

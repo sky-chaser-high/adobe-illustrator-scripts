@@ -12,12 +12,12 @@
       Point Type: Select Left-align, Center-align, or Right-align.
       Area Type: Enter area width and height values.
    4. Check the Flip checkbox reverses the drawing position.
-   5. Check the Middle checkbox to draw in the middle of the line.
-   6. Enter a value of the margin will space them from the line.
+   5. Check the Middle checkbox to draw in the middle of the path segment.
+   6. Enter a value of the margin will space them from the path segment.
 
    Notes
-   Anchor points for type on a path and area type are supported.
    Curves are not supported.
+   Anchor points for type on a path and area type are also supported.
    The units of the Width, Height and Margin value depend on the ruler units.
    In rare cases, the script may not work if you continue to use it.
    In this case, restart Illustrator and try again.
@@ -26,7 +26,7 @@
    Illustrator 2021 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -45,7 +45,7 @@ function main() {
     var items = app.activeDocument.selection;
     var shapes = getPathItems(items);
     var texts = getTextPathItems();
-    var points = getAnchorPoints(shapes.concat(texts));
+    var points = getSelectedAnchorPoints(shapes.concat(texts));
     if (points.length != 2) return;
 
     var contents = setContents(points);
@@ -57,92 +57,6 @@ function main() {
     app.redraw();
 
     var dialog = showDialog(contents, points);
-
-    dialog.contents.onChanging = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.kind.pointType.onClick = function() {
-        dialog.kind.areaType.value = false;
-        dialog.options.pointType.enabled = true;
-        dialog.options.areaType.enabled = false;
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.kind.areaType.onClick = function() {
-        dialog.kind.pointType.value = false;
-        dialog.options.pointType.enabled = false;
-        dialog.options.areaType.enabled = true;
-        dialog.area.width.active = false;
-        dialog.area.width.active = true;
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.align.left.onClick = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.align.center.onClick = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.align.right.onClick = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.area.width.onChanging = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.area.height.onChanging = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.flip.onClick = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.middle.onClick = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
-    dialog.margin.onChanging = function() {
-        var config = getConfiguration(dialog);
-        app.undo();
-        addText(config, points);
-        app.redraw();
-    }
-
     dialog.show();
 }
 
@@ -157,8 +71,8 @@ function getConfiguration(dialog) {
     if (dialog.align.right.value) align = Justification.RIGHT;
     if (kind == TextType.AREATEXT) align = Justification.LEFT;
 
-    var width = dialog.area.width.text;
-    var height = dialog.area.height.text;
+    var width = getValue(dialog.area.width.text);
+    var height = getValue(dialog.area.height.text);
 
     var flip = (dialog.flip.value) ? true : false;
     var middle = (dialog.middle.value) ? true : false;
@@ -180,12 +94,23 @@ function getConfiguration(dialog) {
 }
 
 
+function preview(dialog, points) {
+    reset(points);
+    var config = getConfiguration(dialog);
+    addText(config, points);
+    app.redraw();
+}
+
+
 function setContents(points) {
+    var p1 = setPoint(points[0]);
+    var p2 = setPoint(points[1]);
+
     var ruler = getRulerUnits();
-    var length = getLength(points[0], points[1]);
+    var length = getLength(p1, p2);
     length = convertUnits(length + 'pt', ruler);
 
-    var rad = getAngle(points[0], points[1]);
+    var rad = getAngle(p1, p2);
     var deg = rad * 180 / Math.PI;
 
     var digits = 10000;
@@ -211,8 +136,8 @@ function addText(config, points) {
 
 
 function createPointType(contents, points, align, margin, isFlip, isMiddle) {
-    var p1 = isFlip ? points[1] : points[0];
-    var p2 = isFlip ? points[0] : points[1];
+    var p1 = isFlip ? setPoint(points[1]) : setPoint(points[0]);
+    var p2 = isFlip ? setPoint(points[0]) : setPoint(points[1]);
 
     var rad = getAngle(p1, p2);
     var deg = rad * 180 / Math.PI;
@@ -246,8 +171,8 @@ function createPointType(contents, points, align, margin, isFlip, isMiddle) {
 
 
 function createAreaType(contents, points, area, align, margin, isFlip, isMiddle) {
-    var p1 = isFlip ? points[1] : points[0];
-    var p2 = isFlip ? points[0] : points[1];
+    var p1 = isFlip ? setPoint(points[1]) : setPoint(points[0]);
+    var p2 = isFlip ? setPoint(points[0]) : setPoint(points[1]);
 
     var rad = getAngle(p1, p2);
     var deg = rad * 180 / Math.PI;
@@ -351,7 +276,15 @@ function getAngle(point1, point2) {
 }
 
 
-function getAnchorPoints(shapes) {
+function setPoint(item) {
+    return {
+        x: item.anchor[0],
+        y: item.anchor[1]
+    };
+}
+
+
+function getSelectedAnchorPoints(shapes) {
     var ANCHOR = PathPointSelection.ANCHORPOINT;
     var anchors = [];
     for (var i = 0; i < shapes.length; i++) {
@@ -359,7 +292,7 @@ function getAnchorPoints(shapes) {
         for (var j = 0; j < points.length; j++) {
             var point = points[j];
             if (point.selected != ANCHOR) continue;
-            anchors.push({ x: point.anchor[0], y: point.anchor[1] });
+            anchors.push(point);
         }
     }
     return anchors;
@@ -382,13 +315,11 @@ function getPathItems(items) {
 
 
 function getTextPathItems() {
-    var AREA = TextType.AREATEXT;
-    var PATH = TextType.PATHTEXT;
     var items = [];
     var texts = app.activeDocument.textFrames;
     for (var i = 0; i < texts.length; i++) {
         var text = texts[i];
-        if (text.selected && (text.kind == AREA || text.kind == PATH)) {
+        if (text.selected && text.kind != TextType.POINTTEXT) {
             items.push(text.textPath);
         }
     }
@@ -396,9 +327,27 @@ function getTextPathItems() {
 }
 
 
+function reset(items) {
+    app.undo();
+    var ANCHOR = PathPointSelection.ANCHORPOINT;
+    var NOSELECTION = PathPointSelection.NOSELECTION;
+    for (var i = 0; i < items.length; i++) {
+        var points = items[i].parent.pathPoints;
+        for (var j = 0; j < points.length; j++) {
+            var point = points[j];
+            point.selected = NOSELECTION;
+        }
+    }
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        item.selected = ANCHOR;
+    }
+}
+
+
 function getValue(text) {
     var twoByteChar = /[！-～]/g;
-    var value = text.replace(twoByteChar, function (str) {
+    var value = text.replace(twoByteChar, function(str) {
         return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
     });
     if (isNaN(value) || !value) return 0;
@@ -498,7 +447,9 @@ function showDialog(contents, points) {
     $.localize = true;
     var ui = localizeUI();
     var ruler = getRulerUnits();
-    var length = getLength(points[0], points[1]);
+    var p1 = setPoint(points[0]);
+    var p2 = setPoint(points[1]);
+    var length = getLength(p1, p2);
     length = convertUnits(length + 'pt', ruler);
 
     var dialog = new Window('dialog');
@@ -523,7 +474,6 @@ function showDialog(contents, points) {
 
     var edittext1 = group1.add('edittext', undefined, undefined, { name: 'edittext1', multiline: true });
     edittext1.text = contents;
-    // edittext1.text = ui.contents;
     edittext1.preferredSize.height = 100;
     edittext1.active = true;
 
@@ -685,6 +635,12 @@ function showDialog(contents, points) {
     group15.spacing = 10;
     group15.margins = 0;
 
+    // Work around the problem of not being able to undo with the esc key due to localization.
+    var button0 = group15.add('button', undefined, undefined, { name: 'button0' });
+    button0.text = 'Cancel';
+    button0.preferredSize.width = 20;
+    button0.hide();
+
     var button1 = group15.add('button', undefined, undefined, { name: 'button1' });
     button1.text = ui.cancel;
     button1.preferredSize.width = 90;
@@ -692,6 +648,73 @@ function showDialog(contents, points) {
     var button2 = group15.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
+
+    edittext1.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    radiobutton1.onClick = function() {
+        radiobutton5.value = false;
+        group4.enabled = true;
+        group9.enabled = false;
+        preview(dialog, points);
+    }
+
+    radiobutton5.onClick = function() {
+        radiobutton1.value = false;
+        group4.enabled = false;
+        group9.enabled = true;
+        edittext2.active = false;
+        edittext2.active = true;
+        preview(dialog, points);
+    }
+
+    radiobutton2.onClick = function() {
+        preview(dialog, points);
+    }
+
+    radiobutton3.onClick = function() {
+        preview(dialog, points);
+    }
+
+    radiobutton4.onClick = function() {
+        preview(dialog, points);
+    }
+
+    edittext2.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    edittext3.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    checkbox1.onClick = function() {
+        preview(dialog, points);
+    }
+
+    checkbox2.onClick = function() {
+        preview(dialog, points);
+    }
+
+    edittext4.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    edittext2.addEventListener('keydown', function(event) {
+        setSizeValue(event);
+        preview(dialog, points);
+    });
+
+    edittext3.addEventListener('keydown', function(event) {
+        setSizeValue(event);
+        preview(dialog, points);
+    });
+
+    edittext4.addEventListener('keydown', function(event) {
+        setMarginValue(event);
+        preview(dialog, points);
+    });
 
     statictext2.addEventListener('click', function() {
         edittext2.active = false;
@@ -708,9 +731,13 @@ function showDialog(contents, points) {
         edittext4.active = true;
     });
 
-    button1.onClick = function() {
-        app.undo();
+    button0.onClick = function() {
+        reset(points);
         dialog.close();
+    }
+
+    button1.onClick = function() {
+        button0.notify('onClick');
     }
 
     button2.onClick = function() {
@@ -740,6 +767,41 @@ function showDialog(contents, points) {
     dialog.margin = edittext4;
     dialog.units = ruler;
     return dialog;
+}
+
+
+function setSizeValue(event) {
+    var value = getValue(event.target.text);
+    var keyboard = ScriptUI.environment.keyboardState;
+    var step = keyboard.shiftKey ? 5 : 1;
+    if (event.keyName == 'Up') {
+        value += step;
+        event.target.text = value;
+        event.preventDefault();
+    }
+    if (event.keyName == 'Down') {
+        value -= step;
+        if (value < 1) value = 1;
+        event.target.text = value;
+        event.preventDefault();
+    }
+}
+
+
+function setMarginValue(event) {
+    var value = getValue(event.target.text);
+    var keyboard = ScriptUI.environment.keyboardState;
+    var step = keyboard.shiftKey ? 5 : 1;
+    if (event.keyName == 'Up') {
+        value += step;
+        event.target.text = value;
+        event.preventDefault();
+    }
+    if (event.keyName == 'Down') {
+        value -= step;
+        event.target.text = value;
+        event.preventDefault();
+    }
 }
 
 

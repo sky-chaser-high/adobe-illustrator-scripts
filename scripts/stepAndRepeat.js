@@ -2,7 +2,7 @@
    stepAndRepeat
 
    Description
-   This script is equivalent to InDesign's "Step and Repeat".
+   This script repeatedly duplicates selected objects. It is equivalent to InDesign's Edit > Step and Repeat.
 
    Usage
    1. Select any objects, run this script from File > Scripts > Other Script...
@@ -19,7 +19,7 @@
    Illustrator CS4 or higher
 
    Version
-   2.0.1
+   2.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -30,26 +30,32 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    var dialog = showDialog();
+    var items = app.activeDocument.selection;
+    if (!items.length) return;
+
+    var dialog = showDialog(items);
 
     dialog.ok.onClick = function() {
-        if (!dialog.preview.value) {
-            run(dialog);
-        }
+        if (dialog.preview.value) return dialog.close();
+        var config = getConfiguration(dialog);
+        if (!validate(config)) return;
+        stepAndRepeat(config);
         dialog.close();
     }
 
     dialog.preview.onClick = function() {
         if (dialog.preview.value) {
-            run(dialog);
+            var config = getConfiguration(dialog);
+            if (!validate(config)) return;
+            stepAndRepeat(config);
         }
         else {
-            app.undo();
+            restore(items);
         }
         app.redraw();
     }
@@ -58,45 +64,70 @@ function main() {
 }
 
 
-function run(dialog) {
-    var config = getConfig(dialog);
-    if (!validate(config)) return;
-    stepAndRepeat(config);
+function getConfiguration(dialog) {
+    var ruler = getRulerUnits();
+    var rows = getValue(dialog.rows.text);
+    var columns = getValue(dialog.columns.text);
+    var vertical = getValue(dialog.vertical.text);
+    var horizontal = getValue(dialog.horizontal.text);
+    return {
+        mode: {
+            repeat: dialog.grid.value ? false : true,
+            grid: dialog.grid.value ? true : false
+        },
+        rows: parseInt(rows),
+        columns: parseInt(columns),
+        vertical: convertUnits(vertical + ruler, 'pt'),
+        horizontal: convertUnits(horizontal + ruler, 'pt')
+    };
 }
 
 
-function preview(dialog) {
-    if (dialog.preview.value) {
-        app.undo();
-        run(dialog);
-        app.redraw();
+function preview(dialog, items) {
+    if (!dialog.preview.value) return;
+    restore(items);
+    var config = getConfiguration(dialog);
+    if (!validate(config)) return;
+    stepAndRepeat(config);
+    app.redraw();
+}
+
+
+function restore(items) {
+    var current = app.activeDocument.selection;
+    if (items.length == current.length) return;
+    app.undo();
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        item.selected = true;
     }
+    app.redraw();
 }
 
 
 function stepAndRepeat(config) {
     var items = app.activeDocument.selection;
     for (var i = 0; i < items.length; i++) {
-        if (config.mode.repeat) repeat(items[i], config);
-        if (config.mode.grid) grid(items[i], config);
+        var item = items[i];
+        if (config.mode.repeat) repeat(item, config);
+        if (config.mode.grid) grid(item, config);
     }
-    app.activeDocument.selection = null;
 }
 
 
 function repeat(item, config) {
+    var x = config.horizontal;
+    var y = config.vertical * -1;
     for (var i = 0; i < config.rows; i++) {
         item.duplicate();
-        item.translate(config.horizontal, config.vertical * -1);
+        item.translate(x, y);
     }
 }
 
 
 function grid(item, config) {
-    var base = {
-        top: item.top,
-        left: item.left,
-    };
+    var top = item.top;
+    var left = item.left;
     for (var i = 0; i < config.rows; i++) {
         for (var j = 0; j < config.columns - 1; j++) {
             item.duplicate();
@@ -104,41 +135,20 @@ function grid(item, config) {
         }
         if (i < config.rows - 1) {
             item.duplicate();
-            item.top = base.top - config.vertical * (i + 1);
-            item.left = base.left;
+            item.top = top - config.vertical * (i + 1);
+            item.left = left;
         }
     }
 }
 
 
-function getConfig(dialog) {
-    var units = getUnits(app.activeDocument.rulerUnits);
-    var rows = Number(dialog.rows.text);
-    var columns = Number(dialog.columns.text);
-    var vertical = Number(dialog.vertical.text);
-    var horizontal = Number(dialog.horizontal.text);
-    return {
-        mode: {
-            grid: (dialog.grid.value) ? true : false,
-            repeat: (dialog.grid.value) ? false : true
-        },
-        rows: isNaN(rows) ? 1 : rows,
-        columns: isNaN(columns) ? 1 : columns,
-        vertical: isNaN(vertical) ? 0 : convertUnits(vertical + units, 'pt'),
-        horizontal: isNaN(horizontal) ? 0 : convertUnits(horizontal + units, 'pt')
-    };
-}
-
-
-function getUnits(ruler) {
-    switch (ruler) {
-        case RulerUnits.Millimeters: return 'mm';
-        case RulerUnits.Centimeters: return 'cm';
-        case RulerUnits.Inches: return 'in';
-        case RulerUnits.Points: return 'pt';
-        case RulerUnits.Pixels: return 'px';
-        default: return 'pt';
-    }
+function getValue(text) {
+    var twoByteChar = /[！-～]/g;
+    var value = text.replace(twoByteChar, function(str) {
+        return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
+    });
+    if (isNaN(value) || !value) return 0;
+    return Number(value);
 }
 
 
@@ -152,10 +162,75 @@ function convertUnits(value, unit) {
 }
 
 
+function getRulerUnits() {
+    var unit = getUnitSymbol();
+    if (!app.documents.length) return unit.pt;
+
+    var document = app.activeDocument;
+    var src = document.fullName;
+    var ruler = document.rulerUnits;
+    try {
+        switch (ruler) {
+            case RulerUnits.Pixels: return unit.px;
+            case RulerUnits.Points: return unit.pt;
+            case RulerUnits.Picas: return unit.pc;
+            case RulerUnits.Inches: return unit.inch;
+            case RulerUnits.Millimeters: return unit.mm;
+            case RulerUnits.Centimeters: return unit.cm;
+
+            case RulerUnits.Feet: return unit.ft;
+            case RulerUnits.Yards: return unit.yd;
+            case RulerUnits.Meters: return unit.meter;
+        }
+    }
+    catch (err) {
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return unit.ft;
+            case 'Yards': return unit.yd;
+            case 'Meters': return unit.meter;
+        }
+    }
+    return unit.pt;
+}
+
+
+function xmpRulerUnits(src) {
+    if (!ExternalObject.AdobeXMPScript) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
+
+    var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
+    var prop = 'xmpTPg:MaxPageSize';
+    var unit = prop + '/stDim:unit';
+
+    var ruler = xmp.getProperty(namespace, unit).value;
+    return ruler;
+}
+
+
+function getUnitSymbol() {
+    return {
+        px: 'px',
+        pt: 'pt',
+        pc: 'pc',
+        inch: 'in',
+        ft: 'ft',
+        yd: 'yd',
+        mm: 'mm',
+        cm: 'cm',
+        meter: 'm'
+    };
+}
+
+
 function validate(config) {
     if (config.rows < 1 || config.columns < 1) {
         $.localize = true;
-        alert(errorMessage(1));
+        var value = 1;
+        alert(errorMessage(value));
         return false;
     }
     return true;
@@ -170,7 +245,15 @@ function errorMessage(value) {
 }
 
 
-function showDialog() {
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
+}
+
+
+function showDialog(items) {
     $.localize = true;
     var ui = localizeUI();
     var dialog = new Window('dialog');
@@ -307,15 +390,15 @@ function showDialog() {
     var checkbox2 = group9.add('checkbox', undefined, undefined, { name: 'checkbox2' });
     checkbox2.text = ui.preview;
 
-    // Work around the problem of being unable to undo the ESC key during localization.
+    // Work around the problem of not being able to undo with the esc key due to localization.
     var button3 = group9.add('button', undefined, undefined, { name: 'button3' });
     button3.text = 'Cancel';
+    button3.preferredSize.height = 18;
     button3.hide();
 
     button3.onClick = function() {
         if (checkbox2.value) {
-            app.undo();
-            app.redraw();
+            restore(items);
         }
         dialog.close();
     }
@@ -331,24 +414,44 @@ function showDialog() {
         statictext1.text = checkbox1.value ? ui.rows : ui.count;
         edittext1.active = false;
         edittext1.active = true;
-        preview(dialog);
+        preview(dialog, items);
     }
 
     edittext1.onChanging = function() {
-        preview(dialog);
+        preview(dialog, items);
     }
 
     edittext2.onChanging = function() {
-        preview(dialog);
+        preview(dialog, items);
     }
 
     edittext3.onChanging = function() {
-        preview(dialog);
+        preview(dialog, items);
     }
 
     edittext4.onChanging = function() {
-        preview(dialog);
+        preview(dialog, items);
     }
+
+    edittext1.addEventListener('keydown', function(event) {
+        setRepeatValue(event);
+        preview(dialog, items);
+    });
+
+    edittext2.addEventListener('keydown', function(event) {
+        setRepeatValue(event);
+        preview(dialog, items);
+    });
+
+    edittext3.addEventListener('keydown', function(event) {
+        setOffsetValue(event);
+        preview(dialog, items);
+    });
+
+    edittext4.addEventListener('keydown', function(event) {
+        setOffsetValue(event);
+        preview(dialog, items);
+    });
 
     statictext1.addEventListener('click', function() {
         edittext1.active = false;
@@ -378,6 +481,41 @@ function showDialog() {
     dialog.preview = checkbox2;
     dialog.ok = button1;
     return dialog;
+}
+
+
+function setRepeatValue(event) {
+    var value = getValue(event.target.text);
+    var keyboard = ScriptUI.environment.keyboardState;
+    var step = keyboard.shiftKey ? 5 : 1;
+    if (event.keyName == 'Up') {
+        value += step;
+        event.target.text = value;
+        event.preventDefault();
+    }
+    if (event.keyName == 'Down') {
+        value -= step;
+        if (value < 1) value = 1;
+        event.target.text = value;
+        event.preventDefault();
+    }
+}
+
+
+function setOffsetValue(event) {
+    var value = getValue(event.target.text);
+    var keyboard = ScriptUI.environment.keyboardState;
+    var step = keyboard.shiftKey ? 5 : 1;
+    if (event.keyName == 'Up') {
+        value += step;
+        event.target.text = value;
+        event.preventDefault();
+    }
+    if (event.keyName == 'Down') {
+        value -= step;
+        event.target.text = value;
+        event.preventDefault();
+    }
 }
 
 

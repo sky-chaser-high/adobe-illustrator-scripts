@@ -5,7 +5,7 @@
    This script extends and shrinks handles. It also changes the angle.
 
    Usage
-   1. Select one or two anchor points with Direct Selection Tool, run this script from File > Scripts > Other Script...
+   1. Select one or two anchor points with the Direct Selection Tool, run this script from File > Scripts > Other Script...
    2. Enter a positive value in the Distance fields to extend or a negative value to shrink.
    3. Enter a positive value in the Angle fields will rotate counterclockwise. Enter a negative value clockwise.
 
@@ -20,7 +20,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -31,7 +31,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -49,17 +49,21 @@ function main() {
     var dialog = showDialog(points, showHandles);
 
     dialog.ok.onClick = function() {
-        if (dialog.preview.value) reset(points);
-        var config = getConfig(dialog);
-        extendHandle(points[0], points[1], config.distance, config.angle);
+        if (dialog.preview.value) return dialog.close();
+        var config = getConfiguration(dialog);
+        var p1 = points[0];
+        var p2 = points[1];
+        extendHandle(p1, p2, config.distance, config.angle);
         if (!showHandles) app.preferences.setBooleanPreference('showDirectionHandles', false);
         dialog.close();
     }
 
     dialog.preview.onClick = function() {
         if (dialog.preview.value) {
-            var config = getConfig(dialog);
-            extendHandle(points[0], points[1], config.distance, config.angle);
+            var config = getConfiguration(dialog);
+            var p1 = points[0];
+            var p2 = points[1];
+            extendHandle(p1, p2, config.distance, config.angle);
         }
         else {
             reset(points);
@@ -107,17 +111,17 @@ function extendHandle(p1, p2, distance, rotation) {
 
 
 function getAngle(p1, p2) {
-    var adjacent = p2.x - p1.x;
-    var opposite = p2.y - p1.y;
-    return Math.atan2(opposite, adjacent);
+    var width = p2.x - p1.x;
+    var height = p2.y - p1.y;
+    return Math.atan2(height, width);
 }
 
 
 function getDistance(p1, p2) {
-    var adjacent = p2.x - p1.x;
-    var opposite = p2.y - p1.y;
-    var hypotenuse = Math.sqrt(Math.pow(adjacent, 2) + Math.pow(opposite, 2));
-    return hypotenuse;
+    var width = p2.x - p1.x;
+    var height = p2.y - p1.y;
+    var sq = 2;
+    return Math.sqrt(Math.pow(width, sq) + Math.pow(height, sq));
 }
 
 
@@ -179,13 +183,11 @@ function getPathItems(items) {
 
 
 function getTextPathItems() {
-    var AREA = TextType.AREATEXT;
-    var PATH = TextType.PATHTEXT;
     var items = [];
     var texts = app.activeDocument.textFrames;
     for (var i = 0; i < texts.length; i++) {
         var text = texts[i];
-        if (text.selected && (text.kind == AREA || text.kind == PATH)) {
+        if (text.selected && text.kind != TextType.POINTTEXT) {
             items.push(text.textPath);
         }
     }
@@ -198,13 +200,16 @@ function reset(items) {
     var ANCHOR = PathPointSelection.ANCHORPOINT;
     var NOSELECTION = PathPointSelection.NOSELECTION;
     for (var i = 0; i < items.length; i++) {
-        var points = items[i].parent.pathPoints;
+        var item = items[i];
+        var points = item.parent.pathPoints;
         for (var j = 0; j < points.length; j++) {
-            points[j].selected = NOSELECTION;
+            var point = points[j];
+            point.selected = NOSELECTION;
         }
     }
     for (var i = 0; i < items.length; i++) {
-        items[i].selected = ANCHOR;
+        var point = items[i];
+        point.selected = ANCHOR;
     }
 }
 
@@ -212,6 +217,16 @@ function reset(items) {
 function round(value) {
     var digits = 10000;
     return Math.round(value * digits) / digits;
+}
+
+
+function getValue(text) {
+    var twoByteChar = /[！-～]/g;
+    var value = text.replace(twoByteChar, function(str) {
+        return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
+    });
+    if (isNaN(value) || !value) return 0;
+    return Number(value);
 }
 
 
@@ -225,20 +240,80 @@ function convertUnits(value, unit) {
 }
 
 
-function getUnits(ruler) {
-    switch (ruler) {
-        case RulerUnits.Millimeters: return 'mm';
-        case RulerUnits.Centimeters: return 'cm';
-        case RulerUnits.Inches: return 'in';
-        case RulerUnits.Points: return 'pt';
-        case RulerUnits.Pixels: return 'px';
-        default: return 'pt';
+function getRulerUnits() {
+    var unit = getUnitSymbol();
+    if (!app.documents.length) return unit.pt;
+
+    var document = app.activeDocument;
+    var src = document.fullName;
+    var ruler = document.rulerUnits;
+    try {
+        switch (ruler) {
+            case RulerUnits.Pixels: return unit.px;
+            case RulerUnits.Points: return unit.pt;
+            case RulerUnits.Picas: return unit.pc;
+            case RulerUnits.Inches: return unit.inch;
+            case RulerUnits.Millimeters: return unit.mm;
+            case RulerUnits.Centimeters: return unit.cm;
+
+            case RulerUnits.Feet: return unit.ft;
+            case RulerUnits.Yards: return unit.yd;
+            case RulerUnits.Meters: return unit.meter;
+        }
     }
+    catch (err) {
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return unit.ft;
+            case 'Yards': return unit.yd;
+            case 'Meters': return unit.meter;
+        }
+    }
+    return unit.pt;
+}
+
+
+function xmpRulerUnits(src) {
+    if (!ExternalObject.AdobeXMPScript) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
+
+    var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
+    var prop = 'xmpTPg:MaxPageSize';
+    var unit = prop + '/stDim:unit';
+
+    var ruler = xmp.getProperty(namespace, unit).value;
+    return ruler;
+}
+
+
+function getUnitSymbol() {
+    return {
+        px: 'px',
+        pt: 'pt',
+        pc: 'pc',
+        inch: 'in',
+        ft: 'ft',
+        yd: 'yd',
+        mm: 'mm',
+        cm: 'cm',
+        meter: 'm'
+    };
+}
+
+
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
 }
 
 
 function getDimension(points) {
-    var units = getUnits(app.activeDocument.rulerUnits);
+    var units = getRulerUnits();
     var deg = 180 / Math.PI;
     var p1 = setPosition(points[0]);
     var p2 = setPosition(points[1]);
@@ -267,15 +342,26 @@ function getDimension(points) {
 }
 
 
-function getConfig(dialog) {
-    var units = getUnits(app.activeDocument.rulerUnits);
+function preview(dialog, points) {
+    if (!dialog.preview.value) return;
+    reset(points);
+    var config = getConfiguration(dialog);
+    var p1 = points[0];
+    var p2 = points[1];
+    extendHandle(p1, p2, config.distance, config.angle);
+    app.redraw();
+}
+
+
+function getConfiguration(dialog) {
+    var units = getRulerUnits();
     var distance = {
-        left: Number(dialog.distance.left.text),
-        right: Number(dialog.distance.right.text)
+        left: getValue(dialog.distance.left.text),
+        right: getValue(dialog.distance.right.text)
     };
     var angle = {
-        left: Number(dialog.angle.left.text),
-        right: Number(dialog.angle.right.text)
+        left: getValue(dialog.angle.left.text),
+        right: getValue(dialog.angle.right.text)
     };
     return {
         distance: {
@@ -294,7 +380,7 @@ function showDialog(points, showHandles) {
     $.localize = true;
     var ui = localizeUI();
     var dimension = getDimension(points);
-    var units = getUnits(app.activeDocument.rulerUnits);
+    var units = getRulerUnits();
 
     var dialog = new Window('dialog');
     dialog.text = ui.title;
@@ -519,9 +605,10 @@ function showDialog(points, showHandles) {
     group12.spacing = 10;
     group12.margins = 0;
 
-    // Work around the problem of being unable to undo the ESC key during localization.
+    // Work around the problem of not being able to undo with the esc key due to localization.
     var button0 = group12.add('button', undefined, undefined, { name: 'button0' });
     button0.text = 'Cancel';
+    button0.preferredSize.width = 20;
     button0.hide();
 
     var button1 = group12.add('button', undefined, undefined, { name: 'button1' });
@@ -531,6 +618,42 @@ function showDialog(points, showHandles) {
     var button2 = group12.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
+
+    edittext1.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    edittext2.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    edittext3.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    edittext4.onChanging = function() {
+        preview(dialog, points);
+    }
+
+    edittext1.addEventListener('keydown', function(event) {
+        setIncreaseDecrease(event);
+        preview(dialog, points);
+    });
+
+    edittext2.addEventListener('keydown', function(event) {
+        setIncreaseDecrease(event);
+        preview(dialog, points);
+    });
+
+    edittext3.addEventListener('keydown', function(event) {
+        setIncreaseDecrease(event);
+        preview(dialog, points);
+    });
+
+    edittext4.addEventListener('keydown', function(event) {
+        setIncreaseDecrease(event);
+        preview(dialog, points);
+    });
 
     statictext1.addEventListener('click', function() {
         edittext1.active = false;
@@ -573,6 +696,23 @@ function showDialog(points, showHandles) {
     dialog.preview = checkbox1;
     dialog.ok = button2;
     return dialog;
+}
+
+
+function setIncreaseDecrease(event) {
+    var value = getValue(event.target.text);
+    var keyboard = ScriptUI.environment.keyboardState;
+    var step = keyboard.shiftKey ? 5 : 1;
+    if (event.keyName == 'Up') {
+        value += step;
+        event.target.text = value;
+        event.preventDefault();
+    }
+    if (event.keyName == 'Down') {
+        value -= step;
+        event.target.text = value;
+        event.preventDefault();
+    }
 }
 
 

@@ -2,23 +2,23 @@
    distributeInSpace(Horizontal)
 
    Description
-   This script distributes objects evenly spaced in space.
+   This script distributes horizontally objects evenly spaced in space.
 
    Usage
-   Select objects, run this script from File > Scripts > Other Script...
+   Select three or more objects, run this script from File > Scripts > Other Script...
    The position of alignment depends on the reference point.
 
    Notes
-   The space excludes the stroke width.
+   Include or exclude the stroke width depends on the Align panel menu > Use Preview Bounds.
    Select at least three objects.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS3 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -29,52 +29,59 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 2) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
     var items = app.activeDocument.selection;
+    if (items.length < 3) return;
+
     var baseItems = getBaseItems(items);
-    var targetItems = getTargetItems(items, baseItems.left, baseItems.right);
-    targetItems.sort(leftToRight);
+    var targetItems = getTargetItems(items, baseItems);
 
-    var space = getSpace(baseItems.left, baseItems.right);
-    var distribution = space / (targetItems.length + 1);
-    var baseItem = baseItems.left.visibleBounds[2];
-
-    distribute(targetItems, baseItem, distribution);
+    distribute(targetItems, baseItems);
 }
 
 
-function distribute(items, baseItem, distribution) {
-    for (var i = 0; i < items.length; i++) {
-        var target = baseItem + distribution * (i + 1);
-        var distance = getMovingDistance(items[i], target);
-        items[i].translate(distance);
+function distribute(targetItems, baseItems) {
+    var bounds = getBounds(baseItems.left);
+    var space = getSpace(baseItems);
+    var distribution = space / (targetItems.length + 1);
+
+    for (var i = 0; i < targetItems.length; i++) {
+        var item = targetItems[i];
+        var position = bounds.right + distribution * (i + 1);
+        var distance = getDistance(item, position);
+        item.translate(distance);
     }
 }
 
 
-function getMovingDistance(item, target) {
-    var referencePoint = getReferencePoint(item);
-    var position = item.visibleBounds[0] + referencePoint;
-    return target - position;
+function getDistance(item, position) {
+    var width = getWidth(item);
+    var bounds = getBounds(item);
+    var distance = bounds.left + width;
+    return position - distance;
 }
 
 
-function getReferencePoint(item) {
-    var ref = app.preferences.getIntegerPreference("plugin/Transform/AnchorPoint");
-    var width = item.visibleBounds[2] - item.visibleBounds[0];
-    if (/[036]/.test(ref)) return 0;
-    if (/[147]/.test(ref)) return width / 2;
-    if (/[258]/.test(ref)) return width;
+function getWidth(item) {
+    var pref = app.preferences;
+    var point = pref.getIntegerPreference('plugin/Transform/AnchorPoint');
+    var bounds = getBounds(item);
+    var width = bounds.right - bounds.left;
+    if (/[036]/.test(point)) return 0;
+    if (/[147]/.test(point)) return width / 2;
+    if (/[258]/.test(point)) return width;
 }
 
 
-function getSpace(leftItem, rightItem) {
-    var left = leftItem.visibleBounds[2];
-    var right = rightItem.visibleBounds[0];
+function getSpace(baseItems) {
+    var bounds = getBounds(baseItems.left);
+    var left = bounds.right;
+    bounds = getBounds(baseItems.right);
+    var right = bounds.left;
     return Math.abs(right - left);
 }
 
@@ -84,12 +91,18 @@ function getBaseItems(selection) {
     var rightItem = selection[0];
 
     for (var i = 1; i < selection.length; i++) {
-        var left = leftItem.geometricBounds[0];
-        var right = rightItem.geometricBounds[0];
-        var target = selection[i].geometricBounds[0];
+        var item = selection[i];
+        var bounds = getBounds(item);
+        var target = bounds.left;
 
-        if (target < left) leftItem = selection[i];
-        if (target > right) rightItem = selection[i];
+        bounds = getBounds(leftItem);
+        var left = bounds.left;
+
+        bounds = getBounds(rightItem);
+        var right = bounds.left;
+
+        if (target < left) leftItem = item;
+        if (target > right) rightItem = item;
     }
 
     return {
@@ -99,20 +112,47 @@ function getBaseItems(selection) {
 }
 
 
-function getTargetItems(selection, leftItem, rightItem) {
+function getTargetItems(selection, baseItem) {
     var items = [];
     for (var i = 0; i < selection.length; i++) {
-        var left = leftItem.geometricBounds[0];
-        var right = rightItem.geometricBounds[0];
-        var target = selection[i].geometricBounds[0];
-        if (left < target && target < right) items.push(selection[i]);
+        var item = selection[i];
+        var bounds = getBounds(item);
+        var target = bounds.left;
+
+        bounds = getBounds(baseItem.left);
+        var left = bounds.left;
+
+        bounds = getBounds(baseItem.right);
+        var right = bounds.left;
+
+        if (left < target && target < right) items.push(item);
     }
+
+    items.sort(function(a, b) {
+        var boundsA = getBounds(a);
+        var boundsB = getBounds(b);
+        return boundsA.left - boundsB.left;
+    });
     return items;
 }
 
 
-function leftToRight(a, b) {
-    var item1 = a.geometricBounds[0];
-    var item2 = b.geometricBounds[0];
-    return item1 - item2;
+function getBounds(item) {
+    var pref = app.preferences;
+    var usePreviewBounds = pref.getBooleanPreference('includeStrokeInBounds');
+    var bounds = usePreviewBounds ? item.visibleBounds : item.geometricBounds;
+    return {
+        top: bounds[1],
+        left: bounds[0],
+        bottom: bounds[3],
+        right: bounds[2]
+    };
+}
+
+
+function isValidVersion() {
+    var cs3 = 13;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs3) return false;
+    return true;
 }
