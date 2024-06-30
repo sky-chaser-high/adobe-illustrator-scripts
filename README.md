@@ -55,37 +55,37 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [Add Anchor Points](#addAnchorPointsjs) `Update`
-- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) `Update`
-- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs) `Update`
-- [Align Objects](#alignObjectsjs) `Update`
+- [Add Anchor Points](#addAnchorPointsjs)
+- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
+- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
+- [Align Objects](#alignObjectsjs)
 - [Close Path](#closePathjs)
-- [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs) `Update`
+- [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
 - [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Disjoin Path](#disjoinPathjs)
-- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) `Update`
-- [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs) `Update`
+- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
+- [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
-- [Draw Normal Line](#drawNormalLinejs) `New`
-- [Draw Rectangle](#drawRectanglejs) `Update`
-- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs) `Update`
-- [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs) `New`
-- [Extend Handle](#extendHandlejs) `Update`
-- [Extend Line](#extendLinejs) `Update`
+- [Draw Normal Line](#drawNormalLinejs)
+- [Draw Rectangle](#drawRectanglejs)
+- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
+- [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs)
+- [Extend Handle](#extendHandlejs)
+- [Extend Line](#extendLinejs)
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Move Guides](#moveGuidesjs)
-- [Rearrange Objects](#rearrangeObjectsjs) `Update`
+- [Rearrange Objects](#rearrangeObjectsjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
 - [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
-- [Show Dimensions](#showDimensionsjs) `Update`
+- [Show Dimensions](#showDimensionsjs)
 - [Shuffle Objects](#shuffleObjectsjs)
-- [Step and Repeat](#stepAndRepeatjs) `Update`
+- [Step and Repeat](#stepAndRepeatjs)
 
 ### Text
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -95,7 +95,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Copy Line Up](#copyLineDownjscopyLineUpjs)
 - [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Create Page Numbers](#createPageNumbersjs)
-- [Create Text Parallel to Path Segment](#createTextParallelToPathSegmentjs) `Update`
+- [Create Text Parallel to Path Segment](#createTextParallelToPathSegmentjs)
 - [Create Threaded Text](#createThreadedTextjs)
 - [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
@@ -121,18 +121,20 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Utility
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [Check Day of Week](#checkDayOfWeekjs)
+- [Check Day of Week](#checkDayOfWeekjs) `Update`
 - [Close All Documents](#closeAllDocumentsjs)
-- [Compare Scale](#compareScalejs)
-- [Measure Distance](#measureDistancejs)
-- [Sum Numbers](#sumNumbersjs)
+- [Compare Scale](#compareScalejs) `Update`
+- [Measure Distance](#measureDistancejs) `Update`
+- [Sum Numbers](#sumNumbersjs) `Update`
 - [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
 - [Toggle Paste Remembers Layers](#togglePasteRemembersLayersjs)
 - [Toggle Show Handles](#toggleShowHandlesjs)
+- [Unit Calculator](#unitCalculatorjs) `New`
 
 ### View
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [Arrange Windows](#arrangeWindowsjs)
+- [Fit Selected Objects in Window](#fitSelectedObjectsInWindowjs) `New`
 - [Navigate to First Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
 - [Navigate to Last Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
 - [Navigate to Next Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
@@ -335,21 +337,20 @@ This script checks the day of the week.
 ![Check Day Of Week](images/checkDayOfWeek.png)
 
 ### Usage
-Select a date with the cursor, and run this script.
+Select a date section in the text with the cursor, and run this script.
 
 > [!NOTE]
-> If there is no year, it is considered as this year.  
-> If the date is incorrect, a warning is issued.  
-> The following formats are supported.
+> If there is no year, it will considered as this year.
 
-> **Format**  
-> `YYYY/MM/DD`, `MM/DD/YYYY`, `DD/MM/YYYY`,   
-> `YYYY-MM-DD`, `MM-DD-YYYY`, `DD-MM-YYYY`,  
-> `YYYY.MM.DD`, `MM.DD.YYYY`, `DD.MM.YYYY`,  
-> `YYYY MM DD`,  
-> `YYYY年MM月DD日`,  
-> `Jan(uary) (the) DD(st|nd|rd|th)(,) YYYY`, `MM DD(st|nd|rd|th)(,) YYYY`,  
-> `DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`
+### Format
+The following formats are supported.  
+`YYYY/MM/DD`, `MM/DD/YYYY`, `DD/MM/YYYY`,   
+`YYYY-MM-DD`, `MM-DD-YYYY`, `DD-MM-YYYY`,  
+`YYYY.MM.DD`, `MM.DD.YYYY`, `DD.MM.YYYY`,  
+`YYYY MM DD`, `MM DD YYYY`, `DD MM YYYY`,  
+`Jan(uary) (the) DD(st|nd|rd|th)(,) YYYY`, `MM DD(st|nd|rd|th)(,) YYYY`,  
+`DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`,  
+`YYYY年MM月DD日`, `令和YY年MM月DD日`, `平成YY年MM月DD日`, `昭和YY年MM月DD日`, `大正YY年MM月DD日`, `明治YY年MM月DD日`
 
 ### Requirements
 Illustrator CS4 or higher
@@ -407,10 +408,12 @@ This script compares the scales of two objects.
 ![Compare Scale](images/compareScale.png)
 
 ### Usage
-Select two objects, and run this script.
+1. Select two objects, and run this script.
+2. To include stroke width, check the Use Preview Bounds checkbox.
 
-> [!NOTE]
-> The dimension units depend on the ruler units.
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -1267,6 +1270,28 @@ Illustrator CS or higher
 
 
 
+# <a name="fitSelectedObjectsInWindowjs">fitSelectedObjectsInWindow.js</a>
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
+This script changes the zoom factor that the selected object fills the display.
+
+![Fit Selected Objects In Window](images/fitSelectedObjectsInWindow.png)
+
+### Usage
+Select any objects, and run this script.  
+
+> [!NOTE]
+> If no objects are selected, all objects should fit in the window. Ignore guides.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#view">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="generateGradientColorjs">generateGradientColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script generates the gradient color from fill colors or swatches.
@@ -1576,9 +1601,12 @@ Select two anchor points with Direct Selection Tool, and run this script.
 > [!NOTE]
 > Highlight the measurement points.  
 > The angle is based on point #1. Range: -180.0 to 180.0  
-> The dimension units depend on the ruler units.  
 > Anchor points for type on a path and area type are also supported.  
 > Due to the small font size, labels will not appear when enlarged above 15500%.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -2328,17 +2356,16 @@ Illustrator CS4 or higher
 
 # <a name="sumNumbersjs">sumNumbers.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-This script sums the numbers in text contents.
+This script adds up the numbers in the text.
 
 ![Sum Numbers](images/sumNumbers.png)
 
 ### Usage
-Select text objects, and run this script.  
-You can also recalculate using only selected items from the list.
+Select text objects or specify a text range in an editing state, and run this script.  
+You can also edit numbers in the text field and recalculate the totals.
 
 > [!NOTE]
-> Ignore the units of value.  
-> Only one-byte numbers are supported.
+> Editing numbers in the text field does not affect the original text objects.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -2484,6 +2511,34 @@ Select a target layer, and run this script.
 Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="unitCalculatorjs">unitCalculator.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+This script converts almost all units supported by Illustrator.
+
+<img src="images/unitCalculator.png" alt="Unit Calculator" width="50%">
+
+### Usage
+1. Run this script.
+   If you want to refer to an object's width or height value, select any objects with the Selection Tool and then run this script.
+2. Enter a value in one of the units.
+
+> [!NOTE]
+> If the document is open, the ruler unit is the reference.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
+
+### Requirements
+Illustrator CC or higher
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
 <br>
 
 

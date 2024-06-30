@@ -20,7 +20,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.2.0
+   1.3.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -43,17 +43,18 @@ function main() {
     var points = getSelectedPoints(shapes.concat(texts));
     if (points.length < 2) return;
 
-    var curve = hasCurve(points);
+    var curve = isCurve(points);
     var result = measure(points, curve);
 
-    var layer = getLayer('__Distance__');
-    showDimensionLine(points, curve, layer);
-    showDialog(result, layer);
+    showDimensionLine(points, curve);
+    app.redraw();
+
+    showDialog(result);
 }
 
 
 function measure(points, curve) {
-    var units = getUnits(app.activeDocument.rulerUnits);
+    var units = getRulerUnits();
     var p1 = points[0];
     var p2 = points[1];
 
@@ -96,7 +97,7 @@ function measure(points, curve) {
 
 
 function getCurve(points) {
-    var units = getUnits(app.activeDocument.rulerUnits);
+    var units = getRulerUnits();
     var bezier = setBezier(points);
     var length = getCurveLength(bezier);
     var handle = {
@@ -133,17 +134,18 @@ function getHeight(point1, point2) {
 
 
 function getDistance(point1, point2) {
-    var adjacent = point2.x - point1.x;
-    var opposite = point2.y - point1.y;
-    var hypotenuse = Math.sqrt(Math.pow(adjacent, 2) + Math.pow(opposite, 2));
-    return hypotenuse;
+    var width = point2.x - point1.x;
+    var height = point2.y - point1.y;
+    var sq = 2;
+    var length = Math.sqrt(Math.pow(width, sq) + Math.pow(height, sq));
+    return length;
 }
 
 
 function getAngle(point1, point2) {
-    var adjacent = point2.x - point1.x;
-    var opposite = point2.y - point1.y;
-    return Math.atan2(opposite, adjacent);
+    var width = point2.x - point1.x;
+    var height = point2.y - point1.y;
+    return Math.atan2(height, width);
 }
 
 
@@ -151,10 +153,20 @@ function setBezier(points) {
     var p1 = points[0];
     var p2 = points[1];
     if (p1.index.point + 1 == p2.index.point) {
-        return [p1.anchor, p1.handle.right, p2.handle.left, p2.anchor];
+        return [
+            p1.anchor,
+            p1.handle.right,
+            p2.handle.left,
+            p2.anchor
+        ];
     }
     else if (p1.index.point == 0 && p2.index.point == p2.count - 1) {
-        return [p2.anchor, p2.handle.right, p1.handle.left, p1.anchor];
+        return [
+            p1.anchor,
+            p1.handle.left,
+            p2.handle.right,
+            p2.anchor
+        ];
     }
 }
 
@@ -216,7 +228,7 @@ function mult(a, t) {
 }
 
 
-function showDimensionLine(points, curve, layer) {
+function showDimensionLine(points, curve) {
     var mode = app.activeDocument.documentColorSpace;
     var CMYK = DocumentColorSpace.CMYK;
     var color = {
@@ -230,6 +242,7 @@ function showDimensionLine(points, curve, layer) {
         }
     };
 
+    var layer = getLayer('__Distance__');
     var p1 = points[0].anchor;
     var p2 = points[1].anchor;
 
@@ -238,9 +251,12 @@ function showDimensionLine(points, curve, layer) {
     drawCircle(p1, layer, color.circle);
     drawCircle(p2, layer, color.circle);
 
-    drawLabel('#1', p1, p2, layer, color.label);
-    drawLabel('#2', p2, p1, layer, color.label);
-    app.redraw();
+    var aiVersion = parseInt(app.version);
+    var ai2020 = 24;
+    if (ai2020 < aiVersion) {
+        drawLabel('#1', p1, p2, layer, color.label);
+        drawLabel('#2', p2, p1, layer, color.label);
+    }
 }
 
 
@@ -277,11 +293,17 @@ function drawLine(points, layer, color, curve) {
     var width = (curve) ? 2 / view.zoom : 4 / view.zoom;
     var dash = (curve) ? [10 / view.zoom, 8 / view.zoom] : [];
 
+    var p1 = [
+        points[0].anchor.x,
+        points[0].anchor.y
+    ];
+    var p2 = [
+        points[1].anchor.x,
+        points[1].anchor.y
+    ];
+
     var line = layer.pathItems.add();
-    line.setEntirePath([
-        [points[0].anchor.x, points[0].anchor.y],
-        [points[1].anchor.x, points[1].anchor.y]
-    ]);
+    line.setEntirePath([p1, p2]);
     line.filled = false;
     line.stroked = true;
     line.strokeWidth = width;
@@ -293,9 +315,10 @@ function drawLine(points, layer, color, curve) {
 function drawCircle(point, layer, color) {
     var view = app.activeDocument.views[0];
     var radius = 6 / view.zoom;
+    var diameter = radius * 2;
     var top = point.y + radius;
     var left = point.x - radius;
-    var circle = layer.pathItems.ellipse(top, left, radius * 2, radius * 2);
+    var circle = layer.pathItems.ellipse(top, left, diameter, diameter);
     circle.stroked = false;
     circle.filled = true;
     circle.fillColor = color;
@@ -316,7 +339,7 @@ function drawLabel(contents, p1, p2, layer, color) {
     var stroke = 1 / view.zoom;
 
     var rad = getAngle(p1, p2);
-    var top = (rad >= 0) ? p1.y - margin : p1.y + margin + height;
+    var top = (rad < 0) ? p1.y + margin + height : p1.y - margin;
     var left = p1.x - (width / 2);
 
     var rect = layer.pathItems.roundedRectangle(top, left, width, height, radius, radius);
@@ -335,13 +358,20 @@ function drawLabel(contents, p1, p2, layer, color) {
     var attributes = text.textRange.characterAttributes;
     attributes.size = fontsize;
     attributes.fillColor = color.content;
-    try {
-        attributes.textFont = app.textFonts['HelveticaNeue'];
-    }
-    catch (err) { }
+
+    var font = getFont('HelveticaNeue');
+    if (font) attributes.textFont = font;
 
     var paragraph = text.textRange.paragraphAttributes;
     paragraph.justification = Justification.CENTER;
+}
+
+
+function getFont(name) {
+    try {
+        return app.textFonts[name];
+    }
+    catch (err) { }
 }
 
 
@@ -364,7 +394,7 @@ function setRGBColor(r, g, b) {
 }
 
 
-function hasCurve(points) {
+function isCurve(points) {
     var p1 = points[0];
     var p2 = points[1];
     var handle = { left: false, right: false };
@@ -380,25 +410,21 @@ function hasCurve(points) {
         handle.right = hasHandle(p2.anchor, p2.handle.right);
     }
 
-    if (handle.left || handle.right) return true;
-    return false;
+    return handle.left || handle.right;
 }
 
 
 function hasHandle(anchor, handle) {
-    if (anchor.x == handle.x && anchor.y == handle.y) return false;
-    return true;
+    return anchor.x != handle.x || anchor.y != handle.y;
 }
 
 
 function getLayer(name) {
-    if (layerExists(name)) {
-        var layer = app.activeDocument.layers[name];
-        layer.locked = false;
-        layer.visible = true;
-        return layer;
-    }
-    return createLayer(name);
+    if (!layerExists(name)) return createLayer(name);
+    var layer = app.activeDocument.layers[name];
+    layer.locked = false;
+    layer.visible = true;
+    return layer;
 }
 
 
@@ -474,13 +500,11 @@ function getPathItems(items) {
 
 
 function getTextPathItems() {
-    var AREA = TextType.AREATEXT;
-    var PATH = TextType.PATHTEXT;
     var items = [];
     var texts = app.activeDocument.textFrames;
     for (var i = 0; i < texts.length; i++) {
         var text = texts[i];
-        if (text.selected && (text.kind == AREA || text.kind == PATH)) {
+        if (text.selected && text.kind != TextType.POINTTEXT) {
             items.push(text.textPath);
         }
     }
@@ -498,15 +522,67 @@ function convertUnits(value, unit) {
 }
 
 
-function getUnits(ruler) {
-    switch (ruler) {
-        case RulerUnits.Millimeters: return 'mm';
-        case RulerUnits.Centimeters: return 'cm';
-        case RulerUnits.Inches: return 'in';
-        case RulerUnits.Points: return 'pt';
-        case RulerUnits.Pixels: return 'px';
-        default: return 'pt';
+function getRulerUnits() {
+    var unit = getUnitSymbol();
+    if (!app.documents.length) return unit.pt;
+
+    var document = app.activeDocument;
+    var src = document.fullName;
+    var ruler = document.rulerUnits;
+    try {
+        switch (ruler) {
+            case RulerUnits.Pixels: return unit.px;
+            case RulerUnits.Points: return unit.pt;
+            case RulerUnits.Picas: return unit.pc;
+            case RulerUnits.Inches: return unit.inch;
+            case RulerUnits.Millimeters: return unit.mm;
+            case RulerUnits.Centimeters: return unit.cm;
+
+            case RulerUnits.Feet: return unit.ft;
+            case RulerUnits.Yards: return unit.yd;
+            case RulerUnits.Meters: return unit.meter;
+        }
     }
+    catch (err) {
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return unit.ft;
+            case 'Yards': return unit.yd;
+            case 'Meters': return unit.meter;
+        }
+    }
+    return unit.pt;
+}
+
+
+function xmpRulerUnits(src) {
+    if (!ExternalObject.AdobeXMPScript) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
+
+    var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
+    var prop = 'xmpTPg:MaxPageSize';
+    var unit = prop + '/stDim:unit';
+
+    var ruler = xmp.getProperty(namespace, unit).value;
+    return ruler;
+}
+
+
+function getUnitSymbol() {
+    return {
+        px: 'px',
+        pt: 'pt',
+        pc: 'pc',
+        inch: 'in',
+        ft: 'ft',
+        yd: 'yd',
+        mm: 'mm',
+        cm: 'cm',
+        meter: 'm'
+    };
 }
 
 
@@ -518,10 +594,10 @@ function isValidVersion() {
 }
 
 
-function showDialog(result, layer) {
+function showDialog(result) {
     $.localize = true;
     var ui = localizeUI();
-    var units = getUnits(app.activeDocument.rulerUnits);
+    var units = getRulerUnits();
     var curve = (result.curve) ? ('  [' + ui.curve + ' ' + result.curve + ' ' + units + ']') : '';
 
     var dialog = new Window('dialog');
@@ -531,219 +607,270 @@ function showDialog(result, layer) {
     dialog.spacing = 10;
     dialog.margins = 16;
 
-    var group1 = dialog.add('group', undefined, { name: 'group1' });
-    group1.orientation = 'row';
-    group1.alignChildren = ['left', 'center'];
-    group1.spacing = 10;
-    group1.margins = 0;
-
-    var panel1 = group1.add('panel', undefined, undefined, { name: 'panel1' });
-    panel1.text = ui.point + ' #1';
-    panel1.preferredSize.width = 160;
+    var panel1 = dialog.add('panel', undefined, undefined, { name: 'panel1' });
+    panel1.text = ui.result;
     panel1.orientation = 'row';
     panel1.alignChildren = ['left', 'top'];
     panel1.spacing = 10;
     panel1.margins = 10;
 
-    var group2 = panel1.add('group', undefined, { name: 'group2' });
+    var group1 = panel1.add('group', undefined, { name: 'group1' });
+    group1.orientation = 'row';
+    group1.alignChildren = ['left', 'center'];
+    group1.spacing = 10;
+    group1.margins = [0, 8, 0, 0];
+
+    var group2 = group1.add('group', undefined, { name: 'group2' });
     group2.orientation = 'column';
-    group2.alignChildren = ['left', 'center'];
+    group2.alignChildren = ['right', 'center'];
     group2.spacing = 10;
-    group2.margins = [0, 8, 0, 0];
+    group2.margins = 0;
 
     var statictext1 = group2.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = 'X:';
+    statictext1.text = ui.distance;
 
     var statictext2 = group2.add('statictext', undefined, undefined, { name: 'statictext2' });
-    statictext2.text = 'Y:';
+    statictext2.text = ui.width;
 
-    var group3 = panel1.add('group', undefined, { name: 'group3' });
+    var statictext3 = group2.add('statictext', undefined, undefined, { name: 'statictext3' });
+    statictext3.text = ui.height;
+
+    var statictext4 = group2.add('statictext', undefined, undefined, { name: 'statictext4' });
+    statictext4.text = ui.angle;
+
+    var group3 = group1.add('group', undefined, { name: 'group3' });
     group3.orientation = 'column';
     group3.alignChildren = ['left', 'center'];
     group3.spacing = 10;
-    group3.margins = [0, 8, 0, 0];
+    group3.margins = 0;
 
-    var statictext3 = group3.add('statictext', undefined, undefined, { name: 'statictext3' });
-    statictext3.text = result.x1 + ' ' + units;
+    var statictext5 = group3.add('statictext', undefined, undefined, { name: 'statictext5' });
+    statictext5.text = result.distance + ' ' + units + curve;
 
-    var statictext4 = group3.add('statictext', undefined, undefined, { name: 'statictext4' });
-    statictext4.text = result.y1 + ' ' + units;
+    var statictext6 = group3.add('statictext', undefined, undefined, { name: 'statictext6' });
+    statictext6.text = result.width + ' ' + units;
 
-    var panel2 = group1.add('panel', undefined, undefined, { name: 'panel2' });
-    panel2.text = ui.point + ' #2';
-    panel2.preferredSize.width = 160;
+    var statictext7 = group3.add('statictext', undefined, undefined, { name: 'statictext7' });
+    statictext7.text = result.height + ' ' + units;
+
+    var statictext8 = group3.add('statictext', undefined, undefined, { name: 'statictext8' });
+    statictext8.text = result.angle.deg + ui.deg + '  [' + result.angle.rad + ' ' + ui.rad + ']';
+
+    var panel2 = dialog.add('panel', undefined, undefined, { name: 'panel2' });
+    panel2.text = ui.position;
     panel2.orientation = 'row';
     panel2.alignChildren = ['left', 'top'];
     panel2.spacing = 10;
     panel2.margins = 10;
 
     var group4 = panel2.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'column';
+    group4.orientation = 'row';
     group4.alignChildren = ['left', 'center'];
     group4.spacing = 10;
-    group4.margins = [0, 8, 0, 0];
+    group4.margins = 0;
 
-    var statictext5 = group4.add('statictext', undefined, undefined, { name: 'statictext5' });
-    statictext5.text = 'X:';
-
-    var statictext6 = group4.add('statictext', undefined, undefined, { name: 'statictext6' });
-    statictext6.text = 'Y:';
-
-    var group5 = panel2.add('group', undefined, { name: 'group5' });
+    var group5 = group4.add('group', undefined, { name: 'group5' });
     group5.orientation = 'column';
     group5.alignChildren = ['left', 'center'];
     group5.spacing = 10;
-    group5.margins = [0, 8, 0, 0];
+    group5.margins = 0;
 
-    var statictext7 = group5.add('statictext', undefined, undefined, { name: 'statictext7' });
-    statictext7.text = result.x2 + ' ' + units;
-
-    var statictext8 = group5.add('statictext', undefined, undefined, { name: 'statictext8' });
-    statictext8.text = result.y2 + ' ' + units;
-
-    var group6 = dialog.add('group', undefined, { name: 'group6' });
-    group6.orientation = 'row';
+    var group6 = group5.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'column';
     group6.alignChildren = ['left', 'center'];
     group6.spacing = 10;
-    group6.margins = 0;
+    group6.margins = [0, 8, 0, 0];
 
-    var panel3 = group6.add('panel', undefined, undefined, { name: 'panel3' });
-    panel3.text = ui.handle + ' #1';
-    panel3.preferredSize.width = 160;
-    panel3.orientation = 'row';
-    panel3.alignChildren = ['left', 'top'];
-    panel3.spacing = 10;
-    panel3.margins = 10;
+    var statictext9 = group6.add('statictext', undefined, undefined, { name: 'statictext9' });
+    statictext9.text = ui.point + ' #1';
 
-    var group7 = panel3.add('group', undefined, { name: 'group7' });
-    group7.orientation = 'column';
+    var group7 = group6.add('group', undefined, { name: 'group7' });
+    group7.orientation = 'row';
     group7.alignChildren = ['left', 'center'];
     group7.spacing = 10;
-    group7.margins = [0, 8, 0, 0];
+    group7.margins = [10, 0, 0, 0];
 
-    var statictext9 = group7.add('statictext', undefined, undefined, { name: 'statictext9' });
-    statictext9.text = 'X:';
-
-    var statictext10 = group7.add('statictext', undefined, undefined, { name: 'statictext10' });
-    statictext10.text = 'Y:';
-
-    var group8 = panel3.add('group', undefined, { name: 'group8' });
+    var group8 = group7.add('group', undefined, { name: 'group8' });
     group8.orientation = 'column';
     group8.alignChildren = ['left', 'center'];
     group8.spacing = 10;
-    group8.margins = [0, 8, 0, 0];
+    group8.margins = 0;
+
+    var statictext10 = group8.add('statictext', undefined, undefined, { name: 'statictext10' });
+    statictext10.text = 'X:';
 
     var statictext11 = group8.add('statictext', undefined, undefined, { name: 'statictext11' });
-    statictext11.text = (result.curve) ? (result.handle.right.x + ' ' + units) : '-';
+    statictext11.text = 'Y:';
 
-    var statictext12 = group8.add('statictext', undefined, undefined, { name: 'statictext12' });
-    statictext12.text = (result.curve) ? (result.handle.right.y + ' ' + units) : '-';
-
-    var panel4 = group6.add('panel', undefined, undefined, { name: 'panel4' });
-    panel4.text = ui.handle + ' #2';
-    panel4.preferredSize.width = 160;
-    panel4.orientation = 'row';
-    panel4.alignChildren = ['left', 'top'];
-    panel4.spacing = 10;
-    panel4.margins = 10;
-
-    var group9 = panel4.add('group', undefined, { name: 'group9' });
+    var group9 = group7.add('group', undefined, { name: 'group9' });
+    group9.preferredSize.width = 120;
     group9.orientation = 'column';
     group9.alignChildren = ['left', 'center'];
     group9.spacing = 10;
-    group9.margins = [0, 8, 0, 0];
+    group9.margins = 0;
+
+    var statictext12 = group9.add('statictext', undefined, undefined, { name: 'statictext12' });
+    statictext12.text = result.x1 + ' ' + units;
 
     var statictext13 = group9.add('statictext', undefined, undefined, { name: 'statictext13' });
-    statictext13.text = 'X:';
+    statictext13.text = result.y1 + ' ' + units;
 
-    var statictext14 = group9.add('statictext', undefined, undefined, { name: 'statictext14' });
-    statictext14.text = 'Y:';
-
-    var group10 = panel4.add('group', undefined, { name: 'group10' });
+    var group10 = group5.add('group', undefined, { name: 'group10' });
     group10.orientation = 'column';
     group10.alignChildren = ['left', 'center'];
     group10.spacing = 10;
     group10.margins = [0, 8, 0, 0];
 
-    var statictext15 = group10.add('statictext', undefined, undefined, { name: 'statictext15' });
-    statictext15.text = (result.curve) ? (result.handle.left.x + ' ' + units) : '-';
+    var statictext14 = group10.add('statictext', undefined, undefined, { name: 'statictext14' });
+    statictext14.text = ui.handle + ' #1';
 
-    var statictext16 = group10.add('statictext', undefined, undefined, { name: 'statictext16' });
-    statictext16.text = (result.curve) ? (result.handle.left.y + ' ' + units) : '-';
-
-    var panel5 = dialog.add('panel', undefined, undefined, { name: 'panel5' });
-    panel5.text = ui.result;
-    panel5.orientation = 'row';
-    panel5.alignChildren = ['left', 'top'];
-    panel5.spacing = 10;
-    panel5.margins = 10;
-
-    var group11 = panel5.add('group', undefined, { name: 'group11' });
-    group11.orientation = 'column';
-    group11.alignChildren = ['right', 'center'];
+    var group11 = group10.add('group', undefined, { name: 'group11' });
+    group11.orientation = 'row';
+    group11.alignChildren = ['left', 'center'];
     group11.spacing = 10;
-    group11.margins = [0, 8, 0, 0];
+    group11.margins = [10, 0, 0, 0];
 
-    var statictext17 = group11.add('statictext', undefined, undefined, { name: 'statictext17' });
-    statictext17.text = ui.width;
-    statictext17.preferredSize.height = 18;
-
-    var statictext18 = group11.add('statictext', undefined, undefined, { name: 'statictext18' });
-    statictext18.text = ui.height;
-    statictext18.preferredSize.height = 18;
-
-    var statictext19 = group11.add('statictext', undefined, undefined, { name: 'statictext19' });
-    statictext19.text = ui.distance;
-    statictext19.preferredSize.height = 18;
-
-    var statictext20 = group11.add('statictext', undefined, undefined, { name: 'statictext20' });
-    statictext20.text = ui.angle;
-    statictext20.preferredSize.height = 18;
-
-    var group12 = panel5.add('group', undefined, { name: 'group12' });
+    var group12 = group11.add('group', undefined, { name: 'group12' });
     group12.orientation = 'column';
     group12.alignChildren = ['left', 'center'];
     group12.spacing = 10;
-    group12.margins = [0, 8, 0, 0];
+    group12.margins = 0;
 
-    var statictext21 = group12.add('statictext', undefined, undefined, { name: 'statictext21' });
-    statictext21.text = result.width + ' ' + units;
-    statictext21.preferredSize.height = 18;
+    var statictext15 = group12.add('statictext', undefined, undefined, { name: 'statictext15' });
+    statictext15.text = 'X:';
 
-    var statictext22 = group12.add('statictext', undefined, undefined, { name: 'statictext22' });
-    statictext22.text = result.height + ' ' + units;
-    statictext22.preferredSize.height = 18;
+    var statictext16 = group12.add('statictext', undefined, undefined, { name: 'statictext16' });
+    statictext16.text = 'Y:';
 
-    var statictext23 = group12.add('statictext', undefined, undefined, { name: 'statictext23' });
-    statictext23.text = result.distance + ' ' + units + curve;
-    statictext23.preferredSize.height = 18;
-
-    var statictext24 = group12.add('statictext', undefined, undefined, { name: 'statictext24' });
-    statictext24.text = result.angle.deg + ' ' + ui.deg + '  [' + result.angle.rad + ' ' + ui.rad + ']';
-    statictext24.preferredSize.height = 18;
-
-    var group13 = dialog.add('group', undefined, { name: 'group13' });
-    group13.orientation = 'row';
-    group13.alignChildren = ['right', 'center'];
+    var group13 = group11.add('group', undefined, { name: 'group13' });
+    group13.preferredSize.width = 120;
+    group13.orientation = 'column';
+    group13.alignChildren = ['left', 'center'];
     group13.spacing = 10;
     group13.margins = 0;
 
-    var button1 = group13.add('button', undefined, undefined, { name: 'button1' });
+    var statictext17 = group13.add('statictext', undefined, undefined, { name: 'statictext17' });
+    statictext17.text = (result.curve) ? (result.handle.right.x + ' ' + units) : '-';
+
+    var statictext18 = group13.add('statictext', undefined, undefined, { name: 'statictext18' });
+    statictext18.text = (result.curve) ? (result.handle.right.y + ' ' + units) : '-';
+
+    var group14 = group4.add('group', undefined, { name: 'group14' });
+    group14.orientation = 'row';
+    group14.alignChildren = ['left', 'center'];
+    group14.spacing = 10;
+    group14.margins = 0;
+
+    var group15 = group14.add('group', undefined, { name: 'group15' });
+    group15.orientation = 'column';
+    group15.alignChildren = ['left', 'center'];
+    group15.spacing = 10;
+    group15.margins = 0;
+
+    var group16 = group15.add('group', undefined, { name: 'group16' });
+    group16.orientation = 'column';
+    group16.alignChildren = ['left', 'center'];
+    group16.spacing = 10;
+    group16.margins = [0, 8, 0, 0];
+
+    var statictext19 = group16.add('statictext', undefined, undefined, { name: 'statictext19' });
+    statictext19.text = ui.point + ' #2';
+
+    var group17 = group16.add('group', undefined, { name: 'group17' });
+    group17.orientation = 'row';
+    group17.alignChildren = ['left', 'center'];
+    group17.spacing = 10;
+    group17.margins = [10, 0, 0, 0];
+
+    var group18 = group17.add('group', undefined, { name: 'group18' });
+    group18.orientation = 'column';
+    group18.alignChildren = ['left', 'center'];
+    group18.spacing = 10;
+    group18.margins = 0;
+
+    var statictext20 = group18.add('statictext', undefined, undefined, { name: 'statictext20' });
+    statictext20.text = 'X:';
+
+    var statictext21 = group18.add('statictext', undefined, undefined, { name: 'statictext21' });
+    statictext21.text = 'Y:';
+
+    var group19 = group17.add('group', undefined, { name: 'group19' });
+    group19.preferredSize.width = 120;
+    group19.orientation = 'column';
+    group19.alignChildren = ['left', 'center'];
+    group19.spacing = 10;
+    group19.margins = 0;
+
+    var statictext22 = group19.add('statictext', undefined, undefined, { name: 'statictext22' });
+    statictext22.text = result.x2 + ' ' + units;
+
+    var statictext23 = group19.add('statictext', undefined, undefined, { name: 'statictext23' });
+    statictext23.text = result.y2 + ' ' + units;
+
+    var group20 = group15.add('group', undefined, { name: 'group20' });
+    group20.orientation = 'column';
+    group20.alignChildren = ['left', 'center'];
+    group20.spacing = 10;
+    group20.margins = [0, 8, 0, 0];
+
+    var statictext24 = group20.add('statictext', undefined, undefined, { name: 'statictext24' });
+    statictext24.text = ui.handle + ' #2';
+
+    var group21 = group20.add('group', undefined, { name: 'group21' });
+    group21.orientation = 'row';
+    group21.alignChildren = ['left', 'center'];
+    group21.spacing = 10;
+    group21.margins = [10, 0, 0, 0];
+
+    var group22 = group21.add('group', undefined, { name: 'group22' });
+    group22.orientation = 'column';
+    group22.alignChildren = ['left', 'center'];
+    group22.spacing = 10;
+    group22.margins = 0;
+
+    var statictext25 = group22.add('statictext', undefined, undefined, { name: 'statictext25' });
+    statictext25.text = 'X:';
+
+    var statictext26 = group22.add('statictext', undefined, undefined, { name: 'statictext26' });
+    statictext26.text = 'Y:';
+
+    var group23 = group21.add('group', undefined, { name: 'group23' });
+    group23.preferredSize.width = 120;
+    group23.orientation = 'column';
+    group23.alignChildren = ['left', 'center'];
+    group23.spacing = 10;
+    group23.margins = 0;
+
+    var statictext27 = group23.add('statictext', undefined, undefined, { name: 'statictext27' });
+    statictext27.text = (result.curve) ? (result.handle.left.x + ' ' + units) : '-';
+
+    var statictext28 = group23.add('statictext', undefined, undefined, { name: 'statictext28' });
+    statictext28.text = (result.curve) ? (result.handle.left.y + ' ' + units) : '-';
+
+    var group24 = dialog.add('group', undefined, { name: 'group24' });
+    group24.orientation = 'row';
+    group24.alignChildren = ['right', 'center'];
+    group24.spacing = 10;
+    group24.margins = 0;
+
+    var button1 = group24.add('button', undefined, undefined, { name: 'button1' });
     button1.text = 'Cancel';
-    button1.preferredSize.width = 90;
+    button1.preferredSize.width = 85;
     button1.hide();
 
-    var button2 = group13.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group24.add('button', undefined, undefined, { name: 'button2' });
     button2.text = 'OK';
-    button2.preferredSize.width = 90;
+    button2.preferredSize.width = 85;
 
     button1.onClick = function() {
-        layer.remove();
+        app.undo();
+        app.redraw();
         dialog.close();
     }
 
     button2.onClick = function() {
-        layer.remove();
+        app.undo();
+        app.redraw();
         dialog.close();
     }
 
@@ -755,19 +882,19 @@ function localizeUI() {
     return {
         title: {
             en: 'Measure Distance',
-            ja: '距離を測る'
-        },
-        point: {
-            en: 'Point',
-            ja: 'ポイント'
-        },
-        handle: {
-            en: 'Handle',
-            ja: 'ハンドル'
+            ja: '距離の測定'
         },
         result: {
             en: 'Result',
             ja: '結果'
+        },
+        distance: {
+            en: 'Distance:',
+            ja: '直線距離:'
+        },
+        curve: {
+            en: 'Curve:',
+            ja: '曲線:'
         },
         width: {
             en: 'Width:',
@@ -777,25 +904,29 @@ function localizeUI() {
             en: 'Height:',
             ja: '高さ:'
         },
-        distance: {
-            en: 'Distance:',
-            ja: '距離:'
-        },
-        curve: {
-            en: 'Curve:',
-            ja: '曲線:'
-        },
         angle: {
             en: 'Angle:',
             ja: '角度:'
         },
         deg: {
-            en: 'deg',
-            ja: '度'
+            en: '°',
+            ja: '°'
         },
         rad: {
             en: 'rad',
-            ja: 'ラジアン'
+            ja: 'rad'
+        },
+        position: {
+            en: 'Position',
+            ja: '位置'
+        },
+        point: {
+            en: 'Anchor Point',
+            ja: 'アンカーポイント'
+        },
+        handle: {
+            en: 'Handle',
+            ja: 'ハンドル'
         }
     };
 }

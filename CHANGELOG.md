@@ -55,6 +55,16 @@
 <br><br>
 
 
+## checkDayOfWeek.js
+### 1.1.0 (2024-06-30)
+### Added
+- Japanese calendar is now supported.
+- Added the function to check the illustrator version.
+### Changes
+- Updated the UI.
+<br><br>
+
+
 ## closeAllDocuments.js
 ### 1.1.0 (2023-08-27)
 ### Changes
@@ -70,6 +80,9 @@
 
 
 ## compareScale.js
+### 1.1.0 (2024-06-30)
+### Changes
+- Changed the UI to show scale for each object.
 ### 1.0.1 (2023-08-27)
 ### Changes
 - Changed localization method.
@@ -325,6 +338,12 @@
 
 
 ## measureDistance.js
+### 1.3.0 (2024-06-30)
+### Added
+- Added supported units.
+### Changes
+- To avoid crashing Illustrator, labels are no longer displayed in Illustrator 2020 and earlier versions.
+- Updated the UI.
 ### 1.2.0 (2023-08-27)
 ### Added
 - Labels are now displayed at anchor points.
@@ -496,6 +515,12 @@
 - The UI has been brought closer to InDesign.
 - Changed the file name.
 <br><br>
+
+
+## sumNumbers.js
+### 2.0.0 (2024-06-30)
+### Changes
+- Changed the UI to allow editing of numeric values in text fields.
 
 
 ## syncView.js

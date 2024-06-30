@@ -53,37 +53,37 @@ Adobe Illustratorのスクリプト集です。
 
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [**アンカーポイントに図形を描く**](#アンカーポイントに図形を描く) drawShapeOnAnchorPoint.js `Update`
-- [**アンカーポイントの追加**](#アンカーポイントの追加) addAnchorPoints.js `Update`
-- [**オブジェクトの周囲に長方形を描く**](#オブジェクトの周囲に長方形を描く) drawRectangle.js `Update`
-- [**オブジェクトの整列**](#オブジェクトの整列) alignObjects.js `Update`
-- [**オブジェクトの並べ替え**](#オブジェクトの並べ替え) rearrangeObjects.js `Update`
+- [**アンカーポイントに図形を描く**](#アンカーポイントに図形を描く) drawShapeOnAnchorPoint.js
+- [**アンカーポイントの追加**](#アンカーポイントの追加) addAnchorPoints.js
+- [**オブジェクトの周囲に長方形を描く**](#オブジェクトの周囲に長方形を描く) drawRectangle.js
+- [**オブジェクトの整列**](#オブジェクトの整列) alignObjects.js
+- [**オブジェクトの並べ替え**](#オブジェクトの並べ替え) rearrangeObjects.js
 - [**オブジェクトをシャッフル**](#オブジェクトをシャッフル) shuffleObjects.js
 - [**外接円を描く**](#外接円を描く) drawCircumscribedCircle.js
 - [**ガイドオブジェクトの色を削除**](#ガイドオブジェクトの色を削除) removeColorInGuideObject.js
 - [**ガイドをアートボードにフィット**](#ガイドをアートボードにフィット) fitGuideInArtboard.js
 - [**ガイドを移動**](#ガイドを移動) moveGuides.js
 - [**ガイドを選択**](#ガイドを選択) selectGuides.js
-- [**繰り返し複製**](#繰り返し複製) stepAndRepeat.js `Update`
+- [**繰り返し複製**](#繰り返し複製) stepAndRepeat.js
 - [**グリッドラインを作成**](#グリッドラインを作成) createGridLines.js
-- [**すべてのアンカーをコーナーポイントに切り替え**](#すべてのアンカーをコーナーポイントに切り替え) convertAllAnchorPointsToCorner.js `Update`
+- [**すべてのアンカーをコーナーポイントに切り替え**](#すべてのアンカーをコーナーポイントに切り替え) convertAllAnchorPointsToCorner.js
 - [**選択したアンカーポイントを時計回りに移動**](#選択したアンカーポイントを時計回りに移動選択したアンカーポイントを反時計回りに移動) shiftSelectedAnchorPointsCW.js
 - [**選択したアンカーポイントを反時計回りに移動**](#選択したアンカーポイントを時計回りに移動選択したアンカーポイントを反時計回りに移動) shiftSelectedAnchorPointsCCW.js
 - [**選択したアンカーポイントを時計回りに増やす**](#選択したアンカーポイントを時計回りに増やす選択したアンカーポイントを反時計回りに増やす) increaseSelectedAnchorPointsCW.js
 - [**選択したアンカーポイントを反時計回りに増やす**](#選択したアンカーポイントを時計回りに増やす選択したアンカーポイントを反時計回りに増やす) increaseSelectedAnchorPointsCCW.js
 - [**選択したアンカーポイントを時計回りに減らす**](#選択したアンカーポイントを時計回りに減らす選択したアンカーポイントを反時計回りに減らす) decreaseSelectedAnchorPointsCW.js
 - [**選択したアンカーポイントを反時計回りに減らす**](#選択したアンカーポイントを時計回りに減らす選択したアンカーポイントを反時計回りに減らす) decreaseSelectedAnchorPointsCCW.js
-- [**直線に平行な図形を描く**](#直線に平行な図形を描く) drawShapeParallelToPathSegment.js `New`
-- [**ハンドルを伸縮**](#ハンドルを伸縮) extendHandle.js `Update`
-- [**パスの寸法を表示**](#パスの寸法を表示) showDimensions.js `Update`
-- [**パスを伸縮**](#パスを伸縮) extendLine.js `Update`
+- [**直線に平行な図形を描く**](#直線に平行な図形を描く) drawShapeParallelToPathSegment.js
+- [**ハンドルを伸縮**](#ハンドルを伸縮) extendHandle.js
+- [**パスの寸法を表示**](#パスの寸法を表示) showDimensions.js
+- [**パスを伸縮**](#パスを伸縮) extendLine.js
 - [**パスを閉じる**](#パスを閉じる) closePath.js
 - [**パスを分解**](#パスを分解) disjoinPath.js
-- [**法線を描く**](#法線を描く) drawNormalLine.js `New`
-- [**余白の垂直方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Vertical).js `Update`
-- [**余白の水平方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Horizontal).js `Update`
-- [**余白の垂直方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Vertical).js `Update`
-- [**余白の水平方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Horizotal).js `Update`
+- [**法線を描く**](#法線を描く) drawNormalLine.js
+- [**余白の垂直方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Vertical).js
+- [**余白の水平方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Horizontal).js
+- [**余白の垂直方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Vertical).js
+- [**余白の水平方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Horizotal).js
 
 ### テキスト
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -105,7 +105,7 @@ Adobe Illustratorのスクリプト集です。
 - [**スレッドテキストを作成**](#スレッドテキストを作成) createThreadedText.js
 - [**選択なしでカット**](#選択なしでカット選択なしでコピー) cutLine(emptySelection).js
 - [**選択なしでコピー**](#選択なしでカット選択なしでコピー) copyLine(emptySelection).js
-- [**直線に平行なテキストを作成**](#直線に平行なテキストを作成) createTextParallelToPathSegment.js `Update`
+- [**直線に平行なテキストを作成**](#直線に平行なテキストを作成) createTextParallelToPathSegment.js
 - [**テキスト中央揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Center.js
 - [**テキスト左揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Left.js
 - [**テキスト右揃え**](#テキスト中央揃えテキスト左揃えテキスト右揃え) textAlign_Right.js
@@ -119,19 +119,21 @@ Adobe Illustratorのスクリプト集です。
 
 ### ユーティリティ
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [**拡大・縮小率を表示**](#拡大縮小率を表示) compareScale.js
-- [**距離を測る**](#距離を測る) measureDistance.js
+- [**拡大・縮小率の確認**](#拡大縮小率の確認) compareScale.js `Update`
+- [**距離の測定**](#距離の測定) measureDistance.js `Update`
 - [**コピー元のレイヤーにペーストを切り替える**](#コピー元のレイヤーにペーストを切り替える) togglePasteRemembersLayers.js
 - [**字形の境界に整列を切り替える**](#字形の境界に整列を切り替える) toggleAlignToGlyphBounds.js
 - [**すべてのドキュメントを閉じる**](#すべてのドキュメントを閉じる) closeAllDocuments.js
 - [**選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える**](#選択した複数のアンカーポイントのハンドルを表示隠すを切り替える) toggleShowHandles.js
-- [**日付の曜日をチェック**](#日付の曜日をチェック) checkDayOfWeek.js
-- [**文字列内の数字を足す**](#文字列内の数字を足す) sumNumbers.js
+- [**単位を換算**](#単位を換算) unitCalculator.js `New`
+- [**日付と曜日の確認**](#日付と曜日の確認) checkDayOfWeek.js `Update`
+- [**文字列内の数字の合計**](#文字列内の数字の合計) sumNumbers.js `Update`
 
 ### 表示
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [**ウィンドウの表示位置を同期**](#ウィンドウの表示位置を同期) syncView.js
 - [**ウィンドウを並べて表示**](#ウィンドウを並べて表示) arrangeWindows.js
+- [**オブジェクトを画面全体に拡大表示**](#オブジェクトを画面全体に拡大表示) fitSelectedObjectsInWindow.js `New`
 - [**最後のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToLastArtboard.js
 - [**先頭のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToFirstArtboard.js
 - [**次のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToNextArtboard.js
@@ -350,31 +352,31 @@ Illustrator CS6以降
 
 
 
-## <a name="日付の曜日をチェック">日付の曜日をチェック</a>
+## <a name="日付と曜日の確認">日付と曜日の確認</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 ### checkDayOfWeek.js
-選択した日付の曜日をチェックします。
+選択した日付の曜日を確認します。
 
 ![Check Day Of Week](images/checkDayOfWeek.png)
 > [!NOTE]
 > Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法
-カーソルで日付を選択してスクリプトを実行します。
+テキスト内の日付をカーソルで選択してスクリプトを実行します。
 
 > [!NOTE]
 > 年がない場合（月日のみ）は、今年とみなします。  
-> 日付が正しくない場合は警告を表示します。  
-> チェック可能な日付の書式は下記になります。
+> 漢数字には対応していません。
 
-> **書式**  
-> `YYYY/MM/DD`, `MM/DD/YYYY`, `DD/MM/YYYY`,   
-> `YYYY-MM-DD`, `MM-DD-YYYY`, `DD-MM-YYYY`,  
-> `YYYY.MM.DD`, `MM.DD.YYYY`, `DD.MM.YYYY`,  
-> `YYYY MM DD`,  
-> `YYYY年MM月DD日`,  
-> `Jan(uary) (the) DD(st|nd|rd|th)(,) YYYY`, `MM DD(st|nd|rd|th)(,) YYYY`,  
-> `DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`
+#### 書式
+確認できる日付の書式は下記になります。  
+`YYYY年MM月DD日`, `令和YY年MM月DD日`, `平成YY年MM月DD日`, `昭和YY年MM月DD日`, `大正YY年MM月DD日`, `明治YY年MM月DD日`,  
+`YYYY/MM/DD`, `MM/DD/YYYY`, `DD/MM/YYYY`,   
+`YYYY-MM-DD`, `MM-DD-YYYY`, `DD-MM-YYYY`,  
+`YYYY.MM.DD`, `MM.DD.YYYY`, `DD.MM.YYYY`,  
+`YYYY MM DD`, `MM DD YYYY`, `DD MM YYYY`,  
+`Jan(uary) (the) DD(st|nd|rd|th)(,) YYYY`, `MM DD(st|nd|rd|th)(,) YYYY`,  
+`DD(st|nd|rd|th) (of) Jan(uary)(,) YYYY`, `DD(st|nd|rd|th) MM(,) YYYY`
 
 #### 動作条件
 Illustrator CS4以降
@@ -428,7 +430,7 @@ Illustrator CS以降
 
 
 
-## <a name="拡大縮小率を表示">拡大・縮小率を表示</a>
+## <a name="拡大縮小率の確認">拡大・縮小率の確認</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 ### compareScale.js
 2つのオブジェクトを比較して拡大・縮小率を表示します。
@@ -438,10 +440,12 @@ Illustrator CS以降
 > Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法
-2つのオブジェクトを選択してスクリプトを実行します。
+1. 2つのオブジェクトを選択してスクリプトを実行します。
+2. 線幅を含める場合は、［プレビュー境界を使用］にチェックを付けます。
 
-> [!NOTE]
-> 寸法の単位はルーラー単位により変わります。
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1357,6 +1361,29 @@ Illustrator CS以降
 
 
 
+## <a name="オブジェクトを画面全体に拡大表示">オブジェクトを画面全体に拡大表示</a>
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
+### fitSelectedObjectsInWindow.js
+選択したオブジェクトが画面全体に収まるようにズーム倍率を変更します。
+
+![Fit Selected Objects In Window](images/fitSelectedObjectsInWindow.png)
+
+#### 使用方法
+オブジェクトを選択してスクリプトを実行します。
+
+> [!NOTE]
+> オブジェクトを選択していない場合は、すべてのオブジェクトが画面に収まるように表示します。そのときはガイドを無視します。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#表示">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 ## <a name="グラデーションを生成">グラデーションを生成</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 ### generateGradientColor.js
@@ -1661,7 +1688,7 @@ Illustrator CS以降
 2. 元になるグラデーションを選択します。
 
 > [!NOTE]
-> スウォッチにあるグラデーションが対象となります。
+> スウォッチにあるグラデーションが対象になります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -1673,10 +1700,10 @@ Illustrator CS4以降
 
 
 
-## <a name="距離を測る">距離を測る</a>
+## <a name="距離の測定">距離の測定</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 ### measureDistance.js
-2点間のアンカーポイントの距離を正確に測ります。
+2点間のアンカーポイントの距離をものさしツールよりも正確に測ります。
 
 ![Measure the Distance](images/measureDistance.png)
 > [!NOTE]
@@ -1688,9 +1715,12 @@ Illustrator CS4以降
 > [!NOTE]
 > 測定箇所をハイライトします。  
 > 角度はポイント#1を基準にします。  
-> 寸法の単位はルーラー単位により変わります。  
 > パス上文字とエリア内文字のアンカーポイントにも対応しています。  
 > フォントサイズが小さくなりすぎるため、15500％以上に拡大表示するとラベルが表示されません。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -2492,22 +2522,21 @@ Illustrator CS4以降
 
 
 
-## <a name="文字列内の数字を足す">文字列内の数字を足す</a>
+## <a name="文字列内の数字の合計">文字列内の数字の合計</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 ### sumNumbers.js
-文字列内の数字で足し算します。
+文字列内の数字を足し合わせます。
 
 ![Sum Numbers](images/sumNumbers.png)
 > [!NOTE]
 > Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法
-テキストオブジェクトを選択してスクリプトを実行します。  
-また、リストから選択した項目のみを使用して再計算することも可能です。
+テキストオブジェクトを選択、または編集状態で範囲を指定してスクリプトを実行します。  
+テキストフィールドの数値を編集して合計を再計算することもできます。
 
 > [!NOTE]
-> 数値の単位は無視して計算します。  
-> 全角数字には対応していません。
+> テキストフィールドの数値を編集しても、元のテキストオブジェクトには影響しません。
 
 #### 動作条件
 Illustrator CS4以降
@@ -2661,6 +2690,38 @@ Illustrator CC以降
 Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="単位を換算">単位を換算</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### unitCalculator.js
+Illustratorで対応しているほぼすべての単位を換算します。
+
+<img src="images/unitCalculator.png" alt="Unit Calculator" width="50%">
+
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. スクリプトを実行します。
+   オブジェクトの幅や高さの値を参照したい場合は、選択ツールでオブジェクトを選択してからスクリプトを実行します。
+2. いずれかの単位に値を入力します。
+
+> [!NOTE]
+> ドキュメントを開いている場合は、定規の単位が基準になります。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル、歯（日本語版のみ）。  
+使用する単位は、定規の単位によります。
+
+#### 動作条件
+Illustrator CC以降
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

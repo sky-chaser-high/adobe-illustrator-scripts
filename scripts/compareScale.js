@@ -5,7 +5,8 @@
    This script compares the scales of two objects.
 
    Usage
-   Select two objects, run this script from File > Scripts > Other Script...
+   1. Select two objects, run this script from File > Scripts > Other Script...
+   2. To include stroke width, check the Use Preview Bounds checkbox.
 
    Notes
    The dimension units depend on the ruler units.
@@ -13,10 +14,10 @@
    In this case, restart Illustrator and try again.
 
    Requirements
-   Illustrator CS4 or higher
+   Illustrator CC or higher
 
    Version
-   1.0.1
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -26,76 +27,112 @@
    https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
-(function () {
+(function() {
     if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    $.localize = true;
     var items = app.activeDocument.selection;
-    if (items.length != 2) return alert(localizeUI().caution);
+    if (items.length != 2) {
+        $.localize = true;
+        var ui = localizeUI();
+        return alert(ui.caution);
+    }
 
-    var unit = getRulerUnits();
+    var item1 = items[0];
+    var item2 = items[1];
+    var usePreviewBounds = isUsePreviewBounds();
+    var compare = compareScale(item1, item2, usePreviewBounds);
 
-    var item1 = {
-        width: convertUnits(items[0].width + 'pt', unit),
-        height: convertUnits(items[0].height + 'pt', unit)
-    };
+    var dialog = showDialog(compare.item1, compare.item2);
 
-    var item2 = {
-        width: convertUnits(items[1].width + 'pt', unit),
-        height: convertUnits(items[1].height + 'pt', unit)
-    };
+    dialog.usePreviewBounds.onClick = function() {
+        usePreviewBounds = dialog.usePreviewBounds.value;
+        compare = compareScale(item1, item2, usePreviewBounds);
+        setCompareValueTo(dialog, compare.item1, compare.item2);
+    }
 
-    var compare = compareScale(item1, item2);
-    showDialog(compare.width, compare.height, compare.scale, unit);
+    dialog.show();
 }
 
 
-function compareScale(item1, item2) {
-    var width = { large: 0, small: 0 };
-    var height = { large: 0, small: 0 };
-    var scale = {
-        horizontal: { expanding: 0, shrinking: 0 },
-        vertical: { expanding: 0, shrinking: 0 }
-    };
+function setCompareValueTo(dialog, item1, item2) {
+    var unit = getRulerUnits();
 
-    var isLarge = (item1.width > item2.width || item1.height > item2.height) ? true : false;
+    dialog.item1.horizontal.text = round(item1.horizontal);
+    dialog.item1.vertical.text = round(item1.vertical);
 
-    width.large = (isLarge) ? item1.width : item2.width;
-    height.large = (isLarge) ? item1.height : item2.height;
+    dialog.item1.width.text = round(item1.width) + ' ' + unit;
+    dialog.item1.height.text = round(item1.height) + ' ' + unit;
 
-    width.small = (isLarge) ? item2.width : item1.width;
-    height.small = (isLarge) ? item2.height : item1.height;
+    dialog.item2.horizontal.text = round(item2.horizontal);
+    dialog.item2.vertical.text = round(item2.vertical);
 
-    scale.horizontal.expanding = (isLarge) ? getWidthRatio(item1, item2) : getWidthRatio(item2, item1);
-    scale.vertical.expanding = (isLarge) ? getHeightRatio(item1, item2) : getHeightRatio(item2, item1);
+    dialog.item2.width.text = round(item2.width) + ' ' + unit;
+    dialog.item2.height.text = round(item2.height) + ' ' + unit;
+}
 
-    scale.horizontal.shrinking = (isLarge) ? getWidthRatio(item2, item1) : getWidthRatio(item1, item2);
-    scale.vertical.shrinking = (isLarge) ? getHeightRatio(item2, item1) : getHeightRatio(item1, item2);
 
+function compareScale(item1, item2, usePreviewBounds) {
+    var width1 = getWidth(item1, usePreviewBounds);
+    var height1 = getHeight(item1, usePreviewBounds);
+    var width2 = getWidth(item2, usePreviewBounds);
+    var height2 = getHeight(item2, usePreviewBounds);
+    var unit = getRulerUnits();
     return {
-        width: width,
-        height: height,
-        scale: scale
+        item1: {
+            horizontal: getWidthRatio(width2, width1),
+            vertical: getHeightRatio(height2, height1),
+            width: convertUnits(width1 + 'pt', unit),
+            height: convertUnits(height1 + 'pt', unit)
+        },
+        item2: {
+            horizontal: getWidthRatio(width1, width2),
+            vertical: getHeightRatio(height1, height2),
+            width: convertUnits(width2 + 'pt', unit),
+            height: convertUnits(height2 + 'pt', unit)
+        }
     };
+}
+
+
+function getWidth(item, usePreviewBounds) {
+    var bounds = (usePreviewBounds) ? item.visibleBounds : item.geometricBounds;
+    var x1 = bounds[0];
+    var x2 = bounds[2];
+    return Math.abs(x1 - x2);
+}
+
+
+function getHeight(item, usePreviewBounds) {
+    var bounds = (usePreviewBounds) ? item.visibleBounds : item.geometricBounds;
+    var y1 = bounds[1];
+    var y2 = bounds[3];
+    return Math.abs(y1 - y2);
 }
 
 
 function getWidthRatio(item1, item2) {
-    return item1.width / item2.width * 100
+    return item1 / item2 * 100;
 }
 
 
 function getHeightRatio(item1, item2) {
-    return item1.height / item2.height * 100
+    return item1 / item2 * 100;
 }
 
 
 function round(value) {
     var digits = 100000;
     return Math.round(value * digits) / digits;
+}
+
+
+function isUsePreviewBounds() {
+    var key = 'includeStrokeInBounds';
+    var pref = app.preferences;
+    return pref.getBooleanPreference(key);
 }
 
 
@@ -110,276 +147,324 @@ function convertUnits(value, unit) {
 
 
 function getRulerUnits() {
-    switch (app.activeDocument.rulerUnits) {
-        case RulerUnits.Millimeters: return 'mm';
-        case RulerUnits.Centimeters: return 'cm';
-        case RulerUnits.Inches: return 'in';
-        case RulerUnits.Points: return 'pt';
-        case RulerUnits.Pixels: return 'px';
-        default: return 'pt';
+    var unit = getUnitSymbol();
+    if (!app.documents.length) return unit.pt;
+
+    var document = app.activeDocument;
+    var src = document.fullName;
+    var ruler = document.rulerUnits;
+    try {
+        switch (ruler) {
+            case RulerUnits.Pixels: return unit.px;
+            case RulerUnits.Points: return unit.pt;
+            case RulerUnits.Picas: return unit.pc;
+            case RulerUnits.Inches: return unit.inch;
+            case RulerUnits.Millimeters: return unit.mm;
+            case RulerUnits.Centimeters: return unit.cm;
+
+            case RulerUnits.Feet: return unit.ft;
+            case RulerUnits.Yards: return unit.yd;
+            case RulerUnits.Meters: return unit.meter;
+        }
     }
+    catch (err) {
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return unit.ft;
+            case 'Yards': return unit.yd;
+            case 'Meters': return unit.meter;
+        }
+    }
+    return unit.pt;
+}
+
+
+function xmpRulerUnits(src) {
+    if (!ExternalObject.AdobeXMPScript) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
+
+    var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
+    var prop = 'xmpTPg:MaxPageSize';
+    var unit = prop + '/stDim:unit';
+
+    var ruler = xmp.getProperty(namespace, unit).value;
+    return ruler;
+}
+
+
+function getUnitSymbol() {
+    return {
+        px: 'px',
+        pt: 'pt',
+        pc: 'pc',
+        inch: 'in',
+        ft: 'ft',
+        yd: 'yd',
+        mm: 'mm',
+        cm: 'cm',
+        meter: 'm'
+    };
 }
 
 
 function isValidVersion() {
-    var cs4 = 14;
+    var cc = 17;
     var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    if (aiVersion < cc) return false;
     return true;
 }
 
 
-function showDialog(width, height, scale, unit) {
-    var aiVersion = parseInt(app.version);
-
+function showDialog(item1, item2) {
     $.localize = true;
-    var local = localizeUI();
+    var ui = localizeUI();
+    var unit = getRulerUnits();
 
     var dialog = new Window('dialog');
-    dialog.text = local.title;
+    dialog.text = ui.title;
     dialog.orientation = 'column';
-    dialog.alignChildren = ['center', 'top'];
+    dialog.alignChildren = ['fill', 'top'];
     dialog.spacing = 10;
     dialog.margins = 16;
 
-    var group1 = dialog.add('group', undefined, { name: 'group1' });
-    group1.orientation = 'row';
-    group1.alignChildren = ['left', 'center'];
-    group1.spacing = 10;
-    group1.margins = 0;
-
-    var panel1 = group1.add('panel', undefined, undefined, { name: 'panel1' });
-    panel1.text = local.expanding;
-    panel1.orientation = 'row';
+    var panel1 = dialog.add('panel', undefined, undefined, { name: 'panel1' });
+    panel1.text = ui.item + ' #1';
+    panel1.orientation = 'column';
     panel1.alignChildren = ['left', 'top'];
     panel1.spacing = 10;
     panel1.margins = 10;
 
-    var group2 = panel1.add('group', undefined, { name: 'group2' });
+    var group1 = panel1.add('group', undefined, { name: 'group1' });
+    group1.orientation = 'row';
+    group1.alignChildren = ['left', 'center'];
+    group1.spacing = 10;
+    group1.margins = [0, 5, 0, 0];
+
+    var group2 = group1.add('group', undefined, { name: 'group2' });
     group2.orientation = 'column';
     group2.alignChildren = ['right', 'center'];
-    group2.spacing = (aiVersion > 24) ? 13 : 12;
-    if (aiVersion > 24) group2.margins = [0, 1, 0, 0];
+    group2.spacing = 18;
+    group2.margins = [0, 4, 0, 0];
 
     var statictext1 = group2.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = local.width;
-    statictext1.preferredSize.height = 20;
+    statictext1.text = ui.horizontal;
 
     var statictext2 = group2.add('statictext', undefined, undefined, { name: 'statictext2' });
-    statictext2.text = local.height;
-    statictext2.preferredSize.height = 20;
+    statictext2.text = ui.vertical;
 
-    var statictext3 = group2.add('statictext', undefined, undefined, { name: 'statictext3' });
-    statictext3.text = local.horizontal;
-    statictext3.preferredSize.height = 20;
-
-    var statictext4 = group2.add('statictext', undefined, undefined, { name: 'statictext4' });
-    statictext4.text = local.vertical;
-    statictext4.preferredSize.height = 20;
-
-    var group3 = panel1.add('group', undefined, { name: 'group3' });
+    var group3 = group2.add('group', undefined, { name: 'group3' });
     group3.orientation = 'column';
-    group3.alignChildren = ['left', 'center'];
+    group3.alignChildren = ['right', 'center'];
     group3.spacing = 10;
-    group3.margins = 0;
+    group3.margins = [0, 1, 0, 0];
 
-    var group4 = group3.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'row';
-    group4.alignChildren = ['left', 'center'];
+    var statictext3 = group3.add('statictext', undefined, undefined, { name: 'statictext3' });
+    statictext3.text = ui.width;
+
+    var statictext4 = group3.add('statictext', undefined, undefined, { name: 'statictext4' });
+    statictext4.text = ui.height;
+
+    var group4 = group1.add('group', undefined, { name: 'group4' });
+    group4.orientation = 'column';
+    group4.alignChildren = ['fill', 'center'];
     group4.spacing = 10;
     group4.margins = 0;
 
-    var edittext1 = group4.add('edittext', undefined, undefined, { name: 'edittext1' });
-    edittext1.text = round(width.small);
-    edittext1.preferredSize.width = 85;
-
-    var statictext5 = group4.add('statictext', undefined, undefined, { name: 'statictext5' });
-    statictext5.text = unit;
-
-    var statictext6 = group4.add('statictext', undefined, undefined, { name: 'statictext6' });
-    statictext6.text = '>';
-
-    var edittext2 = group4.add('edittext', undefined, undefined, { name: 'edittext2' });
-    edittext2.text = round(width.large);
-    edittext2.preferredSize.width = 85;
-
-    var statictext7 = group4.add('statictext', undefined, undefined, { name: 'statictext7' });
-    statictext7.text = unit;
-
-    var group5 = group3.add('group', undefined, { name: 'group5' });
+    var group5 = group4.add('group', undefined, { name: 'group5' });
     group5.orientation = 'row';
     group5.alignChildren = ['left', 'center'];
     group5.spacing = 10;
     group5.margins = 0;
 
-    var edittext3 = group5.add('edittext', undefined, undefined, { name: 'edittext3' });
-    edittext3.text = round(height.small);
-    edittext3.preferredSize.width = 85;
+    var edittext1 = group5.add('edittext', undefined, undefined, { name: 'edittext1' });
+    edittext1.text = round(item1.horizontal);
+    edittext1.preferredSize.width = 140;
 
-    var statictext8 = group5.add('statictext', undefined, undefined, { name: 'statictext8' });
-    statictext8.text = unit;
+    var statictext5 = group5.add('statictext', undefined, undefined, { name: 'statictext5' });
+    statictext5.text = '%';
 
-    var statictext9 = group5.add('statictext', undefined, undefined, { name: 'statictext9' });
-    statictext9.text = '>';
-
-    var edittext4 = group5.add('edittext', undefined, undefined, { name: 'edittext4' });
-    edittext4.text = round(height.large);
-    edittext4.preferredSize.width = 85;
-
-    var statictext10 = group5.add('statictext', undefined, undefined, { name: 'statictext10' });
-    statictext10.text = unit;
-
-    var group6 = group3.add('group', undefined, { name: 'group6' });
+    var group6 = group4.add('group', undefined, { name: 'group6' });
     group6.orientation = 'row';
     group6.alignChildren = ['left', 'center'];
     group6.spacing = 10;
     group6.margins = 0;
 
-    var edittext5 = group6.add('edittext', undefined, undefined, { name: 'edittext5' });
-    edittext5.text = round(scale.horizontal.expanding);
-    edittext5.preferredSize.width = 85;
+    var edittext2 = group6.add('edittext', undefined, undefined, { name: 'edittext2' });
+    edittext2.text = round(item1.vertical);
+    edittext2.preferredSize.width = 140;
 
-    var statictext11 = group6.add('statictext', undefined, undefined, { name: 'statictext11' });
-    statictext11.text = '%';
+    var statictext6 = group6.add('statictext', undefined, undefined, { name: 'statictext6' });
+    statictext6.text = '%';
 
-    var group7 = group3.add('group', undefined, { name: 'group7' });
+    var group7 = group4.add('group', undefined, { name: 'group7' });
     group7.orientation = 'row';
-    group7.alignChildren = ['left', 'center'];
+    group7.alignChildren = ['fill', 'center'];
     group7.spacing = 10;
-    group7.margins = 0;
+    group7.margins = [0, 5, 0, 0];
 
-    var edittext6 = group7.add('edittext', undefined, undefined, { name: 'edittext6' });
-    edittext6.text = round(scale.vertical.expanding);
-    edittext6.preferredSize.width = 85;
+    var statictext7 = group7.add('statictext', undefined, undefined, { name: 'statictext7' });
+    statictext7.text = round(item1.width) + ' ' + unit;
 
-    var statictext12 = group7.add('statictext', undefined, undefined, { name: 'statictext12' });
-    statictext12.text = '%';
-
-    var group8 = dialog.add('group', undefined, { name: 'group8' });
+    var group8 = group4.add('group', undefined, { name: 'group8' });
     group8.orientation = 'row';
-    group8.alignChildren = ['left', 'center'];
+    group8.alignChildren = ['fill', 'center'];
     group8.spacing = 10;
     group8.margins = 0;
 
-    var panel2 = group8.add('panel', undefined, undefined, { name: 'panel2' });
-    panel2.text = local.shrinking;
-    panel2.orientation = 'row';
+    var statictext8 = group8.add('statictext', undefined, undefined, { name: 'statictext8' });
+    statictext8.text = round(item1.height) + ' ' + unit;
+
+    var panel2 = dialog.add('panel', undefined, undefined, { name: 'panel2' });
+    panel2.text = ui.item + ' #2';
+    panel2.orientation = 'column';
     panel2.alignChildren = ['left', 'top'];
     panel2.spacing = 10;
     panel2.margins = 10;
 
     var group9 = panel2.add('group', undefined, { name: 'group9' });
-    group9.orientation = 'column';
-    group9.alignChildren = ['right', 'center'];
-    group9.spacing = (aiVersion > 24) ? 13 : 12;
-    if (aiVersion > 24) group9.margins = [0, 1, 0, 0];
+    group9.orientation = 'row';
+    group9.alignChildren = ['left', 'center'];
+    group9.spacing = 10;
+    group9.margins = [0, 5, 0, 0];
 
-    var statictext13 = group9.add('statictext', undefined, undefined, { name: 'statictext13' });
-    statictext13.text = local.width;
-    statictext13.preferredSize.height = 20;
-
-    var statictext14 = group9.add('statictext', undefined, undefined, { name: 'statictext14' });
-    statictext14.text = local.height;
-    statictext14.preferredSize.height = 20;
-
-    var statictext15 = group9.add('statictext', undefined, undefined, { name: 'statictext15' });
-    statictext15.text = local.horizontal;
-    statictext15.preferredSize.height = 20;
-
-    var statictext16 = group9.add('statictext', undefined, undefined, { name: 'statictext16' });
-    statictext16.text = local.vertical;
-    statictext16.preferredSize.height = 20;
-
-    var group10 = panel2.add('group', undefined, { name: 'group10' });
+    var group10 = group9.add('group', undefined, { name: 'group10' });
     group10.orientation = 'column';
-    group10.alignChildren = ['left', 'center'];
-    group10.spacing = 10;
-    group10.margins = 0;
+    group10.alignChildren = ['right', 'center'];
+    group10.spacing = 18;
+    group10.margins = [0, 4, 0, 0];
+
+    var statictext9 = group10.add('statictext', undefined, undefined, { name: 'statictext9' });
+    statictext9.text = ui.horizontal;
+
+    var statictext10 = group10.add('statictext', undefined, undefined, { name: 'statictext10' });
+    statictext10.text = ui.vertical;
 
     var group11 = group10.add('group', undefined, { name: 'group11' });
-    group11.orientation = 'row';
-    group11.alignChildren = ['left', 'center'];
+    group11.orientation = 'column';
+    group11.alignChildren = ['right', 'center'];
     group11.spacing = 10;
-    group11.margins = 0;
+    group11.margins = [0, 1, 0, 0];
 
-    var edittext7 = group11.add('edittext', undefined, undefined, { name: 'edittext7' });
-    edittext7.text = round(width.large);
-    edittext7.preferredSize.width = 85;
+    var statictext11 = group11.add('statictext', undefined, undefined, { name: 'statictext11' });
+    statictext11.text = ui.width;
 
-    var statictext17 = group11.add('statictext', undefined, undefined, { name: 'statictext17' });
-    statictext17.text = unit;
+    var statictext12 = group11.add('statictext', undefined, undefined, { name: 'statictext12' });
+    statictext12.text = ui.height;
 
-    var statictext18 = group11.add('statictext', undefined, undefined, { name: 'statictext18' });
-    statictext18.text = '>';
-
-    var edittext8 = group11.add('edittext', undefined, undefined, { name: 'edittext8' });
-    edittext8.text = round(width.small);
-    edittext8.preferredSize.width = 85;
-
-    var statictext19 = group11.add('statictext', undefined, undefined, { name: 'statictext19' });
-    statictext19.text = unit;
-
-    var group12 = group10.add('group', undefined, { name: 'group12' });
-    group12.orientation = 'row';
-    group12.alignChildren = ['left', 'center'];
+    var group12 = group9.add('group', undefined, { name: 'group12' });
+    group12.orientation = 'column';
+    group12.alignChildren = ['fill', 'center'];
     group12.spacing = 10;
     group12.margins = 0;
 
-    var edittext9 = group12.add('edittext', undefined, undefined, { name: 'edittext9' });
-    edittext9.text = round(height.large);
-    edittext9.preferredSize.width = 85;
-
-    var statictext20 = group12.add('statictext', undefined, undefined, { name: 'statictext20' });
-    statictext20.text = unit;
-
-    var statictext21 = group12.add('statictext', undefined, undefined, { name: 'statictext21' });
-    statictext21.text = '>';
-
-    var edittext10 = group12.add('edittext', undefined, undefined, { name: 'edittext10' });
-    edittext10.text = round(height.small);
-    edittext10.preferredSize.width = 85;
-
-    var statictext22 = group12.add('statictext', undefined, undefined, { name: 'statictext22' });
-    statictext22.text = unit;
-
-    var group13 = group10.add('group', undefined, { name: 'group13' });
+    var group13 = group12.add('group', undefined, { name: 'group13' });
     group13.orientation = 'row';
     group13.alignChildren = ['left', 'center'];
     group13.spacing = 10;
     group13.margins = 0;
 
-    var edittext11 = group13.add('edittext', undefined, undefined, { name: 'edittext11' });
-    edittext11.text = round(scale.horizontal.shrinking);
-    edittext11.preferredSize.width = 85;
+    var edittext3 = group13.add('edittext', undefined, undefined, { name: 'edittext3' });
+    edittext3.text = round(item2.horizontal);
+    edittext3.preferredSize.width = 140;
 
-    var statictext23 = group13.add('statictext', undefined, undefined, { name: 'statictext23' });
-    statictext23.text = '%';
+    var statictext13 = group13.add('statictext', undefined, undefined, { name: 'statictext13' });
+    statictext13.text = '%';
 
-    var group14 = group10.add('group', undefined, { name: 'group14' });
+    var group14 = group12.add('group', undefined, { name: 'group14' });
     group14.orientation = 'row';
     group14.alignChildren = ['left', 'center'];
     group14.spacing = 10;
     group14.margins = 0;
 
-    var edittext12 = group14.add('edittext', undefined, undefined, { name: 'edittext12' });
-    edittext12.text = round(scale.vertical.shrinking);
-    edittext12.preferredSize.width = 85;
+    var edittext4 = group14.add('edittext', undefined, undefined, { name: 'edittext4' });
+    edittext4.text = round(item2.vertical);
+    edittext4.preferredSize.width = 140;
 
-    var statictext24 = group14.add('statictext', undefined, undefined, { name: 'statictext24' });
-    statictext24.text = '%';
+    var statictext14 = group14.add('statictext', undefined, undefined, { name: 'statictext14' });
+    statictext14.text = '%';
 
-    var group15 = dialog.add('group', undefined, { name: 'group15' });
+    var group15 = group12.add('group', undefined, { name: 'group15' });
     group15.orientation = 'row';
-    group15.alignChildren = ['left', 'center'];
+    group15.alignChildren = ['fill', 'center'];
     group15.spacing = 10;
-    group15.margins = 0;
-    group15.alignment = ['right', 'top'];
+    group15.margins = [0, 5, 0, 0];
 
-    var button1 = group15.add('button', undefined, undefined, { name: 'button1' });
+    var statictext15 = group15.add('statictext', undefined, undefined, { name: 'statictext15' });
+    statictext15.text = round(item2.width) + ' ' + unit;
+
+    var group16 = group12.add('group', undefined, { name: 'group16' });
+    group16.orientation = 'row';
+    group16.alignChildren = ['fill', 'center'];
+    group16.spacing = 10;
+    group16.margins = 0;
+
+    var statictext16 = group16.add('statictext', undefined, undefined, { name: 'statictext16' });
+    statictext16.text = round(item2.height) + ' ' + unit;
+
+    var panel3 = dialog.add('panel', undefined, undefined, { name: 'panel3' });
+    panel3.text = ui.option;
+    panel3.orientation = 'column';
+    panel3.alignChildren = ['left', 'top'];
+    panel3.spacing = 10;
+    panel3.margins = 10;
+
+    var group17 = panel3.add('group', undefined, { name: 'group17' });
+    group17.orientation = 'row';
+    group17.alignChildren = ['left', 'center'];
+    group17.spacing = 10;
+    group17.margins = [0, 8, 0, 0];
+
+    var checkbox1 = group17.add('checkbox', undefined, undefined, { name: 'checkbox1' });
+    checkbox1.text = ui.bounds;
+
+    var group18 = dialog.add('group', undefined, { name: 'group18' });
+    group18.orientation = 'row';
+    group18.alignChildren = ['left', 'center'];
+    group18.spacing = 10;
+    group18.margins = 0;
+    group18.alignment = ['right', 'top'];
+
+    var button1 = group18.add('button', undefined, undefined, { name: 'button1' });
     button1.text = 'OK';
     button1.preferredSize.width = 90;
 
-    dialog.show();
+    statictext1.addEventListener('click', function() {
+        edittext1.active = false;
+        edittext1.active = true;
+    });
+
+    statictext2.addEventListener('click', function() {
+        edittext2.active = false;
+        edittext2.active = true;
+    });
+
+    statictext9.addEventListener('click', function() {
+        edittext3.active = false;
+        edittext3.active = true;
+    });
+
+    statictext10.addEventListener('click', function() {
+        edittext4.active = false;
+        edittext4.active = true;
+    });
+
+    dialog.item1 = {
+        horizontal: edittext1,
+        vertical: edittext2,
+        width: statictext7,
+        height: statictext8
+    };
+    dialog.item2 = {
+        horizontal: edittext3,
+        vertical: edittext4,
+        width: statictext15,
+        height: statictext16
+    };
+    dialog.usePreviewBounds = checkbox1;
+    return dialog;
 }
 
 
@@ -393,13 +478,17 @@ function localizeUI() {
             en: 'Compare Scale',
             ja: '拡大・縮小率'
         },
-        expanding: {
-            en: 'Expanding',
-            ja: '拡大'
+        item: {
+            en: 'Item',
+            ja: 'アイテム'
         },
-        shrinking: {
-            en: 'Shrinking',
-            ja: '縮小'
+        horizontal: {
+            en: 'Horizontal:',
+            ja: '水平方向:'
+        },
+        vertical: {
+            en: 'Vertical:',
+            ja: '垂直方向:'
         },
         width: {
             en: 'Width:',
@@ -409,13 +498,13 @@ function localizeUI() {
             en: 'Height:',
             ja: '高さ:'
         },
-        horizontal: {
-            en: 'Horizontal:',
-            ja: '水平:'
+        option: {
+            en: 'Option',
+            ja: 'オプション'
         },
-        vertical: {
-            en: 'Vertical:',
-            ja: '垂直:'
+        bounds: {
+            en: 'Use Preview Bounds',
+            ja: 'プレビュー境界を使用'
         }
     };
 }

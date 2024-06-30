@@ -2,22 +2,22 @@
    sumNumbers
 
    Description
-   This script sums the numbers in text contents.
+   This script adds up the numbers in the text.
 
    Usage
-   Select text objects, run this script from File > Scripts > Other Script...
-   You can also recalculate using only selected items from the list.
+   Select text objects or specify a text range in an editing state, run this script from File > Scripts > Other Script...
+   You can also edit numbers in the text field and recalculate the totals.
 
    Notes
-   Ignore the units of value.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   Editing numbers in the text field does not affect the original text objects.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   2.0.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -28,22 +28,30 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    var texts = getTextFrames(app.activeDocument.selection);
+    var items = app.activeDocument.selection;
+    var texts = getTextFrames(items);
+    if (!texts.length) return;
+
     var numbers = getNumbers(texts);
     var total = sum(numbers);
 
-    var dialog = showResult(total, numbers);
+    var dialog = showDialog(total, numbers);
 
-    dialog.recalc.onClick = function() {
-        var items = getListItems(dialog.list.items);
-        var numbers = getNumbers(items);
-        var total = sum(numbers);
+    dialog.list.onChanging = function() {
+        var list = dialog.list.text.split('\n');
+        var texts = getListItems(list);
+        var values = getNumbers(texts);
+        dialog.total.text = sum(values);
+    }
+
+    dialog.reset.onClick = function() {
         dialog.total.text = total;
+        dialog.list.text = numbers.join('\n');
     }
 
     dialog.show();
@@ -62,9 +70,10 @@ function sum(numbers) {
 
 function getNumbers(items) {
     var numbers = [];
-    var regex = /[+-]?[\d](\.|,)?[\d]*/g;
+    var regex = /-?[\d]+,?[\d]*\.?[\d]*/g;
     for (var i = 0; i < items.length; i++) {
-        var contents = items[i].contents;
+        var item = items[i];
+        var contents = getValue(item.contents);
         var values = contents.match(regex);
         if (values) numbers = numbers.concat(values);
     }
@@ -72,19 +81,39 @@ function getNumbers(items) {
 }
 
 
+function getValue(text) {
+    var twoByteChar = /[！-～]/g;
+    var value = text.replace(twoByteChar, function(str) {
+        return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
+    });
+    return value;
+}
+
+
 function getListItems(items) {
-    var values = [];
+    var list = [];
     for (var i = 0; i < items.length; i++) {
-        if (items[i].selected) {
-            var contents = items[i].subItems[0].text;
-            values.push({ contents: contents });
-        }
+        var item = items[i];
+        list.push({
+            contents: item
+        });
     }
-    return values;
+    return list;
+}
+
+
+function isTextRange(items) {
+    return items.typename == 'TextRange' && items.length;
+}
+
+
+function getTextRanges(items) {
+    return [items];
 }
 
 
 function getTextFrames(items) {
+    if (isTextRange(items)) return getTextRanges(items);
     var texts = [];
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
@@ -99,9 +128,18 @@ function getTextFrames(items) {
 }
 
 
-function showResult(total, numbers) {
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
+}
+
+
+function showDialog(total, numbers) {
     $.localize = true;
     var ui = localizeUI();
+
     var dialog = new Window('dialog');
     dialog.text = ui.title;
     dialog.preferredSize.width = 300;
@@ -111,8 +149,8 @@ function showResult(total, numbers) {
     dialog.margins = 16;
 
     var group1 = dialog.add('group', undefined, { name: 'group1' });
-    group1.orientation = 'column';
-    group1.alignChildren = ['fill', 'top'];
+    group1.orientation = 'row';
+    group1.alignChildren = ['left', 'center'];
     group1.spacing = 10;
     group1.margins = 0;
 
@@ -121,28 +159,17 @@ function showResult(total, numbers) {
 
     var edittext1 = group1.add('edittext', undefined, undefined, { name: 'edittext1' });
     edittext1.text = total;
-    edittext1.active = true;
-
-    var listbox1 = group1.add('listbox', undefined, undefined, {
-        name: 'listbox1',
-        numberOfColumns: 2,
-        multiselect: true
-    });
-    listbox1.preferredSize.height = 211;
-
-    for (var i = 0; i < numbers.length; i++) {
-        var row = listbox1.add('item', i + 1);
-        row.subItems[0].text = numbers[i];
-    }
+    edittext1.alignment = ['fill', 'center'];
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
-    group2.orientation = 'row';
+    group2.orientation = 'column';
     group2.alignChildren = ['fill', 'center'];
     group2.spacing = 10;
     group2.margins = 0;
 
-    var statictext2 = group2.add('statictext', undefined, undefined, { name: 'statictext2', multiline: true });
-    statictext2.text = ui.description;
+    var edittext2 = group2.add('edittext', undefined, undefined, { name: 'edittext2', multiline: true });
+    edittext2.text = numbers.join('\n');
+    edittext2.preferredSize.height = 220;
 
     var group3 = dialog.add('group', undefined, { name: 'group3' });
     group3.orientation = 'row';
@@ -151,14 +178,12 @@ function showResult(total, numbers) {
     group3.margins = 0;
 
     var button1 = group3.add('button', undefined, undefined, { name: 'button1' });
-    button1.text = ui.recalculation;
+    button1.text = ui.reset;
     button1.preferredSize.width = 90;
-    button1.preferredSize.height = 26;
 
     var button2 = group3.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
-    button2.preferredSize.height = 26;
 
     statictext1.addEventListener('click', function() {
         edittext1.active = false;
@@ -166,8 +191,8 @@ function showResult(total, numbers) {
     });
 
     dialog.total = edittext1;
-    dialog.list = listbox1;
-    dialog.recalc = button1;
+    dialog.list = edittext2;
+    dialog.reset = button1;
     return dialog;
 }
 
@@ -175,20 +200,16 @@ function showResult(total, numbers) {
 function localizeUI() {
     return {
         title: {
-            en: 'Sum the Numbers',
-            ja: '数字を合計'
+            en: 'Sum Numbers',
+            ja: '数字の合計'
         },
         total: {
             en: 'Total:',
             ja: '合計:'
         },
-        description: {
-            en: 'You can also recalculate using only selected items from the list.',
-            ja: 'リストから選択した項目のみで再計算することもできます。'
-        },
-        recalculation: {
-            en: 'Recalculate',
-            ja: '再計算'
+        reset: {
+            en: 'Reset',
+            ja: 'リセット'
         },
         ok: {
             en: 'OK',
