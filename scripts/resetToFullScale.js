@@ -2,21 +2,20 @@
    resetToFullScale
 
    Description
-   This script resets the scale to 100% and the rotation angle to 0 degrees for the linked files.
-   Embedded images is also supported.
+   This script resets the scale to 100% and the rotation angle to 0 degrees for the linked or embedded files.
 
    Usage
-   Select the linked files or the embedded images, run this script from File > Scripts > Other Script...
+   Select any linked or embedded files, run this script from File > Scripts > Other Script...
 
    Notes
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS6 or higher
 
    Version
-   1.0.1
+   1.0.2
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -27,7 +26,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -40,20 +39,22 @@ function main() {
     catch (err) { }
 
     var items = app.activeDocument.selection;
-    var images = getImageItems(items);
+    var links = getPlacedItems(items);
+    if (!links.length) return;
 
-    for (var i = 0; i < images.length; i++) {
-        resetToFullScale(images[i]);
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        resetToFullScale(link);
     }
 }
 
 
 function resetToFullScale(item) {
-    var basis = {
-        'left': item.left,
-        'top': item.top,
-        'width': item.width,
-        'height': item.height
+    var base = {
+        left: item.left,
+        top: item.top,
+        width: item.width,
+        height: item.height
     };
 
     var filename = '';
@@ -71,15 +72,16 @@ function resetToFullScale(item) {
     item.matrix.mValueA = 1;
     item.matrix.mValueB = 0;
     item.matrix.mValueC = 0;
-    item.matrix.mValueD = (/\.eps$/i.test(filename) || item.typename == 'RasterItem') ? 1 : -1; // invert the sign except for eps file and embedded image
+    // invert the sign except for eps file and embedded image
+    item.matrix.mValueD = (/\.eps$/i.test(filename) || item.typename == 'RasterItem') ? 1 : -1;
 
     // workaround for the reflect object
     item.left = 0;
     item.top = 0;
 
     // reposition the object to the center
-    item.left = basis.left - (item.width - basis.width) / 2;
-    item.top = basis.top + (item.height - basis.height) / 2;
+    item.left = base.left - (item.width - base.width) / 2;
+    item.top = base.top + (item.height - base.height) / 2;
 }
 
 
@@ -93,8 +95,9 @@ function getRotationAngle(item) {
 
 function getScale(item) {
     var matrix = item.matrix;
-    var x = Math.sqrt(Math.pow(matrix.mValueA, 2) + Math.pow(matrix.mValueB, 2));
-    var y = Math.sqrt(Math.pow(matrix.mValueC, 2) + Math.pow(matrix.mValueD, 2));
+    var sq = 2;
+    var x = Math.sqrt(Math.pow(matrix.mValueA, sq) + Math.pow(matrix.mValueB, sq));
+    var y = Math.sqrt(Math.pow(matrix.mValueC, sq) + Math.pow(matrix.mValueD, sq));
     return {
         x: x,
         y: y
@@ -102,16 +105,24 @@ function getScale(item) {
 }
 
 
-function getImageItems(items) {
-    var images = [];
+function getPlacedItems(items) {
+    var links = [];
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.typename == 'PlacedItem' || item.typename == 'RasterItem') {
-            images.push(item);
+            links.push(item);
         }
         if (item.typename == 'GroupItem') {
-            images = images.concat(getImageItems(item.pageItems));
+            links = links.concat(getPlacedItems(item.pageItems));
         }
     }
-    return images;
+    return links;
+}
+
+
+function isValidVersion() {
+    var cs6 = 16;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs6) return false;
+    return true;
 }

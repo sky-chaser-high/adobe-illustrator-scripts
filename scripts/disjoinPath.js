@@ -5,114 +5,116 @@
    This script breaks apart the path object with anchor points.
 
    Usage
-   Select the path objects, run this script from File > Scripts > Other Script...
+   Select any path objects, run this script from File > Scripts > Other Script...
 
    Notes
-   The original object will be deleted.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   The original path object will deleted.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length) disjoinPath(app.activeDocument.selection);
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
-function disjoinPath(items) {
-    for (var i = items.length - 1; i >= 0; i--) {
-        if (items[i].typename == 'PathItem') {
+function main() {
+    var items = app.activeDocument.selection;
+    var shapes = getPathItems(items);
+    if (!shapes.length) return;
 
-            var points = items[i].pathPoints;
-
-            if (points.length > 2) {
-                for (var j = 0; j < points.length; j++) {
-                    var element = getPathElement(items[i], points[j], (j < points.length - 1) ? points[j + 1] : points[0]);
-                    createPathItem(element);
-                }
-                items[i].remove();
-            }
-            else {
-                items[i].selected = false;
-            }
-        }
-        else if (items[i].typename == 'GroupItem') {
-            disjoinPath(items[i].pageItems);
-        }
-        else if (items[i].typename == 'CompoundPathItem') {
-            disjoinPath(items[i].pathItems);
-        }
-        else {
-            items[i].selected = false;
-        }
+    for (var i = shapes.length - 1; 0 <= i; i--) {
+        var shape = shapes[i];
+        disjoinPath(shape);
+        shape.remove();
     }
 }
 
 
-function getPathElement(item, p1, p2) {
+function disjoinPath(shape) {
+    var points = shape.pathPoints;
+    var start = 0;
+    var end = points.length - 1;
+    for (var i = start; i < points.length; i++) {
+        if (!shape.closed && i == end) continue;
+        var next = i + 1;
+        var p1 = points[i];
+        var p2 = (i < end) ? points[next] : points[start];
+        var segment = getPathSegment(shape, p1, p2);
+        createPathItem(segment);
+    }
+}
+
+
+function getPathSegment(item, p1, p2) {
+    var mode = app.activeDocument.documentColorSpace;
+    var CMYK = DocumentColorSpace.CMYK;
     var color = item.strokeColor;
     if (color.typename == 'NoColor') {
-        color = (app.activeDocument.documentColorSpace == DocumentColorSpace.CMYK) ? setCMYK(0, 0, 0, 100) : setRGB(0, 0, 0);
+        color = (mode == CMYK) ? setCMYKColor(0, 0, 0, 100) : setRGBColor(0, 0, 0);
     }
     return {
-        attribute: {
+        attributes: {
             color: color,
+            width: item.strokeWidth,
             cap: item.strokeCap,
             join: item.strokeJoin,
-            dashes: item.strokeDashes,
-            weight: item.strokeWidth
+            dashes: item.strokeDashes
         },
         anchor: {
-            x1: p1.anchor[0],
-            y1: p1.anchor[1],
-            x2: p2.anchor[0],
-            y2: p2.anchor[1]
+            p1: p1.anchor,
+            p2: p2.anchor
         },
         handle: {
             left: {
-                x1: p1.leftDirection[0],
-                y1: p1.leftDirection[1],
-                x2: p2.leftDirection[0],
-                y2: p2.leftDirection[1]
+                p1: p1.leftDirection,
+                p2: p2.leftDirection
             },
             right: {
-                x1: p1.rightDirection[0],
-                y1: p1.rightDirection[1],
-                x2: p2.rightDirection[0],
-                y2: p2.rightDirection[1]
+                p1: p1.rightDirection,
+                p2: p2.rightDirection
             }
         }
     };
 }
 
 
-function createPathItem(element) {
-    var item = app.activeDocument.activeLayer.pathItems.add();
-    item.setEntirePath([[element.anchor.x1, element.anchor.y1], [element.anchor.x2, element.anchor.y2]]);
-    item.pathPoints[0].leftDirection = [element.handle.left.x1, element.handle.left.y1];
-    item.pathPoints[0].rightDirection = [element.handle.right.x1, element.handle.right.y1];
-    item.pathPoints[1].leftDirection = [element.handle.left.x2, element.handle.left.y2];
-    item.pathPoints[1].rightDirection = [element.handle.right.x2, element.handle.right.y2];
+function createPathItem(segment) {
+    var anchor = segment.anchor;
+    var handle = segment.handle;
+    var attributes = segment.attributes;
 
-    item.filled = false;
-    item.stroked = true;
-    item.strokeWidth = element.attribute.weight;
-    item.strokeDashes = element.attribute.dashes;
-    item.strokeCap = element.attribute.cap;
-    item.strokeJoin = element.attribute.join;
-    item.strokeColor = element.attribute.color;
+    var layer = app.activeDocument.activeLayer;
+    var shape = layer.pathItems.add();
+    shape.setEntirePath([anchor.p1, anchor.p2]);
+    shape.selected = true;
+
+    var points = shape.pathPoints;
+    points[0].leftDirection = handle.left.p1;
+    points[0].rightDirection = handle.right.p1;
+    points[1].leftDirection = handle.left.p2;
+    points[1].rightDirection = handle.right.p2;
+
+    shape.filled = false;
+    shape.stroked = true;
+    shape.strokeColor = attributes.color;
+    shape.strokeWidth = attributes.width;
+    shape.strokeCap = attributes.cap;
+    shape.strokeJoin = attributes.join;
+    shape.strokeDashes = attributes.dashes;
 }
 
 
-function setCMYK(c, m, y, k) {
+function setCMYKColor(c, m, y, k) {
     var color = new CMYKColor();
     color.cyan = c;
     color.magenta = m;
@@ -122,10 +124,36 @@ function setCMYK(c, m, y, k) {
 }
 
 
-function setRGB(r, g, b) {
+function setRGBColor(r, g, b) {
     var color = new RGBColor();
     color.red = r;
     color.green = g;
     color.blue = b;
     return color;
+}
+
+
+function getPathItems(items) {
+    var shapes = [];
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item.typename == 'PathItem' && item.pathPoints.length > 2) {
+            shapes.push(item);
+        }
+        if (item.typename == 'GroupItem') {
+            shapes = shapes.concat(getPathItems(item.pageItems));
+        }
+        if (item.typename == 'CompoundPathItem') {
+            shapes = shapes.concat(getPathItems(item.pathItems));
+        }
+    }
+    return shapes;
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

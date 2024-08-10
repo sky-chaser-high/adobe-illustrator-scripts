@@ -1,6 +1,7 @@
 # Change Log
 
-
+## v1.50.0 (2024-04-06)
+- Added View category.
 ## v1.23.0 (2022-10-28)
 - Repository configuration changed.
 <br><br>
@@ -184,10 +185,40 @@
 <br><br>
 
 
+## deleteHiddenLayers.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## deleteLockedLayers.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## deleteUnusedLayers.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## deleteWord.js
 ### 1.0.1 (2022-11-13)
 ### Bug Fixes
 - Fixed a bug that prevented the deletion of the last word.
+<br><br>
+
+
+## disjoinPath.js
+### 1.1.0 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+### Bug Fixes
+- Fixed a bug that created an extra path when an open path disjoined.
 <br><br>
 
 
@@ -211,6 +242,13 @@
 ### 1.1.0 (2023-04-29)
 ### Features
 - Type on a path and area type is now supported.
+<br><br>
+
+
+## drawNormalLine.js
+### 1.0.1 (2024-08-04)
+### Bug Fixes
+- Fixed a bug in the return value of the isFlat() function.
 <br><br>
 
 
@@ -308,6 +346,20 @@
 <br><br>
 
 
+## invertLockedLayer.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## invertVisibleLayer.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## jumpBackward.js
 ### 1.0.0 (2022-11-13)
 ### Removed
@@ -369,6 +421,13 @@
 <br><br>
 
 
+## moveSublayerToMainLayer.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## randomTextColor.js
 ### 1.2.1 (2023-09-18)
 ### Changes
@@ -393,6 +452,9 @@
 
 
 ## relinkFileExtension.js
+### 1.1.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
 ### 1.1.0 (2023-01-15)
 ### Changes
 - The UI has been brought closer to InDesign.
@@ -405,6 +467,12 @@
 
 
 ## relinkFileExtensionExtra.js
+### 1.3.0 (2024-08-04)
+### Added
+- PDF is now supported.
+- Unicode combining character sequence is now supported.
+### Changes
+- Updated the UI.
 ### 1.2.0 (2023-11-23)
 ### Added
 - Added linked file folder field. The links folder can now be selected.
@@ -415,6 +483,9 @@
 
 
 ## relinkToFolder.js
+### 1.1.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
 ### 1.1.0 (2023-01-15)
 ### Changes
 - The UI has been brought closer to InDesign.
@@ -430,10 +501,27 @@
 <br><br>
 
 
+## renameLinkedFile.js
+### 1.0.1 (2024-08-04)
+### Added
+- Unicode combining character sequence is now supported.
+<br><br>
+
+
 ## resetToFullScale.js
+### 1.0.2 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
 ### 1.0.1 (2023-03-26)
 ### Bug Fixes
 - Fixed a bug in the images to shift position.
+<br><br>
+
+
+## selectEmbeddedLink.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
 <br><br>
 
 
@@ -445,6 +533,12 @@
 
 
 ## selectLink.js
+### 1.2.0 (2024-08-04)
+### Added
+- Unicode combining character sequence is now supported.
+### Changes
+- Changed the algorithm for selecting linked files.
+- Updated the UI.
 ### 1.1.0 (2023-08-27)
 ### Added
 - Added a list box to display linked file names.
@@ -454,6 +548,11 @@
 
 
 ## showArtboardName.js
+### 1.3.0 (2024-08-04)
+### Added
+- Added supported units.
+### Changes
+- Changed the artboard size display.
 ### 1.2.0 (2023-05-04)
 ### Added
 - Added the serial number.
@@ -488,12 +587,19 @@
 <br><br>
 
 
+## sortArtboards.js
+### 1.0.1 (2024-08-04)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## splitText.js
 ### 1.1.0 (2024-04-29)
 ### Added
 - Area types are now supported. After splitting, convert to point types.
 ### Changes
-- Changed algorithm for splitting text.
+- Changed the algorithm for splitting text.
 ### Bug Fixes
 - Fixed a bug that prevented whitespace characters from being removed.
 <br><br>
@@ -551,6 +657,14 @@
 ### 1.0.1 (2023-04-08)
 ### Changes
 - Refactoring.
+<br><br>
+
+
+## unifyLayerColors.js
+### 1.1.0 (2024-08-04)
+### Added
+- Added specification that locked layers do not change color.
+- Added the function to check the illustrator version.
 <br><br>
 
 

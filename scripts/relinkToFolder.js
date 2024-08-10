@@ -2,25 +2,25 @@
    relinkToFolder
 
    Description
-   This script is equivalent to InDesign's Links panel menu "Relink to Folder...".
-   Replace linked files with a file of the same name in the selected folder.
+   This script replaces linked files with a file of the same name in the selected folder,
+   equivalent to InDesign's Links panel menu > Relink to Folder.
 
    Usage
-   1. Run this script from File > Scripts > Other Script...
-      If you don't select linked files, all in the document replace.
-   2. Select a folder in the dialog that appears.
+   1. Select any linked files, run this script from File > Scripts > Other Script...
+      If no file is selected, it replaces all files in the document.
+   2. Select a folder from the dialog that appears.
 
    Notes
-   Missing linked files and embedded files not replaced.
-   When selecting linked files, select them in the document rather than the links panel.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   Missing linked files and embedded files are not replaced.
+   When selecting linked files, select them in the document rather than the Links panel.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS4 or higher
 
    Version
-   1.1.0
+   1.1.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -31,94 +31,95 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.placedItems.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    $.localize = true;
-
-    var images = getImageFiles();
-    if (!images) return;
+    var files = getImageFiles();
+    if (!files) return;
 
     var items = app.activeDocument.selection;
     var links = getPlacedItems(items);
+    if (!links.length) return;
 
-    var files = relink(links, images);
+    var failures = relink(links, files);
 
     app.activeDocument.selection = null;
-    if (files.length) showResult(files);
+    if (failures.length) showResult(failures);
 }
 
 
-function relink(items, images) {
+function relink(links, files) {
     var failedFiles = [];
-
-    for (var i = 0; i < items.length; i++) {
-        var link = items[i];
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
         try {
-            var filename = link.file.name;
-            var image = images[filename];
-            if (image.exists) link.file = image;
+            var name = link.file.name;
+            var file = files[name];
+            if (file.exists) link.file = file;
             else failedFiles.push(link);
         }
         catch (err) {
             failedFiles.push(link);
         }
     }
-
     return failedFiles;
 }
 
 
 function getImageFiles() {
-    var title = {
-        en: 'Select a Folder',
-        ja: 'フォルダーを選択'
-    };
-
-    var dir = Folder.selectDialog(title);
+    $.localize = true;
+    var ui = localizeUI();
+    var dir = Folder.selectDialog(ui.folder);
     if (!dir) return false;
 
     var images = {};
     var files = dir.getFiles();
     for (var i = 0; i < files.length; i++) {
-        images[files[i].name] = files[i];
+        var file = files[i];
+        images[file.name] = file;
     }
     return images;
 }
 
 
 function getPlacedItems(items) {
-    if (items.length == 0) return app.activeDocument.placedItems;
-
+    if (!items.length) return app.activeDocument.placedItems;
     var links = [];
     for (var i = 0; i < items.length; i++) {
-        if (items[i].typename == 'PlacedItem') {
-            links.push(items[i]);
+        var item = items[i];
+        if (item.typename == 'PlacedItem') {
+            links.push(item);
         }
-        else if (items[i].typename == 'GroupItem') {
-            links = links.concat(getPlacedItems(items[i].pageItems));
+        if (item.typename == 'GroupItem') {
+            links = links.concat(getPlacedItems(item.pageItems));
         }
     }
     return links;
 }
 
 
-function showResult(items) {
-    for (var i = 0; i < items.length; i++) {
-        try {
-            items[i].selected = true;
-        }
-        catch (err) { }
-    }
+function isValidVersion() {
+    var cs4 = 14;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs4) return false;
+    return true;
+}
 
+
+function showResult(items) {
+    $.localize = true;
+    var ui = localizeUI();
+
+    for (var i = 0; i < items.length; i++) {
+        items[i].selected = true;
+    }
     var message = {
         en: 'Failed to find ' + items.length + ' links in new folder. These links have not been relinked, and will remain selected in the Links panel.',
         ja: items.length + ' 個のリンクが見つかりませんでした。これらのリンクは再リンクされず、リンクパネルで選択された状態のまま残ります。'
     }
 
-    var ui = localizeUI();
     var dialog = new Window('dialog');
     dialog.text = ui.title;
     dialog.orientation = 'column';
@@ -133,9 +134,9 @@ function showResult(items) {
     group1.margins = 0;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1', multiline: true });
+    statictext1.text = message;
     statictext1.preferredSize.width = 410;
     statictext1.preferredSize.height = 40;
-    statictext1.text = message;
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
@@ -146,7 +147,6 @@ function showResult(items) {
     var button1 = group2.add('button', undefined, undefined, { name: 'button1' });
     button1.text = ui.ok;
     button1.preferredSize.width = 90;
-    button1.preferredSize.height = 26;
 
     dialog.show();
 }
@@ -157,6 +157,10 @@ function localizeUI() {
         title: {
             en: 'Relink to Folder',
             ja: 'フォルダーに再リンク'
+        },
+        folder: {
+            en: 'Select a Folder',
+            ja: 'フォルダーを選択'
         },
         ok: {
             en: 'OK',

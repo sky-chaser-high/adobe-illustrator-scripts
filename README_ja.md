@@ -8,7 +8,8 @@ Adobe Illustratorのスクリプト集です。
 
 ### アートボード
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [**アートボードの名前とサイズを表示**](#アートボードの名前とサイズを表示) showArtboardName.js
+- [**アートボードの名前とサイズを表示**](#アートボードの名前とサイズを表示) showArtboardName.js `Update`
+- [**アートボードの名前を変更**](#アートボードの名前を変更) renameArtboard.js `New`
 - [**アートボードの並べ替え**](#アートボードの並べ替え) sortArtboards.js
 
 ### カラー
@@ -37,7 +38,8 @@ Adobe Illustratorのスクリプト集です。
 - [**非表示レイヤーを削除**](#非表示レイヤーを削除) deleteHiddenLayers.js
 - [**表示状態を反転**](#表示状態を反転) invertVisibleLayer.js
 - [**未使用レイヤーを削除**](#未使用レイヤーを削除) deleteUnusedLayers.js
-- [**レイヤーカラーを統一**](#レイヤーカラーを統一) unifyLayerColors.js
+- [**レイヤーカラーを統合**](#レイヤーカラーを統合) unifyLayerColors.js `Update`
+- [**レイヤー名の変更**](#レイヤー名の変更) renameLayer.js `New`
 - [**ロック状態のレイヤーを削除**](#ロック状態のレイヤーを削除) deleteLockedLayers.js
 - [**ロック状態を反転**](#ロック状態を反転) invertLockedLayer.js
 
@@ -45,11 +47,11 @@ Adobe Illustratorのスクリプト集です。
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [**埋め込み画像を選択**](#埋め込み画像を選択) selectEmbeddedLink.js
 - [**ファイル拡張子にリンクを再設定**](#ファイル拡張子にリンクを再設定) relinkFileExtension.js
-- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js
+- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js `Update`
 - [**フォルダに再リンク**](#フォルダに再リンク) relinkToFolder.js
-- [**リンク画像の名前を変更**](#リンク画像の名前を変更) renameLinkedFile.js
+- [**リンク画像の名前を変更**](#リンク画像の名前を変更) renameLinkedFile.js `Update`
 - [**リンク画像を原寸サイズに戻す**](#リンク画像を原寸サイズに戻す) resetToFullScale.js
-- [**リンク画像を選択**](#リンク画像を選択) selectLink.js
+- [**リンク画像を選択**](#リンク画像を選択) selectLink.js `Update`
 
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -78,8 +80,8 @@ Adobe Illustratorのスクリプト集です。
 - [**パスの寸法を表示**](#パスの寸法を表示) showDimensions.js
 - [**パスを伸縮**](#パスを伸縮) extendLine.js
 - [**パスを閉じる**](#パスを閉じる) closePath.js
-- [**パスを分解**](#パスを分解) disjoinPath.js
-- [**法線を描く**](#法線を描く) drawNormalLine.js
+- [**パスを分解**](#パスを分解) disjoinPath.js `Bug Fix`
+- [**法線を描く**](#法線を描く) drawNormalLine.js `Bug Fix`
 - [**余白の垂直方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Vertical).js
 - [**余白の水平方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Horizontal).js
 - [**余白の垂直方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Vertical).js
@@ -119,21 +121,21 @@ Adobe Illustratorのスクリプト集です。
 
 ### ユーティリティ
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [**拡大・縮小率の確認**](#拡大縮小率の確認) compareScale.js `Update`
-- [**距離の測定**](#距離の測定) measureDistance.js `Update`
+- [**拡大・縮小率の確認**](#拡大縮小率の確認) compareScale.js
+- [**距離の測定**](#距離の測定) measureDistance.js
 - [**コピー元のレイヤーにペーストを切り替える**](#コピー元のレイヤーにペーストを切り替える) togglePasteRemembersLayers.js
 - [**字形の境界に整列を切り替える**](#字形の境界に整列を切り替える) toggleAlignToGlyphBounds.js
 - [**すべてのドキュメントを閉じる**](#すべてのドキュメントを閉じる) closeAllDocuments.js
 - [**選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える**](#選択した複数のアンカーポイントのハンドルを表示隠すを切り替える) toggleShowHandles.js
-- [**単位を換算**](#単位を換算) unitCalculator.js `New`
-- [**日付と曜日の確認**](#日付と曜日の確認) checkDayOfWeek.js `Update`
-- [**文字列内の数字の合計**](#文字列内の数字の合計) sumNumbers.js `Update`
+- [**単位を換算**](#単位を換算) unitCalculator.js
+- [**日付と曜日の確認**](#日付と曜日の確認) checkDayOfWeek.js
+- [**文字列内の数字の合計**](#文字列内の数字の合計) sumNumbers.js
 
 ### 表示
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [**ウィンドウの表示位置を同期**](#ウィンドウの表示位置を同期) syncView.js
 - [**ウィンドウを並べて表示**](#ウィンドウを並べて表示) arrangeWindows.js
-- [**オブジェクトを画面全体に拡大表示**](#オブジェクトを画面全体に拡大表示) fitSelectedObjectsInWindow.js `New`
+- [**オブジェクトを画面全体に拡大表示**](#オブジェクトを画面全体に拡大表示) fitSelectedObjectsInWindow.js
 - [**最後のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToLastArtboard.js
 - [**先頭のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToFirstArtboard.js
 - [**次のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToNextArtboard.js
@@ -1610,7 +1612,7 @@ Illustrator CC 2018以降
 ## <a name="ロック状態を反転">ロック状態を反転</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 ### invertLockedLayer.js
-レイヤーの表示／非表示を切り替えます。
+レイヤーのロック状態を切り替えます。
 
 ![Invert Locked Layer](images/invertLockedLayer.png)
 
@@ -1630,7 +1632,7 @@ Illustrator CS以降
 ## <a name="表示状態を反転">表示状態を反転</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 ### invertVisibleLayer.js
-レイヤーのロック状態を切り替えます。
+レイヤーの表示／非表示を切り替えます。
 
 ![Invert Visible Layer](images/invertVisibleLayer.png)
 
@@ -1810,7 +1812,11 @@ Illustrator CC 2018以降
 ![Move Sublayer To Main Layer](images/moveSublayerToMainLayer.png)
 
 #### 使用方法
-このスクリプトを実行するだけです。
+このスクリプトを実行するだけです。  
+サブレイヤーを選択する必要はありません。
+
+> [!NOTE]
+> すべてのレイヤーを強制的に表示しロックを解除します。
 
 #### 動作条件
 Illustrator CS以降
@@ -1966,13 +1972,14 @@ Illustrator CS4以降
    - `追加` 元のファイル名の先頭、末尾またはその両方に追加する文字列を入力します。
 3. ファイルの拡張子を入力します。  
    なにも入力しない場合は、元のリンク画像の拡張子を使用します。
-4. リンク画像のフォルダを変更するには、再設定するリンク画像があるフォルダを選択します。  
+4. 拡張子にPDFを指定した場合は、ページ番号を入力し、トリミングオプションを選択します。  
+   トリミングの詳細は、「[Adobe PDF ファイルの読み込み](https://helpx.adobe.com/jp/illustrator/using/importing-pdf-files.html)」を参照してください。
+5. リンク画像のフォルダを変更するには、再設定するリンク画像があるフォルダを選択します。  
    なにも選択しない場合は、元のリンク画像と同じフォルダになります。  
    フォルダのパスを削除したい場合は、<kbd>Option</kbd> / <kbd>Alt</kbd> キーを押しながら削除ボタンをクリックします。
 
 > [!WARNING]
-> リンク切れ画像と埋め込み画像はリンクを再設定できません。  
-> 濁点または半濁点を含む文字列を検索の対象にすると置換に失敗します。
+> リンク切れ画像と埋め込み画像はリンクを再設定できません。
 
 > [!NOTE]
 > リンク画像を選択する場合は、リンクパネルではなくドキュメント内のリンク画像を選択してください。
@@ -2064,6 +2071,87 @@ Illustrator CS以降
 
 
 
+
+## <a name="アートボードの名前を変更">アートボードの名前を変更</a>
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+### renameArtboard.js
+すべてのアートボードの名前をまとめて編集します。
+
+![Rename Artboard](images/renameArtboard.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. スクリプトを実行します。
+2. テキストフィールドに表示したアートボードの名前を編集します。
+
+#### オプション
+素早く編集するためのオプションを用意しています。
+##### 数字
+- `置換` アートボードの名前の先頭または末尾の数字を置換します。
+- `追加` アートボードの名前の先頭または末尾に数字を追加します。
+- `-1` `+1` アートボードの名前の先頭または末尾の数字を増減します。
+- ［降順］にチェックを付けると降順に変更します。
+##### 文字
+- アートボードの名前の先頭または末尾に文字列を追加します。
+##### 置換
+- アートボードの名前を指定した文字列で置換します。
+- 検索文字列では正規表現が使用できます。
+
+> [!NOTE]
+> テキストフィールドの行数がアートボードの数と一致しない場合は警告が出ます。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#アートボード">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="レイヤー名の変更">レイヤー名の変更</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+### renameLayer.js
+すべてのレイヤーの名前をまとめて編集します。
+
+![Rename Layer](images/renameLayer.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. スクリプトを実行します。
+2. テキストフィールドに表示したレイヤー名を編集します。
+
+#### オプション
+素早く編集するためのオプションを用意しています。
+##### 数字
+- `置換` レイヤー名の先頭または末尾の数字を置換します。
+- `追加` レイヤー名の先頭または末尾に数字を追加します。
+- `-1` `+1` レイヤー名の先頭または末尾の数字を増減します。
+- ［降順］にチェックを付けると降順に変更します。
+##### 文字
+- レイヤー名の先頭または末尾に文字列を追加します。
+##### 置換
+- レイヤー名を指定した文字列で置換します。
+- 検索文字列では正規表現が使用できます。
+
+> [!NOTE]
+> サブレイヤーには対応していません。  
+> テキストフィールドの行数がレイヤー数より少なくなると警告が出ます。  
+> テキストフィールドの行数がレイヤー数より多い場合は、行数が増えた分だけレイヤーを追加します。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 ## <a name="リンク画像の名前を変更">リンク画像の名前を変更</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 ### renameLinkedFile.js
@@ -2106,13 +2194,12 @@ Illustrator CS4以降
 ## <a name="リンク画像を原寸サイズに戻す">リンク画像を原寸サイズに戻す</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 ### resetToFullScale.js
-リンク画像のスケールを100%に、回転角度を0°に戻します。  
-埋め込み画像にも対応しています。
+リンクまたは埋め込み画像のスケールを100%に、回転角度を0°に戻します。
 
 ![Reset To Full Scale](images/resetToFullScale.png)
 
 #### 使用方法
-リンク画像または埋め込み画像を選択してスクリプトを実行します。
+リンクまたは埋め込み画像を選択してスクリプトを実行します。
 
 #### 動作条件
 Illustrator CS6以降
@@ -2167,7 +2254,7 @@ Illustrator CS以降
 ## <a name="埋め込み画像を選択">埋め込み画像を選択</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 ### selectEmbeddedLink.js
-埋め込み画像を選択します。
+すべての埋め込み画像を選択します。
 
 #### 使用方法
 このスクリプトを実行するだけです。
@@ -2218,8 +2305,8 @@ Illustrator CS6以降
 
 #### 使用方法
 1. スクリプトを実行します。
-2. ファイル名を入力します。ファイル名の一部でも可能です。正規表現に対応しています。  
-   なにも入力しない場合は、すべてのリンクを選択します。
+2. 検索文字列にファイル名を入力するか、リストからファイル名を選択します。  
+   検索文字列になにも入力しない場合は、すべてのリンク画像を選択します。正規表現が使用できます。
 
 > [!NOTE]
 > ロックまたは非表示状態では選択しません。レイヤーの状態も同様です。  
@@ -2267,8 +2354,9 @@ Illustrator CS以降
 #### 使用方法
 このスクリプトを実行するだけです。  
 
-> [!NOTE]
-> サイズの単位はルーラー単位により変わります。
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
 
 #### 動作条件
 Illustrator CS4以降
@@ -2384,7 +2472,7 @@ Illustrator CS以降
 ## <a name="アートボードの並べ替え">アートボードの並べ替え</a>
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 ### sortArtboards.js
-アートボードパネル内のアートボード名を昇順で並べ替えます。
+アートボードパネル内のアートボードを昇順で並べ替えます。
 
 ![Sort Artboards](images/sortArtboards.png)
 
@@ -2673,15 +2761,16 @@ Illustrator CC以降
 
 
 
-## <a name="レイヤーカラーを統一">レイヤーカラーを統一</a>
+## <a name="レイヤーカラーを統合">レイヤーカラーを統合</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 ### unifyLayerColors.js
-レイヤーカラーを統一します。
+レイヤーカラーを統合します。
 
 ![Unify Layer Colors](images/unifyLayerColors.png)
 
 #### 使用方法
-基準のレイヤーを選択してスクリプトを実行します。
+1. すべてのレイヤーのロックを解除します。変更したくない色のレイヤーはロックします。
+2. 基準の色のレイヤーを選択してスクリプトを実行します。
 
 > [!NOTE]
 > サブレイヤーにも対応します。

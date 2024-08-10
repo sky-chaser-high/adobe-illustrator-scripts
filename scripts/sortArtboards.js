@@ -2,21 +2,21 @@
    sortArtboards
 
    Description
-   This script sorts the artboards in the Artboard panel.
+   This script sorts the artboards in the Artboards panel.
 
    Usage
    Just run this script from File > Scripts > Other Script...
 
    Notes
    Only the Artboard panel. Artboards in the document are not sorted.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS5 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -26,31 +26,27 @@
    https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
-(function () {
-    if (app.documents.length > 0) main();
+(function() {
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    var artboards = getArtboards();
-    sortArtboards(artboards);
+    var props = getArtboardProperties();
     removeAllArtboards();
-    createArtboards(artboards);
+    sortArtboards(props);
+    createArtboards(props);
 }
 
 
-function getArtboards() {
-    var artboards = [];
-    for (var i = 0; i < app.activeDocument.artboards.length; i++) {
-        var artboard = app.activeDocument.artboards[i];
-        var width = Math.abs(artboard.artboardRect[0] - artboard.artboardRect[2]);
-        var height = Math.abs(artboard.artboardRect[1] - artboard.artboardRect[3]);
-        artboards.push({
+function getArtboardProperties() {
+    var items = [];
+    var artboards = app.activeDocument.artboards;
+    for (var i = 0; i < artboards.length; i++) {
+        var artboard = artboards[i];
+        items.push({
             name: artboard.name,
-            x1: artboard.artboardRect[0],
-            y1: artboard.artboardRect[1],
-            width: width,
-            height: height,
+            rect: artboard.artboardRect,
             rulerOrigin: artboard.rulerOrigin,
             rulerPAR: artboard.rulerPAR,
             showCenter: artboard.showCenter,
@@ -58,48 +54,58 @@ function getArtboards() {
             showSafeAreas: artboard.showSafeAreas
         });
     }
-    return artboards;
+    return items;
 }
 
 
-function sortArtboards(artboards) {
-    return artboards.sort(function(a, b) {
-        var nameA = a.name.toUpperCase().replace(/(\d+)/g, function(n) {
-            return ('00000' + n).slice(-5);
-        });
-        var nameB = b.name.toUpperCase().replace(/(\d+)/g, function(n) {
-            return ('00000' + n).slice(-5);
-        });
-        if (nameA < nameB) return -1;
-        if (nameA > nameB) return 1;
-        return 0;
+function sortArtboards(items) {
+    return items.sort(function(a, b) {
+        var name = {
+            a: a.name.toLowerCase(),
+            b: b.name.toLowerCase()
+        };
+        name.a = name.a.replace(/(\d+)/g, setZeroPadding);
+        name.b = name.b.replace(/(\d+)/g, setZeroPadding);
+        return name.a > name.b;
     });
+}
+
+
+function setZeroPadding(str) {
+    var zero = '0000000000';
+    var digits = zero.length * -1;
+    return (zero + str).slice(digits);
+}
+
+
+function createArtboards(items) {
+    var doc = app.activeDocument;
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        var artboard = (i == 0) ? doc.artboards[0] : doc.artboards.add(item.rect);
+        if (i == 0) artboard.artboardRect = item.rect;
+        artboard.name = item.name;
+        artboard.rulerOrigin = item.rulerOrigin;
+        artboard.rulerPAR = item.rulerPAR;
+        artboard.showCenter = item.showCenter;
+        artboard.showCrossHairs = item.showCrossHairs;
+        artboard.showSafeAreas = item.showSafeAreas;
+    }
 }
 
 
 function removeAllArtboards() {
     var artboards = app.activeDocument.artboards;
-    for (var i = artboards.length - 1; i >= 1; i--) {
-        artboards[i].remove();
+    for (var i = artboards.length - 1; 1 <= i; i--) {
+        var artboard = artboards[i];
+        artboard.remove();
     }
 }
 
 
-function createArtboards(artboards) {
-    for (var i = 0; i < artboards.length; i++) {
-        var doc = app.activeDocument;
-        var artboard = (i == 0) ? doc.artboards[0] : doc.artboards.add([0, 0, 10, -10]);
-        artboard.name = artboards[i].name;
-        artboard.artboardRect = [
-            artboards[i].x1,
-            artboards[i].y1,
-            artboards[i].x1 + artboards[i].width,
-            artboards[i].y1 - artboards[i].height
-        ];
-        artboard.rulerOrigin = artboards[i].rulerOrigin;
-        artboard.rulerPAR = artboards[i].rulerPAR;
-        artboard.showCenter = artboards[i].showCenter;
-        artboard.showCrossHairs = artboards[i].showCrossHairs;
-        artboard.showSafeAreas = artboards[i].showSafeAreas;
-    }
+function isValidVersion() {
+    var cs5 = 15;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs5) return false;
+    return true;
 }

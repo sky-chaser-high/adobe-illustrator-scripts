@@ -2,58 +2,80 @@
    deleteUnusedLayers
 
    Description
-   This script delete unused layers.
+   This script deletes unused layers.
 
    Usage
-   run this script from File > Scripts > Other Script...
+   Just run this script from File > Scripts > Other Script...
+   It is not necessary to select any layers.
 
    Notes
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
+
+   Homepage
+   github.com/sky-chaser-high/adobe-illustrator-scripts
+
+   License
+   Released under the MIT license.
+   https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) deleteUnusedLayers(app.activeDocument.layers);
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
-function deleteUnusedLayers(layers) {
-    for (var i = layers.length - 1; i >= 0; i--) {
-        var items = layers[i].pageItems.length;
-        var sublayers = layers[i].layers.length;
+function main() {
+    var layers = app.activeDocument.layers;
+    deleteUnusedLayers(layers);
+}
 
-        if (sublayers > 0) {
-            deleteUnusedLayers(layers[i].layers);
+
+function deleteUnusedLayers(layers) {
+    for (var i = layers.length - 1; 0 <= i; i--) {
+        var layer = layers[i];
+
+        var sublayers = layer.layers.length;
+        if (sublayers) {
+            deleteUnusedLayers(layer.layers);
         }
 
-        if (items < 1 && !existsSublayerItems(layers[i].layers)) {
-            layers[i].locked = false;
-            layers[i].visible = true;
-            layers[i].remove();
+        var items = layer.pageItems.length;
+        if (!items && !sublayerItemExists(layer.layers)) {
+            layer.locked = false;
+            layer.visible = true;
+            layer.remove();
         }
     }
 }
 
 
-function existsSublayerItems(layers) {
+function sublayerItemExists(layers) {
     for (var i = 0; i < layers.length; i++) {
-        var items = layers[i].pageItems.length;
-        var sublayers = layers[i].layers.length;
-        if (sublayers > 0) {
-            var exist = existsSublayerItems(layers[i].layers);
-            if (exist) {
-                return true;
-            }
+        var layer = layers[i];
+
+        var sublayers = layer.layers.length;
+        if (sublayers) {
+            var exists = sublayerItemExists(layer.layers);
+            if (exists) return true;
         }
-        if (items > 0) {
-            return true;
-        }
+
+        var items = layer.pageItems.length;
+        if (items) return true;
     }
     return false;
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

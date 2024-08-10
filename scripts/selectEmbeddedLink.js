@@ -2,21 +2,21 @@
    selectEmbeddedLink
 
    Description
-   This script selects embedded link files.
+   This script selects all embedded files.
 
    Usage
    Just run this script from File > Scripts > Other Script...
 
    Notes
-   Locked or hidden embedded link files are not selected. The layer also as well.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   Locked and hidden embedded files are not selected. The layer also as well.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -27,15 +27,24 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    var items = app.activeDocument.rasterItems;
-    if (items.length == 0) return;
+    var links = app.activeDocument.rasterItems;
+    if (!links.length) return;
 
-    for (var i = 0; i < items.length; i++) {
-        items[i].selected = true;
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        if (link.editable) link.selected = true;
     }
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

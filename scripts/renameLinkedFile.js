@@ -27,7 +27,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -179,9 +179,10 @@ function getRenameResult(link, search, replace) {
 
 function getFilename(src) {
     var filename = File.decode(src.name);
-    var name = filename.split('.').slice(0, -1).join('.');
-    if (name) return name;
-    return filename;
+    if (isMac()) filename = convertJapanese(filename);
+    var words = filename.split('.');
+    var name = words.slice(0, -1).join('.') || filename;
+    return name;
 }
 
 
@@ -214,6 +215,37 @@ function getLinkItems(items) {
         }
     }
     return links;
+}
+
+
+// Unicode Combining Character Sequence
+// https://shinkufencer.hateblo.jp/entry/2021/12/04/233000
+// https://bn.dgcr.com/archives/20080707140200.html
+function convertJapanese(text) {
+    var dakuten = '%E3%82%99';
+    var handakuten = '%E3%82%9A';
+    text = convertJapaneseSub(File.encode(text), dakuten, 1);
+    text = convertJapaneseSub(text, handakuten, 2);
+    return File.decode(text);
+}
+function convertJapaneseSub(src, code, count) {
+    src = src.replace(/%E3%82%BF%E3%82%99/g, '%E3%83%80'); // ダだけ特殊処理
+    var texts = src.split(code);
+    for (var i = 0; i < texts.length - 1; i++) {
+        var str = texts[i];
+        if (!str) continue;
+        var body = str.substring(0, str.length - 2);
+        var foot = str.substring(str.length - 2, str.length);
+        var hex = eval('0x' + foot) + count;
+        hex = hex.toString(16).toUpperCase();
+        texts[i] = body + hex;
+    }
+    return texts.join('');
+}
+
+
+function isMac() {
+    return /mac/i.test($.os);
 }
 
 
@@ -284,7 +316,7 @@ function showDialog(links) {
     dialog.margins = 16;
 
     var panel1 = dialog.add('panel', undefined, undefined, { name: 'panel1' });
-    panel1.text = ui.file;
+    panel1.text = ui.filename;
     panel1.orientation = 'column';
     panel1.alignChildren = ['right', 'top'];
     panel1.spacing = 10;
@@ -301,7 +333,7 @@ function showDialog(links) {
 
     var edittext1 = group1.add('edittext', undefined, undefined, { name: 'edittext1' });
     edittext1.text = '';
-    edittext1.preferredSize.width = (/en/i.test($.locale)) ? 420 : 400;
+    edittext1.preferredSize.width = 400;
     edittext1.active = true;
 
     var group2 = panel1.add('group', undefined, { name: 'group2' });
@@ -315,7 +347,7 @@ function showDialog(links) {
 
     var edittext2 = group2.add('edittext', undefined, undefined, { name: 'edittext2' });
     edittext2.text = '';
-    edittext2.preferredSize.width = (/en/i.test($.locale)) ? 420 : 400;
+    edittext2.preferredSize.width = 400;
 
     var listbox1 = dialog.add('listbox', undefined, undefined, {
         name: 'listbox1',
@@ -334,31 +366,29 @@ function showDialog(links) {
 
     var group3 = dialog.add('group', undefined, { name: 'group3' });
     group3.orientation = 'row';
-    group3.alignChildren = ['right', 'center'];
+    group3.alignChildren = ['fill', 'center'];
     group3.spacing = 10;
     group3.margins = 0;
 
-    var group4 = group3.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'row';
-    group4.alignChildren = ['left', 'center'];
-    group4.spacing = 10;
-    group4.margins = [0, 0, 113, 0];
-
-    var button1 = group4.add('button', undefined, undefined, { name: 'button1' });
+    var button1 = group3.add('button', undefined, undefined, { name: 'button1' });
     button1.text = ui.reset;
     button1.preferredSize.width = 90;
+    button1.alignment = ['left', 'center'];
 
-    var button2 = group4.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group3.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.preview;
     button2.preferredSize.width = 90;
+    button2.alignment = ['left', 'center'];
 
     var button3 = group3.add('button', undefined, undefined, { name: 'button3' });
     button3.text = ui.cancel;
     button3.preferredSize.width = 90;
+    button3.alignment = ['right', 'center'];
 
     var button4 = group3.add('button', undefined, undefined, { name: 'button4' });
     button4.text = ui.ok;
     button4.preferredSize.width = 90;
+    button4.alignment = ['right', 'center'];
 
     statictext1.addEventListener('click', function() {
         edittext1.active = false;
@@ -369,10 +399,6 @@ function showDialog(links) {
         edittext2.active = false;
         edittext2.active = true;
     });
-
-    button3.onClick = function() {
-        dialog.close();
-    }
 
     button1.onClick = function() {
         edittext1.text = '';
@@ -386,6 +412,10 @@ function showDialog(links) {
         }
         edittext1.active = false;
         edittext1.active = true;
+    }
+
+    button3.onClick = function() {
+        dialog.close();
     }
 
     dialog.search = edittext1;
@@ -403,7 +433,7 @@ function localizeUI() {
             en: 'Rename Linked File',
             ja: 'リンク画像の名前を変更'
         },
-        file: {
+        filename: {
             en: 'Filename',
             ja: 'ファイル名'
         },
@@ -424,7 +454,7 @@ function localizeUI() {
             ja: '検索文字列:'
         },
         replace: {
-            en: 'Replace:',
+            en: 'Replace With:',
             ja: '置換文字列:'
         },
         reset: {

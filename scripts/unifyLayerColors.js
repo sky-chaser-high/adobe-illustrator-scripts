@@ -5,18 +5,20 @@
    This script unifies layer colors.
 
    Usage
-   Select a target layer, run this script from File > Scripts > Other Script...
+   1. Unlock all layers.
+      Keep the layers that colors you do not want to change locked.
+   2. Select a layer that will be the reference color, run this script from File > Scripts > Other Script...
 
    Notes
    Sublayers are also supported.
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -27,7 +29,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -37,6 +39,7 @@ function main() {
     var layers = getLayers(app.activeDocument.layers);
     for (var i = 0; i < layers.length; i++) {
         var layer = layers[i];
+        if (layer.locked) continue;
         layer.color = color;
     }
 }
@@ -45,8 +48,17 @@ function main() {
 function getLayers(items) {
     var layers = [];
     for (var i = 0; i < items.length; i++) {
-        layers.push(items[i]);
-        layers = layers.concat(getLayers(items[i].layers));
+        var item = items[i];
+        layers.push(item);
+        layers = layers.concat(getLayers(item.layers));
     }
     return layers;
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

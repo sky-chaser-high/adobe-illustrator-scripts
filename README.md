@@ -10,7 +10,8 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Artboard
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [Show Artboard Name](#showArtboardNamejs)
+- [Rename Artboard](#renameArtboardjs) `New`
+- [Show Artboard Name](#showArtboardNamejs) `Update`
 - [Sort Artboards](#sortArtboardsjs)
 
 ### Color
@@ -41,17 +42,18 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Invert Locked Layer](#invertLockedLayerjs)
 - [Invert Visible Layer](#invertVisibleLayerjs)
 - [Move Sublayer to Main Layer](#moveSublayerToMainLayerjs)
-- [Unify Layer Colors](#unifyLayerColorsjs)
+- [Rename Layer](#renameLayerjs) `New`
+- [Unify Layer Colors](#unifyLayerColorsjs) `Update`
 
 ### Link
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [Relink File Extension](#relinkFileExtensionjs)
-- [Relink File Extension Extra](#relinkFileExtensionExtrajs)
+- [Relink File Extension Extra](#relinkFileExtensionExtrajs) `Update`
 - [Relink to Folder](#relinkToFolderjs)
-- [Rename Linked File](#renameLinkedFilejs)
+- [Rename Linked File](#renameLinkedFilejs) `Update`
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
-- [Select Link](#selectLinkjs)
+- [Select Link](#selectLinkjs) `Update`
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -64,11 +66,11 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Create Grid Lines](#createGridLinesjs)
 - [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
-- [Disjoin Path](#disjoinPathjs)
+- [Disjoin Path](#disjoinPathjs) `Bug Fix`
 - [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
-- [Draw Normal Line](#drawNormalLinejs)
+- [Draw Normal Line](#drawNormalLinejs) `Bug Fix`
 - [Draw Rectangle](#drawRectanglejs)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
 - [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs)
@@ -121,20 +123,20 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Utility
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [Check Day of Week](#checkDayOfWeekjs) `Update`
+- [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
-- [Compare Scale](#compareScalejs) `Update`
-- [Measure Distance](#measureDistancejs) `Update`
-- [Sum Numbers](#sumNumbersjs) `Update`
+- [Compare Scale](#compareScalejs)
+- [Measure Distance](#measureDistancejs)
+- [Sum Numbers](#sumNumbersjs)
 - [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
 - [Toggle Paste Remembers Layers](#togglePasteRemembersLayersjs)
 - [Toggle Show Handles](#toggleShowHandlesjs)
-- [Unit Calculator](#unitCalculatorjs) `New`
+- [Unit Calculator](#unitCalculatorjs)
 
 ### View
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [Arrange Windows](#arrangeWindowsjs)
-- [Fit Selected Objects in Window](#fitSelectedObjectsInWindowjs) `New`
+- [Fit Selected Objects in Window](#fitSelectedObjectsInWindowjs)
 - [Navigate to First Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
 - [Navigate to Last Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
 - [Navigate to Next Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
@@ -289,7 +291,7 @@ This script aligns objects horizontally and vertically at the same time.
 
 > [!NOTE]
 > The top row and the left-most column are the basis for alignment.  
-> Compound paths, texts, linked files, and embedded link files are also supported.
+> Compound paths, texts, linked files, and embedded files are also supported.
 
 ### Support units
 Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
@@ -806,7 +808,7 @@ Illustrator CS or higher
 This script deletes hidden layers.
 
 > [!TIP]
-> It has been implemented in the Layers panel menu since version 2021.
+> It has been implement in the Layers panel menu since version 2021.
 
 ![Delete Hidden Layers](images/deleteHiddenLayers.png)
 
@@ -873,7 +875,7 @@ This script deletes unused layers.
 ![Delete Unused Layers](images/deleteUnusedLayers.png)
 
 ### Usage
-Just run this script.
+Just run this script. It is not necessary to select any layers.
 
 ### Requirements
 Illustrator CS or higher
@@ -921,10 +923,10 @@ This script breaks apart the path object with anchor points.
 ![Disjoin Path](images/disjoinPath.png)
 
 ### Usage
-Select the path objects, and run this script.
+Select any path objects, and run this script.
 
 > [!NOTE]
-> The original path object will be deleted.
+> The original path object will deleted.
 
 ### Requirements
 Illustrator CS or higher
@@ -1689,7 +1691,10 @@ This script moves sublayers to the main layer above.
 ![Move Sublayer To Main Layer](images/moveSublayerToMainLayer.png)
 
 ### Usage
-Just run this script.
+Just run this script. It is not necessary to select any sublayers.
+
+> [!NOTE]
+> Force all layers to show and unlock.
 
 ### Requirements
 Illustrator CS or higher
@@ -1798,12 +1803,11 @@ For more advanced settings, use [relinkFileExtensionExtra.js](#relinkFileExtensi
 ![Relink File Extension](images/relinkFileExtension.png)
 
 ### Usage
-1. Select any linked files, and run this script.  
-   If not selected, all files in the document are replaced.
+1. Select any linked files, and run this script. If no file is selected, it replaces all files in the document.
 2. Enter an extension.
 
 > [!WARNING]
-> Missing linked files and embedded link files not replaced.
+> Missing linked files and embedded files are not replaced.
 
 > [!NOTE]
 > Place the relink files in the same place as the original files.  
@@ -1826,21 +1830,20 @@ This script is an enhanced version of [relinkFileExtension.js](#relinkFileExtens
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
 
 ### Usage
-1. Select any linked files, and run this script.  
-   If not selected, all files in the document are replaced.
+1. Select any linked files, and run this script. If no file is selected, it replaces all files in the document.
 2. Select either file renaming method.
    - `Replace` Enter the current file name in the Find field and a new file name in the Replace field.  
    It can also be part of the file name. Regular expressions are supported in the Find field.
    - `Add` Enter a string to be added to the prefix, suffix, or both of the original file names.
-3. Enter an extension.  
-   If the extension is the same as the original file, do not enter anything.
-4. To change the folder for the linked file, select a new folder.  
-   If the folder is the same as the original file, do not make any selection.  
+3. Enter an extension. If the file extension is the same, enter nothing.
+4. If you specify PDF as the extension, enter the page number and select the Crop to option.  
+   **See also:** [Import Adobe PDF files](https://helpx.adobe.com/illustrator/using/importing-pdf-files.html)
+5. To change the folder for the linked file, select a new folder.  
+   If the folder is the same as the original file, select nothing.  
    To clear the new folder path, hold down the <kbd>Option</kbd> / <kbd>Alt</kbd> key and click the Clear button.
 
 > [!WARNING]
-> Missing linked files and embedded link files not replaced.  
-> If the find targets a string that contains combining characters, the replacement will fail.
+> Missing linked files and embedded files are not replaced.
 
 > [!NOTE]
 > When selecting linked files, select them in the document rather than the Links panel.
@@ -1859,15 +1862,13 @@ Illustrator CS4 or higher
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script replaces linked files with a file of the same name in the selected folder, equivalent to InDesign's Links panel menu > Relink to Folder.
 
-<img src="images/InDesign_Relink_To_Folder.png" alt="InDesign's Relink To Folder" width="45%">
-
 ### Usage
 1. Select any linked files, and run this script.  
-   If not selected, all files in the document are replaced.
-2. Select a folder in the dialog that appears.
+   If no file is selected, it replaces all files in the document.
+2. Select a folder from the dialog that appears.
 
 > [!WARNING]
-> Missing linked files and embedded link files not replaced.
+> Missing linked files and embedded files are not replaced.
 
 > [!NOTE]
 > When selecting linked files, select them in the document rather than the Links panel.
@@ -1928,6 +1929,80 @@ Illustrator CS or higher
 
 
 
+# <a name="renameArtboardjs">renameArtboard.js</a>
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
+This script renames all artboard names at once.
+
+![Rename Artboard](images/renameArtboard.png)
+
+### Usage
+1. Run this script.
+2. Edit the artboard name displayed in the text field.
+
+### Options
+Options are available for quickly editing artboard names.
+#### Number
+- `Replace` Replace the number at the beginning or end of the artboard name.
+- `Add` Add a number to the beginning or end of the artboard name.
+- `-1` `+1` Increase or decrease the number at the beginning or end of the artboard name.
+- Check the Descending Order checkbox to change to descending order.
+#### Text
+- Add text to the beginning or end of the artboard name.
+#### Replace
+- Replace the artboard name with the specified string.
+- Regular expressions support in the Find field.
+
+> [!NOTE]
+> A warning is issued if the number of lines in a text field does not match the number of artboards.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#artboard">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="renameLayerjs">renameLayer.js</a>
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+This script renames all layer names at once.
+
+![Rename Layer](images/renameLayer.png)
+
+### Usage
+1. Run this script.
+2. Edit the layer name displayed in the text field.
+
+### Options
+Options are available for quickly editing layer names.
+#### Number
+- `Replace` Replace the number at the beginning or end of the layer name.
+- `Add` Add a number to the beginning or end of the layer name.
+- `-1` `+1` Increase or decrease the number at the beginning or end of the layer name.
+- Check the Descending Order checkbox to change to descending order.
+#### Text
+- Add text to the beginning or end of the layer name.
+#### Replace
+- Replace the layer name with the specified string.
+- Regular expressions support in the Find field.
+
+> [!NOTE]
+> Sublayers are not supported.  
+> A warning is issued if the number of lines of the text field is less than the number of layers.  
+> Add layers for the increased number of lines if the number of lines of the text field is greater than the number of layers.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="renameLinkedFilejs">renameLinkedFile.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
 This script renames the name of the linked files and relink.
@@ -1947,7 +2022,7 @@ This script renames the name of the linked files and relink.
    A check in the Already Exists column indicates that a file with the same name already exists.
 
 > [!WARNING]
-> Missing linked files and embedded link files not replaced.  
+> Missing linked files and embedded files are not replaced.  
 > If you are using linked files for other documents, the link will be missing.
 
 > [!NOTE]
@@ -1966,13 +2041,12 @@ Illustrator CS4 or higher
 
 # <a name="resetToFullScalejs">resetToFullScale.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script resets the scale to 100% and the rotation angle to 0 degrees for the linked files.  
-Embedded link files are also supported.
+This script resets the scale to 100% and the rotation angle to 0 degrees for the linked or embedded files.
 
 ![Reset To Full Scale](images/resetToFullScale.png)
 
 ### Usage
-Select linked files or embedded link files, and run this script.
+Select any linked or embedded files, and run this script.
 
 ### Requirements
 Illustrator CS6 or higher
@@ -2025,13 +2099,13 @@ Illustrator CS or higher
 
 # <a name="selectEmbeddedLinkjs">selectEmbeddedLink.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script selects embedded link files.
+This script selects all embedded files.
 
 ### Usage
 Just run this script.
 
 > [!NOTE]
-> Locked or hidden embedded link files are not selected. The layer also as well.
+> Locked and hidden embedded files are not selected. The layer also as well.
 
 ### Requirements
 Illustrator CS or higher
@@ -2065,17 +2139,17 @@ Illustrator CS6 or higher
 
 # <a name="selectLinkjs">selectLink.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
-This script selects the specified link files.
+This script selects the specified linked files.
 
 <img src="images/selectLink.png" alt="Select Link" width="50%">
 
 ### Usage
 1. Run this script.
-2. Enter a file name. It can also be part of the file name. Or select it from the list below.  
-   If the text field is empty, all linked files are selected. Regular expressions are supported.
+2. Enter a file name in the Find field or select the file name from the list below. If the Find field is empty, all linked files are selected.
+   Regular expressions support in the Find field.
 
 > [!NOTE]
-> Locked or hidden linked files are not selected. The layer also as well.  
+> Locked and hidden linked files are not selected. The layer also as well.  
 > Missing linked files may not be selected.
 
 ### Requirements
@@ -2117,8 +2191,9 @@ This script shows the artboard name and size in the document.
 ### Usage
 Just run this script.
 
-> [!NOTE]
-> The dimension units depend on the ruler units.
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -2502,7 +2577,8 @@ This script unifies layer colors.
 ![Unify Layer Colors](images/unifyLayerColors.png)
 
 ### Usage
-Select a target layer, and run this script.
+1. Unlock all layers. Keep the layers that colors you do not want to change locked.
+2. Select a layer that will be the reference color, and run this script.
 
 > [!NOTE]
 > Sublayers are also supported.

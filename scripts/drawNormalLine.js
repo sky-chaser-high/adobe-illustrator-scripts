@@ -23,7 +23,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -253,7 +253,7 @@ function isFlat(anchor1, handle1, anchor2, handle2) {
     var l2 = Math.sqrt(Math.pow(x2, sq) + Math.pow(y2, sq));
     // dot product
     var cos = ((x1 * x2) + (y1 * y2)) / (l1 * l2);
-    return cos == 1 | cos == -1;
+    return cos == 1 || cos == -1;
 }
 
 
