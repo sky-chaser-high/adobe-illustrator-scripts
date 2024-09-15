@@ -10,8 +10,8 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Artboard
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [Rename Artboard](#renameArtboardjs) `New`
-- [Show Artboard Name](#showArtboardNamejs) `Update`
+- [Rename Artboard](#renameArtboardjs)
+- [Show Artboard Name](#showArtboardNamejs)
 - [Sort Artboards](#sortArtboardsjs)
 
 ### Color
@@ -19,15 +19,15 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
 - [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
-- [Create Color Chart](#createColorChartjs)
+- [Create Color Chart](#createColorChartjs) `Update`
 - [Delete All Swatches](#deleteAllSwatchesjs)
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
 - [Generate Gradient Color](#generateGradientColorjs)
-- [Highlight Word](#highlightWordjs)
+- [Highlight Word](#highlightWordjs) `Update`
 - [Import CSV to Swatch](#importCSVtoSwatchjs)
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
-- [Random Text Color](#randomTextColorjs)
+- [Random Text Color](#randomTextColorjs) `Update`
 - [Remove Deleted Global Color](#removeDeletedGlobalColorjs)
 - [Round Color Value](#roundColorValuejs)
 - [Round Location of Gradient Stop](#roundLocationOfGradientStopjs)
@@ -42,18 +42,19 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Invert Locked Layer](#invertLockedLayerjs)
 - [Invert Visible Layer](#invertVisibleLayerjs)
 - [Move Sublayer to Main Layer](#moveSublayerToMainLayerjs)
-- [Rename Layer](#renameLayerjs) `New`
-- [Unify Layer Colors](#unifyLayerColorsjs) `Update`
+- [Rename Layer](#renameLayerjs)
+- [Unify Layer Colors](#unifyLayerColorsjs)
 
 ### Link
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+- [Bulk Relink](#bulkRelinkjs) `New`
 - [Relink File Extension](#relinkFileExtensionjs)
-- [Relink File Extension Extra](#relinkFileExtensionExtrajs) `Update`
+- [Relink File Extension Extra](#relinkFileExtensionExtrajs) `Bug Fix`
 - [Relink to Folder](#relinkToFolderjs)
-- [Rename Linked File](#renameLinkedFilejs) `Update`
+- [Rename Linked File](#renameLinkedFilejs)
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
-- [Select Link](#selectLinkjs) `Update`
+- [Select Link](#selectLinkjs)
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -66,11 +67,11 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Create Grid Lines](#createGridLinesjs)
 - [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
-- [Disjoin Path](#disjoinPathjs) `Bug Fix`
+- [Disjoin Path](#disjoinPathjs)
 - [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
-- [Draw Normal Line](#drawNormalLinejs) `Bug Fix`
+- [Draw Normal Line](#drawNormalLinejs)
 - [Draw Rectangle](#drawRectanglejs)
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
 - [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs)
@@ -159,6 +160,7 @@ To run the scripts, from File > Scripts > Other Script( <kbd>⌘</kbd> / <kbd>Ct
 
 ## Extensions, software
 The following extensions or software make it easy to run scripts.
+- [SPAi](https://tama-san.com/spai/) (Mac / free software)
 - [Scripshon Trees](https://exchange.adobe.com/apps/cc/15873/scripshon-trees) (free extension)
 - [LAScripts](https://exchange.adobe.com/apps/cc/19405/lascripts) (free extension)
 - [Keyboard Maestro](https://www.keyboardmaestro.com) (Mac / paid software)
@@ -234,7 +236,7 @@ This script adds selected gradients to Swatches.
 ![Add Selected Gradients To Swatch](images/addSelectedGradientsToSwatch.png)
 
 ### Usage
-Select the path objects, and run this script.
+Select path objects, and run this script.
 
 > [!NOTE]
 > Text object and stroke color are not supported.
@@ -326,6 +328,33 @@ Just run this script.
 Illustrator CS6 or higher
 
 <div align="right">[ <a href="#view">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="bulkRelinkjs">bulkRelink.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+This script replaces missing links, linked and embedded files in bulk.
+
+> [!IMPORTANT]
+> Since version 2024, the Apply to All checkbox has been removed from the dialog that appears when there are missing link files. As a result, it is no longer possible to replace files in bulk using this dialog.
+
+![Bulk Relink](images/bulkRelink.png)
+
+### Usage
+1. Select any missing link, linked or embedded files, and run this script.
+2. Select a new file.
+3. For PDF, select a crop to option and enter a page number from the import options.
+
+> [!NOTE]
+> When selecting linked files, select them in the document rather than the Links panel.
+
+### Requirements
+Illustrator CS6 or higher
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -464,7 +493,7 @@ convertToSpotColor.js:
 
 ### Usage
 Select colors in the Swatches panel, and run this script.  
-If you don't select them, all colors will target.
+If not selected, all swatches are converted.
 
 > [!NOTE]
 > If there is a swatch with the same name, it will not convert.  
@@ -592,7 +621,7 @@ This script creates a color chart. Both CMYK and RGB colors are supported.
    - `Addition` The value of the steps is added as is.
    - `Intensity` The percentage of the target color is added. It is equivalent to Edit > Edit Colors > Saturate.  
    <img src="images/ColorChartSettings.png" alt="Color Chart Settings" width="65%">
-7. Set the artboard size, color chip size, and units according to your preference.
+7. Set the units, artboard size, and color chip size according to your preference.
 
 > [!NOTE]
 > Spot color, gradient, and pattern are not supported.  
@@ -1233,7 +1262,7 @@ This script extracts colors as swatches from the gradient stops.
 ![Extract Colors From Gradient](images/extractColorsFromGradient.png)
 
 ### Usage
-Select the path objects or swatches, and run this script.
+Select any path objects or swatches, and run this script.
 
 > [!NOTE]
 > Prioritize the path object over swatches.  
@@ -1296,12 +1325,12 @@ Illustrator CS or higher
 
 # <a name="generateGradientColorjs">generateGradientColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-This script generates the gradient color from fill colors or swatches.
+This script generates a gradient color from fill colors or swatches.
 
 ![Generate Gradient Color](images/generateGradientColor.png)
 
 ### Usage
-Select the path objects or swatches, and run this script.
+Select two or more path objects or swatches, and run this script.
 
 > [!NOTE]
 > Prioritize the path object over swatches.  
@@ -1384,18 +1413,27 @@ Illustrator CC 2018 or higher
 
 # <a name="highlightWordjs">highlightWord.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-This script highlights the searched words with the fill color.  
+This script highlights the searched string by fill color, swatch or character style.  
 Both CMYK and RGB colors are supported.
 
 ![Highlight Word](images/highlightWord.png)
 
 ### Usage
-1. Select any text objects, and run this script.
-2. Enter a word. Regular expressions are supported.
-3. Use the slider to specify the color if necessary.
+1. Select any text objects, and run this script.  
+   If no texts are selected, it highlights all texts in the document.
+2. Enter a string. Regular expressions are supported.
+3. To specify a color, enter the color values or use the sliders
+4. To specify a swatch, select a swatch name from the list on the Swatches tab and check the Ignore Color Settings checkbox.
+5. To specify a character style, select a style name from the list on the Character Styles tab.
+6. To specify a paragraph style, select a style name from the list on the Paragraph Styles tab.
+
+If you wish to color the character and paragraph styles, uncheck the Ignore Color Settings checkbox.
+
+> [!NOTE]
+> Color and swatch cannot be applied at the same time.
 
 ### Requirements
-Illustrator CS4 or higher
+Illustrator CS6 or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
@@ -1742,9 +1780,9 @@ Both CMYK and RGB colors are supported.
 ![Random Text Color](images/randomTextColor.png)
 
 ### Usage
-1. Select the text objects, and run this script.
-2. Assign the threshold value with the slider.
-3. Click the Random button to assign a color according to the threshold value.
+1. Select any text objects, and run this script.
+2. Enter the color values or use the sliders to set the threshold.
+3. Click the Random button to change the color according to the threshold value.
 
 > [!NOTE]
 > If there are many characters, the conversion will take time.  
@@ -1803,7 +1841,7 @@ For more advanced settings, use [relinkFileExtensionExtra.js](#relinkFileExtensi
 ![Relink File Extension](images/relinkFileExtension.png)
 
 ### Usage
-1. Select any linked files, and run this script. If no file is selected, it replaces all files in the document.
+1. Select any linked files, and run this script. If no files are selected, it replaces all files in the document.
 2. Enter an extension.
 
 > [!WARNING]
@@ -1830,13 +1868,13 @@ This script is an enhanced version of [relinkFileExtension.js](#relinkFileExtens
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
 
 ### Usage
-1. Select any linked files, and run this script. If no file is selected, it replaces all files in the document.
+1. Select any linked files, and run this script. If no files are selected, it replaces all files in the document.
 2. Select either file renaming method.
    - `Replace` Enter the current file name in the Find field and a new file name in the Replace field.  
    It can also be part of the file name. Regular expressions are supported in the Find field.
    - `Add` Enter a string to be added to the prefix, suffix, or both of the original file names.
 3. Enter an extension. If the file extension is the same, enter nothing.
-4. If you specify PDF as the extension, enter the page number and select the Crop to option.  
+4. If you specify PDF as the extension, select the Crop to option and enter the page number.  
    **See also:** [Import Adobe PDF files](https://helpx.adobe.com/illustrator/using/importing-pdf-files.html)
 5. To change the folder for the linked file, select a new folder.  
    If the folder is the same as the original file, select nothing.  
@@ -1849,7 +1887,7 @@ This script is an enhanced version of [relinkFileExtension.js](#relinkFileExtens
 > When selecting linked files, select them in the document rather than the Links panel.
 
 ### Requirements
-Illustrator CS4 or higher
+Illustrator CS6 or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
@@ -1864,7 +1902,7 @@ This script replaces linked files with a file of the same name in the selected f
 
 ### Usage
 1. Select any linked files, and run this script.  
-   If no file is selected, it replaces all files in the document.
+   If no files are selected, it replaces all files in the document.
 2. Select a folder from the dialog that appears.
 
 > [!WARNING]
@@ -1907,7 +1945,7 @@ Illustrator CS6 or higher
 
 # <a name="removeDeletedGlobalColorjs">removeDeletedGlobalColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
-This script deletes the Deleted Global Color displayed in the Separations Preview panel.
+This script deletes the Deleted Global Colors displayed in the Separations Preview panel.
 
 ![Remove Deleted Global Color](images/removeDeletedGlobalColor.png)
 
@@ -2065,7 +2103,7 @@ This script rounds color values. Both fill and stroke colors are supported.
 ![Round Color Value](images/roundColorValue.png)
 
 ### Usage
-Select the objects, and run this script.
+Select any objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
@@ -2085,7 +2123,7 @@ Both fill and stroke colors are supported.
 ![Round Location Of Gradient Stops](images/roundLocationOfGradientStops.png)
 
 ### Usage
-Select the objects, and run this script.
+Select any objects, and run this script.
 
 ### Requirements
 Illustrator CS or higher
@@ -2212,7 +2250,7 @@ This script shows color values. Both fill and stroke colors are supported.
 ![Show Color Values](images/showColorValues.png)
 
 ### Usage
-Select path objects, and run this script.
+Select any path objects, and run this script.
 
 > [!NOTE]
 > CMYK, RGB, HEX, grayscale, spot color, and pattern are supported.  
@@ -2267,7 +2305,7 @@ This script shuffles the gradient color.
 ![Shuffle Gradient Color](images/shuffleGradientColor.png)
 
 ### Usage
-Select the path objects, and run this script.
+Select any path objects, and run this script.
 
 > [!NOTE]
 > Only a fill color. A stroke color is not supported.  

@@ -6,9 +6,9 @@
    Both CMYK and RGB colors are supported.
 
    Usage
-   1. Select the text objects, run this script from File > Scripts > Other Script...
-   2. Assign the threshold value with the slider.
-   3. Click the Random button to assign a color according to the threshold value.
+   1. Select any text objects, run this script from File > Scripts > Other Script...
+   2. Enter the color values or use the sliders to set the threshold.
+   3. Click the Random button to change the color according to the threshold value.
 
    Notes
    If there are many characters, the conversion will take time.
@@ -20,7 +20,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.2.1
+   1.3.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -39,6 +39,7 @@ function main() {
     var items = app.activeDocument.selection;
     var texts = getTextFrames(items);
     if (!texts.length) return;
+
     var colors = getOriginalColor(texts);
 
     var dialog = showDialog();
@@ -61,6 +62,10 @@ function main() {
 
     dialog.sentence.onClick = function() {
         handleRandomColor(dialog, texts);
+    }
+
+    dialog.notice.onClick = function() {
+        dialog.cancel.notify('onClick');
     }
 
     dialog.cancel.onClick = function() {
@@ -259,216 +264,231 @@ function showDialog() {
     var dialog = new Window('dialog');
     dialog.text = ui.title;
     dialog.orientation = 'column';
-    dialog.alignChildren = ['left', 'top'];
+    dialog.alignChildren = ['fill', 'top'];
     dialog.spacing = 10;
-    dialog.margins = [0, 0, 0, 0];
+    dialog.margins = 0;
 
     var group1 = dialog.add('group', undefined, { name: 'group1' });
     group1.orientation = 'row';
-    group1.alignChildren = ['left', 'center'];
+    group1.alignChildren = ['fill', 'center'];
     group1.spacing = 0;
-    group1.margins = [0, 0, 0, 0];
+    group1.margins = 0;
 
     var progressbar1 = group1.add('progressbar', undefined, undefined, { name: 'progressbar1' });
     progressbar1.maxvalue = 100;
     progressbar1.value = 0;
-    progressbar1.preferredSize.width = 343;
     progressbar1.preferredSize.height = 2;
-    progressbar1.alignment = ['left', 'top'];
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'column';
-    group2.alignChildren = ['left', 'center'];
+    group2.alignChildren = ['fill', 'center'];
     group2.spacing = 10;
-    group2.margins = [10, 0, 10, 10];
+    group2.margins = [16, 5, 16, 0];
 
-    var group3 = group2.add('group', undefined, { name: 'group3' });
-    group3.orientation = 'row';
-    group3.alignChildren = ['left', 'top'];
-    group3.spacing = 10;
-    group3.margins = 0;
-
-    var group4 = group3.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'row';
-    group4.alignChildren = ['left', 'center'];
-    group4.spacing = 10;
-    group4.margins = 0;
-
-    var panel1 = group4.add('panel', undefined, undefined, { name: 'panel1' });
-    panel1.text = ui.panel;
-    panel1.orientation = 'row';
-    panel1.alignChildren = ['left', 'top'];
+    var panel1 = group2.add('panel', undefined, undefined, { name: 'panel1' });
+    panel1.text = ui.threshold;
+    panel1.orientation = 'column';
+    panel1.alignChildren = ['fill', 'top'];
     panel1.spacing = 10;
     panel1.margins = 10;
 
-    var group5 = panel1.add('group', undefined, { name: 'group5' });
-    group5.orientation = 'column';
-    group5.alignChildren = ['center', 'center'];
-    group5.spacing = 5;
-    group5.margins = 0;
-    group5.alignment = ['left', 'center'];
+    var group3 = panel1.add('group', undefined, { name: 'group3' });
+    group3.orientation = 'row';
+    group3.alignChildren = ['left', 'center'];
+    group3.spacing = 10;
+    group3.margins = [0, 4, 0, 0];
 
-    var statictext1 = group5.add('statictext', undefined, undefined, { name: 'color1' });
+    var group4 = group3.add('group', undefined, { name: 'group4' });
+    group4.orientation = 'column';
+    group4.alignChildren = ['center', 'center'];
+    group4.spacing = 18;
+    group4.margins = 0;
+    group4.alignment = ['left', 'center'];
+
+    var statictext1 = group4.add('statictext', undefined, undefined, { name: 'statictext1' });
     statictext1.text = label.name1;
-    statictext1.preferredSize.height = 20;
 
-    var statictext2 = group5.add('statictext', undefined, undefined, { name: 'color2' });
+    var statictext2 = group4.add('statictext', undefined, undefined, { name: 'statictext2' });
     statictext2.text = label.name2;
-    statictext2.preferredSize.height = 20;
 
-    var statictext3 = group5.add('statictext', undefined, undefined, { name: 'color3' });
+    var statictext3 = group4.add('statictext', undefined, undefined, { name: 'statictext3' });
     statictext3.text = label.name3;
-    statictext3.preferredSize.height = 20;
 
-    var statictext4 = group5.add('statictext', undefined, undefined, { name: 'color4' });
+    var statictext4 = group4.add('statictext', undefined, undefined, { name: 'statictext4' });
     statictext4.text = label.name4;
-    statictext4.preferredSize.height = 20;
     statictext4.visible = (mode == CMYK) ? true : false;
 
-    var group6 = panel1.add('group', undefined, { name: 'group6' });
-    group6.orientation = 'column';
-    group6.alignChildren = ['left', 'center'];
-    group6.spacing = 4;
-    group6.margins = [0, 2, 0, 0];
-    group6.alignment = ['left', 'center'];
+    var group5 = group3.add('group', undefined, { name: 'group5' });
+    group5.preferredSize.width = 100;
+    group5.orientation = 'column';
+    group5.alignChildren = ['fill', 'center'];
+    group5.spacing = 16;
+    group5.margins = 0;
+    group5.alignment = ['fill', 'center'];
 
-    var slider1 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider1' });
+    var slider1 = group5.add('slider', undefined, undefined, undefined, undefined, { name: 'slider1' });
     slider1.minvalue = 0;
     slider1.maxvalue = threshold;
     slider1.value = threshold;
-    slider1.preferredSize.width = 150;
-    slider1.preferredSize.height = 20;
 
-    var slider2 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider2' });
+    var slider2 = group5.add('slider', undefined, undefined, undefined, undefined, { name: 'slider2' });
     slider2.minvalue = 0;
     slider2.maxvalue = threshold;
     slider2.value = threshold;
-    slider2.preferredSize.width = 150;
-    slider2.preferredSize.height = 20;
 
-    var slider3 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider3' });
+    var slider3 = group5.add('slider', undefined, undefined, undefined, undefined, { name: 'slider3' });
     slider3.minvalue = 0;
     slider3.maxvalue = threshold;
     slider3.value = threshold;
-    slider3.preferredSize.width = 150;
-    slider3.preferredSize.height = 20;
 
-    var slider4 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider4' });
+    var slider4 = group5.add('slider', undefined, undefined, undefined, undefined, { name: 'slider4' });
     slider4.minvalue = 0;
     slider4.maxvalue = threshold;
     slider4.value = 0;
-    slider4.preferredSize.width = 150;
-    slider4.preferredSize.height = 20;
     slider4.visible = (mode == CMYK) ? true : false;
 
-    var group7 = panel1.add('group', undefined, { name: 'group7' });
+    var group6 = group3.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'column';
+    group6.alignChildren = ['left', 'center'];
+    group6.spacing = 10;
+    group6.margins = 0;
+    group6.alignment = ['right', 'center'];
+
+    var edittext1 = group6.add('edittext', undefined, undefined, { name: 'edittext1' });
+    edittext1.text = threshold;
+    edittext1.preferredSize.width = 40;
+    edittext1.active = true;
+
+    var edittext2 = group6.add('edittext', undefined, undefined, { name: 'edittext2' });
+    edittext2.text = threshold;
+    edittext2.preferredSize.width = 40;
+
+    var edittext3 = group6.add('edittext', undefined, undefined, { name: 'edittext3' });
+    edittext3.text = threshold;
+    edittext3.preferredSize.width = 40;
+
+    var edittext4 = group6.add('edittext', undefined, undefined, { name: 'edittext4' });
+    edittext4.text = '0';
+    edittext4.preferredSize.width = 40;
+    edittext4.visible = (mode == CMYK) ? true : false;
+
+    var group7 = dialog.add('group', undefined, { name: 'group7' });
     group7.orientation = 'column';
-    group7.alignChildren = ['left', 'center'];
-    group7.spacing = 5;
-    group7.margins = 0;
-    group7.alignment = ['left', 'center'];
+    group7.alignChildren = ['fill', 'center'];
+    group7.spacing = 10;
+    group7.margins = [16, 0, 16, 0];
 
-    var statictext5 = group7.add('statictext', undefined, undefined, { name: 'value1' });
-    statictext5.text = threshold;
-    statictext5.preferredSize.width = 26;
-    statictext5.preferredSize.height = 20;
-
-    var statictext6 = group7.add('statictext', undefined, undefined, { name: 'value2' });
-    statictext6.text = threshold;
-    statictext6.preferredSize.width = 26;
-    statictext6.preferredSize.height = 20;
-
-    var statictext7 = group7.add('statictext', undefined, undefined, { name: 'value3' });
-    statictext7.text = threshold;
-    statictext7.preferredSize.width = 26;
-    statictext7.preferredSize.height = 20;
-
-    var statictext8 = group7.add('statictext', undefined, undefined, { name: 'value4' });
-    statictext8.text = '0';
-    statictext8.preferredSize.width = 26;
-    statictext8.preferredSize.height = 20;
-    statictext8.visible = (mode == CMYK) ? true : false;
-
-    var group8 = group3.add('group', undefined, { name: 'group8' });
-    group8.orientation = 'column';
-    group8.alignChildren = ['left', 'center'];
-    group8.spacing = 10;
-    group8.margins = [0, 8, 0, 0];
-
-    var button1 = group8.add('button', undefined, undefined, { name: 'random' });
-    button1.text = ui.random;
-    button1.preferredSize.width = 80;
-
-    var button2 = group8.add('button', undefined, undefined, { name: 'ok' });
-    button2.text = ui.ok;
-    button2.preferredSize.width = 80;
-
-    var button3 = group8.add('button', undefined, undefined, { name: 'cancel' });
-    button3.text = ui.cancel;
-    button3.preferredSize.width = 80;
-
-    var group9 = group2.add('group', undefined, { name: 'group9' });
-    group9.orientation = 'column';
-    group9.alignChildren = ['left', 'center'];
-    group9.spacing = 10;
-    group9.margins = 0;
-
-    var panel2 = group9.add('panel', undefined, undefined, { name: 'panel2' });
-    panel2.text = ui.option;
-    panel2.preferredSize.width = 231;
+    var panel2 = group7.add('panel', undefined, undefined, { name: 'panel2' });
+    panel2.text = ui.options;
     panel2.orientation = 'column';
     panel2.alignChildren = ['left', 'top'];
-    panel2.spacing = 5;
-    panel2.margins = [10, 15, 10, 5];
+    panel2.spacing = 10;
+    panel2.margins = 10;
 
-    var radiobutton1 = panel2.add('radiobutton', undefined, undefined, { name: 'word' });
+    var group8 = panel2.add('group', undefined, { name: 'group8' });
+    group8.orientation = 'row';
+    group8.alignChildren = ['left', 'center'];
+    group8.spacing = 10;
+    group8.margins = [0, 6, 0, 0];
+
+    var radiobutton1 = group8.add('radiobutton', undefined, undefined, { name: 'radiobutton1' });
     radiobutton1.text = ui.word;
-    radiobutton1.preferredSize.height = 20;
     radiobutton1.value = true;
 
-    var radiobutton2 = panel2.add('radiobutton', undefined, undefined, { name: 'character' });
+    var radiobutton2 = group8.add('radiobutton', undefined, undefined, { name: 'radiobutton2' });
     radiobutton2.text = ui.character;
-    radiobutton2.preferredSize.height = 20;
 
-    var radiobutton3 = panel2.add('radiobutton', undefined, undefined, { name: 'sentence' });
+    var radiobutton3 = group8.add('radiobutton', undefined, undefined, { name: 'radiobutton3' });
     radiobutton3.text = ui.sentence;
-    radiobutton3.preferredSize.height = 20;
+
+    var group9 = dialog.add('group', undefined, { name: 'group9' });
+    group9.orientation = 'row';
+    group9.alignChildren = ['right', 'center'];
+    group9.spacing = 10;
+    group9.margins = [16, 0, 16, 16];
+
+    var button1 = group9.add('button', undefined, undefined, { name: 'button1' });
+    button1.text = ui.random;
+    button1.preferredSize.width = 90;
+
+    // Work around the problem of not being able to undo with the esc key due to localization.
+    var button0 = group9.add('button', undefined, undefined, { name: 'button0' });
+    button0.text = 'Cancel';
+    button0.preferredSize.width = 20;
+    button0.hide();
+
+    var button2 = group9.add('button', undefined, undefined, { name: 'button2' });
+    button2.text = ui.cancel;
+    button2.preferredSize.width = 90;
+
+    var button3 = group9.add('button', undefined, undefined, { name: 'button3' });
+    button3.text = ui.ok;
+    button3.preferredSize.width = 90;
+
+    statictext1.addEventListener('click', function() {
+        edittext1.active = false;
+        edittext1.active = true;
+    });
+
+    statictext2.addEventListener('click', function() {
+        edittext2.active = false;
+        edittext2.active = true;
+    });
+
+    statictext3.addEventListener('click', function() {
+        edittext3.active = false;
+        edittext3.active = true;
+    });
+
+    statictext4.addEventListener('click', function() {
+        edittext4.active = false;
+        edittext4.active = true;
+    });
 
     slider1.onChanging = function() {
-        statictext5.text = Math.round(slider1.value);
+        edittext1.text = Math.round(slider1.value);
     }
 
     slider2.onChanging = function() {
-        statictext6.text = Math.round(slider2.value);
+        edittext2.text = Math.round(slider2.value);
     }
 
     slider3.onChanging = function() {
-        statictext7.text = Math.round(slider3.value);
+        edittext3.text = Math.round(slider3.value);
     }
 
     slider4.onChanging = function() {
-        statictext8.text = Math.round(slider4.value);
+        edittext4.text = Math.round(slider4.value);
     }
 
-    button2.onClick = function() {
-        dialog.close();
+    edittext1.onChanging = function() {
+        slider1.value = Math.round(edittext1.text);
+    }
+
+    edittext2.onChanging = function() {
+        slider2.value = Math.round(edittext2.text);
+    }
+
+    edittext3.onChanging = function() {
+        slider3.value = Math.round(edittext3.text);
+    }
+
+    edittext4.onChanging = function() {
+        slider4.value = Math.round(edittext4.text);
     }
 
     dialog.threshold1 = slider1;
     dialog.threshold2 = slider2;
     dialog.threshold3 = slider3;
     dialog.threshold4 = slider4;
-    dialog.label1 = statictext5;
-    dialog.label2 = statictext6;
-    dialog.label3 = statictext7;
-    dialog.label4 = statictext8;
     dialog.word = radiobutton1;
     dialog.character = radiobutton2;
     dialog.sentence = radiobutton3;
     dialog.progressbar = progressbar1;
     dialog.random = button1;
-    dialog.ok = button2;
-    dialog.cancel = button3;
+    dialog.notice = button2;
+    dialog.cancel = button0;
+    dialog.ok = button3;
     return dialog;
 }
 
@@ -477,14 +497,14 @@ function localizeUI() {
     return {
         title: {
             en: 'Random Text Color',
-            ja: 'Random Text Color'
+            ja: 'ランダムに配色'
         },
-        panel: {
+        threshold: {
             en: 'Threshold',
             ja: 'しきい値'
         },
-        option: {
-            en: 'Option',
+        options: {
+            en: 'Options',
             ja: 'オプション'
         },
         word: {

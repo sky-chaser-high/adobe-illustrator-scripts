@@ -18,7 +18,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.1
+   1.0.2
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -35,18 +35,10 @@
 
 function main() {
     var items = app.activeDocument.selection;
-    var colors = [];
-
-    if (items.length > 0) {
-        colors = getColors(items);
-    }
-    else {
-        colors = getSwatches();
-    }
-
-    if (colors.length > 1) {
-        createGradient(colors);
-    }
+    var colors = getColors(items);
+    if (!colors.length) colors = getSwatches();
+    if (colors.length < 2) return;
+    createGradient(colors);
 }
 
 
@@ -81,16 +73,17 @@ function createGradient(colors) {
 function getColors(items) {
     var colors = [];
     for (var i = 0; i < items.length; i++) {
-        switch (items[i].typename) {
+        var item = items[i];
+        switch (item.typename) {
             case 'PathItem':
-                if (!items[i].filled) continue;
-                colors = colors.concat(getColorObject(items[i].fillColor));
+                if (!item.filled) continue;
+                colors = colors.concat(getColorObject(item.fillColor));
                 break;
             case 'CompoundPathItem':
-                colors = colors.concat(getColors([items[i].pathItems[0]]));
+                colors = colors.concat(getColors([item.pathItems[0]]));
                 break;
             case 'GroupItem':
-                colors = colors.concat(getColors(items[i].pageItems));
+                colors = colors.concat(getColors(item.pageItems));
                 break;
         }
     }
@@ -102,7 +95,8 @@ function getSwatches() {
     var colors = [];
     var swatches = app.activeDocument.swatches.getSelected();
     for (var i = 0; i < swatches.length; i++) {
-        colors = colors.concat(getColorObject(swatches[i].color));
+        var swatch = swatches[i];
+        colors = colors.concat(getColorObject(swatch.color));
     }
     return colors;
 }

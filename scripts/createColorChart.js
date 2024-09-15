@@ -14,7 +14,7 @@
    6. Select Addition or Intensity.
       Addition: the value of the steps is added as is.
       Intensity: the percentage of the target color is added. It is equivalent to Edit > Edit Colors > Saturate.
-   7. Set the artboard size, color chip size, and units according to your preference.
+   7. Set the units, artboard size, and color chip size according to your preference.
 
    Notes
    Spot color, gradient, and pattern are not supported.
@@ -26,7 +26,7 @@
    Illustrator CS6 or higher
 
    Version
-   2.1.0
+   2.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -37,12 +37,12 @@
    =============================================================================================================================================== */
 
 (function() {
-    main();
+    if (isValidVersion()) main();
 })();
 
 
 function main() {
-    var items = (app.documents.length > 0) ? app.activeDocument.selection : [];
+    var items = (app.documents.length) ? app.activeDocument.selection : [];
     var color = getTargetColor(items);
     var dialog = showDialog(color);
 
@@ -50,7 +50,7 @@ function main() {
         var config = getConfiguration(dialog);
         if (!verify(config)) return;
 
-        createNewDocument(config.mode, config.unit, config.artboard.width, config.artboard.height);
+        createNewDocument(config.mode, config.units, config.artboard.width, config.artboard.height);
         app.executeMenuCommand('fitin');
 
         // target color
@@ -67,14 +67,16 @@ function main() {
 
 function createColorChart(config, item) {
     var margin = {
-        x: getUnit('2mm', 'pt'),
-        y: getUnit('4mm', 'pt')
+        x: convertUnits('2mm', 'pt'),
+        y: convertUnits('4mm', 'pt')
     };
+    var artboard = config.artboard;
+    var chip = config.chip;
 
     // Number of chips to create
     var count = {
-        x: Math.floor((config.artboard.width / 2 - config.chip.width / 2) / (config.chip.width + margin.x)),
-        y: Math.floor((config.artboard.height / 2 - config.chip.height / 2) / (config.chip.height + margin.y))
+        x: Math.floor((artboard.width / 2 - chip.width / 2) / (chip.width + margin.x)),
+        y: Math.floor((artboard.height / 2 - chip.height / 2) / (chip.height + margin.y))
     };
 
     var baseItem = getColorItem(item);
@@ -209,17 +211,11 @@ function resetColor(item, base, orientation) {
 function createColorChip(mode, color, item) {
     var layer = app.activeDocument.activeLayer;
     var chip = layer.pathItems.rectangle(0, 0, item.width, item.height);
+    chip.stroked = false;
+    chip.filled = true;
+    chip.fillColor = setFillColor(mode, color);
     chip.top = item.top;
     chip.left = item.left;
-    chip.filled = true;
-    chip.stroked = false;
-
-    if (mode == 'CMYK') {
-        chip.fillColor = setCMYKColor(color.color1, color.color2, color.color3, color.color4);
-    }
-    else {
-        chip.fillColor = setRGBColor(color.color1, color.color2, color.color3);
-    }
     return chip;
 }
 
@@ -266,9 +262,11 @@ function getCenterPosition(width, height) {
         x: x1 + document.width / 2,
         y: y1 - document.height / 2
     };
+    var top = center.y + height / 2;
+    var left = center.x - width / 2;
     return {
-        top: center.y + height / 2,
-        left: center.x - width / 2,
+        top: top,
+        left: left,
         width: width,
         height: height
     };
@@ -343,6 +341,16 @@ function isValidColor(kind) {
 }
 
 
+function setFillColor(mode, color) {
+    if (mode == 'CMYK') {
+        return setCMYKColor(color.color1, color.color2, color.color3, color.color4);
+    }
+    else {
+        return setRGBColor(color.color1, color.color2, color.color3);
+    }
+}
+
+
 function setCMYKColor(c, m, y, k) {
     var cyan = c;
     var magenta = m;
@@ -393,32 +401,40 @@ function setRGBColor(r, g, b) {
 
 
 function createNewDocument(mode, unit, width, height) {
+    var title = 'Color Chart';
     var preset = new DocumentPreset();
-    preset.title = 'Color Chart';
+    preset.title = title;
     preset.width = width;
     preset.height = height;
-    preset.units = getRulerUnits(unit);
     preset.colorMode = (mode == 'CMYK') ? DocumentColorSpace.CMYK : DocumentColorSpace.RGB;
+    try {
+        preset.units = setRulerUnits(unit);
+    }
+    catch (err) { }
 
-    var document = app.documents.addDocument('Color Chart', preset);
+    var document = app.documents.addDocument(title, preset);
     var artboard = document.artboards[0];
     artboard.artboardRect = [0, 0, width, height * -1];
 }
 
 
-function getRulerUnits(unit) {
-    switch (unit) {
-        case 'mm': return RulerUnits.Millimeters;
-        case 'cm': return RulerUnits.Centimeters;
-        case 'inch': return RulerUnits.Inches;
-        case 'pt': return RulerUnits.Points;
-        case 'px': return RulerUnits.Pixels;
-        default: return RulerUnits.Millimeters;
-    }
+function round(value) {
+    var digits = 10000;
+    return Math.round(value * digits) / digits;
 }
 
 
-function getUnit(value, unit) {
+function getValue(text) {
+    var twoByteChar = /[！-～]/g;
+    var value = text.replace(twoByteChar, function(str) {
+        return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
+    });
+    if (isNaN(value) || !value) return 0;
+    return Number(value);
+}
+
+
+function convertUnits(value, unit) {
     try {
         return Number(UnitValue(value).as(unit));
     }
@@ -428,13 +444,102 @@ function getUnit(value, unit) {
 }
 
 
-function getConfiguration(dialog) {
-    var color1 = isNaN(Number(dialog.color1.text)) ? 0 : Number(dialog.color1.text);
-    var color2 = isNaN(Number(dialog.color2.text)) ? 0 : Number(dialog.color2.text);
-    var color3 = isNaN(Number(dialog.color3.text)) ? 0 : Number(dialog.color3.text);
-    var color4 = isNaN(Number(dialog.color4.text)) ? 0 : Number(dialog.color4.text);
+function setRulerUnits(units) {
+    var unitSymbol = getUnitSymbol();
+    switch (units) {
+        case unitSymbol.px: return RulerUnits.Pixels;
+        case unitSymbol.pt: return RulerUnits.Points;
+        case unitSymbol.pc: return RulerUnits.Picas;
+        case unitSymbol.inch: return RulerUnits.Inches;
+        case unitSymbol.mm: return RulerUnits.Millimeters;
+        case unitSymbol.cm: return RulerUnits.Centimeters;
 
-    var vertical = '', horizontal = '';
+        case unitSymbol.ft: return RulerUnits.Feet;
+        case unitSymbol.yd: return RulerUnits.Yards;
+        case unitSymbol.meter: return RulerUnits.Meters;
+    }
+}
+
+
+function getRulerUnits() {
+    var unit = getUnitSymbol();
+    if (!app.documents.length) return unit.pt;
+
+    var document = app.activeDocument;
+    var src = document.fullName;
+    var ruler = document.rulerUnits;
+    try {
+        switch (ruler) {
+            case RulerUnits.Pixels: return unit.px;
+            case RulerUnits.Points: return unit.pt;
+            case RulerUnits.Picas: return unit.pc;
+            case RulerUnits.Inches: return unit.inch;
+            case RulerUnits.Millimeters: return unit.mm;
+            case RulerUnits.Centimeters: return unit.cm;
+
+            case RulerUnits.Feet: return unit.ft;
+            case RulerUnits.Yards: return unit.yd;
+            case RulerUnits.Meters: return unit.meter;
+        }
+    }
+    catch (err) {
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return unit.ft;
+            case 'Yards': return unit.yd;
+            case 'Meters': return unit.meter;
+        }
+    }
+    return unit.pt;
+}
+
+
+function xmpRulerUnits(src) {
+    if (!ExternalObject.AdobeXMPScript) {
+        ExternalObject.AdobeXMPScript = new ExternalObject('lib:AdobeXMPScript');
+    }
+    var xmpFile = new XMPFile(src.fsName, XMPConst.FILE_UNKNOWN, XMPConst.OPEN_FOR_READ);
+    var xmpPackets = xmpFile.getXMP();
+    var xmp = new XMPMeta(xmpPackets.serialize());
+
+    var namespace = 'http://ns.adobe.com/xap/1.0/t/pg/';
+    var prop = 'xmpTPg:MaxPageSize';
+    var unit = prop + '/stDim:unit';
+
+    var ruler = xmp.getProperty(namespace, unit).value;
+    return ruler;
+}
+
+
+function getUnitSymbol() {
+    return {
+        px: 'px',
+        pt: 'pt',
+        pc: 'pc',
+        inch: 'in',
+        ft: 'ft',
+        yd: 'yd',
+        mm: 'mm',
+        cm: 'cm',
+        meter: 'm'
+    };
+}
+
+
+function isValidVersion() {
+    var cs6 = 16;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs6) return false;
+    return true;
+}
+
+
+function getConfiguration(dialog) {
+    var color1 = getValue(dialog.color1.text);
+    var color2 = getValue(dialog.color2.text);
+    var color3 = getValue(dialog.color3.text);
+    var color4 = getValue(dialog.color4.text);
+
+    var vertical, horizontal;
 
     if (dialog.vertical.color1.value) {
         vertical = dialog.vertical.color1.text;
@@ -462,19 +567,18 @@ function getConfiguration(dialog) {
         horizontal = dialog.horizontal.color4.text;
     }
 
-    var step = isNaN(Number(dialog.step.text)) ? 0 : Number(dialog.step.text);
+    var step = getValue(dialog.step.text);
+    var units = dialog.units.selection.toString();
 
     var artboard = {
-        width: isNaN(Number(dialog.artboard.width.text)) ? 0 : Number(dialog.artboard.width.text),
-        height: isNaN(Number(dialog.artboard.height.text)) ? 0 : Number(dialog.artboard.height.text)
+        width: getValue(dialog.artboard.width.text),
+        height: getValue(dialog.artboard.height.text)
     };
 
     var chip = {
-        width: isNaN(Number(dialog.chip.width.text)) ? 0 : Number(dialog.chip.width.text),
-        height: isNaN(Number(dialog.chip.height.text)) ? 0 : Number(dialog.chip.height.text)
+        width: getValue(dialog.chip.width.text),
+        height: getValue(dialog.chip.height.text)
     };
-
-    var unit = dialog.unit.selection.toString();
 
     return {
         mode: (dialog.cmyk.value) ? 'CMYK' : 'RGB',
@@ -492,110 +596,123 @@ function getConfiguration(dialog) {
         },
         kind: (dialog.addition.value) ? 'ADD' : 'INTENSITY',
         artboard: {
-            width: getUnit(artboard.width + unit, 'pt'),
-            height: getUnit(artboard.height + unit, 'pt')
+            width: convertUnits(artboard.width + units, 'pt'),
+            height: convertUnits(artboard.height + units, 'pt')
         },
         chip: {
-            width: getUnit(chip.width + unit, 'pt'),
-            height: getUnit(chip.height + unit, 'pt')
+            width: convertUnits(chip.width + units, 'pt'),
+            height: convertUnits(chip.height + units, 'pt')
         },
-        unit: unit
+        units: units
     };
 }
 
 
-function getInitialValues(unit) {
-    switch (unit) {
-        case RulerUnits.Millimeters:
-            return {
-                artboard: { width: 210, height: 297 },
-                chip: { width: 20, height: 20 },
-                unit: 0
-            };
-        case RulerUnits.Centimeters:
-            return {
-                artboard: { width: 21, height: 29.7 },
-                chip: { width: 2, height: 2 },
-                unit: 1
-            };
-        case RulerUnits.Inches:
-            return {
-                artboard: { width: 8.27, height: 11.69 },
-                chip: { width: 0.79, height: 0.79 },
-                unit: 2
-            };
-        case RulerUnits.Points:
-            return {
-                artboard: { width: 595, height: 842 },
-                chip: { width: 57, height: 57 },
-                unit: 3
-            };
-        case RulerUnits.Pixels:
-            return {
-                artboard: { width: 595, height: 842 },
-                chip: { width: 57, height: 57 },
-                unit: 4
-            };
-        default:
-            return {
-                artboard: { width: 210, height: 297 },
-                chip: { width: 20, height: 20 },
-                unit: 0
-            };
+function getInitialValues(units) {
+    var width = convertUnits('210mm', units);
+    var height = convertUnits('297mm', units);
+    var chip = convertUnits('20mm', units);
+    return {
+        artboard: {
+            width: round(width),
+            height: round(height)
+        },
+        chip: {
+            width: round(chip),
+            height: round(chip)
+        },
+        selection: setRulerSelection(units)
+    };
+}
+
+
+function setRulerSelection(units) {
+    try {
+        var ruler = setRulerUnits(units);
+        switch (ruler) {
+            case RulerUnits.Pixels: return 0;
+            case RulerUnits.Points: return 1;
+            case RulerUnits.Picas: return 2;
+            case RulerUnits.Inches: return 3;
+            case RulerUnits.Millimeters: return 6;
+            case RulerUnits.Centimeters: return 7;
+
+            case RulerUnits.Feet: return 4;
+            case RulerUnits.Yards: return 5;
+            case RulerUnits.Meters: return 8;
+        }
+    }
+    catch (err) {
+        var src = app.activeDocument.fullName;
+        switch (xmpRulerUnits(src)) {
+            case 'Feet': return 4;
+            case 'Yards': return 5;
+            case 'Meters': return 8;
+        }
     }
 }
 
 
 function verify(config) {
+    $.localize = true;
+    var error = errorMessage();
     var message;
+
     var color = config.color;
     var sum = color.color1 + color.color2 + color.color3 + color.color4;
-    if (sum < 1) {
-        message = {
-            en: 'Enter a color value.',
-            ja: 'カラー数値を入力してください。'
-        };
+
+    if (!sum) {
+        message = error.color;
+    }
+    if (!config.vertical) {
+        message = error.vertical;
+    }
+    if (!config.horizontal) {
+        message = error.horizontal;
+    }
+    if (!config.step.x && !config.step.y) {
+        message = error.step;
+    }
+    if (!config.artboard.width || !config.artboard.height) {
+        message = error.artboard;
+    }
+    if (!config.chip.width || !config.chip.height) {
+        message = error.chip;
     }
 
-    if (config.vertical == '') {
-        message = {
-            en: 'Select a vertical direction.',
-            ja: '上下方向を選択してください。'
-        };
-    }
-
-    if (config.horizontal == '') {
-        message = {
-            en: 'Select a horizontal direction.',
-            ja: '左右方向を選択してください。'
-        };
-    }
-
-    if (config.step.x < 1 && config.step.y < 1) {
-        message = {
-            en: 'Enter a step value.',
-            ja: '階調を入力してください。'
-        };
-    }
-
-    if (config.artboard.width < 1 && config.artboard.height < 1) {
-        message = {
-            en: 'Enter a artboard size.',
-            ja: 'アートボードサイズを入力してください。'
-        };
-    }
-
-    if (config.chip.width < 1 && config.chip.height < 1) {
-        message = {
-            en: 'Enter a color chip size.',
-            ja: 'カラーチップサイズを入力してください。'
-        };
-    }
-
-    $.localize = true;
     if (!message) return true;
     alert(message);
     return false;
+}
+
+
+function errorMessage() {
+    return {
+        color: {
+            en: 'Enter a color value.',
+            ja: 'カラー数値を入力してください。'
+        },
+        vertical: {
+            en: 'Select a vertical direction.',
+            ja: '垂直方向を選択してください。'
+        },
+        horizontal: {
+            en: 'Select a horizontal direction.',
+            ja: '水平方向を選択してください。'
+        },
+        step: {
+            en: 'Enter a step value.',
+            ja: '階調を入力してください。'
+        },
+        artboard: {
+            en: 'Enter a artboard size.',
+            ja: 'アートボードサイズを入力してください。'
+        },
+        chip: {
+            en: 'Enter a color chip size.',
+            ja: 'カラーチップサイズを入力してください。'
+        }
+    };
 }
 
 
@@ -603,484 +720,377 @@ function showDialog(item) {
     $.localize = true;
     var ui = localizeUI();
 
+    var CMYK = DocumentColorSpace.CMYK;
+    var RGB = DocumentColorSpace.RGB;
+
     var docs = app.documents;
-    var ruler = (docs.length > 0) ? app.activeDocument.rulerUnits : RulerUnits.Millimeters;
+    var ruler = (docs.length) ? getRulerUnits() : 'mm';
     var initial = getInitialValues(ruler);
 
-    var mode = (docs.length > 0) ? app.activeDocument.documentColorSpace : DocumentColorSpace.CMYK;
-    var maxvalue = (mode == DocumentColorSpace.CMYK) ? 100 : 255;
+    var mode = (docs.length) ? app.activeDocument.documentColorSpace : CMYK;
+    var maxvalue = (mode == CMYK) ? 100 : 255;
+    var label = {
+        name1: (mode == CMYK) ? 'C' : 'R',
+        name2: (mode == CMYK) ? 'M' : 'G',
+        name3: (mode == CMYK) ? 'Y' : 'B',
+        name4: (mode == CMYK) ? 'K' : ''
+    };
 
     var dialog = new Window('dialog');
     dialog.text = ui.title;
     dialog.orientation = 'column';
-    dialog.alignChildren = ['left', 'top'];
+    dialog.alignChildren = ['fill', 'top'];
     dialog.spacing = 10;
     dialog.margins = 16;
 
-    var group1 = dialog.add('group', undefined, { name: 'group1' });
-    group1.orientation = 'row';
-    group1.alignChildren = ['left', 'center'];
-    group1.spacing = 10;
-    group1.margins = 0;
-
-    var panel1 = group1.add('panel', undefined, undefined, { name: 'panel1' });
+    var panel1 = dialog.add('panel', undefined, undefined, { name: 'panel1' });
     panel1.text = ui.mode;
-    panel1.preferredSize.width = 340;
     panel1.orientation = 'column';
     panel1.alignChildren = ['left', 'top'];
     panel1.spacing = 10;
     panel1.margins = 10;
 
-    var group2 = panel1.add('group', undefined, { name: 'group2' });
+    var group1 = panel1.add('group', undefined, { name: 'group1' });
+    group1.orientation = 'row';
+    group1.alignChildren = ['left', 'center'];
+    group1.spacing = 10;
+    group1.margins = [0, 6, 0, 0];
+
+    var radiobutton1 = group1.add('radiobutton', undefined, undefined, { name: 'radiobutton1' });
+    radiobutton1.text = 'CMYK';
+    radiobutton1.value = (mode == CMYK) ? true : false;
+
+    var radiobutton2 = group1.add('radiobutton', undefined, undefined, { name: 'radiobutton2' });
+    radiobutton2.text = 'RGB';
+    radiobutton2.value = (mode == RGB) ? true : false;
+
+    var panel2 = dialog.add('panel', undefined, undefined, { name: 'panel2' });
+    panel2.text = ui.color;
+    panel2.orientation = 'column';
+    panel2.alignChildren = ['fill', 'top'];
+    panel2.spacing = 10;
+    panel2.margins = 10;
+
+    var group2 = panel2.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
     group2.alignChildren = ['left', 'center'];
     group2.spacing = 10;
     group2.margins = [0, 6, 0, 0];
 
-    var radiobutton1 = group2.add('radiobutton', undefined, undefined, { name: 'radiobutton1' });
-    radiobutton1.text = 'CMYK';
-    radiobutton1.value = (mode == DocumentColorSpace.CMYK) ? true : false;
-
-    var radiobutton2 = group2.add('radiobutton', undefined, undefined, { name: 'radiobutton2' });
-    radiobutton2.text = 'RGB';
-    radiobutton2.value = (mode == DocumentColorSpace.RGB) ? true : false;
-
-    var group3 = dialog.add('group', undefined, { name: 'group3' });
-    group3.orientation = 'row';
-    group3.alignChildren = ['left', 'center'];
-    group3.spacing = 10;
+    var group3 = group2.add('group', undefined, { name: 'group3' });
+    group3.orientation = 'column';
+    group3.alignChildren = ['center', 'center'];
+    group3.spacing = 18;
     group3.margins = 0;
+    group3.alignment = ['left', 'center'];
 
-    var panel2 = group3.add('panel', undefined, undefined, { name: 'panel2' });
-    panel2.text = ui.color;
-    panel2.preferredSize.width = 340;
-    panel2.orientation = 'column';
-    panel2.alignChildren = ['right', 'top'];
-    panel2.spacing = 10;
-    panel2.margins = 10;
-
-    var group4 = panel2.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'row';
-    group4.alignChildren = ['left', 'center'];
-    group4.spacing = 10;
-    group4.margins = 0;
-
-    var group5 = group4.add('group', undefined, { name: 'group5' });
-    group5.preferredSize.width = 14;
-    group5.orientation = 'row';
-    group5.alignChildren = ['center', 'center'];
-    group5.spacing = 10;
-    group5.margins = 0;
-
-    var statictext1 = group5.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = 'C';
+    var statictext1 = group3.add('statictext', undefined, undefined, { name: 'statictext1' });
+    statictext1.text = label.name1;
     statictext1.justify = 'center';
-    statictext1.preferredSize.width = 15;
+    statictext1.preferredSize.width = 14;
+
+    var statictext2 = group3.add('statictext', undefined, undefined, { name: 'statictext2' });
+    statictext2.text = label.name2;
+    statictext2.justify = 'center';
+    statictext2.preferredSize.width = 14;
+
+    var statictext3 = group3.add('statictext', undefined, undefined, { name: 'statictext3' });
+    statictext3.text = label.name3;
+    statictext3.justify = 'center';
+    statictext3.preferredSize.width = 14;
+
+    var statictext4 = group3.add('statictext', undefined, undefined, { name: 'statictext4' });
+    statictext4.text = label.name4;
+    statictext4.justify = 'center';
+    statictext4.preferredSize.width = 14;
+    statictext4.visible = (mode == CMYK) ? true : false;
+
+    var group4 = group2.add('group', undefined, { name: 'group4' });
+    group4.orientation = 'column';
+    group4.alignChildren = ['fill', 'center'];
+    group4.spacing = 16;
+    group4.margins = 0;
+    group4.alignment = ['fill', 'center'];
 
     var slider1 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider1' });
     slider1.minvalue = 0;
     slider1.maxvalue = maxvalue;
     slider1.value = item.color1;
-    slider1.preferredSize.width = 215;
 
-    var edittext1 = group4.add('edittext', undefined, undefined, { name: 'edittext1' });
-    edittext1.text = item.color1;
-    edittext1.preferredSize.width = 45;
-    edittext1.preferredSize.height = 20;
-
-    var statictext2 = group4.add('statictext', undefined, undefined, { name: 'statictext2' });
-    statictext2.text = '%';
-
-    var group6 = panel2.add('group', undefined, { name: 'group6' });
-    group6.orientation = 'row';
-    group6.alignChildren = ['left', 'center'];
-    group6.spacing = 10;
-    group6.margins = 0;
-
-    var group7 = group6.add('group', undefined, { name: 'group7' });
-    group7.preferredSize.width = 14;
-    group7.orientation = 'row';
-    group7.alignChildren = ['center', 'center'];
-    group7.spacing = 10;
-    group7.margins = 0;
-
-    var statictext3 = group7.add('statictext', undefined, undefined, { name: 'statictext3' });
-    statictext3.text = 'M';
-    statictext3.justify = 'center';
-    statictext3.preferredSize.width = 15;
-
-    var slider2 = group6.add('slider', undefined, undefined, undefined, undefined, { name: 'slider2' });
+    var slider2 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider2' });
     slider2.minvalue = 0;
     slider2.maxvalue = maxvalue;
     slider2.value = item.color2;
-    slider2.preferredSize.width = 215;
 
-    var edittext2 = group6.add('edittext', undefined, undefined, { name: 'edittext2' });
-    edittext2.text = item.color2;
-    edittext2.preferredSize.width = 45;
-    edittext2.preferredSize.height = 20;
-
-    var statictext4 = group6.add('statictext', undefined, undefined, { name: 'statictext4' });
-    statictext4.text = '%';
-
-    var group8 = panel2.add('group', undefined, { name: 'group8' });
-    group8.orientation = 'row';
-    group8.alignChildren = ['left', 'center'];
-    group8.spacing = 10;
-    group8.margins = 0;
-
-    var group9 = group8.add('group', undefined, { name: 'group9' });
-    group9.preferredSize.width = 14;
-    group9.orientation = 'row';
-    group9.alignChildren = ['center', 'center'];
-    group9.spacing = 10;
-    group9.margins = 0;
-
-    var statictext5 = group9.add('statictext', undefined, undefined, { name: 'statictext5' });
-    statictext5.text = 'Y';
-    statictext5.justify = 'center';
-    statictext5.preferredSize.width = 15;
-
-    var slider3 = group8.add('slider', undefined, undefined, undefined, undefined, { name: 'slider3' });
+    var slider3 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider3' });
     slider3.minvalue = 0;
     slider3.maxvalue = maxvalue;
     slider3.value = item.color3;
-    slider3.preferredSize.width = 215;
 
-    var edittext3 = group8.add('edittext', undefined, undefined, { name: 'edittext3' });
-    edittext3.text = item.color3;
-    edittext3.preferredSize.width = 45;
-    edittext3.preferredSize.height = 20;
-
-    var statictext6 = group8.add('statictext', undefined, undefined, { name: 'statictext6' });
-    statictext6.text = '%';
-
-    var group10 = panel2.add('group', undefined, { name: 'group10' });
-    group10.orientation = 'row';
-    group10.alignChildren = ['left', 'center'];
-    group10.spacing = 10;
-    group10.margins = 0;
-
-    var group11 = group10.add('group', undefined, { name: 'group11' });
-    group11.preferredSize.width = 14;
-    group11.orientation = 'row';
-    group11.alignChildren = ['center', 'center'];
-    group11.spacing = 10;
-    group11.margins = 0;
-
-    var statictext7 = group11.add('statictext', undefined, undefined, { name: 'statictext7' });
-    statictext7.text = 'K';
-    statictext7.justify = 'center';
-    statictext7.preferredSize.width = 15;
-
-    var slider4 = group10.add('slider', undefined, undefined, undefined, undefined, { name: 'slider4' });
+    var slider4 = group4.add('slider', undefined, undefined, undefined, undefined, { name: 'slider4' });
     slider4.minvalue = 0;
     slider4.maxvalue = maxvalue;
     slider4.value = item.color4;
-    slider4.preferredSize.width = 215;
+    slider4.visible = (mode == CMYK) ? true : false;
 
-    var edittext4 = group10.add('edittext', undefined, undefined, { name: 'edittext4' });
+    var group5 = group2.add('group', undefined, { name: 'group5' });
+    group5.orientation = 'column';
+    group5.alignChildren = ['left', 'center'];
+    group5.spacing = 10;
+    group5.margins = 0;
+    group5.alignment = ['right', 'center'];
+
+    var edittext1 = group5.add('edittext', undefined, undefined, { name: 'edittext1' });
+    edittext1.text = item.color1;
+    edittext1.preferredSize.width = 40;
+
+    var edittext2 = group5.add('edittext', undefined, undefined, { name: 'edittext2' });
+    edittext2.text = item.color2;
+    edittext2.preferredSize.width = 40;
+
+    var edittext3 = group5.add('edittext', undefined, undefined, { name: 'edittext3' });
+    edittext3.text = item.color3;
+    edittext3.preferredSize.width = 40;
+
+    var edittext4 = group5.add('edittext', undefined, undefined, { name: 'edittext4' });
     edittext4.text = item.color4;
-    edittext4.preferredSize.width = 45;
-    edittext4.preferredSize.height = 20;
+    edittext4.preferredSize.width = 40;
+    edittext4.visible = (mode == CMYK) ? true : false;
 
-    var statictext8 = group10.add('statictext', undefined, undefined, { name: 'statictext8' });
+    var group6 = group2.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'column';
+    group6.alignChildren = ['left', 'center'];
+    group6.spacing = 18;
+    group6.margins = 0;
+    group6.alignment = ['right', 'center'];
+
+    var statictext5 = group6.add('statictext', undefined, undefined, { name: 'statictext5' });
+    statictext5.text = '%';
+
+    var statictext6 = group6.add('statictext', undefined, undefined, { name: 'statictext6' });
+    statictext6.text = '%';
+
+    var statictext7 = group6.add('statictext', undefined, undefined, { name: 'statictext7' });
+    statictext7.text = '%';
+
+    var statictext8 = group6.add('statictext', undefined, undefined, { name: 'statictext8' });
     statictext8.text = '%';
+    statictext8.visible = (mode == CMYK) ? true : false;
 
-    var group12 = dialog.add('group', undefined, { name: 'group12' });
-    group12.orientation = 'row';
-    group12.alignChildren = ['left', 'center'];
-    group12.spacing = 10;
-    group12.margins = 0;
-
-    var panel3 = group12.add('panel', undefined, undefined, { name: 'panel3' });
+    var panel3 = dialog.add('panel', undefined, undefined, { name: 'panel3' });
     panel3.text = ui.orientation;
-    panel3.preferredSize.width = 340;
     panel3.orientation = 'row';
     panel3.alignChildren = ['left', 'fill'];
     panel3.spacing = 10;
     panel3.margins = 10;
 
-    var group13 = panel3.add('group', undefined, { name: 'group13' });
-    group13.orientation = 'column';
-    group13.alignChildren = ['right', 'center'];
-    group13.spacing = 10;
-    group13.margins = 0;
+    var group7 = panel3.add('group', undefined, { name: 'group7' });
+    group7.orientation = 'row';
+    group7.alignChildren = ['left', 'center'];
+    group7.spacing = 10;
+    group7.margins = [0, 4, 0, 0];
 
-    var group14 = group13.add('group', undefined, { name: 'group14' });
-    group14.orientation = 'row';
-    group14.alignChildren = ['left', 'center'];
-    group14.spacing = 10;
-    group14.margins = [0, 3, 0, 0];
+    var group8 = group7.add('group', undefined, { name: 'group8' });
+    group8.orientation = 'column';
+    group8.alignChildren = ['right', 'center'];
+    group8.spacing = 18;
+    group8.margins = 0;
 
-    var statictext9 = group14.add('statictext', undefined, undefined, { name: 'statictext9' });
+    var statictext9 = group8.add('statictext', undefined, undefined, { name: 'statictext9' });
     statictext9.text = ui.vertical;
     statictext9.helpTip = ui.tip.vertical;
 
-    var group15 = group13.add('group', undefined, { name: 'group15' });
-    group15.orientation = 'row';
-    group15.alignChildren = ['left', 'center'];
-    group15.spacing = 10;
-    group15.margins = [0, 7, 0, 0];
-
-    var statictext10 = group15.add('statictext', undefined, undefined, { name: 'statictext10' });
+    var statictext10 = group8.add('statictext', undefined, undefined, { name: 'statictext10' });
     statictext10.text = ui.horizontal;
     statictext10.helpTip = ui.tip.horizontal;
 
-    var group16 = group13.add('group', undefined, { name: 'group16' });
-    group16.orientation = 'row';
-    group16.alignChildren = ['left', 'center'];
-    group16.spacing = 10;
-    group16.margins = [0, 6, 0, 0];
+    var statictext11 = group8.add('statictext', undefined, undefined, { name: 'statictext11' });
+    statictext11.text = ui.steps;
 
-    var statictext11 = group16.add('statictext', undefined, undefined, { name: 'statictext11' });
-    statictext11.text = ui.step;
+    var group9 = group7.add('group', undefined, { name: 'group9' });
+    group9.orientation = 'column';
+    group9.alignChildren = ['left', 'center'];
+    group9.spacing = 10;
+    group9.margins = [0, 6, 0, 0];
 
-    var group17 = panel3.add('group', undefined, { name: 'group17' });
-    group17.orientation = 'column';
-    group17.alignChildren = ['left', 'center'];
-    group17.spacing = 10;
-    group17.margins = [0, 10, 0, 0];
+    var group10 = group9.add('group', undefined, { name: 'group10' });
+    group10.orientation = 'row';
+    group10.alignChildren = ['left', 'center'];
+    group10.spacing = 10;
+    group10.margins = 0;
 
-    var group18 = group17.add('group', undefined, { name: 'group18' });
-    group18.orientation = 'row';
-    group18.alignChildren = ['left', 'center'];
-    group18.spacing = 10;
-    group18.margins = 0;
-
-    var radiobutton3 = group18.add('radiobutton', undefined, undefined, { name: 'radiobutton3' });
-    radiobutton3.text = 'C';
+    var radiobutton3 = group10.add('radiobutton', undefined, undefined, { name: 'radiobutton3' });
+    radiobutton3.text = label.name1;
     radiobutton3.preferredSize.width = 40;
 
-    var radiobutton4 = group18.add('radiobutton', undefined, undefined, { name: 'radiobutton4' });
-    radiobutton4.text = 'M';
+    var radiobutton4 = group10.add('radiobutton', undefined, undefined, { name: 'radiobutton4' });
+    radiobutton4.text = label.name2;
     radiobutton4.preferredSize.width = 40;
 
-    var radiobutton5 = group18.add('radiobutton', undefined, undefined, { name: 'radiobutton5' });
-    radiobutton5.text = 'Y';
+    var radiobutton5 = group10.add('radiobutton', undefined, undefined, { name: 'radiobutton5' });
+    radiobutton5.text = label.name3;
     radiobutton5.preferredSize.width = 40;
 
-    var radiobutton6 = group18.add('radiobutton', undefined, undefined, { name: 'radiobutton6' });
-    radiobutton6.text = 'K';
+    var radiobutton6 = group10.add('radiobutton', undefined, undefined, { name: 'radiobutton6' });
+    radiobutton6.text = label.name4;
     radiobutton6.preferredSize.width = 40;
 
-    var group19 = group17.add('group', undefined, { name: 'group19' });
-    group19.orientation = 'row';
-    group19.alignChildren = ['left', 'center'];
-    group19.spacing = 10;
-    group19.margins = [0, 3, 0, 0];
+    var group11 = group9.add('group', undefined, { name: 'group11' });
+    group11.orientation = 'row';
+    group11.alignChildren = ['left', 'center'];
+    group11.spacing = 10;
+    group11.margins = [0, 4, 0, 0];
 
-    var radiobutton7 = group19.add('radiobutton', undefined, undefined, { name: 'radiobutton7' });
-    radiobutton7.text = 'C';
+    var radiobutton7 = group11.add('radiobutton', undefined, undefined, { name: 'radiobutton7' });
+    radiobutton7.text = label.name1;
     radiobutton7.preferredSize.width = 40;
 
-    var radiobutton8 = group19.add('radiobutton', undefined, undefined, { name: 'radiobutton8' });
-    radiobutton8.text = 'M';
+    var radiobutton8 = group11.add('radiobutton', undefined, undefined, { name: 'radiobutton8' });
+    radiobutton8.text = label.name2;
     radiobutton8.preferredSize.width = 40;
 
-    var radiobutton9 = group19.add('radiobutton', undefined, undefined, { name: 'radiobutton9' });
-    radiobutton9.text = 'Y';
+    var radiobutton9 = group11.add('radiobutton', undefined, undefined, { name: 'radiobutton9' });
+    radiobutton9.text = label.name3;
     radiobutton9.preferredSize.width = 40;
 
-    var radiobutton10 = group19.add('radiobutton', undefined, undefined, { name: 'radiobutton10' });
-    radiobutton10.text = 'K';
+    var radiobutton10 = group11.add('radiobutton', undefined, undefined, { name: 'radiobutton10' });
+    radiobutton10.text = label.name4;
     radiobutton10.preferredSize.width = 40;
 
-    var group20 = group17.add('group', undefined, { name: 'group20' });
-    group20.orientation = 'row';
-    group20.alignChildren = ['left', 'center'];
-    group20.spacing = 10;
-    group20.margins = 0;
+    var group12 = group9.add('group', undefined, { name: 'group12' });
+    group12.orientation = 'row';
+    group12.alignChildren = ['left', 'center'];
+    group12.spacing = 10;
+    group12.margins = 0;
 
-    var edittext5 = group20.add('edittext', undefined, undefined, { name: 'edittext5' });
+    var edittext5 = group12.add('edittext', undefined, undefined, { name: 'edittext5' });
     edittext5.text = '5';
-    edittext5.preferredSize.width = 45;
-    edittext5.preferredSize.height = 20;
+    edittext5.preferredSize.width = 40;
 
-    var statictext12 = group20.add('statictext', undefined, undefined, { name: 'statictext12' });
+    var statictext12 = group12.add('statictext', undefined, undefined, { name: 'statictext12' });
     statictext12.text = '%';
 
-    var group21 = group20.add('group', undefined, { name: 'group21' });
-    group21.orientation = 'row';
-    group21.alignChildren = ['left', 'center'];
-    group21.spacing = 10;
-    group21.margins = [0, 3, 0, 0];
+    var group13 = group12.add('group', undefined, { name: 'group13' });
+    group13.orientation = 'row';
+    group13.alignChildren = ['left', 'center'];
+    group13.spacing = 10;
+    group13.margins = [0, 4, 0, 0];
 
-    var radiobutton11 = group21.add('radiobutton', undefined, undefined, { name: 'radiobutton11' });
+    var radiobutton11 = group13.add('radiobutton', undefined, undefined, { name: 'radiobutton11' });
     radiobutton11.text = ui.addition;
     radiobutton11.value = true;
 
-    var radiobutton12 = group21.add('radiobutton', undefined, undefined, { name: 'radiobutton12' });
+    var radiobutton12 = group13.add('radiobutton', undefined, undefined, { name: 'radiobutton12' });
     radiobutton12.text = ui.intensity;
 
-    var group22 = dialog.add('group', undefined, { name: 'group22' });
-    group22.orientation = 'row';
-    group22.alignChildren = ['left', 'center'];
-    group22.spacing = 10;
-    group22.margins = 0;
-
-    var panel4 = group22.add('panel', undefined, undefined, { name: 'panel4' });
-    panel4.text = ui.option;
-    panel4.preferredSize.width = 340;
+    var panel4 = dialog.add('panel', undefined, undefined, { name: 'panel4' });
+    panel4.text = ui.options;
     panel4.orientation = 'row';
     panel4.alignChildren = ['left', 'fill'];
     panel4.spacing = 10;
     panel4.margins = 10;
 
-    var group23 = panel4.add('group', undefined, { name: 'group23' });
-    group23.orientation = 'column';
-    group23.alignChildren = ['right', 'center'];
-    group23.spacing = 10;
-    group23.margins = 0;
+    var group14 = panel4.add('group', undefined, { name: 'group14' });
+    group14.orientation = 'row';
+    group14.alignChildren = ['left', 'center'];
+    group14.spacing = 10;
+    group14.margins = [0, 4, 0, 0];
 
-    var group24 = group23.add('group', undefined, { name: 'group24' });
-    group24.orientation = 'row';
-    group24.alignChildren = ['left', 'center'];
-    group24.spacing = 10;
-    group24.margins = [0, 6, 0, 0];
+    var group15 = group14.add('group', undefined, { name: 'group15' });
+    group15.orientation = 'column';
+    group15.alignChildren = ['right', 'center'];
+    group15.spacing = 18;
+    group15.margins = 0;
 
-    var statictext13 = group24.add('statictext', undefined, undefined, { name: 'statictext13' });
-    statictext13.text = ui.artboard;
+    var statictext13 = group15.add('statictext', undefined, undefined, { name: 'statictext13' });
+    statictext13.text = ui.units;
 
-    var group25 = group23.add('group', undefined, { name: 'group25' });
-    group25.orientation = 'row';
-    group25.alignChildren = ['left', 'center'];
-    group25.spacing = 10;
-    group25.margins = [0, 5, 0, 0];
+    var statictext14 = group15.add('statictext', undefined, undefined, { name: 'statictext14' });
+    statictext14.text = ui.artboard;
 
-    var statictext14 = group25.add('statictext', undefined, undefined, { name: 'statictext14' });
-    statictext14.text = ui.chip;
+    var statictext15 = group15.add('statictext', undefined, undefined, { name: 'statictext15' });
+    statictext15.text = ui.chip;
 
-    var group26 = group23.add('group', undefined, { name: 'group26' });
-    group26.orientation = 'row';
-    group26.alignChildren = ['left', 'center'];
-    group26.spacing = 10;
-    group26.margins = [0, 5, 0, 0];
+    var group16 = group14.add('group', undefined, { name: 'group16' });
+    group16.orientation = 'column';
+    group16.alignChildren = ['left', 'center'];
+    group16.spacing = 10;
+    group16.margins = [0, 1, 0, 0];
 
-    var statictext15 = group26.add('statictext', undefined, undefined, { name: 'statictext15' });
-    statictext15.text = ui.unit;
+    var group17 = group16.add('group', undefined, { name: 'group17' });
+    group17.orientation = 'row';
+    group17.alignChildren = ['left', 'center'];
+    group17.spacing = 10;
+    group17.margins = 0;
 
-    var group27 = panel4.add('group', undefined, { name: 'group27' });
-    group27.orientation = 'column';
-    group27.alignChildren = ['left', 'center'];
-    group27.spacing = 10;
-    group27.margins = [0, 10, 0, 0];
+    var units = ['px', 'pt', 'pc', 'in', 'ft', 'yd', 'mm', 'cm', 'm'];
+    var dropdown1 = group17.add('dropdownlist', undefined, units, { name: 'dropdown1' });
+    dropdown1.selection = initial.selection;
+    dropdown1.preferredSize.width = 75;
 
-    var group28 = group27.add('group', undefined, { name: 'group28' });
-    group28.orientation = 'row';
-    group28.alignChildren = ['left', 'center'];
-    group28.spacing = 10;
-    group28.margins = 0;
+    var group18 = group16.add('group', undefined, { name: 'group18' });
+    group18.orientation = 'row';
+    group18.alignChildren = ['left', 'center'];
+    group18.spacing = 10;
+    group18.margins = 0;
 
-    var statictext16 = group28.add('statictext', undefined, undefined, { name: 'statictext16' });
-    statictext16.text = 'W :';
+    var statictext16 = group18.add('statictext', undefined, undefined, { name: 'statictext16' });
+    statictext16.text = 'W:';
 
-    var edittext6 = group28.add('edittext', undefined, undefined, { name: 'edittext6' });
+    var edittext6 = group18.add('edittext', undefined, undefined, { name: 'edittext6' });
     edittext6.text = initial.artboard.width;
-    edittext6.preferredSize.width = 60;
-    edittext6.preferredSize.height = 20;
+    edittext6.preferredSize.width = 75;
 
-    var statictext17 = group28.add('statictext', undefined, undefined, { name: 'statictext17' });
-    statictext17.text = 'H :';
+    var statictext17 = group18.add('statictext', undefined, undefined, { name: 'statictext17' });
+    statictext17.text = 'H:';
 
-    var edittext7 = group28.add('edittext', undefined, undefined, { name: 'edittext7' });
+    var edittext7 = group18.add('edittext', undefined, undefined, { name: 'edittext7' });
     edittext7.text = initial.artboard.height;
-    edittext7.preferredSize.width = 60;
-    edittext7.preferredSize.height = 20;
+    edittext7.preferredSize.width = 75;
 
-    var group29 = group27.add('group', undefined, { name: 'group29' });
-    group29.orientation = 'row';
-    group29.alignChildren = ['left', 'center'];
-    group29.spacing = 10;
-    group29.margins = 0;
+    var group19 = group16.add('group', undefined, { name: 'group19' });
+    group19.orientation = 'row';
+    group19.alignChildren = ['left', 'center'];
+    group19.spacing = 10;
+    group19.margins = 0;
 
-    var statictext18 = group29.add('statictext', undefined, undefined, { name: 'statictext18' });
-    statictext18.text = 'W :';
+    var statictext18 = group19.add('statictext', undefined, undefined, { name: 'statictext18' });
+    statictext18.text = 'W:';
 
-    var edittext8 = group29.add('edittext', undefined, undefined, { name: 'edittext8' });
+    var edittext8 = group19.add('edittext', undefined, undefined, { name: 'edittext8' });
     edittext8.text = initial.chip.width;
-    edittext8.preferredSize.width = 60;
-    edittext8.preferredSize.height = 20;
+    edittext8.preferredSize.width = 75;
 
-    var statictext19 = group29.add('statictext', undefined, undefined, { name: 'statictext19' });
-    statictext19.text = 'H :';
+    var statictext19 = group19.add('statictext', undefined, undefined, { name: 'statictext19' });
+    statictext19.text = 'H:';
 
-    var edittext9 = group29.add('edittext', undefined, undefined, { name: 'edittext9' });
+    var edittext9 = group19.add('edittext', undefined, undefined, { name: 'edittext9' });
     edittext9.text = initial.chip.height;
-    edittext9.preferredSize.width = 60;
-    edittext9.preferredSize.height = 20;
+    edittext9.preferredSize.width = 75;
 
-    var group30 = group27.add('group', undefined, { name: 'group30' });
-    group30.orientation = 'row';
-    group30.alignChildren = ['left', 'center'];
-    group30.spacing = 10;
-    group30.margins = 0;
+    var group20 = dialog.add('group', undefined, { name: 'group20' });
+    group20.orientation = 'row';
+    group20.alignChildren = ['right', 'center'];
+    group20.spacing = 10;
+    group20.margins = 0;
 
-    var units = ['mm', 'cm', 'inch', 'pt', 'px'];
-    var dropdown1 = group30.add('dropdownlist', undefined, undefined, { name: 'dropdown1', items: units });
-    dropdown1.selection = initial.unit;
-    dropdown1.preferredSize.width = 60;
-    dropdown1.preferredSize.height = 20;
-
-    var group31 = dialog.add('group', undefined, { name: 'group31' });
-    group31.preferredSize.width = 340;
-    group31.orientation = 'row';
-    group31.alignChildren = ['right', 'center'];
-    group31.spacing = 10;
-    group31.margins = 0;
-
-    var button1 = group31.add('button', undefined, undefined, { name: 'button1' });
+    var button1 = group20.add('button', undefined, undefined, { name: 'button1' });
     button1.text = ui.cancel;
     button1.preferredSize.width = 90;
 
-    var button2 = group31.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group20.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
 
-    switch (mode) {
-        case DocumentColorSpace.CMYK:
-            radiobutton1.value = true;
-            statictext1.text = 'C';
-            statictext3.text = 'M';
-            statictext5.text = 'Y';
-            statictext7.text = 'K';
-            radiobutton3.text = 'C';
-            radiobutton4.text = 'M';
-            radiobutton5.text = 'Y';
-            radiobutton7.text = 'C';
-            radiobutton8.text = 'M';
-            radiobutton9.text = 'Y';
-            break;
-        case DocumentColorSpace.RGB:
-            radiobutton2.value = true;
-            statictext1.text = 'R';
-            statictext3.text = 'G';
-            statictext5.text = 'B';
-            statictext7.text = 'K';
-            radiobutton3.text = 'R';
-            radiobutton4.text = 'G';
-            radiobutton5.text = 'B';
-            radiobutton7.text = 'R';
-            radiobutton8.text = 'G';
-            radiobutton9.text = 'B';
-            group10.visible = false;
-            radiobutton6.visible = false;
-            radiobutton10.visible = false;
-            break;
-    }
-
     radiobutton1.onClick = function() {
-        statictext1.text = 'C';
-        statictext3.text = 'M';
-        statictext5.text = 'Y';
-        statictext7.text = 'K';
-        radiobutton3.text = 'C';
-        radiobutton4.text = 'M';
-        radiobutton5.text = 'Y';
-        radiobutton7.text = 'C';
-        radiobutton8.text = 'M';
-        radiobutton9.text = 'Y';
-        group10.visible = true;
+        statictext1.text = radiobutton3.text = radiobutton7.text = 'C';
+        statictext2.text = radiobutton4.text = radiobutton8.text = 'M';
+        statictext3.text = radiobutton5.text = radiobutton9.text = 'Y';
+        statictext4.text = radiobutton6.text = radiobutton10.text = 'K';
+        statictext4.visible = true;
+        slider4.visible = true;
+        edittext4.visible = true;
+        statictext8.visible = true;
         radiobutton6.visible = true;
         radiobutton10.visible = true;
         maxvalue = 100;
@@ -1091,17 +1101,14 @@ function showDialog(item) {
     }
 
     radiobutton2.onClick = function() {
-        statictext1.text = 'R';
-        statictext3.text = 'G';
-        statictext5.text = 'B';
-        statictext7.text = 'K';
-        radiobutton3.text = 'R';
-        radiobutton4.text = 'G';
-        radiobutton5.text = 'B';
-        radiobutton7.text = 'R';
-        radiobutton8.text = 'G';
-        radiobutton9.text = 'B';
-        group10.visible = false;
+        statictext1.text = radiobutton3.text = radiobutton7.text = 'R';
+        statictext2.text = radiobutton4.text = radiobutton8.text = 'G';
+        statictext3.text = radiobutton5.text = radiobutton9.text = 'B';
+        statictext4.text = radiobutton6.text = radiobutton10.text = '';
+        statictext4.visible = false;
+        slider4.visible = false;
+        edittext4.visible = false;
+        statictext8.visible = false;
         radiobutton6.visible = false;
         radiobutton10.visible = false;
         maxvalue = 255;
@@ -1112,13 +1119,20 @@ function showDialog(item) {
     }
 
     dropdown1.onChange = function() {
-        var unit = getRulerUnits(dropdown1.selection.toString());
-        initial = getInitialValues(unit);
-        edittext6.text = initial.artboard.width;
-        edittext7.text = initial.artboard.height;
-        edittext8.text = initial.chip.width;
-        edittext9.text = initial.chip.height;
-        dropdown1.selection = initial.unit;
+        var units = dropdown1.selection.toString();
+        var artboard = {
+            width: getValue(edittext6.text),
+            height: getValue(edittext7.text)
+        };
+        var chip = {
+            width: getValue(edittext8.text),
+            height: getValue(edittext9.text)
+        };
+        edittext6.text = round(convertUnits(artboard.width + ruler, units));
+        edittext7.text = round(convertUnits(artboard.height + ruler, units));
+        edittext8.text = round(convertUnits(chip.width + ruler, units));
+        edittext9.text = round(convertUnits(chip.height + ruler, units));
+        ruler = units;
     }
 
     statictext1.addEventListener('click', function() {
@@ -1126,17 +1140,17 @@ function showDialog(item) {
         edittext1.active = true;
     });
 
-    statictext3.addEventListener('click', function() {
+    statictext2.addEventListener('click', function() {
         edittext2.active = false;
         edittext2.active = true;
     });
 
-    statictext5.addEventListener('click', function() {
+    statictext3.addEventListener('click', function() {
         edittext3.active = false;
         edittext3.active = true;
     });
 
-    statictext7.addEventListener('click', function() {
+    statictext4.addEventListener('click', function() {
         edittext4.active = false;
         edittext4.active = true;
     });
@@ -1166,20 +1180,20 @@ function showDialog(item) {
         edittext9.active = true;
     });
 
-    edittext1.onChange = function() {
-        slider1.value = Number(edittext1.text);
+    edittext1.onChanging = function() {
+        slider1.value = getValue(edittext1.text);
     }
 
-    edittext2.onChange = function() {
-        slider2.value = Number(edittext2.text);
+    edittext2.onChanging = function() {
+        slider2.value = getValue(edittext2.text);
     }
 
-    edittext3.onChange = function() {
-        slider3.value = Number(edittext3.text);
+    edittext3.onChanging = function() {
+        slider3.value = getValue(edittext3.text);
     }
 
-    edittext4.onChange = function() {
-        slider4.value = Number(edittext4.text);
+    edittext4.onChanging = function() {
+        slider4.value = getValue(edittext4.text);
     }
 
     slider1.onChanging = function() {
@@ -1234,7 +1248,7 @@ function showDialog(item) {
         width: edittext8,
         height: edittext9
     };
-    dialog.unit = dropdown1;
+    dialog.units = dropdown1;
     dialog.ok = button2;
 
     return dialog;
@@ -1244,7 +1258,7 @@ function showDialog(item) {
 function localizeUI() {
     return {
         title: {
-            en: 'Color Chart',
+            en: 'Create Color Chart',
             ja: 'カラーチャート'
         },
         mode: {
@@ -1277,7 +1291,7 @@ function localizeUI() {
                 ja: '水平方向に増減させる色を\r選択してください。'
             }
         },
-        step: {
+        steps: {
             en: 'Steps :',
             ja: '増減 :'
         },
@@ -1289,9 +1303,13 @@ function localizeUI() {
             en: 'Intensity',
             ja: '濃度'
         },
-        option: {
+        options: {
             en: 'Options',
             ja: 'オプション'
+        },
+        units: {
+            en: 'Units :',
+            ja: '単位 :'
         },
         artboard: {
             en: 'Artboard :',
@@ -1300,10 +1318,6 @@ function localizeUI() {
         chip: {
             en: 'Color Chip :',
             ja: 'カラーチップ :'
-        },
-        unit: {
-            en: 'Units :',
-            ja: '単位 :'
         },
         cancel: {
             en: 'Cancel',

@@ -9,14 +9,14 @@
 
    Notes
    Text object and stroke color are not supported.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -27,17 +27,20 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    var colors = getColors(app.activeDocument.selection);
+    var items = app.activeDocument.selection;
+    var colors = getColors(items);
+    if (!colors.length) return;
 
     for (var i = 0; i < colors.length; i++) {
+        var color = colors[i];
         var name = getGradientName();
-        var type = colors[i].gradient.type;
-        var stops = getGradientStops(colors[i]);
+        var type = color.gradient.type;
+        var stops = getGradientStops(color);
         createGradient(name, type, stops);
     }
 }
@@ -68,7 +71,8 @@ function getGradientStops(color) {
     var stops = [];
     var gradients = color.gradient.gradientStops;
     for (var i = 0; i < gradients.length; i++) {
-        stops.push(gradients[i]);
+        var gradient = gradients[i];
+        stops.push(gradient);
     }
     return stops;
 }
@@ -77,7 +81,8 @@ function getGradientStops(color) {
 function getColors(items) {
     var colors = [];
     for (var i = 0; i < items.length; i++) {
-        colors = colors.concat(getGradients(items[i]));
+        var item = items[i];
+        colors = colors.concat(getGradients(item));
     }
     return colors;
 }
@@ -105,8 +110,7 @@ function getGradients(item) {
 
 
 function isGradient(color) {
-    if (color.typename == 'GradientColor') return true;
-    return false;
+    return color.typename == 'GradientColor';
 }
 
 
@@ -126,4 +130,12 @@ function gradientExists(name) {
     catch (err) {
         return false;
     }
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

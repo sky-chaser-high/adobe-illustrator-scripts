@@ -8,8 +8,8 @@ Adobe Illustratorのスクリプト集です。
 
 ### アートボード
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
-- [**アートボードの名前とサイズを表示**](#アートボードの名前とサイズを表示) showArtboardName.js `Update`
-- [**アートボードの名前を変更**](#アートボードの名前を変更) renameArtboard.js `New`
+- [**アートボードの名前とサイズを表示**](#アートボードの名前とサイズを表示) showArtboardName.js
+- [**アートボードの名前を変更**](#アートボードの名前を変更) renameArtboard.js
 - [**アートボードの並べ替え**](#アートボードの並べ替え) sortArtboards.js
 
 ### カラー
@@ -19,7 +19,7 @@ Adobe Illustratorのスクリプト集です。
 - [**カラー数値をCSVファイルに保存**](#カラー数値をCSVファイルに保存) exportColorValuesToCSV.js
 - [**カラー数値を四捨五入**](#カラー数値を四捨五入) roundColorValue.js
 - [**カラー数値を表示**](#カラー数値を表示) showColorValues.js
-- [**カラーチャートを作成**](#カラーチャートを作成) createColorChart.js
+- [**カラーチャートを作成**](#カラーチャートを作成) createColorChart.js `Update`
 - [**グラデーションのカラー分岐点から色を取り出す**](#グラデーションのカラー分岐点から色を取り出す) extractColorsFromGradient.js
 - [**グラデーションのカラー分岐・中間点の位置を同期**](#グラデーションのカラー分岐中間点の位置を同期) matchLocationOfGradientStop.js
 - [**グラデーションのカラー分岐・中間点の数値を四捨五入**](#グラデーションのカラー分岐中間点の数値を四捨五入) roundLocationOfGradientStop.js
@@ -28,8 +28,8 @@ Adobe Illustratorのスクリプト集です。
 - [**グラデーションを生成**](#グラデーションを生成) generateGradientColor.js
 - [**グローバルカラーに変換**](#グローバルカラーに変換特色に変換) convertToGlobalColor.js
 - [**すべてのスウォッチを削除**](#すべてのスウォッチを削除) deleteAllSwatches.js
-- [**単語の塗り色を変更**](#単語の塗り色を変更) highlightWord.js
-- [**テキストの塗り色をランダムに変更**](#テキストの塗り色をランダムに変更) randomTextColor.js
+- [**テキストの色を変更**](#テキストの色を変更) highlightWord.js `Update`
+- [**テキストの色をランダムに変更**](#テキストの色をランダムに変更) randomTextColor.js `Update`
 - [**特色に変換**](#グローバルカラーに変換特色に変換) convertToSpotColor.js
 
 ### レイヤー
@@ -38,8 +38,8 @@ Adobe Illustratorのスクリプト集です。
 - [**非表示レイヤーを削除**](#非表示レイヤーを削除) deleteHiddenLayers.js
 - [**表示状態を反転**](#表示状態を反転) invertVisibleLayer.js
 - [**未使用レイヤーを削除**](#未使用レイヤーを削除) deleteUnusedLayers.js
-- [**レイヤーカラーを統合**](#レイヤーカラーを統合) unifyLayerColors.js `Update`
-- [**レイヤー名の変更**](#レイヤー名の変更) renameLayer.js `New`
+- [**レイヤーカラーを統合**](#レイヤーカラーを統合) unifyLayerColors.js
+- [**レイヤー名の変更**](#レイヤー名の変更) renameLayer.js
 - [**ロック状態のレイヤーを削除**](#ロック状態のレイヤーを削除) deleteLockedLayers.js
 - [**ロック状態を反転**](#ロック状態を反転) invertLockedLayer.js
 
@@ -47,11 +47,12 @@ Adobe Illustratorのスクリプト集です。
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [**埋め込み画像を選択**](#埋め込み画像を選択) selectEmbeddedLink.js
 - [**ファイル拡張子にリンクを再設定**](#ファイル拡張子にリンクを再設定) relinkFileExtension.js
-- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js `Update`
+- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js `Bug Fix`
 - [**フォルダに再リンク**](#フォルダに再リンク) relinkToFolder.js
-- [**リンク画像の名前を変更**](#リンク画像の名前を変更) renameLinkedFile.js `Update`
+- [**まとめてリンクを再設定**](#まとめてリンクを再設定) bulkRelink.js `New`
+- [**リンク画像の名前を変更**](#リンク画像の名前を変更) renameLinkedFile.js
 - [**リンク画像を原寸サイズに戻す**](#リンク画像を原寸サイズに戻す) resetToFullScale.js
-- [**リンク画像を選択**](#リンク画像を選択) selectLink.js `Update`
+- [**リンク画像を選択**](#リンク画像を選択) selectLink.js
 
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -80,8 +81,8 @@ Adobe Illustratorのスクリプト集です。
 - [**パスの寸法を表示**](#パスの寸法を表示) showDimensions.js
 - [**パスを伸縮**](#パスを伸縮) extendLine.js
 - [**パスを閉じる**](#パスを閉じる) closePath.js
-- [**パスを分解**](#パスを分解) disjoinPath.js `Bug Fix`
-- [**法線を描く**](#法線を描く) drawNormalLine.js `Bug Fix`
+- [**パスを分解**](#パスを分解) disjoinPath.js
+- [**法線を描く**](#法線を描く) drawNormalLine.js
 - [**余白の垂直方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Vertical).js
 - [**余白の水平方向中央に整列**](#余白の垂直方向中央に整列余白の水平方向中央に整列) alignInCenterOfSpace(Horizontal).js
 - [**余白の垂直方向に分布**](#余白の垂直方向に分布余白の水平方向に分布) distributeInSpace(Vertical).js
@@ -348,6 +349,34 @@ Illustrator 2021以降
 Illustrator CS6以降
 
 <div align="right">[ <a href="#表示">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="まとめてリンクを再設定">まとめてリンクを再設定</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+### bulkRelink.js
+リンク切れ画像、リンク画像、または埋め込み画像を一括で再設定します。
+
+> [!IMPORTANT]
+> バージョン2024以降、リンク切れ画像がある場合に表示するアラートから「すべてに適用」チェックボックスが削除されました。そのため、リンク画像を一括で置換することができなくなりました。
+
+![Bulk Relink](images/bulkRelink.png)
+
+#### 使用方法
+1. 再設定したいリンク切れ画像、リンク画像、または埋め込み画像を選択しスクリプトを実行します。
+2. 新しいリンク画像を選択します。
+3. PDFの場合、読み込みオプションからトリミングとページを選択します。
+
+> [!NOTE]
+> 画像を選択する場合は、リンクパネルではなくドキュメント内の画像を選択してください。
+
+#### 動作条件
+Illustrator CS6以降
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
@@ -635,7 +664,7 @@ Illustrator CC 2018以降
    - `加算` 増減値をそのまま加算します。
    - `濃度` 対象の色に対する割合を加算します。「編集 > カラーを編集 > 彩度調整」に相当します。  
    <img src="images/ColorChartSettings.png" alt="Color Chart Settings" width="65%">
-7. アートボードサイズ、カラーチップサイズ、単位を設定します。
+7. 単位、アートボードサイズ、カラーチップサイズを設定します。
 
 > [!NOTE]
 > 特色、グラデーション、パターンには対応していません。  
@@ -1480,22 +1509,31 @@ Illustrator CC 2018以降
 
 
 
-## <a name="単語の塗り色を変更">単語の塗り色を変更</a>
+## <a name="テキストの色を変更">テキストの色を変更</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 ### highlightWord.js
-指定した単語の塗り色を変更します。CMYK、RGB のどちらにも対応しています。
+指定したテキストの塗り色を変更します。CMYK、RGB のどちらにも対応しています。
 
 ![Highlight Word](images/highlightWord.png)
 > [!NOTE]
 > Illustrator日本語版を使用している場合は、UIは日本語で表示します。
 
 #### 使用方法
-1. テキストオブジェクトを選択してスクリプトを実行します。
-2. 単語を入力します。正規表現に対応しています。
-3. 必要に応じて色を設定します。
+1. テキストオブジェクトを選択してスクリプトを実行します。  
+   なにも選択しない場合は、ドキュメント内のすべてのテキストが対象になります。
+2. 検索文字列にテキストを入力します。正規表現に対応しています。
+3. 色を指定するには、色の値を入力するか、スライダーを使用します。
+4. スウォッチを指定するには、スウォッチタブのリストからスウォッチ名を選択し、［カラー設定を無視］にチェックを付けます。
+5. 文字スタイルを指定するには、文字スタイルタブのリストからスタイル名を選択します。
+6. 段落スタイルを指定するには、段落スタイルタブのリストからスタイル名を選択します。
+
+文字、または段落スタイルに色を付けたい場合は、［カラー設定を無視］のチェックを外します。
+
+> [!NOTE]
+> カラーとスウォッチを同時に適用できません。
 
 #### 動作条件
-Illustrator CS4以降
+Illustrator CS6以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
@@ -1857,10 +1895,10 @@ Illustrator CS4以降
 
 
 
-## <a name="テキストの塗り色をランダムに変更">テキストの塗り色をランダムに変更</a>
+## <a name="テキストの色をランダムに変更">テキストの色をランダムに変更</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 ### randomTextColor.js
-単語または、1文字、1文ごとにランダムに色を適用します。CMYK、RGB のどちらにも対応しています。
+単語、1文字、または1文ごとにランダムに色を適用します。CMYK、RGB のどちらにも対応しています。
 
 ![Random Text Color](images/randomTextColor.png)
 > [!NOTE]
@@ -1868,8 +1906,8 @@ Illustrator CS4以降
 
 #### 使用方法
 1. テキストオブジェクトを選択してスクリプトを実行します。
-2. スライダーで各色のしきい値を指定します。
-3. ランダムボタンをクリックすると、しきい値に応じた色が割り当てられます。
+2. 色の値を入力するか、スライダーを使用してしきい値を設定します。
+3. ランダムボタンをクリックすると、しきい値に応じた色を割り当てます。
 
 > [!NOTE]
 > 文字数が多いと変換に時間がかかります。  
@@ -1985,7 +2023,7 @@ Illustrator CS4以降
 > リンク画像を選択する場合は、リンクパネルではなくドキュメント内のリンク画像を選択してください。
 
 #### 動作条件
-Illustrator CS4以降
+Illustrator CS6以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>

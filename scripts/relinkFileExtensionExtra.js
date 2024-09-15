@@ -6,14 +6,14 @@
 
    Usage
    1. Select any linked files, run this script from File > Scripts > Other Script...
-      If no file is selected, it replaces all files in the document.
+      If no files are selected, it replaces all files in the document.
    2. Select either file renaming method.
       Replace: Enter the current file name in the Find field and a new file name in the Replace field.
                It can also be part of the file name. Regular expressions are supported in the Find field.
       Add: Enter a string to be added to the prefix, suffix, or both of the original file names.
    3. Enter an extension.
       If the file extension is the same, enter nothing.
-   4. If you specify PDF as the extension, enter the page number and select the Crop to option.
+   4. If you specify PDF as the extension, select the Crop to option and enter the page number.
       See also: https://helpx.adobe.com/illustrator/using/importing-pdf-files.html
    5. To change the folder for the linked file, select a new folder.
       If the folder is the same as the original file, select nothing.
@@ -26,10 +26,10 @@
    In this case, restart Illustrator and try again.
 
    Requirements
-   Illustrator CS4 or higher
+   Illustrator CS6 or higher
 
    Version
-   1.3.0
+   1.3.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -77,7 +77,8 @@ function relink(items, config) {
                 continue;
             }
             if (/pdf/i.test(config.extension)) {
-                relinkPDFFile(file, link, config);
+                setPDFFileOptions(config);
+                relinkPDFFile(link, file);
                 link.remove();
             }
             else {
@@ -135,28 +136,186 @@ function getExtension(src) {
 }
 
 
-function relinkPDFFile(pdf, src, config) {
+function setPDFFileOptions(config) {
     var options = app.preferences.PDFFileOptions;
-    options.pageToOpen = config.page;
-    options.placeAsLinks = true;
     options.pDFCropToBox = config.crop;
+    if (isCC2015Higher()) {
+        options.pageToOpen = config.page;
+        options.placeAsLinks = true;
+    }
+    else {
+        var key = 'plugin/PDFImport/PageNumber';
+        app.preferences.setIntegerPreference(key, config.page);
+    }
+}
 
-    var layer = src.parent;
-    var item = layer.placedItems.add();
-    item.file = pdf;
 
-    var scale = {
-        x: src.width / item.width * 100,
-        y: src.height / item.height * 100
+function relinkPDFFile(link, src) {
+    var item;
+    if (isCC2015Higher()) {
+        var layer = link.parent;
+        item = layer.placedItems.add();
+        item.file = src;
+    }
+    else {
+        item = placePDFFile(src);
+    }
+    resizePDFFile(item, link);
+}
+
+
+function placePDFFile(src) {
+    var filename = File.decode(src.fsName);
+    if (isMac()) filename = convertJapanese(filename);
+    runPlacePDFFileAction(filename);
+    return app.activeDocument.placedItems[0];
+}
+
+
+function resizePDFFile(item, link) {
+    var angle = getRotationAngle(link);
+    if (angle) item.rotate(angle);
+
+    var ratio = {
+        x: link.width / item.width * 100,
+        y: link.height / item.height * 100
     };
-    item.resize(scale.x, scale.y);
+    var scale = (ratio.x < ratio.y) ? ratio.x : ratio.y;
+    item.resize(scale, scale);
 
-    item.top = src.top;
-    item.left = src.left;
-    item.move(src, ElementPlacement.PLACEAFTER);
+    item.top = link.top - (link.height / 2) + (item.height / 2);
+    item.left = link.left + (link.width / 2) - (item.width / 2);
+    item.move(link, ElementPlacement.PLACEAFTER);
+}
 
-    // reset page
-    options.pageToOpen = 1;
+
+function getRotationAngle(item) {
+    var matrix = item.matrix;
+    var rad = Math.atan2(matrix.mValueB, matrix.mValueA);
+    var deg = rad * 180 / Math.PI;
+    return deg * -1;
+}
+
+
+function runPlacePDFFileAction(src) {
+    var set = '_replaceLinkedFile_';
+    var action = 'placePDFFile';
+    var code = setActionCode(
+        convertToHexChars(set),
+        convertToHexChars(action),
+        convertToHexChars(src)
+    );
+    var aia = createAction(code, set);
+    try {
+        app.loadAction(aia);
+        app.doScript(action, set);
+        app.unloadAction(set, '');
+    }
+    catch (err) { }
+    aia.remove();
+}
+
+
+function createAction(code, filename) {
+    var dir = Folder('~/Desktop/')
+    var file = File(dir + filename + '.aia');
+    file.open('w');
+    file.write(code);
+    file.close();
+    return file;
+}
+
+
+function setActionCode(set, action, src) {
+    return '\
+        /version 3\
+        /name [ ' + set.length + '\
+            ' + set.hex + '\
+        ]\
+        /isOpen 1\
+        /actionCount 1\
+        /action-1 {\
+            /name [ ' + action.length + '\
+                ' + action.hex + '\
+            ]\
+            /keyIndex 0\
+            /colorIndex 0\
+            /isOpen 1\
+            /eventCount 1\
+            /event-1 {\
+                /useRulersIn1stQuadrant 0\
+                /internalName (adobe_placeDocument)\
+                /localizedName [ 5\
+                    506c616365\
+                ]\
+                /isOpen 1\
+                /isOn 1\
+                /hasDialog 1\
+                /showDialog 0\
+                /parameterCount 7\
+                /parameter-1 {\
+                    /key 1885431653\
+                    /showInPalette 4294967295\
+                    /type (integer)\
+                    /value 1\
+                }\
+                /parameter-2 {\
+                    /key 1668444016\
+                    /showInPalette 4294967295\
+                    /type (enumerated)\
+                    /name [ 7\
+                        43726f7020546f\
+                    ]\
+                    /value 4\
+                }\
+                /parameter-3 {\
+                    /key 1885823860\
+                    /showInPalette 4294967295\
+                    /type (integer)\
+                    /value 1\
+                }\
+                /parameter-4 {\
+                    /key 1851878757\
+                    /showInPalette 4294967295\
+                    /type (ustring)\
+                    /value [ ' + src.length + '\
+                        ' + src.hex + '\
+                    ]\
+                }\
+                /parameter-5 {\
+                    /key 1818848875\
+                    /showInPalette 4294967295\
+                    /type (boolean)\
+                    /value 1\
+                }\
+                /parameter-6 {\
+                    /key 1919970403\
+                    /showInPalette 4294967295\
+                    /type (boolean)\
+                    /value 0\
+                }\
+                /parameter-7 {\
+                    /key 1953329260\
+                    /showInPalette 4294967295\
+                    /type (boolean)\
+                    /value 0\
+                }\
+            }\
+        }\
+    ';
+}
+
+
+// https://sttk3.com/blog/tips/illustrator/dynamic-generate-action.html
+function convertToHexChars(str) {
+    var hexStr = str.replace(/[0-9A-Za-z!'()*._~-]/g, function(c) {
+        return c.charCodeAt(0).toString(16);
+    });
+    var uri = encodeURIComponent(hexStr).replace(/%/g, '').toLowerCase();
+    return {
+        hex: uri,
+        length: uri.length / 2
+    };
 }
 
 
@@ -178,7 +337,7 @@ function getPlacedItems(items) {
 
 function getValue(text) {
     var twoByteChar = /[！-～]/g;
-    var value = text.replace(twoByteChar, function (str) {
+    var value = text.replace(twoByteChar, function(str) {
         return String.fromCharCode(str.charCodeAt(0) - 0xFEE0);
     });
     if (isNaN(value) || !value) return 0;
@@ -217,10 +376,18 @@ function isMac() {
 }
 
 
-function isValidVersion() {
-    var cs4 = 14;
+function isCC2015Higher() {
+    var cc2015 = 19;
     var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    if (aiVersion < cc2015) return false;
+    return true;
+}
+
+
+function isValidVersion() {
+    var cs6 = 16;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs6) return false;
     return true;
 }
 
@@ -269,8 +436,8 @@ function getPDFBoxType(item) {
     switch (item.index) {
         case 0: return PDFBoxType.PDFBOUNDINGBOX;
         case 1: return PDFBoxType.PDFARTBOX;
-        case 2: return (/ja/.test($.locale)) ? PDFBoxType.PDFTRIMBOX : PDFBoxType.PDFCROPBOX;
-        case 3: return (/ja/.test($.locale)) ? PDFBoxType.PDFCROPBOX : PDFBoxType.PDFTRIMBOX;
+        case 2: return PDFBoxType.PDFCROPBOX;
+        case 3: return PDFBoxType.PDFTRIMBOX;
         case 4: return PDFBoxType.PDFBLEEDBOX;
         case 5: return PDFBoxType.PDFMEDIABOX;
     }
@@ -329,8 +496,8 @@ function showDialog() {
     var crop = [
         ui.boundingBox,
         ui.art,
-        (/ja/.test($.locale)) ? ui.trim : ui.crop,
-        (/ja/.test($.locale)) ? ui.crop : ui.trim,
+        ui.crop,
+        ui.trim,
         ui.bleed,
         ui.media
     ];
@@ -471,17 +638,17 @@ function showDialog() {
     group9.enabled = false;
 
     var statictext7 = group9.add('statictext', undefined, undefined, { name: 'statictext7' });
-    statictext7.text = ui.page;
+    statictext7.text = ui.cropTo;
+
+    var dropdown1 = group9.add('dropdownlist', undefined, crop, { name: 'dropdown1' });
+    dropdown1.selection = 5;
+
+    var statictext8 = group9.add('statictext', undefined, undefined, { name: 'statictext8' });
+    statictext8.text = ui.page;
 
     var edittext6 = group9.add('edittext', undefined, undefined, { name: 'edittext6' });
     edittext6.text = '1';
     edittext6.preferredSize.width = 60;
-
-    var statictext8 = group9.add('statictext', undefined, undefined, { name: 'statictext8' });
-    statictext8.text = ui.cropTo;
-
-    var dropdown1 = group9.add('dropdownlist', undefined, undefined, { name: 'dropdown1', items: crop });
-    dropdown1.selection = 5;
 
     var panel3 = dialog.add('panel', undefined, undefined, { name: 'panel3' });
     panel3.text = ui.folder;
@@ -523,7 +690,7 @@ function showDialog() {
         var extension = edittext5.text;
         if (/pdf/i.test(extension)) {
             group9.enabled = true;
-            edittext6.active = true;
+            dropdown1.active = true;
         }
         else {
             group9.enabled = false;
@@ -576,6 +743,11 @@ function showDialog() {
     });
 
     statictext7.addEventListener('click', function() {
+        dropdown1.active = false;
+        dropdown1.active = true;
+    });
+
+    statictext8.addEventListener('click', function() {
         edittext6.active = false;
         edittext6.active = true;
     });
@@ -603,8 +775,8 @@ function showDialog() {
     dialog.prefix = edittext3;
     dialog.suffix = edittext4;
     dialog.extension = edittext5;
-    dialog.page = edittext6;
     dialog.crop = dropdown1;
+    dialog.page = edittext6;
     dialog.dir = statictext9;
     dialog.ok = button3;
     return dialog;
@@ -691,12 +863,12 @@ function localizeUI() {
             en: 'Art',
             ja: 'アート'
         },
-        trim: {
-            en: 'Trim',
-            ja: 'トリミング'
-        },
         crop: {
             en: 'Crop',
+            ja: 'トリミング'
+        },
+        trim: {
+            en: 'Trim',
             ja: '仕上がり'
         },
         bleed: {

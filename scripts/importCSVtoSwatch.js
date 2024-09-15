@@ -29,14 +29,14 @@
    The Swatch name is not required.
    The leading "#" may be omitted in the case of Hex color.
    If the Hex color is 3-digit, it behaves like CSS. (e.g. #F0F becomes #FF00FF.)
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.2.0
+   1.2.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -47,7 +47,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -64,9 +64,9 @@ function main() {
     }
 
     for (var i = 0; i < colors.length; i++) {
-        addSwatch(colors[i]);
+        var color = colors[i];
+        addSwatch(color);
     }
-
     alert(message.complete);
 }
 
@@ -223,4 +223,12 @@ function getMessage() {
             ja: 'インポートが完了しました。'
         }
     };
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

@@ -25,6 +25,13 @@
 <br><br>
 
 
+## addSelectedGradientsToSwatch.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## alignInCenterOfSpace(Horizontal).js
 ### 1.1.0 (2024-06-01)
 ### Added
@@ -99,6 +106,20 @@
 <br><br>
 
 
+## convertToGlobalColor.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## convertToSpotColor.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## copyLineDown.js
 ### 1.0.1 (2022-10-28)
 ### Bug Fixes
@@ -121,6 +142,9 @@
 
 
 ## createColorChart.js
+### 2.2.0 (2024-09-16)
+### Added
+- Added supported units.
 ### 2.1.0 (2023-07-23)
 ### Added
 - Added the function to select how to increase or decrease color values. (Addition or Intensity)
@@ -185,22 +209,29 @@
 <br><br>
 
 
+## deleteAllSwatches.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## deleteHiddenLayers.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
 
 
 ## deleteLockedLayers.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
 
 
 ## deleteUnusedLayers.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
@@ -214,7 +245,7 @@
 
 
 ## disjoinPath.js
-### 1.1.0 (2024-08-04)
+### 1.1.0 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 ### Bug Fixes
@@ -246,7 +277,7 @@
 
 
 ## drawNormalLine.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Bug Fixes
 - Fixed a bug in the return value of the isFlat() function.
 <br><br>
@@ -270,6 +301,13 @@
 - Added the function to check the illustrator version.
 ### Bug Fixes
 - Fixed the problem of not being able to undo with the esc key due to localization.
+<br><br>
+
+
+## exportColorValuesToCSV.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
 <br><br>
 
 
@@ -297,7 +335,17 @@
 <br><br>
 
 
+## extractColorsFromGradient.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## generateGradientColor.js
+### 1.0.2 (2024-09-16)
+### Changes
+- Refactoring.
 ### 1.0.1 (2023-09-18)
 ### Changes
 - Changed localization method.
@@ -314,6 +362,9 @@
 
 
 ## highlightWord.js
+### 1.2.0 (2024-09-16)
+### Added
+- Added the functions to apply swatches, character and paragraph styles.
 ### 1.1.0 (2023-09-18)
 ### Features
 - Regular expressions are now supported.
@@ -323,6 +374,9 @@
 
 
 ## importCSVtoSwatch.js
+### 1.2.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
 ### 1.2.0 (2023-04-08)
 ### Features
 - Added support for 3-digit Hex color.
@@ -347,14 +401,14 @@
 
 
 ## invertLockedLayer.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
 
 
 ## invertVisibleLayer.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
@@ -422,13 +476,16 @@
 
 
 ## moveSublayerToMainLayer.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
 
 
 ## randomTextColor.js
+### 1.3.0 (2024-09-16)
+### Changes
+- Updated the UI.
 ### 1.2.1 (2023-09-18)
 ### Changes
 - Changed localization method.
@@ -452,7 +509,7 @@
 
 
 ## relinkFileExtension.js
-### 1.1.1 (2024-08-04)
+### 1.1.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 ### 1.1.0 (2023-01-15)
@@ -467,7 +524,13 @@
 
 
 ## relinkFileExtensionExtra.js
-### 1.3.0 (2024-08-04)
+### 1.3.1 (2024-09-16)
+### Changes
+- For CS6, CC and CC2014, changed to use the action to relink.
+- Changed requirements to CS6 or higher.
+### Bug Fixes
+- Fixed a bug that prevented rotation when PDF files were relinked.
+### 1.3.0 (2024-08-10)
 ### Added
 - PDF is now supported.
 - Unicode combining character sequence is now supported.
@@ -483,7 +546,7 @@
 
 
 ## relinkToFolder.js
-### 1.1.1 (2024-08-04)
+### 1.1.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 ### 1.1.0 (2023-01-15)
@@ -501,15 +564,22 @@
 <br><br>
 
 
+## removeDeletedGlobalColor.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## renameLinkedFile.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Unicode combining character sequence is now supported.
 <br><br>
 
 
 ## resetToFullScale.js
-### 1.0.2 (2024-08-04)
+### 1.0.2 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 ### 1.0.1 (2023-03-26)
@@ -518,8 +588,22 @@
 <br><br>
 
 
+## roundColorValue.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
+## roundLocationOfGradientStop.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## selectEmbeddedLink.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
@@ -533,7 +617,7 @@
 
 
 ## selectLink.js
-### 1.2.0 (2024-08-04)
+### 1.2.0 (2024-08-10)
 ### Added
 - Unicode combining character sequence is now supported.
 ### Changes
@@ -548,7 +632,7 @@
 
 
 ## showArtboardName.js
-### 1.3.0 (2024-08-04)
+### 1.3.0 (2024-08-10)
 ### Added
 - Added supported units.
 ### Changes
@@ -563,6 +647,9 @@
 
 
 ## showColorValues.js
+### 1.1.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
 ### 1.1.0 (2023-04-08)
 ### Features
 - Added support for Hex color.
@@ -587,8 +674,15 @@
 <br><br>
 
 
+## shuffleGradientColor.js
+### 1.0.1 (2024-09-16)
+### Added
+- Added the function to check the illustrator version.
+<br><br>
+
+
 ## sortArtboards.js
-### 1.0.1 (2024-08-04)
+### 1.0.1 (2024-08-10)
 ### Added
 - Added the function to check the illustrator version.
 <br><br>
@@ -627,6 +721,7 @@
 ### 2.0.0 (2024-06-30)
 ### Changes
 - Changed the UI to allow editing of numeric values in text fields.
+<br><br>
 
 
 ## syncView.js
@@ -661,7 +756,7 @@
 
 
 ## unifyLayerColors.js
-### 1.1.0 (2024-08-04)
+### 1.1.0 (2024-08-10)
 ### Added
 - Added specification that locked layers do not change color.
 - Added the function to check the illustrator version.

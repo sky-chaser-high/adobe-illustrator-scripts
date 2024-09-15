@@ -6,17 +6,17 @@
    Both fill and stroke colors are supported.
 
    Usage
-   Select the objects, run this script from File > Scripts > Other Script...
+   Select any objects, run this script from File > Scripts > Other Script...
 
    Notes
-   In rare cases, you may not be able to create it.
-   In that case, restart Illustrator and run this script again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -27,7 +27,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -46,15 +46,15 @@ function roundOff(item) {
             if (item.stroked) roundGradientStops(item.strokeColor);
             return;
         case 'CompoundPathItem':
-            var items = item.pathItems;
-            for (var i = 0; i < items.length; i++) {
-                roundOff(items[i]);
+            var shapes = item.pathItems;
+            for (var i = 0; i < shapes.length; i++) {
+                roundOff(shapes[i]);
             }
             return;
         case 'GroupItem':
-            var items = item.pageItems;
-            for (var i = 0; i < items.length; i++) {
-                roundOff(items[i]);
+            var shapes = item.pageItems;
+            for (var i = 0; i < shapes.length; i++) {
+                roundOff(shapes[i]);
             }
             return;
         case 'TextFrame':
@@ -70,12 +70,19 @@ function roundOff(item) {
 
 
 function roundGradientStops(color) {
-    if (color.typename == 'GradientColor') {
-        var gradients = color.gradient.gradientStops;
-        for (var i = 0; i < gradients.length; i++) {
-            var gradient = gradients[i];
-            gradient.midPoint = Math.round(gradient.midPoint);
-            gradient.rampPoint = Math.round(gradient.rampPoint);
-        }
+    if (color.typename != 'GradientColor') return;
+    var gradients = color.gradient.gradientStops;
+    for (var i = 0; i < gradients.length; i++) {
+        var gradient = gradients[i];
+        gradient.midPoint = Math.round(gradient.midPoint);
+        gradient.rampPoint = Math.round(gradient.rampPoint);
     }
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

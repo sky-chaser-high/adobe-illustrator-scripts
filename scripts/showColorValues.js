@@ -5,19 +5,19 @@
    This script shows color values. Both fill and stroke colors are supported.
 
    Usage
-   Select path objects, run this script from File > Scripts > Other Script...
+   Select any path objects, run this script from File > Scripts > Other Script...
 
    Notes
    CMYK, RGB, HEX, grayscale, spot color, and pattern are supported.
    Text object and gradient are not supported.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.1.0
+   1.1.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -28,18 +28,20 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0 && app.activeDocument.selection.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
 function main() {
-    var items = getPathItems(app.activeDocument.selection);
-    if (!items.length) return;
+    var items = app.activeDocument.selection;
+    var shapes = getPathItems(items);
+    if (!shapes.length) return;
 
     var layer = getLayer('Color Values');
 
-    for (var i = 0; i < items.length; i++) {
-        showColorValue(items[i], layer);
+    for (var i = 0; i < shapes.length; i++) {
+        var shape = shapes[i];
+        showColorValue(shape, layer);
     }
 }
 
@@ -106,10 +108,11 @@ function getHexValue(r, g, b) {
 
 function getPosition(item, font) {
     var margin = 3;
-    var x1 = item.visibleBounds[0];
-    var y1 = item.visibleBounds[1];
-    var x2 = item.visibleBounds[2];
-    var y2 = item.visibleBounds[3];
+    var bounds = item.visibleBounds;
+    var x1 = bounds[0];
+    var y1 = bounds[1];
+    var x2 = bounds[2];
+    var y2 = bounds[3];
     return [
         x1,
         y2 - font.size - margin
@@ -118,21 +121,21 @@ function getPosition(item, font) {
 
 
 function getPathItems(items) {
-    var objects = [];
+    var shapes = [];
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.typename == 'PathItem') {
-            objects.push(item);
+            shapes.push(item);
         }
         if (item.typename == 'CompoundPathItem') {
-            var backside = item.pathItems.length - 1;
-            objects.push(item.pathItems[backside]);
+            var end = item.pathItems.length - 1;
+            shapes.push(item.pathItems[end]);
         }
         if (item.typename == 'GroupItem') {
-            objects = objects.concat(getPathItems(item.pageItems));
+            shapes = shapes.concat(getPathItems(item.pageItems));
         }
     }
-    return objects;
+    return shapes;
 }
 
 
@@ -165,4 +168,12 @@ function layerExists(name) {
     catch (err) {
         return false;
     }
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

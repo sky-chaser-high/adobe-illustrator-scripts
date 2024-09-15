@@ -6,19 +6,19 @@
 
    Usage
    Select colors in the Swatches panel, run this script from File > Scripts > Other Script...
-   If you don't select them, all colors will target.
+   If not selected, all swatches are converted.
 
    Notes
    If there is a swatch with the same name, it will not convert.
    When converting a process color to a spot color, the order in which the colors display changes because they reregister in the swatch.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -29,7 +29,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -146,4 +146,12 @@ function map(value, start1, stop1, start2, stop2) {
     var value2 = distance2 * ratio;
 
     return start2 + value2;
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

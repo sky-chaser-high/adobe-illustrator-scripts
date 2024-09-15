@@ -13,14 +13,14 @@
    Export to the desktop.
    Prioritize the path object over swatches.
    Text object and gradient are not supported.
-   In rare cases, if you continue to use the script, it may not work.
-   In that case, restart Illustrator and try again.
+   In rare cases, the script may not work if you continue to use it.
+   In this case, restart Illustrator and try again.
 
    Requirements
    Illustrator CS or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -31,7 +31,7 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length > 0) main();
+    if (app.documents.length && isValidVersion()) main();
 })();
 
 
@@ -68,8 +68,9 @@ function getColorList(colors) {
     list += ',Swatch name\n';
 
     for (var i = 0; i < colors.length; i++) {
-        if (colors[i][0] == undefined) continue;
-        list += colors[i].join(',') + '\n';
+        var color = colors[i];
+        if (color[0] == undefined) continue;
+        list += color.join(',') + '\n';
     }
     return list;
 }
@@ -164,4 +165,12 @@ function getMessage() {
             ja: '書き出しが失敗しました。'
         }
     };
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }

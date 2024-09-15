@@ -1,37 +1,52 @@
 /* ===============================================================================================================================================
-   removeDeletedGlobalColor.js
+   removeDeletedGlobalColor
 
-   description
-   Deletes the Deleted Global Colors displayed in the Separations Preview panel.
+   Description
+   This script deletes the Deleted Global Colors displayed in the Separations Preview panel.
 
-   usage
-   1. Open the Ai file.
-   2. Run this script from File > Scripts > Other Script...
+   Usage
+   Just run this script from File > Scripts > Other Script...
 
-   notes
+   Notes
    In rare cases, you may not be able to delete it.
-   In that case, restart Illustrator and run this script again.
+   In this case, restart Illustrator and try again.
    If you save the file and reopen it, it may be restored.
    In this case, there is no way to delete it.
 
-   requirements
+   Requirements
    Illustrator CS or higher
 
-   script version
-   1.0.0
+   Version
+   1.0.1
+
+   Homepage
+   github.com/sky-chaser-high/adobe-illustrator-scripts
+
+   License
+   Released under the MIT license.
+   https://opensource.org/licenses/mit-license.php
    =============================================================================================================================================== */
 
-if (app.documents.length > 0) removeDeletedGlobalColor();
+(function() {
+    if (app.documents.length && isValidVersion()) main();
+})();
 
 
-function removeDeletedGlobalColor() {
-    var spotColors = app.activeDocument.spots;
-
-    var reg = /Deleted Global Color/i;
-
-    for (var i = spotColors.length - 1; i >= 0; i--) {
-        if (reg.test(spotColors[i].name)) {
-            spotColors[i].remove();
+function main() {
+    var regex = /Deleted Global Color/i;
+    var colors = app.activeDocument.spots;
+    for (var i = colors.length - 1; i >= 0; i--) {
+        var color = colors[i];
+        if (regex.test(color.name)) {
+            color.remove();
         }
     }
+}
+
+
+function isValidVersion() {
+    var cs = 11;
+    var aiVersion = parseInt(app.version);
+    if (aiVersion < cs) return false;
+    return true;
 }
