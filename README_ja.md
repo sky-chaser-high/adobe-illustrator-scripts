@@ -19,17 +19,17 @@ Adobe Illustratorのスクリプト集です。
 - [**カラー数値をCSVファイルに保存**](#カラー数値をCSVファイルに保存) exportColorValuesToCSV.js
 - [**カラー数値を四捨五入**](#カラー数値を四捨五入) roundColorValue.js
 - [**カラー数値を表示**](#カラー数値を表示) showColorValues.js
-- [**カラーチャートを作成**](#カラーチャートを作成) createColorChart.js `Update`
+- [**カラーチャートを作成**](#カラーチャートを作成) createColorChart.js
 - [**グラデーションのカラー分岐点から色を取り出す**](#グラデーションのカラー分岐点から色を取り出す) extractColorsFromGradient.js
 - [**グラデーションのカラー分岐・中間点の位置を同期**](#グラデーションのカラー分岐中間点の位置を同期) matchLocationOfGradientStop.js
 - [**グラデーションのカラー分岐・中間点の数値を四捨五入**](#グラデーションのカラー分岐中間点の数値を四捨五入) roundLocationOfGradientStop.js
 - [**グラデーションをシャッフル**](#グラデーションをシャッフル) shuffleGradientColor.js
 - [**グラデーションをスウォッチに追加**](#グラデーションをスウォッチに追加) addSelectedGradientsToSwatch.js
-- [**グラデーションを生成**](#グラデーションを生成) generateGradientColor.js
+- [**グラデーションを生成**](#グラデーションを生成) generateGradientColor.js `Update`
 - [**グローバルカラーに変換**](#グローバルカラーに変換特色に変換) convertToGlobalColor.js
 - [**すべてのスウォッチを削除**](#すべてのスウォッチを削除) deleteAllSwatches.js
-- [**テキストの色を変更**](#テキストの色を変更) highlightWord.js `Update`
-- [**テキストの色をランダムに変更**](#テキストの色をランダムに変更) randomTextColor.js `Update`
+- [**テキストの色を変更**](#テキストの色を変更) highlightWord.js
+- [**テキストの色をランダムに変更**](#テキストの色をランダムに変更) randomTextColor.js
 - [**特色に変換**](#グローバルカラーに変換特色に変換) convertToSpotColor.js
 
 ### レイヤー
@@ -47,9 +47,9 @@ Adobe Illustratorのスクリプト集です。
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [**埋め込み画像を選択**](#埋め込み画像を選択) selectEmbeddedLink.js
 - [**ファイル拡張子にリンクを再設定**](#ファイル拡張子にリンクを再設定) relinkFileExtension.js
-- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js `Bug Fix`
+- [**ファイル拡張子にリンクを再設定（機能拡張版）**](#ファイル拡張子にリンクを再設定機能拡張版) relinkFileExtensionExtra.js
 - [**フォルダに再リンク**](#フォルダに再リンク) relinkToFolder.js
-- [**まとめてリンクを再設定**](#まとめてリンクを再設定) bulkRelink.js `New`
+- [**まとめてリンクを再設定**](#まとめてリンクを再設定) bulkRelink.js
 - [**リンク画像の名前を変更**](#リンク画像の名前を変更) renameLinkedFile.js
 - [**リンク画像を原寸サイズに戻す**](#リンク画像を原寸サイズに戻す) resetToFullScale.js
 - [**リンク画像を選択**](#リンク画像を選択) selectLink.js
@@ -116,18 +116,15 @@ Adobe Illustratorのスクリプト集です。
 - [**ノンブルを作成**](#ノンブルを作成) createPageNumbers.ja
 - [**パス上文字をポイント文字に切り替え**](#パス上文字をポイント文字に切り替え) convertTypeOnAPathToPointType.js
 - [**文字列を括弧で囲む**](#文字列を括弧で囲む) encloseWordInParentheses.js
-- [**文字列をカーソルの位置で分割**](#文字列をカーソルの位置で分割) splitTextAtCursorPosition.js
+- [**文字列をカーソルの位置で分割**](#文字列をカーソルの位置で分割) splitTextAtCursorPosition.js `Update`
 - [**文字列を交換**](#文字列を交換) swapTextContents.js
-- [**文字列を分割**](#文字列を分割) splitText.js
+- [**文字列を分割**](#文字列を分割) splitText.js `Update`
 
 ### ユーティリティ
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 - [**拡大・縮小率の確認**](#拡大縮小率の確認) compareScale.js
 - [**距離の測定**](#距離の測定) measureDistance.js
-- [**コピー元のレイヤーにペーストを切り替える**](#コピー元のレイヤーにペーストを切り替える) togglePasteRemembersLayers.js
-- [**字形の境界に整列を切り替える**](#字形の境界に整列を切り替える) toggleAlignToGlyphBounds.js
 - [**すべてのドキュメントを閉じる**](#すべてのドキュメントを閉じる) closeAllDocuments.js
-- [**選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える**](#選択した複数のアンカーポイントのハンドルを表示隠すを切り替える) toggleShowHandles.js
 - [**単位を換算**](#単位を換算) unitCalculator.js
 - [**日付と曜日の確認**](#日付と曜日の確認) checkDayOfWeek.js
 - [**文字列内の数字の合計**](#文字列内の数字の合計) sumNumbers.js
@@ -141,6 +138,19 @@ Adobe Illustratorのスクリプト集です。
 - [**先頭のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToFirstArtboard.js
 - [**次のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToNextArtboard.js
 - [**前のアートボードへ移動**](#最後のアートボードへ移動先頭のアートボードへ移動次のアートボードへ移動前のアートボードへ移動) navigateToPreviousArtboard.js
+
+### 環境設定
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+- [**同じ濃度を選択**](#同じ濃度を選択) toggleSelectSameTintPercentage.js `New`
+- [**コピー元のレイヤーにペースト**](#コピー元のレイヤーにペースト) togglePasteRemembersLayers.js
+- [**字形の境界に整列**](#字形の境界に整列) toggleAlignToGlyphBounds.js `Bug Fix`
+- [**新規テキストオブジェクトにサンプルテキストを割り付け**](#新規テキストオブジェクトにサンプルテキストを割り付け) toggleFillNewTypeObjectsWithPlaceholderText.js `New`
+- [**選択された文字の異体字を表示**](#選択された文字の異体字を表示) toggleShowCharacterAlternates.js `New`
+- [**選択範囲へズーム**](#選択範囲へズーム) toggleZoomToSelection.js `New`
+- [**パターンを変形**](#パターンを変形) toggleTransformPatternTiles.js `New`
+- [**複数アンカーを選択時にハンドルを表示**](#複数アンカーを選択時にハンドルを表示) toggleShowHandles.js
+- [**プレビュー境界を使用**](#プレビュー境界を使用) toggleUsePreviewBounds.js `New`
+- [**マウスホイールでズーム**](#マウスホイールでズーム) toggleZoomWithMouseWheel.js `New`
 <br><br><br>
 
 
@@ -479,7 +489,7 @@ Illustrator CS以降
 使用する単位は、定規の単位によります。
 
 #### 動作条件
-Illustrator CS4以降
+Illustrator CC以降
 
 <div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
 <br>
@@ -579,7 +589,7 @@ Visual Studio Code の「行を上へコピー」( <kbd>Option</kbd> / <kbd>Alt<
 などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
-![Vscode Copy Line](images/vscode_copyLine.png)
+<img src="images/vscode_copyLine.png" alt="Vscode Copy Line" width="60%">
 
 例 copyLineDown.js:
 ![Copy Line](images/copyLine.png)
@@ -1420,6 +1430,9 @@ Illustrator CS以降
 ### generateGradientColor.js
 オブジェクトの塗り色またはスウォッチからグラデーションを生成します。
 
+> [!TIP]
+> バージョン2025からスウォッチパネルメニューに実装されています。
+
 ![Generate Gradient Color](images/generateGradientColor.png)
 
 #### 使用方法
@@ -1449,7 +1462,7 @@ Visual Studio Code の「行/列に移動」( <kbd>Ctrl</kbd> + <kbd>G</kbd> )�
 などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
-![Vscode Go to Line](images/vscode_goToLine.png)
+<img src="images/vscode_goToLine.png" alt="Vscode Go to Line" width="60%">
 
 ![Go to Line](images/goToLine.png)
 > [!NOTE]
@@ -1813,7 +1826,7 @@ Visual Studio Code の「行を上へ移動」( <kbd>Option</kbd> / <kbd>Alt</kb
 などでショートカットを割り当てると、より一層Visual Studio Codeの操作感が出せると思います。  
 ポイント文字、エリア内文字のどちらにも対応しています。
 
-![Vscode Move Line](images/vscode_moveLine.png)
+<img src="images/vscode_moveLine.png" alt="Vscode Move Line" width="60%">
 
 例 moveLineDown.js:
 ![Move Line](images/moveLine.png)
@@ -2036,8 +2049,6 @@ Illustrator CS6以降
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 ### relinkToFolder.js
 リンク画像を選択したフォルダにある同じ名前のファイルと置き換えます。InDesignの「リンクパネル > フォルダに再リンク」に相当します。
-
-<img src="images/InDesign_Relink_To_Folder.png" alt="InDesign's Relink To Folder" width="45%">
 
 #### 使用方法
 1. 再設定したいリンク画像を選択しスクリプトを実行します。  
@@ -2583,7 +2594,7 @@ Illustrator CS4以降
 > 分割後、テキストの位置がわずかに移動することがあります。
 
 #### 動作条件
-Illustrator CS4以降
+Illustrator CC以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
@@ -2739,7 +2750,7 @@ Illustrator CS以降
 
 
 
-## <a name="字形の境界に整列を切り替える">字形の境界に整列を切り替える</a>
+## <a name="字形の境界に整列">字形の境界に整列</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 ### toggleAlignToGlyphBounds.js
 「整列パネル > 字形の境界に整列 > ポイント文字・エリア内文字」のオン/オフを両方同時に切り替えます。
@@ -2752,14 +2763,34 @@ Illustrator CS以降
 #### 動作条件
 Illustrator 2020以降
 
-<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
 
 
 
-## <a name="コピー元のレイヤーにペーストを切り替える">コピー元のレイヤーにペーストを切り替える</a>
+## <a name="新規テキストオブジェクトにサンプルテキストを割り付け">新規テキストオブジェクトにサンプルテキストを割り付け</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### toggleFillNewTypeObjectsWithPlaceholderText.js
+「環境設定 > テキスト > 新規テキストオブジェクトにサンプルテキストを割り付け」のオン/オフを切り替えます。
+
+<img src="images/toggleFillNewTypeObjectsWithPlaceholderText.png" alt="Toggle Fill New Type Objects With Placeholder Text" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator 2018以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="コピー元のレイヤーにペースト">コピー元のレイヤーにペースト</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 ### togglePasteRemembersLayers.js
 「レイヤーパネル > コピー元のレイヤーにペースト」のオン/オフを切り替えます。
@@ -2772,19 +2803,19 @@ Illustrator 2020以降
 #### 動作条件
 Illustrator CC以降
 
-<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
 
 
 
-## <a name="選択した複数のアンカーポイントのハンドルを表示隠すを切り替える">選択した複数のアンカーポイントのハンドルを表示/隠すを切り替える</a>
+## <a name="同じ濃度を選択">同じ濃度を選択</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-### toggleShowHandles.js
-「環境設定 > 選択範囲・アンカー表示 > アンカーポイント、ハンドル、およびバウンディングボックスの表示 > 複数アンカーポイントを選択時にハンドルを表示」のオン/オフを切り替えます。
+### toggleSelectSameTintPercentage.js
+「環境設定 > 一般 > 同じ濃度を選択」のオン/オフを切り替えます。
 
-![Toggle Show Handles](images/toggleShowHandles.png)
+<img src="images/toggleSelectSameTintPercentage.png" alt="Toggle Select Same Tint Percentage" width="70%">
 
 #### 使用方法
 このスクリプトを実行するだけです。  
@@ -2792,7 +2823,127 @@ Illustrator CC以降
 #### 動作条件
 Illustrator CC以降
 
-<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="選択された文字の異体字を表示">選択された文字の異体字を表示</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### toggleShowCharacterAlternates.js
+「環境設定 > テキスト > 選択された文字の異体字を表示」のオン/オフを切り替えます。
+
+<img src="images/toggleShowCharacterAlternates.png" alt="Toggle Show Character Alternates" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator 2020以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="複数アンカーを選択時にハンドルを表示">複数アンカーを選択時にハンドルを表示</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### toggleShowHandles.js
+「環境設定 > 選択範囲・アンカー表示 > アンカーポイント、ハンドル、およびバウンディングボックスの表示 > 複数アンカーを選択時にハンドルを表示」のオン/オフを切り替えます。
+
+<img src="images/toggleShowHandles.png" alt="Toggle Show Handles" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CC以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="パターンを変形">パターンを変形</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### toggleTransformPatternTiles.js
+「環境設定 > 一般 > パターンを変形」のオン/オフを切り替えます。
+
+<img src="images/toggleTransformPatternTiles.png" alt="Toggle Transform Pattern Tiles" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CC以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="プレビュー境界を使用">プレビュー境界を使用</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### toggleUsePreviewBounds.js
+「環境設定 > 一般 > プレビュー境界を使用」のオン/オフを切り替えます。
+
+<img src="images/toggleUsePreviewBounds.png" alt="Toggle Use Preview Bounds" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CC以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="選択範囲へズーム">選択範囲へズーム</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### toggleZoomToSelection.js
+「環境設定 > 選択範囲・アンカー表示 > 選択範囲 > 選択範囲へズーム」のオン/オフを切り替えます。
+
+<img src="images/toggleZoomToSelection.png" alt="Toggle Zoom to Selection" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator 2018以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="マウスホイールでズーム">マウスホイールでズーム</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+### toggleZoomWithMouseWheel.js
+「環境設定 > 一般 > マウスホイールでズーム」のオン/オフを切り替えます。
+
+<img src="images/toggleZoomWithMouseWheel.png" alt="Toggle Zoom with Mouse Wheel" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator 2022以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 

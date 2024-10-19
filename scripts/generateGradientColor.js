@@ -18,7 +18,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.2
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -35,7 +35,9 @@
 
 function main() {
     var items = app.activeDocument.selection;
-    var colors = getColors(items);
+    var tolerance = 10;
+    items = sortRow(items, tolerance);
+    var colors = getColorItems(items);
     if (!colors.length) colors = getSwatches();
     if (colors.length < 2) return;
     createGradient(colors);
@@ -70,20 +72,20 @@ function createGradient(colors) {
 }
 
 
-function getColors(items) {
+function getColorItems(shapes) {
     var colors = [];
-    for (var i = 0; i < items.length; i++) {
-        var item = items[i];
-        switch (item.typename) {
+    for (var i = 0; i < shapes.length; i++) {
+        var shape = shapes[i];
+        switch (shape.typename) {
             case 'PathItem':
-                if (!item.filled) continue;
-                colors = colors.concat(getColorObject(item.fillColor));
+                if (!shape.filled) continue;
+                colors = colors.concat(getColorItem(shape.fillColor));
                 break;
             case 'CompoundPathItem':
-                colors = colors.concat(getColors([item.pathItems[0]]));
+                colors = colors.concat(getColorItems([shape.pathItems[0]]));
                 break;
             case 'GroupItem':
-                colors = colors.concat(getColors(item.pageItems));
+                colors = colors.concat(getColorItems(shape.pageItems));
                 break;
         }
     }
@@ -96,34 +98,46 @@ function getSwatches() {
     var swatches = app.activeDocument.swatches.getSelected();
     for (var i = 0; i < swatches.length; i++) {
         var swatch = swatches[i];
-        colors = colors.concat(getColorObject(swatch.color));
+        colors = colors.concat(getColorItem(swatch.color));
     }
     return colors;
 }
 
 
-function getColorObject(item) {
-    switch (item.typename) {
+function getColorItem(color) {
+    switch (color.typename) {
         case 'CMYKColor':
         case 'RGBColor':
         case 'GrayColor':
         case 'SpotColor':
-            return [item];
+            return [color];
         case 'GradientColor':
             var colors = [];
-            var gradients = item.gradient.gradientStops;
+            var gradients = color.gradient.gradientStops;
             for (var i = 0; i < gradients.length; i++) {
-                colors.push(gradients[i].color);
+                var gradient = gradients[i];
+                colors.push(gradient.color);
             }
             return colors;
     }
 }
 
 
+function sortRow(items, tolerance) {
+    return items.sort(function(a, b) {
+        var distance = Math.abs(b.top - a.top);
+        if (distance <= tolerance) {
+            return a.left - b.left;
+        }
+        return b.top - a.top;
+    });
+}
+
+
 function getColorName() {
     $.localize = true;
     var ui = localizeUI();
-    var name = 'Gradient';
+    var name = ui.name;
     name = prompt(ui.title, name);
     try {
         app.activeDocument.swatches[name];
@@ -139,6 +153,10 @@ function localizeUI() {
         title: {
             en: 'Enter a gradient name.',
             ja: 'グラデーション名を入力してください。'
+        },
+        name: {
+            en: 'Gradient',
+            ja: 'グラデーション'
         }
     };
 }
@@ -146,7 +164,7 @@ function localizeUI() {
 
 function isValidVersion() {
     var cs4 = 14;
-    var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    var current = parseInt(app.version);
+    if (current < cs4) return false;
     return true;
 }

@@ -15,7 +15,7 @@
    Illustrator 2020 or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -26,23 +26,33 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length && isValidVersion()) main();
+    if (isValidVersion()) main();
 })();
 
 
 function main() {
+    var pointText = isAi2023Higher() ? 'EnableActualPointTextSpaceAlign' : 'EnableActualTextSpaceAlign';
+    var areaText = 'EnableActualAreaTextSpaceAlign';
     var pref = app.preferences;
-    var glyph = pref.getBooleanPreference('EnableActualTextSpaceAlign');
-    pref.setBooleanPreference('EnableActualTextSpaceAlign', !glyph);
-    pref.setBooleanPreference('EnableActualAreaTextSpaceAlign', !glyph);
-    showDialog(glyph);
+    var glyph = pref.getBooleanPreference(pointText);
+    pref.setBooleanPreference(pointText, !glyph);
+    pref.setBooleanPreference(areaText, !glyph);
+    showDialog(!glyph);
+}
+
+
+function isAi2023Higher() {
+    var ai2023 = 27;
+    var current = parseFloat(app.version);
+    if (current < ai2023) return false;
+    return true;
 }
 
 
 function isValidVersion() {
-    var cc2020 = 24.3;
-    var aiVersion = parseFloat(app.version);
-    if (aiVersion < cc2020) return false;
+    var ai2020 = 24.3;
+    var current = parseFloat(app.version);
+    if (current < ai2020) return false;
     return true;
 }
 
@@ -66,7 +76,7 @@ function showDialog(glyph) {
     group1.margins = 20;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = glyph ? ui.off : ui.on;
+    statictext1.text = glyph ? ui.on : ui.off;
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';

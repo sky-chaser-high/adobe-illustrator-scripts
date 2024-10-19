@@ -15,7 +15,7 @@
    Illustrator CC or higher
 
    Version
-   1.0.0
+   1.0.1
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -26,23 +26,25 @@
    =============================================================================================================================================== */
 
 (function() {
-    if (app.documents.length && isValidVersion()) main();
+    if (isValidVersion()) main();
 })();
 
 
 function main() {
+    var key = 'layers/pastePreserve';
+    var backup = 'layers/pastePreserveBackup';
     var pref = app.preferences;
-    var preserve = pref.getBooleanPreference('layers/pastePreserve');
-    pref.setBooleanPreference('layers/pastePreserve', !preserve);
-    pref.setBooleanPreference('layers/pastePreserveBackup', !preserve);
-    showDialog(preserve);
+    var preserve = pref.getBooleanPreference(key);
+    pref.setBooleanPreference(key, !preserve);
+    pref.setBooleanPreference(backup, !preserve);
+    showDialog(!preserve);
 }
 
 
 function isValidVersion() {
     var cc = 17;
-    var aiVersion = parseFloat(app.version);
-    if (aiVersion < cc) return false;
+    var current = parseInt(app.version);
+    if (current < cc) return false;
     return true;
 }
 
@@ -66,7 +68,7 @@ function showDialog(preserve) {
     group1.margins = 20;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = preserve ? ui.off : ui.on;
+    statictext1.text = preserve ? ui.on : ui.off;
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';

@@ -19,7 +19,7 @@
    Illustrator CC or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -148,8 +148,8 @@ function splitWords() {
     }
     items = app.activeDocument.selection;
     texts = getTextFrames(items);
-    for (var j = 0; j < texts.length; j++) {
-        removeLineHeadSpace(texts[j]);
+    for (var j = texts.length - 1; j >= 0; j--) {
+        removeLeadingSpace(texts[j]);
     }
 }
 
@@ -186,9 +186,14 @@ function splitText(item, flag) {
 
 
 function split(text, contents, flag) {
-    var base = {
-        x: flag.line ? text.anchor[0] : text.position[0],
-        y: flag.line ? text.anchor[1] : text.position[1]
+    var justification = getJustification(text);
+    if (text.lines.length == 1) {
+        changeToLeftAlignment(text, justification);
+    }
+
+    var position = {
+        x: text.anchor[0],
+        y: text.anchor[1]
     };
     var item = text.duplicate();
 
@@ -196,20 +201,22 @@ function split(text, contents, flag) {
     var last = text.textRanges.length;
 
     text = removeContents(text, end, last);
-    text = move(text, base, flag.line);
+    text = move(text, position);
 
     item = removeContents(item, 0, end);
     if (hasLinefeed(item.contents)) {
         item = moveNextLine(item);
     }
     else {
-        var position = {
-            x: base.x + text.width,
-            y: base.y - text.height
-        };
-        item = move(item, position, flag.line);
+        position = getTrailingAnchorPosition(text);
+        item = move(item, position);
     }
     if (!item.contents) item.remove();
+
+    if (text.lines.length == 1) {
+        resetAlignment(text, justification);
+        resetAlignment(item, justification);
+    }
 
     removeTrailingSpaces(text.textRange);
     return item;
@@ -225,31 +232,35 @@ function removeContents(text, start, end) {
 }
 
 
-function move(text, base, isLine) {
-    var left = isLine ? text.anchor[0] : text.position[0];
-    var top = isLine ? text.anchor[1] : text.position[1];
+function move(text, base) {
+    var left = text.anchor[0];
+    var top = text.anchor[1];
     var x = base.x - left;
-    var y = 0;
-    if (text.orientation == TextOrientation.VERTICAL) {
-        x = 0;
-        y = base.y - top;
-    }
+    var y = base.y - top;
     text.translate(x, y);
     return text;
 }
 
 
 function moveNextLine(text) {
+    var angle = getRotationAngle(text);
     var leading = getLeading(text);
-    var x = 0;
-    var y = leading * -1;
+    var x = leading * Math.sin(angle);
+    var y = leading * Math.cos(angle) * -1;
     if (text.orientation == TextOrientation.VERTICAL) {
-        x = leading * -1;
-        y = 0;
+        x = leading * Math.cos(angle) * -1;
+        y = leading * Math.sin(angle) * -1;
     }
     text.textRanges[0].remove();
     text.translate(x, y);
     return text;
+}
+
+
+function getRotationAngle(item) {
+    var matrix = item.matrix;
+    var rad = Math.atan2(matrix.mValueB, matrix.mValueA);
+    return rad;
 }
 
 
@@ -286,6 +297,84 @@ function getLanguage(text) {
 }
 
 
+function getTrailingAnchorPosition(text) {
+    var justification = getJustification(text);
+    var top = text.top;
+    var left = text.left;
+
+    var shrink = 80;
+    var expand = (1 / shrink) * 10000;
+    text.resize(shrink, shrink);
+
+    switch (justification) {
+        case Justification.LEFT:
+        case Justification.CENTER:
+            setJustification(text, Justification.RIGHT);
+            break;
+        case Justification.RIGHT:
+            setJustification(text, Justification.LEFT);
+            break;
+    }
+    text.resize(expand, expand);
+    text.top = top;
+    text.left = left;
+
+    var x = text.anchor[0];
+    var y = text.anchor[1];
+
+    resetAlignment(text, justification);
+    return {
+        x: x,
+        y: y
+    };
+}
+
+
+function changeToLeftAlignment(text, justification) {
+    var top = text.top;
+    var left = text.left;
+    var shrink = 80;
+    var expand = (1 / shrink) * 10000;
+    text.resize(shrink, shrink);
+    switch (justification) {
+        case Justification.CENTER:
+        case Justification.RIGHT:
+            setJustification(text, Justification.LEFT);
+            break;
+    }
+    text.resize(expand, expand);
+    text.top = top;
+    text.left = left;
+}
+
+
+function changeToRightAlignment(text, justification) {
+    var top = text.top;
+    var left = text.left;
+    switch (justification) {
+        case Justification.LEFT:
+        case Justification.CENTER:
+            setJustification(text, Justification.RIGHT);
+            break;
+    }
+    text.top = top;
+    text.left = left;
+}
+
+
+function resetAlignment(text, justification) {
+    var top = text.top;
+    var left = text.left;
+    var shrink = 80;
+    var expand = (1 / shrink) * 10000;
+    text.resize(shrink, shrink);
+    setJustification(text, justification);
+    text.resize(expand, expand);
+    text.top = top;
+    text.left = left;
+}
+
+
 function hasLinefeed(text) {
     var linefeed = /^\r|^\u0003/;
     return linefeed.test(text);
@@ -307,6 +396,18 @@ function getPeriodPosition(text) {
 }
 
 
+function removeLeadingSpace(text) {
+    var justification = getJustification(text);
+    changeToRightAlignment(text, justification);
+
+    var str = text.textRanges[0];
+    var regex = /^\s/;
+    if (regex.test(str.contents)) str.remove();
+
+    resetAlignment(text, justification);
+}
+
+
 function removeTrailingSpaces(text) {
     var end = text.end - 1;
     var regex = /\s+$/;
@@ -316,28 +417,6 @@ function removeTrailingSpaces(text) {
 
 function removeNullCharacter(text) {
     if (!text.contents) text.remove();
-}
-
-
-function removeLineHeadSpace(text) {
-    var CENTER = Justification.CENTER;
-    var RIGHT = Justification.RIGHT;
-    var justification = getJustification(text);
-
-    var w1 = (justification == RIGHT) ? text.anchor[0] : text.width;
-    var h1 = (justification == RIGHT) ? text.anchor[1] : text.height;
-
-    var str = text.textRanges[0];
-    var regex = /^\s/;
-    if (regex.test(str.contents)) str.remove();
-
-    var w2 = (justification == RIGHT) ? text.anchor[0] : text.width;
-    var h2 = (justification == RIGHT) ? text.anchor[1] : text.height;
-
-    var half = (justification == CENTER) ? 2 : 1;
-    var x = (w1 - w2) / half;
-    var y = (h2 - h1) / half;
-    text.translate(x, y);
 }
 
 
@@ -358,8 +437,8 @@ function getTextFrames(items) {
 
 function isValidVersion() {
     var cc = 17;
-    var aiVersion = parseInt(app.version);
-    if (aiVersion < cc) return false;
+    var current = parseInt(app.version);
+    if (current < cc) return false;
     return true;
 }
 

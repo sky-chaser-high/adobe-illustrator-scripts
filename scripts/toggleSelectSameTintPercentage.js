@@ -1,9 +1,8 @@
 ﻿/* ===============================================================================================================================================
-   toggleShowHandles
+   toggleSelectSameTintPercentage
 
    Description
-   This script toggles the Preferences > Selection & Anchor Display > Anchor Points, Handle, and Bounding Box Display >
-   Show handles when multiple anchors are selected.
+   This script toggles the Preferences > General > Select Same Tint %.
 
    Usage
    Just run this script from File > Scripts > Other Script...
@@ -16,7 +15,7 @@
    Illustrator CC or higher
 
    Version
-   1.0.1
+   1.0.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -32,13 +31,11 @@
 
 
 function main() {
-    var key = 'showDirectionHandles';
+    var key = 'selectSameTintPercentage';
     var pref = app.preferences;
-    var handle = pref.getBooleanPreference(key);
-    pref.setBooleanPreference(key, !handle);
-
-    var items = (app.documents.length) ? app.activeDocument.selection : [];
-    if (!items.length) showDialog(!handle);
+    var tint = pref.getBooleanPreference(key);
+    pref.setBooleanPreference(key, !tint);
+    showDialog(!tint);
 }
 
 
@@ -50,13 +47,13 @@ function isValidVersion() {
 }
 
 
-function showDialog(handle) {
+function showDialog(tint) {
     $.localize = true;
     var ui = localizeUI();
 
     var dialog = new Window('dialog');
     dialog.text = ui.title;
-    dialog.preferredSize.width = 350;
+    dialog.preferredSize.width = 260;
     dialog.orientation = 'column';
     dialog.alignChildren = ['fill', 'top'];
     dialog.spacing = 10;
@@ -69,7 +66,7 @@ function showDialog(handle) {
     group1.margins = 20;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = handle ? ui.on : ui.off;
+    statictext1.text = tint ? ui.on : ui.off;
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
@@ -88,8 +85,8 @@ function showDialog(handle) {
 function localizeUI() {
     return {
         title: {
-            en: 'Show handles when multiple anchors are selected',
-            ja: '複数アンカーを選択時にハンドルを表示'
+            en: 'Select Same Tint %',
+            ja: '同じ濃度を選択'
         },
         on: {
             en: 'ON',

@@ -1,5 +1,7 @@
 # Change Log
 
+## v1.56.0 (2024-10-19)
+- Added Preferences category.
 ## v1.50.0 (2024-04-06)
 - Added View category.
 ## v1.23.0 (2022-10-28)
@@ -343,6 +345,9 @@
 
 
 ## generateGradientColor.js
+### 1.1.0 (2024-10-19)
+### Changes
+- When generating a gradient from a path object, the colors are now obtained in order from left to right.
 ### 1.0.2 (2024-09-16)
 ### Changes
 - Refactoring.
@@ -689,6 +694,9 @@
 
 
 ## splitText.js
+### 1.2.0 (2024-10-19)
+### Changes
+- Text can now be split even if it is rotated.
 ### 1.1.0 (2024-04-29)
 ### Added
 - Area types are now supported. After splitting, convert to point types.
@@ -696,6 +704,13 @@
 - Changed the algorithm for splitting text.
 ### Bug Fixes
 - Fixed a bug that prevented whitespace characters from being removed.
+<br><br>
+
+
+## splitTextAtCursorPosition.js
+### 1.1.0 (2024-10-19)
+### Changes
+- Text can now be split even if it is rotated.
 <br><br>
 
 
@@ -752,6 +767,27 @@
 ### 1.0.1 (2023-04-08)
 ### Changes
 - Refactoring.
+<br><br>
+
+
+## toggleAlignToGlyphBounds.js
+### 1.0.1 (2024-10-19)
+### Bug Fixes
+- Fixed a bug in which the point text did not toggle in version 2023 or later.
+<br><br>
+
+
+## togglePasteRemembersLayers.js
+### 1.0.1 (2024-10-19)
+### Bug Fixes
+- Fixed a bug in which settings could not toggle when no document is open.
+<br><br>
+
+
+## toggleShowHandles.js
+### 1.0.1 (2024-10-19)
+### Bug Fixes
+- Fixed a bug in which settings could not be changed when no document was open.
 <br><br>
 
 

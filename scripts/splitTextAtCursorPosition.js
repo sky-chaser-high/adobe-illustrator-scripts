@@ -18,7 +18,7 @@
    Illustrator CS6 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -52,20 +52,29 @@ function main() {
 
 
 function split(text, cursor) {
-    var x = text.position[0];
-    var y = text.position[1];
+    var justification = getJustification(text);
+    changeToLeftAlignment(text, justification);
+
+    var position = {
+        x: text.anchor[0],
+        y: text.anchor[1]
+    };
     var start = 0;
     var end = text.textRanges.length;
 
     var item = text.duplicate();
 
     text = removeContents(text, cursor, end);
-    text = move(text, x, y);
+    text = move(text, position);
     text.selected = true;
 
     item = removeContents(item, start, cursor);
-    item = move(item, x + text.width, y - text.height);
+    position = getTrailingAnchorPosition(text);
+    item = move(item, position);
     item.selected = true;
+
+    resetAlignment(text, justification);
+    resetAlignment(item, justification);
 
     return item;
 }
@@ -80,16 +89,103 @@ function removeContents(text, start, end) {
 }
 
 
-function move(text, x, y) {
-    var left = text.position[0];
-    var top = text.position[1];
-    if (text.orientation == TextOrientation.HORIZONTAL) {
-        text.translate(x - left, 0);
-    }
-    else {
-        text.translate(0, y - top);
-    }
+function move(text, base) {
+    var left = text.anchor[0];
+    var top = text.anchor[1];
+    var x = base.x - left;
+    var y = base.y - top;
+    text.translate(x, y);
     return text;
+}
+
+
+function getJustification(text) {
+    var ranges = text.textRanges;
+    for (var i = 0; i < ranges.length; i++) {
+        var range = ranges[i];
+        var paragraph = range.paragraphAttributes;
+        try {
+            return paragraph.justification;
+        }
+        catch (err) { }
+    }
+}
+
+
+function setJustification(text, align) {
+    var ranges = text.textRanges;
+    for (var i = 0; i < ranges.length; i++) {
+        var range = ranges[i];
+        var paragraph = range.paragraphAttributes;
+        try {
+            paragraph.justification = align;
+        }
+        catch (err) { }
+    }
+}
+
+
+function getTrailingAnchorPosition(text) {
+    var justification = getJustification(text);
+    var top = text.top;
+    var left = text.left;
+
+    var shrink = 80;
+    var expand = (1 / shrink) * 10000;
+    text.resize(shrink, shrink);
+
+    switch (justification) {
+        case Justification.LEFT:
+        case Justification.CENTER:
+            setJustification(text, Justification.RIGHT);
+            break;
+        case Justification.RIGHT:
+            setJustification(text, Justification.LEFT);
+            break;
+    }
+    text.resize(expand, expand);
+    text.top = top;
+    text.left = left;
+
+    var x = text.anchor[0];
+    var y = text.anchor[1];
+
+    resetAlignment(text, justification);
+    return {
+        x: x,
+        y: y
+    };
+}
+
+
+function changeToLeftAlignment(text, justification) {
+    var top = text.top;
+    var left = text.left;
+    var shrink = 80;
+    var expand = (1 / shrink) * 10000;
+    text.resize(shrink, shrink);
+    switch (justification) {
+        case Justification.CENTER:
+        case Justification.RIGHT:
+            setJustification(text, Justification.LEFT);
+            break;
+    }
+    text.resize(expand, expand);
+    text.top = top;
+    text.left = left;
+}
+
+
+function resetAlignment(text, justification) {
+    var top = text.top;
+    var left = text.left;
+    var shrink = 80;
+    var expand = (1 / shrink) * 10000;
+    text.resize(shrink, shrink);
+    setJustification(text, justification);
+    text.resize(expand, expand);
+    text.top = top;
+    text.left = left;
 }
 
 
@@ -117,7 +213,7 @@ function getCursorPosition(text, start, end) {
 
 function isValidVersion() {
     var cs6 = 16;
-    var aiVersion = parseInt(app.version);
-    if (aiVersion < cs6) return false;
+    var current = parseInt(app.version);
+    if (current < cs6) return false;
     return true;
 }

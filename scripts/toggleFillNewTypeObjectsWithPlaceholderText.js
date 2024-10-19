@@ -1,9 +1,8 @@
 ﻿/* ===============================================================================================================================================
-   toggleShowHandles
+   toggleFillNewTypeObjectsWithPlaceholderText
 
    Description
-   This script toggles the Preferences > Selection & Anchor Display > Anchor Points, Handle, and Bounding Box Display >
-   Show handles when multiple anchors are selected.
+   This script toggles the Preferences > Type > Fill New Type Objects With Placeholder Text.
 
    Usage
    Just run this script from File > Scripts > Other Script...
@@ -13,10 +12,10 @@
    In this case, restart Illustrator and try again.
 
    Requirements
-   Illustrator CC or higher
+   Illustrator 2018 or higher
 
    Version
-   1.0.1
+   1.0.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -32,31 +31,39 @@
 
 
 function main() {
-    var key = 'showDirectionHandles';
+    var key = 'text/fillWithDefaultText';
+    var jp = 'text/fillWithDefaultTextJP';
+    if (/ja/.test($.locale) && isAi2022Higher()) key = jp;
     var pref = app.preferences;
-    var handle = pref.getBooleanPreference(key);
-    pref.setBooleanPreference(key, !handle);
-
-    var items = (app.documents.length) ? app.activeDocument.selection : [];
-    if (!items.length) showDialog(!handle);
+    var text = pref.getBooleanPreference(key);
+    pref.setBooleanPreference(key, !text);
+    showDialog(!text);
 }
 
 
-function isValidVersion() {
-    var cc = 17;
-    var current = parseInt(app.version);
-    if (current < cc) return false;
+function isAi2022Higher() {
+    var ai2022 = 26;
+    var current = parseFloat(app.version);
+    if (current < ai2022) return false;
     return true;
 }
 
 
-function showDialog(handle) {
+function isValidVersion() {
+    var cc2018 = 22;
+    var current = parseInt(app.version);
+    if (current < cc2018) return false;
+    return true;
+}
+
+
+function showDialog(text) {
     $.localize = true;
     var ui = localizeUI();
 
     var dialog = new Window('dialog');
     dialog.text = ui.title;
-    dialog.preferredSize.width = 350;
+    dialog.preferredSize.width = 320;
     dialog.orientation = 'column';
     dialog.alignChildren = ['fill', 'top'];
     dialog.spacing = 10;
@@ -69,7 +76,7 @@ function showDialog(handle) {
     group1.margins = 20;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
-    statictext1.text = handle ? ui.on : ui.off;
+    statictext1.text = text ? ui.on : ui.off;
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
@@ -88,8 +95,8 @@ function showDialog(handle) {
 function localizeUI() {
     return {
         title: {
-            en: 'Show handles when multiple anchors are selected',
-            ja: '複数アンカーを選択時にハンドルを表示'
+            en: 'Fill New Type Objects With Placeholder Text',
+            ja: 'サンプルテキストを割り付け'
         },
         on: {
             en: 'ON',

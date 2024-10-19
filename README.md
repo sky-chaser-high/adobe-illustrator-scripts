@@ -17,17 +17,16 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Color
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
-- [Convert to Global Color](#convertToGlobalColorjsconvertToSpotColorjs)
-- [Convert to Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
-- [Create Color Chart](#createColorChartjs) `Update`
+- [Convert to Global / Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
+- [Create Color Chart](#createColorChartjs)
 - [Delete All Swatches](#deleteAllSwatchesjs)
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
-- [Generate Gradient Color](#generateGradientColorjs)
-- [Highlight Word](#highlightWordjs) `Update`
+- [Generate Gradient Color](#generateGradientColorjs) `Update`
+- [Highlight Word](#highlightWordjs)
 - [Import CSV to Swatch](#importCSVtoSwatchjs)
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
-- [Random Text Color](#randomTextColorjs) `Update`
+- [Random Text Color](#randomTextColorjs)
 - [Remove Deleted Global Color](#removeDeletedGlobalColorjs)
 - [Round Color Value](#roundColorValuejs)
 - [Round Location of Gradient Stop](#roundLocationOfGradientStopjs)
@@ -47,9 +46,9 @@ If you find a script that interests you, please download it from [![Download](ht
 
 ### Link
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
-- [Bulk Relink](#bulkRelinkjs) `New`
+- [Bulk Relink](#bulkRelinkjs)
 - [Relink File Extension](#relinkFileExtensionjs)
-- [Relink File Extension Extra](#relinkFileExtensionExtrajs) `Bug Fix`
+- [Relink File Extension Extra](#relinkFileExtensionExtrajs)
 - [Relink to Folder](#relinkToFolderjs)
 - [Rename Linked File](#renameLinkedFilejs)
 - [Reset to Full Scale](#resetToFullScalejs)
@@ -59,17 +58,14 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [Add Anchor Points](#addAnchorPointsjs)
-- [Align in Center of Space (Horizontal)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
-- [Align in Center of Space (Vertical)](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
+- [Align in Center of Space](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align Objects](#alignObjectsjs)
 - [Close Path](#closePathjs)
 - [Convert All Anchor Points to Corner](#convertAllAnchorPointsToCornerjs)
 - [Create Grid Lines](#createGridLinesjs)
-- [Decrease Selected Anchor Points Clockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
-- [Decrease Selected Anchor Points Counterclockwise](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
+- [Decrease Selected Anchor Points](#decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs)
 - [Disjoin Path](#disjoinPathjs)
-- [Distribute in Space (Horizontal)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
-- [Distribute in Space (Vertical)](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
+- [Distribute in Space](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
 - [Draw Normal Line](#drawNormalLinejs)
 - [Draw Rectangle](#drawRectanglejs)
@@ -78,14 +74,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Extend Handle](#extendHandlejs)
 - [Extend Line](#extendLinejs)
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
-- [Increase Selected Anchor Points Clockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
-- [Increase Selected Anchor Points Counterclockwise](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
+- [Increase Selected Anchor Points](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Move Guides](#moveGuidesjs)
 - [Rearrange Objects](#rearrangeObjectsjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
-- [Shift Selected Anchor Points Clockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
-- [Shift Selected Anchor Points Counterclockwise](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
+- [Shift Selected Anchor Points](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Show Dimensions](#showDimensionsjs)
 - [Shuffle Objects](#shuffleObjectsjs)
 - [Step and Repeat](#stepAndRepeatjs)
@@ -94,33 +88,25 @@ If you find a script that interests you, please download it from [![Download](ht
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [Add Numeric Separators](#addNumericSeparatorsjs)
 - [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointTypejs)
-- [Copy Line Down](#copyLineDownjscopyLineUpjs)
-- [Copy Line Up](#copyLineDownjscopyLineUpjs)
-- [Copy Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
+- [Copy Line Up / Down](#copyLineDownjscopyLineUpjs)
+- [Copy / Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
 - [Create Page Numbers](#createPageNumbersjs)
 - [Create Text Parallel to Path Segment](#createTextParallelToPathSegmentjs)
 - [Create Threaded Text](#createThreadedTextjs)
-- [Cut Line (empty selection)](#copyLineEmptySelectionjscutLineEmptySelectionjs)
-- [Delete All Left](#deleteAllLeftjsdeleteAllRightjs)
-- [Delete All Right](#deleteAllLeftjsdeleteAllRightjs)
+- [Delete All Left / Right](#deleteAllLeftjsdeleteAllRightjs)
 - [Delete Trailing Spaces](#deleteTrailingSpacesjs)
 - [Delete Word](#deleteWordjs)
 - [Enclose Word in Parentheses](#encloseWordInParenthesesjs)
 - [Go to Line](#goToLinejs)
-- [Go to Next Text](#goToNextTextjsgoToPreviousTextjs)
-- [Go to Previous Text](#goToNextTextjsgoToPreviousTextjs)
-- [Insert Line Above](#insertLineAbovejsinsertLineBelowjs)
-- [Insert Line Below](#insertLineAbovejsinsertLineBelowjs)
+- [Go to Next / Previous Text](#goToNextTextjsgoToPreviousTextjs)
+- [Insert Line Above / Below](#insertLineAbovejsinsertLineBelowjs)
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
-- [Move Line Down](#moveLineDownjsmoveLineUpjs)
-- [Move Line Up](#moveLineDownjsmoveLineUpjs)
+- [Move Line Up / Down](#moveLineDownjsmoveLineUpjs)
 - [Sort Lines](#sortLinesjs)
-- [Split Text](#splitTextjs)
-- [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
+- [Split Text](#splitTextjs) `Update`
+- [Split Text at Cursor Position](#splitTextAtCursorPositionjs) `Update`
 - [Swap Text Contents](#swapTextContentsjs)
-- [Text Align Center](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
-- [Text Align Left](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
-- [Text Align Right](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
+- [Text Align Left / Center / Right](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 
 ### Utility
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -129,20 +115,27 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Compare Scale](#compareScalejs)
 - [Measure Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
-- [Toggle Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
-- [Toggle Paste Remembers Layers](#togglePasteRemembersLayersjs)
-- [Toggle Show Handles](#toggleShowHandlesjs)
 - [Unit Calculator](#unitCalculatorjs)
 
 ### View
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [Arrange Windows](#arrangeWindowsjs)
 - [Fit Selected Objects in Window](#fitSelectedObjectsInWindowjs)
-- [Navigate to First Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
-- [Navigate to Last Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
-- [Navigate to Next Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
-- [Navigate to Previous Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
+- [Navigate to First / Last / Next / Previous Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
 - [Sync View](#syncViewjs)
+
+### Preferences
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+- [Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs) `Bug Fix`
+- [Fill New Type Objects With Placeholder Text](#toggleFillNewTypeObjectsWithPlaceholderTextjs) `New`
+- [Paste Remembers Layers](#togglePasteRemembersLayersjs)
+- [Select Same Tint Percentage](#toggleSelectSameTintPercentagejs) `New`
+- [Show Character Alternates](#toggleShowCharacterAlternatesjs) `New`
+- [Show Handles](#toggleShowHandlesjs)
+- [Transform Pattern Tiles](#toggleTransformPatternTilesjs) `New`
+- [Use Preview Bounds](#toggleUsePreviewBoundsjs) `New`
+- [Zoom to Selection](#toggleZoomToSelectionjs) `New`
+- [Zoom with Mouse Wheel](#toggleZoomWithMouseWheeljs) `New`
 <br><br><br>
 
 
@@ -447,7 +440,7 @@ Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.
 These units depend on the ruler units.
 
 ### Requirements
-Illustrator CS4 or higher
+Illustrator CC or higher
 
 <div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
 <br>
@@ -541,7 +534,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-![Vscode Copy Line](images/vscode_copyLine.png)
+<img src="images/vscode_copyLine.png" alt="Vscode Copy Line" width="60%">
 
 For example, copyLineDown.js:
 ![Copy Line](images/copyLine.png)
@@ -1327,6 +1320,9 @@ Illustrator CS or higher
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
 This script generates a gradient color from fill colors or swatches.
 
+> [!TIP]
+> It has been implement in the Swatch panel menu since version 2025.
+
 ![Generate Gradient Color](images/generateGradientColor.png)
 
 ### Usage
@@ -1354,7 +1350,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-![Vscode Go to Line](images/vscode_goToLine.png)
+<img src="images/vscode_goToLine.png" alt="Vscode Go to Line" width="60%">
 
 ![Go to Line](images/goToLine.png)
 
@@ -1693,7 +1689,7 @@ If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com
 you will be able to achieve more of a Visual Studio Code feel.  
 Both point and area types are supported.
 
-![Vscode Move Line](images/vscode_moveLine.png)
+<img src="images/vscode_moveLine.png" alt="Vscode Move Line" width="60%">
 
 For example, moveLineDown.js:
 ![Move Line](images/moveLine.png)
@@ -2408,7 +2404,7 @@ This script splits a text by lines, words, or characters. The vertical text is a
 > After splitting, the text position may move slightly.
 
 ### Requirements
-Illustrator CS4 or higher
+Illustrator CC or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
@@ -2552,10 +2548,10 @@ Illustrator CS or higher
 
 
 # <a name="toggleAlignToGlyphBoundsjs">toggleAlignToGlyphBounds.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
 This script toggles the Align panel menu > Align to Glyph Bounds > Point Text and Area Text.
 
-![Toggle Align To Glyph Bounds](images/toggleAlignToGlyphBounds.png)
+![Toggle Align to Glyph Bounds](images/toggleAlignToGlyphBounds.png)
 
 ### Usage
 Just run this script.
@@ -2563,7 +2559,26 @@ Just run this script.
 ### Requirements
 Illustrator 2020 or higher
 
-<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleFillNewTypeObjectsWithPlaceholderTextjs">toggleFillNewTypeObjectsWithPlaceholderText.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Preferences > Type > Fill New Type Objects With Placeholder Text.
+
+<img src="images/toggleFillNewTypeObjectsWithPlaceholderText.png" alt="Toggle Fill New Type Objects With Placeholder Text" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator 2018 or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
@@ -2571,7 +2586,7 @@ Illustrator 2020 or higher
 
 
 # <a name="togglePasteRemembersLayersjs">togglePasteRemembersLayers.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
 This script toggles the Layers panel menu > Paste Remembers Layers.
 
 ![Toggle Paste Remembers Layers](images/togglePasteRemembersLayers.png)
@@ -2582,18 +2597,18 @@ Just run this script.
 ### Requirements
 Illustrator CC or higher
 
-<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
 
 
 
-# <a name="toggleShowHandlesjs">toggleShowHandles.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
-This script toggles the Preferences > Selection & Anchor Display > Anchor Points, Handle, and Bounding Box Display > Show handles when multiple anchors are selected.
+# <a name="toggleSelectSameTintPercentagejs">toggleSelectSameTintPercentage.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Preferences > General > Select Same Tint %.
 
-![Toggle Show Handles](images/toggleShowHandles.png)
+<img src="images/toggleSelectSameTintPercentage.png" alt="Toggle Select Same Tint Percentage" width="70%">
 
 ### Usage
 Just run this script.
@@ -2601,7 +2616,121 @@ Just run this script.
 ### Requirements
 Illustrator CC or higher
 
-<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleShowCharacterAlternatesjs">toggleShowCharacterAlternates.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Preferences > Type > Show Character Alternates.
+
+<img src="images/toggleShowCharacterAlternates.png" alt="Toggle Show Character Alternates" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator 2020 or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleShowHandlesjs">toggleShowHandles.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Preferences > Selection & Anchor Display > Anchor Points, Handle, and Bounding Box Display > Show handles when multiple anchors are selected.
+
+<img src="images/toggleShowHandles.png" alt="Toggle Show Handles" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CC or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleTransformPatternTilesjs">toggleTransformPatternTiles.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Preferences > General > Transform Pattern Tiles.
+
+<img src="images/toggleTransformPatternTiles.png" alt="Toggle Transform Pattern Tiles" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CC or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleUsePreviewBoundsjs">toggleUsePreviewBounds.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Align panel menu > Use Preview Bounds or the Preferences > General > Use Preview Bounds.
+
+<img src="images/toggleUsePreviewBounds.png" alt="Toggle Use Preview Bounds" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CC or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleZoomToSelectionjs">toggleZoomToSelection.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Preferences > Selection & Anchor Display > Selection > Zoom to Selection.
+
+<img src="images/toggleZoomToSelection.png" alt="Toggle Zoom to Selection" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator 2018 or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="toggleZoomWithMouseWheeljs">toggleZoomWithMouseWheel.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+This script toggles the Preferences > General > Zoom with Mouse Wheel.
+
+<img src="images/toggleZoomWithMouseWheel.png" alt="Toggle Zoom with Mouse Wheel" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator 2022 or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
