@@ -1,12 +1,12 @@
 # Libs | Adobe Illustrator Scripts
 Frequently used features were grouped into functions.
 
-[![Download Libs.zip](https://img.shields.io/badge/Download-Libs.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Libs.zip)
+[![Download Libs.zip](https://img.shields.io/badge/Download-Libs.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Libs.zip)
 - [Map.js](#Mapjs)
 - [Matrix.js](#Matrixjs)
-- [UI_Image_Encoder.js](#UI_Image_Encoderjs)
+- [UI_Image_Encoder.js](#UI_Image_Encoderjs) `Update`
 - [Vector.js](#Vectorjs)
-- [XMP.js](#XMPjs)
+- [XMP.js](#XMPjs) `Update`
 
 ## Usage
 You can include this script or copy the function to use it.  
@@ -20,9 +20,15 @@ var value = map(num, 0, 100, 0, 255);
 ## Requirements
 Illustrator CS or higher
 
+## License
+All scripts are licensed under the MIT license.  
+See the included LICENSE file for more details.
+
 
 
 # <a name="Mapjs">Map.js</a>
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">
+
 This script summarizes functions related to maps.
 
 ## Functions
@@ -115,6 +121,8 @@ var value = norm(num, 0, 100);
 
 
 # <a name="Matrixjs">Matrix.js</a>
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
 These functions get the object's scale, rotation, or shear value from the matrix.
 
 ## Functions
@@ -266,6 +274,8 @@ var isReflected = isReflectedY(matrix);
 
 
 # <a name="UI_Image_Encoderjs">UI_Image_Encoder.js</a>
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">
+
 This script converts a image file to binary for use within the ScriptUI.
 
 <img src="../images/UI_Image_Encoder.png" alt="UI Image Encoder" width="50%">
@@ -274,8 +284,9 @@ This script converts a image file to binary for use within the ScriptUI.
 1. Run this script.
 2. Select an image file. Only JPEG and PNG format image files are supported.
 3. Select the encoding method, either the Unicode or the Percent-encoding.
-4. Click the Convert button.
-5. Copy the string converted to binary and paste it into the code you are creating.  
+4. Select whether to escape quotation marks.
+5. Click the Convert button.
+6. Copy the string converted to binary and paste it into the code you are creating.  
    Escape quotation marks if necessary.
 
 ```javascript
@@ -294,6 +305,8 @@ Illustrator CS4 or higher
 
 
 # <a name="Vectorjs">Vector.js</a>
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
 This script summarizes functions related to vectors.
 
 ## Functions
@@ -314,8 +327,10 @@ This script summarizes functions related to vectors.
 
 
 # <a name="XMPjs">XMP.js</a>
+<img src="https://img.shields.io/badge/version-2.1.0-e8e8e8?style=flat-square">
+
 These functions get the font, color, or history properties used in the document from XMP.  
-**See also:** [Adobe XMP Document](https://www.adobe.io/xmp/docs/)
+**See also:** [Adobe XMP Document](https://developer.adobe.com/xmp/docs/)
 
 > **Note** XMP can also be used for linked files.
 > ```javascript
@@ -329,6 +344,7 @@ These functions get the font, color, or history properties used in the document 
 - [getHistory(src)](#getHistorysrc)
 - [getLinkedFiles(src)](#getLinkedFilessrc)
 - [getPlateNames(src)](#getPlateNamessrc)
+- [getRulerUnits(src)](#getRulerUnitssrc) `New`
 - [getSwatches(src)](#getSwatchessrc)
 
 ## <a name="getFontssrc">getFonts(src)</a>
@@ -404,6 +420,22 @@ Get plate names that are used in the document from XMP.
 var src = app.activeDocument.fullName;
 var platenames = getPlateNames(src);
 alert(platenames[0]);
+```
+
+<div align="right">[ <a href="#XMPjs">↑ Back to Top ↑</a> ]</div>
+
+
+## <a name="getRulerUnitssrc">getRulerUnits(src)</a>
+Get ruler units that are used in the document from XMP.
+
+**Param**: `src` `<File>`  
+**Returns**: `<string>` Ruler units.  
+
+```javascript
+// @include '/foo/bar/XMP.js'
+var src = app.activeDocument.fullName;
+var units = getRulerUnits(src);
+alert(units);
 ```
 
 <div align="right">[ <a href="#XMPjs">↑ Back to Top ↑</a> ]</div>

@@ -774,20 +774,28 @@
 ### 1.0.1 (2024-10-19)
 ### Bug Fixes
 - Fixed a bug in which the point text did not toggle in version 2023 or later.
+- Fixed a bug in settings that could not toggle when no document was open.
 <br><br>
 
 
 ## togglePasteRemembersLayers.js
 ### 1.0.1 (2024-10-19)
 ### Bug Fixes
-- Fixed a bug in which settings could not toggle when no document is open.
+- Fixed a bug in settings that could not toggle when no document was open.
 <br><br>
 
 
 ## toggleShowHandles.js
 ### 1.0.1 (2024-10-19)
 ### Bug Fixes
-- Fixed a bug in which settings could not be changed when no document was open.
+- Fixed a bug in settings that could not toggle when no document was open.
+<br><br>
+
+
+## UI_Image_Encoder.js
+### 1.1.0 (2024-12-07)
+### Added
+- Added the function to escape quotation marks.
 <br><br>
 
 

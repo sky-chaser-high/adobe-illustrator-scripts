@@ -8,8 +8,9 @@
    1. Run this script from File > Scripts > Other Script...
    2. Select an image file. Only JPEG and PNG format image files are supported.
    3. Select the encoding method, either the Unicode or the Percent-encoding.
-   4. Click the Convert button.
-   5. Copy the string converted to binary and paste it into the code you are creating.
+   4. Select whether to escape quotation marks.
+   5. Click the Convert button.
+   6. Copy the string converted to binary and paste it into the code you are creating.
       Escape quotation marks if necessary.
 
    Example
@@ -26,7 +27,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.0.0
+   1.1.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -46,7 +47,8 @@ function main() {
 
     dialog.convert.onClick = function() {
         var src = dialog.file.text;
-        var data = encodeFile(src);
+        var quote = getQuotationMark(dialog);
+        var data = encodeFile(src, quote);
         if (dialog.unicode.value) dialog.binary.text = (data) ? data.unicode : '';
         if (dialog.percent.value) dialog.binary.text = (data) ? data.percent : '';
 
@@ -58,7 +60,7 @@ function main() {
 }
 
 
-function encodeFile(src) {
+function encodeFile(src, quote) {
     var file = File(src);
     if (!file.exists) return;
 
@@ -73,6 +75,12 @@ function encodeFile(src) {
     unicode = unicode.replace(/^\(new\sString\("/i, '');
     unicode = unicode.replace(/"\)\)/i, '');
 
+    if (quote) {
+        var regex = new RegExp(quote, 'g');
+        percent = percent.replace(regex, '\\' + quote);
+        unicode = unicode.replace(regex, '\\' + quote);
+    }
+
     return {
         unicode: unicode,
         percent: percent
@@ -80,10 +88,18 @@ function encodeFile(src) {
 }
 
 
+function getQuotationMark(dialog) {
+    var escape = dialog.escape.value;
+    if (!escape) return '';
+    var quote = dialog.singleQuote.value;
+    return (quote) ? '\'' : '"';
+}
+
+
 function isValidVersion() {
     var cs4 = 14;
-    var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    var current = parseInt(app.version);
+    if (current < cs4) return false;
     return true;
 }
 
@@ -114,7 +130,7 @@ function showDialog() {
 
     var button1 = group1.add('button', undefined, undefined, { name: 'button1' });
     button1.text = ui.select;
-    button1.preferredSize.width = 65;
+    button1.preferredSize.width = 60;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
     statictext1.text = '';
@@ -140,30 +156,60 @@ function showDialog() {
     var radiobutton2 = group2.add('radiobutton', undefined, undefined, { name: 'radiobutton2' });
     radiobutton2.text = ui.percent;
 
-    var group3 = dialog.add('group', undefined, { name: 'group3' });
-    group3.orientation = 'column';
-    group3.alignChildren = ['fill', 'center'];
-    group3.spacing = 10;
-    group3.margins = [0, 10, 0, 4];
+    var panel3 = dialog.add('panel', undefined, undefined, { name: 'panel3' });
+    panel3.text = ui.quotationMark;
+    panel3.orientation = 'column';
+    panel3.alignChildren = ['left', 'top'];
+    panel3.spacing = 10;
+    panel3.margins = 10;
 
-    var statictext2 = group3.add('statictext', undefined, undefined, { name: 'statictext2' });
+    var group3 = panel3.add('group', undefined, { name: 'group3' });
+    group3.orientation = 'row';
+    group3.alignChildren = ['left', 'center'];
+    group3.spacing = 10;
+    group3.margins = [0, 8, 0, 0];
+
+    var checkbox1 = group3.add('checkbox', undefined, undefined, { name: 'checkbox1' });
+    checkbox1.text = ui.escape;
+
+    var group4 = group3.add('group', undefined, { name: 'group4' });
+    group4.orientation = 'row';
+    group4.alignChildren = ['left', 'center'];
+    group4.spacing = 10;
+    group4.margins = 0;
+    group4.enabled = false;
+
+    var radiobutton3 = group4.add('radiobutton', undefined, undefined, { name: 'radiobutton3' });
+    radiobutton3.text = ui.singleQuote;
+    radiobutton3.value = true;
+
+    var radiobutton4 = group4.add('radiobutton', undefined, undefined, { name: 'radiobutton4' });
+    radiobutton4.text = ui.doubleQuote;
+
+    var group5 = dialog.add('group', undefined, { name: 'group5' });
+    group5.orientation = 'column';
+    group5.alignChildren = ['fill', 'center'];
+    group5.spacing = 10;
+    group5.margins = [0, 6, 0, 0];
+
+    var statictext2 = group5.add('statictext', undefined, undefined, { name: 'statictext2' });
     statictext2.text = ui.binary;
 
-    var edittext1 = group3.add('edittext', undefined, undefined, { name: 'edittext1', multiline: true });
+    var edittext1 = group5.add('edittext', undefined, undefined, { name: 'edittext1', multiline: true });
     edittext1.text = '';
     edittext1.preferredSize.height = 300;
 
-    var group4 = dialog.add('group', undefined, { name: 'group4' });
-    group4.orientation = 'row';
-    group4.alignChildren = ['right', 'center'];
-    group4.spacing = 10;
-    group4.margins = 0;
+    var group6 = dialog.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'row';
+    group6.alignChildren = ['right', 'center'];
+    group6.spacing = 10;
+    group6.margins = 0;
 
-    var button2 = group4.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group6.add('button', undefined, undefined, { name: 'button2' });
     button2.text = ui.close;
     button2.preferredSize.width = 90;
 
-    var button3 = group4.add('button', undefined, undefined, { name: 'button3' });
+    var button3 = group6.add('button', undefined, undefined, { name: 'button3' });
     button3.text = ui.convert;
     button3.preferredSize.width = 90;
     button3.enabled = false;
@@ -176,6 +222,15 @@ function showDialog() {
         edittext1.active = false;
         edittext1.active = true;
     });
+
+    checkbox1.onClick = function() {
+        if (checkbox1.value) {
+            group4.enabled = true;
+        }
+        else {
+            group4.enabled = false;
+        }
+    }
 
     button1.onClick = function() {
         var src = File.openDialog('', filterExtension(), false);
@@ -193,6 +248,9 @@ function showDialog() {
     dialog.file = statictext1;
     dialog.unicode = radiobutton1;
     dialog.percent = radiobutton2;
+    dialog.escape = checkbox1;
+    dialog.singleQuote = radiobutton3;
+    dialog.doubleQuote = radiobutton4;
     dialog.binary = edittext1;
     dialog.convert = button3;
     return dialog;
@@ -243,6 +301,22 @@ function localizeUI() {
         percent: {
             en: 'Percent-encoding',
             ja: 'パーセントエンコーディング'
+        },
+        quotationMark: {
+            en: 'Quotation Marks',
+            ja: 'クォーテーションマーク'
+        },
+        escape: {
+            en: 'Escape:',
+            ja: 'エスケープ:'
+        },
+        singleQuote: {
+            en: '\\\'',
+            ja: '\\\''
+        },
+        doubleQuote: {
+            en: '\\\"',
+            ja: '\\\"'
         },
         binary: {
             en: 'Binary:',

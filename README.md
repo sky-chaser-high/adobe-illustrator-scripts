@@ -1,28 +1,29 @@
 [日本語の README はこちらです。](README_ja.md)
 
 # Adobe Illustrator Scripts
-[![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
+[![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
+<img src="https://img.shields.io/badge/Release-v1.57.0-e8e8e8?style=flat-square"> 
 
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
 Click the titles to jump to learn more about the script.  
-If you find a script that interests you, please download it from [![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest).
+If you find a script that interests you, please download it from [![Download](https://img.shields.io/badge/Download-66595c?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest).
 <br><br>
 
 ### Artboard
-[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 - [Rename Artboard](#renameArtboardjs)
 - [Show Artboard Name](#showArtboardNamejs)
 - [Sort Artboards](#sortArtboardsjs)
 
 ### Color
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 - [Add Selected Gradients to Swatch](#addSelectedGradientsToSwatchjs)
 - [Convert to Global / Spot Color](#convertToGlobalColorjsconvertToSpotColorjs)
 - [Create Color Chart](#createColorChartjs)
 - [Delete All Swatches](#deleteAllSwatchesjs)
 - [Export Color Values to CSV](#exportColorValuesToCSVjs)
 - [Extract Colors from Gradient](#extractColorsFromGradientjs)
-- [Generate Gradient Color](#generateGradientColorjs) `Update`
+- [Generate Gradient Color](#generateGradientColorjs)
 - [Highlight Word](#highlightWordjs)
 - [Import CSV to Swatch](#importCSVtoSwatchjs)
 - [Match Location of Gradient Stop](#matchLocationOfGradientStopjs)
@@ -34,7 +35,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Shuffle Gradient Color](#shuffleGradientColorjs)
 
 ### Layer
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 - [Delete Hidden Layers](#deleteHiddenLayersjs)
 - [Delete Locked Layers](#deleteLockedLayersjs)
 - [Delete Unused Layers](#deleteUnusedLayersjs)
@@ -45,7 +46,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Unify Layer Colors](#unifyLayerColorsjs)
 
 ### Link
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [Bulk Relink](#bulkRelinkjs)
 - [Relink File Extension](#relinkFileExtensionjs)
 - [Relink File Extension Extra](#relinkFileExtensionExtrajs)
@@ -54,9 +55,10 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
 - [Select Link](#selectLinkjs)
+- [Select Missing Link](#selectMissingLinkjs) `New`
 
 ### Path
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [Add Anchor Points](#addAnchorPointsjs)
 - [Align in Center of Space](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align Objects](#alignObjectsjs)
@@ -85,7 +87,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Step and Repeat](#stepAndRepeatjs)
 
 ### Text
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 - [Add Numeric Separators](#addNumericSeparatorsjs)
 - [Convert Type on a Path to Point Type](#convertTypeOnAPathToPointTypejs)
 - [Copy Line Up / Down](#copyLineDownjscopyLineUpjs)
@@ -103,13 +105,13 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Up / Down](#moveLineDownjsmoveLineUpjs)
 - [Sort Lines](#sortLinesjs)
-- [Split Text](#splitTextjs) `Update`
-- [Split Text at Cursor Position](#splitTextAtCursorPositionjs) `Update`
+- [Split Text](#splitTextjs)
+- [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
 - [Swap Text Contents](#swapTextContentsjs)
 - [Text Align Left / Center / Right](#textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs)
 
 ### Utility
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
@@ -118,30 +120,30 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Unit Calculator](#unitCalculatorjs)
 
 ### View
-[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 - [Arrange Windows](#arrangeWindowsjs)
 - [Fit Selected Objects in Window](#fitSelectedObjectsInWindowjs)
 - [Navigate to First / Last / Next / Previous Artboard](#navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs)
 - [Sync View](#syncViewjs)
 
 ### Preferences
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
-- [Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs) `Bug Fix`
-- [Fill New Type Objects With Placeholder Text](#toggleFillNewTypeObjectsWithPlaceholderTextjs) `New`
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+- [Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
+- [Fill New Type Objects With Placeholder Text](#toggleFillNewTypeObjectsWithPlaceholderTextjs)
 - [Paste Remembers Layers](#togglePasteRemembersLayersjs)
-- [Select Same Tint Percentage](#toggleSelectSameTintPercentagejs) `New`
-- [Show Character Alternates](#toggleShowCharacterAlternatesjs) `New`
+- [Select Same Tint Percentage](#toggleSelectSameTintPercentagejs)
+- [Show Character Alternates](#toggleShowCharacterAlternatesjs)
 - [Show Handles](#toggleShowHandlesjs)
-- [Transform Pattern Tiles](#toggleTransformPatternTilesjs) `New`
-- [Use Preview Bounds](#toggleUsePreviewBoundsjs) `New`
-- [Zoom to Selection](#toggleZoomToSelectionjs) `New`
-- [Zoom with Mouse Wheel](#toggleZoomWithMouseWheeljs) `New`
+- [Transform Pattern Tiles](#toggleTransformPatternTilesjs)
+- [Use Preview Bounds](#toggleUsePreviewBoundsjs)
+- [Zoom to Selection](#toggleZoomToSelectionjs)
+- [Zoom with Mouse Wheel](#toggleZoomWithMouseWheeljs)
 <br><br><br>
 
 
 ## Installation
 [Download](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) the zip archive from 
-[![Download](https://img.shields.io/badge/Download-66595c)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) or 
+[![Download](https://img.shields.io/badge/Download-66595c?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) or 
 [Releases](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) and unzip it.  
 The scripts can be placed anywhere on your computer.  
 To run the scripts, from File > Scripts > Other Script( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>F12</kbd> ).
@@ -180,7 +182,8 @@ See the included LICENSE file for more details.
 
 
 # <a name="addAnchorPointsjs">addAnchorPoints.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script adds any number of anchor points evenly spaced.  
 It is a slightly more user-friendly improvement to Object > Path > Add Anchor Points.
 
@@ -204,7 +207,8 @@ Illustrator CS4 or higher
 
 
 # <a name="addNumericSeparatorsjs">addNumericSeparators.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script changes a number to a 3-digit comma delimited string.
 
 ![Add Numeric Separators](images/addNumericSeparators.png)
@@ -223,7 +227,8 @@ Illustrator CS or higher
 
 
 # <a name="addSelectedGradientsToSwatchjs">addSelectedGradientsToSwatch.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script adds selected gradients to Swatches.
 
 ![Add Selected Gradients To Swatch](images/addSelectedGradientsToSwatch.png)
@@ -245,7 +250,8 @@ Illustrator CS or higher
 
 
 # <a name="alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs">alignInCenterOfSpace(Horizontal).js<br>alignInCenterOfSpace(Vertical).js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script aligns objects in the center of space.
 
 For example, alignInCenterOfSpace(Vertical).js:
@@ -270,7 +276,8 @@ Illustrator CS3 or higher
 
 
 # <a name="alignObjectsjs">alignObjects.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script aligns objects horizontally and vertically at the same time.
 
 ![Align Objects](images/alignObjects.png)
@@ -303,7 +310,8 @@ Illustrator 2021 or higher
 
 
 # <a name="arrangeWindowsjs">arrangeWindows.js</a>
-[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script splits and arranges all open windows.
 
 > [!TIP]
@@ -328,7 +336,8 @@ Illustrator CS6 or higher
 
 
 # <a name="bulkRelinkjs">bulkRelink.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script replaces missing links, linked and embedded files in bulk.
 
 > [!IMPORTANT]
@@ -355,7 +364,8 @@ Illustrator CS6 or higher
 
 
 # <a name="checkDayOfWeekjs">checkDayOfWeek.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script checks the day of the week.
 
 ![Check Day Of Week](images/checkDayOfWeek.png)
@@ -387,7 +397,8 @@ Illustrator CS4 or higher
 
 
 # <a name="closeAllDocumentsjs">closeAllDocuments.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script closes all documents.
 
 > [!TIP]
@@ -407,7 +418,8 @@ Illustrator CS4 or higher
 
 
 # <a name="closePathjs">closePath.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script closes the path objects.
 
 ![Close Path](images/closePath.png)
@@ -426,7 +438,8 @@ Illustrator CS or higher
 
 
 # <a name="compareScalejs">compareScale.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script compares the scales of two objects.
 
 ![Compare Scale](images/compareScale.png)
@@ -450,7 +463,8 @@ Illustrator CC or higher
 
 
 # <a name="convertAllAnchorPointsToCornerjs">convertAllAnchorPointsToCorner.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script converts all anchor points to the corner.  
 The anchor point conversion options in the Control panel require the anchor point to be selected, but this script selects the entire object.
 
@@ -475,7 +489,8 @@ Illustrator CS4 or higher
 
 
 # <a name="convertToGlobalColorjsconvertToSpotColorjs">convertToGlobalColor.js<br>convertToSpotColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script converts any colors in the Swatches panel to global or spot colors.
 
 convertToGlobalColor.js:
@@ -503,7 +518,8 @@ Illustrator CS or higher
 
 
 # <a name="convertTypeOnAPathToPointTypejs">convertTypeOnAPathToPointType.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script converts types on a path to point types.
 
 ![Convert Type On A Path To Point Type](images/convertTypeOnAPathToPointType.png)
@@ -526,7 +542,8 @@ Illustrator CS or higher
 
 
 # <a name="copyLineDownjscopyLineUpjs">copyLineDown.js<br>copyLineUp.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script is equivalent to Visual Studio Code's Selection > 
 Copy Line Down( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd> ) & 
 Copy Line Up( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> ).  
@@ -564,7 +581,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="copyLineEmptySelectionjscutLineEmptySelectionjs">copyLine(emptySelection).js<br>cutLine(emptySelection).js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Copy line (empty selection)"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>C</kbd> ) & 
 "Cut line (empty selection)"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>X</kbd> ).  
@@ -598,7 +616,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="createColorChartjs">createColorChart.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-2.2.0-e8e8e8?style=flat-square">  
 This script creates a color chart. Both CMYK and RGB colors are supported.
 
 ![Create Color Chart](images/createColorChart.png)
@@ -631,7 +650,8 @@ Illustrator CS6 or higher
 
 
 # <a name="createGridLinesjs">createGridLines.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script creates grid lines on artboards.
 
 ![Create Grid Lines](images/createGridLines.png)
@@ -653,7 +673,8 @@ Illustrator CS or higher
 
 
 # <a name="createPageNumbersjs">createPageNumbers.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-2.0.0-e8e8e8?style=flat-square">  
 This script is equivalent to InDesign's Type > Insert Special Character > Markers > Current Page Number.  
 Places a page number at a specified location on the artboards.
 
@@ -684,7 +705,8 @@ Illustrator CS4 or higher
 
 
 # <a name="createTextParallelToPathSegmentjs">createTextParallelToPathSegment.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script creates a text parallel to a straight segment or a line connecting two anchor points.
 
 ![Create Text Parallel to Path Segment](images/createTextParallelToPathSegment.png)
@@ -718,7 +740,8 @@ Illustrator 2021 or higher
 
 
 # <a name="createThreadedTextjs">createThreadedText.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script creates a threaded text. It can also be made from a mixture of point types and path objects.  
 The vertical text is also supported.
 
@@ -750,7 +773,8 @@ Illustrator CC or higher
 
 
 # <a name="decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs">decreaseSelectedAnchorPointsCW.js<br>decreaseSelectedAnchorPointsCCW.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script decreases selected anchor points clockwise or counterclockwise.
 
 For example, decreaseSelectedAnchorPointsCW.js:
@@ -770,7 +794,8 @@ Illustrator CS or higher
 
 
 # <a name="deleteAllLeftjsdeleteAllRightjs">deleteAllLeft.js<br>deleteAllRight.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Delete All Left"( <kbd>⌘</kbd> + <kbd>Backspace</kbd> ) & 
 "Delete All Right"( <kbd>⌘</kbd> + <kbd>Delete</kbd> ).  
@@ -804,7 +829,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="deleteAllSwatchesjs">deleteAllSwatches.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script deletes all swatches except None and Registration.
 
 ![Delete All Swatches](images/deleteAllSwatches.png)
@@ -826,7 +852,8 @@ Illustrator CS or higher
 
 
 # <a name="deleteHiddenLayersjs">deleteHiddenLayers.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script deletes hidden layers.
 
 > [!TIP]
@@ -848,7 +875,8 @@ Illustrator CS or higher
 
 
 # <a name="deleteLockedLayersjs">deleteLockedLayers.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script deletes locked layers.
 
 ![Delete Locked Layers](images/deleteLockedLayers.png)
@@ -867,7 +895,8 @@ Illustrator CS or higher
 
 
 # <a name="deleteTrailingSpacesjs">deleteTrailingSpaces.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script deletes trailing spaces and tabs.
 Both point and area types are supported.
 
@@ -891,7 +920,8 @@ Illustrator CS or higher
 
 
 # <a name="deleteUnusedLayersjs">deleteUnusedLayers.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script deletes unused layers.
 
 ![Delete Unused Layers](images/deleteUnusedLayers.png)
@@ -910,7 +940,8 @@ Illustrator CS or higher
 
 
 # <a name="deleteWordjs">deleteWord.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script deletes a word under the cursor.
 Both point and area types are supported.
 
@@ -939,7 +970,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="disjoinPathjs">disjoinPath.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script breaks apart the path object with anchor points.
 
 ![Disjoin Path](images/disjoinPath.png)
@@ -961,7 +993,8 @@ Illustrator CS or higher
 
 
 # <a name="distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs">distributeInSpace(Horizontal).js<br>distributeInSpace(Vertical).js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script distributes objects evenly spaced in space.
 
 For example, distributeInSpace(Vertical).js:
@@ -986,7 +1019,8 @@ Illustrator CS3 or higher
 
 
 # <a name="drawCircumscribedCirclejs">drawCircumscribedCircle.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script draws a circumscribed circle through 3 or 2 anchor points.
 
 ![Draw Circumscribed Circle](images/drawCircumscribedCircle.png)
@@ -1009,7 +1043,8 @@ Illustrator CS or higher
 
 
 # <a name="drawNormalLinejs">drawNormalLine.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script draws normal lines (line perpendicular to a tangent) to a curve or line between two anchor points.
 
 ![Draw Normal Line](images/drawNormalLine.png)
@@ -1041,7 +1076,8 @@ Illustrator CS4 or higher
 
 
 # <a name="drawRectanglejs">drawRectangle.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script draws rectangles around selected objects.
 
 ![Draw Rectangle](images/drawRectangle.png)
@@ -1070,7 +1106,8 @@ Illustrator CS4 or higher
 
 
 # <a name="drawShapeOnAnchorPointjs">drawShapeOnAnchorPoint.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script draws shapes on anchor points.
 
 ![Draw Shape On Anchor Point](images/drawShapeOnAnchorPoint.png)
@@ -1097,7 +1134,8 @@ Illustrator CS4 or higher
 
 
 # <a name="drawShapeParallelToPathSegmentjs">drawShapeParallelToPathSegment.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script draws a shape parallel to a straight segment or a line connecting two anchor points.
 
 ![Draw Shape Parallel to Path Segment](images/drawShapeParallelToPathSegment.png)
@@ -1129,7 +1167,8 @@ Illustrator CS4 or higher
 
 
 # <a name="encloseWordInParenthesesjs">encloseWordInParentheses.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script encloses words in parentheses.
 
 ![Enclose Word In Parentheses](images/encloseWordInParentheses.png)
@@ -1166,7 +1205,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="exportColorValuesToCSVjs">exportColorValuesToCSV.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script exports color values of a path object or swatches to a CSV file.
 
 ![Export Color Values To CSV](images/exportColorValuesToCSV.png)
@@ -1192,7 +1232,8 @@ Illustrator CS or higher
 
 
 # <a name="extendHandlejs">extendHandle.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script extends and shrinks handles. It also changes the angle.
 
 ![Extend Handle](images/extendHandle.png)
@@ -1221,7 +1262,8 @@ Illustrator CS4 or higher
 
 
 # <a name="extendLinejs">extendLine.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script extends and shrinks path segments.
 
 ![Extend Line](images/extendLine.png)
@@ -1249,7 +1291,8 @@ Illustrator CS4 or higher
 
 
 # <a name="extractColorsFromGradientjs">extractColorsFromGradient.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script extracts colors as swatches from the gradient stops.
 
 ![Extract Colors From Gradient](images/extractColorsFromGradient.png)
@@ -1273,7 +1316,8 @@ Illustrator CS or higher
 
 
 # <a name="fitGuideInArtboardjs">fitGuideInArtboard.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script fits guide objects in an artboard.
 
 ![Fit Guide In Artboard](images/fitGuideInArtboard.png)
@@ -1295,7 +1339,8 @@ Illustrator CS or higher
 
 
 # <a name="fitSelectedObjectsInWindowjs">fitSelectedObjectsInWindow.js</a>
-[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script changes the zoom factor that the selected object fills the display.
 
 ![Fit Selected Objects In Window](images/fitSelectedObjectsInWindow.png)
@@ -1317,7 +1362,8 @@ Illustrator CS or higher
 
 
 # <a name="generateGradientColorjs">generateGradientColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script generates a gradient color from fill colors or swatches.
 
 > [!TIP]
@@ -1344,7 +1390,8 @@ Illustrator CS4 or higher
 
 
 # <a name="goToLinejs">goToLine.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script is equivalent to Visual Studio Code's Go > Go to Line/Column( <kbd>Ctrl</kbd> + <kbd>G</kbd> ).  
 If you assign shortcuts using [Keyboard Maestro](https://www.keyboardmaestro.com), [AutoHotkey](https://www.autohotkey.com) or similar, 
 you will be able to achieve more of a Visual Studio Code feel.  
@@ -1377,7 +1424,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="goToNextTextjsgoToPreviousTextjs">goToNextText.js<br>goToPreviousText.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script moves the cursor to the beginning of the next or previous text while in the text editing state.  
 Both point and area types are supported.
 
@@ -1408,7 +1456,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="highlightWordjs">highlightWord.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script highlights the searched string by fill color, swatch or character style.  
 Both CMYK and RGB colors are supported.
 
@@ -1439,7 +1488,8 @@ Illustrator CS6 or higher
 
 
 # <a name="importCSVtoSwatchjs">importCSVtoSwatch.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.2.1-e8e8e8?style=flat-square">  
 This script imports a CSV file to the Swatches panel.
 
 ![Import CSV To Swatch](images/importCSVtoSwatch.png)
@@ -1489,7 +1539,8 @@ Illustrator CS or higher
 
 
 # <a name="increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs">increaseSelectedAnchorPointsCW.js<br>increaseSelectedAnchorPointsCCW.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script increases selected anchor points clockwise or counterclockwise.
 
 For example, increaseSelectedAnchorPointsCW.js:
@@ -1509,7 +1560,8 @@ Illustrator CS or higher
 
 
 # <a name="insertLineAbovejsinsertLineBelowjs">insertLineAbove.js<br>insertLineBelow.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script is equivalent to Visual Studio Code's keyboard shortcut 
 "Insert Line Above"( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> ) & 
 "Insert Line Below" ( <kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>Enter</kbd> ).  
@@ -1540,7 +1592,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="invertLockedLayerjs">invertLockedLayer.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script inverts locked layers.
 
 ![Invert Locked Layer](images/invertLockedLayer.png)
@@ -1559,7 +1612,8 @@ Illustrator CS or higher
 
 
 # <a name="invertVisibleLayerjs">invertVisibleLayer.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script inverts visible layers.
 
 ![Invert Visible Layer](images/invertVisibleLayer.png)
@@ -1578,7 +1632,8 @@ Illustrator CS or higher
 
 
 # <a name="justifyContentSpaceBetweenjs">justifyContentSpaceBetween.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script adjusts tracking to align point texts at both ends. The vertical text is also supported.
 
 ![Justify Content Space Between](images/justifyContentSpaceBetween.png)
@@ -1603,7 +1658,8 @@ Illustrator CS or higher
 
 
 # <a name="matchLocationOfGradientStopjs">matchLocationOfGradientStop.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script matches the location of the gradient stops and midpoints.
 
 ![Match Location Of Gradient Stop](images/matchLocationOfGradientStop.png)
@@ -1626,7 +1682,8 @@ Illustrator CS4 or higher
 
 
 # <a name="measureDistancejs">measureDistance.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-1.3.0-e8e8e8?style=flat-square">  
 This script is an alternative to the Measure Tool and accurately measures the distance between two anchor points.
 
 ![Measure the Distance](images/measureDistance.png)
@@ -1655,7 +1712,8 @@ Illustrator CS4 or higher
 
 
 # <a name="moveGuidesjs">moveGuides.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script moves all guide objects to a specified layer, frontmost, and backmost.
 
 ![Move Guides](images/moveGuides.png)
@@ -1681,7 +1739,8 @@ Illustrator CS6 or higher
 
 
 # <a name="moveLineDownjsmoveLineUpjs">moveLineDown.js<br>moveLineUp.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script is equivalent to Visual Studio Code's Selection > 
 Move Line Down( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↓</kbd> ) & 
 Move Line Up( <kbd>Option</kbd> / <kbd>Alt</kbd> + <kbd>↑</kbd> ).  
@@ -1719,7 +1778,8 @@ Illustrator CC 2018 or higher
 
 
 # <a name="moveSublayerToMainLayerjs">moveSublayerToMainLayer.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script moves sublayers to the main layer above.
 
 ![Move Sublayer To Main Layer](images/moveSublayerToMainLayer.png)
@@ -1741,7 +1801,8 @@ Illustrator CS or higher
 
 
 # <a name="navigateToFirstArtboardjsnavigateToLastArtboardjsnavigateToNextArtboardjsnavigateToPreviousArtboardjs">navigateToFirstArtboard.js<br>navigateToLastArtboard.js<br>navigateToNextArtboard.js<br>navigateToPreviousArtboard.js</a>
-[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script navigates to the first, last, next, or previous artboard while maintaining the view position and zoom factor of the artboard.
 
 > [!IMPORTANT]
@@ -1769,7 +1830,8 @@ Illustrator CS4 or higher
 
 
 # <a name="randomTextColorjs">randomTextColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.3.0-e8e8e8?style=flat-square">  
 This script changes the text color randomly by word, character or sentence.  
 Both CMYK and RGB colors are supported.
 
@@ -1795,7 +1857,8 @@ Illustrator CS4 or higher
 
 
 # <a name="rearrangeObjectsjs">rearrangeObjects.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script rearranges selected objects.
 
 ![Rearrange Objects](images/rearrangeObjects.png)
@@ -1830,7 +1893,8 @@ Illustrator 2021 or higher
 
 
 # <a name="relinkFileExtensionjs">relinkFileExtension.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.1.1-e8e8e8?style=flat-square">  
 This script replaces linked files with the specified file extension, equivalent to InDesign's Links panel menu > Relink File Extension.
 For more advanced settings, use [relinkFileExtensionExtra.js](#relinkFileExtensionExtrajs).
 
@@ -1858,7 +1922,8 @@ Illustrator CS4 or higher
 
 
 # <a name="relinkFileExtensionExtrajs">relinkFileExtensionExtra.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.3.1-e8e8e8?style=flat-square">  
 This script is an enhanced version of [relinkFileExtension.js](#relinkFileExtensionjs) with more advanced settings for relinking linked files.
 
 ![Relink File Extension Extra](images/relinkFileExtensionExtra.png)
@@ -1893,7 +1958,8 @@ Illustrator CS6 or higher
 
 
 # <a name="relinkToFolderjs">relinkToFolder.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.1.1-e8e8e8?style=flat-square">  
 This script replaces linked files with a file of the same name in the selected folder, equivalent to InDesign's Links panel menu > Relink to Folder.
 
 ### Usage
@@ -1918,7 +1984,8 @@ Illustrator CS4 or higher
 
 
 # <a name="removeColorInGuideObjectjs">removeColorInGuideObject.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script removes fill and stroke colors in all guide objects.
 
 ![Remove Color In Guide Object](images/removeColorInGuideObject.png)
@@ -1940,7 +2007,8 @@ Illustrator CS6 or higher
 
 
 # <a name="removeDeletedGlobalColorjs">removeDeletedGlobalColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script deletes the Deleted Global Colors displayed in the Separations Preview panel.
 
 ![Remove Deleted Global Color](images/removeDeletedGlobalColor.png)
@@ -1964,7 +2032,8 @@ Illustrator CS or higher
 
 
 # <a name="renameArtboardjs">renameArtboard.js</a>
-[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script renames all artboard names at once.
 
 ![Rename Artboard](images/renameArtboard.png)
@@ -2000,7 +2069,8 @@ Illustrator CS4 or higher
 
 
 # <a name="renameLayerjs">renameLayer.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script renames all layer names at once.
 
 ![Rename Layer](images/renameLayer.png)
@@ -2038,7 +2108,8 @@ Illustrator CS4 or higher
 
 
 # <a name="renameLinkedFilejs">renameLinkedFile.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script renames the name of the linked files and relink.
 
 > [!CAUTION]
@@ -2074,7 +2145,8 @@ Illustrator CS4 or higher
 
 
 # <a name="resetToFullScalejs">resetToFullScale.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.0.2-e8e8e8?style=flat-square">  
 This script resets the scale to 100% and the rotation angle to 0 degrees for the linked or embedded files.
 
 ![Reset To Full Scale](images/resetToFullScale.png)
@@ -2093,7 +2165,8 @@ Illustrator CS6 or higher
 
 
 # <a name="roundColorValuejs">roundColorValue.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script rounds color values. Both fill and stroke colors are supported.
 
 ![Round Color Value](images/roundColorValue.png)
@@ -2112,7 +2185,8 @@ Illustrator CS or higher
 
 
 # <a name="roundLocationOfGradientStopjs">roundLocationOfGradientStop.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script rounds the location of the gradient color stops and midpoints.  
 Both fill and stroke colors are supported.
 
@@ -2132,7 +2206,8 @@ Illustrator CS or higher
 
 
 # <a name="selectEmbeddedLinkjs">selectEmbeddedLink.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script selects all embedded files.
 
 ### Usage
@@ -2152,7 +2227,8 @@ Illustrator CS or higher
 
 
 # <a name="selectGuidesjs">selectGuides.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script selects all guide objects.
 
 ### Usage
@@ -2172,7 +2248,8 @@ Illustrator CS6 or higher
 
 
 # <a name="selectLinkjs">selectLink.js</a>
-[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)  
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script selects the specified linked files.
 
 <img src="images/selectLink.png" alt="Select Link" width="50%">
@@ -2196,8 +2273,30 @@ Illustrator CS4 or higher
 
 
 
+# <a name="selectMissingLinkjs">selectMissingLink.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script selects all missing linked files.
+
+### Usage
+Just run this script.
+
+> [!NOTE]
+> Locked and hidden missing files are not selected. The layer also as well.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs">shiftSelectedAnchorPointsCW.js<br>shiftSelectedAnchorPointsCCW.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script shifts selected anchor points clockwise or counterclockwise.
 
 For example, shiftSelectedAnchorPointsCW.js:
@@ -2217,7 +2316,8 @@ Illustrator CS or higher
 
 
 # <a name="showArtboardNamejs">showArtboardName.js</a>
-[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+<img src="https://img.shields.io/badge/version-1.3.0-e8e8e8?style=flat-square">  
 This script shows the artboard name and size in the document.
 
 ![Show Artboard Name](images/showArtboardName.png)
@@ -2240,7 +2340,8 @@ Illustrator CS4 or higher
 
 
 # <a name="showColorValuesjs">showColorValues.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.1.1-e8e8e8?style=flat-square">  
 This script shows color values. Both fill and stroke colors are supported.
 
 ![Show Color Values](images/showColorValues.png)
@@ -2263,7 +2364,8 @@ Illustrator CS or higher
 
 
 # <a name="showDimensionsjs">showDimensions.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-2.1.0-e8e8e8?style=flat-square">  
 This script shows the dimension of the anchor point between two points of the path objects.
 
 > [!TIP]
@@ -2295,7 +2397,8 @@ Illustrator CS6 or higher
 
 
 # <a name="shuffleGradientColorjs">shuffleGradientColor.js</a>
-[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)  
+[![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script shuffles the gradient color.
 
 ![Shuffle Gradient Color](images/shuffleGradientColor.png)
@@ -2318,7 +2421,8 @@ Illustrator CS or higher
 
 
 # <a name="shuffleObjectsjs">shuffleObjects.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script shuffles the objects.
 
 ![Shuffle Objects](images/shuffleObjects.png)
@@ -2337,7 +2441,8 @@ Illustrator CS or higher
 
 
 # <a name="sortArtboardsjs">sortArtboards.js</a>
-[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)  
+[![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script sorts the artboards in the Artboards panel.
 
 ![Sort Artboards](images/sortArtboards.png)
@@ -2359,7 +2464,8 @@ Illustrator CS5 or higher
 
 
 # <a name="sortLinesjs">sortLines.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script sorts lines of the text. The vertical text is also supported.
 
 ![Sort Lines](images/sortLines.png)
@@ -2389,7 +2495,8 @@ Illustrator CS4 or higher
 
 
 # <a name="splitTextjs">splitText.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script splits a text by lines, words, or characters. The vertical text is also supported.
 
 ![Split Text](images/splitText.png)
@@ -2414,7 +2521,8 @@ Illustrator CC or higher
 
 
 # <a name="splitTextAtCursorPositionjs">splitTextAtCursorPosition.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script splits a point text at the cursor position. The vertical text is also supported.
 
 ![Split Text at Cursor Position](images/splitTextAtCursorPosition.png)
@@ -2438,7 +2546,8 @@ Illustrator CS6 or higher
 
 
 # <a name="stepAndRepeatjs">stepAndRepeat.js</a>
-[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)  
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-2.1.0-e8e8e8?style=flat-square">  
 This script repeatedly duplicates selected objects. It is equivalent to InDesign's Edit > Step and Repeat.
 
 ![Step and Repeat](images/stepandRepeat.png)
@@ -2464,7 +2573,8 @@ Illustrator CS4 or higher
 
 
 # <a name="sumNumbersjs">sumNumbers.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-2.0.0-e8e8e8?style=flat-square">  
 This script adds up the numbers in the text.
 
 ![Sum Numbers](images/sumNumbers.png)
@@ -2487,7 +2597,8 @@ Illustrator CS4 or higher
 
 
 # <a name="swapTextContentsjs">swapTextContents.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script swap the text contents.
 
 ![Swap Text Contents](images/swapTextContents.png)
@@ -2506,7 +2617,8 @@ Illustrator CS or higher
 
 
 # <a name="syncViewjs">syncView.js</a>
-[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)  
+[![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script synchronizes all open windows with the zoom factor and the view position of the active window.
 
 ![Sync View](images/syncView.png)
@@ -2528,7 +2640,8 @@ Illustrator CS or higher
 
 
 # <a name="textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
-[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)  
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script changes the text alignment without moving the position. The vertical text is also supported.
 
 For example, textAlign_Center.js:
@@ -2548,7 +2661,8 @@ Illustrator CS or higher
 
 
 # <a name="toggleAlignToGlyphBoundsjs">toggleAlignToGlyphBounds.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script toggles the Align panel menu > Align to Glyph Bounds > Point Text and Area Text.
 
 ![Toggle Align to Glyph Bounds](images/toggleAlignToGlyphBounds.png)
@@ -2567,7 +2681,8 @@ Illustrator 2020 or higher
 
 
 # <a name="toggleFillNewTypeObjectsWithPlaceholderTextjs">toggleFillNewTypeObjectsWithPlaceholderText.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script toggles the Preferences > Type > Fill New Type Objects With Placeholder Text.
 
 <img src="images/toggleFillNewTypeObjectsWithPlaceholderText.png" alt="Toggle Fill New Type Objects With Placeholder Text" width="70%">
@@ -2586,7 +2701,8 @@ Illustrator 2018 or higher
 
 
 # <a name="togglePasteRemembersLayersjs">togglePasteRemembersLayers.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script toggles the Layers panel menu > Paste Remembers Layers.
 
 ![Toggle Paste Remembers Layers](images/togglePasteRemembersLayers.png)
@@ -2605,7 +2721,8 @@ Illustrator CC or higher
 
 
 # <a name="toggleSelectSameTintPercentagejs">toggleSelectSameTintPercentage.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script toggles the Preferences > General > Select Same Tint %.
 
 <img src="images/toggleSelectSameTintPercentage.png" alt="Toggle Select Same Tint Percentage" width="70%">
@@ -2624,7 +2741,8 @@ Illustrator CC or higher
 
 
 # <a name="toggleShowCharacterAlternatesjs">toggleShowCharacterAlternates.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script toggles the Preferences > Type > Show Character Alternates.
 
 <img src="images/toggleShowCharacterAlternates.png" alt="Toggle Show Character Alternates" width="70%">
@@ -2643,7 +2761,8 @@ Illustrator 2020 or higher
 
 
 # <a name="toggleShowHandlesjs">toggleShowHandles.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
 This script toggles the Preferences > Selection & Anchor Display > Anchor Points, Handle, and Bounding Box Display > Show handles when multiple anchors are selected.
 
 <img src="images/toggleShowHandles.png" alt="Toggle Show Handles" width="70%">
@@ -2662,7 +2781,8 @@ Illustrator CC or higher
 
 
 # <a name="toggleTransformPatternTilesjs">toggleTransformPatternTiles.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script toggles the Preferences > General > Transform Pattern Tiles.
 
 <img src="images/toggleTransformPatternTiles.png" alt="Toggle Transform Pattern Tiles" width="70%">
@@ -2681,7 +2801,8 @@ Illustrator CC or higher
 
 
 # <a name="toggleUsePreviewBoundsjs">toggleUsePreviewBounds.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script toggles the Align panel menu > Use Preview Bounds or the Preferences > General > Use Preview Bounds.
 
 <img src="images/toggleUsePreviewBounds.png" alt="Toggle Use Preview Bounds" width="70%">
@@ -2700,7 +2821,8 @@ Illustrator CC or higher
 
 
 # <a name="toggleZoomToSelectionjs">toggleZoomToSelection.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script toggles the Preferences > Selection & Anchor Display > Selection > Zoom to Selection.
 
 <img src="images/toggleZoomToSelection.png" alt="Toggle Zoom to Selection" width="70%">
@@ -2719,7 +2841,8 @@ Illustrator 2018 or higher
 
 
 # <a name="toggleZoomWithMouseWheeljs">toggleZoomWithMouseWheel.js</a>
-[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)  
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script toggles the Preferences > General > Zoom with Mouse Wheel.
 
 <img src="images/toggleZoomWithMouseWheel.png" alt="Toggle Zoom with Mouse Wheel" width="70%">
@@ -2738,7 +2861,8 @@ Illustrator 2022 or higher
 
 
 # <a name="unifyLayerColorsjs">unifyLayerColors.js</a>
-[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)  
+[![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
 This script unifies layer colors.
 
 ![Unify Layer Colors](images/unifyLayerColors.png)
@@ -2761,7 +2885,8 @@ Illustrator CS or higher
 
 
 # <a name="unitCalculatorjs">unitCalculator.js</a>
-[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)  
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
 This script converts almost all units supported by Illustrator.
 
 <img src="images/unitCalculator.png" alt="Unit Calculator" width="50%">
