@@ -2,7 +2,7 @@
 
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.57.0-e8e8e8?style=flat-square"> 
+<img src="https://img.shields.io/badge/Release-v1.58.0-e8e8e8?style=flat-square"> 
 
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
 Click the titles to jump to learn more about the script.  
@@ -55,7 +55,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Reset to Full Scale](#resetToFullScalejs)
 - [Select Embedded Link](#selectEmbeddedLinkjs)
 - [Select Link](#selectLinkjs)
-- [Select Missing Link](#selectMissingLinkjs) `New`
+- [Select Missing Link](#selectMissingLinkjs)
 
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -104,6 +104,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Insert Line Above / Below](#insertLineAbovejsinsertLineBelowjs)
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Up / Down](#moveLineDownjsmoveLineUpjs)
+- [Rotate Text to Match Path Segment Angle](#rotateTextToMatchPathSegmentAnglejs) `New`
 - [Sort Lines](#sortLinesjs)
 - [Split Text](#splitTextjs)
 - [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
@@ -2158,6 +2159,29 @@ Select any linked or embedded files, and run this script.
 Illustrator CS6 or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="rotateTextToMatchPathSegmentAnglejs">rotateTextToMatchPathSegmentAngle.js</a>
+[![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script rotates the text to match the angle of the path segment or a line connecting two anchor points.
+
+![Rotate Text to Match Path Segment Angle](images/rotateTextToMatchPathSegmentAngle.png)
+
+### Usage
+Select any text objects and two anchor points with the Direct Selection Tool, and run this script.
+
+> [!NOTE]
+> Curves are not supported.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
 
 
