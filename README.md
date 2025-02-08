@@ -104,7 +104,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Insert Line Above / Below](#insertLineAbovejsinsertLineBelowjs)
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Up / Down](#moveLineDownjsmoveLineUpjs)
-- [Rotate Text to Match Path Segment Angle](#rotateTextToMatchPathSegmentAnglejs) `New`
+- [Rotate Text to Match Path Segment Angle](#rotateTextToMatchPathSegmentAnglejs) `Update`
 - [Sort Lines](#sortLinesjs)
 - [Split Text](#splitTextjs)
 - [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
@@ -116,6 +116,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
+- [Export as PDF](#exportAsPDFjs) `New`
 - [Measure Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
 - [Unit Calculator](#unitCalculatorjs)
@@ -1205,6 +1206,42 @@ Illustrator CC 2018 or higher
 
 
 
+# <a name="exportAsPDFjs">exportAsPDF.js</a>
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script exports multiple PDFs simultaneously from a single Adobe Illustrator document. Up to 5 presets can be selected.
+You can also export open documents or all documents in a folder together.
+
+![Export as PDF](images/exportAsPDF.png)
+
+### Usage
+1. Open some documents to be exported to PDF, and run this script.
+2. Select some PDF presets.
+3. Enter the string to be added to the end of the file name. The default value is a serial number.
+4. If the document has multiple artboards, select whether the exported PDF should be a single or multiple file.
+5. Select the range of the artboards to export.
+   - `All` All artboards to export.
+   - `Ranges` Specifies the range of the artboards to export.
+6. You can specify the document to export to PDF with the following options.
+   - `Active Document` Export only the currently displayed document to PDF.
+   - `All Open Documents` Export all open documents to PDF.
+   - `All Documents in the Same Folder` Checking the checkbox will export all documents in the same folder as the active or all open documents. No need to open all documents.
+7. To create an outline, check the Create Outline checkbox.
+
+> [!NOTE]
+> The PDF files export in the same folder as the Illustrator documents.  
+> If the PDF file with the same name exists, it overwrites.
+
+### Requirements
+Illustrator CS6 or higher
+
+<div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="exportColorValuesToCSVjs">exportColorValuesToCSV.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2167,16 +2204,17 @@ Illustrator CS6 or higher
 
 # <a name="rotateTextToMatchPathSegmentAnglejs">rotateTextToMatchPathSegmentAngle.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
-This script rotates the text to match the angle of the path segment or a line connecting two anchor points.
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
+This script rotates the text to match the angle of the path segment or a line connecting two anchor points. The vertical text is also supported.
 
 ![Rotate Text to Match Path Segment Angle](images/rotateTextToMatchPathSegmentAngle.png)
 
 ### Usage
-Select any text objects and two anchor points with the Direct Selection Tool, and run this script.
+Select two anchor points or a path segment with the Direct Selection Tool and some text objects, and run this script.
 
 > [!NOTE]
-> Curves are not supported.
+> Curves are not supported.  
+> For point types, rotate around the anchor point.
 
 ### Requirements
 Illustrator CS or higher

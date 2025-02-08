@@ -274,7 +274,7 @@
 ## drawCircumscribedCircle.js
 ### 1.1.0 (2023-04-29)
 ### Features
-- Type on a path and area type is now supported.
+- Type on a path and area type are now supported.
 <br><br>
 
 
@@ -590,6 +590,17 @@
 ### 1.0.1 (2023-03-26)
 ### Bug Fixes
 - Fixed a bug in the images to shift position.
+<br><br>
+
+
+## rotateTextToMatchPathSegmentAngle.js
+### 1.1.0 (2025-02-09)
+### Added
+- The vertical text is now supported.
+### Improvements
+- Rotate when a segment is selected.
+### Changes
+- Point types are now rotated around the anchor point.
 <br><br>
 
 

@@ -103,7 +103,7 @@ Adobe Illustratorのスクリプト集です。
 - [テキスト両端揃え](#テキスト両端揃え)
 - [ノンブルを作成](#ノンブルを作成)
 - [パス上文字をポイント文字に切り替え](#パス上文字をポイント文字に切り替え)
-- [パスセグメントの角度に合わせてテキストを回転](#パスセグメントの角度に合わせてテキストを回転) `New`
+- [パスセグメントの角度に合わせてテキストを回転](#パスセグメントの角度に合わせてテキストを回転) `Update`
 - [パスセグメントの角度に合わせてテキストを作成](#パスセグメントの角度に合わせてテキストを作成)
 - [文字列を括弧で囲む](#文字列を括弧で囲む)
 - [文字列をカーソルの位置で分割](#文字列をカーソルの位置で分割)
@@ -112,6 +112,7 @@ Adobe Illustratorのスクリプト集です。
 
 ### ユーティリティ
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+- [PDFを書き出す](#PDFを書き出す) `New`
 - [拡大・縮小率の確認](#拡大縮小率の確認)
 - [距離の測定](#距離の測定)
 - [すべてのドキュメントを閉じる](#すべてのドキュメントを閉じる)
@@ -1325,6 +1326,45 @@ Illustrator CC 2018以降
 
 
 
+## <a name="PDFを書き出す">PDFを書き出す</a>
+### exportAsPDF.js
+[![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
+1つのIllustratorドキュメントから複数のPDFを同時に書き出します。開いているすべてのドキュメントや、フォルダ内のすべてのドキュメントをまとめて書き出すこともできます。
+
+![Export as PDF](images/exportAsPDF.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. PDFに書き出したいドキュメントを開いてスクリプトを実行します。
+2. PDFプリセットを選択します。
+3. ファイル名の末尾に追加する文字列を入力します。デフォルト値は数字です。
+4. アートボードが複数ある場合は、書き出すPDFを単一ファイルにするか、複数ファイルにするかを選択します。
+5. 書き出すアートボードの範囲を選択します。
+   - `すべて` すべてのアートボードを書き出します。
+   - `範囲` 書き出すアートボードの範囲を指定します。
+6. PDFに書き出すドキュメントを選択します。
+   - `アクティブなドキュメントのみ` 現在、表示している（最前面の）ドキュメントのみをPDFに書き出します。
+   - `開いているすべてのドキュメント` 開いているすべてのドキュメントをPDFに書き出します。
+   - `同じフォルダ内のすべてのドキュメント` チェックを付けるとアクティブなドキュメント、または開いているすべてのドキュメントと同じフォルダ内のすべてのドキュメントをPDFに書き出します。すべてのドキュメントを開く必要はありません。
+7. 文字列をアウトライン化する場合は、［アウトラインを作成］にチェックを付けます。
+
+> [!NOTE]
+> Illustratorドキュメントと同じフォルダ内に書き出します。  
+> 同名のPDFファイルが存在する場合は上書きします。
+
+#### 動作条件
+Illustrator CS6以降
+
+<div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 ## <a name="カラー数値をCSVファイルに保存">カラー数値をCSVファイルに保存</a>
 ### exportColorValuesToCSV.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -2390,17 +2430,18 @@ Illustrator CS6以降
 ## <a name="パスセグメントの角度に合わせてテキストを回転">パスセグメントの角度に合わせてテキストを回転</a>
 ### rotateTextToMatchPathSegmentAngle.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
-<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">
 
-直線セグメント、または2点のアンカーポイントを結ぶ直線の角度に合わせてテキストを回転します。
+直線セグメント、または2点のアンカーポイントを結ぶ直線の角度に合わせてテキストを回転します。縦組みのテキストにも対応しています。
 
 ![Rotate Text to Match Path Segment Angle](images/rotateTextToMatchPathSegmentAngle.png)
 
 #### 使用方法
-ダイレクト選択ツールでテキストオブジェクトと2点のアンカーポイントを選択してスクリプトを実行します。
+ダイレクト選択ツールで2点のアンカーポイント、またはパスセグメントとテキストオブジェクトを選択してスクリプトを実行します。
 
 > [!NOTE]
-> 曲線には対応していません。
+> 曲線には対応していません。  
+> ポイント文字の場合はアンカーポイントを支点にして回転します。
 
 #### 動作条件
 Illustrator CS以降
