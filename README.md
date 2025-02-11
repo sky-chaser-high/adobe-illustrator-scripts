@@ -2,7 +2,7 @@
 
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.58.0-e8e8e8?style=flat-square"> 
+<img src="https://img.shields.io/badge/Release-v1.59.0-e8e8e8?style=flat-square"> 
 
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
 Click the titles to jump to learn more about the script.  
@@ -170,7 +170,7 @@ The following extensions or software make it easy to run scripts.
 
 
 ## Development Environment
-OS: macOS Ventura 13.4  
+OS: macOS Ventura 13.7.1  
 Test: Adobe Illustrator 2020-2024
 
 

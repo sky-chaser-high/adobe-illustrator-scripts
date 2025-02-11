@@ -1,6 +1,6 @@
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.58.0-e8e8e8?style=for-the-badge"> 
+<img src="https://img.shields.io/badge/Release-v1.59.0-e8e8e8?style=for-the-badge"> 
 
 Adobe Illustratorのスクリプト集です。  
 タイトルをクリックすると詳細説明に移動します。
@@ -182,7 +182,7 @@ UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui
 
 
 ### 開発環境
-OS: macOS Ventura 13.4  
+OS: macOS Ventura 13.7.1  
 テスト: Adobe Illustrator 2020-2023
 
 
