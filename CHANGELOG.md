@@ -697,6 +697,14 @@
 <br><br>
 
 
+## shuffleObjects.js
+### 1.1.0 (2025-04-26)
+### Changes
+- Changed to reposition at the center of the object.
+- Masked objects are now supported.
+<br><br>
+
+
 ## sortArtboards.js
 ### 1.0.1 (2024-08-10)
 ### Added

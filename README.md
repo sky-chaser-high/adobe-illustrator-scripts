@@ -71,6 +71,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
 - [Draw Normal Line](#drawNormalLinejs)
 - [Draw Rectangle](#drawRectanglejs)
+- [Draw S-curve](#draws-curvejs) `New`
 - [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
 - [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs)
 - [Extend Handle](#extendHandlejs)
@@ -81,9 +82,10 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Rearrange Objects](#rearrangeObjectsjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
 - [Select Guides](#selectGuidesjs)
+- [Shift Objects](#shiftObjectsjs) `New`
 - [Shift Selected Anchor Points](#shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs)
 - [Show Dimensions](#showDimensionsjs)
-- [Shuffle Objects](#shuffleObjectsjs)
+- [Shuffle Objects](#shuffleObjectsjs) `Update`
 - [Step and Repeat](#stepAndRepeatjs)
 
 ### Text
@@ -104,7 +106,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Insert Line Above / Below](#insertLineAbovejsinsertLineBelowjs)
 - [Justify Content Space Between](#justifyContentSpaceBetweenjs)
 - [Move Line Up / Down](#moveLineDownjsmoveLineUpjs)
-- [Rotate Text to Match Path Segment Angle](#rotateTextToMatchPathSegmentAnglejs) `Update`
+- [Rotate Text to Match Path Segment Angle](#rotateTextToMatchPathSegmentAnglejs)
 - [Sort Lines](#sortLinesjs)
 - [Split Text](#splitTextjs)
 - [Split Text at Cursor Position](#splitTextAtCursorPositionjs)
@@ -116,7 +118,7 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Check Day of Week](#checkDayOfWeekjs)
 - [Close All Documents](#closeAllDocumentsjs)
 - [Compare Scale](#compareScalejs)
-- [Export as PDF](#exportAsPDFjs) `New`
+- [Export as PDF](#exportAsPDFjs)
 - [Measure Distance](#measureDistancejs)
 - [Sum Numbers](#sumNumbersjs)
 - [Unit Calculator](#unitCalculatorjs)
@@ -1096,6 +1098,31 @@ This script draws rectangles around selected objects.
 ### Support units
 Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
 These units depend on the ruler units.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="draws-curvejs">drawS-curve.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script draws an S-curve between two objects or converts an open path to an S-curve.
+
+![Draw S-curve](images/drawS-curve.png)
+
+### Usage
+1. Select two objects or one open path object, and run this script.
+2. To change the curvature, enter the bend in the text field or use the slider to set the value.  
+   The slider allows only up to 200%, but you can enter higher values in the text field.
+3. To angle the S-curve, enter the angle in the text field or use the slider to set the value.  
+   The angle is specified in degrees.
+4. Check the Opposite checkbox to draw the curve at the opposite side.
 
 ### Requirements
 Illustrator CS4 or higher
@@ -2356,6 +2383,39 @@ Illustrator CS or higher
 
 
 
+# <a name="shiftObjectsjs">shiftObjects.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script shifts selected objects in the specified direction.
+
+![Shift Objects](images/shiftObjects.png)
+
+### Usage
+1. Select two or more objects, and run this script.
+2. Click any one of the Shift Direction buttons.
+
+### Options
+1. Enter the number of steps in the Shift Steps field for how many pieces to move.
+2. The value of the Alignment Position Tolerance affects the sort order.  
+   <img src="images/AlignObjectsSettings.png" alt="Shift Selected Objects Settings" width="50%">
+
+> [!NOTE]
+> Reposition the objects based on its center.
+
+### Support units
+Point, Pixel, Pica, Inch, Feet, Yard, Millimeter, Centimeter, Meter.  
+These units depend on the ruler units.
+
+### Requirements
+Illustrator 2021 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
 # <a name="shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs">shiftSelectedAnchorPointsCW.js<br>shiftSelectedAnchorPointsCCW.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -2484,13 +2544,16 @@ Illustrator CS or higher
 
 # <a name="shuffleObjectsjs">shuffleObjects.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
-This script shuffles the objects.
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
+This script shuffles the selected objects.
 
 ![Shuffle Objects](images/shuffleObjects.png)
 
 ### Usage
-Select the objects, and run this script.
+Select some objects, and run this script.
+
+> [!NOTE]
+> Reposition the objects based on its center.
 
 ### Requirements
 Illustrator CS or higher

@@ -58,12 +58,14 @@ Adobe Illustratorのスクリプト集です。
 
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-- [アンカーポイントに図形を描く](#アンカーポイントに図形を描く)
+- [S字カーブを描く](#S字カーブを描く) `New`
+- [アンカーポイントの位置に図形を描く](#アンカーポイントの位置に図形を描く)
 - [アンカーポイントの追加](#アンカーポイントの追加)
 - [オブジェクトの周囲に長方形を描く](#オブジェクトの周囲に長方形を描く)
+- [オブジェクトの移動](#オブジェクトの移動) `New`
 - [オブジェクトの整列](#オブジェクトの整列)
 - [オブジェクトの並べ替え](#オブジェクトの並べ替え)
-- [オブジェクトをシャッフル](#オブジェクトをシャッフル)
+- [オブジェクトをシャッフル](#オブジェクトをシャッフル) `Update`
 - [外接円を描く](#外接円を描く)
 - [ガイドオブジェクトの色を削除](#ガイドオブジェクトの色を削除)
 - [ガイドをアートボードにフィット](#ガイドをアートボードにフィット)
@@ -103,7 +105,7 @@ Adobe Illustratorのスクリプト集です。
 - [テキスト両端揃え](#テキスト両端揃え)
 - [ノンブルを作成](#ノンブルを作成)
 - [パス上文字をポイント文字に切り替え](#パス上文字をポイント文字に切り替え)
-- [パスセグメントの角度に合わせてテキストを回転](#パスセグメントの角度に合わせてテキストを回転) `Update`
+- [パスセグメントの角度に合わせてテキストを回転](#パスセグメントの角度に合わせてテキストを回転)
 - [パスセグメントの角度に合わせてテキストを作成](#パスセグメントの角度に合わせてテキストを作成)
 - [文字列を括弧で囲む](#文字列を括弧で囲む)
 - [文字列をカーソルの位置で分割](#文字列をカーソルの位置で分割)
@@ -112,7 +114,7 @@ Adobe Illustratorのスクリプト集です。
 
 ### ユーティリティ
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
-- [PDFを書き出す](#PDFを書き出す) `New`
+- [PDFを書き出す](#PDFを書き出す)
 - [拡大・縮小率の確認](#拡大縮小率の確認)
 - [距離の測定](#距離の測定)
 - [すべてのドキュメントを閉じる](#すべてのドキュメントを閉じる)
@@ -183,7 +185,7 @@ UIデザインツールには、[ScriptUI Dialog Builder (SDB)](https://scriptui
 
 ### 開発環境
 OS: macOS Ventura 13.7.1  
-テスト: Adobe Illustrator 2020-2023
+テスト: Adobe Illustrator 2020-2024
 
 
 ### ライセンス
@@ -1214,7 +1216,35 @@ Illustrator CS4以降
 
 
 
-## <a name="アンカーポイントに図形を描く">アンカーポイントに図形を描く</a>
+## <a name="S字カーブを描く">S字カーブを描く</a>
+### drawS-curve.js
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
+2つのオブジェクトの間にS字カーブを描いたり、オープンパスをS字カーブに変換します。
+
+![Draw S-curve](images/drawS-curve.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. 2つのオブジェクト、または1つのオープンパスオブジェクトを選択してスクリプトを実行します。
+2. 曲率を変更するには、カーブに値を入力、またはスライダーで設定します。  
+   スライダーでは200%までしか設定できませんが、テキストフィールドにはそれ以上の値を入力できます。
+3. カーブに角度をつけるには、角度を入力、またはスライダーで設定します。角度は度で指定します。
+4. 反対側に描くには、［反対側］にチェックを付けます。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="アンカーポイントの位置に図形を描く">アンカーポイントの位置に図形を描く</a>
 ### drawShapeOnAnchorPoint.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">
@@ -2597,6 +2627,44 @@ Illustrator CS以降
 
 
 
+## <a name="オブジェクトの移動">オブジェクトの移動</a>
+### shiftObjects.js
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+
+選択したオブジェクトを指定した方向へ移動します。
+
+![Shift Objects](images/shiftObjects.png)
+
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. 2つ以上のオブジェクトを選択してスクリプトを実行します。
+2. 移動したい方向のボタンをクリックします。
+
+#### オプション
+1. ステップ数には、何個分、移動するかを入力します。
+2. ［整列位置の許容誤差］の値は、並び順に影響を与えます。（0以上の数値）
+   <img src="images/AlignObjectsSettings.png" alt="Shift Selected Objects Settings" width="50%">
+
+> [!NOTE]
+> オブジェクトの中心を基準にして再配置します。
+
+#### 対応する単位
+ポイント、ピクセル、パイカ、インチ、フィート、ヤード、ミリメートル、センチメートル、メートル。  
+使用する単位は、定規の単位によります。
+
+#### 動作条件
+Illustrator 2021以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
 ## <a name="選択したアンカーポイントを時計回り--反時計回りに移動">選択したアンカーポイントを時計回り / 反時計回りに移動</a>
 ### shiftSelectedAnchorPointsCW.js<br>shiftSelectedAnchorPointsCCW.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -2615,7 +2683,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
 
 
 
@@ -2737,7 +2804,7 @@ Illustrator CS以降
 ## <a name="オブジェクトをシャッフル">オブジェクトをシャッフル</a>
 ### shuffleObjects.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">
 
 選択したオブジェクトをシャッフルします。
 
@@ -2745,6 +2812,9 @@ Illustrator CS以降
 
 #### 使用方法
 オブジェクトを選択してスクリプトを実行します。
+
+> [!NOTE]
+> オブジェクトの中心を基準にして再配置します。
 
 #### 動作条件
 Illustrator CS以降
