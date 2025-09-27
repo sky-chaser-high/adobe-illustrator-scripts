@@ -2,7 +2,7 @@
 
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.61.0-e8e8e8?style=flat-square"> 
+<img src="https://img.shields.io/badge/Release-v1.62.0-e8e8e8?style=flat-square"> 
 
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
 Click the titles to jump to learn more about the script.  
@@ -48,6 +48,7 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Link
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [Bulk Relink](#bulkRelinkjs)
+- [Mark Missing Link](#markMissingLinkjs) `New`
 - [Relink File Extension](#relinkFileExtensionjs)
 - [Relink File Extension Extra](#relinkFileExtensionExtrajs)
 - [Relink to Folder](#relinkToFolderjs)
@@ -78,8 +79,8 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Extend Line](#extendLinejs)
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Increase Selected Anchor Points](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
-- [Make Circular Guides](#makeCircularGuidesjs) `New`
-- [Make Crosshair Guides](#makeCrosshairGuidesjs) `New`
+- [Make Circular Guides](#makeCircularGuidesjs)
+- [Make Crosshair Guides](#makeCrosshairGuidesjs)
 - [Move Guides](#moveGuidesjs)
 - [Rearrange Objects](#rearrangeObjectsjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
@@ -1772,6 +1773,26 @@ This script makes crosshair guides on the selected anchor points and handles.
 Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+
+
+# <a name="markMissingLinkjs">markMissingLink.js</a>
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script marks the location of missing links and visually indicates them.
+
+![Mark Missing Link](images/markMissingLink.png)
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CS or higher
+
+<div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
 
 

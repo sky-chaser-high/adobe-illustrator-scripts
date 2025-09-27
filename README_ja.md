@@ -1,6 +1,6 @@
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.61.0-e8e8e8?style=for-the-badge"> 
+<img src="https://img.shields.io/badge/Release-v1.62.0-e8e8e8?style=for-the-badge"> 
 
 Adobe Illustratorのスクリプト集です。  
 タイトルをクリックすると詳細説明に移動します。
@@ -55,13 +55,14 @@ Adobe Illustratorのスクリプト集です。
 - [リンク画像を原寸サイズに戻す](#リンク画像を原寸サイズに戻す)
 - [リンク画像を選択](#リンク画像を選択)
 - [リンク切れ画像を選択](#リンク切れ画像を選択)
+- [リンク切れ画像をマーキング](#リンク切れ画像をマーキング) `New`
 
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [S字カーブを描く](#S字カーブを描く)
 - [アンカーポイントの位置に図形を描く](#アンカーポイントの位置に図形を描く)
 - [アンカーポイントの追加](#アンカーポイントの追加)
-- [円形ガイドを作成](#円形ガイドを作成) `New`
+- [円形ガイドを作成](#円形ガイドを作成)
 - [オブジェクトの周囲に長方形を描く](#オブジェクトの周囲に長方形を描く)
 - [オブジェクトの移動](#オブジェクトの移動)
 - [オブジェクトの整列](#オブジェクトの整列)
@@ -74,7 +75,7 @@ Adobe Illustratorのスクリプト集です。
 - [ガイドを選択](#ガイドを選択)
 - [繰り返し複製](#繰り返し複製)
 - [グリッドラインを作成](#グリッドラインを作成)
-- [十字ガイドを作成](#十字ガイドを作成) `New`
+- [十字ガイドを作成](#十字ガイドを作成)
 - [すべてのアンカーをコーナーポイントに切り替え](#すべてのアンカーをコーナーポイントに切り替え)
 - [選択したアンカーポイントを時計回り / 反時計回りに移動](#選択したアンカーポイントを時計回り--反時計回りに移動)
 - [選択したアンカーポイントを時計回り / 反時計回りに増やす](#選択したアンカーポイントを時計回り--反時計回りに増やす)
@@ -1948,6 +1949,28 @@ Illustrator CS4以降
 Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+
+
+## <a name="リンク切れ画像をマーキング">リンク切れ画像をマーキング</a>
+### markMissingLink.js
+[![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
+リンク切れ画像に印を付けて視覚的にわかりやすく表示します。
+
+![Mark Missing Link](images/markMissingLink.png)
+
+#### 使用方法
+このスクリプトを実行するだけです。
+
+#### 動作条件
+Illustrator CS以降
+
+<div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
 
 
