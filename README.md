@@ -2,7 +2,7 @@
 
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.62.0-e8e8e8?style=flat-square"> 
+<img src="https://img.shields.io/badge/Release-v1.63.0-e8e8e8?style=flat-square"> 
 
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
 Click the titles to jump to learn more about the script.  
@@ -48,7 +48,7 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Link
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 - [Bulk Relink](#bulkRelinkjs)
-- [Mark Missing Link](#markMissingLinkjs) `New`
+- [Mark Missing Link](#markMissingLinkjs)
 - [Relink File Extension](#relinkFileExtensionjs)
 - [Relink File Extension Extra](#relinkFileExtensionExtrajs)
 - [Relink to Folder](#relinkToFolderjs)
@@ -61,6 +61,7 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [Add Anchor Points](#addAnchorPointsjs)
+- [Adjust Handle](#adjustHandlejs) `New`
 - [Align in Center of Space](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align Objects](#alignObjectsjs)
 - [Close Path](#closePathjs)
@@ -71,12 +72,12 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Distribute in Space](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
 - [Draw Normal Line](#drawNormalLinejs)
-- [Draw Rectangle](#drawRectanglejs)
+- [Draw Rectangle](#drawRectanglejs) `Update`
 - [Draw S-curve](#draws-curvejs)
-- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
+- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs) `Update`
 - [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs)
 - [Extend Handle](#extendHandlejs)
-- [Extend Line](#extendLinejs)
+- [Extend Line](#extendLinejs) `Update`
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Increase Selected Anchor Points](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Make Circular Guides](#makeCircularGuidesjs)
@@ -189,8 +190,6 @@ See the included LICENSE file for more details.
 
 
 
-
-
 # <a name="addAnchorPointsjs">addAnchorPoints.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -214,8 +213,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="addNumericSeparatorsjs">addNumericSeparators.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
@@ -231,8 +228,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -257,6 +252,23 @@ Illustrator CS or higher
 
 
 
+# <a name="adjustHandlejs">adjustHandle.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script adjusts selected handle lengths and angles.
+
+![Adjust Handle](images/adjustHandle.png)
+
+### Usage
+1. Select two or more anchor points with the Direct Selection Tool, and run this script.
+2. Select a length and an angle.
+
+### Requirements
+Illustrator CS4 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
 
 
 # <a name="alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs">alignInCenterOfSpace(Horizontal).js<br>alignInCenterOfSpace(Vertical).js</a>
@@ -280,8 +292,6 @@ Illustrator CS3 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -317,8 +327,6 @@ Illustrator 2021 or higher
 
 
 
-
-
 # <a name="arrangeWindowsjs">arrangeWindows.js</a>
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -340,8 +348,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#view">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -368,8 +374,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -404,8 +408,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="closeAllDocumentsjs">closeAllDocuments.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -425,8 +427,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="closePathjs">closePath.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -442,8 +442,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -470,8 +468,6 @@ Illustrator CC or higher
 
 
 
-
-
 # <a name="convertAllAnchorPointsToCornerjs">convertAllAnchorPointsToCorner.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -493,8 +489,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -525,8 +519,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="convertTypeOnAPathToPointTypejs">convertTypeOnAPathToPointType.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -546,8 +538,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -588,8 +578,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="copyLineEmptySelectionjscutLineEmptySelectionjs">copyLine(emptySelection).js<br>cutLine(emptySelection).js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -620,8 +608,6 @@ Illustrator CC 2018 or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -657,8 +643,6 @@ Illustrator CS6 or higher
 
 
 
-
-
 # <a name="createGridLinesjs">createGridLines.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -677,8 +661,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -709,8 +691,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -747,8 +727,6 @@ Illustrator 2021 or higher
 
 
 
-
-
 # <a name="createThreadedTextjs">createThreadedText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -780,8 +758,6 @@ Illustrator CC or higher
 
 
 
-
-
 # <a name="decreaseSelectedAnchorPointsCWjsdecreaseSelectedAnchorPointsCCWjs">decreaseSelectedAnchorPointsCW.js<br>decreaseSelectedAnchorPointsCCW.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -798,8 +774,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -836,8 +810,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="deleteAllSwatchesjs">deleteAllSwatches.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -856,8 +828,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -882,8 +852,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="deleteLockedLayersjs">deleteLockedLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -899,8 +867,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -927,8 +893,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="deleteUnusedLayersjs">deleteUnusedLayers.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -944,8 +908,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -977,8 +939,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="disjoinPathjs">disjoinPath.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -997,8 +957,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1026,8 +984,6 @@ Illustrator CS3 or higher
 
 
 
-
-
 # <a name="drawCircumscribedCirclejs">drawCircumscribedCircle.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -1047,8 +1003,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1083,11 +1037,9 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="drawRectanglejs">drawRectangle.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script draws rectangles around selected objects.
 
 ![Draw Rectangle](images/drawRectangle.png)
@@ -1110,8 +1062,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1138,11 +1088,9 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="drawShapeOnAnchorPointjs">drawShapeOnAnchorPoint.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
 This script draws shapes on anchor points.
 
 ![Draw Shape On Anchor Point](images/drawShapeOnAnchorPoint.png)
@@ -1163,8 +1111,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1196,8 +1142,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1237,8 +1181,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="exportAsPDFjs">exportAsPDF.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1273,8 +1215,6 @@ Illustrator CS6 or higher
 
 
 
-
-
 # <a name="exportColorValuesToCSVjs">exportColorValuesToCSV.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -1297,8 +1237,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1330,11 +1268,9 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="extendLinejs">extendLine.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
+<img src="https://img.shields.io/badge/version-1.3.0-e8e8e8?style=flat-square">  
 This script extends and shrinks path segments.
 
 ![Extend Line](images/extendLine.png)
@@ -1356,8 +1292,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1384,8 +1318,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="fitGuideInArtboardjs">fitGuideInArtboard.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1407,8 +1339,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="fitSelectedObjectsInWindowjs">fitSelectedObjectsInWindow.js</a>
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1427,8 +1357,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#view">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1455,8 +1383,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1492,8 +1418,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="goToNextTextjsgoToPreviousTextjs">goToNextText.js<br>goToPreviousText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1524,8 +1448,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="highlightWordjs">highlightWord.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
@@ -1553,8 +1475,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1607,8 +1527,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs">increaseSelectedAnchorPointsCW.js<br>increaseSelectedAnchorPointsCCW.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1625,8 +1543,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1660,8 +1576,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="invertLockedLayerjs">invertLockedLayer.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -1680,8 +1594,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="invertVisibleLayerjs">invertVisibleLayer.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -1697,8 +1609,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1726,8 +1636,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="makeCircularGuidesjs">makeCircularGuides.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1749,8 +1657,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1777,8 +1683,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="markMissingLinkjs">markMissingLink.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1794,8 +1698,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1818,8 +1720,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1851,8 +1751,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="moveGuidesjs">moveGuides.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -1875,8 +1773,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1917,8 +1813,6 @@ Illustrator CC 2018 or higher
 
 
 
-
-
 # <a name="moveSublayerToMainLayerjs">moveSublayerToMainLayer.js</a>
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -1937,8 +1831,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1969,8 +1861,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="randomTextColorjs">randomTextColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.3.0-e8e8e8?style=flat-square">  
@@ -1993,8 +1883,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2032,8 +1920,6 @@ Illustrator 2021 or higher
 
 
 
-
-
 # <a name="relinkFileExtensionjs">relinkFileExtension.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 <img src="https://img.shields.io/badge/version-1.1.1-e8e8e8?style=flat-square">  
@@ -2058,8 +1944,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2097,8 +1981,6 @@ Illustrator CS6 or higher
 
 
 
-
-
 # <a name="relinkToFolderjs">relinkToFolder.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 <img src="https://img.shields.io/badge/version-1.1.1-e8e8e8?style=flat-square">  
@@ -2123,8 +2005,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="removeColorInGuideObjectjs">removeColorInGuideObject.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2143,8 +2023,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2168,8 +2046,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2205,8 +2081,6 @@ Illustrator CS4 or higher
 
 <div align="right">[ <a href="#artboard">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2247,8 +2121,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="renameLinkedFilejs">renameLinkedFile.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2284,8 +2156,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="resetToFullScalejs">resetToFullScale.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 <img src="https://img.shields.io/badge/version-1.0.2-e8e8e8?style=flat-square">  
@@ -2301,8 +2171,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2328,8 +2196,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="roundColorValuejs">roundColorValue.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2345,8 +2211,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2369,8 +2233,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="selectEmbeddedLinkjs">selectEmbeddedLink.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2390,8 +2252,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="selectGuidesjs">selectGuides.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2408,8 +2268,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2437,8 +2295,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="selectMissingLinkjs">selectMissingLink.js</a>
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -2455,8 +2311,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#link">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2491,8 +2345,6 @@ Illustrator 2021 or higher
 
 
 
-
-
 # <a name="shiftSelectedAnchorPointsCWjsshiftSelectedAnchorPointsCCWjs">shiftSelectedAnchorPointsCW.js<br>shiftSelectedAnchorPointsCCW.js</a>
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -2509,8 +2361,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2536,8 +2386,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="showColorValuesjs">showColorValues.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.1.1-e8e8e8?style=flat-square">  
@@ -2557,8 +2405,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2593,8 +2439,6 @@ Illustrator CS6 or higher
 
 
 
-
-
 # <a name="shuffleGradientColorjs">shuffleGradientColor.js</a>
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2614,8 +2458,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#color">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2640,8 +2482,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="sortArtboardsjs">sortArtboards.js</a>
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2660,8 +2500,6 @@ Illustrator CS5 or higher
 
 <div align="right">[ <a href="#artboard">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2694,8 +2532,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="splitTextjs">splitText.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">  
@@ -2720,8 +2556,6 @@ Illustrator CC or higher
 
 
 
-
-
 # <a name="splitTextAtCursorPositionjs">splitTextAtCursorPosition.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">  
@@ -2742,8 +2576,6 @@ Illustrator CS6 or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2772,8 +2604,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="sumNumbersjs">sumNumbers.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 <img src="https://img.shields.io/badge/version-2.0.0-e8e8e8?style=flat-square">  
@@ -2796,8 +2626,6 @@ Illustrator CS4 or higher
 
 
 
-
-
 # <a name="swapTextContentsjs">swapTextContents.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -2813,8 +2641,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2839,8 +2665,6 @@ Illustrator CS or higher
 
 
 
-
-
 # <a name="textAlign_CenterjstextAlign_LeftjstextAlign_Rightjs">textAlign_Center.js<br>textAlign_Left.js<br>textAlign_Right.js</a>
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2857,8 +2681,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#text">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2880,8 +2702,6 @@ Illustrator 2020 or higher
 
 
 
-
-
 # <a name="toggleFillNewTypeObjectsWithPlaceholderTextjs">toggleFillNewTypeObjectsWithPlaceholderText.js</a>
 [![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -2897,8 +2717,6 @@ Illustrator 2018 or higher
 
 <div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2920,8 +2738,6 @@ Illustrator CC or higher
 
 
 
-
-
 # <a name="toggleSelectSameTintPercentagejs">toggleSelectSameTintPercentage.js</a>
 [![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -2937,8 +2753,6 @@ Illustrator CC or higher
 
 <div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2960,8 +2774,6 @@ Illustrator 2020 or higher
 
 
 
-
-
 # <a name="toggleShowHandlesjs">toggleShowHandles.js</a>
 [![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
 <img src="https://img.shields.io/badge/version-1.0.1-e8e8e8?style=flat-square">  
@@ -2977,8 +2789,6 @@ Illustrator CC or higher
 
 <div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3000,8 +2810,6 @@ Illustrator CC or higher
 
 
 
-
-
 # <a name="toggleUsePreviewBoundsjs">toggleUsePreviewBounds.js</a>
 [![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -3017,8 +2825,6 @@ Illustrator CC or higher
 
 <div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3040,8 +2846,6 @@ Illustrator 2018 or higher
 
 
 
-
-
 # <a name="toggleZoomWithMouseWheeljs">toggleZoomWithMouseWheel.js</a>
 [![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
 <img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
@@ -3057,8 +2861,6 @@ Illustrator 2022 or higher
 
 <div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3081,8 +2883,6 @@ Illustrator CS or higher
 
 <div align="right">[ <a href="#layer">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3110,8 +2910,6 @@ Illustrator CC or higher
 
 <div align="right">[ <a href="#utility">↑ Back to Top ↑</a> ]</div>
 <br>
-
-
 
 
 

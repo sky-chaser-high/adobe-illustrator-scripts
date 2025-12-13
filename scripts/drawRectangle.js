@@ -9,6 +9,7 @@
    2. Enter a margin value.
    3. To draw a rectangle on each object in the group, check the Ignore Groups checkbox.
    4. To include stroke width, check the Use Preview Bounds checkbox.
+   5. To draw a rectangle around the entire selected object, check the Entire Selected Objects checkbox.
 
    Notes
    The rectangle is drawn with no fill and stroke width.
@@ -20,7 +21,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -43,80 +44,154 @@ function main() {
 
     dialog.ok.onClick = function() {
         if (dialog.preview.value) return dialog.close();
-        if (dialog.ignore.value) items = getPageItems(items);
-        var margin = getMargin(dialog.margin.text);
-        showShape(items, margin, dialog.stroke.value);
+        showRectangle(dialog, items);
         dialog.close();
     }
 
     dialog.preview.onClick = function() {
         if (dialog.preview.value) {
-            if (dialog.ignore.value) items = getPageItems(items);
-            var margin = getMargin(dialog.margin.text);
-            showShape(items, margin, dialog.stroke.value);
+            showRectangle(dialog, items);
         }
         else {
             app.undo();
+            app.redraw();
         }
-        app.redraw();
     }
 
     dialog.margin.addEventListener('keydown', function(event) {
         setIncreaseDecrease(event);
-        preview(dialog, items);
+        if (!dialog.preview.value) return;
+        app.undo();
+        showRectangle(dialog, items);
     });
 
     dialog.margin.onChanging = function() {
-        preview(dialog, items);
+        if (!dialog.preview.value) return;
+        app.undo();
+        showRectangle(dialog, items);
     }
 
     dialog.ignore.onClick = function() {
-        preview(dialog, items);
+        if (!dialog.preview.value) return;
+        app.undo();
+        showRectangle(dialog, items);
     }
 
     dialog.stroke.onClick = function() {
-        preview(dialog, items);
+        if (!dialog.preview.value) return;
+        app.undo();
+        showRectangle(dialog, items);
+    }
+
+    dialog.entire.onClick = function() {
+        if (!dialog.preview.value) return;
+        app.undo();
+        showRectangle(dialog, items);
     }
 
     dialog.show();
 }
 
 
-function preview(dialog, items) {
-    if (!dialog.preview.value) return;
-    app.undo();
-    app.redraw();
+function showRectangle(dialog, items) {
     if (dialog.ignore.value) items = getPageItems(items);
     var margin = getMargin(dialog.margin.text);
-    showShape(items, margin, dialog.stroke.value);
+    var usePreviewBounds = dialog.stroke.value;
+
+    if (dialog.entire.value) drawRectangleAroundEntireItem(items, margin, usePreviewBounds);
+    else drawRectangles(items, margin, usePreviewBounds);
+
     app.redraw();
 }
 
 
-function showShape(items, margin, usePreviewBounds) {
-    for (var i = 0; i < items.length; i++) {
+function drawRectangleAroundEntireItem(items, margin, usePreviewBounds) {
+    var size = getEntireItemSize(items, usePreviewBounds);
+    createRectangle(size, margin);
+    for (var i = items.length - 1; 0 <= i; i--) {
         var item = items[i];
-        var bounds = usePreviewBounds ? item.visibleBounds : item.geometricBounds;
-        drawRect(bounds, margin);
         item.selected = false;
     }
 }
 
 
-function drawRect(bounds, margin) {
-    var x1 = bounds[0];
-    var y1 = bounds[1];
-    var x2 = bounds[2];
-    var y2 = bounds[3];
-    var top = y1 + margin;
-    var left = x1 - margin;
-    var width = Math.abs(x2 - x1) + (margin * 2);
-    var height = Math.abs(y2 - y1) + (margin * 2);
+function drawRectangles(items, margin, usePreviewBounds) {
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        var size = getItemSize(item, usePreviewBounds);
+        createRectangle(size, margin);
+        item.selected = false;
+    }
+}
+
+
+function createRectangle(item, margin) {
+    var top = item.y1 + margin;
+    var left = item.x1 - margin;
+    var width = item.width + (margin * 2);
+    var height = item.height + (margin * 2);
     var layer = app.activeDocument.activeLayer;
     var rect = layer.pathItems.rectangle(top, left, width, height);
     rect.filled = false;
     rect.stroked = false;
     rect.selected = true;
+}
+
+
+function getItemSize(item, usePreviewBounds) {
+    var bounds = (usePreviewBounds) ? item.visibleBounds : item.geometricBounds;
+    var x1 = bounds[0];
+    var y1 = bounds[1];
+    var x2 = bounds[2];
+    var y2 = bounds[3];
+    var width = Math.abs(x2 - x1);
+    var height = Math.abs(y2 - y1);
+    var center = {
+        x: x1 + width / 2,
+        y: y1 - height / 2
+    };
+    return {
+        x1: x1,
+        y1: y1,
+        x2: x2,
+        y2: y2,
+        width: width,
+        height: height,
+        center: center
+    };
+}
+
+
+function getEntireItemSize(items, usePreviewBounds) {
+    var item = items[0];
+    var bounds = (usePreviewBounds) ? item.visibleBounds : item.geometricBounds;
+    var x1 = bounds[0];
+    var y1 = bounds[1];
+    var x2 = bounds[2];
+    var y2 = bounds[3];
+    for (var i = 1; i < items.length; i++) {
+        item = items[i];
+        bounds = (usePreviewBounds) ? item.visibleBounds : item.geometricBounds;
+        if (bounds[0] < x1) x1 = bounds[0];
+        if (y1 < bounds[1]) y1 = bounds[1];
+        if (x2 < bounds[2]) x2 = bounds[2];
+        if (bounds[3] < y2) y2 = bounds[3];
+    }
+    var width = Math.abs(x2 - x1);
+    var height = Math.abs(y2 - y1);
+    var center = {
+        x: x1 + width / 2,
+        y: y1 - height / 2
+    };
+    return {
+        x1: x1,
+        y1: y1,
+        x2: x2,
+        y2: y2,
+        width: width,
+        height: height,
+        center: center
+    };
 }
 
 
@@ -142,7 +217,7 @@ function convertUnits(value, unit) {
         return Number(UnitValue(value).as(unit));
     }
     catch (err) {
-        return Number(UnitValue('1pt').as('pt'));
+        return Number(UnitValue('0pt').as('pt'));
     }
 }
 
@@ -228,8 +303,8 @@ function getPageItems(items) {
 
 function isValidVersion() {
     var cs4 = 14;
-    var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    var current = parseInt(app.version);
+    if (current < cs4) return false;
     return true;
 }
 
@@ -237,6 +312,7 @@ function isValidVersion() {
 function showDialog() {
     $.localize = true;
     var ui = localizeUI();
+    var units = getRulerUnits();
 
     var dialog = new Window('dialog');
     dialog.text = ui.title;
@@ -247,17 +323,21 @@ function showDialog() {
 
     var group1 = dialog.add('group', undefined, { name: 'group1' });
     group1.orientation = 'row';
-    group1.alignChildren = ['left', 'center'];
+    group1.alignChildren = ['fill', 'center'];
     group1.spacing = 10;
     group1.margins = 0;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
     statictext1.text = ui.margin;
+    statictext1.alignment = ['left', 'center'];
 
     var edittext1 = group1.add('edittext', undefined, undefined, { name: 'edittext1' });
     edittext1.text = '0';
-    edittext1.preferredSize.width = 200;
     edittext1.active = true;
+
+    var statictext2 = group1.add('statictext', undefined, undefined, { name: 'statictext2' });
+    statictext2.text = units;
+    statictext2.alignment = ['right', 'center'];
 
     var panel1 = dialog.add('panel', undefined, undefined, { name: 'panel1' });
     panel1.text = ui.options;
@@ -278,14 +358,8 @@ function showDialog() {
     var checkbox2 = group2.add('checkbox', undefined, undefined, { name: 'checkbox2' });
     checkbox2.text = ui.stroke;
 
-    var group3 = dialog.add('group', undefined, { name: 'group3' });
-    group3.orientation = 'row';
-    group3.alignChildren = ['left', 'center'];
-    group3.spacing = 10;
-    group3.margins = 0;
-
-    var checkbox3 = group3.add('checkbox', undefined, undefined, { name: 'checkbox3' });
-    checkbox3.text = ui.preview;
+    var checkbox3 = group2.add('checkbox', undefined, undefined, { name: 'checkbox3' });
+    checkbox3.text = ui.entire;
 
     var group4 = dialog.add('group', undefined, { name: 'group4' });
     group4.orientation = 'row';
@@ -293,17 +367,15 @@ function showDialog() {
     group4.spacing = 10;
     group4.margins = 0;
 
-    // Work around the problem of not being able to undo with the esc key due to localization.
-    var button0 = group4.add('button', undefined, undefined, { name: 'button0' });
-    button0.text = 'Cancel';
-    button0.preferredSize.width = 20;
-    button0.hide();
+    var checkbox4 = group4.add('checkbox', undefined, undefined, { name: 'checkbox4' });
+    checkbox4.text = ui.preview;
+    checkbox4.alignment = ['left', 'top'];
 
-    var button1 = group4.add('button', undefined, undefined, { name: 'button1' });
+    var button1 = group4.add('button', undefined, undefined, { name: 'Cancel' });
     button1.text = ui.cancel;
     button1.preferredSize.width = 90;
 
-    var button2 = group4.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group4.add('button', undefined, undefined, { name: 'OK' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
 
@@ -312,19 +384,16 @@ function showDialog() {
         edittext1.active = true;
     });
 
-    button0.onClick = function() {
-        if (checkbox3.value) app.undo();
-        dialog.close();
-    }
-
     button1.onClick = function() {
-        button0.notify('onClick');
+        if (checkbox4.value) app.undo();
+        dialog.close();
     }
 
     dialog.margin = edittext1;
     dialog.ignore = checkbox1;
     dialog.stroke = checkbox2;
-    dialog.preview = checkbox3;
+    dialog.entire = checkbox3;
+    dialog.preview = checkbox4;
     dialog.ok = button2;
 
     return dialog;
@@ -369,6 +438,10 @@ function localizeUI() {
         stroke: {
             en: 'Use Preview Bounds',
             ja: 'プレビュー境界を使用'
+        },
+        entire: {
+            en: 'Entire Selected Object',
+            ja: '選択オブジェクト全体'
         },
         preview: {
             en: 'Preview',

@@ -286,6 +286,9 @@
 
 
 ## drawRectangle.js
+### 1.2.0 (2025-12-06)
+### Added
+- Added unit label to the UI.
 ### 1.1.0 (2024-06-01)
 ### Added
 - Added the function to ignore grouped objects.
@@ -296,6 +299,9 @@
 
 
 ## drawShapeOnAnchorPoint.js
+### 1.2.0 (2025-12-06)
+### Added
+- Added unit label to the UI.
 ### 1.1.0 (2024-06-01)
 ### Added
 - Added the function to draw a shape on all anchor points or only selected anchor points when anchor points are selected with the Direct Selection Tool.
@@ -326,6 +332,9 @@
 
 
 ## extendLine.js
+### 1.3.0 (2025-12-06)
+### Added
+- Added unit label to the UI.
 ### 1.2.0 (2024-06-01)
 ### Added
 - Added supported units.

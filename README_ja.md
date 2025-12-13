@@ -1,6 +1,6 @@
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.62.0-e8e8e8?style=for-the-badge"> 
+<img src="https://img.shields.io/badge/Release-v1.63.0-e8e8e8?style=for-the-badge"> 
 
 Adobe Illustratorのスクリプト集です。  
 タイトルをクリックすると詳細説明に移動します。
@@ -55,15 +55,15 @@ Adobe Illustratorのスクリプト集です。
 - [リンク画像を原寸サイズに戻す](#リンク画像を原寸サイズに戻す)
 - [リンク画像を選択](#リンク画像を選択)
 - [リンク切れ画像を選択](#リンク切れ画像を選択)
-- [リンク切れ画像をマーキング](#リンク切れ画像をマーキング) `New`
+- [リンク切れ画像をマーキング](#リンク切れ画像をマーキング)
 
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [S字カーブを描く](#S字カーブを描く)
-- [アンカーポイントの位置に図形を描く](#アンカーポイントの位置に図形を描く)
+- [アンカーポイントの位置に図形を描く](#アンカーポイントの位置に図形を描く) `Update`
 - [アンカーポイントの追加](#アンカーポイントの追加)
 - [円形ガイドを作成](#円形ガイドを作成)
-- [オブジェクトの周囲に長方形を描く](#オブジェクトの周囲に長方形を描く)
+- [オブジェクトの周囲に長方形を描く](#オブジェクトの周囲に長方形を描く) `Update`
 - [オブジェクトの移動](#オブジェクトの移動)
 - [オブジェクトの整列](#オブジェクトの整列)
 - [オブジェクトの並べ替え](#オブジェクトの並べ替え)
@@ -81,9 +81,10 @@ Adobe Illustratorのスクリプト集です。
 - [選択したアンカーポイントを時計回り / 反時計回りに増やす](#選択したアンカーポイントを時計回り--反時計回りに増やす)
 - [選択したアンカーポイントを時計回り / 反時計回りに減らす](#選択したアンカーポイントを時計回り--反時計回りに減らす)
 - [ハンドルを伸縮](#ハンドルを伸縮)
+- [ハンドルを調整](#ハンドルを調整) `New`
 - [パスセグメントの角度に合わせて図形を描く](#パスセグメントの角度に合わせて図形を描く)
 - [パスの寸法を表示](#パスの寸法を表示)
-- [パスを伸縮](#パスを伸縮)
+- [パスを伸縮](#パスを伸縮) `Update`
 - [パスを閉じる](#パスを閉じる)
 - [パスを分解](#パスを分解)
 - [法線を描く](#法線を描く)
@@ -151,8 +152,6 @@ Adobe Illustratorのスクリプト集です。
 
 
 
-
-
 ### インストール
 [![Download](https://img.shields.io/badge/Download-66595c?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) 
 または [Releases](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest) から
@@ -201,8 +200,6 @@ MITライセンスのもとで公開しています。
 
 
 
-
-
 ## <a name="アンカーポイントの追加">アンカーポイントの追加</a>
 ### addAnchorPoints.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -230,8 +227,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="数字をカンマで区切る">数字をカンマで区切る</a>
 ### addNumericSeparators.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -249,8 +244,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -277,6 +270,27 @@ Illustrator CS以降
 
 
 
+## <a name="ハンドルを調整">ハンドルを調整</a>
+### adjustHandle.js
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
+ハンドルの長さと角度を調整します。
+
+![Adjust Handle](images/adjustHandle.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. ダイレクト選択ツールで2点以上のアンカーポイントを選択してスクリプトを実行します。
+2. 長さと角度を選択します。
+
+#### 動作条件
+Illustrator CS4以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
 
 
 ## <a name="余白の垂直--水平方向中央に整列">余白の垂直 / 水平方向中央に整列</a>
@@ -302,8 +316,6 @@ Illustrator CS3以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -343,8 +355,6 @@ Illustrator 2021以降
 
 
 
-
-
 ## <a name="ウィンドウを並べて表示">ウィンドウを並べて表示</a>
 ### arrangeWindows.js
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
@@ -368,8 +378,6 @@ Illustrator CS6以降
 
 <div align="right">[ <a href="#表示">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -398,8 +406,6 @@ Illustrator CS6以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -439,8 +445,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="すべてのドキュメントを閉じる">すべてのドキュメントを閉じる</a>
 ### closeAllDocuments.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -463,8 +467,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="パスを閉じる">パスを閉じる</a>
 ### closePath.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -482,8 +484,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -514,8 +514,6 @@ Illustrator CC以降
 
 
 
-
-
 ## <a name="すべてのアンカーをコーナーポイントに切り替え">すべてのアンカーをコーナーポイントに切り替え</a>
 ### convertAllAnchorPointsToCorner.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -540,8 +538,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -574,8 +570,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="パス上文字をポイント文字に切り替え">パス上文字をポイント文字に切り替え</a>
 ### convertTypeOnAPathToPointType.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -597,8 +591,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -642,8 +634,6 @@ Illustrator CC 2018以降
 
 
 
-
-
 ## <a name="選択なしでコピー--カット">選択なしでコピー / カット</a>
 ### copyLine(emptySelection).js<br>cutLine(emptySelection).js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -677,8 +667,6 @@ Illustrator CC 2018以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -718,8 +706,6 @@ Illustrator CS6以降
 
 
 
-
-
 ## <a name="グリッドラインを作成">グリッドラインを作成</a>
 ### createGridLines.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -740,8 +726,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -776,8 +760,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -818,8 +800,6 @@ Illustrator 2021以降
 
 
 
-
-
 ## <a name="スレッドテキストを作成">スレッドテキストを作成</a>
 ### createThreadedText.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -855,8 +835,6 @@ Illustrator CC以降
 
 
 
-
-
 ## <a name="選択したアンカーポイントを時計回り--反時計回りに減らす">選択したアンカーポイントを時計回り / 反時計回りに減らす</a>
 ### decreaseSelectedAnchorPointsCW.js<br>decreaseSelectedAnchorPointsCCW.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -875,8 +853,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -916,8 +892,6 @@ Illustrator CC 2018以降
 
 
 
-
-
 ## <a name="すべてのスウォッチを削除">すべてのスウォッチを削除</a>
 ### deleteAllSwatches.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -938,8 +912,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -966,8 +938,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="ロック状態のレイヤーを削除">ロック状態のレイヤーを削除</a>
 ### deleteLockedLayers.js
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -985,8 +955,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1015,8 +983,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="未使用レイヤーを削除">未使用レイヤーを削除</a>
 ### deleteUnusedLayers.js
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -1035,8 +1001,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1070,8 +1034,6 @@ Illustrator CC 2018以降
 
 
 
-
-
 ## <a name="パスを分解">パスを分解</a>
 ### disjoinPath.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -1092,8 +1054,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1123,8 +1083,6 @@ Illustrator CS3以降
 
 
 
-
-
 ## <a name="外接円を描く">外接円を描く</a>
 ### drawCircumscribedCircle.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -1146,8 +1104,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1186,12 +1142,10 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="オブジェクトの周囲に長方形を描く">オブジェクトの周囲に長方形を描く</a>
 ### drawRectangle.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">
 
 オブジェクトの周囲に長方形を描きます。
 
@@ -1217,8 +1171,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1248,12 +1200,10 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="アンカーポイントの位置に図形を描く">アンカーポイントの位置に図形を描く</a>
 ### drawShapeOnAnchorPoint.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.1.0-e8e8e8?style=flat-square">
+<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">
 
 アンカーポイントとハンドルの位置に図形を描きます。
 
@@ -1277,8 +1227,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1314,8 +1262,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1360,8 +1306,6 @@ Illustrator CC 2018以降
 
 
 
-
-
 ## <a name="PDFを書き出す">PDFを書き出す</a>
 ### exportAsPDF.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -1399,8 +1343,6 @@ Illustrator CS6以降
 
 
 
-
-
 ## <a name="カラー数値をCSVファイルに保存">カラー数値をCSVファイルに保存</a>
 ### exportColorValuesToCSV.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -1425,8 +1367,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1462,12 +1402,10 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="パスを伸縮">パスを伸縮</a>
 ### extendLine.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
-<img src="https://img.shields.io/badge/version-1.2.0-e8e8e8?style=flat-square">
+<img src="https://img.shields.io/badge/version-1.3.0-e8e8e8?style=flat-square">
 
 選択しているパスセグメントを伸縮します。
 
@@ -1492,8 +1430,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1522,8 +1458,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="ガイドをアートボードにフィット">ガイドをアートボードにフィット</a>
 ### fitGuideInArtboard.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -1547,8 +1481,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="オブジェクトを画面全体に拡大表示">オブジェクトを画面全体に拡大表示</a>
 ### fitSelectedObjectsInWindow.js
 [![Download View.zip](https://img.shields.io/badge/Download-View.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/View.zip)
@@ -1569,8 +1501,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#表示">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1598,8 +1528,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1641,8 +1569,6 @@ Illustrator CC 2018以降
 
 
 
-
-
 ## <a name="カーソルを次--前のテキストへ移動">カーソルを次 / 前のテキストへ移動</a>
 ### goToNextText.js<br>goToPreviousText.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -1672,8 +1598,6 @@ Illustrator CC 2018以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1707,8 +1631,6 @@ Illustrator CS6以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1763,8 +1685,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="選択したアンカーポイントを時計回り--反時計回りに増やす">選択したアンカーポイントを時計回り / 反時計回りに増やす</a>
 ### increaseSelectedAnchorPointsCW.js<br>increaseSelectedAnchorPointsCCW.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -1783,8 +1703,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1821,8 +1739,6 @@ Illustrator CC 2018以降
 
 
 
-
-
 ## <a name="ロック状態を反転">ロック状態を反転</a>
 ### invertLockedLayer.js
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -1843,8 +1759,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="表示状態を反転">表示状態を反転</a>
 ### invertVisibleLayer.js
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -1862,8 +1776,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1891,8 +1803,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -1924,8 +1834,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="十字ガイドを作成">十字ガイドを作成</a>
 ### makeCrosshairGuides.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -1953,8 +1861,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="リンク切れ画像をマーキング">リンク切れ画像をマーキング</a>
 ### markMissingLink.js
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
@@ -1972,8 +1878,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2000,8 +1904,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2037,8 +1939,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="ガイドを移動">ガイドを移動</a>
 ### moveGuides.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -2066,8 +1966,6 @@ Illustrator CS6以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2111,8 +2009,6 @@ Illustrator CC 2018以降
 
 
 
-
-
 ## <a name="サブレイヤーをメインレイヤーへ移動">サブレイヤーをメインレイヤーへ移動</a>
 ### moveSublayerToMainLayer.js
 [![Download Layer.zip](https://img.shields.io/badge/Download-Layer.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Layer.zip)
@@ -2134,8 +2030,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2168,8 +2062,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="テキストの色をランダムに変更">テキストの色をランダムに変更</a>
 ### randomTextColor.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -2195,8 +2087,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2238,8 +2128,6 @@ Illustrator 2021以降
 
 
 
-
-
 ## <a name="ファイル拡張子にリンクを再設定">ファイル拡張子にリンクを再設定</a>
 ### relinkFileExtension.js
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
@@ -2269,8 +2157,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2313,8 +2199,6 @@ Illustrator CS6以降
 
 
 
-
-
 ## <a name="フォルダに再リンク">フォルダに再リンク</a>
 ### relinkToFolder.js
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
@@ -2338,8 +2222,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2367,8 +2249,6 @@ Illustrator CS6以降
 
 
 
-
-
 ## <a name="Deleted-Global-Color-を削除">Deleted Global Color を削除</a>
 ### removeDeletedGlobalColor.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -2391,9 +2271,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
-
 
 
 
@@ -2433,8 +2310,6 @@ Illustrator CS4以降
 
 <div align="right">[ <a href="#アートボード">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2479,8 +2354,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="リンク画像の名前を変更">リンク画像の名前を変更</a>
 ### renameLinkedFile.js
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
@@ -2520,8 +2393,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="リンク画像を原寸サイズに戻す">リンク画像を原寸サイズに戻す</a>
 ### resetToFullScale.js
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
@@ -2539,8 +2410,6 @@ Illustrator CS6以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2568,8 +2437,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="カラー数値を四捨五入">カラー数値を四捨五入</a>
 ### roundColorValue.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -2590,8 +2457,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="グラデーションのカラー分岐中間点の数値を四捨五入">グラデーションのカラー分岐・中間点の数値を四捨五入</a>
 ### roundLocationOfGradientStop.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -2609,8 +2474,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2635,8 +2498,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="ガイドを選択">ガイドを選択</a>
 ### selectGuides.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -2655,8 +2516,6 @@ Illustrator CS6以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2689,8 +2548,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="リンク切れ画像を選択">リンク切れ画像を選択</a>
 ### selectMissingLink.js
 [![Download Link.zip](https://img.shields.io/badge/Download-Link.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Link.zip)
@@ -2709,8 +2566,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#リンク">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2750,8 +2605,6 @@ Illustrator 2021以降
 
 
 
-
-
 ## <a name="選択したアンカーポイントを時計回り--反時計回りに移動">選択したアンカーポイントを時計回り / 反時計回りに移動</a>
 ### shiftSelectedAnchorPointsCW.js<br>shiftSelectedAnchorPointsCCW.js
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
@@ -2770,8 +2623,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2799,8 +2650,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="カラー数値を表示">カラー数値を表示</a>
 ### showColorValues.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -2822,8 +2671,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2860,8 +2707,6 @@ Illustrator CS6以降
 
 
 
-
-
 ## <a name="グラデーションをシャッフル">グラデーションをシャッフル</a>
 ### shuffleGradientColor.js
 [![Download Color.zip](https://img.shields.io/badge/Download-Color.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Color.zip)
@@ -2883,8 +2728,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#カラー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2911,8 +2754,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="アートボードの並べ替え">アートボードの並べ替え</a>
 ### sortArtboards.js
 [![Download Artboard.zip](https://img.shields.io/badge/Download-Artboard.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Artboard.zip)
@@ -2933,8 +2774,6 @@ Illustrator CS5以降
 
 <div align="right">[ <a href="#アートボード">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -2971,8 +2810,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="文字列を分割">文字列を分割</a>
 ### splitText.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -3002,8 +2839,6 @@ Illustrator CC以降
 
 
 
-
-
 ## <a name="文字列をカーソルの位置で分割">文字列をカーソルの位置で分割</a>
 ### splitTextAtCursorPosition.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -3027,8 +2862,6 @@ Illustrator CS6以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3062,8 +2895,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="文字列内の数字の合計">文字列内の数字の合計</a>
 ### sumNumbers.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -3090,8 +2921,6 @@ Illustrator CS4以降
 
 
 
-
-
 ## <a name="文字列を交換">文字列を交換</a>
 ### swapTextContents.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -3109,8 +2938,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3137,8 +2964,6 @@ Illustrator CS以降
 
 
 
-
-
 ## <a name="テキスト左--中央--右揃え">テキスト左 / 中央 / 右揃え</a>
 ### textAlign_Left.js<br>textAlign_Center.js<br>textAlign_Right.js
 [![Download Text.zip](https://img.shields.io/badge/Download-Text.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Text.zip)
@@ -3158,8 +2983,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#テキスト">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3183,8 +3006,6 @@ Illustrator 2020以降
 
 
 
-
-
 ## <a name="新規テキストオブジェクトにサンプルテキストを割り付け">新規テキストオブジェクトにサンプルテキストを割り付け</a>
 ### toggleFillNewTypeObjectsWithPlaceholderText.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -3202,8 +3023,6 @@ Illustrator 2018以降
 
 <div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3227,8 +3046,6 @@ Illustrator CC以降
 
 
 
-
-
 ## <a name="同じ濃度を選択">同じ濃度を選択</a>
 ### toggleSelectSameTintPercentage.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -3246,8 +3063,6 @@ Illustrator CC以降
 
 <div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3271,8 +3086,6 @@ Illustrator 2020以降
 
 
 
-
-
 ## <a name="複数アンカーを選択時にハンドルを表示">複数アンカーを選択時にハンドルを表示</a>
 ### toggleShowHandles.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -3290,8 +3103,6 @@ Illustrator CC以降
 
 <div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3315,8 +3126,6 @@ Illustrator CC以降
 
 
 
-
-
 ## <a name="プレビュー境界を使用">プレビュー境界を使用</a>
 ### toggleUsePreviewBounds.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -3334,8 +3143,6 @@ Illustrator CC以降
 
 <div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3359,8 +3166,6 @@ Illustrator 2018以降
 
 
 
-
-
 ## <a name="マウスホイールでズーム">マウスホイールでズーム</a>
 ### toggleZoomWithMouseWheel.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -3378,8 +3183,6 @@ Illustrator 2022以降
 
 <div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3404,8 +3207,6 @@ Illustrator CS以降
 
 <div align="right">[ <a href="#レイヤー">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 
@@ -3438,8 +3239,6 @@ Illustrator CC以降
 
 <div align="right">[ <a href="#ユーティリティ">↑ トップへ戻る ↑</a> ]</div>
 <br>
-
-
 
 
 

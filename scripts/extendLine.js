@@ -19,7 +19,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.2.0
+   1.3.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -52,6 +52,23 @@ function main() {
         dialog.close();
     }
 
+    dialog.distance.onChanging = function() {
+        if (!dialog.preview.value) return;
+        reset(points);
+        var distance = getValue(dialog.distance.text);
+        extendLine(distance, points);
+        app.redraw();
+    }
+
+    dialog.distance.addEventListener('keydown', function(event) {
+        setIncreaseDecrease(event);
+        if (!dialog.preview.value) return;
+        var distance = getValue(this.text);
+        reset(points);
+        extendLine(distance, points);
+        app.redraw();
+    });
+
     dialog.preview.onClick = function() {
         if (dialog.preview.value) {
             var distance = getValue(dialog.distance.text);
@@ -62,37 +79,6 @@ function main() {
         }
         app.redraw();
     }
-
-    dialog.distance.onChanging = function() {
-        if (dialog.preview.value) {
-            reset(points);
-            var distance = getValue(dialog.distance.text);
-            extendLine(distance, points);
-            app.redraw();
-        }
-    }
-
-    dialog.distance.addEventListener('keydown', function(event) {
-        var value = getValue(this.text);
-        var keyboard = ScriptUI.environment.keyboardState;
-        var step = keyboard.shiftKey ? 5 : 1;
-        var distance;
-        if (event.keyName == 'Up') {
-            distance = value + step;
-            this.text = distance;
-            event.preventDefault();
-        }
-        if (event.keyName == 'Down') {
-            distance = value - step;
-            this.text = distance;
-            event.preventDefault();
-        }
-        if (dialog.preview.value) {
-            reset(points);
-            extendLine(distance, points);
-            app.redraw();
-        }
-    });
 
     dialog.show();
 }
@@ -227,7 +213,7 @@ function convertUnits(value, unit) {
         return Number(UnitValue(value).as(unit));
     }
     catch (err) {
-        return Number(UnitValue('1pt').as('pt'));
+        return Number(UnitValue('0pt').as('pt'));
     }
 }
 
@@ -298,8 +284,8 @@ function getUnitSymbol() {
 
 function isValidVersion() {
     var cs4 = 14;
-    var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    var current = parseInt(app.version);
+    if (current < cs4) return false;
     return true;
 }
 
@@ -307,6 +293,8 @@ function isValidVersion() {
 function showDialog(points) {
     $.localize = true;
     var ui = localizeUI();
+    var units = getRulerUnits();
+
     var dialog = new Window('dialog');
     dialog.text = ui.title;
     dialog.orientation = 'column';
@@ -316,44 +304,37 @@ function showDialog(points) {
 
     var group1 = dialog.add('group', undefined, { name: 'group1' });
     group1.orientation = 'row';
-    group1.alignChildren = ['left', 'center'];
+    group1.alignChildren = ['fill', 'center'];
     group1.spacing = 10;
     group1.margins = 0;
 
     var statictext1 = group1.add('statictext', undefined, undefined, { name: 'statictext1' });
     statictext1.text = ui.distance;
+    statictext1.alignment = ['left', 'center'];
 
     var edittext1 = group1.add('edittext', undefined, undefined, { name: 'edittext1' });
-    edittext1.text = '';
-    edittext1.preferredSize.width = 180;
+    edittext1.text = '1';
     edittext1.active = true;
+
+    var statictext2 = group1.add('statictext', undefined, undefined, { name: 'statictext2' });
+    statictext2.text = units;
+    statictext2.alignment = ['right', 'center'];
 
     var group2 = dialog.add('group', undefined, { name: 'group2' });
     group2.orientation = 'row';
-    group2.alignChildren = ['left', 'center'];
+    group2.alignChildren = ['right', 'center'];
     group2.spacing = 10;
-    group2.margins = 0;
+    group2.margins = [0, 8, 0, 0];;
 
     var checkbox1 = group2.add('checkbox', undefined, undefined, { name: 'checkbox1' });
     checkbox1.text = ui.preview;
+    checkbox1.alignment = ['left', 'top'];
 
-    var group3 = dialog.add('group', undefined, { name: 'group3' });
-    group3.orientation = 'row';
-    group3.alignChildren = ['right', 'center'];
-    group3.spacing = 10;
-    group3.margins = 0;
-
-    // Work around the problem of not being able to undo with the esc key due to localization.
-    var button0 = group3.add('button', undefined, undefined, { name: 'button0' });
-    button0.text = 'Cancel';
-    button0.preferredSize.width = 20;
-    button0.hide();
-
-    var button1 = group3.add('button', undefined, undefined, { name: 'button1' });
+    var button1 = group2.add('button', undefined, undefined, { name: 'Cancel' });
     button1.text = ui.cancel;
     button1.preferredSize.width = 90;
 
-    var button2 = group3.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group2.add('button', undefined, undefined, { name: 'OK' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
 
@@ -362,19 +343,32 @@ function showDialog(points) {
         edittext1.active = true;
     });
 
-    button0.onClick = function() {
+    button1.onClick = function() {
         if (checkbox1.value) reset(points);
         dialog.close();
-    }
-
-    button1.onClick = function() {
-        button0.notify('onClick');
     }
 
     dialog.distance = edittext1;
     dialog.preview = checkbox1;
     dialog.ok = button2;
     return dialog;
+}
+
+
+function setIncreaseDecrease(event) {
+    var value = getValue(event.target.text);
+    var keyboard = ScriptUI.environment.keyboardState;
+    var step = keyboard.shiftKey ? 5 : 1;
+    if (event.keyName == 'Up') {
+        value += step;
+        event.target.text = value;
+        event.preventDefault();
+    }
+    if (event.keyName == 'Down') {
+        value -= step;
+        event.target.text = value;
+        event.preventDefault();
+    }
 }
 
 

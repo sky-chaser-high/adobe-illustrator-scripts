@@ -21,7 +21,7 @@
    Illustrator CS4 or higher
 
    Version
-   1.1.0
+   1.2.0
 
    Homepage
    github.com/sky-chaser-high/adobe-illustrator-scripts
@@ -118,7 +118,6 @@ function getConfiguration(dialog) {
 function preview(dialog, points) {
     if (!dialog.preview.value) return;
     reset(points);
-    app.redraw();
     var config = getConfiguration(dialog);
     var items = app.activeDocument.selection;
     var shapes = getPathItems(items);
@@ -425,8 +424,8 @@ function setRGBColor(r, g, b) {
 
 function isValidVersion() {
     var cs4 = 14;
-    var aiVersion = parseInt(app.version);
-    if (aiVersion < cs4) return false;
+    var current = parseInt(app.version);
+    if (current < cs4) return false;
     return true;
 }
 
@@ -434,6 +433,7 @@ function isValidVersion() {
 function showDialog(points) {
     $.localize = true;
     var ui = localizeUI();
+    var units = getRulerUnits();
 
     var dialog = new Window('dialog');
     dialog.text = ui.title;
@@ -451,7 +451,7 @@ function showDialog(points) {
 
     var group1 = panel1.add('group', undefined, { name: 'group1' });
     group1.orientation = 'row';
-    group1.alignChildren = ['left', 'center'];
+    group1.alignChildren = ['fill', 'center'];
     group1.spacing = 10;
     group1.margins = [0, 4, 0, 0];
 
@@ -460,6 +460,7 @@ function showDialog(points) {
     group2.alignChildren = ['right', 'center'];
     group2.spacing = 18;
     group2.margins = 0;
+    group2.alignment = ['left', 'center'];
 
     var statictext1 = group2.add('statictext', undefined, undefined, { name: 'statictext1' });
     statictext1.text = ui.type;
@@ -489,9 +490,19 @@ function showDialog(points) {
     var radiobutton3 = group4.add('radiobutton', undefined, undefined, { name: 'radiobutton3' });
     radiobutton3.text = ui.cross;
 
-    var edittext1 = group3.add('edittext', undefined, undefined, { name: 'edittext1' });
+    var group5 = group3.add('group', undefined, { name: 'group5' });
+    group5.orientation = 'row';
+    group5.alignChildren = ['fill', 'center'];
+    group5.spacing = 10;
+    group5.margins = 0;
+
+    var edittext1 = group5.add('edittext', undefined, undefined, { name: 'edittext1' });
     edittext1.text = '1';
     edittext1.active = true;
+
+    var statictext3 = group5.add('statictext', undefined, undefined, { name: 'statictext3' });
+    statictext3.text = units;
+    statictext3.alignment = ['right', 'center'];
 
     var panel2 = dialog.add('panel', undefined, undefined, { name: 'panel2' });
     panel2.text = ui.options;
@@ -500,27 +511,18 @@ function showDialog(points) {
     panel2.spacing = 10;
     panel2.margins = 10;
 
-    var group5 = panel2.add('group', undefined, { name: 'group5' });
-    group5.orientation = 'column';
-    group5.alignChildren = ['left', 'center'];
-    group5.spacing = 10;
-    group5.margins = [0, 10, 0, 0];
+    var group6 = panel2.add('group', undefined, { name: 'group6' });
+    group6.orientation = 'column';
+    group6.alignChildren = ['left', 'center'];
+    group6.spacing = 10;
+    group6.margins = [0, 10, 0, 0];
 
-    var checkbox1 = group5.add('checkbox', undefined, undefined, { name: 'checkbox1' });
+    var checkbox1 = group6.add('checkbox', undefined, undefined, { name: 'checkbox1' });
     checkbox1.text = ui.all;
     checkbox1.value = true;
 
-    var checkbox2 = group5.add('checkbox', undefined, undefined, { name: 'checkbox2' });
+    var checkbox2 = group6.add('checkbox', undefined, undefined, { name: 'checkbox2' });
     checkbox2.text = ui.handle;
-
-    var group6 = dialog.add('group', undefined, { name: 'group6' });
-    group6.orientation = 'row';
-    group6.alignChildren = ['left', 'center'];
-    group6.spacing = 10;
-    group6.margins = 0;
-
-    var checkbox3 = group6.add('checkbox', undefined, undefined, { name: 'checkbox3' });
-    checkbox3.text = ui.preview;
 
     var group7 = dialog.add('group', undefined, { name: 'group7' });
     group7.orientation = 'row';
@@ -528,17 +530,15 @@ function showDialog(points) {
     group7.spacing = 10;
     group7.margins = 0;
 
-    // Work around the problem of not being able to undo with the esc key due to localization.
-    var button0 = group7.add('button', undefined, undefined, { name: 'button0' });
-    button0.text = 'Cancel';
-    button0.preferredSize.width = 20;
-    button0.hide();
+    var checkbox3 = group7.add('checkbox', undefined, undefined, { name: 'checkbox3' });
+    checkbox3.text = ui.preview;
+    checkbox3.alignment = ['left', 'top'];
 
-    var button1 = group7.add('button', undefined, undefined, { name: 'button1' });
+    var button1 = group7.add('button', undefined, undefined, { name: 'Cancel' });
     button1.text = ui.cancel;
     button1.preferredSize.width = 90;
 
-    var button2 = group7.add('button', undefined, undefined, { name: 'button2' });
+    var button2 = group7.add('button', undefined, undefined, { name: 'OK' });
     button2.text = ui.ok;
     button2.preferredSize.width = 90;
 
@@ -547,18 +547,14 @@ function showDialog(points) {
         edittext1.active = true;
     });
 
-    button0.onClick = function() {
+    button1.onClick = function() {
         if (checkbox3.value) reset(points);
         dialog.close();
     }
 
-    button1.onClick = function() {
-        button0.notify('onClick');
-    }
-
-    dialog.rectangle = radiobutton1,
-    dialog.circle = radiobutton2,
-    dialog.cross = radiobutton3
+    dialog.rectangle = radiobutton1;
+    dialog.circle = radiobutton2;
+    dialog.cross = radiobutton3;
     dialog.shapeSize = edittext1;
     dialog.isAll = checkbox1;
     dialog.handle = checkbox2;
