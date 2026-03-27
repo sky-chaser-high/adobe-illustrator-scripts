@@ -1,6 +1,6 @@
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.63.0-e8e8e8?style=for-the-badge"> 
+<img src="https://img.shields.io/badge/Release-v1.64.0-e8e8e8?style=for-the-badge"> 
 
 Adobe Illustratorのスクリプト集です。  
 タイトルをクリックすると詳細説明に移動します。
@@ -60,10 +60,11 @@ Adobe Illustratorのスクリプト集です。
 ### パス
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=for-the-badge)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [S字カーブを描く](#S字カーブを描く)
-- [アンカーポイントの位置に図形を描く](#アンカーポイントの位置に図形を描く) `Update`
+- [アンカーポイントの位置に図形を描く](#アンカーポイントの位置に図形を描く)
 - [アンカーポイントの追加](#アンカーポイントの追加)
 - [円形ガイドを作成](#円形ガイドを作成)
-- [オブジェクトの周囲に長方形を描く](#オブジェクトの周囲に長方形を描く) `Update`
+- [オブジェクトのサイズを揃える](#オブジェクトのサイズを揃える) `New`
+- [オブジェクトの周囲に長方形を描く](#オブジェクトの周囲に長方形を描く)
 - [オブジェクトの移動](#オブジェクトの移動)
 - [オブジェクトの整列](#オブジェクトの整列)
 - [オブジェクトの並べ替え](#オブジェクトの並べ替え)
@@ -81,10 +82,10 @@ Adobe Illustratorのスクリプト集です。
 - [選択したアンカーポイントを時計回り / 反時計回りに増やす](#選択したアンカーポイントを時計回り--反時計回りに増やす)
 - [選択したアンカーポイントを時計回り / 反時計回りに減らす](#選択したアンカーポイントを時計回り--反時計回りに減らす)
 - [ハンドルを伸縮](#ハンドルを伸縮)
-- [ハンドルを調整](#ハンドルを調整) `New`
+- [ハンドルを調整](#ハンドルを調整)
 - [パスセグメントの角度に合わせて図形を描く](#パスセグメントの角度に合わせて図形を描く)
 - [パスの寸法を表示](#パスの寸法を表示)
-- [パスを伸縮](#パスを伸縮) `Update`
+- [パスを伸縮](#パスを伸縮)
 - [パスを閉じる](#パスを閉じる)
 - [パスを分解](#パスを分解)
 - [法線を描く](#法線を描く)
@@ -139,6 +140,7 @@ Adobe Illustratorのスクリプト集です。
 - [コピー元のレイヤーにペースト](#コピー元のレイヤーにペースト)
 - [字形の境界に整列](#字形の境界に整列)
 - [新規テキストオブジェクトにサンプルテキストを割り付け](#新規テキストオブジェクトにサンプルテキストを割り付け)
+- [セグメントをドラッグしてリシェイプするときにハンドル方向を固定](#セグメントをドラッグしてリシェイプするときにハンドル方向を固定) `New`
 - [選択された文字の異体字を表示](#選択された文字の異体字を表示)
 - [選択範囲へズーム](#選択範囲へズーム)
 - [パターンを変形](#パターンを変形)
@@ -1907,6 +1909,31 @@ Illustrator CS4以降
 
 
 
+## <a name="オブジェクトのサイズを揃える">オブジェクトのサイズを揃える</a>
+### matchSelectedObjectScales.js
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
+選択したオブジェクトのサイズを揃えます。
+
+![Match Selected Object Scales](images/matchSelectedObjectScales.png)
+> [!NOTE]
+> Illustrator日本語版を使用している場合は、UIは日本語で表示します。
+
+#### 使用方法
+1. サイズを揃えるオブジェクトを選択してスクリプトを実行します。
+2. 基準のサイズを選択します。
+3. 幅または高さを選択します。
+4. オプションを選択します。
+
+#### 動作条件
+Illustrator CS6以降
+
+<div align="right">[ <a href="#パス">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
 ## <a name="距離の測定">距離の測定</a>
 ### measureDistance.js
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
@@ -3000,6 +3027,26 @@ Illustrator CS以降
 
 #### 動作条件
 Illustrator 2020以降
+
+<div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
+<br>
+
+
+
+## <a name="セグメントをドラッグしてリシェイプするときにハンドル方向を固定">セグメントをドラッグしてリシェイプするときにハンドル方向を固定</a>
+### toggleConstrainPathDragging.js
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">
+
+「環境設定 > 選択範囲・アンカー表示 > 選択範囲 > セグメントをドラッグしてリシェイプするときにハンドル方向を固定」のオン/オフを切り替えます。
+
+<img src="images/toggleConstrainPathDragging.png" alt="Toggle Constrain Path Dragging" width="70%">
+
+#### 使用方法
+このスクリプトを実行するだけです。  
+
+#### 動作条件
+Illustrator CC 2015以降
 
 <div align="right">[ <a href="#環境設定">↑ トップへ戻る ↑</a> ]</div>
 <br>

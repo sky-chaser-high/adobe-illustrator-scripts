@@ -2,7 +2,7 @@
 
 # Adobe Illustrator Scripts
 [![Download AllScripts.zip](https://img.shields.io/badge/Download-AllScripts.zip-blue?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/AllScripts.zip)
-<img src="https://img.shields.io/badge/Release-v1.63.0-e8e8e8?style=flat-square"> 
+<img src="https://img.shields.io/badge/Release-v1.64.0-e8e8e8?style=flat-square"> 
 
 This is a collection of scripts for Adobe Illustrator. I created it with simplicity and ease of use in mind.  
 Click the titles to jump to learn more about the script.  
@@ -61,7 +61,7 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Path
 [![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
 - [Add Anchor Points](#addAnchorPointsjs)
-- [Adjust Handle](#adjustHandlejs) `New`
+- [Adjust Handle](#adjustHandlejs)
 - [Align in Center of Space](#alignInCenterOfSpaceHorizontaljsalignInCenterOfSpaceVerticaljs)
 - [Align Objects](#alignObjectsjs)
 - [Close Path](#closePathjs)
@@ -72,16 +72,17 @@ If you find a script that interests you, please download it from [![Download](ht
 - [Distribute in Space](#distributeInSpaceHorizontaljsdistributeInSpaceVerticaljs)
 - [Draw Circumscribed Circle](#drawCircumscribedCirclejs)
 - [Draw Normal Line](#drawNormalLinejs)
-- [Draw Rectangle](#drawRectanglejs) `Update`
+- [Draw Rectangle](#drawRectanglejs)
 - [Draw S-curve](#draws-curvejs)
-- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs) `Update`
+- [Draw Shape on Anchor Point](#drawShapeOnAnchorPointjs)
 - [Draw Shape Parallel to Path Segment](#drawShapeParallelToPathSegmentjs)
 - [Extend Handle](#extendHandlejs)
-- [Extend Line](#extendLinejs) `Update`
+- [Extend Line](#extendLinejs)
 - [Fit Guide in Artboard](#fitGuideInArtboardjs)
 - [Increase Selected Anchor Points](#increaseSelectedAnchorPointsCWjsincreaseSelectedAnchorPointsCCWjs)
 - [Make Circular Guides](#makeCircularGuidesjs)
 - [Make Crosshair Guides](#makeCrosshairGuidesjs)
+- [Match Selected Object Scales](#matchSelectedObjectScalesjs) `New`
 - [Move Guides](#moveGuidesjs)
 - [Rearrange Objects](#rearrangeObjectsjs)
 - [Remove Color in Guide Object](#removeColorInGuideObjectjs)
@@ -137,6 +138,7 @@ If you find a script that interests you, please download it from [![Download](ht
 ### Preferences
 [![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
 - [Align to Glyph Bounds](#toggleAlignToGlyphBoundsjs)
+- [Constrain Path Dragging on Segment Reshape](#toggleConstrainPathDraggingjs) `New`
 - [Fill New Type Objects With Placeholder Text](#toggleFillNewTypeObjectsWithPlaceholderTextjs)
 - [Paste Remembers Layers](#togglePasteRemembersLayersjs)
 - [Select Same Tint Percentage](#toggleSelectSameTintPercentagejs)
@@ -1723,6 +1725,27 @@ Illustrator CS4 or higher
 
 
 
+# <a name="matchSelectedObjectScalesjs">matchSelectedObjectScales.js</a>
+[![Download Path.zip](https://img.shields.io/badge/Download-Path.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Path.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script matches selected object scales.
+
+![Match Selected Object Scales](images/matchSelectedObjectScales.png)
+
+### Usage
+1. Select some objects, and run this script.
+2. Select a base scale.
+3. Select either width or height.
+4. Select some options.
+
+### Requirements
+Illustrator CS6 or higher
+
+<div align="right">[ <a href="#path">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
 # <a name="measureDistancejs">measureDistance.js</a>
 [![Download Utility.zip](https://img.shields.io/badge/Download-Utility.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Utility.zip)
 <img src="https://img.shields.io/badge/version-1.3.0-e8e8e8?style=flat-square">  
@@ -2696,6 +2719,24 @@ Just run this script.
 
 ### Requirements
 Illustrator 2020 or higher
+
+<div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
+<br>
+
+
+
+# <a name="toggleConstrainPathDraggingjs">toggleConstrainPathDragging.js</a>
+[![Download Preferences.zip](https://img.shields.io/badge/Download-Preferences.zip-e60012?style=flat-square)](https://github.com/sky-chaser-high/adobe-illustrator-scripts/releases/latest/download/Preferences.zip)
+<img src="https://img.shields.io/badge/version-1.0.0-e8e8e8?style=flat-square">  
+This script toggles the Preferences > Selection & Anchor Display > Selection > Constrain Path Dragging on Segment Reshape.
+
+<img src="images/toggleConstrainPathDragging.png" alt="Toggle Constrain Path Dragging" width="70%">
+
+### Usage
+Just run this script.
+
+### Requirements
+Illustrator CC 2015 or higher
 
 <div align="right">[ <a href="#preferences">↑ Back to Top ↑</a> ]</div>
 <br>
